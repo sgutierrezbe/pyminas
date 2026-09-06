@@ -879,5 +879,954 @@ window.BAKED_TRACES = {
       }
     ],
     "totalOutput": "5"
+  },
+  "# Mi primer programa en Python\nprint(\"¡Hola mundo!\")\nprint(\"Mi nombre es: Estudiante\")\nprint(\"Meta: Crear mis propios proyectos\")": {
+    "lines": [
+      "# Mi primer programa en Python",
+      "print(\"¡Hola mundo!\")",
+      "print(\"Mi nombre es: Estudiante\")",
+      "print(\"Meta: Crear mis propios proyectos\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¡Hola mundo!",
+        "outputSoFar": [
+          "¡Hola mundo!"
+        ]
+      },
+      {
+        "prints": "Mi nombre es: Estudiante",
+        "outputSoFar": [
+          "¡Hola mundo!",
+          "Mi nombre es: Estudiante"
+        ]
+      },
+      {
+        "prints": "Meta: Crear mis propios proyectos",
+        "outputSoFar": [
+          "¡Hola mundo!",
+          "Mi nombre es: Estudiante",
+          "Meta: Crear mis propios proyectos"
+        ]
+      }
+    ],
+    "totalOutput": "¡Hola mundo!\nMi nombre es: Estudiante\nMeta: Crear mis propios proyectos"
+  },
+  "# Mi primer programa en Python\nprint(\"¡Hola mundo!\")\nprint(\"Mi nombre es: Estudiante\")\n\"Meta: Crear mis propios proyectos\"": {
+    "lines": [
+      "# Mi primer programa en Python",
+      "print(\"¡Hola mundo!\")",
+      "print(\"Mi nombre es: Estudiante\")",
+      "\"Meta: Crear mis propios proyectos\""
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¡Hola mundo!",
+        "outputSoFar": [
+          "¡Hola mundo!"
+        ]
+      },
+      {
+        "prints": "Mi nombre es: Estudiante",
+        "outputSoFar": [
+          "¡Hola mundo!",
+          "Mi nombre es: Estudiante"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "¡Hola mundo!",
+          "Mi nombre es: Estudiante"
+        ]
+      }
+    ],
+    "totalOutput": "¡Hola mundo!\nMi nombre es: Estudiante"
+  },
+  "# Mi primer programa en Python\nprint(\"¡Hola mundo!\")\nprint(\"Mi nombre es: Estudiante\")\nimprimir(\"Meta: Crear mis propios proyectos\")": {
+    "lines": [
+      "# Mi primer programa en Python",
+      "print(\"¡Hola mundo!\")",
+      "print(\"Mi nombre es: Estudiante\")",
+      "imprimir(\"Meta: Crear mis propios proyectos\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¡Hola mundo!",
+        "outputSoFar": [
+          "¡Hola mundo!"
+        ]
+      },
+      {
+        "prints": "Mi nombre es: Estudiante",
+        "outputSoFar": [
+          "¡Hola mundo!",
+          "Mi nombre es: Estudiante"
+        ]
+      },
+      {
+        "prints": "Error: name 'imprimir' is not defined",
+        "outputSoFar": [
+          "¡Hola mundo!",
+          "Mi nombre es: Estudiante",
+          "Error: name 'imprimir' is not defined"
+        ]
+      }
+    ],
+    "totalOutput": "¡Hola mundo!\nMi nombre es: Estudiante\nError: name 'imprimir' is not defined"
+  },
+  "# 1. ENTRADA (Datos iniciales):\nproducto_a = 45\nproducto_b = 30\n\n# 2. PROCESAMIENTO (Suma los dos productos):\ntotal = producto_a + producto_b\n\n# 3. SALIDA (Muestra el ticket):\nprint(\"Producto 1: $\", producto_a, sep=\"\")\nprint(\"Producto 2: $\", producto_b, sep=\"\")\nprint(\"Total a pagar: $\", total, sep=\"\")": {
+    "lines": [
+      "# 1. ENTRADA (Datos iniciales):",
+      "producto_a = 45",
+      "producto_b = 30",
+      "",
+      "# 2. PROCESAMIENTO (Suma los dos productos):",
+      "total = producto_a + producto_b",
+      "",
+      "# 3. SALIDA (Muestra el ticket):",
+      "print(\"Producto 1: $\", producto_a, sep=\"\")",
+      "print(\"Producto 2: $\", producto_b, sep=\"\")",
+      "print(\"Total a pagar: $\", total, sep=\"\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Producto 1: $45",
+        "outputSoFar": [
+          "Producto 1: $45"
+        ]
+      },
+      {
+        "prints": "Producto 2: $30",
+        "outputSoFar": [
+          "Producto 1: $45",
+          "Producto 2: $30"
+        ]
+      },
+      {
+        "prints": "Total a pagar: $75",
+        "outputSoFar": [
+          "Producto 1: $45",
+          "Producto 2: $30",
+          "Total a pagar: $75"
+        ]
+      }
+    ],
+    "totalOutput": "Producto 1: $45\nProducto 2: $30\nTotal a pagar: $75"
+  },
+  "# 1. ENTRADA (Datos iniciales):\nproducto_a = 45\nproducto_b = 30\n\n# 2. PROCESAMIENTO (Suma los dos productos):\ntotal = \"producto_a\" + \"producto_b\"\n\n# 3. SALIDA (Muestra el ticket):\nprint(\"Producto 1: $\", producto_a, sep=\"\")\nprint(\"Producto 2: $\", producto_b, sep=\"\")\nprint(\"Total a pagar: $\", total, sep=\"\")": {
+    "lines": [
+      "# 1. ENTRADA (Datos iniciales):",
+      "producto_a = 45",
+      "producto_b = 30",
+      "",
+      "# 2. PROCESAMIENTO (Suma los dos productos):",
+      "total = \"producto_a\" + \"producto_b\"",
+      "",
+      "# 3. SALIDA (Muestra el ticket):",
+      "print(\"Producto 1: $\", producto_a, sep=\"\")",
+      "print(\"Producto 2: $\", producto_b, sep=\"\")",
+      "print(\"Total a pagar: $\", total, sep=\"\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Producto 1: $45",
+        "outputSoFar": [
+          "Producto 1: $45"
+        ]
+      },
+      {
+        "prints": "Producto 2: $30",
+        "outputSoFar": [
+          "Producto 1: $45",
+          "Producto 2: $30"
+        ]
+      },
+      {
+        "prints": "Total a pagar: $producto_aproducto_b",
+        "outputSoFar": [
+          "Producto 1: $45",
+          "Producto 2: $30",
+          "Total a pagar: $producto_aproducto_b"
+        ]
+      }
+    ],
+    "totalOutput": "Producto 1: $45\nProducto 2: $30\nTotal a pagar: $producto_aproducto_b"
+  },
+  "# 1. ENTRADA (Datos iniciales):\nproducto_a = 45\nproducto_b = 30\n\n# 2. PROCESAMIENTO (Suma los dos productos):\ntotal = producto_a * producto_b\n\n# 3. SALIDA (Muestra el ticket):\nprint(\"Producto 1: $\", producto_a, sep=\"\")\nprint(\"Producto 2: $\", producto_b, sep=\"\")\nprint(\"Total a pagar: $\", total, sep=\"\")": {
+    "lines": [
+      "# 1. ENTRADA (Datos iniciales):",
+      "producto_a = 45",
+      "producto_b = 30",
+      "",
+      "# 2. PROCESAMIENTO (Suma los dos productos):",
+      "total = producto_a * producto_b",
+      "",
+      "# 3. SALIDA (Muestra el ticket):",
+      "print(\"Producto 1: $\", producto_a, sep=\"\")",
+      "print(\"Producto 2: $\", producto_b, sep=\"\")",
+      "print(\"Total a pagar: $\", total, sep=\"\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Producto 1: $45",
+        "outputSoFar": [
+          "Producto 1: $45"
+        ]
+      },
+      {
+        "prints": "Producto 2: $30",
+        "outputSoFar": [
+          "Producto 1: $45",
+          "Producto 2: $30"
+        ]
+      },
+      {
+        "prints": "Total a pagar: $1350",
+        "outputSoFar": [
+          "Producto 1: $45",
+          "Producto 2: $30",
+          "Total a pagar: $1350"
+        ]
+      }
+    ],
+    "totalOutput": "Producto 1: $45\nProducto 2: $30\nTotal a pagar: $1350"
+  },
+  "# Dato recibido como texto (como si viniera de input):\nnacimiento_texto = \"2005\"\nanio_actual = 2026\n\n# Convierte a entero:\nnacimiento_numero = int(nacimiento_texto)\n\n# Calcula la edad:\nedad = anio_actual - nacimiento_numero\n\nprint(\"Año de nacimiento:\", nacimiento_numero)\nprint(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")": {
+    "lines": [
+      "# Dato recibido como texto (como si viniera de input):",
+      "nacimiento_texto = \"2005\"",
+      "anio_actual = 2026",
+      "",
+      "# Convierte a entero:",
+      "nacimiento_numero = int(nacimiento_texto)",
+      "",
+      "# Calcula la edad:",
+      "edad = anio_actual - nacimiento_numero",
+      "",
+      "print(\"Año de nacimiento:\", nacimiento_numero)",
+      "print(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Año de nacimiento: 2005",
+        "outputSoFar": [
+          "Año de nacimiento: 2005"
+        ]
+      },
+      {
+        "prints": "Tu edad en 2026 es: 21 años",
+        "outputSoFar": [
+          "Año de nacimiento: 2005",
+          "Tu edad en 2026 es: 21 años"
+        ]
+      }
+    ],
+    "totalOutput": "Año de nacimiento: 2005\nTu edad en 2026 es: 21 años"
+  },
+  "# Dato recibido como texto (como si viniera de input):\nnacimiento_texto = \"2005\"\nanio_actual = 2026\n\n# Convierte a entero:\nnacimiento_numero = str(nacimiento_texto)\n\n# Calcula la edad:\nedad = anio_actual - nacimiento_numero\n\nprint(\"Año de nacimiento:\", nacimiento_numero)\nprint(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")": {
+    "lines": [
+      "# Dato recibido como texto (como si viniera de input):",
+      "nacimiento_texto = \"2005\"",
+      "anio_actual = 2026",
+      "",
+      "# Convierte a entero:",
+      "nacimiento_numero = str(nacimiento_texto)",
+      "",
+      "# Calcula la edad:",
+      "edad = anio_actual - nacimiento_numero",
+      "",
+      "print(\"Año de nacimiento:\", nacimiento_numero)",
+      "print(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Error: unsupported operand type(s) for -: 'int' and 'str'",
+        "outputSoFar": [
+          "Error: unsupported operand type(s) for -: 'int' and 'str'"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Error: unsupported operand type(s) for -: 'int' and 'str'"
+        ]
+      },
+      {
+        "prints": "Año de nacimiento: 2005",
+        "outputSoFar": [
+          "Error: unsupported operand type(s) for -: 'int' and 'str'",
+          "Año de nacimiento: 2005"
+        ]
+      },
+      {
+        "prints": "Error: name 'edad' is not defined",
+        "outputSoFar": [
+          "Error: unsupported operand type(s) for -: 'int' and 'str'",
+          "Año de nacimiento: 2005",
+          "Error: name 'edad' is not defined"
+        ]
+      }
+    ],
+    "totalOutput": "Error: unsupported operand type(s) for -: 'int' and 'str'\nAño de nacimiento: 2005\nError: name 'edad' is not defined"
+  },
+  "# Dato recibido como texto (como si viniera de input):\nnacimiento_texto = \"2005\"\nanio_actual = 2026\n\n# Convierte a entero:\nnacimiento_numero = float(\"edad\")\n\n# Calcula la edad:\nedad = anio_actual - nacimiento_numero\n\nprint(\"Año de nacimiento:\", nacimiento_numero)\nprint(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")": {
+    "lines": [
+      "# Dato recibido como texto (como si viniera de input):",
+      "nacimiento_texto = \"2005\"",
+      "anio_actual = 2026",
+      "",
+      "# Convierte a entero:",
+      "nacimiento_numero = float(\"edad\")",
+      "",
+      "# Calcula la edad:",
+      "edad = anio_actual - nacimiento_numero",
+      "",
+      "print(\"Año de nacimiento:\", nacimiento_numero)",
+      "print(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Error: could not convert string to float: 'edad'",
+        "outputSoFar": [
+          "Error: could not convert string to float: 'edad'"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Error: could not convert string to float: 'edad'"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Error: could not convert string to float: 'edad'"
+        ]
+      },
+      {
+        "prints": "Error: name 'nacimiento_numero' is not defined",
+        "outputSoFar": [
+          "Error: could not convert string to float: 'edad'",
+          "Error: name 'nacimiento_numero' is not defined"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Error: could not convert string to float: 'edad'",
+          "Error: name 'nacimiento_numero' is not defined"
+        ]
+      },
+      {
+        "prints": "Error: name 'nacimiento_numero' is not defined",
+        "outputSoFar": [
+          "Error: could not convert string to float: 'edad'",
+          "Error: name 'nacimiento_numero' is not defined",
+          "Error: name 'nacimiento_numero' is not defined"
+        ]
+      },
+      {
+        "prints": "Error: name 'edad' is not defined",
+        "outputSoFar": [
+          "Error: could not convert string to float: 'edad'",
+          "Error: name 'nacimiento_numero' is not defined",
+          "Error: name 'nacimiento_numero' is not defined",
+          "Error: name 'edad' is not defined"
+        ]
+      }
+    ],
+    "totalOutput": "Error: could not convert string to float: 'edad'\nError: name 'nacimiento_numero' is not defined\nError: name 'nacimiento_numero' is not defined\nError: name 'edad' is not defined"
+  },
+  "total_minutos = 195\n\n# 1 hora tiene 60 minutos\nhoras = total_minutos // 60\nminutos_sobrantes = total_minutos % 60\n\nprint(\"Total inicial:\", total_minutos, \"minutos\")\nprint(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")": {
+    "lines": [
+      "total_minutos = 195",
+      "",
+      "# 1 hora tiene 60 minutos",
+      "horas = total_minutos // 60",
+      "minutos_sobrantes = total_minutos % 60",
+      "",
+      "print(\"Total inicial:\", total_minutos, \"minutos\")",
+      "print(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Total inicial: 195 minutos",
+        "outputSoFar": [
+          "Total inicial: 195 minutos"
+        ]
+      },
+      {
+        "prints": "Equivale a: 3 horas y 15 minutos",
+        "outputSoFar": [
+          "Total inicial: 195 minutos",
+          "Equivale a: 3 horas y 15 minutos"
+        ]
+      }
+    ],
+    "totalOutput": "Total inicial: 195 minutos\nEquivale a: 3 horas y 15 minutos"
+  },
+  "total_minutos = 195\n\n# 1 hora tiene 60 minutos\nhoras = total_minutos / 60\nminutos_sobrantes = total_minutos % 60\n\nprint(\"Total inicial:\", total_minutos, \"minutos\")\nprint(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")": {
+    "lines": [
+      "total_minutos = 195",
+      "",
+      "# 1 hora tiene 60 minutos",
+      "horas = total_minutos / 60",
+      "minutos_sobrantes = total_minutos % 60",
+      "",
+      "print(\"Total inicial:\", total_minutos, \"minutos\")",
+      "print(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Total inicial: 195 minutos",
+        "outputSoFar": [
+          "Total inicial: 195 minutos"
+        ]
+      },
+      {
+        "prints": "Equivale a: 3.25 horas y 15 minutos",
+        "outputSoFar": [
+          "Total inicial: 195 minutos",
+          "Equivale a: 3.25 horas y 15 minutos"
+        ]
+      }
+    ],
+    "totalOutput": "Total inicial: 195 minutos\nEquivale a: 3.25 horas y 15 minutos"
+  },
+  "total_minutos = 195\n\n# 1 hora tiene 60 minutos\nhoras = total_minutos % 60\nminutos_sobrantes = total_minutos % 60\n\nprint(\"Total inicial:\", total_minutos, \"minutos\")\nprint(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")": {
+    "lines": [
+      "total_minutos = 195",
+      "",
+      "# 1 hora tiene 60 minutos",
+      "horas = total_minutos % 60",
+      "minutos_sobrantes = total_minutos % 60",
+      "",
+      "print(\"Total inicial:\", total_minutos, \"minutos\")",
+      "print(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Total inicial: 195 minutos",
+        "outputSoFar": [
+          "Total inicial: 195 minutos"
+        ]
+      },
+      {
+        "prints": "Equivale a: 15 horas y 15 minutos",
+        "outputSoFar": [
+          "Total inicial: 195 minutos",
+          "Equivale a: 15 horas y 15 minutos"
+        ]
+      }
+    ],
+    "totalOutput": "Total inicial: 195 minutos\nEquivale a: 15 horas y 15 minutos"
+  },
+  "import math\n\ncateto_a = 6\ncateto_b = 8\n\n# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)\nsuma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)\nhipotenusa = math.sqrt(suma_cuadrados)\n\nprint(\"Cateto A:\", cateto_a)\nprint(\"Cateto B:\", cateto_b)\nprint(\"Hipotenusa calculada:\", hipotenusa)": {
+    "lines": [
+      "import math",
+      "",
+      "cateto_a = 6",
+      "cateto_b = 8",
+      "",
+      "# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)",
+      "suma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)",
+      "hipotenusa = math.sqrt(suma_cuadrados)",
+      "",
+      "print(\"Cateto A:\", cateto_a)",
+      "print(\"Cateto B:\", cateto_b)",
+      "print(\"Hipotenusa calculada:\", hipotenusa)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Cateto A: 6",
+        "outputSoFar": [
+          "Cateto A: 6"
+        ]
+      },
+      {
+        "prints": "Cateto B: 8",
+        "outputSoFar": [
+          "Cateto A: 6",
+          "Cateto B: 8"
+        ]
+      },
+      {
+        "prints": "Hipotenusa calculada: 10.0",
+        "outputSoFar": [
+          "Cateto A: 6",
+          "Cateto B: 8",
+          "Hipotenusa calculada: 10.0"
+        ]
+      }
+    ],
+    "totalOutput": "Cateto A: 6\nCateto B: 8\nHipotenusa calculada: 10.0"
+  },
+  "import math\n\ncateto_a = 6\ncateto_b = 8\n\n# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)\nsuma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)\nhipotenusa = sqrt(suma_cuadrados)\n\nprint(\"Cateto A:\", cateto_a)\nprint(\"Cateto B:\", cateto_b)\nprint(\"Hipotenusa calculada:\", hipotenusa)": {
+    "lines": [
+      "import math",
+      "",
+      "cateto_a = 6",
+      "cateto_b = 8",
+      "",
+      "# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)",
+      "suma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)",
+      "hipotenusa = sqrt(suma_cuadrados)",
+      "",
+      "print(\"Cateto A:\", cateto_a)",
+      "print(\"Cateto B:\", cateto_b)",
+      "print(\"Hipotenusa calculada:\", hipotenusa)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Error: name 'sqrt' is not defined",
+        "outputSoFar": [
+          "Error: name 'sqrt' is not defined"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Error: name 'sqrt' is not defined"
+        ]
+      },
+      {
+        "prints": "Cateto A: 6",
+        "outputSoFar": [
+          "Error: name 'sqrt' is not defined",
+          "Cateto A: 6"
+        ]
+      },
+      {
+        "prints": "Cateto B: 8",
+        "outputSoFar": [
+          "Error: name 'sqrt' is not defined",
+          "Cateto A: 6",
+          "Cateto B: 8"
+        ]
+      },
+      {
+        "prints": "Error: name 'hipotenusa' is not defined",
+        "outputSoFar": [
+          "Error: name 'sqrt' is not defined",
+          "Cateto A: 6",
+          "Cateto B: 8",
+          "Error: name 'hipotenusa' is not defined"
+        ]
+      }
+    ],
+    "totalOutput": "Error: name 'sqrt' is not defined\nCateto A: 6\nCateto B: 8\nError: name 'hipotenusa' is not defined"
+  },
+  "import math\n\ncateto_a = 6\ncateto_b = 8\n\n# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)\nsuma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)\nhipotenusa = math.ceil(suma_cuadrados)\n\nprint(\"Cateto A:\", cateto_a)\nprint(\"Cateto B:\", cateto_b)\nprint(\"Hipotenusa calculada:\", hipotenusa)": {
+    "lines": [
+      "import math",
+      "",
+      "cateto_a = 6",
+      "cateto_b = 8",
+      "",
+      "# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)",
+      "suma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)",
+      "hipotenusa = math.ceil(suma_cuadrados)",
+      "",
+      "print(\"Cateto A:\", cateto_a)",
+      "print(\"Cateto B:\", cateto_b)",
+      "print(\"Hipotenusa calculada:\", hipotenusa)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Cateto A: 6",
+        "outputSoFar": [
+          "Cateto A: 6"
+        ]
+      },
+      {
+        "prints": "Cateto B: 8",
+        "outputSoFar": [
+          "Cateto A: 6",
+          "Cateto B: 8"
+        ]
+      },
+      {
+        "prints": "Hipotenusa calculada: 100",
+        "outputSoFar": [
+          "Cateto A: 6",
+          "Cateto B: 8",
+          "Hipotenusa calculada: 100"
+        ]
+      }
+    ],
+    "totalOutput": "Cateto A: 6\nCateto B: 8\nHipotenusa calculada: 100"
   }
 };

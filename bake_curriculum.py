@@ -124,6 +124,27 @@ def main():
             else:
                 print(f"    - Sin salida en pantalla ({len(trace['lineTrace'])} lineas)")
 
+    try:
+        from verify_curriculum import load_curriculum
+        curr = load_curriculum()
+        for w in curr.get("weeks", []):
+            for l in w.get("lessons", []):
+                for s in l.get("steps", []):
+                    if s.get("type") == "code_sandbox" and s.get("starterCode"):
+                        starter = s["starterCode"].strip()
+                        marker = s.get("slotMarker", "___")
+                        for opt in s.get("options", []):
+                            code_val = opt.get("code")
+                            if code_val:
+                                filled = starter.replace(marker, code_val)
+                                trace = trace_python_code(filled)
+                                if trace:
+                                    baked[filled] = trace
+                                    success_count += 1
+                                    print(f"    [SANDBOX] {l.get('id', '')} opt '{code_val}': {len(trace['lineTrace'])} lineas")
+    except Exception as e:
+        print(f"  [WARN] Sandbox baking: {e}")
+
     baked_json = json.dumps(baked, ensure_ascii=False, indent=2)
     js_content = f"// Archivo generado automaticamente por bake_curriculum.py\n// CPython {sys.version_info.major}.{sys.version_info.minor}\nwindow.BAKED_TRACES = {baked_json};\n"
     OUTPUT_PATH.write_text(js_content, encoding="utf-8")

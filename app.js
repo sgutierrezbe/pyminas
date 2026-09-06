@@ -584,8 +584,18 @@ function renderCurrentStep() {
 
 // ==================== REPRODUCTOR DE CÓDIGO PASO A PASO (ESTILO BRILLIANT) ====================
 const codePlayerRegistry = {};
+let sandboxAnimTimer = null;
+
+function stopSandboxAnimation() {
+  if (sandboxAnimTimer) {
+    clearTimeout(sandboxAnimTimer);
+    clearInterval(sandboxAnimTimer);
+    sandboxAnimTimer = null;
+  }
+}
 
 function stopAllCodePlayers() {
+  stopSandboxAnimation();
   Object.values(codePlayerRegistry).forEach(player => {
     if (player.timer) {
       clearInterval(player.timer);
@@ -2044,6 +2054,7 @@ let selectedGuidedOptionId = null;
 let guidedStepCompleted = false;
 
 function renderSandboxStep(step, container) {
+  stopSandboxAnimation();
   currentGuidedStep = step;
   selectedGuidedOptionId = null;
   guidedStepCompleted = false;
@@ -2051,32 +2062,36 @@ function renderSandboxStep(step, container) {
   const isGuided = Boolean(step.options && step.options.length > 0);
   const starterCode = (step.starterCode || '').trim();
   const lines = starterCode.split('\n');
-  const lineNumbersHtml = lines.map((_, i) => `<div>${i + 1}</div>`).join('');
   const slotMarker = step.slotMarker || "___";
 
   let codeAreaHtml = '';
   if (isGuided) {
-    const formattedLinesHtml = lines.map(line => {
+    const linesRowsHtml = lines.map((line, idx) => {
+      let contentHtml = '';
       if (line.includes(slotMarker)) {
         const parts = line.split(slotMarker);
         const prefix = parts[0];
         const suffix = parts.slice(1).join(slotMarker);
-        return `${highlightPythonSyntax(prefix)}<span id="guided-code-slot" class="code-slot-box slot-empty px-2.5 py-0.5 text-xs font-bold font-mono select-none inline-flex items-center min-w-[50px]"><span class="blinking-cursor"></span></span>${highlightPythonSyntax(suffix)}`;
+        contentHtml = `${highlightPythonSyntax(prefix)}<span id="guided-code-slot" class="code-slot-box slot-empty px-2.5 py-0.5 text-xs font-bold font-mono select-none inline-flex items-center min-w-[50px]"><span class="blinking-cursor"></span></span>${highlightPythonSyntax(suffix)}`;
+      } else {
+        contentHtml = highlightPythonSyntax(line) || '&nbsp;';
       }
-      return highlightPythonSyntax(line);
-    }).join('\n');
+      return `
+        <div id="sandbox-line-${idx}" class="code-exec-line flex items-center py-1 px-3 rounded-lg font-mono text-xs sm:text-sm leading-relaxed transition-colors duration-150">
+          <span class="w-5 shrink-0 flex items-center justify-center font-bold text-white text-xs select-none" id="sandbox-arrow-${idx}"></span>
+          <span class="w-6 shrink-0 text-slate-500 text-right pr-3 text-xs select-none">${idx + 1}</span>
+          <div class="flex-1 whitespace-pre overflow-x-auto text-slate-200">${contentHtml}</div>
+        </div>
+      `;
+    }).join('');
 
     codeAreaHtml = `
-      <div class="relative flex font-mono text-xs sm:text-sm leading-relaxed bg-[#181825]" id="sandbox-editor-wrapper">
-        <div id="sandbox-line-numbers" class="select-none py-3.5 pl-3 pr-2.5 text-right text-slate-500 font-mono text-xs sm:text-sm border-r border-slate-800 bg-[#11111b] shrink-0 min-w-[2.75rem]">
-          ${lineNumbersHtml}
-        </div>
-        <div class="relative flex-1 min-w-0">
-          <pre id="sandbox-guided-pre" class="p-3.5 font-mono text-xs sm:text-sm whitespace-pre select-none m-0 overflow-x-auto text-slate-200 leading-relaxed">${formattedLinesHtml}</pre>
-        </div>
+      <div class="p-3 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto space-y-0.5 bg-[#181825]" id="sandbox-editor-wrapper">
+        ${linesRowsHtml}
       </div>
     `;
   } else {
+    const lineNumbersHtml = lines.map((_, i) => `<div>${i + 1}</div>`).join('');
     const highlightedHtml = lines.map(l => highlightPythonSyntax(l)).join('\n');
     codeAreaHtml = `
       <div class="relative flex font-mono text-xs sm:text-sm leading-relaxed bg-[#181825]" id="sandbox-editor-wrapper">
@@ -2194,11 +2209,22 @@ function renderSandboxStep(step, container) {
 
 function selectGuidedOption(optId) {
   if (!currentGuidedStep || !currentGuidedStep.options) return;
+  stopSandboxAnimation();
+
   selectedGuidedOptionId = optId;
   const opt = currentGuidedStep.options.find(o => o.id === optId);
   if (!opt) return;
 
   playSound('click');
+
+  // Limpiar cualquier línea activa en el editor
+  const totalLines = (currentGuidedStep.starterCode || '').split('\n').length;
+  for (let i = 0; i < totalLines; i++) {
+    const lineEl = document.getElementById(`sandbox-line-${i}`);
+    const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
+    if (lineEl) lineEl.classList.remove('active');
+    if (arrowEl) arrowEl.innerHTML = '';
+  }
 
   // Actualizar estilos de los botones de opciones
   currentGuidedStep.options.forEach(o => {
@@ -2281,124 +2307,190 @@ async function executeGuidedSandbox() {
   const opt = currentGuidedStep.options.find(o => o.id === selectedGuidedOptionId);
   if (!opt) return;
 
+  stopSandboxAnimation();
+
   const runBtn = document.getElementById('single-run-btn');
   const term = document.getElementById('single-sandbox-term');
   const statusEl = document.getElementById('sandbox-term-status');
+  const indicator = document.getElementById('sandbox-term-indicator');
   const feedbackCard = document.getElementById('guided-feedback-card');
 
-  playSound('step');
   if (runBtn) {
     runBtn.disabled = true;
     runBtn.textContent = "Ejecutando...";
+    runBtn.className = "w-full max-w-sm bg-slate-200 text-slate-400 cursor-not-allowed font-extrabold text-base py-3 px-8 rounded-2xl border-2 border-slate-300 transition";
   }
-  if (statusEl) {
-    statusEl.textContent = "procesando...";
-    statusEl.className = "text-amber-400 font-normal";
-  }
-  const indicator = document.getElementById('sandbox-term-indicator');
-  if (indicator) indicator.className = "w-2 h-2 rounded-full bg-amber-400 animate-ping";
-  if (term) {
-    term.className = "text-amber-400 min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
-    term.textContent = "Procesando código en Python 3.10...";
-  }
+  if (feedbackCard) feedbackCard.classList.add('hidden');
 
   const slotMarker = currentGuidedStep.slotMarker || "___";
   const fullCode = currentGuidedStep.starterCode.replace(slotMarker, opt.code);
 
-  const execDelay = window.FAST_ANIM ? 0 : 250;
-  setTimeout(async () => {
-    let captured = "";
-    let executionError = null;
+  const { lines, lineTrace } = tracePythonExecution(fullCode);
 
-    try {
-      if (pyodideInstance) {
-        pyodideInstance.setStdout({ batched: (str) => { captured += str + "\n"; } });
-        pyodideInstance.setStderr({ batched: (str) => { captured += "Error: " + str + "\n"; } });
-        await pyodideInstance.runPythonAsync(fullCode);
-      } else {
-        captured = simulateSandbox(fullCode);
+  // Limpiar cualquier línea activa previa
+  lines.forEach((_, i) => {
+    const lineEl = document.getElementById(`sandbox-line-${i}`);
+    const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
+    if (lineEl) lineEl.classList.remove('active');
+    if (arrowEl) arrowEl.innerHTML = '';
+  });
+
+  if (statusEl) {
+    statusEl.textContent = "iniciando...";
+    statusEl.className = "text-amber-400 font-normal";
+  }
+  if (indicator) indicator.className = "w-2 h-2 rounded-full bg-amber-400 animate-ping";
+
+  if (term) {
+    term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
+    term.innerHTML = '<span class="text-slate-500 italic font-normal text-xs">Iniciando ejecución...</span>';
+  }
+
+  const stepDelay = window.FAST_ANIM ? 10 : 420;
+  let currentIdx = -1;
+
+  function stepSandbox() {
+    currentIdx++;
+    if (currentIdx < lines.length) {
+      // Actualizar highlight de líneas
+      lines.forEach((_, i) => {
+        const lineEl = document.getElementById(`sandbox-line-${i}`);
+        const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
+        if (lineEl && arrowEl) {
+          if (i === currentIdx) {
+            lineEl.classList.add('active');
+            arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
+          } else {
+            lineEl.classList.remove('active');
+            arrowEl.innerHTML = '';
+          }
+        }
+      });
+
+      // Actualizar terminal con lo acumulado hasta esta línea
+      const state = lineTrace[currentIdx];
+      if (term) {
+        if (state && state.outputSoFar && state.outputSoFar.length > 0) {
+          term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
+          term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(state.outputSoFar.join('\n'))}</div>`;
+        } else {
+          term.innerHTML = '<span class="text-slate-500 italic font-normal text-xs">(Línea en proceso, sin salida aún)</span>';
+        }
       }
-    } catch (err) {
-      executionError = err.message || String(err);
-    }
 
-    if (executionError) {
       if (statusEl) {
-        statusEl.textContent = "error en ejecución";
-        statusEl.className = "text-rose-400 font-normal";
+        statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
       }
-      if (indicator) indicator.className = "w-2 h-2 rounded-full bg-rose-400";
-      term.className = "text-rose-400 min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
-      term.textContent = "Error: " + executionError;
+
+      playSound('step');
+      sandboxAnimTimer = setTimeout(stepSandbox, stepDelay);
     } else {
-      if (statusEl) {
-        statusEl.textContent = "✓ ejecutado con éxito";
-        statusEl.className = "text-emerald-400 font-normal";
-      }
-      if (indicator) indicator.className = "w-2 h-2 rounded-full bg-emerald-400 animate-ping";
+      stopSandboxAnimation();
+
+      // Limpiar flecha activa de la última línea
+      const lastLineEl = document.getElementById(`sandbox-line-${lines.length - 1}`);
+      const lastArrowEl = document.getElementById(`sandbox-arrow-${lines.length - 1}`);
+      if (lastLineEl) lastLineEl.classList.remove('active');
+      if (lastArrowEl) lastArrowEl.innerHTML = '';
+
+      finishGuidedSandboxExecution(opt, lineTrace);
+    }
+  }
+
+  sandboxAnimTimer = setTimeout(stepSandbox, window.FAST_ANIM ? 5 : 120);
+}
+
+function finishGuidedSandboxExecution(opt, lineTrace) {
+  const term = document.getElementById('single-sandbox-term');
+  const statusEl = document.getElementById('sandbox-term-status');
+  const indicator = document.getElementById('sandbox-term-indicator');
+  const feedbackCard = document.getElementById('guided-feedback-card');
+  const runBtn = document.getElementById('single-run-btn');
+
+  const questionKey = 'step_' + currentStepIndex;
+  if (currentLessonStats) {
+    currentLessonStats.questionsEvaluated.add(questionKey);
+  }
+
+  const lastTrace = lineTrace && lineTrace.length > 0 ? lineTrace[lineTrace.length - 1] : null;
+  const finalOutputLines = lastTrace?.outputSoFar || [];
+  const hasError = finalOutputLines.some(l => l.startsWith('Error:'));
+
+  if (term) {
+    if (finalOutputLines.length > 0) {
+      term.className = hasError ? "text-rose-400 min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed" : "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
+      term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(finalOutputLines.join('\n'))}</div>`;
+    } else {
       term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
-      term.textContent = captured.trim() || "(Ejecutado sin salida de texto)";
+      term.textContent = "(Ejecutado sin salida de texto)";
+    }
+  }
+
+  if (opt.isCorrect && !hasError) {
+    guidedStepCompleted = true;
+    playSound('correct');
+    triggerConfetti();
+
+    if (statusEl) {
+      statusEl.textContent = "✓ ejecutado con éxito";
+      statusEl.className = "text-emerald-400 font-normal";
+    }
+    if (indicator) indicator.className = "w-2 h-2 rounded-full bg-emerald-400 animate-ping";
+
+    if (feedbackCard) {
+      feedbackCard.className = "w-full mb-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
+      feedbackCard.innerHTML = `
+        <span class="w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✓</span>
+        <div>
+          <h4 class="font-extrabold text-emerald-900 text-sm mb-1">¡Código completado con éxito!</h4>
+          <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">${escapeHtml(opt.feedback || "Has completado la práctica guiada correctamente.")}</p>
+        </div>
+      `;
+      feedbackCard.classList.remove('hidden');
     }
 
-    const questionKey = 'step_' + currentStepIndex;
+    const actionContainer = document.getElementById('sandbox-action-buttons');
+    if (actionContainer) {
+      actionContainer.innerHTML = `
+        <button id="guided-finish-btn" onclick="advanceNextStep()" class="btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition animate-bounce-subtle cursor-pointer">
+          Finalizar lección ➔
+        </button>
+        <button id="single-run-btn" onclick="executeGuidedSandbox()" class="px-4 py-3 rounded-2xl border-2 border-slate-300 text-slate-700 hover:text-slate-900 font-bold hover:bg-slate-100 transition text-sm flex items-center gap-1.5 cursor-pointer">
+          <span>↺</span> Volver a ejecutar
+        </button>
+      `;
+    }
+  } else {
     if (currentLessonStats) {
-      currentLessonStats.questionsEvaluated.add(questionKey);
+      currentLessonStats.questionsWrongAttempts[questionKey] = (currentLessonStats.questionsWrongAttempts[questionKey] || 0) + 1;
+    }
+    playSound('wrong');
+
+    if (statusEl) {
+      statusEl.textContent = hasError ? "error en ejecución" : "✗ revisa la solución";
+      statusEl.className = "text-rose-400 font-normal";
+    }
+    if (indicator) indicator.className = "w-2 h-2 rounded-full bg-rose-400";
+
+    if (feedbackCard) {
+      feedbackCard.className = "w-full mb-4 bg-rose-50 border-2 border-rose-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
+      feedbackCard.innerHTML = `
+        <span class="w-7 h-7 rounded-full bg-rose-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✗</span>
+        <div>
+          <h4 class="font-extrabold text-rose-900 text-sm mb-1">${hasError ? 'Error al ejecutar esta opción' : 'Casi, pero no es la opción adecuada'}</h4>
+          <p class="text-xs sm:text-sm text-rose-800 leading-relaxed">${escapeHtml(opt.feedback || "Selecciona otra opción de la lista para corregir el programa.")}</p>
+        </div>
+      `;
+      feedbackCard.classList.remove('hidden');
     }
 
-    if (opt.isCorrect && !executionError) {
-      guidedStepCompleted = true;
-      playSound('correct');
-      triggerConfetti();
-
-      if (statusEl) statusEl.textContent = "✓ ejecutado con éxito";
-
-      if (feedbackCard) {
-        feedbackCard.className = "w-full mb-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
-        feedbackCard.innerHTML = `
-          <span class="w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✓</span>
-          <div>
-            <h4 class="font-extrabold text-emerald-900 text-sm mb-1">¡Código completado con éxito!</h4>
-            <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">${escapeHtml(opt.feedback || "Has completado la práctica guiada correctamente.")}</p>
-          </div>
-        `;
-        feedbackCard.classList.remove('hidden');
-      }
-
-      const actionContainer = document.getElementById('sandbox-action-buttons');
-      if (actionContainer) {
-        actionContainer.innerHTML = `
-          <button id="guided-finish-btn" onclick="advanceNextStep()" class="btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition animate-bounce-subtle cursor-pointer">
-            Finalizar lección ➔
-          </button>
-        `;
-      }
-    } else {
-      if (currentLessonStats) {
-        currentLessonStats.questionsWrongAttempts[questionKey] = (currentLessonStats.questionsWrongAttempts[questionKey] || 0) + 1;
-      }
-      playSound('wrong');
-      if (statusEl) statusEl.textContent = "✗ revisa la solución";
-
-      if (feedbackCard) {
-        feedbackCard.className = "w-full mb-4 bg-rose-50 border-2 border-rose-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
-        feedbackCard.innerHTML = `
-          <span class="w-7 h-7 rounded-full bg-rose-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✗</span>
-          <div>
-            <h4 class="font-extrabold text-rose-900 text-sm mb-1">Casi, pero no es la opción adecuada</h4>
-            <p class="text-xs sm:text-sm text-rose-800 leading-relaxed">${escapeHtml(opt.feedback || "Selecciona otra opción de la lista para corregir el programa.")}</p>
-          </div>
-        `;
-        feedbackCard.classList.remove('hidden');
-      }
-
-      if (runBtn) {
-        runBtn.disabled = false;
-        runBtn.className = "btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition cursor-pointer";
-        runBtn.textContent = "▶ Reintentar código";
-        runBtn.onclick = executeGuidedSandbox;
-      }
+    if (runBtn) {
+      runBtn.disabled = false;
+      runBtn.className = "btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition cursor-pointer";
+      runBtn.textContent = "▶ Reintentar código";
+      runBtn.onclick = executeGuidedSandbox;
     }
-  }, execDelay);
+  }
 }
 
 function setupSandboxEditor() {
