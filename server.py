@@ -180,6 +180,10 @@ class PyMinasHandler(http.server.SimpleHTTPRequestHandler):
             email = str(payload.get('email', '')).strip().lower()
             password = str(payload.get('password', '')).strip()
 
+            # Si el usuario solo escribió su nombre de usuario, agregar @unal.edu.co automáticamente
+            if email and '@' not in email:
+                email = f"{email}@unal.edu.co"
+
             # 1. Validación estricta de correo UNAL
             if not is_valid_unal_email(email):
                 return self.send_json(400, {

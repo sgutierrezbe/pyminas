@@ -19,6 +19,7 @@ let currentUser = {
   token: localStorage.getItem(AUTH_TOKEN_KEY) || '',
   xp: 0
 };
+window.currentUser = currentUser;
 
 // Almacenamiento local de lecciones completadas y progreso por pasos
 let completedLessons = JSON.parse(localStorage.getItem('py101_completed_lessons') || '["w1-l1"]');
@@ -485,8 +486,7 @@ function dismissStartModal() {
 
   // Mostrar pantalla de carga artificial antes de abrir el ejercicio
   showLessonLoadingScreen(() => {
-    document.getElementById('view-dashboard').classList.add('hidden');
-    document.getElementById('view-lesson').classList.remove('hidden');
+    switchView('lesson');
     renderCurrentStep();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -2745,8 +2745,7 @@ function openLessonDirect(lessonId, stepIndex = null, selectOpt = null, autoChec
   }
   saveLessonStep(currentLesson.id, currentStepIndex);
 
-  document.getElementById('view-dashboard').classList.add('hidden');
-  document.getElementById('view-lesson').classList.remove('hidden');
+  switchView('lesson');
   const headerTitleEl = document.getElementById('lesson-header-title');
   if (headerTitleEl) {
     headerTitleEl.textContent = currentLesson.shortTitle || currentLesson.title;
@@ -2936,24 +2935,30 @@ function switchView(viewName) {
   if (loginView) {
     if (viewName === 'login') {
       loginView.classList.remove('hidden');
+      loginView.style.display = 'flex';
     } else {
       loginView.classList.add('hidden');
+      loginView.style.display = 'none';
     }
   }
 
   if (dashView) {
     if (viewName === 'dashboard') {
       dashView.classList.remove('hidden');
+      dashView.style.display = 'flex';
     } else {
       dashView.classList.add('hidden');
+      dashView.style.display = 'none';
     }
   }
 
   if (lessonView) {
     if (viewName === 'lesson') {
       lessonView.classList.remove('hidden');
+      lessonView.style.display = 'flex';
     } else {
       lessonView.classList.add('hidden');
+      lessonView.style.display = 'none';
     }
   }
 
@@ -2964,18 +2969,33 @@ function isUserAuthenticated() {
   return !!currentUser.token;
 }
 
+function showAuthError(message) {
+  const errorBanner = document.getElementById('auth-error-banner');
+  const errorText = document.getElementById('auth-error-text');
+  if (errorBanner) {
+    if (errorText) errorText.textContent = message;
+    errorBanner.style.display = 'flex';
+    errorBanner.classList.remove('hidden');
+  } else {
+    alert(message);
+  }
+}
+
+function hideAuthError() {
+  const errorBanner = document.getElementById('auth-error-banner');
+  if (errorBanner) {
+    errorBanner.style.display = 'none';
+    errorBanner.classList.add('hidden');
+  }
+}
+
 function showLoginView(errorMessage = '') {
   switchView('login');
   
-  const errorBanner = document.getElementById('auth-error-banner');
-  const errorText = document.getElementById('auth-error-text');
   if (errorMessage) {
-    if (errorBanner && errorText) {
-      errorText.textContent = errorMessage;
-      errorBanner.classList.remove('hidden');
-    }
+    showAuthError(errorMessage);
   } else {
-    if (errorBanner) errorBanner.classList.add('hidden');
+    hideAuthError();
   }
 
   setTimeout(() => {
@@ -2992,45 +3012,67 @@ function updateUserBadge(email) {
   }
 }
 
+let isAuthSubmitting = false;
+
 async function handleAuthLogin(event) {
   if (event) {
     if (typeof event.preventDefault === 'function') event.preventDefault();
     if (typeof event.stopPropagation === 'function') event.stopPropagation();
   }
 
+  if (isAuthSubmitting) return false;
+
   const emailInput = document.getElementById('auth-email-input');
   const passInput = document.getElementById('auth-password-input');
-  const errorBanner = document.getElementById('auth-error-banner');
-  const errorText = document.getElementById('auth-error-text');
   const submitBtn = document.getElementById('auth-submit-btn');
   const btnText = document.getElementById('auth-btn-text');
 
-  const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+  const rawEmail = emailInput ? emailInput.value.trim() : '';
   const password = passInput ? passInput.value.trim() : '';
 
-  // 1. Validación estricta cliente de terminación @unal.edu.co
-  if (!email.endsWith('@unal.edu.co') || email.length <= 12 || !email.includes('@')) {
-    if (errorBanner && errorText) {
-      errorText.textContent = 'Acceso restringido: El correo debe terminar en @unal.edu.co';
-      errorBanner.classList.remove('hidden');
-    }
+  hideAuthError();
+
+  // 1. Validación de usuario o correo
+  if (!rawEmail) {
+    showAuthError('Por favor ingresa tu usuario o correo institucional de la UNAL.');
     if (emailInput) emailInput.focus();
     return false;
   }
 
-  // 2. Validación de longitud de contraseña
-  if (password.length < 4) {
-    if (errorBanner && errorText) {
-      errorText.textContent = 'La contraseña debe contener al menos 4 caracteres.';
-      errorBanner.classList.remove('hidden');
-    }
+  // Soporte ergonómico: Si el estudiante escribe solo 'samu', completar '@unal.edu.co'
+  let email = rawEmail.toLowerCase();
+  if (!email.includes('@')) {
+    email = email + '@unal.edu.co';
+    if (emailInput) emailInput.value = email;
+  }
+
+  // Validación estricta de dominio institucional UNAL
+  if (!email.endsWith('@unal.edu.co') || email.length <= 12) {
+    showAuthError('Acceso restringido: Solo se permiten correos institucionales @unal.edu.co');
+    if (emailInput) emailInput.focus();
+    return false;
+  }
+
+  // 2. Validación de contraseña
+  if (!password) {
+    showAuthError('Por favor ingresa una contraseña.');
     if (passInput) passInput.focus();
     return false;
   }
 
-  if (submitBtn) submitBtn.disabled = true;
+  if (password.length < 4) {
+    showAuthError('La contraseña debe contener al menos 4 caracteres.');
+    if (passInput) passInput.focus();
+    return false;
+  }
+
+  isAuthSubmitting = true;
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-75');
+    submitBtn.style.cursor = 'wait';
+  }
   if (btnText) btnText.textContent = 'Verificando con pyMinas...';
-  if (errorBanner) errorBanner.classList.add('hidden');
 
   try {
     const res = await fetch('/api/login', {
@@ -3047,10 +3089,8 @@ async function handleAuthLogin(event) {
     }
 
     if (!res.ok) {
-      if (errorBanner && errorText) {
-        errorText.textContent = data.error || 'Error al validar credenciales.';
-        errorBanner.classList.remove('hidden');
-      }
+      showAuthError(data.error || 'Error al validar credenciales.');
+      if (passInput) passInput.focus();
       return false;
     }
 
@@ -3080,20 +3120,22 @@ async function handleAuthLogin(event) {
 
   } catch (err) {
     console.error('Error al conectar con la API de autenticación:', err);
-    if (errorBanner && errorText) {
-      errorText.textContent = 'No se pudo conectar con el servidor pyMinas. Verifica tu conexión.';
-      errorBanner.classList.remove('hidden');
-    }
+    showAuthError('No se pudo conectar con el servidor pyMinas. Verifica tu conexión.');
   } finally {
-    if (submitBtn) submitBtn.disabled = false;
+    isAuthSubmitting = false;
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-75');
+      submitBtn.style.cursor = 'pointer';
+    }
     if (btnText) btnText.textContent = 'Ingresar a pyMinas';
   }
   return false;
 }
 
 async function checkAuthSessionOnStartup() {
-  const loginView = document.getElementById('view-login');
-  if (!loginView) return; // Si la página no incluye la vista de auth (ej. test suite), no bloquear
+  const loginForm = document.getElementById('auth-login-form');
+  if (!loginForm) return; // Si la página no incluye el formulario de auth (ej. test suite), no bloquear
 
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('skipauth') === 'true') {
@@ -3214,6 +3256,21 @@ window.addEventListener('DOMContentLoaded', () => {
   renderDashboard();
   setTimeout(initPyodide, 800);
   checkAuthSessionOnStartup();
+
+  const loginForm = document.getElementById('auth-login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleAuthLogin(e);
+    });
+  }
+  const loginSubmitBtn = document.getElementById('auth-submit-btn');
+  if (loginSubmitBtn) {
+    loginSubmitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleAuthLogin(e);
+    });
+  }
 
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('fast') === 'true') {
