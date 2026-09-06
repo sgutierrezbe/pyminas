@@ -343,9 +343,12 @@ function backToDashboard() {
   if (currentLesson) {
     saveLessonStep(currentLesson.id, currentStepIndex);
   }
-  document.getElementById('view-lesson').classList.add('hidden');
-  document.getElementById('view-dashboard').classList.remove('hidden');
-  renderDashboard();
+  if (!isUserAuthenticated()) {
+    switchView('login');
+  } else {
+    switchView('dashboard');
+    renderDashboard();
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -2923,16 +2926,46 @@ function handleGlobalKeydown(e) {
 
 window.addEventListener('keydown', handleGlobalKeydown);
 
-// ==================== FUNCIONES DE AUTENTICACIÓN SOULSEEK ====================
+// ==================== GESTIÓN DE VISTAS Y AUTENTICACIÓN SOULSEEK ====================
+
+function switchView(viewName) {
+  const loginView = document.getElementById('view-login');
+  const dashView = document.getElementById('view-dashboard');
+  const lessonView = document.getElementById('view-lesson');
+
+  if (loginView) {
+    if (viewName === 'login') {
+      loginView.classList.remove('hidden');
+    } else {
+      loginView.classList.add('hidden');
+    }
+  }
+
+  if (dashView) {
+    if (viewName === 'dashboard') {
+      dashView.classList.remove('hidden');
+    } else {
+      dashView.classList.add('hidden');
+    }
+  }
+
+  if (lessonView) {
+    if (viewName === 'lesson') {
+      lessonView.classList.remove('hidden');
+    } else {
+      lessonView.classList.add('hidden');
+    }
+  }
+
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
 
 function isUserAuthenticated() {
   return !!currentUser.token;
 }
 
-function showLoginModal(errorMessage = '') {
-  const modal = document.getElementById('auth-login-modal');
-  if (!modal) return;
-  modal.classList.remove('hidden');
+function showLoginView(errorMessage = '') {
+  switchView('login');
   
   const errorBanner = document.getElementById('auth-error-banner');
   const errorText = document.getElementById('auth-error-text');
@@ -2951,13 +2984,6 @@ function showLoginModal(errorMessage = '') {
   }, 100);
 }
 
-function hideLoginModal() {
-  const modal = document.getElementById('auth-login-modal');
-  if (modal) {
-    modal.classList.add('hidden');
-  }
-}
-
 function updateUserBadge(email) {
   const badgeEmail = document.getElementById('nav-user-email');
   if (badgeEmail) {
@@ -2967,7 +2993,10 @@ function updateUserBadge(email) {
 }
 
 async function handleAuthLogin(event) {
-  if (event) event.preventDefault();
+  if (event) {
+    if (typeof event.preventDefault === 'function') event.preventDefault();
+    if (typeof event.stopPropagation === 'function') event.stopPropagation();
+  }
 
   const emailInput = document.getElementById('auth-email-input');
   const passInput = document.getElementById('auth-password-input');
@@ -2986,7 +3015,7 @@ async function handleAuthLogin(event) {
       errorBanner.classList.remove('hidden');
     }
     if (emailInput) emailInput.focus();
-    return;
+    return false;
   }
 
   // 2. Validación de longitud de contraseña
@@ -2996,11 +3025,11 @@ async function handleAuthLogin(event) {
       errorBanner.classList.remove('hidden');
     }
     if (passInput) passInput.focus();
-    return;
+    return false;
   }
 
   if (submitBtn) submitBtn.disabled = true;
-  if (btnText) btnText.textContent = 'Verificando...';
+  if (btnText) btnText.textContent = 'Verificando con pyMinas...';
   if (errorBanner) errorBanner.classList.add('hidden');
 
   try {
@@ -3010,14 +3039,19 @@ async function handleAuthLogin(event) {
       body: JSON.stringify({ email, password })
     });
 
-    const data = await res.json();
+    let data = {};
+    try {
+      data = await res.json();
+    } catch (parseErr) {
+      data = { error: 'Respuesta inválida del servidor (' + res.status + ')' };
+    }
 
     if (!res.ok) {
       if (errorBanner && errorText) {
         errorText.textContent = data.error || 'Error al validar credenciales.';
         errorBanner.classList.remove('hidden');
       }
-      return;
+      return false;
     }
 
     // Éxito en modelo Soulseek (login o nuevo registro automático)
@@ -3041,7 +3075,7 @@ async function handleAuthLogin(event) {
     }
 
     updateUserBadge(data.email);
-    hideLoginModal();
+    switchView('dashboard');
     renderDashboard();
 
   } catch (err) {
@@ -3054,15 +3088,16 @@ async function handleAuthLogin(event) {
     if (submitBtn) submitBtn.disabled = false;
     if (btnText) btnText.textContent = 'Ingresar a pyMinas';
   }
+  return false;
 }
 
 async function checkAuthSessionOnStartup() {
-  const modal = document.getElementById('auth-login-modal');
-  if (!modal) return; // Si la página no incluye el modal de auth (ej. test suite), no bloquear
+  const loginView = document.getElementById('view-login');
+  if (!loginView) return; // Si la página no incluye la vista de auth (ej. test suite), no bloquear
 
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('skipauth') === 'true') {
-    hideLoginModal();
+    switchView('dashboard');
     return;
   }
   if (urlParams.has('authtoken')) {
@@ -3073,7 +3108,7 @@ async function checkAuthSessionOnStartup() {
   const email = localStorage.getItem(AUTH_EMAIL_KEY);
 
   if (!token) {
-    showLoginModal();
+    showLoginView();
     return;
   }
 
@@ -3093,7 +3128,7 @@ async function checkAuthSessionOnStartup() {
       localStorage.removeItem(AUTH_EMAIL_KEY);
       currentUser.token = '';
       currentUser.email = '';
-      showLoginModal('Tu sesión ha expirado. Por favor ingresa nuevamente con tu clave.');
+      showLoginView('Tu sesión ha expirado. Por favor ingresa nuevamente con tu clave.');
       return;
     }
 
@@ -3114,17 +3149,17 @@ async function checkAuthSessionOnStartup() {
     }
 
     updateUserBadge(data.email);
-    hideLoginModal();
+    switchView('dashboard');
     renderDashboard();
 
   } catch (err) {
     console.warn('Modo offline / API de auth no accesible, usando estado en caché:', err);
     if (currentUser.email) {
       updateUserBadge(currentUser.email);
-      hideLoginModal();
+      switchView('dashboard');
       renderDashboard();
     } else {
-      showLoginModal();
+      showLoginView();
     }
   }
 }
@@ -3172,7 +3207,7 @@ async function logoutUser() {
   currentUser.token = '';
   currentUser.email = '';
   updateUserBadge('Estudiante UNAL');
-  showLoginModal('Has cerrado sesión correctamente.');
+  showLoginView('Has cerrado sesión correctamente.');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
