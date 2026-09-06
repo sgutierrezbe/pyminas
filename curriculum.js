@@ -463,7 +463,7 @@ print(a + b)`,
                   label: "Funciones de conversión",
                   code: `# 1. De texto "40" a entero con int():
 numero = int("40") + 10
-print("Texto \"40\" a entero + 10 =", numero)
+print('Texto "40" a entero + 10 =', numero)
 
 # 2. De entero 7 a decimal con float():
 decimal = float(7)

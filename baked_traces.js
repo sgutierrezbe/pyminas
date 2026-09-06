@@ -394,11 +394,11 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "55"
   },
-  "# 1. De texto \"40\" a entero con int():\nnumero = int(\"40\") + 10\nprint(\"Texto \\\"40\\\" a entero + 10 =\", numero)\n\n# 2. De entero 7 a decimal con float():\ndecimal = float(7)\nprint(\"Entero 7 a decimal =\", decimal)\n\n# 3. De número 100 a texto con str():\ntexto = str(100) + \" puntos\"\nprint(\"Número 100 a texto =\", texto)": {
+  "# 1. De texto \"40\" a entero con int():\nnumero = int(\"40\") + 10\nprint('Texto \"40\" a entero + 10 =', numero)\n\n# 2. De entero 7 a decimal con float():\ndecimal = float(7)\nprint(\"Entero 7 a decimal =\", decimal)\n\n# 3. De número 100 a texto con str():\ntexto = str(100) + \" puntos\"\nprint(\"Número 100 a texto =\", texto)": {
     "lines": [
       "# 1. De texto \"40\" a entero con int():",
       "numero = int(\"40\") + 10",
-      "print(\"Texto \\\"40\\\" a entero + 10 =\", numero)",
+      "print('Texto \"40\" a entero + 10 =', numero)",
       "",
       "# 2. De entero 7 a decimal con float():",
       "decimal = float(7)",
