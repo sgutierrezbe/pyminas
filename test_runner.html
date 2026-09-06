@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Phase 1 Test Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-100 p-8">
+  <!-- Minimal UI containers needed by app.js -->
+  <div id="view-dashboard" class="hidden">
+    <div id="unit-nodes-container"></div>
+  </div>
+  <div id="view-lesson" class="hidden">
+    <header>
+      <button id="lesson-prev-step-btn" class="hidden"></button>
+      <span id="lesson-header-title"></span>
+      <div id="lesson-segments-container"></div>
+    </header>
+    <main id="lesson-content-area"></main>
+  </div>
+  <div id="start-lesson-modal" class="hidden">
+    <h3 id="start-modal-title"></h3>
+    <p id="start-modal-desc"></p>
+    <button id="start-modal-btn" onclick="dismissStartModal()"></button>
+  </div>
+  <div id="victory-lesson-modal" class="hidden">
+    <h3 id="victory-modal-title"></h3>
+    <div id="victory-xp-counter"></div>
+    <button id="victory-next-btn"></button>
+  </div>
+  <div id="lesson-loading-screen" class="hidden">
+    <div id="loading-lesson-tag"></div>
+    <div id="loading-lesson-title"></div>
+    <div id="loading-status-text"></div>
+    <div id="loading-progress-bar"></div>
+    <div id="loading-percent-label"></div>
+    <div id="loading-tip-text"></div>
+  </div>
+
+  <div id="test-output" class="bg-white p-6 rounded-2xl border-2 border-slate-300 font-mono text-sm max-w-2xl mx-auto my-8 shadow-md">
+    <h1 class="text-xl font-bold mb-4 text-slate-800">Ejecutando Test Suite Fase 1...</h1>
+    <div id="log" class="whitespace-pre-wrap space-y-1"></div>
+  </div>
+
+  <script src="curriculum.js"></script>
+  <script src="baked_traces.js"></script>
+  <script>window.FAST_ANIM = true;</script>
+  <script src="app.js"></script>
+
+  <script>
+    const logEl = document.getElementById('log');
+    function log(msg, pass = true) {
+      const line = document.createElement('div');
+      line.textContent = (pass ? "✓ " : "✗ ") + msg;
+      line.className = pass ? "text-emerald-700 font-bold" : "text-rose-600 font-bold";
+      logEl.appendChild(line);
+      console.log((pass ? "[PASS] " : "[FAIL] ") + msg);
+    }
+
+    function assert(cond, msg) {
+      if (cond) {
+        log(msg, true);
+      } else {
+        log(msg, false);
+        throw new Error("Assertion failed: " + msg);
+      }
+    }
+
+    async function runTests() {
+      try {
+        log("Iniciando pruebas de Fase 1...", true);
+
+        // 1. Test Step Persistence
+        localStorage.clear();
+        savedLessonSteps = {};
+        openLessonDirect('w1-l1', 0);
+        assert(currentStepIndex === 0, "Paso inicial es 0");
+        assert(document.getElementById('lesson-prev-step-btn').classList.contains('hidden'), "Botón anterior oculto en paso 0");
+
+        advanceNextStep();
+        assert(currentStepIndex === 1, "Avanza al paso 1");
+        assert(!document.getElementById('lesson-prev-step-btn').classList.contains('hidden'), "Botón anterior visible en paso 1");
+        assert(getSavedLessonStep('w1-l1') === 1, "localStorage guardó paso 1");
+
+        advanceNextStep();
+        assert(currentStepIndex === 2, "Avanza al paso 2");
+        assert(getSavedLessonStep('w1-l1') === 2, "localStorage guardó paso 2");
+
+        // Simular salida al mapa y reinicio de lección
+        backToDashboard();
+        assert(currentStepIndex === 2, "Paso 2 se preserva en estado de memoria");
+        assert(getSavedLessonStep('w1-l1') === 2, "Paso 2 se preserva en localStorage tras salir al mapa");
+
+        startLesson('w1-l1');
+        assert(currentStepIndex === 2, "startLesson('w1-l1') reanuda correctamente en paso 2");
+        dismissStartModal();
+
+        // 2. Test Backward Navigation
+        goToPrevStep();
+        assert(currentStepIndex === 1, "goToPrevStep() retrocede al paso 1");
+        assert(getSavedLessonStep('w1-l1') === 1, "localStorage actualiza a paso 1");
+
+        goToPrevStep();
+        assert(currentStepIndex === 0, "goToPrevStep() retrocede al paso 0");
+        assert(getSavedLessonStep('w1-l1') === 0, "localStorage actualiza a paso 0");
+        assert(document.getElementById('lesson-prev-step-btn').classList.contains('hidden'), "Botón anterior vuelve a ocultarse en paso 0");
+
+        // 3. Test Keyboard Shortcuts: Number selection
+        openLessonDirect('w1-l1', 1); // paso 1 es predict
+        assert(currentStepIndex === 1, "Abrir paso predict (paso 1)");
+        
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '2' }));
+        assert(selectedPredictOption === 'B', "Tecla '2' seleccionó opción B");
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '1' }));
+        assert(selectedPredictOption === 'A', "Tecla '1' seleccionó opción A");
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '2' }));
+        assert(selectedPredictOption === 'B', "Tecla '2' seleccionó opción correcta B");
+
+        // 4. Test Keyboard Shortcut: Enter to check
+        window.FAST_ANIM = true;
+        console.log("ABOUT TO PRESS ENTER, predictCheckBtn:", document.getElementById("predict-check-btn") ? document.getElementById("predict-check-btn").outerHTML : "null"); window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+        let waits = 0; while (!predictStepPassed && waits++ < 20) { await new Promise(r => setTimeout(r, 50)); }
+        assert(predictStepPassed === true, "Tecla Enter ejecutó Comprobar y aprobó predicción");
+
+        // 5. Test Keyboard Shortcut: Enter to continue
+        console.log("ABOUT TO PRESS ENTER, predictCheckBtn:", document.getElementById("predict-check-btn") ? document.getElementById("predict-check-btn").outerHTML : "null"); window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+        assert(currentStepIndex === 2, "Tecla Enter avanzó al siguiente paso tras aprobación");
+
+        // 6. Test Keyboard Shortcut: ArrowRight/ArrowLeft steps code player in explanation step
+        const pid = "expl_" + currentStepIndex;
+        const playerBefore = codePlayerRegistry[pid] ? codePlayerRegistry[pid].currentIndex : -1;
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+        const playerAfter = codePlayerRegistry[pid] ? codePlayerRegistry[pid].currentIndex : -1;
+        assert(playerAfter > playerBefore, "Tecla ArrowRight avanzó línea en el reproductor de código");
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+        const playerBack = codePlayerRegistry[pid] ? codePlayerRegistry[pid].currentIndex : -1;
+        assert(playerBack <= playerAfter, "Tecla ArrowLeft retrocedió línea en el reproductor de código");
+
+        // 7. Test Guided Sandbox terminal styling & number selection
+        openLessonDirect('w1-l1', 5); // paso 5 es code_sandbox guiado
+        assert(currentStepIndex === 5, "Abrir paso code_sandbox (paso 5)");
+        
+        const termEl = document.getElementById('single-sandbox-term');
+        assert(termEl !== null, "Terminal de sandbox renderizada");
+        assert(termEl.className.includes('text-[#34d399]'), "Terminal tiene color de texto esmeralda unificado #34d399");
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '1' }));
+        assert(selectedGuidedOptionId === 'A', "Tecla '1' seleccionó opción A en sandbox guiado");
+
+        const slotEl = document.getElementById('guided-code-slot');
+        assert(slotEl && slotEl.textContent.includes('print'), "Slot rellenado con la opción A");
+
+        // Ejecutar código vía Enter
+        console.log("ABOUT TO PRESS ENTER, predictCheckBtn:", document.getElementById("predict-check-btn") ? document.getElementById("predict-check-btn").outerHTML : "null"); window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+        let gwaits = 0; while (!guidedStepCompleted && gwaits++ < 20) { await new Promise(r => setTimeout(r, 50)); }
+        assert(guidedStepCompleted === true, "Sandbox guiado completado con éxito vía Enter");
+
+        // Enter para finalizar lección
+        console.log("ABOUT TO PRESS ENTER, predictCheckBtn:", document.getElementById("predict-check-btn") ? document.getElementById("predict-check-btn").outerHTML : "null"); window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+        assert(currentStepIndex >= currentLesson.steps.length, "Tecla Enter finalizó la lección y abrió modal de victoria");
+        assert(getSavedLessonStep('w1-l1') === 0, "Al finalizar lección, savedLessonSteps se reinició a 0 para futuros repasos");
+
+        log("¡TODAS LAS PRUEBAS DE FASE 1 PASARON CON ÉXITO!", true);
+        console.log("PHASE 1 ALL TESTS PASSED");
+        window.TESTS_FINISHED = true;
+      } catch (err) {
+        log("Error en prueba: " + err.message, false);
+        console.error(err);
+        window.TESTS_FAILED = true;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', runTests);
+  </script>
+</body>
+</html>

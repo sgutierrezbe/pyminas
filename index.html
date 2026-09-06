@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pyMinas | Fundamentos de Programación · Facultad de Minas UNAL</title>
+  <link rel="icon" type="image/svg+xml" href="assets/pyminas-snake.svg">
+  <meta name="description" content="pyMinas: Plataforma interactiva de fundamentos de programación para la Facultad de Minas, Universidad Nacional de Colombia - Sede Medellín.">
+  
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Pyodide CDN for client-side Python execution -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+
+
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+            }
+          },
+          boxShadow: {
+            'brilliant': '0 3px 0 0 #e2e8f0',
+            'brilliant-active': '0 1px 0 0 #cbd5e1',
+            'brilliant-btn': '0 4px 0 0 #047857',
+            'circle-green': '0 8px 0 0 #047857, 0 12px 20px rgba(16, 185, 129, 0.35)',
+            'circle-active': '0 8px 0 0 #059669, 0 12px 24px rgba(16, 185, 129, 0.4)',
+            'circle-locked': '0 6px 0 0 #cbd5e1, 0 8px 12px rgba(148, 163, 184, 0.2)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 3D button press */
+    .btn-3d {
+      transition: all 0.12s ease-in-out;
+      border-bottom-width: 4px;
+    }
+    .btn-3d:active:not(:disabled) {
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+    }
+
+    .choice-pill {
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom-width: 3px;
+    }
+    .choice-pill:hover {
+      transform: translateY(-2px);
+      border-bottom-width: 4px;
+    }
+
+    /* Circular 3D Node Interactions */
+    .node-circle-btn {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .node-circle-btn:hover {
+      transform: translateY(-5px) scale(1.06);
+    }
+    .node-circle-btn:active {
+      transform: translateY(2px) scale(0.98);
+    }
+
+    /* Video game map animated dotted path */
+    @keyframes dash-move {
+      to {
+        stroke-dashoffset: -32;
+      }
+    }
+    .animated-dotted-path {
+      stroke-dasharray: 8, 8;
+      animation: dash-move 2.2s linear infinite;
+    }
+
+    /* Hovering badge above current lesson */
+    @keyframes hover-badge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    .floating-badge {
+      animation: hover-badge 2s ease-in-out infinite;
+    }
+
+    /* Pulsing halo around active circle */
+    @keyframes pulse-circle-halo {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.18); opacity: 0.15; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+    .active-circle-halo {
+      animation: pulse-circle-halo 2.2s infinite ease-in-out;
+    }
+
+    /* Pop-in animation for start & victory announcement modals */
+    @keyframes modal-pop {
+      0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+      60% { transform: scale(1.04) translateY(-4px); opacity: 1; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .animate-modal-pop {
+      animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes badge-bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+    .animate-badge-bounce {
+      animation: badge-bounce 1.6s ease-in-out infinite;
+    }
+
+    /* Pantalla de Carga Artificial */
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 2.4s linear infinite;
+    }
+
+    @keyframes spin-reverse {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .animate-spin-reverse {
+      animation: spin-reverse 1.6s linear infinite;
+    }
+
+    @keyframes loading-glow {
+      0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.25); }
+      50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.55); }
+    }
+    .animate-loading-glow {
+      animation: loading-glow 1.8s ease-in-out infinite;
+    }
+
+    .step-segment {
+      transition: all 0.3s ease;
+    }
+
+    /* Brilliant-style step-by-step code execution line */
+    .code-exec-line {
+      transition: background-color 0.18s ease, border-color 0.18s ease;
+    }
+    .code-exec-line.active {
+      background-color: #1e293b;
+      border-left: 3px solid #10b981;
+    }
+    /* Brilliant-style interactive code slot (recuadro de fragmento) */
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0; transform: scaleY(0.85); }
+    }
+    .blinking-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 14px;
+      background-color: #38bdf8;
+      border-radius: 1px;
+      animation: blinkCursor 0.8s infinite ease-in-out;
+      vertical-align: middle;
+      margin: 0 1px;
+    }
+    .blinking-cursor.cursor-emerald {
+      background-color: #34d399;
+    }
+    .code-slot-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .code-slot-box.slot-empty {
+      border: 2px dashed #38bdf8;
+      background: #0f1d30;
+      color: #38bdf8;
+      min-width: 46px;
+      height: 24px;
+      border-radius: 8px;
+      padding: 0 4px;
+    }
+    .code-slot-box.slot-filled {
+      border: 2px solid #38bdf8;
+      background: #162f52;
+      color: #e0f2fe;
+      min-width: 46px;
+      height: 24px;
+      border-radius: 8px;
+      padding: 0 8px;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+    }
+    .code-slot-box.slot-emerald {
+      border: 2px solid #10b981;
+      background: #064e3b;
+      color: #6ee7b7;
+      border-radius: 8px;
+      padding: 0 8px;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+    }
+    .code-slot-box.slot-emerald-empty {
+      border: 2px dashed #10b981;
+      background: #064e3b2e;
+      color: #34d399;
+      min-width: 48px;
+      height: 24px;
+      border-radius: 8px;
+      padding: 0 4px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    }
+
+    /* VS Code style editor */
+    #single-sandbox-code, #sandbox-highlight-pre {
+      tab-size: 4;
+      -moz-tab-size: 4;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.625rem;
+    }
+    #single-sandbox-code::selection {
+      background: rgba(56, 189, 248, 0.4);
+      color: transparent;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-100 selection:text-brand-800 relative">
+
+  <!-- ==================== PANTALLA DE CARGA ARTIFICIAL ==================== -->
+  <div id="lesson-loading-screen" class="fixed inset-0 z-50 bg-[#f8fafc] flex flex-col items-center justify-center p-6 hidden transition-opacity duration-300">
+    <div class="max-w-md w-full flex flex-col items-center text-center animate-modal-pop">
+      
+      <!-- Spinner interactivo con doble anillo y logotipo mascota pyMinas -->
+      <div class="relative w-28 h-28 flex items-center justify-center mb-7">
+        <!-- Anillo exterior punteado giratorio -->
+        <div class="absolute inset-0 rounded-full border-4 border-dashed border-emerald-400 animate-spin-slow opacity-75"></div>
+        <!-- Anillo interior de aceleración -->
+        <div class="absolute inset-2 rounded-full border-4 border-transparent border-t-emerald-600 border-r-emerald-500 animate-spin-reverse"></div>
+        <!-- Núcleo central con mascota pyMinas -->
+        <div class="w-16 h-16 rounded-2xl bg-white border-2 border-slate-200 shadow-md flex items-center justify-center animate-loading-glow p-2">
+          <img src="assets/pyminas-snake.svg" alt="pyMinas" class="w-12 h-12 object-contain">
+        </div>
+      </div>
+
+      <!-- Etiqueta de la lección -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-[11px] font-extrabold text-emerald-800 uppercase tracking-wider mb-2.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        <span id="loading-lesson-tag">Facultad de Minas · UNAL</span>
+      </div>
+
+      <h2 id="loading-lesson-title" class="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+        Estructura Python
+      </h2>
+
+      <p id="loading-status-text" class="text-xs font-semibold text-slate-500 h-5 mb-6 transition-all">
+        Iniciando entorno interactivo...
+      </p>
+
+      <!-- Barra de progreso artificial -->
+      <div class="w-full max-w-xs bg-slate-200 h-3 rounded-full overflow-hidden p-0.5 border border-slate-300 mb-2.5 shadow-inner">
+        <div id="loading-progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-150 ease-out" style="width: 0%"></div>
+      </div>
+
+      <div class="flex items-center justify-between w-full max-w-xs text-[11px] font-bold text-slate-400 mb-8">
+        <span>Cargando recursos</span>
+        <span id="loading-percent-label" class="text-brand-600 font-mono">0%</span>
+      </div>
+
+      <!-- Tarjeta con consejo didáctico aleatorio -->
+      <div class="w-full bg-white border-2 border-slate-200 rounded-2xl p-4 shadow-sm text-left">
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 mt-0.5">
+            <span class="text-xs text-amber-600 font-bold">i</span>
+          </div>
+          <div>
+            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-0.5">Concepto clave</div>
+            <p id="loading-tip-text" class="text-xs text-slate-600 leading-relaxed">
+              En Python, no necesitas declarar tipos manualmente: el intérprete detecta automáticamente si un dato es int, float o str.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL DE ANIMACIÓN: INICIO DE LECCIÓN ==================== -->
+  <div id="start-lesson-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden transition-opacity duration-300">
+    <div class="relative bg-white border-2 border-slate-200 rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl animate-modal-pop flex flex-col items-center">
+      
+      <!-- Botón cerrar opcional -->
+      <button onclick="closeStartModalWithoutStarting()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 flex items-center justify-center text-xs font-bold transition">
+        ✕
+      </button>
+
+      <!-- Icono animado de inicio de lección con mascota pyMinas -->
+      <div class="w-20 h-20 rounded-full bg-emerald-50 border-4 border-emerald-300 flex items-center justify-center mb-5 relative shadow-inner p-2">
+        <div class="absolute -inset-2 rounded-full border-2 border-emerald-400 active-circle-halo pointer-events-none"></div>
+        <img src="assets/pyminas-snake.svg" alt="pyMinas" class="w-14 h-14 object-contain animate-badge-bounce">
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+        <span>pyMinas · Facultad de Minas</span>
+      </div>
+
+      <h3 id="start-modal-title" class="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+        Estructura Python
+      </h3>
+      <p id="start-modal-desc" class="text-xs text-slate-500 mb-6 leading-relaxed">
+        Prepárate para entrenar tu pensamiento lógico y poner a prueba tu intuición paso a paso.
+      </p>
+
+      <button onclick="dismissStartModal()" class="btn-3d w-full bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm py-3.5 px-6 rounded-2xl shadow-brilliant-btn border-brand-700 transition">
+        ¡Comenzar ahora! ➔
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ==================== MODAL DE ANIMACIÓN: VICTORIA DE LECCIÓN ==================== -->
+  <div id="victory-lesson-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden transition-opacity duration-300">
+    <div class="bg-white border-2 border-slate-200 rounded-3xl p-8 max-w-md w-full text-center shadow-2xl animate-modal-pop flex flex-col items-center">
+      
+      <!-- Trofeo o check celebratorio con mascota pyMinas -->
+      <div class="w-22 h-22 rounded-full bg-emerald-50 border-4 border-emerald-300 flex items-center justify-center mb-5 relative shadow-lg p-3">
+        <div class="absolute -inset-2 rounded-full border-2 border-emerald-400 active-circle-halo pointer-events-none"></div>
+        <img src="assets/pyminas-snake.svg" alt="pyMinas" class="w-16 h-16 object-contain animate-badge-bounce">
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-emerald-100 text-emerald-900 rounded-full text-xs font-extrabold uppercase tracking-wider mb-2">
+        <span>¡Lección Completada · pyMinas!</span>
+      </div>
+
+      <h3 id="victory-modal-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+        ¡Excelente trabajo!
+      </h3>
+      <p class="text-xs text-slate-500 mb-6 max-w-xs leading-relaxed">
+        Has completado todos los retos con éxito. Tu siguiente nodo en el mapa ha sido desbloqueado.
+      </p>
+
+      <!-- Métricas animadas con XP -->
+      <div class="grid grid-cols-3 gap-3 w-full mb-6">
+        <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-3">
+          <div class="text-xl font-black text-amber-500" id="victory-precision-counter">100%</div>
+          <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Precisión</div>
+        </div>
+        <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-3">
+          <div class="text-xl font-black text-brand-600" id="victory-xp-counter">+50 XP</div>
+          <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Puntos XP</div>
+        </div>
+        <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-3">
+          <div class="text-xl font-black text-emerald-600">✓</div>
+          <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Completado</div>
+        </div>
+      </div>
+
+      <!-- Acciones de victoria -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+        <button onclick="dismissVictoryModal(false)" class="w-full sm:w-auto px-6 py-3 rounded-2xl border-2 border-slate-200 text-slate-700 hover:bg-slate-100 font-bold text-sm transition">
+          Ver en el mapa
+        </button>
+        <button id="victory-next-btn" onclick="dismissVictoryModal(true)" class="w-full sm:w-auto btn-3d bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm px-6 py-3 rounded-2xl shadow-brilliant-btn border-brand-700">
+          Siguiente lección ➔
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==================== VISTA 1: MAPA DE AVENTURA EN ZIGZAG (DASHBOARD) ==================== -->
+  <div id="view-dashboard" class="flex-1 flex flex-col">
+    
+    <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-40">
+      <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-8">
+          <a href="javascript:void(0)" onclick="backToDashboard()" class="flex items-center gap-3 group">
+            <img src="assets/pyminas-snake.svg" alt="pyMinas" class="w-10 h-10 object-contain drop-shadow-sm transition-transform group-hover:scale-105">
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2">
+                <span class="text-xl font-black tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  py<span class="text-emerald-600 font-black">Minas</span>
+                </span>
+                <span class="px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 rounded border border-emerald-300">
+                  UNAL
+                </span>
+              </div>
+              <span class="text-[10px] font-bold text-slate-400 tracking-tight leading-none">
+                Facultad de Minas · Sede Medellín
+              </span>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-500">
+            <a href="javascript:void(0)" onclick="backToDashboard()" class="text-emerald-700 font-bold border-b-2 border-emerald-500 pb-0.5">Ruta de Cursos</a>
+            <a href="javascript:void(0)" onclick="alert('Laboratorio Sandbox abierto para práctica libre')" class="hover:text-slate-800 transition-colors">Laboratorio</a>
+          </nav>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full">
+            <span class="text-sm">🔥</span>
+            <span class="text-xs font-bold text-amber-800">3 días</span>
+          </div>
+
+          <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-bold text-emerald-800">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Estudiante UNAL</span>
+          </div>
+
+          <button onclick="toggleSound()" class="p-2 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-100 transition" title="Activar/Silenciar sonido">
+            <svg id="dash-sound-on" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z" />
+            </svg>
+            <svg id="dash-sound-off" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl w-full mx-auto px-5 py-10 flex-1">
+      <div class="flex flex-col lg:flex-row items-start gap-12">
+        
+        <!-- Tarjeta izquierda del curso (Fija) -->
+        <div class="w-full lg:w-[350px] shrink-0 lg:sticky lg:top-24">
+          <div class="bg-white border-2 border-slate-200 rounded-3xl p-7 shadow-sm">
+            <div class="w-full py-4 flex items-center justify-center bg-slate-50 border border-slate-100 rounded-2xl mb-4">
+              <svg viewBox="0 0 160 130" class="w-40 h-32 drop-shadow-md">
+                <ellipse cx="80" cy="120" rx="55" ry="7" fill="#cbd5e1" opacity="0.6"/>
+                <path d="M 45 105 L 115 105 L 122 114 L 38 114 Z" fill="#64748b"/>
+                <path d="M 52 70 L 108 70 L 115 105 L 45 105 Z" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+                <rect x="56" y="74" width="48" height="27" rx="2" fill="#1e293b"/>
+                <polyline points="63,88 70,83 63,78" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="74" y1="88" x2="84" y2="88" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+                <path d="M 50 102 C 30 100, 25 80, 42 70 C 58 60, 80 65, 85 50 C 90 35, 75 22, 60 25 C 48 28, 45 42, 58 45 C 72 48, 88 38, 98 25 C 105 16, 118 18, 122 28 C 126 38, 120 52, 105 60 C 92 68, 88 80, 95 95 C 98 102, 92 108, 80 106 C 70 104, 60 103, 50 102 Z" 
+                      fill="url(#greenSnakeGrad)" stroke="#047857" stroke-width="2"/>
+                <circle cx="112" cy="26" r="3.5" fill="#ffffff"/>
+                <circle cx="113.5" cy="26" r="1.8" fill="#064e3b"/>
+                <circle cx="120" cy="30" r="3" fill="#ffffff"/>
+                <circle cx="121.5" cy="30" r="1.5" fill="#064e3b"/>
+                <path d="M 124 35 Q 130 38 135 36 M 135 36 L 138 34 M 135 36 L 138 38" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                <defs>
+                  <linearGradient id="greenSnakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34d399"/>
+                    <stop offset="45%" stop-color="#10b981"/>
+                    <stop offset="100%" stop-color="#047857"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <div class="inline-flex items-center gap-1.5 px-3 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Facultad de Minas</span>
+            </div>
+            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+              Fundamentos de Programación
+            </h1>
+            <p class="text-slate-500 text-sm mt-2 leading-relaxed">
+              Módulos interactivos en Python para ingeniería. Aprende conceptos computacionales paso a paso con retos táctiles y ejecución en vivo.
+            </p>
+
+            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500">
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <span>5 Lecciones</span>
+              </span>
+
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>CPython 3</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna del mapa: Nodos circulares en ruta sinuosa / zigzag -->
+        <div class="flex-1 w-full max-w-xl mx-auto flex flex-col items-center">
+          <div id="game-map-container" class="w-full flex flex-col items-center">
+            <!-- Inyectado dinámicamente con SVG curvo y círculos 3D -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer Institucional UNAL - Facultad de Minas -->
+    <footer class="w-full bg-white border-t border-slate-200 py-6 mt-12">
+      <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
+        <div class="flex items-center gap-3">
+          <img src="assets/logotipo-unal.svg" class="w-7 h-7 object-contain" alt="UNAL">
+          <div>
+            <div class="font-bold text-slate-800">Universidad Nacional de Colombia · Sede Medellín</div>
+            <div class="text-[11px] text-slate-400">Facultad de Minas — pyMinas v1.0</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 text-slate-400">
+          <span>Fundamentos de Programación</span>
+          <span>•</span>
+          <span>Python 3 · Microaprendizaje</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- ==================== VISTA 2: REPRODUCTOR (1 EJERCICIO POR PANTALLA) ==================== -->
+  <div id="view-lesson" class="hidden min-h-screen flex flex-col justify-between bg-[#f8fafc]">
+    
+    <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-40">
+      <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-2">
+          <button onclick="backToDashboard()" class="p-2 text-slate-400 hover:text-slate-800 rounded-xl hover:bg-slate-100 transition cursor-pointer" title="Volver al mapa (Esc)">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <button id="lesson-prev-step-btn" onclick="goToPrevStep()" class="p-2 text-slate-400 hover:text-slate-800 rounded-xl hover:bg-slate-100 transition cursor-pointer hidden" title="Paso anterior (←)">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <div class="hidden sm:flex items-center gap-2 pl-2 border-l border-slate-200">
+            <img src="assets/pyminas-snake.svg" alt="pyMinas" class="w-6 h-6 object-contain">
+            <span class="font-extrabold text-xs tracking-tight text-slate-800">py<span class="text-emerald-600 font-black">Minas</span></span>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-xs flex items-center justify-center gap-2" id="lesson-segments-container"></div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 font-mono flex items-center gap-1">
+            <span>⚡</span> <span>15</span>
+          </span>
+          <button onclick="toggleSound()" class="p-2 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-100 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="flex-1 max-w-2xl w-full mx-auto px-4 py-4 sm:py-6 flex flex-col justify-center items-center" id="lesson-content-area">
+      <!-- 1 solo ejercicio por pantalla -->
+    </main>
+
+  </div>
+
+  <script src="curriculum.js"></script>
+  <script src="baked_traces.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
