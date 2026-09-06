@@ -10,6 +10,16 @@ let soundEnabled = true;
 let pyodideInstance = null;
 let isPyodideLoading = false;
 
+// ==================== AUTENTICACIÓN INSTITUCIONAL UNAL (SOULSEEK) ====================
+const AUTH_TOKEN_KEY = 'pyminas_auth_token';
+const AUTH_EMAIL_KEY = 'pyminas_auth_email';
+
+let currentUser = {
+  email: localStorage.getItem(AUTH_EMAIL_KEY) || '',
+  token: localStorage.getItem(AUTH_TOKEN_KEY) || '',
+  xp: 0
+};
+
 // Almacenamiento local de lecciones completadas y progreso por pasos
 let completedLessons = JSON.parse(localStorage.getItem('py101_completed_lessons') || '["w1-l1"]');
 let savedLessonSteps = JSON.parse(localStorage.getItem('py101_lesson_steps') || '{}');
@@ -32,6 +42,9 @@ function saveLessonStep(lessonId, stepIndex) {
   savedLessonSteps[lessonId] = stepIndex;
   try {
     localStorage.setItem('py101_lesson_steps', JSON.stringify(savedLessonSteps));
+    if (typeof syncProgressToServer === 'function') {
+      syncProgressToServer();
+    }
   } catch (e) {
     console.warn("Error guardando progreso en localStorage:", e);
   }
@@ -2522,7 +2535,11 @@ function renderLessonVictory() {
 
   if (!completedLessons.includes(currentLesson.id)) {
     completedLessons.push(currentLesson.id);
+    currentUser.xp = (currentUser.xp || 0) + 50;
     localStorage.setItem('py101_completed_lessons', JSON.stringify(completedLessons));
+    if (typeof syncProgressToServer === 'function') {
+      syncProgressToServer();
+    }
   }
   // Al completar la lección, reiniciar el progreso de pasos a 0 para que al repasar comience de nuevo
   saveLessonStep(currentLesson.id, 0);
@@ -2906,9 +2923,262 @@ function handleGlobalKeydown(e) {
 
 window.addEventListener('keydown', handleGlobalKeydown);
 
+// ==================== FUNCIONES DE AUTENTICACIÓN SOULSEEK ====================
+
+function isUserAuthenticated() {
+  return !!currentUser.token;
+}
+
+function showLoginModal(errorMessage = '') {
+  const modal = document.getElementById('auth-login-modal');
+  if (!modal) return;
+  modal.classList.remove('hidden');
+  
+  const errorBanner = document.getElementById('auth-error-banner');
+  const errorText = document.getElementById('auth-error-text');
+  if (errorMessage) {
+    if (errorBanner && errorText) {
+      errorText.textContent = errorMessage;
+      errorBanner.classList.remove('hidden');
+    }
+  } else {
+    if (errorBanner) errorBanner.classList.add('hidden');
+  }
+
+  setTimeout(() => {
+    const emailInput = document.getElementById('auth-email-input');
+    if (emailInput) emailInput.focus();
+  }, 100);
+}
+
+function hideLoginModal() {
+  const modal = document.getElementById('auth-login-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+function updateUserBadge(email) {
+  const badgeEmail = document.getElementById('nav-user-email');
+  if (badgeEmail) {
+    badgeEmail.textContent = email || 'Estudiante UNAL';
+    badgeEmail.title = email ? `Conectado como ${email}` : 'Estudiante UNAL';
+  }
+}
+
+async function handleAuthLogin(event) {
+  if (event) event.preventDefault();
+
+  const emailInput = document.getElementById('auth-email-input');
+  const passInput = document.getElementById('auth-password-input');
+  const errorBanner = document.getElementById('auth-error-banner');
+  const errorText = document.getElementById('auth-error-text');
+  const submitBtn = document.getElementById('auth-submit-btn');
+  const btnText = document.getElementById('auth-btn-text');
+
+  const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+  const password = passInput ? passInput.value.trim() : '';
+
+  // 1. Validación estricta cliente de terminación @unal.edu.co
+  if (!email.endsWith('@unal.edu.co') || email.length <= 12 || !email.includes('@')) {
+    if (errorBanner && errorText) {
+      errorText.textContent = 'Acceso restringido: El correo debe terminar en @unal.edu.co';
+      errorBanner.classList.remove('hidden');
+    }
+    if (emailInput) emailInput.focus();
+    return;
+  }
+
+  // 2. Validación de longitud de contraseña
+  if (password.length < 4) {
+    if (errorBanner && errorText) {
+      errorText.textContent = 'La contraseña debe contener al menos 4 caracteres.';
+      errorBanner.classList.remove('hidden');
+    }
+    if (passInput) passInput.focus();
+    return;
+  }
+
+  if (submitBtn) submitBtn.disabled = true;
+  if (btnText) btnText.textContent = 'Verificando...';
+  if (errorBanner) errorBanner.classList.add('hidden');
+
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      if (errorBanner && errorText) {
+        errorText.textContent = data.error || 'Error al validar credenciales.';
+        errorBanner.classList.remove('hidden');
+      }
+      return;
+    }
+
+    // Éxito en modelo Soulseek (login o nuevo registro automático)
+    currentUser.token = data.token;
+    currentUser.email = data.email;
+    localStorage.setItem(AUTH_TOKEN_KEY, data.token);
+    localStorage.setItem(AUTH_EMAIL_KEY, data.email);
+
+    if (data.progress) {
+      if (Array.isArray(data.progress.completedLessons)) {
+        completedLessons = data.progress.completedLessons;
+        localStorage.setItem('py101_completed_lessons', JSON.stringify(completedLessons));
+      }
+      if (data.progress.savedLessonSteps && typeof data.progress.savedLessonSteps === 'object') {
+        savedLessonSteps = data.progress.savedLessonSteps;
+        localStorage.setItem('py101_lesson_steps', JSON.stringify(savedLessonSteps));
+      }
+      if (typeof data.progress.xp === 'number') {
+        currentUser.xp = data.progress.xp;
+      }
+    }
+
+    updateUserBadge(data.email);
+    hideLoginModal();
+    renderDashboard();
+
+  } catch (err) {
+    console.error('Error al conectar con la API de autenticación:', err);
+    if (errorBanner && errorText) {
+      errorText.textContent = 'No se pudo conectar con el servidor pyMinas. Verifica tu conexión.';
+      errorBanner.classList.remove('hidden');
+    }
+  } finally {
+    if (submitBtn) submitBtn.disabled = false;
+    if (btnText) btnText.textContent = 'Ingresar a pyMinas';
+  }
+}
+
+async function checkAuthSessionOnStartup() {
+  const modal = document.getElementById('auth-login-modal');
+  if (!modal) return; // Si la página no incluye el modal de auth (ej. test suite), no bloquear
+
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('skipauth') === 'true') {
+    hideLoginModal();
+    return;
+  }
+  if (urlParams.has('authtoken')) {
+    localStorage.setItem(AUTH_TOKEN_KEY, urlParams.get('authtoken'));
+  }
+
+  const token = localStorage.getItem(AUTH_TOKEN_KEY);
+  const email = localStorage.getItem(AUTH_EMAIL_KEY);
+
+  if (!token) {
+    showLoginModal();
+    return;
+  }
+
+  currentUser.token = token;
+  currentUser.email = email || '';
+
+  try {
+    const res = await fetch('/api/me', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) {
+      localStorage.removeItem(AUTH_TOKEN_KEY);
+      localStorage.removeItem(AUTH_EMAIL_KEY);
+      currentUser.token = '';
+      currentUser.email = '';
+      showLoginModal('Tu sesión ha expirado. Por favor ingresa nuevamente con tu clave.');
+      return;
+    }
+
+    const data = await res.json();
+    currentUser.email = data.email;
+    if (data.progress) {
+      if (Array.isArray(data.progress.completedLessons)) {
+        completedLessons = data.progress.completedLessons;
+        localStorage.setItem('py101_completed_lessons', JSON.stringify(completedLessons));
+      }
+      if (data.progress.savedLessonSteps && typeof data.progress.savedLessonSteps === 'object') {
+        savedLessonSteps = data.progress.savedLessonSteps;
+        localStorage.setItem('py101_lesson_steps', JSON.stringify(savedLessonSteps));
+      }
+      if (typeof data.progress.xp === 'number') {
+        currentUser.xp = data.progress.xp;
+      }
+    }
+
+    updateUserBadge(data.email);
+    hideLoginModal();
+    renderDashboard();
+
+  } catch (err) {
+    console.warn('Modo offline / API de auth no accesible, usando estado en caché:', err);
+    if (currentUser.email) {
+      updateUserBadge(currentUser.email);
+      hideLoginModal();
+      renderDashboard();
+    } else {
+      showLoginModal();
+    }
+  }
+}
+
+let syncTimeout = null;
+function syncProgressToServer() {
+  if (!currentUser || !currentUser.token) return;
+
+  if (syncTimeout) clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(async () => {
+    try {
+      await fetch('/api/progress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${currentUser.token}`
+        },
+        body: JSON.stringify({
+          progress: {
+            completedLessons,
+            savedLessonSteps,
+            xp: currentUser.xp || 0
+          }
+        })
+      });
+    } catch (e) {
+      console.warn('Error sincronizando progreso con el servidor pyMinas:', e);
+    }
+  }, 400);
+}
+
+async function logoutUser() {
+  const token = currentUser.token;
+  if (token) {
+    try {
+      await fetch('/api/logout', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+    } catch (e) {}
+  }
+
+  localStorage.removeItem(AUTH_TOKEN_KEY);
+  localStorage.removeItem(AUTH_EMAIL_KEY);
+  currentUser.token = '';
+  currentUser.email = '';
+  updateUserBadge('Estudiante UNAL');
+  showLoginModal('Has cerrado sesión correctamente.');
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   renderDashboard();
   setTimeout(initPyodide, 800);
+  checkAuthSessionOnStartup();
 
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('fast') === 'true') {
@@ -2950,3 +3220,4 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+

@@ -46,21 +46,19 @@ git pull origin main
 
 Elige una de las siguientes tres opciones según el entorno del homeserver:
 
-#### Opción A: Despliegue con Docker Compose (Recomendada)
+#### Opción A: Despliegue con Docker Compose (Recomendada con persistencia SQLite)
 Si el homeserver cuenta con Docker y Docker Compose:
 
-1. Crea el archivo `Dockerfile` en el directorio raíz del proyecto (si aún no existe):
+1. Crea el archivo `Dockerfile` en el directorio raíz del proyecto:
 ```dockerfile
-FROM nginx:alpine
-# Copiar archivos del proyecto
-COPY . /usr/share/nginx/html
-# Configurar headers recomendados para WebAssembly
-RUN echo 'types { application/wasm wasm; image/svg+xml svg; }' > /etc/nginx/conf.d/mime.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM python:3.11-alpine
+WORKDIR /app
+COPY . /app
+EXPOSE 8080
+CMD ["python3", "server.py"]
 ```
 
-2. Crea o ejecuta con `docker-compose.yml`:
+2. Crea o ejecuta con `docker-compose.yml` (con volumen para persistir las cuentas y progreso de los estudiantes):
 ```yaml
 version: '3.8'
 
@@ -70,9 +68,9 @@ services:
     container_name: pyminas-app
     restart: unless-stopped
     ports:
-      - "8080:80" # Cambiar 8080 por el puerto deseado en el host
+      - "8080:8080" # Puerto expuesto en el host
     volumes:
-      - .:/usr/share/nginx/html:ro
+      - ./pyminas.db:/app/pyminas.db # Persistencia de base de datos SQLite
 ```
 
 3. Levanta el contenedor:
@@ -82,12 +80,12 @@ docker compose up -d --build
 
 ---
 
-#### Opción B: Proxy Inverso con Caddy (Con HTTPS automático)
-Si utilizas Caddy en el homeserver:
+#### Opción B: Proxy Inverso con Caddy (Con HTTPS automático hacia server.py)
+Si utilizas Caddy en el homeserver como proxy inverso hacia el servicio pyMinas:
 ```caddy
 pyminas.tudominio.com {
-    root * /opt/pyminas
-    file_server
+    reverse_proxy localhost:8080
+
     encode gzip zstd
 
     # Headers recomendados para Pyodide / WebAssembly

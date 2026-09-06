@@ -23,3 +23,9 @@ Thumbs.db
 *.log
 .tempmediaStorage/
 scratch/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+pyminas.db
