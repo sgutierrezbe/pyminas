@@ -775,7 +775,7 @@ function evaluateSafeExpr(expr, scope, math) {
 function evaluateSafePrint(innerStr, scope, math) {
   let inner = innerStr.trim();
   let sep = " ";
-  let end = "";
+  let end = "\n";
 
   const sepMatch = inner.match(/sep\s*=\s*["'](.*?)["']/);
   if (sepMatch) {
@@ -851,7 +851,8 @@ function tracePythonExecution(code, expectedOutput) {
   };
 
   const lineTrace = [];
-  const cumulativePrints = [];
+  let stdoutBuffer = "";
+  const getOutputSoFar = () => stdoutBuffer ? stdoutBuffer.replace(/\n$/, '').split('\n') : [];
 
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i];
@@ -859,7 +860,7 @@ function tracePythonExecution(code, expectedOutput) {
     const trimmed = codeWithoutComment.trim();
 
     if (!trimmed || trimmed.startsWith('import')) {
-      lineTrace.push({ prints: null, outputSoFar: [...cumulativePrints] });
+      lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
 
@@ -873,22 +874,22 @@ function tracePythonExecution(code, expectedOutput) {
       } catch (err) {
         scope[varName] = expr;
       }
-      lineTrace.push({ prints: null, outputSoFar: [...cumulativePrints] });
+      lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
 
     const printMatch = trimmed.match(/^print\s*\((.*)\)$/);
     if (printMatch) {
       const outputText = evaluateSafePrint(printMatch[1], scope, math);
-      cumulativePrints.push(outputText);
-      lineTrace.push({ prints: outputText, outputSoFar: [...cumulativePrints] });
+      stdoutBuffer += outputText;
+      lineTrace.push({ prints: outputText.replace(/\n$/, ''), outputSoFar: getOutputSoFar() });
       continue;
     }
 
-    lineTrace.push({ prints: null, outputSoFar: [...cumulativePrints] });
+    lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
   }
 
-  if (cumulativePrints.length === 0 && expectedOutput) {
+  if (!stdoutBuffer && expectedOutput) {
     const expectedLines = expectedOutput.split('\n');
     let outIdx = 0;
     for (let i = 0; i < lineTrace.length; i++) {

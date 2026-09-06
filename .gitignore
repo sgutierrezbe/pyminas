@@ -27,6 +27,6 @@ scratch/
 
 # Database files
 *.db
+*.db*
 *.sqlite
 *.sqlite3
-pyminas.db

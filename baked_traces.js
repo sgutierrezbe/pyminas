@@ -1,5 +1,5 @@
 // Archivo generado automaticamente por bake_curriculum.py
-// CPython 3.13
+// CPython 3.9
 window.BAKED_TRACES = {
   "# En programación, esta secuencia lógica se llama ALGORITMO:\n# 1. Poner agua a hervir\n# 2. Agregar el café\n# 3. Servir en la taza\nprint(\"¡Café listo para beber!\")": {
     "lines": [
@@ -284,12 +284,11 @@ window.BAKED_TRACES = {
         "prints": "Mundo",
         "outputSoFar": [
           "2026-09-04",
-          "Hola ",
-          "Mundo"
+          "Hola Mundo"
         ]
       }
     ],
-    "totalOutput": "2026-09-04\nHola \nMundo"
+    "totalOutput": "2026-09-04\nHola Mundo"
   },
   "print(\"Python\", \"es\", \"genial\", sep=\"*\")": {
     "lines": [

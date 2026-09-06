@@ -13,7 +13,7 @@ import re
 import sys
 from pathlib import Path
 
-BASE_DIR = Path("/home/samu/python-brilliant-prototype")
+BASE_DIR = Path(__file__).resolve().parent
 CURRICULUM_PATH = BASE_DIR / "curriculum.js"
 OUTPUT_PATH = BASE_DIR / "baked_traces.js"
 
@@ -31,7 +31,8 @@ def trace_python_code(code_str, slot_value=None):
         return None
 
     scope = {}
-    captured_prints = {}
+    captured_stdout_at_line = {}
+    stdout_buffer = ""
     
     for stmt in tree.body:
         buf = io.StringIO()
@@ -41,29 +42,39 @@ def trace_python_code(code_str, slot_value=None):
             compiled = compile(ast.Module(body=[stmt], type_ignores=[]), "<curriculum>", "exec")
             exec(compiled, scope)
         except Exception as e:
-            captured_prints[stmt.end_lineno - 1] = f"Error: {e}"
+            buf.write(f"Error: {e}\n")
         finally:
             sys.stdout = old_stdout
 
         out = buf.getvalue()
         if out:
-            captured_prints[stmt.end_lineno - 1] = out.rstrip("\n")
+            stdout_buffer += out
+            lines_so_far = stdout_buffer.rstrip("\n").split("\n") if stdout_buffer else []
+            captured_stdout_at_line[stmt.end_lineno - 1] = {
+                "prints": out.rstrip("\n") if out.endswith("\n") else out,
+                "outputSoFar": lines_so_far
+            }
 
     line_trace = []
-    cumulative = []
+    current_output = []
     for idx in range(len(lines)):
-        p = captured_prints.get(idx, None)
-        if p is not None:
-            cumulative.append(p)
-        line_trace.append({
-            "prints": p,
-            "outputSoFar": list(cumulative)
-        })
+        entry = captured_stdout_at_line.get(idx)
+        if entry:
+            current_output = list(entry["outputSoFar"])
+            line_trace.append({
+                "prints": entry["prints"],
+                "outputSoFar": current_output
+            })
+        else:
+            line_trace.append({
+                "prints": None,
+                "outputSoFar": list(current_output)
+            })
 
     return {
         "lines": lines,
         "lineTrace": line_trace,
-        "totalOutput": "\n".join(cumulative)
+        "totalOutput": stdout_buffer.rstrip("\n")
     }
 
 def main():
