@@ -49,6 +49,13 @@ Contenido de la guía:
 
 ---
 
+## 🤖 Despliegue en Servidor / Homeserver
+
+Para el aprovisionamiento y despliegue automatizado en servidores locales o en la nube:
+👉 **[`HANDOFF.md`](HANDOFF.md)** (Guía completa para agentes con configuraciones de Docker Compose, Caddy, Nginx, Systemd y headers WASM).
+
+---
+
 ## 🚀 Cómo ejecutar localmente
 
 ```bash
