@@ -21,6 +21,7 @@ Thumbs.db
 
 # Logs and temporary files
 *.log
+*.tar.gz
 .tempmediaStorage/
 scratch/
 
