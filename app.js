@@ -335,7 +335,7 @@ function renderDashboard() {
 
     // Cabecera Pill del Nivel
     const pillHeader = document.createElement('div');
-    pillHeader.className = 'w-full max-w-md bg-white border-2 border-slate-200 rounded-2xl py-3 px-6 text-center shadow-sm mb-6 z-20';
+    pillHeader.className = 'w-full max-w-sm sm:max-w-md bg-white border-2 border-slate-200 rounded-2xl py-3 px-4 sm:px-6 text-center shadow-sm mb-6 z-20';
     pillHeader.innerHTML = `
       <div class="text-[11px] font-extrabold uppercase tracking-widest text-brand-700">NIVEL ${week.number}</div>
       <div class="text-base font-extrabold text-slate-900 mt-0.5">${week.title.replace(`Semana ${week.number}: `, '')}</div>
@@ -343,37 +343,39 @@ function renderDashboard() {
     weekSection.appendChild(pillHeader);
 
     if (week.lessons) {
+      // Coordenadas porcentuales para X y fijas en Y para garantizar perfecta alineación y cero desborde en cualquier pantalla
       const nodeLayout = [
-        { x: 56, y: 30, align: 'right' },
-        { x: 26, y: 140, align: 'left' },
-        { x: 72, y: 250, align: 'right' },
-        { x: 24, y: 360, align: 'left' },
-        { x: 62, y: 470, align: 'right' }
+        { x: 64, y: 45, align: 'right' },
+        { x: 36, y: 150, align: 'left' },
+        { x: 64, y: 255, align: 'right' },
+        { x: 36, y: 360, align: 'left' },
+        { x: 64, y: 465, align: 'right' }
       ];
 
-      const mapHeight = 560;
+      const mapHeight = 520;
 
       const windingCanvas = document.createElement('div');
       windingCanvas.className = 'relative w-full max-w-md';
       windingCanvas.style.height = `${mapHeight}px`;
 
-      // SVG de la curva Bezier punteada
+      // SVG de la curva Bezier punteada usando viewBox 0 0 100 mapHeight y preserveAspectRatio="none"
       const svgPath = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       svgPath.setAttribute("class", "absolute inset-0 w-full h-full pointer-events-none z-0");
-      svgPath.setAttribute("viewBox", `0 0 420 ${mapHeight}`);
+      svgPath.setAttribute("viewBox", `0 0 100 ${mapHeight}`);
+      svgPath.setAttribute("preserveAspectRatio", "none");
 
       let pathD = "";
       week.lessons.forEach((_, idx) => {
-        const pos = nodeLayout[idx] || { x: 50, y: idx * 100 };
-        const realX = (pos.x / 100) * 420;
-        const realY = pos.y + 32;
+        const pos = nodeLayout[idx] || { x: 50, y: idx * 105 + 45 };
+        const realX = pos.x;
+        const realY = pos.y;
 
         if (idx === 0) {
           pathD += `M ${realX} ${realY}`;
         } else {
-          const prevPos = nodeLayout[idx - 1];
-          const prevX = (prevPos.x / 100) * 420;
-          const prevY = prevPos.y + 32;
+          const prevPos = nodeLayout[idx - 1] || { x: 50, y: (idx - 1) * 105 + 45 };
+          const prevX = prevPos.x;
+          const prevY = prevPos.y;
           const midY = (prevY + realY) / 2;
           pathD += ` C ${prevX} ${midY}, ${realX} ${midY}, ${realX} ${realY}`;
         }
@@ -385,12 +387,13 @@ function renderDashboard() {
       pathElement.setAttribute("stroke", "#10b981");
       pathElement.setAttribute("stroke-width", "4");
       pathElement.setAttribute("stroke-linecap", "round");
+      pathElement.setAttribute("vector-effect", "non-scaling-stroke");
       pathElement.setAttribute("class", "animated-dotted-path");
       svgPath.appendChild(pathElement);
 
       windingCanvas.appendChild(svgPath);
 
-      // Renderizar cada nodo con su TÍTULO CORTO Y CONCISO (1-2 palabras)
+      // Renderizar cada nodo con su anchor centrado exactamente sobre la curva
       week.lessons.forEach((lesson, idx) => {
         const isCompleted = completedLessons.includes(lesson.id);
         let status = 'locked';
@@ -403,39 +406,36 @@ function renderDashboard() {
           }
         }
 
-        const pos = nodeLayout[idx] || { x: 50, y: idx * 100, align: 'right' };
-        const realX = (pos.x / 100) * 420 - 32;
-        const realY = pos.y;
+        const pos = nodeLayout[idx] || { x: 50, y: idx * 105 + 45, align: 'right' };
 
-        const nodeWrapper = document.createElement('div');
-        nodeWrapper.className = 'absolute z-10 flex items-center cursor-pointer group select-none';
-        nodeWrapper.style.left = `${realX}px`;
-        nodeWrapper.style.top = `${realY}px`;
-        nodeWrapper.onclick = () => startLesson(lesson.id);
+        // El anchor se posiciona en el centro geométrico del nodo (-translate-x-1/2 -translate-y-1/2)
+        const nodeAnchor = document.createElement('div');
+        nodeAnchor.className = 'absolute z-10 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 cursor-pointer group select-none';
+        nodeAnchor.style.left = `${pos.x}%`;
+        nodeAnchor.style.top = `${pos.y}px`;
+        nodeAnchor.onclick = () => startLesson(lesson.id);
 
         const circleHtml = getCircular3DNodeHTML(status);
-
-        // Título corto sin recortes ni puntos suspensivos
         const displayTitle = lesson.shortTitle || lesson.title;
 
+        // La etiqueta pill se orienta siempre hacia el centro de la pantalla para nunca desbordar la pantalla
         let labelHtml = '';
-        if (pos.align === 'left') {
+        if (pos.x <= 50) {
           labelHtml = `
-            <div class="ml-3 bg-white border-2 border-slate-200 shadow-sm rounded-xl py-1.5 px-3 whitespace-nowrap group-hover:border-brand-500 group-hover:shadow transition">
+            <div class="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-white border-2 border-slate-200 shadow-sm rounded-xl py-1.5 px-3 whitespace-nowrap group-hover:border-brand-500 group-hover:shadow transition pointer-events-none">
               <span class="text-xs font-extrabold text-slate-800">${displayTitle}</span>
             </div>
           `;
-          nodeWrapper.innerHTML = `${circleHtml} ${labelHtml}`;
         } else {
           labelHtml = `
-            <div class="mr-3 bg-white border-2 border-slate-200 shadow-sm rounded-xl py-1.5 px-3 whitespace-nowrap text-right group-hover:border-brand-500 group-hover:shadow transition">
+            <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white border-2 border-slate-200 shadow-sm rounded-xl py-1.5 px-3 whitespace-nowrap text-right group-hover:border-brand-500 group-hover:shadow transition pointer-events-none">
               <span class="text-xs font-extrabold text-slate-800">${displayTitle}</span>
             </div>
           `;
-          nodeWrapper.innerHTML = `${labelHtml} ${circleHtml}`;
         }
 
-        windingCanvas.appendChild(nodeWrapper);
+        nodeAnchor.innerHTML = `${circleHtml} ${labelHtml}`;
+        windingCanvas.appendChild(nodeAnchor);
       });
 
       weekSection.appendChild(windingCanvas);
@@ -1100,19 +1100,19 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
 
   const linesHtml = lines.map((line, idx) => {
     return `
-      <div id="code-line-${playerId}-${idx}" class="code-exec-line flex items-center py-1 px-2 rounded-lg font-mono text-xs sm:text-sm">
-        <span class="w-6 shrink-0 flex items-center justify-center font-bold text-white text-xs select-none" id="code-arrow-${playerId}-${idx}"></span>
-        <span class="w-6 shrink-0 text-slate-500 text-right pr-3 text-xs select-none">${idx + 1}</span>
+      <div id="code-line-${playerId}-${idx}" class="code-exec-line flex items-center py-1 px-2 rounded-lg font-mono text-xs sm:text-sm min-w-0 w-max sm:w-full">
+        <span class="w-5 sm:w-6 shrink-0 flex items-center justify-center font-bold text-white text-xs select-none" id="code-arrow-${playerId}-${idx}"></span>
+        <span class="w-5 sm:w-6 shrink-0 text-slate-500 text-right pr-2 sm:pr-3 text-xs select-none">${idx + 1}</span>
         <span class="text-slate-200 flex-1 leading-relaxed">${highlightPythonSyntax(line, playerId) || '&nbsp;'}</span>
       </div>
     `;
   }).join('');
 
   return `
-    <div id="code-player-wrapper-${playerId}" class="w-full flex flex-col items-center">
+    <div id="code-player-wrapper-${playerId}" class="w-full min-w-0 flex flex-col items-center">
       <!-- 1. Editor de código con flecha indicadora y toolbar -->
-      <div class="w-full bg-[#0d151c] rounded-2xl overflow-hidden border border-[#1e2d3d] shadow-md text-left mb-3">
-        <div class="bg-[#101923] border-b border-[#1e2d3d] px-4 py-2 flex items-center justify-between text-xs font-mono text-slate-400">
+      <div class="w-full min-w-0 bg-[#0d151c] rounded-2xl overflow-hidden border border-[#1e2d3d] shadow-md text-left mb-3">
+        <div class="bg-[#101923] border-b border-[#1e2d3d] px-3 sm:px-4 py-2 flex items-center justify-between text-xs font-mono text-slate-400">
           <span class="flex items-center gap-1.5">
             <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
             <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
@@ -1122,46 +1122,46 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
           <span id="code-status-${playerId}" class="text-[11px] text-slate-400 font-mono">Paso 0/${lines.length}</span>
         </div>
 
-        <div class="p-3 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto space-y-0.5" id="code-lines-${playerId}">
+        <div class="p-2.5 sm:p-3 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto space-y-0.5 max-w-full" id="code-lines-${playerId}">
           ${linesHtml}
         </div>
 
         <!-- Barra de control inferior estilo Brilliant -->
-        <div class="bg-[#101923] border-t border-[#1e2d3d] px-4 py-2.5 flex items-center justify-between" id="code-toolbar-${playerId}">
+        <div class="bg-[#101923] border-t border-[#1e2d3d] px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-2" id="code-toolbar-${playerId}">
           ${isLocked ? `
             <div class="flex items-center gap-1.5 text-xs text-slate-400" id="code-locked-indicator-${playerId}">
               <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              <span class="font-mono text-[11px] text-slate-300">Modo análisis: responde abajo para ejecutar</span>
+              <span class="font-mono text-[11px] text-slate-300">Modo análisis: responde abajo</span>
             </div>
-            <div class="flex items-center gap-1 opacity-30 pointer-events-none transition-all" id="code-buttons-group-${playerId}">
-              <button onclick="codePlayerReset('${playerId}')" title="Reiniciar ejecución" class="p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 text-xs">
+            <div class="flex items-center gap-1 opacity-30 pointer-events-none transition-all shrink-0" id="code-buttons-group-${playerId}">
+              <button onclick="codePlayerReset('${playerId}')" title="Reiniciar ejecución" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 text-xs">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
               </button>
-              <button onclick="codePlayerPrevStep('${playerId}')" title="Línea anterior" class="p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 text-xs">
+              <button onclick="codePlayerPrevStep('${playerId}')" title="Línea anterior" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 text-xs">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
               </button>
-              <button onclick="codePlayerNextStep('${playerId}')" title="Línea siguiente" class="p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 text-xs">
+              <button onclick="codePlayerNextStep('${playerId}')" title="Línea siguiente" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 text-xs">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
               </button>
-              <button id="code-play-btn-${playerId}" class="px-4 py-1.5 rounded-xl bg-slate-800 text-slate-500 font-extrabold text-xs flex items-center gap-1.5 border border-slate-700 cursor-not-allowed">
+              <button id="code-play-btn-${playerId}" class="px-3 sm:px-4 py-1.5 rounded-xl bg-slate-800 text-slate-500 font-extrabold text-xs flex items-center gap-1.5 border border-slate-700 cursor-not-allowed">
                 <span id="code-play-icon-${playerId}">▶</span>
                 <span id="code-play-text-${playerId}">Ejecutar</span>
               </button>
             </div>
           ` : `
-            <div class="flex items-center gap-1">
-              <button onclick="codePlayerReset('${playerId}')" title="Reiniciar ejecución" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition border border-slate-700 text-xs">
+            <div class="flex items-center gap-1 shrink-0">
+              <button onclick="codePlayerReset('${playerId}')" title="Reiniciar ejecución" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition border border-slate-700 text-xs">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
               </button>
-              <button onclick="codePlayerPrevStep('${playerId}')" title="Línea anterior" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition border border-slate-700 text-xs">
+              <button onclick="codePlayerPrevStep('${playerId}')" title="Línea anterior" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition border border-slate-700 text-xs">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
               </button>
-              <button onclick="codePlayerNextStep('${playerId}')" title="Línea siguiente" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition border border-slate-700 text-xs">
+              <button onclick="codePlayerNextStep('${playerId}')" title="Línea siguiente" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition border border-slate-700 text-xs">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
 
-            <button onclick="codePlayerTogglePlay('${playerId}')" id="code-play-btn-${playerId}" class="btn-3d px-4 py-1.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-sm border-brand-700 transition cursor-pointer ${playerId.startsWith('expl_') ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-slate-900 animate-pulse' : ''}">
+            <button onclick="codePlayerTogglePlay('${playerId}')" id="code-play-btn-${playerId}" class="btn-3d px-3 sm:px-4 py-1.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-sm border-brand-700 transition cursor-pointer shrink-0 ${playerId.startsWith('expl_') ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-slate-900 animate-pulse' : ''}">
               <span id="code-play-icon-${playerId}">▶</span>
               <span id="code-play-text-${playerId}">Ejecutar</span>
             </button>
@@ -1170,7 +1170,7 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
       </div>
 
       <!-- 2. Pantalla de salida (Consola verde ubicada DEBAJO del código, estilo IDE) -->
-      <div class="w-full bg-[#000000] border-2 border-[#10b981] rounded-2xl p-3.5 font-mono text-xs sm:text-sm text-[#34d399] min-h-[58px] shadow-sm flex flex-col justify-center text-left">
+      <div class="w-full min-w-0 bg-[#000000] border-2 border-[#10b981] rounded-2xl p-3 sm:p-3.5 font-mono text-xs sm:text-sm text-[#34d399] min-h-[58px] shadow-sm flex flex-col justify-center text-left">
         <div class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider mb-1 flex items-center justify-between border-b border-emerald-950 pb-1">
           <span>Salida en pantalla (Terminal)</span>
           <span class="w-2 h-2 rounded-full ${isLocked ? 'bg-amber-400' : 'bg-emerald-400'} animate-ping"></span>
@@ -1522,7 +1522,7 @@ function renderExplanationStep(step, container) {
   const hasCode = ex && ex.code && ex.code.trim().length > 0;
 
   container.innerHTML = `
-    <div class="w-full max-w-xl flex flex-col items-center text-center">
+    <div class="w-full max-w-xl min-w-0 flex flex-col items-center text-center">
       
       <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-brand-700 border border-emerald-200 rounded-full text-xs font-bold uppercase tracking-wider mb-2.5">
         <span>${step.partLabel}</span>
@@ -1536,7 +1536,7 @@ function renderExplanationStep(step, container) {
         ${step.intro}
       </p>
 
-      <div class="w-full bg-white border-2 border-slate-200 rounded-2xl p-4 shadow-sm text-left mb-3.5">
+      <div class="w-full min-w-0 bg-white border-2 border-slate-200 rounded-2xl p-3.5 sm:p-4 shadow-sm text-left mb-3.5">
         <div class="flex items-center justify-between mb-2">
           <span class="text-xs font-extrabold text-brand-700 uppercase tracking-wider">${ex.label}</span>
           <span class="text-[11px] font-semibold text-slate-400">Ejecución interactiva</span>
@@ -3288,7 +3288,8 @@ function showLoginView(errorMessage = '') {
 function updateUserBadge(email) {
   const badgeEmail = document.getElementById('nav-user-email');
   if (badgeEmail) {
-    badgeEmail.textContent = email || 'Estudiante UNAL';
+    const displayText = (email && email.includes('@')) ? email.split('@')[0] : (email || 'Estudiante');
+    badgeEmail.textContent = displayText;
     badgeEmail.title = email ? `Conectado como ${email}` : 'Estudiante UNAL';
   }
 }
@@ -3423,7 +3424,13 @@ async function checkAuthSessionOnStartup() {
 
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('skipauth') === 'true') {
+    if (!currentUser.email) {
+      currentUser.email = localStorage.getItem(AUTH_EMAIL_KEY) || 'saacevedom@unal.edu.co';
+    }
+    updateUserBadge(currentUser.email);
+    updateStreakDisplay();
     switchView('dashboard');
+    renderDashboard();
     return;
   }
   if (urlParams.has('authtoken')) {

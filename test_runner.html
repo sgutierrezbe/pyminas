@@ -74,6 +74,8 @@
 
         // 1. Test Step Persistence
         localStorage.clear();
+        localStorage.setItem('pyminas_auth_token', 'test_token');
+        currentUser.token = 'test_token';
         savedLessonSteps = {};
         openLessonDirect('w1-l1', 0);
         assert(currentStepIndex === 0, "Paso inicial es 0");
