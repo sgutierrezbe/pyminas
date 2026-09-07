@@ -17,9 +17,116 @@ const AUTH_EMAIL_KEY = 'pyminas_auth_email';
 let currentUser = {
   email: localStorage.getItem(AUTH_EMAIL_KEY) || '',
   token: localStorage.getItem(AUTH_TOKEN_KEY) || '',
-  xp: 0
+  xp: 0,
+  weeklyStreak: parseInt(localStorage.getItem('pyminas_weekly_streak') || '0', 10) || 0,
+  lastActiveWeek: localStorage.getItem('pyminas_last_active_week') || ''
 };
 window.currentUser = currentUser;
+
+// --- Sistema de Rachas Semanales (Weekly Streaks) ---
+function getMondayOfWeek(d = new Date()) {
+  const date = new Date(d);
+  const day = date.getDay(); // 0: Dom, 1: Lun, ..., 6: Sáb
+  const diff = (day === 0 ? -6 : 1 - day);
+  date.setDate(date.getDate() + diff);
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
+
+function getMondayString(d = new Date()) {
+  const monday = getMondayOfWeek(d);
+  const year = monday.getFullYear();
+  const month = String(monday.getMonth() + 1).padStart(2, '0');
+  const date = String(monday.getDate()).padStart(2, '0');
+  return `${year}-${month}-${date}`;
+}
+
+function getWeekDiff(mondayStrA, mondayStrB) {
+  if (!mondayStrA || !mondayStrB) return Infinity;
+  const [yA, mA, dA] = mondayStrA.split('-').map(Number);
+  const [yB, mB, dB] = mondayStrB.split('-').map(Number);
+  const dateA = new Date(yA, mA - 1, dA);
+  const dateB = new Date(yB, mB - 1, dB);
+  const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+  return Math.round((dateB.getTime() - dateA.getTime()) / msPerWeek);
+}
+
+function getEffectiveWeeklyStreak() {
+  const currentWeek = getMondayString();
+  const lastWeek = currentUser.lastActiveWeek || localStorage.getItem('pyminas_last_active_week') || '';
+  const rawStreak = parseInt(currentUser.weeklyStreak || localStorage.getItem('pyminas_weekly_streak') || 0, 10) || 0;
+
+  if (rawStreak <= 0 || !lastWeek) return 0;
+  const diff = getWeekDiff(lastWeek, currentWeek);
+  // Si completó lección en la semana actual (diff=0) o la semana inmediatamente anterior (diff=1), la racha sigue viva
+  if (diff <= 1) {
+    return rawStreak;
+  }
+  return 0;
+}
+
+function updateStreakDisplay() {
+  const effectiveStreak = getEffectiveWeeklyStreak();
+  const streakText = `${effectiveStreak} ${effectiveStreak === 1 ? 'sem' : 'sems'}`;
+
+  // Badge en cabecera principal (Navbar)
+  const navText = document.getElementById('nav-streak-text');
+  if (navText) {
+    navText.textContent = streakText;
+  }
+  const navBadge = document.getElementById('nav-streak-badge');
+  if (navBadge) {
+    if (effectiveStreak > 0) {
+      navBadge.className = 'flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-300 rounded-full shadow-sm transition-all';
+      navBadge.title = `¡Racha semanal activa! Llevas ${effectiveStreak} ${effectiveStreak === 1 ? 'semana consecutiva' : 'semanas consecutivas'} aprendiendo`;
+    } else {
+      navBadge.className = 'flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200 rounded-full opacity-70 transition-all';
+      navBadge.title = 'Completa cualquier lección para iniciar tu racha semanal';
+    }
+  }
+
+  // Contador dentro del modal de victoria
+  const victoryStreak = document.getElementById('victory-streak-counter');
+  if (victoryStreak) {
+    victoryStreak.textContent = `🔥 ${streakText}`;
+  }
+}
+
+function recordLessonCompletionStreak() {
+  const currentWeek = getMondayString();
+  const lastWeek = currentUser.lastActiveWeek || localStorage.getItem('pyminas_last_active_week') || '';
+  let streak = parseInt(currentUser.weeklyStreak || localStorage.getItem('pyminas_weekly_streak') || 0, 10) || 0;
+
+  if (!lastWeek) {
+    streak = 1;
+  } else {
+    const diff = getWeekDiff(lastWeek, currentWeek);
+    if (diff === 0) {
+      // Misma semana: si estaba en 0, inicia en 1; si ya tenía racha se mantiene
+      if (streak < 1) streak = 1;
+    } else if (diff === 1) {
+      // Semana consecutiva siguiente: racha continúa (+1 semana)
+      streak = (streak < 1 ? 1 : streak) + 1;
+    } else if (diff > 1) {
+      // Pasó más de una semana sin completar: la racha se reinicia en 1
+      streak = 1;
+    } else {
+      if (streak < 1) streak = 1;
+    }
+  }
+
+  currentUser.weeklyStreak = streak;
+  currentUser.lastActiveWeek = currentWeek;
+
+  localStorage.setItem('pyminas_weekly_streak', String(streak));
+  localStorage.setItem('pyminas_last_active_week', currentWeek);
+
+  updateStreakDisplay();
+
+  if (typeof syncProgressToServer === 'function') {
+    syncProgressToServer();
+  }
+}
 
 // Almacenamiento local de lecciones completadas y progreso por pasos
 let completedLessons = JSON.parse(localStorage.getItem('py101_completed_lessons') || '["w1-l1"]');
@@ -939,26 +1046,8 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
 
   return `
     <div class="w-full flex flex-col items-center">
-      <!-- 1. Pantalla de salida (Consola verde idéntica a Brilliant) -->
-      <div class="w-full bg-[#000000] border-2 border-[#10b981] rounded-2xl p-3.5 mb-3 font-mono text-xs sm:text-sm text-[#34d399] min-h-[58px] shadow-sm flex flex-col justify-center text-left">
-        <div class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider mb-1 flex items-center justify-between border-b border-emerald-950 pb-1">
-          <span>Salida en pantalla (Terminal)</span>
-          <span class="w-2 h-2 rounded-full ${isLocked ? 'bg-amber-400' : 'bg-emerald-400'} animate-ping"></span>
-        </div>
-        <div id="code-terminal-${playerId}" class="min-h-[22px] whitespace-pre-wrap font-semibold leading-relaxed">
-          ${isLocked ? `
-            <span class="text-slate-400 italic select-none text-xs flex items-center gap-2 py-0.5">
-              <svg class="w-3.5 h-3.5 text-amber-400 inline shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              <span>Piensa tu respuesta. El código se ejecutará al comprobar...</span>
-            </span>
-          ` : `
-            <span class="text-slate-600 italic select-none text-xs">Presiona ▶ para ejecutar línea por línea...</span>
-          `}
-        </div>
-      </div>
-
-      <!-- 2. Editor de código con flecha indicadora y toolbar -->
-      <div class="w-full bg-[#0d151c] rounded-2xl overflow-hidden border border-[#1e2d3d] shadow-md text-left">
+      <!-- 1. Editor de código con flecha indicadora y toolbar -->
+      <div class="w-full bg-[#0d151c] rounded-2xl overflow-hidden border border-[#1e2d3d] shadow-md text-left mb-3">
         <div class="bg-[#101923] border-b border-[#1e2d3d] px-4 py-2 flex items-center justify-between text-xs font-mono text-slate-400">
           <span class="flex items-center gap-1.5">
             <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
@@ -1012,6 +1101,24 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
               <span id="code-play-icon-${playerId}">▶</span>
               <span id="code-play-text-${playerId}">Ejecutar</span>
             </button>
+          `}
+        </div>
+      </div>
+
+      <!-- 2. Pantalla de salida (Consola verde ubicada DEBAJO del código, estilo IDE) -->
+      <div class="w-full bg-[#000000] border-2 border-[#10b981] rounded-2xl p-3.5 font-mono text-xs sm:text-sm text-[#34d399] min-h-[58px] shadow-sm flex flex-col justify-center text-left">
+        <div class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider mb-1 flex items-center justify-between border-b border-emerald-950 pb-1">
+          <span>Salida en pantalla (Terminal)</span>
+          <span class="w-2 h-2 rounded-full ${isLocked ? 'bg-amber-400' : 'bg-emerald-400'} animate-ping"></span>
+        </div>
+        <div id="code-terminal-${playerId}" class="min-h-[22px] whitespace-pre-wrap font-semibold leading-relaxed">
+          ${isLocked ? `
+            <span class="text-slate-400 italic select-none text-xs flex items-center gap-2 py-0.5">
+              <svg class="w-3.5 h-3.5 text-amber-400 inline shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <span>Piensa tu respuesta. El código se ejecutará al comprobar...</span>
+            </span>
+          ` : `
+            <span class="text-slate-600 italic select-none text-xs">Presiona ▶ para ejecutar línea por línea...</span>
           `}
         </div>
       </div>
@@ -2640,6 +2747,9 @@ function renderLessonVictory() {
   // Al completar la lección, reiniciar el progreso de pasos a 0 para que al repasar comience de nuevo
   saveLessonStep(currentLesson.id, 0);
 
+  // Registrar y actualizar la racha semanal (cualquier lección completada activa/continúa la racha)
+  recordLessonCompletionStreak();
+
   triggerGrandConfetti();
   playSound('victory');
 
@@ -2708,6 +2818,12 @@ function renderLessonVictory() {
       }
       victoryXp.textContent = `+${xp} XP`;
     }, 40);
+  }
+
+  const victoryStreak = document.getElementById('victory-streak-counter');
+  if (victoryStreak) {
+    const effStreak = getEffectiveWeeklyStreak();
+    victoryStreak.textContent = `🔥 ${effStreak} ${effStreak === 1 ? 'sem' : 'sems'}`;
   }
 
   if (victoryModal) {
@@ -3125,23 +3241,17 @@ async function handleAuthLogin(event) {
 
   hideAuthError();
 
-  // 1. Validación de usuario o correo
-  if (!rawEmail) {
-    showAuthError('Por favor ingresa tu usuario o correo institucional de la UNAL.');
+  // 1. Validación estricta de correo institucional
+  const email = rawEmail.toLowerCase();
+  if (!email) {
+    showAuthError('Por favor ingresa el correo de la universidad.');
     if (emailInput) emailInput.focus();
     return false;
   }
 
-  // Soporte ergonómico: Si el estudiante escribe solo 'samu', completar '@unal.edu.co'
-  let email = rawEmail.toLowerCase();
-  if (!email.includes('@')) {
-    email = email + '@unal.edu.co';
-    if (emailInput) emailInput.value = email;
-  }
-
-  // Validación estricta de dominio institucional UNAL
+  // Validación estricta: el usuario debe ingresar sí o sí la extensión @unal.edu.co
   if (!email.endsWith('@unal.edu.co') || email.length <= 12) {
-    showAuthError('Acceso restringido: Solo se permiten correos institucionales @unal.edu.co');
+    showAuthError('Acceso institucional: Debes ingresar tu correo oficial con extensión @unal.edu.co');
     if (emailInput) emailInput.focus();
     return false;
   }
@@ -3205,8 +3315,17 @@ async function handleAuthLogin(event) {
       if (typeof data.progress.xp === 'number') {
         currentUser.xp = data.progress.xp;
       }
+      if (typeof data.progress.weeklyStreak === 'number') {
+        currentUser.weeklyStreak = data.progress.weeklyStreak;
+        localStorage.setItem('pyminas_weekly_streak', String(currentUser.weeklyStreak));
+      }
+      if (data.progress.lastActiveWeek) {
+        currentUser.lastActiveWeek = data.progress.lastActiveWeek;
+        localStorage.setItem('pyminas_last_active_week', currentUser.lastActiveWeek);
+      }
     }
 
+    updateStreakDisplay();
     updateUserBadge(data.email);
     switchView('dashboard');
     renderDashboard();
@@ -3281,8 +3400,17 @@ async function checkAuthSessionOnStartup() {
       if (typeof data.progress.xp === 'number') {
         currentUser.xp = data.progress.xp;
       }
+      if (typeof data.progress.weeklyStreak === 'number') {
+        currentUser.weeklyStreak = data.progress.weeklyStreak;
+        localStorage.setItem('pyminas_weekly_streak', String(currentUser.weeklyStreak));
+      }
+      if (data.progress.lastActiveWeek) {
+        currentUser.lastActiveWeek = data.progress.lastActiveWeek;
+        localStorage.setItem('pyminas_last_active_week', currentUser.lastActiveWeek);
+      }
     }
 
+    updateStreakDisplay();
     updateUserBadge(data.email);
     switchView('dashboard');
     renderDashboard();
@@ -3290,6 +3418,7 @@ async function checkAuthSessionOnStartup() {
   } catch (err) {
     console.warn('Modo offline / API de auth no accesible, usando estado en caché:', err);
     if (currentUser.email) {
+      updateStreakDisplay();
       updateUserBadge(currentUser.email);
       switchView('dashboard');
       renderDashboard();
@@ -3316,7 +3445,9 @@ function syncProgressToServer() {
           progress: {
             completedLessons,
             savedLessonSteps,
-            xp: currentUser.xp || 0
+            xp: currentUser.xp || 0,
+            weeklyStreak: currentUser.weeklyStreak || 0,
+            lastActiveWeek: currentUser.lastActiveWeek || ''
           }
         })
       });
@@ -3339,13 +3470,19 @@ async function logoutUser() {
 
   localStorage.removeItem(AUTH_TOKEN_KEY);
   localStorage.removeItem(AUTH_EMAIL_KEY);
+  localStorage.removeItem('pyminas_weekly_streak');
+  localStorage.removeItem('pyminas_last_active_week');
   currentUser.token = '';
   currentUser.email = '';
+  currentUser.weeklyStreak = 0;
+  currentUser.lastActiveWeek = '';
+  updateStreakDisplay();
   updateUserBadge('Estudiante UNAL');
   showLoginView('Has cerrado sesión correctamente.');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  updateStreakDisplay();
   renderDashboard();
   setTimeout(initPyodide, 800);
   checkAuthSessionOnStartup();

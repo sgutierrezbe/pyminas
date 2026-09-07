@@ -180,14 +180,10 @@ class PyMinasHandler(http.server.SimpleHTTPRequestHandler):
             email = str(payload.get('email', '')).strip().lower()
             password = str(payload.get('password', '')).strip()
 
-            # Si el usuario solo escribió su nombre de usuario, agregar @unal.edu.co automáticamente
-            if email and '@' not in email:
-                email = f"{email}@unal.edu.co"
-
-            # 1. Validación estricta de correo UNAL
+            # 1. Validación estricta: debe ingresar sí o sí el correo con extensión @unal.edu.co
             if not is_valid_unal_email(email):
                 return self.send_json(400, {
-                    "error": "El usuario debe ser un correo institucional que termine en @unal.edu.co"
+                    "error": "Acceso institucional: Debes ingresar tu correo oficial con extensión @unal.edu.co"
                 })
 
             # 2. Validación de contraseña
@@ -204,7 +200,9 @@ class PyMinasHandler(http.server.SimpleHTTPRequestHandler):
             initial_progress = {
                 "completedLessons": ["w1-l1"],
                 "savedLessonSteps": {},
-                "xp": 0
+                "xp": 0,
+                "weeklyStreak": 0,
+                "lastActiveWeek": ""
             }
 
             token = secrets.token_hex(32)

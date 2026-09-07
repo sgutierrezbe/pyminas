@@ -164,6 +164,44 @@
         assert(currentStepIndex >= currentLesson.steps.length, "Tecla Enter finalizó la lección y abrió modal de victoria");
         assert(getSavedLessonStep('w1-l1') === 0, "Al finalizar lección, savedLessonSteps se reinició a 0 para futuros repasos");
 
+        // 8. Test Terminal Console Placement below Code Editor
+        openLessonDirect('w1-l1', 0); // paso 0 es explicación con code player
+        const editorBox = document.getElementById('code-lines-expl_0');
+        const termBox = document.getElementById('code-terminal-expl_0');
+        assert(editorBox !== null, "Editor de código renderizado en reproductor");
+        assert(termBox !== null, "Consola terminal renderizada en reproductor");
+        assert((editorBox.compareDocumentPosition(termBox) & Node.DOCUMENT_POSITION_FOLLOWING) !== 0, "Consola de salida ubicada DEBAJO del editor de código");
+
+        // 9. Test Weekly Streak Logic
+        assert(typeof getMondayString === 'function', "Función getMondayString disponible");
+        const monday1 = getMondayString(new Date('2026-09-02')); // Miércoles
+        const monday2 = getMondayString(new Date('2026-09-06')); // Domingo misma semana
+        const monday3 = getMondayString(new Date('2026-09-08')); // Martes semana siguiente
+        assert(monday1 === monday2, "Misma semana genera el mismo lunes identificador");
+        assert(getWeekDiff(monday1, monday3) === 1, "Semana siguiente calcula diferencia exacta de 1 semana");
+        assert(getWeekDiff(monday1, getMondayString(new Date('2026-09-20'))) === 2, "Dos semanas de diferencia calcula diff=2");
+
+        // Test streak increment upon lesson completion
+        currentUser.weeklyStreak = 0;
+        currentUser.lastActiveWeek = '';
+        recordLessonCompletionStreak();
+        assert(currentUser.weeklyStreak === 1, "Completar lección por primera vez inicia racha en 1 semana");
+        assert(currentUser.lastActiveWeek === getMondayString(), "Registra la semana actual");
+        assert(getEffectiveWeeklyStreak() === 1, "Racha efectiva es 1");
+
+        // Simular que la semana anterior tenía racha 2 y hoy completa otra
+        currentUser.weeklyStreak = 2;
+        currentUser.lastActiveWeek = getMondayString(new Date(Date.now() - 7 * 86400000));
+        recordLessonCompletionStreak();
+        assert(currentUser.weeklyStreak === 3, "Completar lección en semana consecutiva incrementa la racha a 3");
+
+        // Simular que pasaron 3 semanas sin actividad (racha rota)
+        currentUser.weeklyStreak = 5;
+        currentUser.lastActiveWeek = getMondayString(new Date(Date.now() - 21 * 86400000));
+        assert(getEffectiveWeeklyStreak() === 0, "Racha se muestra en 0 si pasaron más de 1 semana sin entrar");
+        recordLessonCompletionStreak();
+        assert(currentUser.weeklyStreak === 1, "Al retomar tras semanas inactivo, la racha se reinicia en 1");
+
         log("¡TODAS LAS PRUEBAS DE FASE 1 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");
         window.TESTS_FINISHED = true;

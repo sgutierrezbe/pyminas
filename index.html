@@ -391,8 +391,8 @@
           <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Puntos XP</div>
         </div>
         <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-3">
-          <div class="text-xl font-black text-emerald-600">✓</div>
-          <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Completado</div>
+          <div class="text-xl font-black text-amber-500" id="victory-streak-counter">🔥 1 sem</div>
+          <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Racha Semanal</div>
         </div>
       </div>
 
@@ -466,7 +466,7 @@
             ℹ
           </div>
           <p class="text-[11px] text-emerald-900 leading-normal">
-            <strong class="font-bold">¿Primera vez aquí?</strong> Escribe tu correo UNAL y la contraseña que desees: tu cuenta se creará automáticamente en este primer ingreso.
+            <strong class="font-bold">¿Primera vez aquí?</strong> Ingresa el correo de la uni y la contraseña que desees: tu cuenta se creará automáticamente en este primer ingreso.
           </p>
         </div>
 
@@ -480,16 +480,16 @@
         <form id="auth-login-form" onsubmit="event.preventDefault(); handleAuthLogin(event); return false;" class="w-full flex flex-col gap-3.5 text-left">
           <div>
             <label for="auth-email-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              Usuario o Correo UNAL
+              Correo de la universidad
             </label>
             <input 
-              type="text" 
+              type="email" 
               id="auth-email-input" 
-              placeholder="ej: samu o samu@unal.edu.co" 
+              placeholder="Ingresa tu correo de la universidad" 
               autocomplete="username"
               class="w-full px-4 py-3 text-sm font-medium bg-slate-50 border-2 border-slate-200 rounded-2xl focus:bg-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition text-slate-800 placeholder:text-slate-400"
             >
-            <p class="text-[10px] text-slate-400 mt-1 pl-1">Puedes escribir solo tu usuario (ej: <code class="text-emerald-700 font-bold">samu</code>) o tu correo completo con <code class="text-emerald-700 font-bold">@unal.edu.co</code></p>
+            <p class="text-[10px] text-slate-400 mt-1 pl-1">Ingresa el correo de la uni para sincronizar tu progreso y lecciones.</p>
           </div>
 
           <div>
@@ -526,7 +526,7 @@
           <img src="assets/logotipo-unal.svg" class="w-7 h-7 object-contain" alt="UNAL">
           <div>
             <div class="font-bold text-slate-800">Universidad Nacional de Colombia · Sede Medellín</div>
-            <div class="text-[11px] text-slate-400">Facultad de Minas — pyMinas <span class="font-mono font-semibold text-slate-500">v1.24</span></div>
+            <div class="text-[11px] text-slate-400">Facultad de Minas — pyMinas <span class="font-mono font-semibold text-slate-500">v1.25</span></div>
           </div>
         </div>
         <div class="flex items-center gap-3 text-slate-400">
@@ -536,7 +536,7 @@
           <span>•</span>
           <span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold rounded-md">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>v1.24</span>
+            <span>v1.25</span>
           </span>
         </div>
       </div>
@@ -578,9 +578,9 @@
         </div>
 
         <div class="flex items-center gap-3">
-          <div class="flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full">
+          <div id="nav-streak-badge" class="flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full transition-all" title="Racha semanal de aprendizaje">
             <span class="text-sm">🔥</span>
-            <span class="text-xs font-bold text-amber-800">3 días</span>
+            <span id="nav-streak-text" class="text-xs font-bold text-amber-800">0 sem</span>
           </div>
 
           <!-- Badge de Estudiante Logueado con opción de cerrar sesión -->
@@ -685,7 +685,7 @@
           <img src="assets/logotipo-unal.svg" class="w-7 h-7 object-contain" alt="UNAL">
           <div>
             <div class="font-bold text-slate-800">Universidad Nacional de Colombia · Sede Medellín</div>
-            <div class="text-[11px] text-slate-400">Facultad de Minas — pyMinas <span class="font-mono font-semibold text-slate-500">v1.24</span></div>
+            <div class="text-[11px] text-slate-400">Facultad de Minas — pyMinas <span class="font-mono font-semibold text-slate-500">v1.25</span></div>
           </div>
         </div>
         <div class="flex items-center gap-3 text-slate-400">
@@ -695,7 +695,7 @@
           <span>•</span>
           <span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold rounded-md">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>v1.24</span>
+            <span>v1.25</span>
           </span>
         </div>
       </div>
@@ -748,8 +748,8 @@
 
   </div>
 
-  <script src="curriculum.js?v=1.24"></script>
-  <script src="baked_traces.js?v=1.24"></script>
-  <script src="app.js?v=1.24"></script>
+  <script src="curriculum.js?v=1.25"></script>
+  <script src="baked_traces.js?v=1.25"></script>
+  <script src="app.js?v=1.25"></script>
 </body>
 </html>
