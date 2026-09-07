@@ -1021,6 +1021,70 @@ function tracePythonExecution(code, expectedOutput) {
   return { lines, lineTrace };
 }
 
+// --- Desplazamiento inteligente para encuadrar ventanitas de código en pantalla ---
+function ensureCodeVisible(target, forceCenter = true) {
+  let el = null;
+  if (typeof target === 'string') {
+    el = document.getElementById(target)
+      || document.getElementById(`code-player-wrapper-${target}`)
+      || document.getElementById(`code-lines-${target}`)
+      || document.getElementById(`single-sandbox-term`)
+      || document.querySelector(target);
+  } else if (target instanceof HTMLElement) {
+    el = target;
+  }
+
+  if (!el) {
+    el = document.getElementById('sandbox-editor-container')
+      || document.querySelector('.code-exec-line')?.closest('.flex-col')
+      || document.getElementById('single-sandbox-term');
+  }
+
+  if (!el) return;
+
+  const wrapper = el.closest('#sandbox-editor-container')
+    || el.closest('[id^="code-player-wrapper-"]')
+    || el;
+
+  requestAnimationFrame(() => {
+    const rect = wrapper.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    const lessonHeader = document.querySelector('#view-lesson header') || document.querySelector('header');
+    const headerHeight = lessonHeader ? Math.max(50, lessonHeader.getBoundingClientRect().height) : 64;
+
+    const availableHeight = windowHeight - headerHeight;
+    const topMargin = 20;
+    const bottomMargin = 20;
+
+    if (!forceCenter) {
+      const isFullyVisible = (
+        rect.top >= (headerHeight + topMargin) &&
+        rect.bottom <= (windowHeight - bottomMargin)
+      );
+      if (isFullyVisible) return;
+    }
+
+    let targetScrollY;
+    if (rect.height < availableHeight - (topMargin + bottomMargin)) {
+      const idealTop = headerHeight + ((availableHeight - rect.height) / 2);
+      targetScrollY = window.pageYOffset + rect.top - idealTop;
+    } else {
+      targetScrollY = window.pageYOffset + rect.top - headerHeight - topMargin;
+    }
+
+    targetScrollY = Math.max(0, Math.round(targetScrollY));
+
+    if (Math.abs(window.pageYOffset - targetScrollY) > 8) {
+      window.scrollTo({
+        top: targetScrollY,
+        behavior: 'smooth'
+      });
+    }
+  });
+}
+window.ensureCodeVisible = ensureCodeVisible;
+
 function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) {
   const { lines, lineTrace } = tracePythonExecution(code, expectedOutput);
   
@@ -1045,7 +1109,7 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
   }).join('');
 
   return `
-    <div class="w-full flex flex-col items-center">
+    <div id="code-player-wrapper-${playerId}" class="w-full flex flex-col items-center">
       <!-- 1. Editor de código con flecha indicadora y toolbar -->
       <div class="w-full bg-[#0d151c] rounded-2xl overflow-hidden border border-[#1e2d3d] shadow-md text-left mb-3">
         <div class="bg-[#101923] border-b border-[#1e2d3d] px-4 py-2 flex items-center justify-between text-xs font-mono text-slate-400">
@@ -1200,6 +1264,7 @@ function runCodePlayerAutoAnimate(playerId, onComplete) {
   }
 
   codePlayerSetLine(playerId, -1);
+  ensureCodeVisible(`code-player-wrapper-${playerId}`);
   player.isPlaying = true;
 
   let current = 0;
@@ -1314,6 +1379,7 @@ function codePlayerNextStep(playerId) {
   }
 
   if (player.currentIndex < player.lines.length - 1) {
+    ensureCodeVisible(`code-player-wrapper-${playerId}`, false);
     codePlayerSetLine(playerId, player.currentIndex + 1);
     if (player.currentIndex >= player.lines.length - 1 && playerId.startsWith('expl_')) {
       unlockExplanationContinue();
@@ -1337,6 +1403,7 @@ function codePlayerPrevStep(playerId) {
   const player = codePlayerRegistry[playerId];
   if (!player) return;
   if (player.currentIndex > 0) {
+    ensureCodeVisible(`code-player-wrapper-${playerId}`, false);
     codePlayerSetLine(playerId, player.currentIndex - 1);
   } else {
     codePlayerReset(playerId);
@@ -1393,6 +1460,9 @@ function codePlayerTogglePlay(playerId) {
     if (player.currentIndex >= player.lines.length - 1) {
       codePlayerReset(playerId);
     }
+
+    // Encuadrar perfectamente la ventanita de código en pantalla al dar clic a ejecutar
+    ensureCodeVisible(`code-player-wrapper-${playerId}`);
 
     player.isPlaying = true;
     if (playText) playText.textContent = "Pausar";
@@ -2230,7 +2300,7 @@ function renderSandboxStep(step, container) {
       </p>
 
       <!-- Editor de Código estilo VS Code (completo, sin recortes ni scrollbar) -->
-      <div class="w-full bg-[#181825] border-2 border-slate-700/60 rounded-2xl overflow-hidden shadow-lg mb-4 text-left">
+      <div id="sandbox-editor-container" class="w-full bg-[#181825] border-2 border-slate-700/60 rounded-2xl overflow-hidden shadow-lg mb-4 text-left">
         
         <!-- Header con pestaña de archivo main.py estilo VS Code -->
         <div class="bg-[#11111b] px-4 py-2 flex items-center justify-between border-b border-slate-800 text-xs font-mono">
@@ -2415,6 +2485,7 @@ async function executeGuidedSandbox() {
   if (!opt) return;
 
   stopSandboxAnimation();
+  ensureCodeVisible('sandbox-editor-container');
 
   const runBtn = document.getElementById('single-run-btn');
   const term = document.getElementById('single-sandbox-term');
@@ -2645,6 +2716,7 @@ async function executeSingleSandbox() {
 
   if (!textarea) return;
 
+  ensureCodeVisible('sandbox-editor-container');
   playSound('step');
   runBtn.disabled = true;
   runBtn.textContent = "Ejecutando...";

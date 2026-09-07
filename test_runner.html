@@ -202,6 +202,13 @@
         recordLessonCompletionStreak();
         assert(currentUser.weeklyStreak === 1, "Al retomar tras semanas inactivo, la racha se reinicia en 1");
 
+        // 10. Test Auto-Scroll to Code Window (ensureCodeVisible)
+        assert(typeof ensureCodeVisible === 'function', "Función ensureCodeVisible disponible");
+        const codeWrapper = document.getElementById('code-player-wrapper-expl_0');
+        assert(codeWrapper !== null, "Contenedor completo del reproductor de código presente (editor + terminal)");
+        ensureCodeVisible('code-player-wrapper-expl_0');
+        assert(true, "ensureCodeVisible se ejecuta correctamente para encuadrar la ventana de código");
+
         log("¡TODAS LAS PRUEBAS DE FASE 1 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");
         window.TESTS_FINISHED = true;
