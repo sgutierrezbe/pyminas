@@ -1,253 +1,311 @@
-# 📚 Manual de Creación y Verificación Rigurosa de Ejercicios — pyMinas v1.0
+# 📚 Manual de Arquitectura de Niveles, Ingesta de Notebooks y Estándar Pedagógico Estilo Brilliant — pyMinas v1.0
+Facultad de Minas · Universidad Nacional de Colombia - Sede Medellín
 
 > **Principio Fundacional de pyMinas:**  
-> *"En una plataforma educativa de ingeniería, un bug visual en la interfaz incomoda, pero **un ejercicio con una salida errónea, una explicación confusa o una opción ambigua destruye por completo el proceso de aprendizaje**."*  
+> *"En una plataforma educativa de ingeniería, un bug visual incomoda, pero **un ejercicio con una salida errónea, una explicación confusa o una opción ambigua destruye por completo la confianza y el proceso de aprendizaje del estudiante**."*  
 > 
-> Esta guía establece la arquitectura, estándares pedagógicos y el **protocolo automatizado de verificación en 3 niveles** para garantizar cero errores en el currículo interactivo.
+> Esta guía establece el **workflow oficial de ingesta de Jupyter Notebooks (.ipynb)** del profesor, la **descomposición en conceptos únicos e indivisibles (1 concepto = 1 nivel)** y el **estándar de micro-ejercicios estilo Brilliant** con verificación automatizada en CPython.
 
 ---
 
-## 🧭 1. Filosofía Pedagógica
+## 🧭 1. Filosofía Pedagógica: La Regla de los 15 Segundos
 
-pyMinas está diseñado bajo el modelo de **micro-retos interactivos** inspirado en Brilliant y Duolingo, adaptado para estudiantes de **Fundamentos de Programación** de la Facultad de Minas (UNAL Medellín):
+pyMinas adopta el modelo de **microaprendizaje táctil de alta densidad** inspirado directamente en **Brilliant** y **Duolingo**, adaptado al rigor del curso de *Fundamentos de Programación* de la Facultad de Minas:
 
-1. **Un solo concepto por pantalla:** Nunca abrumes al estudiante con bloques largos de teoría. Cada paso debe enseñar o reforzar una única idea clave.
-2. **Intuición antes que sintaxis:** Primero presenta la lógica cotidiana o el modelo mental (ej. *"una receta con un orden estricto"*), luego muestra el código en Python.
-3. **Predicción activa (`predict`):** Obliga al estudiante a pensar antes de ver el resultado. Leer código y predecir su efecto construye la habilidad más importante de un programador: el *trazado mental*.
-4. **Retroalimentación diagnóstica (`whyIncorrect`):** Las opciones incorrectas no son "trampas": son **distractores pedagógicos**. Cada una debe anticipar un error de razonamiento común y explicar exactamente por qué es erróneo.
+1. **La Regla de los 15 Segundos:** Cada pantalla debe poder leerse, procesarse mentalmente y responderse en pocos segundos. Se prohíben terminantemente los bloques largos de texto o lecturas tipo diapositiva de clase.
+2. **Un solo concepto único por nivel:** El notebook del profesor suele mezclar múltiples temas en una sola celda. En pyMinas, cada concepto atómico (ej. `operadores de comparación`, `if simple`, `else`, `elif`, `operadores lógicos`) se convierte en un **Nivel independiente en el mapa**.
+3. **Predicción activa antes de la ejecución (`predict`):** El estudiante debe trazar mentalmente el flujo del programa antes de ver la salida. Trazar código mentalmente es la habilidad #1 que distingue a un ingeniero que programa.
+4. **Retroalimentación diagnóstica inmediata (`whyIncorrect` y botón `¿Por qué?`):** Las opciones incorrectas son distractores pedagógicos que capturan fallas de razonamiento reales. Al fallar o acertar, el estudiante siempre tiene acceso a la justificación exacta.
 
 ---
 
-## 🏗️ 2. Jerarquía del Currículo (`curriculum.js`)
+## 🔄 2. Workflow Oficial: Del Jupyter Notebook (.ipynb) a pyMinas
 
-Todo el contenido académico reside en [`curriculum.js`](file:///curriculum.js). La estructura jerárquica es:
+Cuando el profesor entrega un cuaderno de Jupyter (`.ipynb`) con el contenido de la semana, el proceso de adaptación sigue este flujo de 5 etapas:
+
+```mermaid
+graph TD
+    A["1. Recepción del .ipynb del profesor"] --> B["2. Extracción automatizada (ingest_notebook.py)"]
+    B --> C["3. Atomización Conceptual (1 Concepto = 1 Nivel)"]
+    C --> D["4. Validación previa de la Malla con el usuario"]
+    D --> E["5. Creación de Micro-Pasos en curriculum.js (Arquetipos Brilliant)"]
+    E --> F["6. Auditoría CPython (verify_curriculum.py)"]
+    F -->|Errores detectados| E
+    F -->|100% Aprobado| G["7. Horneado de Trazas (bake_curriculum.py)"]
+    G --> H["8. Pruebas Web (test_runner.html)"]
+    H --> I["9. Commit Git y Despliegue"]
+```
+
+### Etapa 1: Ingesta Automatizada del Notebook
+El notebook se procesa con la herramienta de extracción del repositorio:
+```bash
+python3 ingest_notebook.py ruta/al/notebook_del_profesor.ipynb
+```
+El script realiza:
+* Lectura del JSON del notebook y extracción de celdas Markdown y de Código.
+* Limpieza automática de comandos mágicos de Jupyter (`%matplotlib`, `!pip`, `!git`).
+* Agrupamiento de fragmentos de código bajo sus encabezados temáticos.
+
+### Etapa 2: Atomización Conceptual
+Los notebooks universitarios suelen ser monolíticos (ej. un notebook de 60 celdas titulado *"Condicionales y Control de Flujo"*). **Nunca se crea un solo nivel gigante.** Se divide en conceptos atómicos:
+
+| Tema Monolítico del Profesor | Descomposición en Niveles de pyMinas (1 Concepto = 1 Nivel) |
+| :--- | :--- |
+| **Condicionales** | **Nivel 1:** Booleanos y operadores de comparación (`>`, `<`, `==`, `!=`)<br>**Nivel 2:** El condicional simple `if` y la regla de indentación<br>**Nivel 3:** La bifurcación binaria con `else`<br>**Nivel 4:** Múltiples caminos excluyentes con `elif`<br>**Nivel 5:** Operadores lógicos compuestos (`and`, `or`, `not`)<br>**Nivel 6:** Detección de errores comunes y anidamiento |
+| **Ciclos / Bucles** | **Nivel 1:** El ciclo condicional `while` y variables de control<br>**Nivel 2:** Evitar bucles infinitos y condiciones de parada<br>**Nivel 3:** El ciclo `for` con la función `range(n)`<br>**Nivel 4:** Variaciones de `range(inicio, fin, paso)`<br>**Nivel 5:** Control de flujo con `break` y `continue`<br>**Nivel 6:** Acumuladores y contadores en ciclos |
+
+### Etapa 3: Validación Previa con el Usuario
+Antes de redactar los ejercicios, el agente presenta al usuario la lista de niveles sugeridos:
+> *"He analizado el notebook de la Semana X. Propongo dividir la temática en los siguientes 5 niveles atómicos: [Lista]. ¿Estás de acuerdo con esta estructura o deseas ajustar algún nivel?"*
+
+### Etapa 4: Construcción de Micro-Pasos por Nivel
+Cada nivel se compone de **4 a 6 micro-pasos** diseñados bajo los 4 arquetipos de Brilliant (ver Sección 3).
+
+### Etapa 5: Pipeline de Auditoría, Horneado y Despliegue
+```bash
+# 1. Auditar con CPython real (salidas exactas, syntax, options)
+python3 verify_curriculum.py
+
+# 2. Hornear trazas de ejecución línea por línea
+python3 bake_curriculum.py
+
+# 3. Validar interfaz en modo headless
+google-chrome --headless --virtual-time-budget=2000 --dump-dom "http://localhost:8080/test_runner.html" | grep "TODAS"
+
+# 4. Git commit y push
+git add curriculum.js baked_traces.js index.html
+git commit -m "feat: add Semana X from notebook (v1.X)"
+git push origin main
+```
+
+---
+
+## 🎯 3. Los 4 Arquetipos de Ejercicios Estilo Brilliant
+
+A partir de las referencias reales de la plataforma Brilliant (*Thinking in Python: Python Conditional Logic*), cada lección combina los siguientes 4 formatos de micro-retos:
 
 ```text
-CURRICULUM
-└── weeks (Semanas del semestre)
-    └── lessons (Lecciones por semana)
-        └── steps (6 pasos pedagógicos por lección)
+Estructura Canónica de un Nivel (4 a 6 pasos):
+├─ Paso 1: Arquetipo 4 · Demostración Activa con Traza (explanation)
+├─ Paso 2: Arquetipo 1 · Predicción de Salida Mental (predict)
+├─ Paso 3: Arquetipo 2 · Detección de Errores / Spot the Bug (predict)
+├─ Paso 4: Arquetipo 3 · Reparar o Completar Código (code_sandbox)
+└─ Paso 5: Arquetipo 1/3 · Reto de Caso Borde o Práctica Guiada
 ```
-
-### Estructura canónica de una lección (6 pasos recomendados):
-1. **Paso 1 (`explanation`):** Introducción al concepto fundamental con un ejemplo de código breve y su reproductor interactivo.
-2. **Paso 2 (`predict`):** Pregunta conceptual de opción múltiple para evaluar la intuición básica.
-3. **Paso 3 (`explanation`):** Profundización o caso especial del concepto (ej. operadores avanzados, parámetros `sep`/`end`, etc.).
-4. **Paso 4 (`predict`):** Reto de lectura de código: ¿cuál es la salida exacta o el comportamiento del fragmento?
-5. **Paso 5 (`predict` o `visualizer_*`):** Laboratorio táctil o ejercicio de análisis de errores comunes.
-6. **Paso 6 (`code_sandbox`):** Práctica guiada donde el estudiante completa un espacio en blanco (`___`) y ejecuta el código en vivo.
 
 ---
 
-## 🧩 3. Tipos de Pasos y Plantillas
+### 🟢 Arquetipo 1: Predicción de Salida Mental (`predict`)
+*Inspirado en la Captura de Referencia 1 de Brilliant.*
 
-### Tipo A: Explicación Interactiva (`explanation`)
-Muestra una breve teoría, un fragmento de código con reproductor línea a línea y una conclusión para recordar.
-
-```javascript
-{
-  type: "explanation",
-  partLabel: "Paso 1 · El concepto",
-  title: "¿Qué es una variable en memoria?",
-  intro: "Una <strong>variable</strong> es como una caja con nombre donde guardas un dato para usarlo más adelante en tu programa.",
-  examples: [
-    {
-      label: "Guardando y mostrando datos",
-      code: `# Guardamos valores en memoria:
-nombre = "Lucía"
-edad = 20
-
-# Los mostramos en pantalla:
-print("Nombre:", nombre)
-print("Edad:", edad)`,
-      output: "Nombre: Lucía\nEdad: 20",
-      explanation: "El signo = no compara igualdad: asigna el valor de la derecha dentro de la caja de la izquierda."
-    }
-  ],
-  keyTakeaway: "En Python no necesitas declarar el tipo de variable: el intérprete lo deduce automáticamente según el valor asignado."
-}
-```
-
-> **⚠️ REGLA DE ORO DE `output`:**  
-> La propiedad `output` debe coincidir **carácter por carácter** con la salida real producida por CPython (respetando espacios, saltos de línea y mayúsculas). El auditor automático [`verify_curriculum.py`](file:///verify_curriculum.py) verificará esto en vivo.
-
----
-
-### Tipo B: Predicción de Opción Múltiple (`predict`)
-Presenta un reto donde el estudiante debe elegir entre opciones mutuamente excluyentes.
+* **Pregunta directa:** `"¿Qué imprime este programa?"` o `"What does this program print?"`.
+* **Código:** Bloque ultra-corto (3 a 5 líneas) con números de línea visibles.
+* **Opciones:** 2 a 4 botones grandes con las salidas formateadas limpiamente (ej. `Locked? True` vs `Locked? False`).
+* **Objetivo:** Obligar al estudiante a calcular en su cabeza el resultado de operadores o mutaciones simples en menos de 10 segundos.
 
 ```javascript
 {
   type: "predict",
-  partLabel: "Paso 4 · Orden de operaciones",
-  title: "¿Cuál es el resultado de este cálculo?",
-  question: "¿Qué valor exacto imprimirá Python en pantalla al ejecutar esta línea?",
-  code: `resultado = 2 + 3 * 4
-print(resultado)`,
+  partLabel: "Paso 2 · Trazado mental",
+  title: "¿Qué imprime este programa?",
+  question: "¿Cuál será la salida exacta tras evaluar la comparación en la última línea?",
+  code: `username = "QuickFox"
+failed_logins = 4
+
+failed_logins += 1
+print("Locked?", failed_logins >= 5)`,
   options: [
-    { 
-      id: "A", 
-      text: "14", 
-      isCorrect: true 
+    {
+      id: "A",
+      text: "Locked? True",
+      isCorrect: true
     },
-    { 
-      id: "B", 
-      text: "20", 
+    {
+      id: "B",
+      text: "Locked? False",
       isCorrect: false,
-      whyIncorrect: "Si sumas primero 2 + 3 obtendrías 5, y 5 * 4 = 20. Pero Python sigue la jerarquía matemática (PEMDAS): la multiplicación siempre se calcula antes que la suma."
-    },
-    { 
-      id: "C", 
-      text: "\"14\"", 
-      isCorrect: false,
-      whyIncorrect: "El resultado es un número entero (int), no una cadena de texto (str). No lleva comillas."
-    },
-    { 
-      id: "D", 
-      text: "Error de sintaxis", 
-      isCorrect: false,
-      whyIncorrect: "En Python puedes combinar múltiples operaciones matemáticas en una sola línea sin ningún problema de sintaxis."
+      whyIncorrect: "Inicialmente failed_logins es 4. Con '+=' suma 1 y pasa a 5. Como 5 >= 5 es verdadero, la salida es True."
     }
   ],
-  correctionTip: "Recuerda la jerarquía matemática estándar: la multiplicación (*) y división (/) tienen prioridad sobre la suma (+) y resta (-).",
-  fullAnswerExplanation: "Siguiendo PEMDAS, Python primero resuelve 3 * 4 = 12, y luego suma 2 + 12 = 14. Si quisieras que sumara primero, tendrías que usar paréntesis: (2 + 3) * 4."
+  correctionTip: "El operador '+=' incrementa el valor en memoria antes de evaluar la comparación '>='.",
+  fullAnswerExplanation: "failed_logins pasa de 4 a 5. La condición '5 >= 5' evalúa a True, por lo que print() muestra 'Locked? True'."
 }
 ```
 
-> **⚠️ REGLAS OBLIGATORIAS PARA `predict`:**
-> 1. **Exactamente una opción correcta:** Una sola opción debe tener `isCorrect: true`. Las demás deben tener `isCorrect: false`.
-> 2. **`whyIncorrect` es obligatorio y diagnóstico:** Toda opción falsa debe tener una explicación pedagógica de al menos 15 caracteres. Prohibido escribir frases vacías como *"Opción incorrecta"* o *"Esa no es la respuesta"*.
-> 3. **IDs estandarizados:** Usa siempre letras mayúsculas consecutivas (`"A"`, `"B"`, `"C"`, `"D"`).
+---
+
+### 🟡 Arquetipo 2: Detección de Errores / Spot the Bug (`predict`)
+*Inspirado en la Captura de Referencia 2 de Brilliant.*
+
+* **Pregunta diagnóstica:** `"¿Cuál es el error en este código?"` acompañado de la regla de negocio (ej. *"Las cuentas con 5 o más intentos fallidos deben bloquearse"*).
+* **Código:** El código tiene un fallo conceptual común (ej. `< 5` en vez de `>= 5`, o `=` en vez de `==`).
+* **Opciones:** Diagnósticos descriptivos que explican el síntoma o causa del problema.
+* **Objetivo:** Desarrollar pensamiento crítico de depuración (debugging).
+
+```javascript
+{
+  type: "predict",
+  partLabel: "Paso 3 · Detección de errores",
+  title: "¿Cuál es el error en este programa?",
+  question: "Regla del sistema: Las cuentas con 5 o más intentos fallidos deben bloquearse. ¿Qué está fallando en el código?",
+  code: `username = "QuickFox"
+failed_logins = 1
+
+failed_logins += 4
+print("Locked?", failed_logins < 5)`,
+  options: [
+    {
+      id: "A",
+      text: "Bloquea las cuentas cuando hay menos de 5 intentos fallidos.",
+      isCorrect: true
+    },
+    {
+      id: "B",
+      text: "Bloquea la cuenta cuando hay más de 5 intentos fallidos.",
+      isCorrect: false,
+      whyIncorrect: "El operador usado es '<' (menor que), lo que causa el efecto contrario: daría True solo para valores menores a 5."
+    },
+    {
+      id: "C",
+      text: "Genera un error de sintaxis en la suma.",
+      isCorrect: false,
+      whyIncorrect: "failed_logins += 4 es una sintaxis de incremento perfectamente válida en Python."
+    }
+  ],
+  correctionTip: "Para representar '5 o más' se debe usar el operador mayor o igual (>=), no menor (<).",
+  fullAnswerExplanation: "Al usar '< 5', la expresión evalúa a False cuando la cuenta acumula 5 intentos. El operador correcto es '>='."
+}
+```
 
 ---
 
-### Tipo C: Práctica Guiada en Vivo (`code_sandbox`)
-Reto de rellenar el espacio en blanco marcado con `___`. Al seleccionar la opción, el estudiante ve cómo se completa el código en tiempo real y puede presionar `Enter` para compilarlo con WebAssembly (Pyodide).
+### 🔵 Arquetipo 3: Reparar o Completar Código (`code_sandbox`)
+*Inspirado en las Capturas de Referencia 3 y 5 de Brilliant.*
+
+* **Instrucción concisa:** `"Corrige el programa"` o `"Completa el código"` con el objetivo específico.
+* **Código interactivo:** Contiene un espacio en blanco marcado con `___`.
+* **Opciones de reemplazo:** Botones interactivos que rellenan el código en tiempo real.
+* **Ejecución inmediata:** Al presionar `Verificar` / `Enter`, el código corre en WebAssembly/CPython y la consola `OUTPUT` muestra el resultado real.
+* **Botón `¿Por qué?`:** Tras acertar, el estudiante puede consultar la explicación profunda antes de continuar.
 
 ```javascript
 {
   type: "code_sandbox",
-  partLabel: "Paso 6 · Práctica guiada",
-  title: "Crea un ticket de compra con E-P-S",
-  instruction: "Completa la etapa de Procesamiento sumando las variables de los productos para calcular el total a pagar.",
-  starterCode: `# 1. ENTRADA (Datos iniciales):
-producto_a = 45
-producto_b = 30
+  partLabel: "Paso 4 · Práctica interactiva",
+  title: "Corrige el bloque de bloqueo de cuenta",
+  instruction: "El sistema debe bloquear la cuenta si failed_logins alcanza 5 o más. Completa la expresión adecuada:",
+  starterCode: `username = "QuickFox"
+failed_logins = 1
 
-# 2. PROCESAMIENTO (Suma los dos productos):
-total = ___
-
-# 3. SALIDA (Muestra el ticket):
-print("Producto 1: $", producto_a, sep="")
-print("Producto 2: $", producto_b, sep="")
-print("Total a pagar: $", total, sep="")`,
+failed_logins += 4
+print("Locked?", ___)`,
   slotMarker: "___",
   options: [
     {
       id: "A",
-      code: "producto_a + producto_b",
-      label: "producto_a + producto_b",
+      code: "failed_logins >= 5",
+      label: "failed_logins >= 5",
       isCorrect: true,
-      feedback: "¡Perfecto! Sumas las dos variables numéricas para obtener el total exacto ($75)."
+      feedback: "¡Excelente! '>= 5' bloquea exactamente a partir de 5 intentos o más."
     },
     {
       id: "B",
-      code: '"producto_a" + "producto_b"',
-      label: '"producto_a" + "producto_b"',
+      code: "failed_logins > 5",
+      label: "failed_logins > 5",
       isCorrect: false,
-      feedback: "Al poner comillas, Python une los nombres como texto y daría 'producto_aproducto_b' en lugar de sumar los números."
+      feedback: "Con '> 5', un usuario con exactamente 5 intentos no sería bloqueado; requeriría 6."
     },
     {
       id: "C",
-      code: "producto_a * producto_b",
-      label: "producto_a * producto_b",
+      code: "failed_logins == 5",
+      label: "failed_logins == 5",
       isCorrect: false,
-      feedback: "El operador * multiplica. Para un ticket de compra queremos el costo total acumulado con suma (+)."
+      feedback: "Con '== 5', si alguien acumula 6 o más intentos, la condición daría False y la cuenta se desbloquearía."
     }
   ]
 }
 ```
 
-> **⚠️ REGLAS OBLIGATORIAS PARA `code_sandbox`:**
-> 1. `starterCode` debe contener textualmente el marcador de espacio (por defecto `___`).
-> 2. Al sustituir `___` por la opción correcta (`code`), el código resultante debe ser **sintácticamente válido y ejecutable en CPython**.
-> 3. Cada opción debe incluir retroalimentación inmediata (`feedback`).
+---
+
+### 🟣 Arquetipo 4: Demostración Activa con Traza Paso a Paso (`explanation`)
+*Inspirado en la Captura de Referencia 4 de Brilliant.*
+
+* **Foco visual:** Snippet corto (3 a 6 líneas) con consola de salida conectada.
+* **Interactividad:** Botón de reproducción línea por línea con indicador `▶` sobre la línea activa y actualización sincronizada del terminal.
+* **Texto mínimo:** Máximo 2 oraciones introduciendo el mecanismo.
+
+```javascript
+{
+  type: "explanation",
+  partLabel: "Paso 1 · Observa la ejecución",
+  title: "¿Cómo toma decisiones un condicional if?",
+  intro: "La instrucción <code>if</code> evalúa una condición lógica. Si es verdadera, ejecuta el bloque indentado; si es falsa, lo salta por completo.",
+  examples: [
+    {
+      label: "Alerta de seguridad",
+      code: `username = "MagnumKPI"
+failed_logins = 4
+
+if failed_logins > 3:
+    print("⚠️ Warning!")
+print("Intentos registrados:", failed_logins)`,
+      output: "⚠️ Warning!\nIntentos registrados: 4",
+      explanation: "Como 4 > 3 es True, Python entra al bloque indentado y muestra la advertencia antes de continuar."
+    }
+  ],
+  keyTakeaway: "En Python, la indentación (4 espacios) define qué líneas pertenecen al bloque condicional."
+}
+```
 
 ---
 
-## 🛡️ 4. Protocolo Obligatorio de Verificación Exhaustiva
+## 📏 4. Reglas de Oro de Diseño Pedagógico
 
-Para garantizar que ningún error pedagógico o técnico llegue a los estudiantes, **antes de hacer commit de nuevos ejercicios debes seguir este flujo estricto**:
-
-```mermaid
-graph TD
-    A["1. Escribir nuevos ejercicios en curriculum.js"] --> B["2. Ejecutar python3 verify_curriculum.py"]
-    B -->|Falló con errores| C["Corregir inconsistencias didácticas o de sintaxis"]
-    C --> B
-    B -->|100% Aprobado| D["3. Ejecutar python3 bake_curriculum.py"]
-    D --> E["4. Probar en navegador (test_runner.html)"]
-    E --> F["5. Git Commit y Push a GitHub"]
-```
-
-### Paso 1: Ejecutar el Auditor Pedagógico Automático
-En la raíz del proyecto, ejecuta:
-```bash
-python3 verify_curriculum.py
-```
-El auditor realiza más de **360 comprobaciones automáticas** con el intérprete real de Python:
-- Verifica que no haya IDs duplicados en semanas, lecciones u opciones.
-- Ejecuta cada bloque de código en un sandbox aislado de CPython.
-- Compara que `output` coincida al 100% con la salida real de Python.
-- Valida que todas las preguntas `predict` tengan exactamente una respuesta correcta y explicaciones detalladas para cada error.
-- Verifica que el código de los sandbox compile limpiamente al rellenar el espacio.
-
-> Si el auditor encuentra algún fallo, detendrá el proceso con código de salida `1` e imprimirá la ubicación exacta del paso y la discrepancia encontrada.
-
----
-
-### Paso 2: Hornear las Trazas de Reproducción Paso a Paso
-Una vez que el auditor confirme que el currículo está limpio, genera las trazas de ejecución interactiva:
-```bash
-python3 bake_curriculum.py
-```
-Este script recorre todos los bloques de código y hornea su traza línea por línea en [`baked_traces.js`](file:///baked_traces.js). De esta manera, el estudiante puede usar las teclas `◀` y `▶` para ver cómo se ejecuta cada línea sin depender de llamadas de red.
-
----
-
-### Paso 3: Probar la Suite de Regresión en el Navegador
-Abre en tu navegador la suite de pruebas automatizada:
-```text
-http://localhost:8080/test_runner.html
-```
-O ejecútala en modo headless desde la terminal:
-```bash
-google-chrome --headless --dump-dom "http://localhost:8080/test_runner.html" | grep "TODAS"
-```
-Debe confirmar:
-`✓ ¡TODAS LAS PRUEBAS DE FASE 1 PASARON CON ÉXITO!`
-
----
-
-## 💡 5. Errores Comunes a Evitar
-
-| Error Común | Por qué es peligroso | Cómo se resuelve |
+| Métrica | Límite Estricto | Razón Pedagógica |
 | :--- | :--- | :--- |
-| **Comillas dobles anidadas** | Escribir `print("Texto \"40\"")` dentro de plantillas JavaScript puede causar problemas al parsear. | Usa comillas simples afuera y dobles adentro: `print('Texto "40"')`. |
-| **Salida manual desfasada** | Escribir en `output` lo que crees que imprime en vez de lo que CPython imprime realmente (ej: olvidar el espacio por defecto de `print(a, b)`). | Confía en `verify_curriculum.py`: el auditor compara contra la ejecución real de CPython. |
-| **Parámetro `end=" "` en múltiples líneas** | Tratar cada llamada a `print` como un salto forzado de renglón. | Recuerda que `end=" "` mantiene la siguiente salida en la **misma línea**. |
-| **Opciones sin justificación de error** | Dejar a un estudiante confundido tras fallar una pregunta. | Redacta siempre en `whyIncorrect` qué razonamiento erróneo llevó a escoger esa opción. |
+| **Líneas de código por snippet** | **Máximo 4 a 7 líneas** | Evita la sobrecarga cognitiva; cabe completo en pantalla de celular y laptop sin scroll. |
+| **Texto de instrucción / enunciado** | **Máximo 2 a 3 oraciones** | En Brilliant, el enunciado se lee en 3 segundos. El foco está en el código. |
+| **Opciones en `predict`** | **2 a 4 opciones** | Suficientes para capturar errores típicos sin generar fatiga de decisión. |
+| **Calidad de `whyIncorrect`** | **Mínimo 20 caracteres diagnósticos** | Prohibido decir *"Opción incorrecta"*. Debe explicar qué pensó mal el alumno. |
+| **Ubicación de la consola** | **Debajo del editor** | Réplica exacta de cómo lucen los IDEs profesionales (VS Code, Jupyter, PyCharm). |
+| **Puntualidad en `output`** | **100% idéntico a CPython** | Verificado automáticamente por `verify_curriculum.py` carácter por carácter. |
 
 ---
 
-## 🚀 6. Checklist de Aprobación para Nuevos Ejercicios
+## 🛡️ 5. Protocolo de Verificación y Validación Automática
 
-Antes de crear un Pull Request o subir a producción:
+Para evitar bugs en producción, toda nueva lección debe superar el pipeline automático:
 
-- [ ] ¿Cada lección nueva tiene entre 5 y 6 pasos?
-- [ ] ¿El primer paso introduce la intuición antes de la sintaxis abstracta?
-- [ ] ¿Todos los `predict` tienen exactamente 1 opción con `isCorrect: true`?
-- [ ] ¿Cada opción falsa tiene un `whyIncorrect` pedagógico de calidad?
-- [ ] ¿Los ejercicios `code_sandbox` tienen el marcador `___` en `starterCode`?
-- [ ] ¿Ejecutaste `python3 verify_curriculum.py` y obtuviste **363+ verificaciones aprobadas y 0 errores**?
-- [ ] ¿Ejecutaste `python3 bake_curriculum.py` para actualizar `baked_traces.js`?
-- [ ] ¿Incrementaste la versión de caché (`?v=1.0.X`) en `index.html`?
+```bash
+# 1. Auditoría automática del currículo (salida, sintaxis, IDs)
+python3 verify_curriculum.py
+
+# 2. Generación de trazas de ejecución pre-horneadas
+python3 bake_curriculum.py
+
+# 3. Verificación de tests de navegación y racha
+google-chrome --headless --virtual-time-budget=2000 --dump-dom "http://localhost:8080/test_runner.html" | grep "TODAS"
+```
+
+El script [`verify_curriculum.py`](file:///verify_curriculum.py) ejecuta cada fragmento con el motor CPython del sistema, comprobando que:
+* No existan IDs duplicados.
+* La propiedad `output` de los `explanation` sea exacta (espacios, saltos de línea, mayúsculas).
+* Cada opción de `code_sandbox` genere código sintácticamente ejecutable.
+* Todas las preguntas `predict` tengan exactamente una respuesta correcta y explicaciones en todas las falsas.
+
+---
+
+## 📋 6. Checklist de Aprobación para Nuevos Niveles
+
+Antes de dar por finalizada la creación de un nivel:
+- [ ] ¿Se extrajo la temática a partir del `.ipynb` usando `ingest_notebook.py`?
+- [ ] ¿El nivel enseña un **único concepto atómico** y no una mezcla de temas?
+- [ ] ¿Cada pantalla se puede resolver en aproximadamente **15 segundos**?
+- [ ] ¿Los snippets de código tienen entre **3 y 6 líneas**?
+- [ ] ¿Cada opción falsa en `predict` tiene un `whyIncorrect` diagnóstico claro?
+- [ ] ¿Los ejercicios `code_sandbox` usan el marcador `___` y compilan en CPython?
+- [ ] ¿Ejecutaste `python3 verify_curriculum.py` con **0 errores**?
+- [ ] ¿Ejecutaste `python3 bake_curriculum.py` para sincronizar `baked_traces.js`?
+- [ ] ¿Probaste `test_runner.html` en el navegador?
+- [ ] ¿Incrementaste el número de versión de caché en `index.html`?

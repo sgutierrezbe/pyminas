@@ -148,6 +148,9 @@ CURRICULUM
 * **Lecciones:** `w{Semana}-l{Lección}` (ej. `w1-l1`, `w1-l2`, `w2-l1`).
 * **Etiquetas de Pasos (`partLabel`):** Formato `Paso {N} · {Nombre corto}` (ej. `Paso 1 · Variables y Tipos`).
 
+> **📖 Workflow de Ingesta desde Jupyter Notebooks (.ipynb):**  
+> Para consultar el flujo paso a paso de conversión de cuadernos universitarios del profesor a micro-retos estilo Brilliant, consulta la guía especializada: [`CREATING_EXERCISES.md`](file:///CREATING_EXERCISES.md).
+
 ---
 
 ## 5. El Arco Pedagógico de una Lección (Estructura de 6 Pasos)
