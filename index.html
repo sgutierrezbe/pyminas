@@ -594,6 +594,13 @@
             </button>
           </div>
 
+          <!-- Botón de Guía Interactiva (Tour Spotlight) -->
+          <button onclick="startInteractiveTour(true)" class="p-1 sm:p-1.5 text-slate-400 hover:text-emerald-700 rounded-xl hover:bg-emerald-50 transition shrink-0" title="Ver guía interactiva de pyMinas" aria-label="Guía interactiva">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+
           <button onclick="toggleSound()" class="p-1 sm:p-1.5 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-100 transition shrink-0" title="Activar/Silenciar sonido">
             <svg id="dash-sound-on" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z" />
@@ -612,7 +619,7 @@
         
         <!-- Tarjeta del curso (En móvil antes de los niveles; en desktop a la izquierda) -->
         <div class="w-full lg:w-[350px] shrink-0 lg:sticky lg:top-24">
-          <div class="bg-white border-2 border-slate-200 rounded-3xl p-5 sm:p-7 shadow-sm">
+          <div id="course-intro-card" class="bg-white border-2 border-slate-200 rounded-3xl p-5 sm:p-7 shadow-sm">
             <div class="w-full py-3 sm:py-4 flex items-center justify-center bg-slate-50 border border-slate-100 rounded-2xl mb-4">
               <svg viewBox="0 0 160 130" class="w-32 h-26 sm:w-40 sm:h-32 drop-shadow-md">
                 <ellipse cx="80" cy="120" rx="55" ry="7" fill="#cbd5e1" opacity="0.6"/>
@@ -685,7 +692,7 @@
           <img src="assets/logotipo-unal.svg" class="w-7 h-7 object-contain shrink-0" alt="UNAL">
           <div>
             <div class="font-bold text-slate-800">Universidad Nacional de Colombia · Sede Medellín</div>
-            <div class="text-[11px] text-slate-400">Facultad de Minas — pyMinas <span class="font-mono font-semibold text-slate-500">v1.31</span></div>
+            <div class="text-[11px] text-slate-400">Facultad de Minas — pyMinas <span class="font-mono font-semibold text-slate-500">v1.32</span></div>
           </div>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-slate-400">
@@ -695,7 +702,7 @@
           <span>•</span>
           <span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold rounded-md">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>v1.31</span>
+            <span>v1.32</span>
           </span>
         </div>
       </div>
@@ -749,8 +756,65 @@
 
   </div>
 
-  <script src="curriculum.js?v=1.31"></script>
-  <script src="baked_traces.js?v=1.31"></script>
-  <script src="app.js?v=1.31"></script>
+  <!-- ==================== TOUR INTERACTIVO SPOTLIGHT (MASCOTA PYMINAS) ==================== -->
+  <div id="tour-spotlight-overlay" class="hidden fixed inset-0 z-50 transition-opacity duration-300 pointer-events-none select-none">
+    <!-- Capa backdrop para capturar clics -->
+    <div id="tour-backdrop-catcher" class="fixed inset-0 pointer-events-auto"></div>
+
+    <!-- Caja iluminada / Spotlight con sombra masiva oscura y halo esmeralda -->
+    <div id="tour-spotlight-box" class="fixed pointer-events-none transition-all duration-300 ease-out"
+         style="box-shadow: 0 0 0 9999px rgba(15, 23, 42, 0.78), 0 0 25px 6px rgba(52, 211, 153, 0.75); border: 2.5px solid #34d399; border-radius: 20px;">
+    </div>
+
+    <!-- Diálogo flotante de la mascota (pyMinas) -->
+    <div id="tour-mascot-dialog" class="fixed pointer-events-auto bg-white rounded-3xl border-2 border-emerald-400 p-4 sm:p-5 shadow-2xl transition-all duration-300 ease-out z-10 flex flex-col gap-3"
+         style="max-width: 440px;">
+      <div class="flex items-start gap-3 sm:gap-3.5">
+        <!-- Avatar animado de la serpientita verde de pyMinas -->
+        <div class="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 border-2 border-emerald-300 p-1.5 flex items-center justify-center shadow-inner">
+          <img src="assets/pyminas-snake.svg" alt="Mascota pyMinas" class="w-full h-full object-contain animate-bounce" style="animation-duration: 2.4s;">
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between gap-1">
+            <span id="tour-step-badge" class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 rounded-full text-[10px] font-black uppercase tracking-wider">Paso 1 de 4</span>
+            <button onclick="dismissTour()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition text-xs font-bold leading-none cursor-pointer" title="Cerrar recorrido (Esc)">✕</button>
+          </div>
+          <h3 id="tour-step-title" class="text-sm sm:text-base font-extrabold text-slate-900 mt-1 leading-snug">¡Bienvenido a pyMinas!</h3>
+        </div>
+      </div>
+
+      <!-- Globo de diálogo con el mensaje guiado -->
+      <div class="relative bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-3 sm:p-3.5">
+        <p id="tour-step-desc" class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+          <!-- Inyectado dinámicamente -->
+        </p>
+      </div>
+
+      <!-- Barra de controles y progreso -->
+      <div class="flex items-center justify-between pt-1 gap-2">
+        <div class="flex items-center gap-1.5" id="tour-dots-indicator">
+          <!-- Dots generados dinámicamente -->
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="tour-prev-btn" onclick="prevTourStep()" class="hidden px-2.5 py-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition cursor-pointer">
+            ← Anterior
+          </button>
+          <button id="tour-skip-btn" onclick="dismissTour()" class="px-2.5 py-1.5 text-xs font-bold text-slate-400 hover:text-slate-600 transition cursor-pointer">
+            Saltar
+          </button>
+          <button id="tour-next-btn" onclick="nextTourStep()" class="px-3.5 sm:px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center gap-1.5 cursor-pointer">
+            <span>Siguiente</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="curriculum.js?v=1.32"></script>
+  <script src="baked_traces.js?v=1.32"></script>
+  <script src="app.js?v=1.32"></script>
 </body>
 </html>

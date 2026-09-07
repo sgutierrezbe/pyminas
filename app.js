@@ -145,7 +145,7 @@ function recordLessonCompletionStreak() {
 }
 
 // Almacenamiento local de lecciones completadas y progreso por pasos
-let completedLessons = JSON.parse(localStorage.getItem('py101_completed_lessons') || '["w1-l1"]');
+let completedLessons = JSON.parse(localStorage.getItem('py101_completed_lessons') || '[]');
 let savedLessonSteps = JSON.parse(localStorage.getItem('py101_lesson_steps') || '{}');
 
 // Seguimiento de precisión y errores de la lección activa
@@ -429,6 +429,7 @@ function renderDashboard() {
 
         // El anchor se posiciona en el centro geométrico del nodo (-translate-x-1/2 -translate-y-1/2)
         const nodeAnchor = document.createElement('div');
+        nodeAnchor.id = `map-node-${lesson.id}`;
         nodeAnchor.className = 'absolute z-10 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 cursor-pointer group select-none';
         nodeAnchor.style.left = `${pos.x}%`;
         nodeAnchor.style.top = `${pos.y}px`;
@@ -3790,6 +3791,7 @@ async function handleAuthLogin(event) {
     updateUserBadge(data.email);
     switchView('dashboard');
     renderDashboard();
+    checkAutoStartTour();
 
   } catch (err) {
     console.error('Error al conectar con la API de autenticación:', err);
@@ -3819,6 +3821,7 @@ async function checkAuthSessionOnStartup() {
     updateStreakDisplay();
     switchView('dashboard');
     renderDashboard();
+    checkAutoStartTour();
     return;
   }
   if (urlParams.has('authtoken')) {
@@ -3881,6 +3884,7 @@ async function checkAuthSessionOnStartup() {
     updateUserBadge(data.email);
     switchView('dashboard');
     renderDashboard();
+    checkAutoStartTour();
 
   } catch (err) {
     console.warn('Modo offline / API de auth no accesible, usando estado en caché:', err);
@@ -3889,6 +3893,7 @@ async function checkAuthSessionOnStartup() {
       updateUserBadge(currentUser.email);
       switchView('dashboard');
       renderDashboard();
+      checkAutoStartTour();
     } else {
       showLoginView();
     }
@@ -3946,6 +3951,325 @@ async function logoutUser() {
   updateStreakDisplay();
   updateUserBadge('Estudiante UNAL');
   showLoginView('Has cerrado sesión correctamente.');
+}
+
+/* ==========================================================================
+   RECORRIDO INTERACTIVO SPOTLIGHT (GUIADO POR LA MASCOTA PYMINAS)
+   ========================================================================== */
+
+const TOUR_STEPS = [
+  {
+    targetId: 'course-intro-card',
+    title: '¡Bienvenido a pyMinas! 🐍',
+    text: '¡Hola! Soy tu guía en <strong>pyMinas</strong>, la plataforma de microaprendizaje para practicar tus habilidades de Python cada semana, siguiendo los temas de <strong>Fundamentos de Programación</strong> (Facultad de Minas - UNAL).',
+    padding: 12,
+    borderRadius: 24,
+    placement: 'right'
+  },
+  {
+    targetId: 'game-map-container',
+    title: 'Niveles y Retos Temáticos 🗺️',
+    text: '¡Estos de aquí son los niveles con cada uno de los temas! Cada nivel tiene ejercicios interactivos muy cortos. Mientras más preguntas correctas contestes al primer intento, ¡mayor será tu puntaje y precisión!',
+    padding: 14,
+    borderRadius: 24,
+    placement: 'left'
+  },
+  {
+    targetId: 'nav-streak-badge',
+    title: 'Tu Racha Semanal 🔥',
+    text: '¡Esta es tu racha! Realiza una clase cada semana para mantenerla encendida, compite sanamente con tus compañeros y sigue practicando sin perder el ritmo.',
+    padding: 8,
+    borderRadius: 9999,
+    placement: 'bottom'
+  },
+  {
+    targetId: 'nav-user-profile',
+    title: 'Progreso y Credenciales 🎓',
+    text: 'Tus avances van ligados a tu usuario y contraseña institucional (<em>@unal.edu.co</em>). ¡No los pierdas para continuar tu progreso desde cualquier computador o celular!',
+    padding: 8,
+    borderRadius: 9999,
+    placement: 'bottom'
+  }
+];
+
+let isTourActive = false;
+let tourCurrentStep = 0;
+
+function startInteractiveTour(force = false) {
+  if (!force && localStorage.getItem('pyminas_tour_completed') === 'true') {
+    return;
+  }
+  const overlay = document.getElementById('tour-spotlight-overlay');
+  if (!overlay) return;
+
+  isTourActive = true;
+  tourCurrentStep = 0;
+  overlay.classList.remove('hidden');
+  overlay.style.opacity = '0';
+  setTimeout(() => {
+    overlay.style.opacity = '1';
+  }, 20);
+
+  window.addEventListener('resize', handleTourReposition);
+  window.addEventListener('scroll', handleTourReposition, { passive: true });
+  window.addEventListener('keydown', handleTourKeydown);
+
+  renderTourStep(0);
+}
+
+function handleTourReposition() {
+  if (!isTourActive) return;
+  updateSpotlightPosition();
+}
+
+function handleTourKeydown(e) {
+  if (!isTourActive) return;
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    dismissTour();
+  } else if (e.key === 'ArrowRight' || e.key === 'Enter') {
+    e.preventDefault();
+    nextTourStep();
+  } else if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    prevTourStep();
+  }
+}
+
+function renderTourStep(idx) {
+  if (idx < 0 || idx >= TOUR_STEPS.length) {
+    completeTour();
+    return;
+  }
+  tourCurrentStep = idx;
+  const step = TOUR_STEPS[idx];
+
+  const badgeEl = document.getElementById('tour-step-badge');
+  if (badgeEl) badgeEl.textContent = `Paso ${idx + 1} de ${TOUR_STEPS.length}`;
+
+  const titleEl = document.getElementById('tour-step-title');
+  if (titleEl) titleEl.textContent = step.title;
+
+  const descEl = document.getElementById('tour-step-desc');
+  if (descEl) descEl.innerHTML = step.text;
+
+  // Dots de progreso
+  const dotsContainer = document.getElementById('tour-dots-indicator');
+  if (dotsContainer) {
+    dotsContainer.innerHTML = TOUR_STEPS.map((_, i) => `
+      <button onclick="goToTourStep(${i})" class="h-2 rounded-full transition-all cursor-pointer ${
+        i === idx ? 'bg-emerald-600 w-6' : i < idx ? 'bg-emerald-300 w-2' : 'bg-slate-200 hover:bg-slate-300 w-2'
+      }" title="Ir al paso ${i + 1}"></button>
+    `).join('');
+  }
+
+  // Botón Siguiente / Empezar
+  const nextBtn = document.getElementById('tour-next-btn');
+  const prevBtn = document.getElementById('tour-prev-btn');
+  if (nextBtn) {
+    if (idx === TOUR_STEPS.length - 1) {
+      nextBtn.innerHTML = `<span>¡Empezar! 🚀</span>`;
+      nextBtn.className = "px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-black rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center gap-1.5 cursor-pointer";
+    } else {
+      nextBtn.innerHTML = `<span>Siguiente</span><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>`;
+      nextBtn.className = "px-3.5 sm:px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center gap-1.5 cursor-pointer";
+    }
+  }
+
+  if (prevBtn) {
+    if (idx > 0) {
+      prevBtn.classList.remove('hidden');
+    } else {
+      prevBtn.classList.add('hidden');
+    }
+  }
+
+  const target = document.getElementById(step.targetId);
+  if (target) {
+    if (idx === 0 || idx === 1) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(updateSpotlightPosition, 260);
+    } else {
+      const r = target.getBoundingClientRect();
+      const isOutOfView = r.top < 60 || r.bottom > window.innerHeight - 60;
+      if (isOutOfView) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        setTimeout(updateSpotlightPosition, 260);
+      } else {
+        updateSpotlightPosition();
+      }
+    }
+  } else {
+    updateSpotlightPosition();
+  }
+
+  playSound('step');
+}
+
+function nextTourStep() {
+  if (!isTourActive) return;
+  if (tourCurrentStep >= TOUR_STEPS.length - 1) {
+    completeTour();
+  } else {
+    renderTourStep(tourCurrentStep + 1);
+  }
+}
+
+function prevTourStep() {
+  if (!isTourActive || tourCurrentStep <= 0) return;
+  renderTourStep(tourCurrentStep - 1);
+}
+
+function goToTourStep(idx) {
+  if (!isTourActive || idx < 0 || idx >= TOUR_STEPS.length) return;
+  renderTourStep(idx);
+}
+
+function completeTour() {
+  localStorage.setItem('pyminas_tour_completed', 'true');
+  playSound('complete');
+  triggerConfetti();
+  dismissTourUI();
+}
+
+function dismissTour() {
+  localStorage.setItem('pyminas_tour_completed', 'true');
+  playSound('select');
+  dismissTourUI();
+}
+
+function dismissTourUI() {
+  isTourActive = false;
+  window.removeEventListener('resize', handleTourReposition);
+  window.removeEventListener('scroll', handleTourReposition);
+  window.removeEventListener('keydown', handleTourKeydown);
+
+  const overlay = document.getElementById('tour-spotlight-overlay');
+  if (overlay) {
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+      overlay.classList.add('hidden');
+    }, 280);
+  }
+}
+
+function updateSpotlightPosition() {
+  if (!isTourActive) return;
+  const spotlightBox = document.getElementById('tour-spotlight-box');
+  const dialog = document.getElementById('tour-mascot-dialog');
+  if (!spotlightBox || !dialog || tourCurrentStep < 0 || tourCurrentStep >= TOUR_STEPS.length) return;
+
+  const step = TOUR_STEPS[tourCurrentStep];
+  const target = document.getElementById(step.targetId);
+  if (!target) return;
+
+  const rect = target.getBoundingClientRect();
+  const pad = step.padding !== undefined ? step.padding : 10;
+
+  // Coordenadas fijas en viewport
+  const boxTop = Math.max(4, rect.top - pad);
+  const boxLeft = Math.max(4, rect.left - pad);
+  const boxWidth = Math.min(window.innerWidth - boxLeft - 4, rect.width + pad * 2);
+  const boxHeight = Math.min(window.innerHeight - boxTop - 4, rect.height + pad * 2);
+
+  spotlightBox.style.top = `${boxTop}px`;
+  spotlightBox.style.left = `${boxLeft}px`;
+  spotlightBox.style.width = `${boxWidth}px`;
+  spotlightBox.style.height = `${boxHeight}px`;
+  spotlightBox.style.borderRadius = `${step.borderRadius || 20}px`;
+
+  // Ubicación del diálogo flotante
+  const isMobile = window.innerWidth < 640;
+  const dialogWidth = Math.min(window.innerWidth - 32, 420);
+  dialog.style.width = `${dialogWidth}px`;
+
+  if (isMobile) {
+    dialog.style.left = '16px';
+    dialog.style.right = '16px';
+    dialog.style.margin = '0 auto';
+    dialog.style.transform = 'none';
+
+    if (rect.top > window.innerHeight * 0.45) {
+      dialog.style.top = '16px';
+      dialog.style.bottom = 'auto';
+    } else {
+      dialog.style.top = 'auto';
+      dialog.style.bottom = '16px';
+    }
+  } else {
+    dialog.style.margin = '0';
+    dialog.style.transform = 'none';
+    const dialogHeight = dialog.offsetHeight || 220;
+
+    let placed = false;
+
+    if (step.placement === 'bottom' || (!step.placement && rect.bottom + dialogHeight + 24 <= window.innerHeight)) {
+      if (rect.bottom + dialogHeight + 24 <= window.innerHeight) {
+        dialog.style.top = `${rect.bottom + 14}px`;
+        dialog.style.bottom = 'auto';
+        let left = rect.left + (rect.width / 2) - (dialogWidth / 2);
+        left = Math.max(16, Math.min(window.innerWidth - dialogWidth - 16, left));
+        dialog.style.left = `${left}px`;
+        dialog.style.right = 'auto';
+        placed = true;
+      }
+    }
+
+    if (!placed && (step.placement === 'top' || rect.top - dialogHeight - 24 >= 0)) {
+      if (rect.top - dialogHeight - 24 >= 0) {
+        dialog.style.top = `${rect.top - dialogHeight - 14}px`;
+        dialog.style.bottom = 'auto';
+        let left = rect.left + (rect.width / 2) - (dialogWidth / 2);
+        left = Math.max(16, Math.min(window.innerWidth - dialogWidth - 16, left));
+        dialog.style.left = `${left}px`;
+        dialog.style.right = 'auto';
+        placed = true;
+      }
+    }
+
+    if (!placed && step.placement === 'right') {
+      if (rect.right + dialogWidth + 24 <= window.innerWidth) {
+        dialog.style.left = `${rect.right + 16}px`;
+        dialog.style.right = 'auto';
+        dialog.style.top = `${Math.max(16, Math.min(window.innerHeight - dialogHeight - 16, rect.top))}px`;
+        dialog.style.bottom = 'auto';
+        placed = true;
+      }
+    }
+
+    if (!placed && step.placement === 'left') {
+      if (rect.left >= dialogWidth + 20) {
+        dialog.style.left = `${rect.left - dialogWidth - 20}px`;
+        dialog.style.right = 'auto';
+        dialog.style.top = `${Math.max(76, Math.min(window.innerHeight - dialogHeight - 16, rect.top + 20))}px`;
+        dialog.style.bottom = 'auto';
+        placed = true;
+      }
+    }
+
+    if (!placed) {
+      // Fallback: anclado cómodamente en parte inferior
+      dialog.style.top = 'auto';
+      dialog.style.bottom = '20px';
+      dialog.style.left = '50%';
+      dialog.style.right = 'auto';
+      dialog.style.transform = 'translateX(-50%)';
+    }
+  }
+}
+
+function checkAutoStartTour() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('modal') || urlParams.get('victory') || urlParams.get('lesson')) {
+    return;
+  }
+  const force = urlParams.get('tour') === 'true';
+  const completed = localStorage.getItem('pyminas_tour_completed');
+  if (force || completed !== 'true') {
+    setTimeout(() => {
+      startInteractiveTour(force);
+    }, 450);
+  }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -4018,6 +4342,16 @@ window.addEventListener('DOMContentLoaded', () => {
         executeGuidedSandbox();
       }, 60);
     }
+  }
+  if (urlParams.get('tour') === 'true') {
+    const stepParam = urlParams.get('tour_step');
+    const stepIdx = stepParam !== null ? parseInt(stepParam, 10) : 0;
+    setTimeout(() => {
+      startInteractiveTour(true);
+      if (stepIdx > 0 && stepIdx < TOUR_STEPS.length) {
+        goToTourStep(stepIdx);
+      }
+    }, 450);
   }
 });
 

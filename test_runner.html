@@ -10,7 +10,25 @@
   <!-- Minimal UI containers needed by app.js -->
   <div id="view-login" class="hidden"></div>
   <div id="view-dashboard" class="hidden">
+    <div id="course-intro-card"></div>
+    <div id="game-map-container"></div>
+    <div id="nav-streak-badge"></div>
+    <div id="nav-user-profile"></div>
     <div id="unit-nodes-container"></div>
+  </div>
+
+  <div id="tour-spotlight-overlay" class="hidden fixed inset-0">
+    <div id="tour-backdrop-catcher"></div>
+    <div id="tour-spotlight-box"></div>
+    <div id="tour-mascot-dialog">
+      <span id="tour-step-badge"></span>
+      <h3 id="tour-step-title"></h3>
+      <p id="tour-step-desc"></p>
+      <div id="tour-dots-indicator"></div>
+      <button id="tour-prev-btn" class="hidden"></button>
+      <button id="tour-skip-btn"></button>
+      <button id="tour-next-btn"></button>
+    </div>
   </div>
   <div id="view-lesson" class="hidden">
     <header>
@@ -213,6 +231,43 @@
         assert(codeWrapper !== null, "Contenedor completo del reproductor de código presente (editor + terminal)");
         ensureCodeVisible('code-player-wrapper-expl_0');
         assert(true, "ensureCodeVisible se ejecuta correctamente para encuadrar la ventana de código");
+
+        // 11. Test New Account starts with 0 completed lessons
+        localStorage.removeItem('py101_completed_lessons');
+        assert(Array.isArray(completedLessons), "completedLessons es un arreglo");
+        completedLessons = [];
+        assert(completedLessons.length === 0, "Cuenta nueva arranca con 0 lecciones completadas");
+
+        // 12. Test Interactive Spotlight Tour (pyMinas snake mascot)
+        assert(Array.isArray(TOUR_STEPS) && TOUR_STEPS.length === 4, "TOUR_STEPS contiene exactamente 4 pasos temáticos");
+        assert(TOUR_STEPS[0].targetId === 'course-intro-card', "Paso 1 enfoca tarjeta de bienvenida");
+        assert(TOUR_STEPS[1].targetId === 'game-map-container', "Paso 2 enfoca mapa de niveles");
+        assert(TOUR_STEPS[2].targetId === 'nav-streak-badge', "Paso 3 enfoca racha semanal");
+        assert(TOUR_STEPS[3].targetId === 'nav-user-profile', "Paso 4 enfoca cuenta y credenciales");
+
+        startInteractiveTour(true);
+        assert(isTourActive === true, "startInteractiveTour activó el recorrido");
+        assert(tourCurrentStep === 0, "Paso inicial es 0");
+        assert(document.getElementById('tour-step-title').textContent.includes('Bienvenido'), "Título de bienvenida en paso 0");
+
+        nextTourStep();
+        assert(tourCurrentStep === 1, "nextTourStep avanzó a paso 1 (Niveles)");
+        assert(document.getElementById('tour-step-title').textContent.includes('Niveles'), "Título de niveles en paso 1");
+
+        nextTourStep();
+        assert(tourCurrentStep === 2, "nextTourStep avanzó a paso 2 (Racha)");
+        assert(document.getElementById('tour-step-title').textContent.includes('Racha'), "Título de racha en paso 2");
+
+        nextTourStep();
+        assert(tourCurrentStep === 3, "nextTourStep avanzó a paso 3 (Credenciales)");
+        assert(document.getElementById('tour-step-title').textContent.includes('Credenciales'), "Título de credenciales en paso 3");
+
+        prevTourStep();
+        assert(tourCurrentStep === 2, "prevTourStep retrocedió a paso 2");
+
+        dismissTour();
+        assert(isTourActive === false, "dismissTour cerró el tour");
+        assert(localStorage.getItem('pyminas_tour_completed') === 'true', "dismissTour registró tour completado en localStorage");
 
         log("¡TODAS LAS PRUEBAS DE FASE 1 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");

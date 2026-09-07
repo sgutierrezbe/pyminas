@@ -198,7 +198,7 @@ class PyMinasHandler(http.server.SimpleHTTPRequestHandler):
             user = cursor.fetchone()
 
             initial_progress = {
-                "completedLessons": ["w1-l1"],
+                "completedLessons": [],
                 "savedLessonSteps": {},
                 "xp": 0,
                 "weeklyStreak": 0,
