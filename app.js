@@ -365,10 +365,13 @@ function renderDashboard() {
         { x: 36, y: 150, align: 'left' },
         { x: 64, y: 255, align: 'right' },
         { x: 36, y: 360, align: 'left' },
-        { x: 64, y: 465, align: 'right' }
+        { x: 64, y: 465, align: 'right' },
+        { x: 36, y: 570, align: 'left' },
+        { x: 64, y: 675, align: 'right' },
+        { x: 36, y: 780, align: 'left' }
       ];
 
-      const mapHeight = 520;
+      const mapHeight = week.lessons && week.lessons.length > 5 ? (week.lessons.length * 105 + 15) : 520;
 
       const windingCanvas = document.createElement('div');
       windingCanvas.className = 'relative w-full max-w-md';
@@ -844,6 +847,12 @@ function highlightPythonSyntax(line, playerId = '') {
 }
 
 function replaceSafePythonOperators(code) {
+  // 0. Soporte de f-strings en simulador (f"..." o f'...'): convertir a template literals `...`
+  code = code.replace(/\bf(["'])([\s\S]*?)\1/g, (match, q, content) => {
+    const jsTemplate = content.replace(/\{([^}]+)\}/g, '${$1}');
+    return '`' + jsTemplate + '`';
+  });
+
   // 1. Proteger cadenas entre comillas simples o dobles para no alterar su contenido
   const stringLiterals = [];
   let tokenized = code.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, (match) => {
@@ -1545,7 +1554,7 @@ function renderExplanationStep(step, container) {
         <span>${step.partLabel}</span>
       </div>
 
-      <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+      <h1 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
         ${step.title}
       </h1>
 
@@ -1647,7 +1656,7 @@ function renderPredictStep(step, container) {
         </div>
       ` : ''}
 
-      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-3">
+      <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-3">
         ${escapeHtml(questionText)}
       </h2>
 
@@ -2031,7 +2040,7 @@ function renderPrintVisualizer(step, container) {
         <span>Laboratorio Interactivo</span>
       </div>
 
-      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+      <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
         Experimenta con el separador sep
       </h2>
       <p class="text-slate-500 text-sm mb-6">
@@ -2111,7 +2120,7 @@ function renderInputVisualizer(step, container) {
         <span>Laboratorio Interactivo</span>
       </div>
 
-      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+      <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
         Transforma texto en número con int()
       </h2>
       <p class="text-slate-500 text-sm mb-6">
@@ -2173,7 +2182,7 @@ function renderMathVisualizer(step, container) {
         <span>Laboratorio Interactivo</span>
       </div>
 
-      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+      <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
         La biblioteca math en acción
       </h2>
       <p class="text-slate-500 text-sm mb-6">
@@ -2309,7 +2318,7 @@ function renderSandboxStep(step, container) {
         </div>
       ` : ''}
 
-      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+      <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
         ${step.title}
       </h2>
       <p class="text-slate-500 text-xs sm:text-sm mb-4 max-w-lg leading-relaxed">

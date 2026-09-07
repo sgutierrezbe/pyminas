@@ -83,46 +83,8 @@ def main():
     print(f"Python version: {sys.version}")
     print("=" * 60)
 
-    content = CURRICULUM_PATH.read_text(encoding="utf-8")
-    pattern = re.compile(r"code:\s*`([^`]+)`", re.DOTALL)
-    matches = list(pattern.finditer(content))
-
-    print(f"Encontrados {len(matches)} bloques de codigo en curriculum.js.\n")
-
     baked = {}
     success_count = 0
-
-    for idx, match in enumerate(matches):
-        code_trimmed = match.group(1).strip()
-        first_line = code_trimmed.splitlines()[0] if code_trimmed else ""
-        print(f"[{idx + 1}/{len(matches)}] Procesando: {first_line[:40]}...")
-
-        slot_value = None
-        if "___" in code_trimmed:
-            # Buscar la opcion correcta en el bloque del paso
-            end_pos = match.end()
-            surrounding = content[end_pos:end_pos + 1200]
-            opt_match = re.search(r"slotText:\s*\"([^\"]+)\"[^}]*?isCorrect:\s*true|isCorrect:\s*true[^}]*?slotText:\s*\"([^\"]+)\"", surrounding)
-            if opt_match:
-                slot_value = opt_match.group(1) or opt_match.group(2)
-                print(f"    -> Slot '___' resuelto con opcion correcta: '{slot_value}'")
-
-        trace = trace_python_code(code_trimmed, slot_value=slot_value)
-        if trace:
-            baked[code_trimmed] = trace
-            if slot_value:
-                # Tambien hornear la version con el slot rellenado para busqueda directa
-                filled_code = code_trimmed.replace("___", slot_value)
-                filled_trace = trace_python_code(filled_code)
-                if filled_trace:
-                    baked[filled_code] = filled_trace
-            success_count += 1
-            if trace["totalOutput"]:
-                print(f"    v Salida generada ({len(trace['lineTrace'])} lineas):")
-                for out_line in trace["totalOutput"].splitlines():
-                    print(f"      | {out_line}")
-            else:
-                print(f"    - Sin salida en pantalla ({len(trace['lineTrace'])} lineas)")
 
     try:
         from verify_curriculum import load_curriculum
@@ -130,6 +92,26 @@ def main():
         for w in curr.get("weeks", []):
             for l in w.get("lessons", []):
                 for s in l.get("steps", []):
+                    # 1. Ejemplos en pasos de explicación
+                    for ex in s.get("examples", []):
+                        c = ex.get("code", "").strip()
+                        if c:
+                            trace = trace_python_code(c)
+                            if trace:
+                                baked[c] = trace
+                                success_count += 1
+                                print(f"    [EJEMPLO] {l.get('id')} - {ex.get('label', '')}: {len(trace['lineTrace'])} líneas")
+                    
+                    # 2. Código en pasos predict
+                    if s.get("type") == "predict" and s.get("code"):
+                        c = s["code"].strip()
+                        trace = trace_python_code(c)
+                        if trace:
+                            baked[c] = trace
+                            success_count += 1
+                            print(f"    [PREDICT] {l.get('id')}: {len(trace['lineTrace'])} líneas")
+
+                    # 3. Código en pasos sandbox
                     if s.get("type") == "code_sandbox" and s.get("starterCode"):
                         starter = s["starterCode"].strip()
                         marker = s.get("slotMarker", "___")
@@ -143,7 +125,7 @@ def main():
                                     success_count += 1
                                     print(f"    [SANDBOX] {l.get('id', '')} opt '{code_val}': {len(trace['lineTrace'])} lineas")
     except Exception as e:
-        print(f"  [WARN] Sandbox baking: {e}")
+        print(f"  [WARN] Curriculum baking: {e}")
 
     baked_json = json.dumps(baked, ensure_ascii=False, indent=2)
     js_content = f"// Archivo generado automaticamente por bake_curriculum.py\n// CPython {sys.version_info.major}.{sys.version_info.minor}\nwindow.BAKED_TRACES = {baked_json};\n"

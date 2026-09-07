@@ -71,36 +71,36 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "Línea 1: Verificando datos\nLínea 2: Procesando cálculo\nLínea 3: Operación terminada"
   },
-  "print(\"Conectando al servidor...\")\nprint(\"Cargando perfil de usuario\")\nprint(\"¡Bienvenido al sistema!\")": {
+  "print(\"1. Encendiendo motor\")\nprint(\"2. Calentando turbinas\")\nprint(\"3. ¡Despegue!\")": {
     "lines": [
-      "print(\"Conectando al servidor...\")",
-      "print(\"Cargando perfil de usuario\")",
-      "print(\"¡Bienvenido al sistema!\")"
+      "print(\"1. Encendiendo motor\")",
+      "print(\"2. Calentando turbinas\")",
+      "print(\"3. ¡Despegue!\")"
     ],
     "lineTrace": [
       {
-        "prints": "Conectando al servidor...",
+        "prints": "1. Encendiendo motor",
         "outputSoFar": [
-          "Conectando al servidor..."
+          "1. Encendiendo motor"
         ]
       },
       {
-        "prints": "Cargando perfil de usuario",
+        "prints": "2. Calentando turbinas",
         "outputSoFar": [
-          "Conectando al servidor...",
-          "Cargando perfil de usuario"
+          "1. Encendiendo motor",
+          "2. Calentando turbinas"
         ]
       },
       {
-        "prints": "¡Bienvenido al sistema!",
+        "prints": "3. ¡Despegue!",
         "outputSoFar": [
-          "Conectando al servidor...",
-          "Cargando perfil de usuario",
-          "¡Bienvenido al sistema!"
+          "1. Encendiendo motor",
+          "2. Calentando turbinas",
+          "3. ¡Despegue!"
         ]
       }
     ],
-    "totalOutput": "Conectando al servidor...\nCargando perfil de usuario\n¡Bienvenido al sistema!"
+    "totalOutput": "1. Encendiendo motor\n2. Calentando turbinas\n3. ¡Despegue!"
   },
   "print(\"Modo normal activado\")\n# print(\"Modo de prueba secreto\")\nprint(\"Todo funcionando correctamente\")": {
     "lines": [
@@ -131,19 +131,10 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "Modo normal activado\nTodo funcionando correctamente"
   },
-  "# 1. ENTRADA: Llegan los datos iniciales\nprecio = 100\ndescuento = 20\nprint(\"Precio original: $\", precio, sep=\"\")\nprint(\"Descuento: $\", descuento, sep=\"\")\n\n# 2. PROCESAMIENTO: La máquina calcula\ntotal = precio - descuento\n\n# 3. SALIDA: Mostramos el resultado al usuario\nprint(\"Total a pagar con descuento: $\", total, sep=\"\")": {
+  "# Algoritmo de bienvenida a pyMinas\nprint(\"¡Bienvenido a la Facultad de Minas!\")": {
     "lines": [
-      "# 1. ENTRADA: Llegan los datos iniciales",
-      "precio = 100",
-      "descuento = 20",
-      "print(\"Precio original: $\", precio, sep=\"\")",
-      "print(\"Descuento: $\", descuento, sep=\"\")",
-      "",
-      "# 2. PROCESAMIENTO: La máquina calcula",
-      "total = precio - descuento",
-      "",
-      "# 3. SALIDA: Mostramos el resultado al usuario",
-      "print(\"Total a pagar con descuento: $\", total, sep=\"\")"
+      "# Algoritmo de bienvenida a pyMinas",
+      "print(\"¡Bienvenido a la Facultad de Minas!\")"
     ],
     "lineTrace": [
       {
@@ -151,77 +142,18 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Precio original: $100",
+        "prints": "¡Bienvenido a la Facultad de Minas!",
         "outputSoFar": [
-          "Precio original: $100"
-        ]
-      },
-      {
-        "prints": "Descuento: $20",
-        "outputSoFar": [
-          "Precio original: $100",
-          "Descuento: $20"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Precio original: $100",
-          "Descuento: $20"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Precio original: $100",
-          "Descuento: $20"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Precio original: $100",
-          "Descuento: $20"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Precio original: $100",
-          "Descuento: $20"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Precio original: $100",
-          "Descuento: $20"
-        ]
-      },
-      {
-        "prints": "Total a pagar con descuento: $80",
-        "outputSoFar": [
-          "Precio original: $100",
-          "Descuento: $20",
-          "Total a pagar con descuento: $80"
+          "¡Bienvenido a la Facultad de Minas!"
         ]
       }
     ],
-    "totalOutput": "Precio original: $100\nDescuento: $20\nTotal a pagar con descuento: $80"
+    "totalOutput": "¡Bienvenido a la Facultad de Minas!"
   },
-  "monedas = 15\ntotal_puntos = monedas * 10\nprint(\"Puntos calculados:\", total_puntos)": {
+  "# Algoritmo de bienvenida a pyMinas\nmostrar(\"¡Bienvenido a la Facultad de Minas!\")": {
     "lines": [
-      "monedas = 15",
-      "total_puntos = monedas * 10",
-      "print(\"Puntos calculados:\", total_puntos)"
+      "# Algoritmo de bienvenida a pyMinas",
+      "mostrar(\"¡Bienvenido a la Facultad de Minas!\")"
     ],
     "lineTrace": [
       {
@@ -229,26 +161,18 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Puntos calculados: 150",
+        "prints": "Error: name 'mostrar' is not defined",
         "outputSoFar": [
-          "Puntos calculados: 150"
+          "Error: name 'mostrar' is not defined"
         ]
       }
     ],
-    "totalOutput": "Puntos calculados: 150"
+    "totalOutput": "Error: name 'mostrar' is not defined"
   },
-  "# sep define qué va entre cada elemento:\nprint(\"2026\", \"09\", \"04\", sep=\"-\")\n\n# end define qué va al final (por defecto es salto de línea):\nprint(\"Hola\", end=\" \")\nprint(\"Mundo\")": {
+  "# Algoritmo de bienvenida a pyMinas\nescribir(\"¡Bienvenido a la Facultad de Minas!\")": {
     "lines": [
-      "# sep define qué va entre cada elemento:",
-      "print(\"2026\", \"09\", \"04\", sep=\"-\")",
-      "",
-      "# end define qué va al final (por defecto es salto de línea):",
-      "print(\"Hola\", end=\" \")",
-      "print(\"Mundo\")"
+      "# Algoritmo de bienvenida a pyMinas",
+      "escribir(\"¡Bienvenido a la Facultad de Minas!\")"
     ],
     "lineTrace": [
       {
@@ -256,65 +180,55 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "2026-09-04",
+        "prints": "Error: name 'escribir' is not defined",
         "outputSoFar": [
-          "2026-09-04"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "2026-09-04"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "2026-09-04"
-        ]
-      },
-      {
-        "prints": "Hola ",
-        "outputSoFar": [
-          "2026-09-04",
-          "Hola "
-        ]
-      },
-      {
-        "prints": "Mundo",
-        "outputSoFar": [
-          "2026-09-04",
-          "Hola Mundo"
+          "Error: name 'escribir' is not defined"
         ]
       }
     ],
-    "totalOutput": "2026-09-04\nHola Mundo"
+    "totalOutput": "Error: name 'escribir' is not defined"
   },
-  "print(\"Python\", \"es\", \"genial\", sep=\"*\")": {
+  "# input() captura lo que el usuario escribe:\n# nombre = input(\"¿Tu nombre?: \")\n# El valor queda guardado en la variable:\nnombre = \"Valentina\"\nprint(\"Hola,\", nombre)": {
     "lines": [
-      "print(\"Python\", \"es\", \"genial\", sep=\"*\")"
+      "# input() captura lo que el usuario escribe:",
+      "# nombre = input(\"¿Tu nombre?: \")",
+      "# El valor queda guardado en la variable:",
+      "nombre = \"Valentina\"",
+      "print(\"Hola,\", nombre)"
     ],
     "lineTrace": [
       {
-        "prints": "Python*es*genial",
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Hola, Valentina",
         "outputSoFar": [
-          "Python*es*genial"
+          "Hola, Valentina"
         ]
       }
     ],
-    "totalOutput": "Python*es*genial"
+    "totalOutput": "Hola, Valentina"
   },
-  "nombre = \"Lucía\"   # str: texto (entre comillas)\nedad = 20          # int: número entero (sin decimales)\nprecio = 19.99     # float: número con punto decimal\nactivo = True      # bool: booleano (True o False)\n\nprint(\"Nombre (str):\", nombre)\nprint(\"Edad (int):\", edad)\nprint(\"Precio (float): $\", precio, sep=\"\")\nprint(\"Activo (bool):\", activo)": {
+  "# Supongamos dos entradas obtenidas con input():\na = \"10\"\nb = \"20\"\ntotal = a + b\nprint(total)": {
     "lines": [
-      "nombre = \"Lucía\"   # str: texto (entre comillas)",
-      "edad = 20          # int: número entero (sin decimales)",
-      "precio = 19.99     # float: número con punto decimal",
-      "activo = True      # bool: booleano (True o False)",
-      "",
-      "print(\"Nombre (str):\", nombre)",
-      "print(\"Edad (int):\", edad)",
-      "print(\"Precio (float): $\", precio, sep=\"\")",
-      "print(\"Activo (bool):\", activo)"
+      "# Supongamos dos entradas obtenidas con input():",
+      "a = \"10\"",
+      "b = \"20\"",
+      "total = a + b",
+      "print(total)"
     ],
     "lineTrace": [
       {
@@ -334,47 +248,21 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Nombre (str): Lucía",
+        "prints": "1020",
         "outputSoFar": [
-          "Nombre (str): Lucía"
-        ]
-      },
-      {
-        "prints": "Edad (int): 20",
-        "outputSoFar": [
-          "Nombre (str): Lucía",
-          "Edad (int): 20"
-        ]
-      },
-      {
-        "prints": "Precio (float): $19.99",
-        "outputSoFar": [
-          "Nombre (str): Lucía",
-          "Edad (int): 20",
-          "Precio (float): $19.99"
-        ]
-      },
-      {
-        "prints": "Activo (bool): True",
-        "outputSoFar": [
-          "Nombre (str): Lucía",
-          "Edad (int): 20",
-          "Precio (float): $19.99",
-          "Activo (bool): True"
+          "1020"
         ]
       }
     ],
-    "totalOutput": "Nombre (str): Lucía\nEdad (int): 20\nPrecio (float): $19.99\nActivo (bool): True"
+    "totalOutput": "1020"
   },
-  "a = \"5\"\nb = \"5\"\nprint(a + b)": {
+  "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = int(entrada_str)\nprint(puntos + 5)": {
     "lines": [
-      "a = \"5\"",
-      "b = \"5\"",
-      "print(a + b)"
+      "# Entrada recibida como texto del teclado:",
+      "entrada_str = \"15\"",
+      "# Convierte para poder sumar matemáticamente:",
+      "puntos = int(entrada_str)",
+      "print(puntos + 5)"
     ],
     "lineTrace": [
       {
@@ -385,108 +273,6 @@ window.BAKED_TRACES = {
         "prints": null,
         "outputSoFar": []
       },
-      {
-        "prints": "55",
-        "outputSoFar": [
-          "55"
-        ]
-      }
-    ],
-    "totalOutput": "55"
-  },
-  "# 1. De texto \"40\" a entero con int():\nnumero = int(\"40\") + 10\nprint('Texto \"40\" a entero + 10 =', numero)\n\n# 2. De entero 7 a decimal con float():\ndecimal = float(7)\nprint(\"Entero 7 a decimal =\", decimal)\n\n# 3. De número 100 a texto con str():\ntexto = str(100) + \" puntos\"\nprint(\"Número 100 a texto =\", texto)": {
-    "lines": [
-      "# 1. De texto \"40\" a entero con int():",
-      "numero = int(\"40\") + 10",
-      "print('Texto \"40\" a entero + 10 =', numero)",
-      "",
-      "# 2. De entero 7 a decimal con float():",
-      "decimal = float(7)",
-      "print(\"Entero 7 a decimal =\", decimal)",
-      "",
-      "# 3. De número 100 a texto con str():",
-      "texto = str(100) + \" puntos\"",
-      "print(\"Número 100 a texto =\", texto)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Texto \"40\" a entero + 10 = 50",
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50"
-        ]
-      },
-      {
-        "prints": "Entero 7 a decimal = 7.0",
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50",
-          "Entero 7 a decimal = 7.0"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50",
-          "Entero 7 a decimal = 7.0"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50",
-          "Entero 7 a decimal = 7.0"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50",
-          "Entero 7 a decimal = 7.0"
-        ]
-      },
-      {
-        "prints": "Número 100 a texto = 100 puntos",
-        "outputSoFar": [
-          "Texto \"40\" a entero + 10 = 50",
-          "Entero 7 a decimal = 7.0",
-          "Número 100 a texto = 100 puntos"
-        ]
-      }
-    ],
-    "totalOutput": "Texto \"40\" a entero + 10 = 50\nEntero 7 a decimal = 7.0\nNúmero 100 a texto = 100 puntos"
-  },
-  "edad_texto = \"18\"\nedad_numero = ___(edad_texto)\nprint(edad_numero + 2)": {
-    "lines": [
-      "edad_texto = \"18\"",
-      "edad_numero = ___(edad_texto)",
-      "print(edad_numero + 2)"
-    ],
-    "lineTrace": [
       {
         "prints": null,
         "outputSoFar": []
@@ -504,11 +290,13 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "20"
   },
-  "edad_texto = \"18\"\nedad_numero = int(edad_texto)\nprint(edad_numero + 2)": {
+  "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = str(entrada_str)\nprint(puntos + 5)": {
     "lines": [
-      "edad_texto = \"18\"",
-      "edad_numero = int(edad_texto)",
-      "print(edad_numero + 2)"
+      "# Entrada recibida como texto del teclado:",
+      "entrada_str = \"15\"",
+      "# Convierte para poder sumar matemáticamente:",
+      "puntos = str(entrada_str)",
+      "print(puntos + 5)"
     ],
     "lineTrace": [
       {
@@ -520,24 +308,29 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "20",
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Error: can only concatenate str (not \"int\") to str",
         "outputSoFar": [
-          "20"
+          "Error: can only concatenate str (not \"int\") to str"
         ]
       }
     ],
-    "totalOutput": "20"
+    "totalOutput": "Error: can only concatenate str (not \"int\") to str"
   },
-  "# 1. Exponente o potencia (**):\nprint(\"2 ** 3 =\", 2 ** 3)\n\n# 2. División entera // (descarta decimales):\nprint(\"14 // 4 =\", 14 // 4)\n\n# 3. Módulo % (residuo de la división):\nprint(\"14 % 4 =\", 14 % 4)": {
+  "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = len(entrada_str)\nprint(puntos + 5)": {
     "lines": [
-      "# 1. Exponente o potencia (**):",
-      "print(\"2 ** 3 =\", 2 ** 3)",
-      "",
-      "# 2. División entera // (descarta decimales):",
-      "print(\"14 // 4 =\", 14 // 4)",
-      "",
-      "# 3. Módulo % (residuo de la división):",
-      "print(\"14 % 4 =\", 14 % 4)"
+      "# Entrada recibida como texto del teclado:",
+      "entrada_str = \"15\"",
+      "# Convierte para poder sumar matemáticamente:",
+      "puntos = len(entrada_str)",
+      "print(puntos + 5)"
     ],
     "lineTrace": [
       {
@@ -545,83 +338,55 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "2 ** 3 = 8",
-        "outputSoFar": [
-          "2 ** 3 = 8"
-        ]
+        "prints": null,
+        "outputSoFar": []
       },
       {
         "prints": null,
-        "outputSoFar": [
-          "2 ** 3 = 8"
-        ]
+        "outputSoFar": []
       },
       {
         "prints": null,
-        "outputSoFar": [
-          "2 ** 3 = 8"
-        ]
+        "outputSoFar": []
       },
       {
-        "prints": "14 // 4 = 3",
+        "prints": "7",
         "outputSoFar": [
-          "2 ** 3 = 8",
-          "14 // 4 = 3"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "2 ** 3 = 8",
-          "14 // 4 = 3"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "2 ** 3 = 8",
-          "14 // 4 = 3"
-        ]
-      },
-      {
-        "prints": "14 % 4 = 2",
-        "outputSoFar": [
-          "2 ** 3 = 8",
-          "14 // 4 = 3",
-          "14 % 4 = 2"
+          "7"
         ]
       }
     ],
-    "totalOutput": "2 ** 3 = 8\n14 // 4 = 3\n14 % 4 = 2"
+    "totalOutput": "7"
   },
-  "print(10 / 2)\nprint(10 // 2)": {
+  "nombre = \"Carlos\"\nsemestre = 1\nprint(\"Estudiante:\", nombre, \"Semestre:\", semestre)": {
     "lines": [
-      "print(10 / 2)",
-      "print(10 // 2)"
+      "nombre = \"Carlos\"",
+      "semestre = 1",
+      "print(\"Estudiante:\", nombre, \"Semestre:\", semestre)"
     ],
     "lineTrace": [
       {
-        "prints": "5.0",
-        "outputSoFar": [
-          "5.0"
-        ]
+        "prints": null,
+        "outputSoFar": []
       },
       {
-        "prints": "5",
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Estudiante: Carlos Semestre: 1",
         "outputSoFar": [
-          "5.0",
-          "5"
+          "Estudiante: Carlos Semestre: 1"
         ]
       }
     ],
-    "totalOutput": "5.0\n5"
+    "totalOutput": "Estudiante: Carlos Semestre: 1"
   },
-  "galletas = 17\nninos = 5\nsobrante = galletas % ninos\nprint(sobrante)": {
+  "curso = \"pyMinas\"\nedicion = 2026\nprint(f\"¡Bienvenido a {curso} versión {edicion}!\")": {
     "lines": [
-      "galletas = 17",
-      "ninos = 5",
-      "sobrante = galletas % ninos",
-      "print(sobrante)"
+      "curso = \"pyMinas\"",
+      "edicion = 2026",
+      "print(f\"¡Bienvenido a {curso} versión {edicion}!\")"
     ],
     "lineTrace": [
       {
@@ -633,27 +398,19 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "2",
+        "prints": "¡Bienvenido a pyMinas versión 2026!",
         "outputSoFar": [
-          "2"
+          "¡Bienvenido a pyMinas versión 2026!"
         ]
       }
     ],
-    "totalOutput": "2"
+    "totalOutput": "¡Bienvenido a pyMinas versión 2026!"
   },
-  "# Sin paréntesis: la multiplicación se resuelve primero (3 * 4 = 12)\ncalculo1 = 2 + 3 * 4\nprint(\"2 + 3 * 4 =\", calculo1)\n\n# Con paréntesis: la suma se resuelve primero (2 + 3 = 5)\ncalculo2 = (2 + 3) * 4\nprint(\"(2 + 3) * 4 =\", calculo2)": {
+  "base = 10\naltura = 5\nprint(f\"Área del rectángulo: {base * altura} m2\")": {
     "lines": [
-      "# Sin paréntesis: la multiplicación se resuelve primero (3 * 4 = 12)",
-      "calculo1 = 2 + 3 * 4",
-      "print(\"2 + 3 * 4 =\", calculo1)",
-      "",
-      "# Con paréntesis: la suma se resuelve primero (2 + 3 = 5)",
-      "calculo2 = (2 + 3) * 4",
-      "print(\"(2 + 3) * 4 =\", calculo2)"
+      "base = 10",
+      "altura = 5",
+      "print(f\"Área del rectángulo: {base * altura} m2\")"
     ],
     "lineTrace": [
       {
@@ -665,43 +422,18 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "2 + 3 * 4 = 14",
+        "prints": "Área del rectángulo: 50 m2",
         "outputSoFar": [
-          "2 + 3 * 4 = 14"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "2 + 3 * 4 = 14"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "2 + 3 * 4 = 14"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "2 + 3 * 4 = 14"
-        ]
-      },
-      {
-        "prints": "(2 + 3) * 4 = 20",
-        "outputSoFar": [
-          "2 + 3 * 4 = 14",
-          "(2 + 3) * 4 = 20"
+          "Área del rectángulo: 50 m2"
         ]
       }
     ],
-    "totalOutput": "2 + 3 * 4 = 14\n(2 + 3) * 4 = 20"
+    "totalOutput": "Área del rectángulo: 50 m2"
   },
-  "x = 10 + 2 * 3 ** 2\nprint(x)": {
+  "usuario = \"Santiago\"\nprint(\"Hola {usuario}, bienvenido al laboratorio\")": {
     "lines": [
-      "x = 10 + 2 * 3 ** 2",
-      "print(x)"
+      "usuario = \"Santiago\"",
+      "print(\"Hola {usuario}, bienvenido al laboratorio\")"
     ],
     "lineTrace": [
       {
@@ -709,21 +441,21 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "28",
+        "prints": "Hola {usuario}, bienvenido al laboratorio",
         "outputSoFar": [
-          "28"
+          "Hola {usuario}, bienvenido al laboratorio"
         ]
       }
     ],
-    "totalOutput": "28"
+    "totalOutput": "Hola {usuario}, bienvenido al laboratorio"
   },
-  "# Importamos el módulo oficial de matemáticas de Python\nimport math\n\nprint(\"Pi =\", math.pi)\nprint(\"Raíz cuadrada de 49 =\", math.sqrt(49))": {
+  "# Formateo dinámico del precio de matrícula:\nfacultad = \"Minas\"\ncosto = 0\nmensaje = f\"Facultad de {facultad} · Costo: ${costo}\"\nprint(mensaje)": {
     "lines": [
-      "# Importamos el módulo oficial de matemáticas de Python",
-      "import math",
-      "",
-      "print(\"Pi =\", math.pi)",
-      "print(\"Raíz cuadrada de 49 =\", math.sqrt(49))"
+      "# Formateo dinámico del precio de matrícula:",
+      "facultad = \"Minas\"",
+      "costo = 0",
+      "mensaje = f\"Facultad de {facultad} · Costo: ${costo}\"",
+      "print(mensaje)"
     ],
     "lineTrace": [
       {
@@ -739,28 +471,329 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "Pi = 3.141592653589793",
-        "outputSoFar": [
-          "Pi = 3.141592653589793"
-        ]
+        "prints": null,
+        "outputSoFar": []
       },
       {
-        "prints": "Raíz cuadrada de 49 = 7.0",
+        "prints": "Facultad de Minas · Costo: $0",
         "outputSoFar": [
-          "Pi = 3.141592653589793",
-          "Raíz cuadrada de 49 = 7.0"
+          "Facultad de Minas · Costo: $0"
         ]
       }
     ],
-    "totalOutput": "Pi = 3.141592653589793\nRaíz cuadrada de 49 = 7.0"
+    "totalOutput": "Facultad de Minas · Costo: $0"
   },
-  "import math\nresultado = math.sqrt(25)\nprint(resultado)": {
+  "# Formateo dinámico del precio de matrícula:\nfacultad = \"Minas\"\ncosto = 0\nmensaje = r\"Facultad de {facultad} · Costo: ${costo}\"\nprint(mensaje)": {
     "lines": [
-      "import math",
-      "resultado = math.sqrt(25)",
-      "print(resultado)"
+      "# Formateo dinámico del precio de matrícula:",
+      "facultad = \"Minas\"",
+      "costo = 0",
+      "mensaje = r\"Facultad de {facultad} · Costo: ${costo}\"",
+      "print(mensaje)"
     ],
     "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Facultad de {facultad} · Costo: ${costo}",
+        "outputSoFar": [
+          "Facultad de {facultad} · Costo: ${costo}"
+        ]
+      }
+    ],
+    "totalOutput": "Facultad de {facultad} · Costo: ${costo}"
+  },
+  "edad = 21          # int: entero sin punto decimal\naltura = 1.78      # float: número con punto decimal\nnombre = \"Andrés\"  # str: cadena de caracteres\nmatriculado = True # bool: Verdadero o Falso\nprint(edad, altura, nombre, matriculado)": {
+    "lines": [
+      "edad = 21          # int: entero sin punto decimal",
+      "altura = 1.78      # float: número con punto decimal",
+      "nombre = \"Andrés\"  # str: cadena de caracteres",
+      "matriculado = True # bool: Verdadero o Falso",
+      "print(edad, altura, nombre, matriculado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "21 1.78 Andrés True",
+        "outputSoFar": [
+          "21 1.78 Andrés True"
+        ]
+      }
+    ],
+    "totalOutput": "21 1.78 Andrés True"
+  },
+  "valor = \"3.1416\"": {
+    "lines": [
+      "valor = \"3.1416\""
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      }
+    ],
+    "totalOutput": ""
+  },
+  "horas_str = \"4.5\"\nhoras = float(horas_str)\ntotal = horas * 2\nprint(total)": {
+    "lines": [
+      "horas_str = \"4.5\"",
+      "horas = float(horas_str)",
+      "total = horas * 2",
+      "print(total)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "9.0",
+        "outputSoFar": [
+          "9.0"
+        ]
+      }
+    ],
+    "totalOutput": "9.0"
+  },
+  "# Dato recibido del sensor:\nlectura_sensor = \"68.5\"\n# Convierte para sumar la calibración:\npeso_real = float(lectura_sensor)\nprint(peso_real + 1.5)": {
+    "lines": [
+      "# Dato recibido del sensor:",
+      "lectura_sensor = \"68.5\"",
+      "# Convierte para sumar la calibración:",
+      "peso_real = float(lectura_sensor)",
+      "print(peso_real + 1.5)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "70.0",
+        "outputSoFar": [
+          "70.0"
+        ]
+      }
+    ],
+    "totalOutput": "70.0"
+  },
+  "# Dato recibido del sensor:\nlectura_sensor = \"68.5\"\n# Convierte para sumar la calibración:\npeso_real = int(lectura_sensor)\nprint(peso_real + 1.5)": {
+    "lines": [
+      "# Dato recibido del sensor:",
+      "lectura_sensor = \"68.5\"",
+      "# Convierte para sumar la calibración:",
+      "peso_real = int(lectura_sensor)",
+      "print(peso_real + 1.5)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Error: invalid literal for int() with base 10: '68.5'",
+        "outputSoFar": [
+          "Error: invalid literal for int() with base 10: '68.5'"
+        ]
+      },
+      {
+        "prints": "Error: name 'peso_real' is not defined",
+        "outputSoFar": [
+          "Error: invalid literal for int() with base 10: '68.5'",
+          "Error: name 'peso_real' is not defined"
+        ]
+      }
+    ],
+    "totalOutput": "Error: invalid literal for int() with base 10: '68.5'\nError: name 'peso_real' is not defined"
+  },
+  "# Dato recibido del sensor:\nlectura_sensor = \"68.5\"\n# Convierte para sumar la calibración:\npeso_real = str(lectura_sensor)\nprint(peso_real + 1.5)": {
+    "lines": [
+      "# Dato recibido del sensor:",
+      "lectura_sensor = \"68.5\"",
+      "# Convierte para sumar la calibración:",
+      "peso_real = str(lectura_sensor)",
+      "print(peso_real + 1.5)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Error: can only concatenate str (not \"float\") to str",
+        "outputSoFar": [
+          "Error: can only concatenate str (not \"float\") to str"
+        ]
+      }
+    ],
+    "totalOutput": "Error: can only concatenate str (not \"float\") to str"
+  },
+  "# 1. División real (siempre entrega float):\nprint(7 / 2)\n# 2. División entera (trunca los decimales):\nprint(7 // 2)\n# 3. Módulo (residuo o sobrante de la división entera):\nprint(7 % 2)": {
+    "lines": [
+      "# 1. División real (siempre entrega float):",
+      "print(7 / 2)",
+      "# 2. División entera (trunca los decimales):",
+      "print(7 // 2)",
+      "# 3. Módulo (residuo o sobrante de la división entera):",
+      "print(7 % 2)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "3.5",
+        "outputSoFar": [
+          "3.5"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "3.5"
+        ]
+      },
+      {
+        "prints": "3",
+        "outputSoFar": [
+          "3.5",
+          "3"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "3.5",
+          "3"
+        ]
+      },
+      {
+        "prints": "1",
+        "outputSoFar": [
+          "3.5",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "totalOutput": "3.5\n3\n1"
+  },
+  "minutos_totales = 125\nhoras = minutos_totales // 60\nminutos_restantes = minutos_totales % 60\nprint(f\"{horas}h {minutos_restantes}m\")": {
+    "lines": [
+      "minutos_totales = 125",
+      "horas = minutos_totales // 60",
+      "minutos_restantes = minutos_totales % 60",
+      "print(f\"{horas}h {minutos_restantes}m\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "2h 5m",
+        "outputSoFar": [
+          "2h 5m"
+        ]
+      }
+    ],
+    "totalOutput": "2h 5m"
+  },
+  "nota1 = 4.0\nnota2 = 2.0\n# El estudiante intenta calcular el promedio:\npromedio = nota1 + nota2 / 2\nprint(promedio)": {
+    "lines": [
+      "nota1 = 4.0",
+      "nota2 = 2.0",
+      "# El estudiante intenta calcular el promedio:",
+      "promedio = nota1 + nota2 / 2",
+      "print(promedio)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
       {
         "prints": null,
         "outputSoFar": []
@@ -778,17 +811,14 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "5.0"
   },
-  "import math\n\n# ceil() = 'ceiling' (techo) -> siempre redondea al entero superior\nresultado_techo = math.ceil(4.2)\nprint(\"math.ceil(4.2) =\", resultado_techo)\n\n# floor() = piso -> siempre trunca o redondea al entero inferior\nresultado_piso = math.floor(4.9)\nprint(\"math.floor(4.9) =\", resultado_piso)": {
+  "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = (lab1 + lab2) / 2\nprint(promedio)": {
     "lines": [
-      "import math",
-      "",
-      "# ceil() = 'ceiling' (techo) -> siempre redondea al entero superior",
-      "resultado_techo = math.ceil(4.2)",
-      "print(\"math.ceil(4.2) =\", resultado_techo)",
-      "",
-      "# floor() = piso -> siempre trunca o redondea al entero inferior",
-      "resultado_piso = math.floor(4.9)",
-      "print(\"math.floor(4.9) =\", resultado_piso)"
+      "# Notas de laboratorio:",
+      "lab1 = 4.0",
+      "lab2 = 3.0",
+      "# Completa la expresión para calcular el promedio:",
+      "promedio = (lab1 + lab2) / 2",
+      "print(promedio)"
     ],
     "lineTrace": [
       {
@@ -808,49 +838,182 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "math.ceil(4.2) = 5",
-        "outputSoFar": [
-          "math.ceil(4.2) = 5"
-        ]
-      },
-      {
         "prints": null,
-        "outputSoFar": [
-          "math.ceil(4.2) = 5"
-        ]
+        "outputSoFar": []
       },
       {
-        "prints": null,
+        "prints": "3.5",
         "outputSoFar": [
-          "math.ceil(4.2) = 5"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "math.ceil(4.2) = 5"
-        ]
-      },
-      {
-        "prints": "math.floor(4.9) = 4",
-        "outputSoFar": [
-          "math.ceil(4.2) = 5",
-          "math.floor(4.9) = 4"
+          "3.5"
         ]
       }
     ],
-    "totalOutput": "math.ceil(4.2) = 5\nmath.floor(4.9) = 4"
+    "totalOutput": "3.5"
   },
-  "import math\npersonas = 19\ncapacidad_van = 4\n\nvans_necesarias = math.ceil(personas / capacidad_van)\nprint(vans_necesarias)": {
+  "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = lab1 + lab2 / 2\nprint(promedio)": {
     "lines": [
-      "import math",
-      "personas = 19",
-      "capacidad_van = 4",
-      "",
-      "vans_necesarias = math.ceil(personas / capacidad_van)",
-      "print(vans_necesarias)"
+      "# Notas de laboratorio:",
+      "lab1 = 4.0",
+      "lab2 = 3.0",
+      "# Completa la expresión para calcular el promedio:",
+      "promedio = lab1 + lab2 / 2",
+      "print(promedio)"
     ],
     "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "5.5",
+        "outputSoFar": [
+          "5.5"
+        ]
+      }
+    ],
+    "totalOutput": "5.5"
+  },
+  "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = [lab1 + lab2] / 2\nprint(promedio)": {
+    "lines": [
+      "# Notas de laboratorio:",
+      "lab1 = 4.0",
+      "lab2 = 3.0",
+      "# Completa la expresión para calcular el promedio:",
+      "promedio = [lab1 + lab2] / 2",
+      "print(promedio)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Error: unsupported operand type(s) for /: 'list' and 'int'",
+        "outputSoFar": [
+          "Error: unsupported operand type(s) for /: 'list' and 'int'"
+        ]
+      },
+      {
+        "prints": "Error: name 'promedio' is not defined",
+        "outputSoFar": [
+          "Error: unsupported operand type(s) for /: 'list' and 'int'",
+          "Error: name 'promedio' is not defined"
+        ]
+      }
+    ],
+    "totalOutput": "Error: unsupported operand type(s) for /: 'list' and 'int'\nError: name 'promedio' is not defined"
+  },
+  "import math\n\nradio = 3\n# math.pi almacena el valor preciso de pi\narea = math.pi * (radio ** 2)\nprint(f\"Área: {round(area, 2)}\")": {
+    "lines": [
+      "import math",
+      "",
+      "radio = 3",
+      "# math.pi almacena el valor preciso de pi",
+      "area = math.pi * (radio ** 2)",
+      "print(f\"Área: {round(area, 2)}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Área: 28.27",
+        "outputSoFar": [
+          "Área: 28.27"
+        ]
+      }
+    ],
+    "totalOutput": "Área: 28.27"
+  },
+  "import math\n\nresultado = math.sqrt(25)\nprint(resultado)": {
+    "lines": [
+      "import math",
+      "",
+      "resultado = math.sqrt(25)",
+      "print(resultado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "5.0",
+        "outputSoFar": [
+          "5.0"
+        ]
+      }
+    ],
+    "totalOutput": "5.0"
+  },
+  "import math\n\nestudiantes = 25\ncapacidad_aula = 6\n# Necesitamos aulas suficientes para todos:\naulas = math.ceil(estudiantes / capacidad_aula)\nprint(aulas)": {
+    "lines": [
+      "import math",
+      "",
+      "estudiantes = 25",
+      "capacidad_aula = 6",
+      "# Necesitamos aulas suficientes para todos:",
+      "aulas = math.ceil(estudiantes / capacidad_aula)",
+      "print(aulas)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
       {
         "prints": null,
         "outputSoFar": []
@@ -880,734 +1043,16 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "5"
   },
-  "# Mi primer programa en Python\nprint(\"¡Hola mundo!\")\nprint(\"Mi nombre es: Estudiante\")\nprint(\"Meta: Crear mis propios proyectos\")": {
-    "lines": [
-      "# Mi primer programa en Python",
-      "print(\"¡Hola mundo!\")",
-      "print(\"Mi nombre es: Estudiante\")",
-      "print(\"Meta: Crear mis propios proyectos\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "¡Hola mundo!",
-        "outputSoFar": [
-          "¡Hola mundo!"
-        ]
-      },
-      {
-        "prints": "Mi nombre es: Estudiante",
-        "outputSoFar": [
-          "¡Hola mundo!",
-          "Mi nombre es: Estudiante"
-        ]
-      },
-      {
-        "prints": "Meta: Crear mis propios proyectos",
-        "outputSoFar": [
-          "¡Hola mundo!",
-          "Mi nombre es: Estudiante",
-          "Meta: Crear mis propios proyectos"
-        ]
-      }
-    ],
-    "totalOutput": "¡Hola mundo!\nMi nombre es: Estudiante\nMeta: Crear mis propios proyectos"
-  },
-  "# Mi primer programa en Python\nprint(\"¡Hola mundo!\")\nprint(\"Mi nombre es: Estudiante\")\n\"Meta: Crear mis propios proyectos\"": {
-    "lines": [
-      "# Mi primer programa en Python",
-      "print(\"¡Hola mundo!\")",
-      "print(\"Mi nombre es: Estudiante\")",
-      "\"Meta: Crear mis propios proyectos\""
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "¡Hola mundo!",
-        "outputSoFar": [
-          "¡Hola mundo!"
-        ]
-      },
-      {
-        "prints": "Mi nombre es: Estudiante",
-        "outputSoFar": [
-          "¡Hola mundo!",
-          "Mi nombre es: Estudiante"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "¡Hola mundo!",
-          "Mi nombre es: Estudiante"
-        ]
-      }
-    ],
-    "totalOutput": "¡Hola mundo!\nMi nombre es: Estudiante"
-  },
-  "# Mi primer programa en Python\nprint(\"¡Hola mundo!\")\nprint(\"Mi nombre es: Estudiante\")\nimprimir(\"Meta: Crear mis propios proyectos\")": {
-    "lines": [
-      "# Mi primer programa en Python",
-      "print(\"¡Hola mundo!\")",
-      "print(\"Mi nombre es: Estudiante\")",
-      "imprimir(\"Meta: Crear mis propios proyectos\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "¡Hola mundo!",
-        "outputSoFar": [
-          "¡Hola mundo!"
-        ]
-      },
-      {
-        "prints": "Mi nombre es: Estudiante",
-        "outputSoFar": [
-          "¡Hola mundo!",
-          "Mi nombre es: Estudiante"
-        ]
-      },
-      {
-        "prints": "Error: name 'imprimir' is not defined",
-        "outputSoFar": [
-          "¡Hola mundo!",
-          "Mi nombre es: Estudiante",
-          "Error: name 'imprimir' is not defined"
-        ]
-      }
-    ],
-    "totalOutput": "¡Hola mundo!\nMi nombre es: Estudiante\nError: name 'imprimir' is not defined"
-  },
-  "# 1. ENTRADA (Datos iniciales):\nproducto_a = 45\nproducto_b = 30\n\n# 2. PROCESAMIENTO (Suma los dos productos):\ntotal = producto_a + producto_b\n\n# 3. SALIDA (Muestra el ticket):\nprint(\"Producto 1: $\", producto_a, sep=\"\")\nprint(\"Producto 2: $\", producto_b, sep=\"\")\nprint(\"Total a pagar: $\", total, sep=\"\")": {
-    "lines": [
-      "# 1. ENTRADA (Datos iniciales):",
-      "producto_a = 45",
-      "producto_b = 30",
-      "",
-      "# 2. PROCESAMIENTO (Suma los dos productos):",
-      "total = producto_a + producto_b",
-      "",
-      "# 3. SALIDA (Muestra el ticket):",
-      "print(\"Producto 1: $\", producto_a, sep=\"\")",
-      "print(\"Producto 2: $\", producto_b, sep=\"\")",
-      "print(\"Total a pagar: $\", total, sep=\"\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Producto 1: $45",
-        "outputSoFar": [
-          "Producto 1: $45"
-        ]
-      },
-      {
-        "prints": "Producto 2: $30",
-        "outputSoFar": [
-          "Producto 1: $45",
-          "Producto 2: $30"
-        ]
-      },
-      {
-        "prints": "Total a pagar: $75",
-        "outputSoFar": [
-          "Producto 1: $45",
-          "Producto 2: $30",
-          "Total a pagar: $75"
-        ]
-      }
-    ],
-    "totalOutput": "Producto 1: $45\nProducto 2: $30\nTotal a pagar: $75"
-  },
-  "# 1. ENTRADA (Datos iniciales):\nproducto_a = 45\nproducto_b = 30\n\n# 2. PROCESAMIENTO (Suma los dos productos):\ntotal = \"producto_a\" + \"producto_b\"\n\n# 3. SALIDA (Muestra el ticket):\nprint(\"Producto 1: $\", producto_a, sep=\"\")\nprint(\"Producto 2: $\", producto_b, sep=\"\")\nprint(\"Total a pagar: $\", total, sep=\"\")": {
-    "lines": [
-      "# 1. ENTRADA (Datos iniciales):",
-      "producto_a = 45",
-      "producto_b = 30",
-      "",
-      "# 2. PROCESAMIENTO (Suma los dos productos):",
-      "total = \"producto_a\" + \"producto_b\"",
-      "",
-      "# 3. SALIDA (Muestra el ticket):",
-      "print(\"Producto 1: $\", producto_a, sep=\"\")",
-      "print(\"Producto 2: $\", producto_b, sep=\"\")",
-      "print(\"Total a pagar: $\", total, sep=\"\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Producto 1: $45",
-        "outputSoFar": [
-          "Producto 1: $45"
-        ]
-      },
-      {
-        "prints": "Producto 2: $30",
-        "outputSoFar": [
-          "Producto 1: $45",
-          "Producto 2: $30"
-        ]
-      },
-      {
-        "prints": "Total a pagar: $producto_aproducto_b",
-        "outputSoFar": [
-          "Producto 1: $45",
-          "Producto 2: $30",
-          "Total a pagar: $producto_aproducto_b"
-        ]
-      }
-    ],
-    "totalOutput": "Producto 1: $45\nProducto 2: $30\nTotal a pagar: $producto_aproducto_b"
-  },
-  "# 1. ENTRADA (Datos iniciales):\nproducto_a = 45\nproducto_b = 30\n\n# 2. PROCESAMIENTO (Suma los dos productos):\ntotal = producto_a * producto_b\n\n# 3. SALIDA (Muestra el ticket):\nprint(\"Producto 1: $\", producto_a, sep=\"\")\nprint(\"Producto 2: $\", producto_b, sep=\"\")\nprint(\"Total a pagar: $\", total, sep=\"\")": {
-    "lines": [
-      "# 1. ENTRADA (Datos iniciales):",
-      "producto_a = 45",
-      "producto_b = 30",
-      "",
-      "# 2. PROCESAMIENTO (Suma los dos productos):",
-      "total = producto_a * producto_b",
-      "",
-      "# 3. SALIDA (Muestra el ticket):",
-      "print(\"Producto 1: $\", producto_a, sep=\"\")",
-      "print(\"Producto 2: $\", producto_b, sep=\"\")",
-      "print(\"Total a pagar: $\", total, sep=\"\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Producto 1: $45",
-        "outputSoFar": [
-          "Producto 1: $45"
-        ]
-      },
-      {
-        "prints": "Producto 2: $30",
-        "outputSoFar": [
-          "Producto 1: $45",
-          "Producto 2: $30"
-        ]
-      },
-      {
-        "prints": "Total a pagar: $1350",
-        "outputSoFar": [
-          "Producto 1: $45",
-          "Producto 2: $30",
-          "Total a pagar: $1350"
-        ]
-      }
-    ],
-    "totalOutput": "Producto 1: $45\nProducto 2: $30\nTotal a pagar: $1350"
-  },
-  "# Dato recibido como texto (como si viniera de input):\nnacimiento_texto = \"2005\"\nanio_actual = 2026\n\n# Convierte a entero:\nnacimiento_numero = int(nacimiento_texto)\n\n# Calcula la edad:\nedad = anio_actual - nacimiento_numero\n\nprint(\"Año de nacimiento:\", nacimiento_numero)\nprint(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")": {
-    "lines": [
-      "# Dato recibido como texto (como si viniera de input):",
-      "nacimiento_texto = \"2005\"",
-      "anio_actual = 2026",
-      "",
-      "# Convierte a entero:",
-      "nacimiento_numero = int(nacimiento_texto)",
-      "",
-      "# Calcula la edad:",
-      "edad = anio_actual - nacimiento_numero",
-      "",
-      "print(\"Año de nacimiento:\", nacimiento_numero)",
-      "print(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Año de nacimiento: 2005",
-        "outputSoFar": [
-          "Año de nacimiento: 2005"
-        ]
-      },
-      {
-        "prints": "Tu edad en 2026 es: 21 años",
-        "outputSoFar": [
-          "Año de nacimiento: 2005",
-          "Tu edad en 2026 es: 21 años"
-        ]
-      }
-    ],
-    "totalOutput": "Año de nacimiento: 2005\nTu edad en 2026 es: 21 años"
-  },
-  "# Dato recibido como texto (como si viniera de input):\nnacimiento_texto = \"2005\"\nanio_actual = 2026\n\n# Convierte a entero:\nnacimiento_numero = str(nacimiento_texto)\n\n# Calcula la edad:\nedad = anio_actual - nacimiento_numero\n\nprint(\"Año de nacimiento:\", nacimiento_numero)\nprint(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")": {
-    "lines": [
-      "# Dato recibido como texto (como si viniera de input):",
-      "nacimiento_texto = \"2005\"",
-      "anio_actual = 2026",
-      "",
-      "# Convierte a entero:",
-      "nacimiento_numero = str(nacimiento_texto)",
-      "",
-      "# Calcula la edad:",
-      "edad = anio_actual - nacimiento_numero",
-      "",
-      "print(\"Año de nacimiento:\", nacimiento_numero)",
-      "print(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Error: unsupported operand type(s) for -: 'int' and 'str'",
-        "outputSoFar": [
-          "Error: unsupported operand type(s) for -: 'int' and 'str'"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Error: unsupported operand type(s) for -: 'int' and 'str'"
-        ]
-      },
-      {
-        "prints": "Año de nacimiento: 2005",
-        "outputSoFar": [
-          "Error: unsupported operand type(s) for -: 'int' and 'str'",
-          "Año de nacimiento: 2005"
-        ]
-      },
-      {
-        "prints": "Error: name 'edad' is not defined",
-        "outputSoFar": [
-          "Error: unsupported operand type(s) for -: 'int' and 'str'",
-          "Año de nacimiento: 2005",
-          "Error: name 'edad' is not defined"
-        ]
-      }
-    ],
-    "totalOutput": "Error: unsupported operand type(s) for -: 'int' and 'str'\nAño de nacimiento: 2005\nError: name 'edad' is not defined"
-  },
-  "# Dato recibido como texto (como si viniera de input):\nnacimiento_texto = \"2005\"\nanio_actual = 2026\n\n# Convierte a entero:\nnacimiento_numero = float(\"edad\")\n\n# Calcula la edad:\nedad = anio_actual - nacimiento_numero\n\nprint(\"Año de nacimiento:\", nacimiento_numero)\nprint(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")": {
-    "lines": [
-      "# Dato recibido como texto (como si viniera de input):",
-      "nacimiento_texto = \"2005\"",
-      "anio_actual = 2026",
-      "",
-      "# Convierte a entero:",
-      "nacimiento_numero = float(\"edad\")",
-      "",
-      "# Calcula la edad:",
-      "edad = anio_actual - nacimiento_numero",
-      "",
-      "print(\"Año de nacimiento:\", nacimiento_numero)",
-      "print(\"Tu edad en\", anio_actual, \"es:\", edad, \"años\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Error: could not convert string to float: 'edad'",
-        "outputSoFar": [
-          "Error: could not convert string to float: 'edad'"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Error: could not convert string to float: 'edad'"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Error: could not convert string to float: 'edad'"
-        ]
-      },
-      {
-        "prints": "Error: name 'nacimiento_numero' is not defined",
-        "outputSoFar": [
-          "Error: could not convert string to float: 'edad'",
-          "Error: name 'nacimiento_numero' is not defined"
-        ]
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Error: could not convert string to float: 'edad'",
-          "Error: name 'nacimiento_numero' is not defined"
-        ]
-      },
-      {
-        "prints": "Error: name 'nacimiento_numero' is not defined",
-        "outputSoFar": [
-          "Error: could not convert string to float: 'edad'",
-          "Error: name 'nacimiento_numero' is not defined",
-          "Error: name 'nacimiento_numero' is not defined"
-        ]
-      },
-      {
-        "prints": "Error: name 'edad' is not defined",
-        "outputSoFar": [
-          "Error: could not convert string to float: 'edad'",
-          "Error: name 'nacimiento_numero' is not defined",
-          "Error: name 'nacimiento_numero' is not defined",
-          "Error: name 'edad' is not defined"
-        ]
-      }
-    ],
-    "totalOutput": "Error: could not convert string to float: 'edad'\nError: name 'nacimiento_numero' is not defined\nError: name 'nacimiento_numero' is not defined\nError: name 'edad' is not defined"
-  },
-  "total_minutos = 195\n\n# 1 hora tiene 60 minutos\nhoras = total_minutos // 60\nminutos_sobrantes = total_minutos % 60\n\nprint(\"Total inicial:\", total_minutos, \"minutos\")\nprint(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")": {
-    "lines": [
-      "total_minutos = 195",
-      "",
-      "# 1 hora tiene 60 minutos",
-      "horas = total_minutos // 60",
-      "minutos_sobrantes = total_minutos % 60",
-      "",
-      "print(\"Total inicial:\", total_minutos, \"minutos\")",
-      "print(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Total inicial: 195 minutos",
-        "outputSoFar": [
-          "Total inicial: 195 minutos"
-        ]
-      },
-      {
-        "prints": "Equivale a: 3 horas y 15 minutos",
-        "outputSoFar": [
-          "Total inicial: 195 minutos",
-          "Equivale a: 3 horas y 15 minutos"
-        ]
-      }
-    ],
-    "totalOutput": "Total inicial: 195 minutos\nEquivale a: 3 horas y 15 minutos"
-  },
-  "total_minutos = 195\n\n# 1 hora tiene 60 minutos\nhoras = total_minutos / 60\nminutos_sobrantes = total_minutos % 60\n\nprint(\"Total inicial:\", total_minutos, \"minutos\")\nprint(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")": {
-    "lines": [
-      "total_minutos = 195",
-      "",
-      "# 1 hora tiene 60 minutos",
-      "horas = total_minutos / 60",
-      "minutos_sobrantes = total_minutos % 60",
-      "",
-      "print(\"Total inicial:\", total_minutos, \"minutos\")",
-      "print(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Total inicial: 195 minutos",
-        "outputSoFar": [
-          "Total inicial: 195 minutos"
-        ]
-      },
-      {
-        "prints": "Equivale a: 3.25 horas y 15 minutos",
-        "outputSoFar": [
-          "Total inicial: 195 minutos",
-          "Equivale a: 3.25 horas y 15 minutos"
-        ]
-      }
-    ],
-    "totalOutput": "Total inicial: 195 minutos\nEquivale a: 3.25 horas y 15 minutos"
-  },
-  "total_minutos = 195\n\n# 1 hora tiene 60 minutos\nhoras = total_minutos % 60\nminutos_sobrantes = total_minutos % 60\n\nprint(\"Total inicial:\", total_minutos, \"minutos\")\nprint(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")": {
-    "lines": [
-      "total_minutos = 195",
-      "",
-      "# 1 hora tiene 60 minutos",
-      "horas = total_minutos % 60",
-      "minutos_sobrantes = total_minutos % 60",
-      "",
-      "print(\"Total inicial:\", total_minutos, \"minutos\")",
-      "print(\"Equivale a:\", horas, \"horas y\", minutos_sobrantes, \"minutos\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Total inicial: 195 minutos",
-        "outputSoFar": [
-          "Total inicial: 195 minutos"
-        ]
-      },
-      {
-        "prints": "Equivale a: 15 horas y 15 minutos",
-        "outputSoFar": [
-          "Total inicial: 195 minutos",
-          "Equivale a: 15 horas y 15 minutos"
-        ]
-      }
-    ],
-    "totalOutput": "Total inicial: 195 minutos\nEquivale a: 15 horas y 15 minutos"
-  },
-  "import math\n\ncateto_a = 6\ncateto_b = 8\n\n# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)\nsuma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)\nhipotenusa = math.sqrt(suma_cuadrados)\n\nprint(\"Cateto A:\", cateto_a)\nprint(\"Cateto B:\", cateto_b)\nprint(\"Hipotenusa calculada:\", hipotenusa)": {
+  "import math\n\n# Catetos de un triángulo rectángulo:\ncateto_a = 3\ncateto_b = 4\n# c = √(a² + b²)\nhipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)\nprint(f\"Hipotenusa: {hipotenusa}\")": {
     "lines": [
       "import math",
       "",
-      "cateto_a = 6",
-      "cateto_b = 8",
-      "",
-      "# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)",
-      "suma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)",
-      "hipotenusa = math.sqrt(suma_cuadrados)",
-      "",
-      "print(\"Cateto A:\", cateto_a)",
-      "print(\"Cateto B:\", cateto_b)",
-      "print(\"Hipotenusa calculada:\", hipotenusa)"
+      "# Catetos de un triángulo rectángulo:",
+      "cateto_a = 3",
+      "cateto_b = 4",
+      "# c = √(a² + b²)",
+      "hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)",
+      "print(f\"Hipotenusa: {hipotenusa}\")"
     ],
     "lineTrace": [
       {
@@ -1639,57 +1084,26 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Cateto A: 6",
+        "prints": "Hipotenusa: 5.0",
         "outputSoFar": [
-          "Cateto A: 6"
-        ]
-      },
-      {
-        "prints": "Cateto B: 8",
-        "outputSoFar": [
-          "Cateto A: 6",
-          "Cateto B: 8"
-        ]
-      },
-      {
-        "prints": "Hipotenusa calculada: 10.0",
-        "outputSoFar": [
-          "Cateto A: 6",
-          "Cateto B: 8",
-          "Hipotenusa calculada: 10.0"
+          "Hipotenusa: 5.0"
         ]
       }
     ],
-    "totalOutput": "Cateto A: 6\nCateto B: 8\nHipotenusa calculada: 10.0"
+    "totalOutput": "Hipotenusa: 5.0"
   },
-  "import math\n\ncateto_a = 6\ncateto_b = 8\n\n# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)\nsuma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)\nhipotenusa = sqrt(suma_cuadrados)\n\nprint(\"Cateto A:\", cateto_a)\nprint(\"Cateto B:\", cateto_b)\nprint(\"Hipotenusa calculada:\", hipotenusa)": {
+  "import math\n\n# Catetos de un triángulo rectángulo:\ncateto_a = 3\ncateto_b = 4\n# c = √(a² + b²)\nhipotenusa = sqrt(cateto_a**2 + cateto_b**2)\nprint(f\"Hipotenusa: {hipotenusa}\")": {
     "lines": [
       "import math",
       "",
-      "cateto_a = 6",
-      "cateto_b = 8",
-      "",
-      "# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)",
-      "suma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)",
-      "hipotenusa = sqrt(suma_cuadrados)",
-      "",
-      "print(\"Cateto A:\", cateto_a)",
-      "print(\"Cateto B:\", cateto_b)",
-      "print(\"Hipotenusa calculada:\", hipotenusa)"
+      "# Catetos de un triángulo rectángulo:",
+      "cateto_a = 3",
+      "cateto_b = 4",
+      "# c = √(a² + b²)",
+      "hipotenusa = sqrt(cateto_a**2 + cateto_b**2)",
+      "print(f\"Hipotenusa: {hipotenusa}\")"
     ],
     "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
       {
         "prints": null,
         "outputSoFar": []
@@ -1721,52 +1135,25 @@ window.BAKED_TRACES = {
         ]
       },
       {
-        "prints": null,
-        "outputSoFar": [
-          "Error: name 'sqrt' is not defined"
-        ]
-      },
-      {
-        "prints": "Cateto A: 6",
-        "outputSoFar": [
-          "Error: name 'sqrt' is not defined",
-          "Cateto A: 6"
-        ]
-      },
-      {
-        "prints": "Cateto B: 8",
-        "outputSoFar": [
-          "Error: name 'sqrt' is not defined",
-          "Cateto A: 6",
-          "Cateto B: 8"
-        ]
-      },
-      {
         "prints": "Error: name 'hipotenusa' is not defined",
         "outputSoFar": [
           "Error: name 'sqrt' is not defined",
-          "Cateto A: 6",
-          "Cateto B: 8",
           "Error: name 'hipotenusa' is not defined"
         ]
       }
     ],
-    "totalOutput": "Error: name 'sqrt' is not defined\nCateto A: 6\nCateto B: 8\nError: name 'hipotenusa' is not defined"
+    "totalOutput": "Error: name 'sqrt' is not defined\nError: name 'hipotenusa' is not defined"
   },
-  "import math\n\ncateto_a = 6\ncateto_b = 8\n\n# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)\nsuma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)\nhipotenusa = math.ceil(suma_cuadrados)\n\nprint(\"Cateto A:\", cateto_a)\nprint(\"Cateto B:\", cateto_b)\nprint(\"Hipotenusa calculada:\", hipotenusa)": {
+  "import math\n\n# Catetos de un triángulo rectángulo:\ncateto_a = 3\ncateto_b = 4\n# c = √(a² + b²)\nhipotenusa = math.floor(cateto_a**2 + cateto_b**2)\nprint(f\"Hipotenusa: {hipotenusa}\")": {
     "lines": [
       "import math",
       "",
-      "cateto_a = 6",
-      "cateto_b = 8",
-      "",
-      "# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)",
-      "suma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)",
-      "hipotenusa = math.ceil(suma_cuadrados)",
-      "",
-      "print(\"Cateto A:\", cateto_a)",
-      "print(\"Cateto B:\", cateto_b)",
-      "print(\"Hipotenusa calculada:\", hipotenusa)"
+      "# Catetos de un triángulo rectángulo:",
+      "cateto_a = 3",
+      "cateto_b = 4",
+      "# c = √(a² + b²)",
+      "hipotenusa = math.floor(cateto_a**2 + cateto_b**2)",
+      "print(f\"Hipotenusa: {hipotenusa}\")"
     ],
     "lineTrace": [
       {
@@ -1798,35 +1185,12 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Cateto A: 6",
+        "prints": "Hipotenusa: 25",
         "outputSoFar": [
-          "Cateto A: 6"
-        ]
-      },
-      {
-        "prints": "Cateto B: 8",
-        "outputSoFar": [
-          "Cateto A: 6",
-          "Cateto B: 8"
-        ]
-      },
-      {
-        "prints": "Hipotenusa calculada: 100",
-        "outputSoFar": [
-          "Cateto A: 6",
-          "Cateto B: 8",
-          "Hipotenusa calculada: 100"
+          "Hipotenusa: 25"
         ]
       }
     ],
-    "totalOutput": "Cateto A: 6\nCateto B: 8\nHipotenusa calculada: 100"
+    "totalOutput": "Hipotenusa: 25"
   }
 };

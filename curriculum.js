@@ -6,950 +6,787 @@
  */
 
 const CURRICULUM = {
-  courseTitle: "pyMinas: Fundamentos de Programación",
-  courseSubtitle: "Facultad de Minas · Universidad Nacional de Colombia. Construye bases sólidas en programación con práctica guiada e interactiva.",
-  weeks: [
+  "courseTitle": "pyMinas: Fundamentos de Programación",
+  "courseSubtitle": "Facultad de Minas · Universidad Nacional de Colombia. Construye bases sólidas en programación con práctica guiada e interactiva.",
+  "weeks": [
     {
-      id: "semana-1",
-      number: 1,
-      title: "Semana 1: Introducción (31 ago - 6 sep)",
-      description: "Fundamentos de programación, ciclo E-P-S, tipos, operadores y math.",
-      status: "active",
-      lessons: [
-        // ==========================================
-        // LECCIÓN 1: Estructura Python
-        // ==========================================
+      "id": "semana-1",
+      "number": 1,
+      "title": "Semana 1: Introducción (31 ago - 6 sep)",
+      "description": "Fundamentos de programación, ciclo E-P-S, tipos, operadores y math.",
+      "status": "active",
+      "lessons": [
         {
-          id: "w1-l1",
-          weekId: "semana-1",
-          number: 1,
-          tag: "Fundamentos",
-          shortTitle: "Estructura Python",
-          title: "¿Qué es programar y por qué Python?",
-          description: "Algoritmos, código fuente, lenguajes compilados vs interpretados y el orden secuencial.",
-          duration: "10 min",
-          steps: [
+          "id": "w1-l1",
+          "weekId": "semana-1",
+          "number": 1,
+          "tag": "Fundamentos",
+          "shortTitle": "Algoritmos",
+          "title": "¿Qué es un algoritmo y cómo piensa Python?",
+          "description": "Concepto de algoritmo, código fuente, secuencia lógica y ejecución paso a paso.",
+          "duration": "8 min",
+          "steps": [
             {
-              type: "explanation",
-              partLabel: "Paso 1 · El concepto",
-              title: "¿Qué es programar y qué es un algoritmo?",
-              intro: "Una computadora es increíblemente rápida, pero no sabe qué hacer por su cuenta. <strong>Programar</strong> es darle una serie de instrucciones claras y ordenadas para resolver una tarea.",
-              examples: [
+              "type": "explanation",
+              "partLabel": "Paso 1 · El concepto",
+              "title": "¿Qué es programar y qué es un algoritmo?",
+              "intro": "Una computadora es increíblemente rápida, pero no sabe qué hacer por su cuenta. <strong>Programar</strong> es darle una serie de instrucciones claras y ordenadas para resolver una tarea.",
+              "examples": [
                 {
-                  label: "La receta de cocina",
-                  code: `# En programación, esta secuencia lógica se llama ALGORITMO:
-# 1. Poner agua a hervir
-# 2. Agregar el café
-# 3. Servir en la taza
-print("¡Café listo para beber!")`,
-                  output: "¡Café listo para beber!",
-                  explanation: "Si intentas servir antes de hervir el agua, todo falla. Un algoritmo necesita un orden estricto."
+                  "label": "La receta de cocina",
+                  "code": "# En programación, esta secuencia lógica se llama ALGORITMO:\n# 1. Poner agua a hervir\n# 2. Agregar el café\n# 3. Servir en la taza\nprint(\"¡Café listo para beber!\")",
+                  "output": "¡Café listo para beber!",
+                  "explanation": "Si intentas servir antes de hervir el agua, todo falla. Un algoritmo necesita un orden estricto."
                 }
               ],
-              keyTakeaway: "El texto con instrucciones que escribes en un lenguaje entendible (como Python) se llama <strong>código fuente</strong>."
+              "keyTakeaway": "El texto con instrucciones que escribes en un lenguaje entendible (como Python) se llama <strong>código fuente</strong>."
             },
             {
-              type: "predict",
-              partLabel: "Paso 2 · Intuición algorítmica",
-              title: "¿Cuál es un algoritmo correcto?",
-              question: "Imagina que le das instrucciones a un robot para cruzar una calle con seguridad. ¿Cuál secuencia representa un algoritmo correcto?",
-              theory: "Recuerda que una máquina no puede adivinar tus intenciones: solo sigue el orden exacto que tú le indiques.",
-              options: [
-                { 
-                  id: "A", 
-                  text: "Caminar hacia adelante -> Mirar el semáforo -> Detenerse en medio de la calle", 
-                  isCorrect: false,
-                  whyIncorrect: "Si caminas antes de mirar el semáforo, corres grave peligro. Un algoritmo debe verificar las condiciones de seguridad antes de actuar."
-                },
-                { 
-                  id: "B", 
-                  text: "Mirar el semáforo -> Esperar luz verde peatonal -> Mirar a ambos lados -> Cruzar la calle", 
-                  isCorrect: true 
-                },
-                { 
-                  id: "C", 
-                  text: "Cruzar corriendo con los ojos cerrados -> Esperar que no pasen vehículos", 
-                  isCorrect: false,
-                  whyIncorrect: "No tiene lógica de seguridad ni pasos ordenados. Las computadoras necesitan instrucciones exactas y verificables."
-                }
-              ],
-              correctionTip: "Un algoritmo debe ser lógico, seguro y con pasos en el orden correcto antes de ejecutar una acción crítica.",
-              fullAnswerExplanation: "La opción B es un algoritmo real: verifica las condiciones necesarias antes de actuar. Las computadoras necesitan esta misma precisión."
-            },
-            {
-              type: "explanation",
-              partLabel: "Paso 3 · Lenguaje interpretado",
-              title: "Python: Un lenguaje interpretado",
-              intro: "¿Por qué elegimos Python? Porque se lee casi como inglés y es el lenguaje más usado en Inteligencia Artificial y Ciencia de Datos.",
-              examples: [
+              "type": "predict",
+              "partLabel": "Paso 2 · Intuición algorítmica",
+              "title": "¿Cuál es un algoritmo correcto?",
+              "question": "Imagina que le das instrucciones a un robot para cruzar una calle con seguridad. ¿Cuál secuencia representa un algoritmo correcto?",
+              "theory": "Recuerda que una máquina no puede adivinar tus intenciones: solo sigue el orden exacto que tú le indiques.",
+              "options": [
                 {
-                  label: "Ejecución línea por línea",
-                  code: `# Python lee tu archivo de arriba hacia abajo:
-print("Línea 1: Verificando datos")
-print("Línea 2: Procesando cálculo")
-print("Línea 3: Operación terminada")`,
-                  output: "Línea 1: Verificando datos\nLínea 2: Procesando cálculo\nLínea 3: Operación terminada",
-                  explanation: "A diferencia de lenguajes compilados (como C) que deben traducirse por completo antes de abrirse, el intérprete de Python lee y ejecuta tu código línea por línea en tiempo real."
-                }
-              ],
-              keyTakeaway: "Si hay un error en la línea 10, Python ejecutará con éxito las líneas 1 a la 9 y se detendrá exactamente en la 10 explicándote qué ocurrió."
-            },
-            {
-              type: "predict",
-              partLabel: "Paso 4 · Orden de ejecución",
-              title: "¿En qué orden se ejecuta?",
-              question: "¿Qué texto exacto imprimirá Python en SEGUNDO lugar al ejecutar este código?",
-              code: `print("Conectando al servidor...")
-print("Cargando perfil de usuario")
-print("¡Bienvenido al sistema!")`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "\"Cargando perfil de usuario\"", 
-                  isCorrect: true 
-                },
-                { 
-                  id: "B", 
-                  text: "\"Conectando al servidor...\"", 
-                  isCorrect: false,
-                  whyIncorrect: "Esta es la primera línea que se ejecuta, no la segunda."
-                },
-                { 
-                  id: "C", 
-                  text: "\"¡Bienvenido al sistema!\"", 
-                  isCorrect: false,
-                  whyIncorrect: "Esta es la tercera y última línea del código; se imprimirá al final."
-                },
-                { 
-                  id: "D", 
-                  text: "Todas se imprimen a la vez", 
-                  isCorrect: false,
-                  whyIncorrect: "Python es un lenguaje interpretado que avanza estrictamente de arriba hacia abajo, una instrucción a la vez."
-                }
-              ],
-              correctionTip: "Python es secuencial: la línea 1 va primero, la línea 2 va después, y la línea 3 al final.",
-              fullAnswerExplanation: "La línea 2 («Cargando perfil de usuario») se ejecuta estrictamente después de la línea 1 y antes de la 3."
-            },
-            {
-              type: "predict",
-              partLabel: "Paso 5 · Comentarios (#)",
-              title: "El superpoder del símbolo #",
-              question: "En Python, las líneas que inician con el símbolo # son comentarios para humanos. ¿Qué mensaje se verá en pantalla?",
-              code: `print("Modo normal activado")
-# print("Modo de prueba secreto")
-print("Todo funcionando correctamente")`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "Solo \"Modo normal activado\" y \"Todo funcionando correctamente\"", 
-                  isCorrect: true 
-                },
-                { 
-                  id: "B", 
-                  text: "Los tres mensajes completos", 
-                  isCorrect: false,
-                  whyIncorrect: "La línea con el '#' al inicio es ignorada por el intérprete de Python, por lo que nunca se muestra."
-                },
-                { 
-                  id: "C", 
-                  text: "Solo \"Modo de prueba secreto\"", 
-                  isCorrect: false,
-                  whyIncorrect: "Al tener '#' al principio, justamente esa línea es la única que NO se ejecutará."
-                },
-                { 
-                  id: "D", 
-                  text: "Dará un error por el símbolo #", 
-                  isCorrect: false,
-                  whyIncorrect: "El símbolo '#' es una característica estándar de Python y nunca genera error: se usa para escribir notas humanas."
-                }
-              ],
-              correctionTip: "El intérprete de Python ignora por completo cualquier línea o texto que comience con el símbolo #.",
-              fullAnswerExplanation: "El símbolo '#' convierte la línea en invisible para la máquina. Los programadores lo usamos para tomar notas o desactivar código temporalmente."
-            },
-            {
-              type: "code_sandbox",
-              partLabel: "Paso 6 · Práctica guiada",
-              title: "Completa y ejecuta tu primer programa",
-              instruction: "Elige la instrucción correcta para completar la última línea y mostrar tu meta de programación en pantalla.",
-              starterCode: `# Mi primer programa en Python
-print("¡Hola mundo!")
-print("Mi nombre es: Estudiante")
-___`,
-              slotMarker: "___",
-              options: [
-                {
-                  id: "A",
-                  code: 'print("Meta: Crear mis propios proyectos")',
-                  label: 'print("Meta: Crear mis propios proyectos")',
-                  isCorrect: true,
-                  feedback: "¡Excelente! print() es la instrucción que muestra texto en la pantalla."
+                  "id": "A",
+                  "text": "Caminar hacia adelante -> Mirar el semáforo -> Detenerse en medio de la calle",
+                  "isCorrect": false,
+                  "whyIncorrect": "Si caminas antes de mirar el semáforo, corres grave peligro. Un algoritmo debe verificar las condiciones de seguridad antes de actuar."
                 },
                 {
-                  id: "B",
-                  code: '"Meta: Crear mis propios proyectos"',
-                  label: '"Meta: Crear mis propios proyectos"',
-                  isCorrect: false,
-                  feedback: "El texto se crearía en memoria, pero sin la función print() nunca aparecerá en pantalla."
+                  "id": "B",
+                  "text": "Mirar el semáforo -> Esperar luz verde peatonal -> Mirar a ambos lados -> Cruzar la calle",
+                  "isCorrect": true
                 },
                 {
-                  id: "C",
-                  code: 'imprimir("Meta: Crear mis propios proyectos")',
-                  label: 'imprimir("Meta: Crear mis propios proyectos")',
-                  isCorrect: false,
-                  feedback: "En Python las funciones están en inglés ('print'). Usar 'imprimir' produce NameError."
+                  "id": "C",
+                  "text": "Cruzar corriendo con los ojos cerrados -> Esperar que no pasen vehículos",
+                  "isCorrect": false,
+                  "whyIncorrect": "No tiene lógica de seguridad ni pasos ordenados. Las computadoras necesitan instrucciones exactas y verificables."
                 }
-              ]
+              ],
+              "correctionTip": "Un algoritmo debe ser lógico, seguro y con pasos en el orden correcto antes de ejecutar una acción crítica.",
+              "fullAnswerExplanation": "La opción B es un algoritmo real: verifica las condiciones necesarias antes de actuar. Las computadoras necesitan esta misma precisión."
+            },
+            {
+              "type": "explanation",
+              "partLabel": "Paso 3 · Lenguaje interpretado",
+              "title": "Python lee de arriba hacia abajo",
+              "intro": "Python es un lenguaje interpretado: su motor lee el archivo línea por línea, de arriba hacia abajo, ejecutando cada instrucción en el orden en que fue escrita.",
+              "examples": [
+                {
+                  "label": "Ejecución línea por línea",
+                  "code": "# Python lee tu archivo de arriba hacia abajo:\nprint(\"Línea 1: Verificando datos\")\nprint(\"Línea 2: Procesando cálculo\")\nprint(\"Línea 3: Operación terminada\")",
+                  "output": "Línea 1: Verificando datos\nLínea 2: Procesando cálculo\nLínea 3: Operación terminada",
+                  "explanation": "El intérprete de Python lee y ejecuta tu código paso a paso en tiempo real."
+                }
+              ],
+              "keyTakeaway": "Si hay un error en la línea 10, Python ejecutará con éxito las líneas 1 a 9 y se detendrá exactamente en la 10 explicándote qué falló."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 4 · Orden de ejecución",
+              "title": "¿En qué orden se ejecuta?",
+              "code": "print(\"1. Encendiendo motor\")\nprint(\"2. Calentando turbinas\")\nprint(\"3. ¡Despegue!\")",
+              "question": "¿En qué orden exacto imprimirá Python estos tres mensajes en la consola?",
+              "theory": "El intérprete de Python lee el archivo siempre de arriba hacia abajo.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "1. Encendiendo motor -> 2. Calentando turbinas -> 3. ¡Despegue!",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "3. ¡Despegue! -> 2. Calentando turbinas -> 1. Encendiendo motor",
+                  "isCorrect": false,
+                  "whyIncorrect": "Python no lee de abajo hacia arriba. Lee estrictamente de arriba hacia abajo según el orden de las líneas."
+                },
+                {
+                  "id": "C",
+                  "text": "Las tres líneas se imprimen al mismo tiempo en paralelo sin orden",
+                  "isCorrect": false,
+                  "whyIncorrect": "La ejecución secuencial significa que cada línea espera a que termine la anterior antes de comenzar."
+                }
+              ],
+              "correctionTip": "La regla de oro de la ejecución secuencial: Python sigue estrictamente el orden de las líneas de arriba hacia abajo.",
+              "fullAnswerExplanation": "¡Exacto! Python ejecuta cada instrucción en el orden exacto en que fue escrita, de arriba a abajo."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 5 · Comentarios (#)",
+              "title": "El superpoder del símbolo #",
+              "question": "En Python, las líneas que inician con el símbolo # son comentarios para humanos. ¿Qué mensaje se verá en pantalla?",
+              "code": "print(\"Modo normal activado\")\n# print(\"Modo de prueba secreto\")\nprint(\"Todo funcionando correctamente\")",
+              "theory": "El intérprete de Python ignora por completo cualquier línea o texto que comience con el símbolo #.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Solo \"Modo normal activado\" y \"Todo funcionando correctamente\"",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Los tres mensajes completos",
+                  "isCorrect": false,
+                  "whyIncorrect": "La línea con el '#' al inicio es ignorada por el intérprete de Python, por lo que nunca se muestra."
+                },
+                {
+                  "id": "C",
+                  "text": "Solo \"Modo de prueba secreto\"",
+                  "isCorrect": false,
+                  "whyIncorrect": "Al tener '#' al principio, justamente esa línea es la única que NO se ejecutará."
+                }
+              ],
+              "correctionTip": "El símbolo '#' convierte la línea en invisible para la máquina. Los programadores lo usamos para tomar notas o desactivar código temporalmente.",
+              "fullAnswerExplanation": "El símbolo '#' convierte la línea en invisible para la máquina. Los programadores lo usamos para tomar notas o desactivar código temporalmente."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 6 · Tu primer algoritmo",
+              "title": "Completa el algoritmo de bienvenida",
+              "instruction": "En pyMinas queremos mostrar un mensaje de bienvenida. Elige la función correcta para mostrar texto en pantalla:",
+              "starterCode": "# Algoritmo de bienvenida a pyMinas\n___(\"¡Bienvenido a la Facultad de Minas!\")",
+              "slotMarker": "___",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "print",
+                  "label": "print",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! print() es la función estándar de Python para mostrar salidas en pantalla."
+                },
+                {
+                  "id": "B",
+                  "code": "mostrar",
+                  "label": "mostrar",
+                  "isCorrect": false,
+                  "explanation": "En Python las funciones están en inglés. 'mostrar' no existe y generaría un NameError."
+                },
+                {
+                  "id": "C",
+                  "code": "escribir",
+                  "label": "escribir",
+                  "isCorrect": false,
+                  "explanation": "'escribir' no es una función de Python. La función oficial para imprimir texto es print()."
+                }
+              ],
+              "expectedOutput": "¡Bienvenido a la Facultad de Minas!"
             }
           ]
         },
-
-        // ==========================================
-        // LECCIÓN 2: Programas (E -> P -> S)
-        // ==========================================
         {
-          id: "w1-l2",
-          weekId: "semana-1",
-          number: 2,
-          tag: "Arquitectura",
-          shortTitle: "Programas",
-          title: "Esquema general de un programa (E -> P -> S)",
-          description: "El ciclo vital de todo software: Entrada (datos) -> Procesamiento (cálculo) -> Salida (print).",
-          duration: "12 min",
-          steps: [
+          "id": "w1-l2",
+          "weekId": "semana-1",
+          "number": 2,
+          "tag": "Entrada",
+          "shortTitle": "Función input",
+          "title": "Entrada de datos con input()",
+          "description": "Cómo recibir datos del usuario por teclado, almacenarlos en memoria y entender por qué siempre entrega texto.",
+          "duration": "8 min",
+          "steps": [
             {
-              type: "explanation",
-              partLabel: "Paso 1 · El ciclo universal",
-              title: "Las 3 etapas: Entrada ➔ Procesamiento ➔ Salida",
-              intro: "Cualquier programa en el mundo —desde la app del clima hasta el buscador de Google— realiza exactamente el mismo ciclo de 3 pasos.",
-              examples: [
+              "type": "explanation",
+              "partLabel": "Paso 1 · El concepto",
+              "title": "¿Cómo recibe datos un programa?",
+              "intro": "Un programa interactivo necesita datos del mundo exterior. En Python, la función <code>input()</code> pausa la ejecución del programa y espera a que el usuario escriba algo en el teclado y presione Enter.",
+              "examples": [
                 {
-                  label: "La fábrica de software",
-                  code: `# 1. ENTRADA: Llegan los datos iniciales
-precio = 100
-descuento = 20
-print("Precio original: $", precio, sep="")
-print("Descuento: $", descuento, sep="")
-
-# 2. PROCESAMIENTO: La máquina calcula
-total = precio - descuento
-
-# 3. SALIDA: Mostramos el resultado al usuario
-print("Total a pagar con descuento: $", total, sep="")`,
-                  output: "Precio original: $100\nDescuento: $20\nTotal a pagar con descuento: $80",
-                  explanation: "Sin entrada no hay qué procesar; sin procesamiento no hay valor; sin salida el usuario nunca se entera del resultado."
+                  "label": "Guardando datos en memoria",
+                  "code": "# input() captura lo que el usuario escribe:\n# nombre = input(\"¿Tu nombre?: \")\n# El valor queda guardado en la variable:\nnombre = \"Valentina\"\nprint(\"Hola,\", nombre)",
+                  "output": "Hola, Valentina",
+                  "explanation": "El valor capturado se guarda en una variable asignada a la izquierda del signo igual (=)."
                 }
               ],
-              keyTakeaway: "En Python usamos variables o <code>input()</code> para la Entrada, operadores para el Procesamiento, y <code>print()</code> para la Salida."
+              "keyTakeaway": "<strong>Regla de oro:</strong> Todo lo que entrega <code>input()</code> llega a Python como <strong>texto (tipo str)</strong>, incluso si el usuario tecleó dígitos numéricos como <code>18</code> o <code>25</code>."
             },
             {
-              type: "predict",
-              partLabel: "Paso 2 · Identificar etapas",
-              title: "¿Qué etapa representa esta línea?",
-              question: "Observa la línea central (total_puntos = monedas * 10): ¿a cuál de las 3 etapas (Entrada, Procesamiento, Salida) corresponde?",
-              code: `monedas = 15
-total_puntos = monedas * 10
-print("Puntos calculados:", total_puntos)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "Procesamiento (calcula un nuevo valor en memoria)", 
-                  isCorrect: true 
+              "type": "predict",
+              "partLabel": "Paso 2 · Naturaleza de input()",
+              "title": "¿Qué tipo de dato entrega input()?",
+              "question": "Un usuario ejecuta <code>edad = input(\"Ingresa tu edad: \")</code> y teclea el número <code>20</code> en su pantalla. ¿De qué tipo de dato es la variable <code>edad</code> en memoria?",
+              "theory": "Recuerda que input() captura pulsaciones del teclado como caracteres.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Es de tipo str (cadena de texto: \"20\")",
+                  "isCorrect": true
                 },
-                { 
-                  id: "B", 
-                  text: "Salida (muestra datos en la pantalla con print)", 
-                  isCorrect: false,
-                  whyIncorrect: "La salida ocurre en la línea 3 con print(). La línea 2 realiza el cálculo matemático en la memoria."
+                {
+                  "id": "B",
+                  "text": "Es de tipo int (número entero: 20)",
+                  "isCorrect": false,
+                  "whyIncorrect": "input() NUNCA devuelve un entero automáticamente. Aunque teclees números, Python los recibe como texto (\"20\")."
                 },
-                { 
-                  id: "C", 
-                  text: "Entrada (solicita datos al usuario por teclado)", 
-                  isCorrect: false,
-                  whyIncorrect: "La asignación inicial 'monedas = 15' representa los datos de entrada. La línea 2 multiplica."
-                },
-                { 
-                  id: "D", 
-                  text: "Compilación", 
-                  isCorrect: false,
-                  whyIncorrect: "La compilación es un proceso técnico del sistema, no una de las 3 etapas (E-P-S) de tu programa."
+                {
+                  "id": "C",
+                  "text": "Es de tipo bool (verdadero/falso)",
+                  "isCorrect": false,
+                  "whyIncorrect": "Un booleano solo puede ser True o False. La función input() entrega caracteres de texto."
                 }
               ],
-              correctionTip: "La línea 1 define la entrada (15), la línea 2 procesa (multiplica por 10), y la línea 3 produce la salida con print().",
-              fullAnswerExplanation: "La instrucción 'total_puntos = monedas * 10' toma el valor de monedas y realiza una operación matemática interna en la memoria de la máquina. Esa es la etapa de Procesamiento."
+              "correctionTip": "La regla número 1 de input(): sin importar lo que el usuario escriba, el resultado SIEMPRE es de tipo str (texto).",
+              "fullAnswerExplanation": "¡Exacto! input() siempre produce cadenas de texto (str). Si necesitas operar matemáticamente con el valor, debes convertirlo."
             },
             {
-              type: "explanation",
-              partLabel: "Paso 3 · Control de Salida",
-              title: "Dominando print(): Parámetros sep y end",
-              intro: "La función <code>print()</code> es más poderosa de lo que parece. Por defecto separa con un espacio y salta de renglón al final, pero puedes cambiarlo.",
-              examples: [
+              "type": "predict",
+              "partLabel": "Paso 3 · La trampa de la suma",
+              "title": "Spot-the-bug: ¿Qué ocurre al sumar entradas?",
+              "code": "# Supongamos dos entradas obtenidas con input():\na = \"10\"\nb = \"20\"\ntotal = a + b\nprint(total)",
+              "question": "¿Qué mostrará este programa en la consola al sumar las dos variables?",
+              "theory": "En Python, el operador + entre textos concatena (une) en lugar de sumar matemáticamente.",
+              "options": [
                 {
-                  label: "Personalizando el separador",
-                  code: `# sep define qué va entre cada elemento:
-print("2026", "09", "04", sep="-")
-
-# end define qué va al final (por defecto es salto de línea):
-print("Hola", end=" ")
-print("Mundo")`,
-                  output: "2026-09-04\nHola Mundo",
-                  explanation: "Con sep='-' unimos los textos con un guion. Con end=' ' evitamos que la siguiente línea baje al siguiente renglón."
+                  "id": "A",
+                  "text": "1020",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "30",
+                  "isCorrect": false,
+                  "whyIncorrect": "Como a y b son textos ('10' y '20'), el operador + los une uno tras otro formando '1020', no 30."
+                },
+                {
+                  "id": "C",
+                  "text": "TypeError: no se pueden sumar números con comillas",
+                  "isCorrect": false,
+                  "whyIncorrect": "Sumar dos textos con + es 100% legal en Python. Es la operación de concatenación."
                 }
               ],
-              keyTakeaway: "<code>sep</code> = separador entre elementos. <code>end</code> = carácter final que se imprime después de todo."
+              "correctionTip": "El operador + con texto une las palabras. Para sumar números debes convertir con int() o float().",
+              "fullAnswerExplanation": "¡Exactamente! Al no haber convertido las entradas a número, Python realizó concatenación de texto: '10' + '20' = '1020'."
             },
             {
-              type: "predict",
-              partLabel: "Paso 4 · El separador sep",
-              title: "¿Cómo funciona sep exactamente?",
-              question: "¿Cuál será la salida exacta producida por esta instrucción?",
-              code: `print("Python", "es", "genial", sep="*")`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "\"Python*es*genial\"", 
-                  isCorrect: true 
+              "type": "visualizer_input",
+              "partLabel": "Paso 4 · Laboratorio interactivo",
+              "title": "Laboratorio: Conversión de texto a entero"
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 5 · Reto de conversión",
+              "title": "Convierte la entrada a entero",
+              "instruction": "Un estudiante ingresó sus puntos como texto. Completa el código con la función de conversión que permite sumar los 5 puntos adicionales correctamente:",
+              "starterCode": "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = ___(entrada_str)\nprint(puntos + 5)",
+              "slotMarker": "___",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "int",
+                  "label": "int",
+                  "isCorrect": true,
+                  "explanation": "¡Excelente! int(\"15\") transforma el texto en el entero 15, permitiendo la suma aritmética 15 + 5 = 20."
                 },
-                { 
-                  id: "B", 
-                  text: "\"*Python*es*genial*\"", 
-                  isCorrect: false,
-                  whyIncorrect: "El parámetro sep solo se inserta ENTRE los elementos, nunca en los extremos exteriores."
+                {
+                  "id": "B",
+                  "code": "str",
+                  "label": "str",
+                  "isCorrect": false,
+                  "explanation": "str() mantendría el tipo como texto, por lo que puntos + 5 daría TypeError al intentar sumar texto con entero."
                 },
-                { 
-                  id: "C", 
-                  text: "\"Python es genial*\"", 
-                  isCorrect: false,
-                  whyIncorrect: "sep='*' reemplaza el espacio entre cada una de las palabras, no solo al final."
-                },
-                { 
-                  id: "D", 
-                  text: "\"Python* es* genial\"", 
-                  isCorrect: false,
-                  whyIncorrect: "sep='*' sustituye por completo el espacio habitual, no añade asteriscos con espacios."
+                {
+                  "id": "C",
+                  "code": "len",
+                  "label": "len",
+                  "isCorrect": false,
+                  "explanation": "len() mide la cantidad de caracteres de un texto, no convierte su valor a número."
                 }
               ],
-              correctionTip: "El parámetro sep (separador) solo se coloca ENTRE los elementos, nunca al principio ni al final.",
-              fullAnswerExplanation: "El asterisco sustituye el espacio habitual y se ubica únicamente entre las palabras."
-            },
-            {
-              type: "visualizer_print",
-              partLabel: "Paso 5 · Laboratorio interactivo",
-              title: "Experimenta con el separador sep",
-              theory: "Haz clic en los diferentes botones para ver cómo cambia la salida en tiempo real."
-            },
-            {
-              type: "code_sandbox",
-              partLabel: "Paso 6 · Práctica guiada",
-              title: "Crea un ticket de compra con E-P-S",
-              instruction: "Completa la etapa de Procesamiento sumando las variables de los productos para calcular el total a pagar.",
-              starterCode: `# 1. ENTRADA (Datos iniciales):
-producto_a = 45
-producto_b = 30
-
-# 2. PROCESAMIENTO (Suma los dos productos):
-total = ___
-
-# 3. SALIDA (Muestra el ticket):
-print("Producto 1: $", producto_a, sep="")
-print("Producto 2: $", producto_b, sep="")
-print("Total a pagar: $", total, sep="")`,
-              slotMarker: "___",
-              options: [
-                {
-                  id: "A",
-                  code: "producto_a + producto_b",
-                  label: "producto_a + producto_b",
-                  isCorrect: true,
-                  feedback: "¡Perfecto! Sumas las dos variables numéricas para obtener el total exacto ($75)."
-                },
-                {
-                  id: "B",
-                  code: '"producto_a" + "producto_b"',
-                  label: '"producto_a" + "producto_b"',
-                  isCorrect: false,
-                  feedback: "Al poner comillas, Python une los nombres como texto y daría 'producto_aproducto_b'."
-                },
-                {
-                  id: "C",
-                  code: "producto_a * producto_b",
-                  label: "producto_a * producto_b",
-                  isCorrect: false,
-                  feedback: "El asterisco multiplica en lugar de sumar (daría $1350 en lugar de $75)."
-                }
-              ]
+              "expectedOutput": "20"
             }
           ]
         },
-
-        // ==========================================
-        // LECCIÓN 3: Tipos de datos
-        // ==========================================
         {
-          id: "w1-l3",
-          weekId: "semana-1",
-          number: 3,
-          tag: "Datos",
-          shortTitle: "Tipos de datos",
-          title: "Tipos de datos y conversiones (Casting)",
-          description: "Enteros (int), decimales (float), texto (str), booleanos (bool) y la función input().",
-          duration: "15 min",
-          steps: [
+          "id": "w1-l3",
+          "weekId": "semana-1",
+          "number": 3,
+          "tag": "Salida",
+          "shortTitle": "Función print",
+          "title": "Salida de datos y f-strings con print()",
+          "description": "Uso de print(), múltiples argumentos, separadores y el formato moderno de f-strings f\"str{variable}\".",
+          "duration": "8 min",
+          "steps": [
             {
-              type: "explanation",
-              partLabel: "Paso 1 · Los 4 tipos esenciales",
-              title: "¿Qué es un tipo de dato en Python?",
-              intro: "En el mundo real no puedes multiplicar una manzana por un zapato. En programación pasa lo mismo: cada dato tiene una etiqueta que define qué podemos hacer con él.",
-              examples: [
+              "type": "explanation",
+              "partLabel": "Paso 1 · Múltiples argumentos",
+              "title": "La función print() básica",
+              "intro": "La función <code>print()</code> envía información a la consola. Puedes pasarle varios datos separados por comas y Python los mostrará separados por un espacio.",
+              "examples": [
                 {
-                  label: "Los 4 tipos primitivos",
-                  code: `nombre = "Lucía"   # str: texto (entre comillas)
-edad = 20          # int: número entero (sin decimales)
-precio = 19.99     # float: número con punto decimal
-activo = True      # bool: booleano (True o False)
-
-print("Nombre (str):", nombre)
-print("Edad (int):", edad)
-print("Precio (float): $", precio, sep="")
-print("Activo (bool):", activo)`,
-                  output: "Nombre (str): Lucía\nEdad (int): 20\nPrecio (float): $19.99\nActivo (bool): True",
-                  explanation: "Las comillas hacen toda la diferencia: 20 es un número operable, pero \"Lucía\" es texto. Cada tipo tiene su propio propósito."
+                  "label": "Separando con comas",
+                  "code": "nombre = \"Carlos\"\nsemestre = 1\nprint(\"Estudiante:\", nombre, \"Semestre:\", semestre)",
+                  "output": "Estudiante: Carlos Semestre: 1",
+                  "explanation": "Cada argumento separado por coma se imprime automáticamente con un espacio intermedio."
                 }
               ],
-              keyTakeaway: "Python deduce el tipo automáticamente, pero tú debes tener claro si estás manejando texto o números."
+              "keyTakeaway": "Por defecto, cada llamada a <code>print()</code> termina con un salto de línea automático."
             },
             {
-              type: "predict",
-              partLabel: "Paso 2 · La gran trampa de principiantes",
-              title: "¿Número o texto?",
-              question: "Observa este código con atención: ¿cuál es la salida exacta en pantalla?",
-              code: `a = "5"
-b = "5"
-print(a + b)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "\"55\"", 
-                  isCorrect: true 
-                },
-                { 
-                  id: "B", 
-                  text: "10", 
-                  isCorrect: false,
-                  whyIncorrect: "Como '5' tiene comillas, Python lo trata como texto (str). El signo '+' entre textos los pega (concatena) formando '55', no los suma como números."
-                },
-                { 
-                  id: "C", 
-                  text: "Error: no se pueden sumar", 
-                  isCorrect: false,
-                  whyIncorrect: "En Python sí se pueden 'sumar' textos: la operación se llama concatenación y une los textos uno al lado del otro."
-                },
-                { 
-                  id: "D", 
-                  text: "\"10\"", 
-                  isCorrect: false,
-                  whyIncorrect: "La concatenación une los caracteres literales '5' y '5', dando '55'."
+              "type": "explanation",
+              "partLabel": "Paso 2 · f-strings modernos",
+              "title": "Formateo moderno con f-strings",
+              "intro": "A partir de Python 3.6, la forma oficial, más legible y potente de mostrar salidas es usando <strong>f-strings</strong> (cadenas literales formateadas). Solo antepones una <code>f</code> antes de abrir las comillas y colocas cualquier variable o expresión entre llaves: <code>f\"Texto {variable}\"</code>.",
+              "examples": [
+                {
+                  "label": "f-strings en acción",
+                  "code": "curso = \"pyMinas\"\nedicion = 2026\nprint(f\"¡Bienvenido a {curso} versión {edicion}!\")",
+                  "output": "¡Bienvenido a pyMinas versión 2026!",
+                  "explanation": "Python evalúa el contenido de cada {llave} y coloca su valor directamente dentro de la cadena."
                 }
               ],
-              correctionTip: "¡Cuidado clásico! Al poner comillas \"5\", son textos (str). El operador + entre dos textos los 'pega' uno tras otro (concatenación).",
-              fullAnswerExplanation: "Como son cadenas de texto, el signo + las concatena. Para que dé 10, tendríamos que escribir a = 5 y b = 5 sin comillas."
+              "keyTakeaway": "Dentro de las llaves <code>{ }</code> puedes colocar variables e incluso operaciones matemáticas como <code>{precio * 1.19}</code>."
             },
             {
-              type: "explanation",
-              partLabel: "Paso 3 · Conversión de tipos (Casting)",
-              title: "Cómo transformar datos: int(), float() y str()",
-              intro: "A veces recibes un número guardado como texto y necesitas convertirlo para hacer cálculos. A esta transformación la llamamos <strong>casting</strong>.",
-              examples: [
+              "type": "predict",
+              "partLabel": "Paso 3 · Expresiones dentro de f-strings",
+              "title": "¿Qué imprime este f-string?",
+              "code": "base = 10\naltura = 5\nprint(f\"Área del rectángulo: {base * altura} m2\")",
+              "question": "¿Cuál es la salida exacta que mostrará la consola?",
+              "theory": "Python calcula la expresión matemática dentro de { } antes de imprimir.",
+              "options": [
                 {
-                  label: "Funciones de conversión",
-                  code: `# 1. De texto "40" a entero con int():
-numero = int("40") + 10
-print('Texto "40" a entero + 10 =', numero)
-
-# 2. De entero 7 a decimal con float():
-decimal = float(7)
-print("Entero 7 a decimal =", decimal)
-
-# 3. De número 100 a texto con str():
-texto = str(100) + " puntos"
-print("Número 100 a texto =", texto)`,
-                  output: "Texto \"40\" a entero + 10 = 50\nEntero 7 a decimal = 7.0\nNúmero 100 a texto = 100 puntos",
-                  explanation: "Si el usuario escribe \"18\" por teclado, input() te da texto. Para sumarle 1 año, debes usar int(input())."
+                  "id": "A",
+                  "text": "Área del rectángulo: 50 m2",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Área del rectángulo: {base * altura} m2",
+                  "isCorrect": false,
+                  "whyIncorrect": "Al tener el prefijo 'f', Python no imprime las llaves literales, sino el resultado evaluado de la multiplicación."
+                },
+                {
+                  "id": "C",
+                  "text": "Área del rectángulo: base * altura m2",
+                  "isCorrect": false,
+                  "whyIncorrect": "Las llaves activan la evaluación de código Python. base * altura se calcula como 10 * 5 = 50."
                 }
               ],
-              keyTakeaway: "<code>int()</code> convierte a entero, <code>float()</code> a decimal, y <code>str()</code> a texto."
+              "correctionTip": "El prefijo f antes de las comillas indica a Python que debe evaluar todo lo que esté entre llaves {}.",
+              "fullAnswerExplanation": "¡Exacto! base * altura se calcula como 50 y se inserta limpiamente en el texto final."
             },
             {
-              type: "predict",
-              partLabel: "Paso 4 · Conversión de tipos",
-              title: "¿Cómo transformar texto en número?",
-              question: "El usuario escribió su edad y se guardó como texto \"18\". ¿Qué función de conversión completa el recuadro para sumarle 2 años?",
-              code: `edad_texto = "18"
-edad_numero = ___(edad_texto)
-print(edad_numero + 2)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "int", 
-                  slotText: "int",
-                  isCorrect: true 
+              "type": "predict",
+              "partLabel": "Paso 4 · Spot the bug",
+              "title": "Spot-the-bug: ¿Por qué no reemplaza la variable?",
+              "code": "usuario = \"Santiago\"\nprint(\"Hola {usuario}, bienvenido al laboratorio\")",
+              "question": "Un estudiante escribió este código esperando ver 'Hola Santiago...', pero la consola mostró literalmente: <code>Hola {usuario}, bienvenido al laboratorio</code>. ¿Cuál fue el error?",
+              "theory": "Sin el prefijo especial, las llaves son solo caracteres normales de texto.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Olvidó colocar la letra f antes de abrir las comillas: f\"Hola {usuario}...\"",
+                  "isCorrect": true
                 },
-                { 
-                  id: "B", 
-                  text: "str", 
-                  slotText: "str",
-                  isCorrect: false,
-                  whyIncorrect: "str() mantiene el valor como texto '18'. En Python no puedes sumar un texto con un número int."
+                {
+                  "id": "B",
+                  "text": "En Python las variables deben rodearse con signos de porcentaje: %usuario%",
+                  "isCorrect": false,
+                  "whyIncorrect": "Esa sintaxis pertenece a scripts de consola por lotes (batch), no al estándar moderno de f-strings en Python."
                 },
-                { 
-                  id: "C", 
-                  text: "float", 
-                  slotText: "float",
-                  isCorrect: false,
-                  whyIncorrect: "float() lo transformaría en decimal 18.0. Para representar años cumplidos se utiliza un número entero con int()."
-                },
-                { 
-                  id: "D", 
-                  text: "bool", 
-                  slotText: "bool",
-                  isCorrect: false,
-                  whyIncorrect: "bool() lo convertiría en el booleano True, perdiendo por completo el número 18."
+                {
+                  "id": "C",
+                  "text": "Las llaves {} están prohibidas dentro de las cadenas de texto de Python",
+                  "isCorrect": false,
+                  "whyIncorrect": "Las llaves están perfectamente permitidas; para que sustituyan valores deben acompañarse del prefijo f."
                 }
               ],
-              correctionTip: "Para convertir una cadena de texto numérico a entero operable matemáticamente, usamos int().",
-              fullAnswerExplanation: "int('18') transforma el texto en el entero 18. Al sumarle 2, Python realiza la suma matemática y muestra 20."
+              "correctionTip": "Sin la 'f' inicial, Python trata a '{usuario}' como texto plano ordinario.",
+              "fullAnswerExplanation": "¡Muy bien visto! Si omites la 'f', Python asume que es una cadena común y corriente e imprime las llaves tal cual."
             },
             {
-              type: "visualizer_input",
-              partLabel: "Paso 5 · Máquina de conversión",
-              title: "Laboratorio: Conversión de tipos en RAM",
-              theory: "Observa cómo un texto entre comillas pasa por el conversor y se transforma en un número listo para operar."
+              "type": "visualizer_print",
+              "partLabel": "Paso 5 · Laboratorio interactivo",
+              "title": "Laboratorio: Control de separadores sep=\"...\""
             },
             {
-              type: "code_sandbox",
-              partLabel: "Paso 6 · Práctica guiada",
-              title: "Calculadora de edad con conversión",
-              instruction: "El año de nacimiento fue recibido como texto (\"2005\"). Elige la conversión adecuada a número entero para poder calcular la edad.",
-              starterCode: `# Dato recibido como texto (como si viniera de input):
-nacimiento_texto = "2005"
-anio_actual = 2026
-
-# Convierte a entero:
-nacimiento_numero = ___
-
-# Calcula la edad:
-edad = anio_actual - nacimiento_numero
-
-print("Año de nacimiento:", nacimiento_numero)
-print("Tu edad en", anio_actual, "es:", edad, "años")`,
-              slotMarker: "___",
-              options: [
+              "type": "code_sandbox",
+              "partLabel": "Paso 6 · Reto f-string",
+              "title": "Activa el f-string",
+              "instruction": "Completa el código eligiendo el prefijo que activa la interpolación de variables dentro de las llaves {}:",
+              "starterCode": "# Formateo dinámico del precio de matrícula:\nfacultad = \"Minas\"\ncosto = 0\nmensaje = ___\"Facultad de {facultad} · Costo: ${costo}\"\nprint(mensaje)",
+              "slotMarker": "___",
+              "options": [
                 {
-                  id: "A",
-                  code: "int(nacimiento_texto)",
-                  label: "int(nacimiento_texto)",
-                  isCorrect: true,
-                  feedback: "¡Excelente! int() convierte el texto \"2005\" al entero 2005, permitiendo calcular: 2026 - 2005 = 21 años."
+                  "id": "A",
+                  "code": "f",
+                  "label": "f",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! El prefijo f convierte la cadena en un f-string activo, sustituyendo {facultad} y {costo}."
                 },
                 {
-                  id: "B",
-                  code: "str(nacimiento_texto)",
-                  label: "str(nacimiento_texto)",
-                  isCorrect: false,
-                  feedback: "str() lo deja como cadena de texto. En Python restar texto de un número (2026 - \"2005\") causa un TypeError."
+                  "id": "B",
+                  "code": "str",
+                  "label": "str",
+                  "isCorrect": false,
+                  "explanation": "str no es un prefijo de string válido. Provocaría un error de sintaxis."
                 },
                 {
-                  id: "C",
-                  code: "float(\"edad\")",
-                  label: "float(\"edad\")",
-                  isCorrect: false,
-                  feedback: "La palabra \"edad\" entre comillas no es un número y aún no existe; produce un ValueError."
+                  "id": "C",
+                  "code": "r",
+                  "label": "r",
+                  "isCorrect": false,
+                  "explanation": "El prefijo r indica una cadena cruda (raw string) para escapar barras invertidas, no evalúa llaves { }."
                 }
-              ]
+              ],
+              "expectedOutput": "Facultad de Minas · Costo: $0"
             }
           ]
         },
-
-        // ==========================================
-        // LECCIÓN 4: Operadores aritméticos
-        // ==========================================
         {
-          id: "w1-l4",
-          weekId: "semana-1",
-          number: 4,
-          tag: "Operadores",
-          shortTitle: "Operadores",
-          title: "Operadores aritméticos y su jerarquía",
-          description: "Suma (+), resta (-), mult (*), división real (/), floor (//), módulo (%) y potencia (**).",
-          duration: "15 min",
-          steps: [
+          "id": "w1-l4",
+          "weekId": "semana-1",
+          "number": 4,
+          "tag": "Datos",
+          "shortTitle": "Tipos de datos",
+          "title": "Tipos primitivos y conversiones (Casting)",
+          "description": "Enteros (int), decimales (float), texto (str), booleanos (bool) y cómo convertir entre ellos.",
+          "duration": "10 min",
+          "steps": [
             {
-              type: "explanation",
-              partLabel: "Paso 1 · Los 7 operadores",
-              title: "Las matemáticas en Python: 7 herramientas clave",
-              intro: "Python cuenta con los operadores tradicionales que ya conoces, más 3 operadores especiales que todo programador utiliza constantemente.",
-              examples: [
+              "type": "explanation",
+              "partLabel": "Paso 1 · Los 4 tipos fundamentales",
+              "title": "Las cuatro cajas de memoria fundamentales",
+              "intro": "En Python, cada dato almacenado en memoria pertenece a un tipo específico que determina qué operaciones podemos realizar con él.",
+              "examples": [
                 {
-                  label: "Los 3 operadores estrella de Python",
-                  code: `# 1. Exponente o potencia (**):
-print("2 ** 3 =", 2 ** 3)
-
-# 2. División entera // (descarta decimales):
-print("14 // 4 =", 14 // 4)
-
-# 3. Módulo % (residuo de la división):
-print("14 % 4 =", 14 % 4)`,
-                  output: "2 ** 3 = 8\n14 // 4 = 3\n14 % 4 = 2",
-                  explanation: "¡Atención! En programación el símbolo % NO calcula porcentajes. Calcula el sobrante o residuo de una división entera."
+                  "label": "Tipos primitivos",
+                  "code": "edad = 21          # int: entero sin punto decimal\naltura = 1.78      # float: número con punto decimal\nnombre = \"Andrés\"  # str: cadena de caracteres\nmatriculado = True # bool: Verdadero o Falso\nprint(edad, altura, nombre, matriculado)",
+                  "output": "21 1.78 Andrés True",
+                  "explanation": "Python infiere automáticamente el tipo según el valor que asignes."
                 }
               ],
-              keyTakeaway: "<code>/</code> = división con decimales. <code>//</code> = división entera sin decimales. <code>%</code> = residuo sobrante. <code>**</code> = potencia."
+              "keyTakeaway": "Puedes consultar el tipo de cualquier variable en cualquier momento usando la función <code>type(variable)</code>."
             },
             {
-              type: "predict",
-              partLabel: "Paso 2 · División real vs División entera",
-              title: "¿Cuál es la diferencia entre / y //?",
-              question: "Observa estas dos divisiones con los mismos números. ¿Cuál será la salida de cada una?",
-              code: `print(10 / 2)
-print(10 // 2)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "5.0 y 5 (la primera da float decimal, la segunda da int entero)", 
-                  isCorrect: true 
-                },
-                { 
-                  id: "B", 
-                  text: "5 y 5 (ambas dan números enteros)", 
-                  isCorrect: false,
-                  whyIncorrect: "La división '/' siempre produce un tipo float con punto decimal (.0), aunque el resultado sea matemáticamente exacto."
-                },
-                { 
-                  id: "C", 
-                  text: "5.0 y 5.0 (ambas dan números con decimales)", 
-                  isCorrect: false,
-                  whyIncorrect: "El operador '//' (floor division) descarta los decimales y entrega un entero (int)."
-                },
-                { 
-                  id: "D", 
-                  text: "Error en la segunda línea", 
-                  isCorrect: false,
-                  whyIncorrect: "El operador '//' es completamente válido en Python y se utiliza para divisiones enteras."
-                }
-              ],
-              correctionTip: "La división normal / SIEMPRE devuelve un decimal (float), aunque la división sea exacta. // devuelve un entero (int).",
-              fullAnswerExplanation: "Incluso si 10 entre 2 es exacto, 10 / 2 produce 5.0 (float). En cambio 10 // 2 produce el entero 5."
-            },
-            {
-              type: "predict",
-              partLabel: "Paso 3 · El operador Módulo %",
-              title: "Comprendiendo el residuo (%)",
-              question: "Imagina que tienes 17 galletas y las repartes equitativamente entre 5 niños. ¿Qué resultado imprimirá la variable sobrante?",
-              code: `galletas = 17
-ninos = 5
-sobrante = galletas % ninos
-print(sobrante)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "2 galletas", 
-                  isCorrect: true 
-                },
-                { 
-                  id: "B", 
-                  text: "3 galletas", 
-                  isCorrect: false,
-                  whyIncorrect: "3 es el cociente (cuántas galletas recibe cada niño: 17 // 5 = 3), pero el operador '%' calcula lo que sobra (residuo)."
-                },
-                { 
-                  id: "C", 
-                  text: "3.4 galletas", 
-                  isCorrect: false,
-                  whyIncorrect: "El módulo '%' siempre entrega el residuo entero de la división, no un resultado con decimales."
-                },
-                { 
-                  id: "D", 
-                  text: "0 galletas", 
-                  isCorrect: false,
-                  whyIncorrect: "La división no es exacta: 5 niños * 3 galletas = 15 galletas entregadas, por lo que sobran 2 galletas en el plato."
-                }
-              ],
-              correctionTip: "5 niños x 3 galletas = 15 galletas entregadas. ¿Cuánto falta para llegar a 17? Faltan 2 galletas.",
-              fullAnswerExplanation: "A cada niño le tocan 3 galletas (17 // 5 = 3) y sobran 2 galletas en el plato (17 % 5 = 2)."
-            },
-            {
-              type: "explanation",
-              partLabel: "Paso 4 · Jerarquía de operaciones",
-              title: "La regla de precedencia (PEMDAS)",
-              intro: "Al igual que en álgebra, Python sigue un orden estricto para resolver operaciones combinadas en una misma línea.",
-              examples: [
+              "type": "predict",
+              "partLabel": "Paso 2 · Distinguiendo tipos",
+              "title": "¿Cuál es el tipo de dato?",
+              "code": "valor = \"3.1416\"",
+              "question": "¿A qué tipo de dato pertenece la variable <code>valor</code> en este código?",
+              "theory": "Presta especial atención a la presencia de comillas en la asignación.",
+              "options": [
                 {
-                  label: "Orden de prioridad",
-                  code: `# Sin paréntesis: la multiplicación se resuelve primero (3 * 4 = 12)
-calculo1 = 2 + 3 * 4
-print("2 + 3 * 4 =", calculo1)
-
-# Con paréntesis: la suma se resuelve primero (2 + 3 = 5)
-calculo2 = (2 + 3) * 4
-print("(2 + 3) * 4 =", calculo2)`,
-                  output: "2 + 3 * 4 = 14\n(2 + 3) * 4 = 20",
-                  explanation: "Si quieres que la suma se haga primero, debes usar paréntesis: (2 + 3) * 4 = 20."
-                }
-              ],
-              keyTakeaway: "Si tienes dudas sobre qué se resolverá primero, usa paréntesis <code>()</code> para controlar el orden con total seguridad."
-            },
-            {
-              type: "predict",
-              partLabel: "Paso 5 · Reto de jerarquía",
-              title: "¿Cuál es el resultado de la expresión?",
-              question: "Siguiendo las reglas de jerarquía (paréntesis -> potencias -> multiplicación -> suma), ¿cuál es el resultado de x?",
-              code: `x = 10 + 2 * 3 ** 2
-print(x)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "28", 
-                  isCorrect: true 
-                },
-                { 
-                  id: "B", 
-                  text: "108", 
-                  isCorrect: false,
-                  whyIncorrect: "Si sumas 10 + 2 antes de multiplicar y elevar a la potencia, violas la jerarquía. La suma siempre se evalúa al final."
-                },
-                { 
-                  id: "C", 
-                  text: "36", 
-                  isCorrect: false,
-                  whyIncorrect: "Recuerda que la potencia 3**2 se evalúa antes de multiplicar por 2."
-                },
-                { 
-                  id: "D", 
-                  text: "144", 
-                  isCorrect: false,
-                  whyIncorrect: "No se evalúa de izquierda a derecha ciegamente; la jerarquía PEMDAS da prioridad a las potencias y multiplicaciones."
-                }
-              ],
-              correctionTip: "Paso 1: Exponente 3 ** 2 = 9. Paso 2: Multiplicación 2 * 9 = 18. Paso 3: Suma 10 + 18 = 28.",
-              fullAnswerExplanation: "Los exponentes tienen prioridad sobre la multiplicación, y esta a su vez sobre la suma."
-            },
-            {
-              type: "code_sandbox",
-              partLabel: "Paso 6 · Práctica guiada",
-              title: "Convertidor de minutos a horas y minutos",
-              instruction: "Selecciona el operador adecuado para calcular las horas enteras a partir de un total de 195 minutos y ejecuta el código.",
-              slotMarker: "___",
-              starterCode: `total_minutos = 195
-
-# 1 hora tiene 60 minutos
-horas = total_minutos ___ 60
-minutos_sobrantes = total_minutos % 60
-
-print("Total inicial:", total_minutos, "minutos")
-print("Equivale a:", horas, "horas y", minutos_sobrantes, "minutos")`,
-              options: [
-                {
-                  id: "A",
-                  code: "//",
-                  label: "// (División entera)",
-                  isCorrect: true,
-                  feedback: "¡Excelente! La división entera // calcula cuántas horas completas caben en 195 minutos descartando los decimales (195 // 60 = 3)."
+                  "id": "A",
+                  "text": "float (número decimal)",
+                  "isCorrect": false,
+                  "whyIncorrect": "Tiene punto decimal, ¡pero está envuelto en comillas! Para Python, cualquier cosa entre comillas es texto (str)."
                 },
                 {
-                  id: "B",
-                  code: "/",
-                  label: "/ (División decimal)",
-                  isCorrect: false,
-                  feedback: "Con / obtienes un número flotante (3.25), lo cual no representa horas enteras separadas de los minutos restantes."
+                  "id": "B",
+                  "text": "str (cadena de texto)",
+                  "isCorrect": true
                 },
                 {
-                  id: "C",
-                  code: "%",
-                  label: "% (Módulo / Residuo)",
-                  isCorrect: false,
-                  feedback: "El operador % entrega el residuo (los minutos sobrantes), no la cantidad de horas enteras."
+                  "id": "C",
+                  "text": "int (número entero)",
+                  "isCorrect": false,
+                  "whyIncorrect": "Un int no tiene punto decimal ni comillas. En este caso es texto debido a las comillas."
                 }
-              ]
+              ],
+              "correctionTip": "Regla infalible: Si tiene comillas dobles \" \" o simples ' ', Python lo clasifica como str sin importar lo que contenga dentro.",
+              "fullAnswerExplanation": "¡Exacto! Las comillas convierten cualquier contenido en texto (str), incluso si parece un número decimal."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Conversión con float",
+              "title": "Cálculo con conversión explícita",
+              "code": "horas_str = \"4.5\"\nhoras = float(horas_str)\ntotal = horas * 2\nprint(total)",
+              "question": "¿Qué valor se mostrará en pantalla al ejecutar este código?",
+              "theory": "float() convierte la cadena en número decimal, habilitando la multiplicación aritmética.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "9.0",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "4.54.5",
+                  "isCorrect": false,
+                  "whyIncorrect": "Como se usó float(horas_str), la variable ya no es texto, por lo que * 2 realiza multiplicación matemática, no repetición de texto."
+                },
+                {
+                  "id": "C",
+                  "text": "9",
+                  "isCorrect": false,
+                  "whyIncorrect": "Al multiplicar un número decimal (float) en Python, el resultado conserva la parte decimal: 9.0."
+                }
+              ],
+              "correctionTip": "Al convertir con float(\"4.5\"), la multiplicación 4.5 * 2 produce un resultado float: 9.0.",
+              "fullAnswerExplanation": "¡Muy bien! float() convierte exitosamente la cadena a número decimal, y 4.5 * 2 es 9.0."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Conversión en ingeniería",
+              "title": "Reto: Conversión de peso con decimales",
+              "instruction": "Un sensor de laboratorio envía el peso en kilogramos como texto con decimales. Completa el código con la función de conversión apropiada:",
+              "starterCode": "# Dato recibido del sensor:\nlectura_sensor = \"68.5\"\n# Convierte para sumar la calibración:\npeso_real = ___(lectura_sensor)\nprint(peso_real + 1.5)",
+              "slotMarker": "___",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "float",
+                  "label": "float",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! float(\"68.5\") preserva los decimales y permite la suma 68.5 + 1.5 = 70.0."
+                },
+                {
+                  "id": "B",
+                  "code": "int",
+                  "label": "int",
+                  "isCorrect": false,
+                  "explanation": "int(\"68.5\") genera un ValueError porque int() no sabe procesar puntos decimales contenidos en un string."
+                },
+                {
+                  "id": "C",
+                  "code": "str",
+                  "label": "str",
+                  "isCorrect": false,
+                  "explanation": "str() dejaría el dato como texto y al sumarle 1.5 Python arrojaría un TypeError."
+                }
+              ],
+              "expectedOutput": "70.0"
             }
           ]
         },
-
-        // ==========================================
-        // LECCIÓN 5: Librería Math
-        // ==========================================
         {
-          id: "w1-l5",
-          weekId: "semana-1",
-          number: 5,
-          tag: "Biblioteca",
-          shortTitle: "Librería Math",
-          title: "La librería Math y funciones matemáticas",
-          description: "Aprende a importar math y utilizar sqrt, ceil, floor, pi y trigonometría.",
-          duration: "12 min",
-          steps: [
+          "id": "w1-l5",
+          "weekId": "semana-1",
+          "number": 5,
+          "tag": "Operaciones",
+          "shortTitle": "Operadores",
+          "title": "Aritmética, precedencia y división en Python",
+          "description": "Las tres divisiones (/, //, %), potencia (**), precedencia PEMDAS y el cálculo de promedios.",
+          "duration": "10 min",
+          "steps": [
             {
-              type: "explanation",
-              partLabel: "Paso 1 · Módulos y Librerías",
-              title: "¿Qué es una librería y cómo usar import math?",
-              intro: "En programación no reinventamos la rueda. Una <strong>librería</strong> es una caja de herramientas preprogramada que puedes traer a tu código con la palabra <code>import</code>.",
-              examples: [
+              "type": "explanation",
+              "partLabel": "Paso 1 · Las tres divisiones",
+              "title": "División real (/), entera (//) y residuo (%)",
+              "intro": "Python ofrece tres operadores para dividir. En ingeniería es vital diferenciarlos:",
+              "examples": [
                 {
-                  label: "La caja de herramientas math",
-                  code: `# Importamos el módulo oficial de matemáticas de Python
-import math
-
-print("Pi =", math.pi)
-print("Raíz cuadrada de 49 =", math.sqrt(49))`,
-                  output: "Pi = 3.141592653589793\nRaíz cuadrada de 49 = 7.0",
-                  explanation: "Al escribir math.pi o math.sqrt() le decimos a Python: 'busca la herramienta pi o sqrt dentro del módulo math'."
+                  "label": "Comparativa de divisiones",
+                  "code": "# 1. División real (siempre entrega float):\nprint(7 / 2)\n# 2. División entera (trunca los decimales):\nprint(7 // 2)\n# 3. Módulo (residuo o sobrante de la división entera):\nprint(7 % 2)",
+                  "output": "3.5\n3\n1",
+                  "explanation": "7 dividido 2 es 3 veces entero (3 * 2 = 6) con un residuo de 1."
                 }
               ],
-              keyTakeaway: "Siempre debes colocar <code>import math</code> al inicio de tu archivo antes de usar cualquiera de sus funciones."
+              "keyTakeaway": "El operador módulo <code>%</code> es ideal para verificar si un número es par (<code>n % 2 == 0</code>) o para descomponer unidades de tiempo."
             },
             {
-              type: "predict",
-              partLabel: "Paso 2 · Predicción",
-              title: "¿Qué imprime este cálculo con math?",
-              question: "¿Qué valor exacto mostrará en pantalla la siguiente llamada a math.sqrt?",
-              code: `import math
-resultado = math.sqrt(25)
-print(resultado)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "5.0", 
-                  isCorrect: true 
+              "type": "predict",
+              "partLabel": "Paso 2 · Horas y minutos",
+              "title": "¿Cuántos minutos sobran?",
+              "code": "minutos_totales = 125\nhoras = minutos_totales // 60\nminutos_restantes = minutos_totales % 60\nprint(f\"{horas}h {minutos_restantes}m\")",
+              "question": "¿Qué mostrará este programa en pantalla?",
+              "theory": "1 hora tiene 60 minutos. // calcula horas enteras y % calcula los minutos sobrantes.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "2h 5m",
+                  "isCorrect": true
                 },
-                { 
-                  id: "B", 
-                  text: "5", 
-                  isCorrect: false,
-                  whyIncorrect: "La función sqrt siempre retorna un tipo float con punto decimal, no un número entero int."
+                {
+                  "id": "B",
+                  "text": "2.08h 5m",
+                  "isCorrect": false,
+                  "whyIncorrect": "El operador // trunca los decimales, retornando estrictamente el entero 2, no 2.08."
                 },
-                { 
-                  id: "C", 
-                  text: "625", 
-                  isCorrect: false,
-                  whyIncorrect: "math.sqrt calcula la raíz cuadrada de 25, no su cuadrado (25 al cuadrado sería 625)."
-                },
-                { 
-                  id: "D", 
-                  text: "Error de sintaxis", 
-                  isCorrect: false,
-                  whyIncorrect: "El código es completamente válido; importamos math y usamos math.sqrt(25) sin ningún error."
+                {
+                  "id": "C",
+                  "text": "2h 25m",
+                  "isCorrect": false,
+                  "whyIncorrect": "125 minutos dividido 60 da 2 horas (120 minutos). El residuo sobrante es 125 - 120 = 5 minutos, no 25."
                 }
               ],
-              correctionTip: "math.sqrt() calcula la raíz cuadrada de un número y siempre retorna un float (número decimal).",
-              fullAnswerExplanation: "La raíz cuadrada de 25 es 5, y como math.sqrt siempre devuelve un float, el resultado en pantalla es 5.0."
+              "correctionTip": "125 // 60 = 2 horas completas (120 min). El sobrante 125 % 60 = 5 minutos.",
+              "fullAnswerExplanation": "¡Exacto! 125 // 60 entrega 2 horas, y 125 % 60 entrega los 5 minutos restantes."
             },
             {
-              type: "explanation",
-              partLabel: "Paso 3 · Redondeo matemático",
-              title: "Redondear con precisión: ceil y floor",
-              intro: "A menudo necesitamos redondear números según la lógica del negocio: siempre hacia arriba (techo) o siempre hacia abajo (piso).",
-              examples: [
+              "type": "predict",
+              "partLabel": "Paso 3 · Precedencia de operaciones",
+              "title": "Spot-the-bug: El error clásico del promedio",
+              "code": "nota1 = 4.0\nnota2 = 2.0\n# El estudiante intenta calcular el promedio:\npromedio = nota1 + nota2 / 2\nprint(promedio)",
+              "question": "El promedio entre 4.0 y 2.0 debería ser 3.0, pero este código imprime 5.0. ¿Por qué ocurrió esto?",
+              "theory": "Regla PEMDAS: La división y multiplicación tienen mayor jerarquía que la suma y la resta.",
+              "options": [
                 {
-                  label: "Redondeo hacia arriba (Ceil) y abajo (Floor)",
-                  code: `import math
-
-# ceil() = 'ceiling' (techo) -> siempre redondea al entero superior
-resultado_techo = math.ceil(4.2)
-print("math.ceil(4.2) =", resultado_techo)
-
-# floor() = piso -> siempre trunca o redondea al entero inferior
-resultado_piso = math.floor(4.9)
-print("math.floor(4.9) =", resultado_piso)`,
-                  output: "math.ceil(4.2) = 5\nmath.floor(4.9) = 4",
-                  explanation: "ceil(4.2) sube a 5 aunque el decimal sea pequeño. floor(4.9) baja a 4 aunque el decimal esté muy cerca de 5."
+                  "id": "A",
+                  "text": "La división '/' se ejecuta primero que la suma '+', calculando 2.0 / 2 = 1.0 y luego 4.0 + 1.0 = 5.0",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "En Python las operaciones matemáticas se evalúan siempre de derecha a izquierda",
+                  "isCorrect": false,
+                  "whyIncorrect": "Python evalúa de izquierda a derecha respetando la jerarquía matemática universal (PEMDAS)."
+                },
+                {
+                  "id": "C",
+                  "text": "El operador / redondea los resultados hacia arriba automáticamente",
+                  "isCorrect": false,
+                  "whyIncorrect": "El operador / no redondea arbitrariamente. El resultado es 5.0 porque 4.0 + (2.0 / 2) = 4.0 + 1.0 = 5.0."
                 }
               ],
-              keyTakeaway: "Usa <code>math.ceil()</code> cuando necesitas asegurar capacidad completa (ej. número de taxis necesarios) y <code>math.floor()</code> para descartar fracciones."
+              "correctionTip": "Para que la suma se realice antes de la división, debes agruparla entre paréntesis: (nota1 + nota2) / 2.",
+              "fullAnswerExplanation": "¡Correcto! Debido a la precedencia matemática, la división se realizó antes. Para corregirlo se requiere: (nota1 + nota2) / 2."
             },
             {
-              type: "predict",
-              partLabel: "Paso 4 · Caso práctico de transporte",
-              title: "Capacidad de transporte con math.ceil",
-              question: "Si tienes 19 personas y cada van transporta máximo 4 personas, ¿cuántas vans completas necesitas?",
-              code: `import math
-personas = 19
-capacidad_van = 4
-
-vans_necesarias = math.ceil(personas / capacidad_van)
-print(vans_necesarias)`,
-              options: [
-                { 
-                  id: "A", 
-                  text: "5 vans", 
-                  isCorrect: true 
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Corrección con paréntesis",
+              "title": "Calcula el promedio correcto",
+              "instruction": "Usa paréntesis para forzar que Python sume ambas notas antes de dividir entre 2:",
+              "starterCode": "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = ___ / 2\nprint(promedio)",
+              "slotMarker": "___",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "(lab1 + lab2)",
+                  "label": "(lab1 + lab2)",
+                  "isCorrect": true,
+                  "explanation": "¡Exacto! Los paréntesis obligan a Python a sumar (4.0 + 3.0 = 7.0) antes de dividir entre 2, dando 3.5."
                 },
-                { 
-                  id: "B", 
-                  text: "4 vans", 
-                  isCorrect: false,
-                  whyIncorrect: "En 4 vans solo caben 16 personas (4 * 4 = 16), por lo que 3 pasajeros se quedarían sin viajar. ceil() siempre redondea al entero superior para que todos quepan."
+                {
+                  "id": "B",
+                  "code": "lab1 + lab2",
+                  "label": "lab1 + lab2",
+                  "isCorrect": false,
+                  "explanation": "Sin paréntesis, la división se aplicaría únicamente a lab2, resultando en 4.0 + (3.0 / 2) = 5.5 en lugar de 3.5."
                 },
-                { 
-                  id: "C", 
-                  text: "4.75 vans", 
-                  isCorrect: false,
-                  whyIncorrect: "No puedes alquilar 0.75 de una camioneta en el mundo real. math.ceil() entrega un número entero redondeado hacia arriba (5)."
-                },
-                { 
-                  id: "D", 
-                  text: "20 vans", 
-                  isCorrect: false,
-                  whyIncorrect: "No necesitas tantas vans; con 5 vans tienes capacidad para 20 personas, suficiente para llevar a los 19 pasajeros."
+                {
+                  "id": "C",
+                  "code": "[lab1 + lab2]",
+                  "label": "[lab1 + lab2]",
+                  "isCorrect": false,
+                  "explanation": "Los corchetes [] crean una lista en Python, produciendo un TypeError al intentar dividirla entre 2."
                 }
               ],
-              correctionTip: "19 / 4 es 4.75. Como no puedes alquilar 0.75 de una van, necesitas redondear hacia arriba (ceil) a 5 vans completas.",
-              fullAnswerExplanation: "En 4 vans solo caben 16 personas. Para llevar a las 19 necesitamos redondear hacia el techo con ceil a 5 vehículos."
-            },
+              "expectedOutput": "3.5"
+            }
+          ]
+        },
+        {
+          "id": "w1-l6",
+          "weekId": "semana-1",
+          "number": 6,
+          "tag": "Librería",
+          "shortTitle": "Módulo Math",
+          "title": "Cálculos de ingeniería con el módulo math",
+          "description": "Uso de bibliotecas, constantes como math.pi, math.sqrt(), redondeos con math.ceil() y fórmulas científicas.",
+          "duration": "10 min",
+          "steps": [
             {
-              type: "visualizer_math",
-              partLabel: "Paso 5 · Laboratorio interactivo",
-              title: "Simulador interactivo del módulo math",
-              theory: "Prueba interactivamente calcular raíces cuadradas, techos, pisos y potencias."
-            },
-            {
-              type: "code_sandbox",
-              partLabel: "Paso 6 · Práctica guiada",
-              title: "Cálculo de la Hipotenusa (Teorema de Pitágoras)",
-              instruction: "Completa la llamada a la función de la librería math para calcular la hipotenusa de los catetos.",
-              slotMarker: "___",
-              starterCode: `import math
-
-cateto_a = 6
-cateto_b = 8
-
-# Teorema de Pitágoras: hipotenusa = raíz(a^2 + b^2)
-suma_cuadrados = (cateto_a ** 2) + (cateto_b ** 2)
-hipotenusa = ___
-
-print("Cateto A:", cateto_a)
-print("Cateto B:", cateto_b)
-print("Hipotenusa calculada:", hipotenusa)`,
-              options: [
+              "type": "explanation",
+              "partLabel": "Paso 1 · Importar módulos",
+              "title": "La biblioteca matemática de Python",
+              "intro": "Python incluye herramientas avanzadas organizadas en <strong>módulos</strong>. Para usarlas, debemos importarlas con <code>import math</code> antes de llamarlas.",
+              "examples": [
                 {
-                  id: "A",
-                  code: "math.sqrt(suma_cuadrados)",
-                  label: "math.sqrt(suma_cuadrados)",
-                  isCorrect: true,
-                  feedback: "¡Perfecto! Como importamos con 'import math', debemos anteponer 'math.' para acceder a la función sqrt()."
-                },
-                {
-                  id: "B",
-                  code: "sqrt(suma_cuadrados)",
-                  label: "sqrt(suma_cuadrados)",
-                  isCorrect: false,
-                  feedback: "Esto generaría un NameError porque 'sqrt' no fue importado directamente al espacio de nombres global; debes usar 'math.sqrt()'."
-                },
-                {
-                  id: "C",
-                  code: "math.ceil(suma_cuadrados)",
-                  label: "math.ceil(suma_cuadrados)",
-                  isCorrect: false,
-                  feedback: "math.ceil() redondea al entero superior, no calcula la raíz cuadrada requerida por el Teorema de Pitágoras."
+                  "label": "Área de una circunferencia",
+                  "code": "import math\n\nradio = 3\n# math.pi almacena el valor preciso de pi\narea = math.pi * (radio ** 2)\nprint(f\"Área: {round(area, 2)}\")",
+                  "output": "Área: 28.27",
+                  "explanation": "math.pi nos da el valor de π y el operador ** eleva a una potencia."
                 }
-              ]
+              ],
+              "keyTakeaway": "Para invocar cualquier función de una librería importada, debes anteponer el nombre del módulo: <code>math.nombre_funcion()</code>."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Salida de math.sqrt",
+              "title": "¿Qué valor retorna math.sqrt?",
+              "code": "import math\n\nresultado = math.sqrt(25)\nprint(resultado)",
+              "question": "¿Qué valor exacto mostrará en pantalla la siguiente llamada a <code>math.sqrt()</code>?",
+              "theory": "La función math.sqrt() calcula la raíz cuadrada y en Python siempre entrega un tipo float.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "5.0",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "5",
+                  "isCorrect": false,
+                  "whyIncorrect": "La función math.sqrt siempre retorna un número decimal float con punto (.0), nunca un entero int."
+                },
+                {
+                  "id": "C",
+                  "text": "625",
+                  "isCorrect": false,
+                  "whyIncorrect": "math.sqrt calcula la raíz cuadrada de 25, no su cuadrado (25 al cuadrado sería 625)."
+                }
+              ],
+              "correctionTip": "math.sqrt(x) calcula la raíz cuadrada y su salida siempre es de tipo float (con punto decimal).",
+              "fullAnswerExplanation": "¡Exacto! La raíz cuadrada de 25 es 5, y dado que math.sqrt siempre retorna float, el valor en consola es 5.0."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Redondeos en ingeniería",
+              "title": "Redondeo hacia arriba con math.ceil()",
+              "code": "import math\n\nestudiantes = 25\ncapacidad_aula = 6\n# Necesitamos aulas suficientes para todos:\naulas = math.ceil(estudiantes / capacidad_aula)\nprint(aulas)",
+              "question": "25 / 6 da 4.1666... ¿Qué imprimirá <code>math.ceil()</code> en la consola?",
+              "theory": "math.ceil() (techo) redondea siempre hacia arriba al entero más cercano.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "5",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "4",
+                  "isCorrect": false,
+                  "whyIncorrect": "4 aulas solo albergarían 24 estudiantes, dejando 1 sin asiento. math.ceil redondea hacia arriba al entero mayor (5)."
+                },
+                {
+                  "id": "C",
+                  "text": "4.17",
+                  "isCorrect": false,
+                  "whyIncorrect": "math.ceil() siempre entrega un número entero, no un decimal redondeado."
+                }
+              ],
+              "correctionTip": "math.ceil() redondea al entero superior inmediato. 4.166 -> 5.",
+              "fullAnswerExplanation": "¡Exacto! math.ceil() garantiza 5 aulas para que ningún estudiante se quede sin espacio."
+            },
+            {
+              "type": "visualizer_math",
+              "partLabel": "Paso 4 · Laboratorio interactivo",
+              "title": "Laboratorio: Comparativa math.ceil vs math.floor"
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 5 · Teorema de Pitágoras",
+              "title": "Reto: Hipotenusa de un triángulo rectángulo",
+              "instruction": "Completa el código con la función de math que calcula la raíz cuadrada para hallar la hipotenusa (c = √(a² + b²)):",
+              "starterCode": "import math\n\n# Catetos de un triángulo rectángulo:\ncateto_a = 3\ncateto_b = 4\n# c = √(a² + b²)\nhipotenusa = ___(cateto_a**2 + cateto_b**2)\nprint(f\"Hipotenusa: {hipotenusa}\")",
+              "slotMarker": "___",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "math.sqrt",
+                  "label": "math.sqrt",
+                  "isCorrect": true,
+                  "explanation": "¡Brillante! math.sqrt(9 + 16) = math.sqrt(25) = 5.0. Has resuelto el triángulo clásico 3-4-5."
+                },
+                {
+                  "id": "B",
+                  "code": "sqrt",
+                  "label": "sqrt",
+                  "isCorrect": false,
+                  "explanation": "Genera NameError: name 'sqrt' is not defined porque la función sqrt pertenece a la librería math y requiere el prefijo math.sqrt()."
+                },
+                {
+                  "id": "C",
+                  "code": "math.floor",
+                  "label": "math.floor",
+                  "isCorrect": false,
+                  "explanation": "math.floor() trunca hacia abajo, no calcula la raíz cuadrada de una cantidad."
+                }
+              ],
+              "expectedOutput": "Hipotenusa: 5.0"
             }
           ]
         }
