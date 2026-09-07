@@ -69,7 +69,7 @@ function updateStreakDisplay() {
   const effectiveStreak = getEffectiveWeeklyStreak();
   const streakText = `${effectiveStreak} ${effectiveStreak === 1 ? 'sem' : 'sems'}`;
 
-  // Badge en cabecera principal (Navbar)
+  // Badge en cabecera principal (Navbar del Dashboard)
   const navText = document.getElementById('nav-streak-text');
   if (navText) {
     navText.textContent = streakText;
@@ -77,11 +77,27 @@ function updateStreakDisplay() {
   const navBadge = document.getElementById('nav-streak-badge');
   if (navBadge) {
     if (effectiveStreak > 0) {
-      navBadge.className = 'flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-300 rounded-full shadow-sm transition-all';
+      navBadge.className = 'flex items-center gap-1 px-2 sm:px-2.5 py-1 bg-amber-50 border border-amber-300 rounded-full shadow-sm transition-all shrink-0';
       navBadge.title = `¡Racha semanal activa! Llevas ${effectiveStreak} ${effectiveStreak === 1 ? 'semana consecutiva' : 'semanas consecutivas'} aprendiendo`;
     } else {
-      navBadge.className = 'flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200 rounded-full opacity-70 transition-all';
+      navBadge.className = 'flex items-center gap-1 px-2 sm:px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-full opacity-70 transition-all shrink-0';
       navBadge.title = 'Completa cualquier lección para iniciar tu racha semanal';
+    }
+  }
+
+  // Badge en cabecera de la lección / ejercicio (Navbar de la Lección)
+  const lessonText = document.getElementById('lesson-streak-text');
+  if (lessonText) {
+    lessonText.textContent = streakText;
+  }
+  const lessonBadge = document.getElementById('lesson-streak-badge');
+  if (lessonBadge) {
+    if (effectiveStreak > 0) {
+      lessonBadge.className = 'flex items-center gap-1 px-2.5 sm:px-3 py-1 bg-amber-50 border border-amber-300 rounded-full shadow-sm transition-all shrink-0';
+      lessonBadge.title = `¡Racha semanal activa! Llevas ${effectiveStreak} ${effectiveStreak === 1 ? 'semana consecutiva' : 'semanas consecutivas'} aprendiendo`;
+    } else {
+      lessonBadge.className = 'flex items-center gap-1 px-2.5 sm:px-3 py-1 bg-slate-50 border border-slate-200 rounded-full opacity-70 transition-all shrink-0';
+      lessonBadge.title = 'Completa cualquier lección para iniciar tu racha semanal';
     }
   }
 
@@ -608,11 +624,11 @@ function updateLessonProgressSegments() {
 
   for (let i = 0; i < total; i++) {
     if (i < currentStepIndex) {
-      html += `<div class="step-segment h-2.5 flex-1 rounded-full bg-brand-500"></div>`;
+      html += `<div class="step-segment h-2 sm:h-2.5 flex-1 rounded-full bg-brand-500 min-w-0"></div>`;
     } else if (i === currentStepIndex) {
-      html += `<div class="step-segment h-2.5 flex-1 rounded-full bg-brand-400 ring-2 ring-brand-200"></div>`;
+      html += `<div class="step-segment h-2 sm:h-2.5 flex-1 rounded-full bg-brand-400 ring-2 ring-brand-200 min-w-0"></div>`;
     } else {
-      html += `<div class="step-segment h-2.5 flex-1 rounded-full bg-slate-200"></div>`;
+      html += `<div class="step-segment h-2 sm:h-2.5 flex-1 rounded-full bg-slate-200 min-w-0"></div>`;
     }
   }
   container.innerHTML = html;
@@ -651,6 +667,7 @@ function scrollToLessonTop(behavior = 'smooth') {
 function renderCurrentStep() {
   const contentArea = document.getElementById('lesson-content-area');
   updateLessonProgressSegments();
+  updateStreakDisplay();
 
   const prevStepBtn = document.getElementById('lesson-prev-step-btn');
   if (prevStepBtn) {

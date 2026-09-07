@@ -17,6 +17,7 @@
       <button id="lesson-prev-step-btn" class="hidden"></button>
       <span id="lesson-header-title"></span>
       <div id="lesson-segments-container"></div>
+      <div id="lesson-streak-badge"><span id="lesson-streak-text"></span></div>
     </header>
     <main id="lesson-content-area"></main>
   </div>
@@ -203,6 +204,8 @@
         assert(getEffectiveWeeklyStreak() === 0, "Racha se muestra en 0 si pasaron más de 1 semana sin entrar");
         recordLessonCompletionStreak();
         assert(currentUser.weeklyStreak === 1, "Al retomar tras semanas inactivo, la racha se reinicia en 1");
+        updateStreakDisplay();
+        assert(document.getElementById('lesson-streak-text').textContent === '1 sem', "Badge de racha semanal en pantalla de ejercicios muestra '1 sem'");
 
         // 10. Test Auto-Scroll to Code Window (ensureCodeVisible)
         assert(typeof ensureCodeVisible === 'function', "Función ensureCodeVisible disponible");
