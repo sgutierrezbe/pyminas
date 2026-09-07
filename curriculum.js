@@ -94,14 +94,14 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "text": "1. Encendiendo motor -> 2. Calentando turbinas -> 3. ¡Despegue!",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "3. ¡Despegue! -> 2. Calentando turbinas -> 1. Encendiendo motor",
                   "isCorrect": false,
                   "whyIncorrect": "Python no lee de abajo hacia arriba. Lee estrictamente de arriba hacia abajo según el orden de las líneas."
+                },
+                {
+                  "id": "B",
+                  "text": "1. Encendiendo motor -> 2. Calentando turbinas -> 3. ¡Despegue!",
+                  "isCorrect": true
                 },
                 {
                   "id": "C",
@@ -123,20 +123,20 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "text": "Solo \"Modo normal activado\" y \"Todo funcionando correctamente\"",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "Los tres mensajes completos",
                   "isCorrect": false,
                   "whyIncorrect": "La línea con el '#' al inicio es ignorada por el intérprete de Python, por lo que nunca se muestra."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "text": "Solo \"Modo de prueba secreto\"",
                   "isCorrect": false,
                   "whyIncorrect": "Al tener '#' al principio, justamente esa línea es la única que NO se ejecutará."
+                },
+                {
+                  "id": "C",
+                  "text": "Solo \"Modo normal activado\" y \"Todo funcionando correctamente\"",
+                  "isCorrect": true
                 }
               ],
               "correctionTip": "El símbolo '#' convierte la línea en invisible para la máquina. Los programadores lo usamos para tomar notas o desactivar código temporalmente.",
@@ -190,13 +190,13 @@ const CURRICULUM = {
               "type": "explanation",
               "partLabel": "Paso 1 · El concepto",
               "title": "¿Cómo recibe datos un programa?",
-              "intro": "Un programa interactivo necesita datos del mundo exterior. En Python, la función <code>input()</code> pausa la ejecución del programa y espera a que el usuario escriba algo en el teclado y presione Enter.",
+              "intro": "Un programa interactivo necesita datos del mundo exterior. En Python, la función <code>input()</code> pausa la ejecución del programa, espera a que el usuario escriba en la terminal y presione Enter.",
               "examples": [
                 {
-                  "label": "Guardando datos en memoria",
-                  "code": "# input() captura lo que el usuario escribe:\n# nombre = input(\"¿Tu nombre?: \")\n# El valor queda guardado en la variable:\nnombre = \"Valentina\"\nprint(\"Hola,\", nombre)",
-                  "output": "Hola, Valentina",
-                  "explanation": "El valor capturado se guarda en una variable asignada a la izquierda del signo igual (=)."
+                  "label": "Captura interactiva por teclado",
+                  "code": "nombre = input(\"¿Cómo te llamas?: \")\nprint(\"¡Mucho gusto,\", nombre, \"bienvenido a pyMinas!\")",
+                  "output": "¿Cómo te llamas?: ¡Mucho gusto, Sara bienvenido a pyMinas!",
+                  "explanation": "La función input() interactiva pausa el código, recibe lo que el usuario escribe en la terminal y lo guarda en la variable 'nombre'."
                 }
               ],
               "keyTakeaway": "<strong>Regla de oro:</strong> Todo lo que entrega <code>input()</code> llega a Python como <strong>texto (tipo str)</strong>, incluso si el usuario tecleó dígitos numéricos como <code>18</code> o <code>25</code>."
@@ -205,19 +205,19 @@ const CURRICULUM = {
               "type": "predict",
               "partLabel": "Paso 2 · Naturaleza de input()",
               "title": "¿Qué tipo de dato entrega input()?",
-              "question": "Un usuario ejecuta <code>edad = input(\"Ingresa tu edad: \")</code> y teclea el número <code>20</code> en su pantalla. ¿De qué tipo de dato es la variable <code>edad</code> en memoria?",
+              "question": "Un usuario ejecuta `edad = input(\"Ingresa tu edad: \")` y teclea el número `20` en su pantalla. ¿De qué tipo de dato es la variable `edad` en memoria?",
               "theory": "Recuerda que input() captura pulsaciones del teclado como caracteres.",
               "options": [
                 {
                   "id": "A",
-                  "text": "Es de tipo str (cadena de texto: \"20\")",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "Es de tipo int (número entero: 20)",
                   "isCorrect": false,
                   "whyIncorrect": "input() NUNCA devuelve un entero automáticamente. Aunque teclees números, Python los recibe como texto (\"20\")."
+                },
+                {
+                  "id": "B",
+                  "text": "Es de tipo str (cadena de texto: \"20\")",
+                  "isCorrect": true
                 },
                 {
                   "id": "C",
@@ -227,7 +227,7 @@ const CURRICULUM = {
                 }
               ],
               "correctionTip": "La regla número 1 de input(): sin importar lo que el usuario escriba, el resultado SIEMPRE es de tipo str (texto).",
-              "fullAnswerExplanation": "¡Exacto! input() siempre produce cadenas de texto (str). Si necesitas operar matemáticamente con el valor, debes convertirlo."
+              "fullAnswerExplanation": "¡Exacto! input() siempre produce cadenas de texto (str). Si necesitas operar matemáticamente con el valor, debes convertirlo con int() o float()."
             },
             {
               "type": "predict",
@@ -239,20 +239,20 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "text": "1020",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "30",
                   "isCorrect": false,
                   "whyIncorrect": "Como a y b son textos ('10' y '20'), el operador + los une uno tras otro formando '1020', no 30."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "text": "TypeError: no se pueden sumar números con comillas",
                   "isCorrect": false,
                   "whyIncorrect": "Sumar dos textos con + es 100% legal en Python. Es la operación de concatenación."
+                },
+                {
+                  "id": "C",
+                  "text": "1020",
+                  "isCorrect": true
                 }
               ],
               "correctionTip": "El operador + con texto une las palabras. Para sumar números debes convertir con int() o float().",
@@ -267,33 +267,33 @@ const CURRICULUM = {
               "type": "code_sandbox",
               "partLabel": "Paso 5 · Reto de conversión",
               "title": "Convierte la entrada a entero",
-              "instruction": "Un estudiante ingresó sus puntos como texto. Completa el código con la función de conversión que permite sumar los 5 puntos adicionales correctamente:",
-              "starterCode": "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = ___(entrada_str)\nprint(puntos + 5)",
+              "instruction": "Capturamos la edad del usuario desde el teclado con input(). Completa el código con la función de conversión apropiada para calcular la edad del próximo año:",
+              "starterCode": "# Entrada interactiva recibida del teclado:\nedad_str = input(\"Ingresa tu edad: \")\n# Convierte para poder sumar matemáticamente:\nedad = ___(edad_str)\nprint(f\"El próximo año tendrás {edad + 1} años\")",
               "slotMarker": "___",
               "options": [
                 {
                   "id": "A",
-                  "code": "int",
-                  "label": "int",
-                  "isCorrect": true,
-                  "explanation": "¡Excelente! int(\"15\") transforma el texto en el entero 15, permitiendo la suma aritmética 15 + 5 = 20."
+                  "code": "float",
+                  "label": "float",
+                  "isCorrect": false,
+                  "explanation": "Aunque float funcionaría matemáticamente, las edades se expresan convencionalmente en números enteros int()."
                 },
                 {
                   "id": "B",
-                  "code": "str",
-                  "label": "str",
-                  "isCorrect": false,
-                  "explanation": "str() mantendría el tipo como texto, por lo que puntos + 5 daría TypeError al intentar sumar texto con entero."
+                  "code": "int",
+                  "label": "int",
+                  "isCorrect": true,
+                  "explanation": "¡Excelente! int(edad_str) convierte el texto en un entero, permitiendo calcular edad + 1."
                 },
                 {
                   "id": "C",
-                  "code": "len",
-                  "label": "len",
+                  "code": "str",
+                  "label": "str",
                   "isCorrect": false,
-                  "explanation": "len() mide la cantidad de caracteres de un texto, no convierte su valor a número."
+                  "explanation": "str() dejaría el valor como texto, provocando un TypeError al intentar sumar texto con un entero (+ 1)."
                 }
               ],
-              "expectedOutput": "20"
+              "expectedOutput": "El próximo año tendrás 21 años"
             }
           ]
         },
@@ -347,14 +347,14 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "text": "Área del rectángulo: 50 m2",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "Área del rectángulo: {base * altura} m2",
                   "isCorrect": false,
                   "whyIncorrect": "Al tener el prefijo 'f', Python no imprime las llaves literales, sino el resultado evaluado de la multiplicación."
+                },
+                {
+                  "id": "B",
+                  "text": "Área del rectángulo: 50 m2",
+                  "isCorrect": true
                 },
                 {
                   "id": "C",
@@ -371,25 +371,25 @@ const CURRICULUM = {
               "partLabel": "Paso 4 · Spot the bug",
               "title": "Spot-the-bug: ¿Por qué no reemplaza la variable?",
               "code": "usuario = \"Santiago\"\nprint(\"Hola {usuario}, bienvenido al laboratorio\")",
-              "question": "Un estudiante escribió este código esperando ver 'Hola Santiago...', pero la consola mostró literalmente: <code>Hola {usuario}, bienvenido al laboratorio</code>. ¿Cuál fue el error?",
+              "question": "Un estudiante escribió este código esperando ver 'Hola Santiago...', pero la consola mostró literalmente: `Hola {usuario}, bienvenido al laboratorio`. ¿Cuál fue el error?",
               "theory": "Sin el prefijo especial, las llaves son solo caracteres normales de texto.",
               "options": [
                 {
                   "id": "A",
-                  "text": "Olvidó colocar la letra f antes de abrir las comillas: f\"Hola {usuario}...\"",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "En Python las variables deben rodearse con signos de porcentaje: %usuario%",
                   "isCorrect": false,
                   "whyIncorrect": "Esa sintaxis pertenece a scripts de consola por lotes (batch), no al estándar moderno de f-strings en Python."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "text": "Las llaves {} están prohibidas dentro de las cadenas de texto de Python",
                   "isCorrect": false,
                   "whyIncorrect": "Las llaves están perfectamente permitidas; para que sustituyan valores deben acompañarse del prefijo f."
+                },
+                {
+                  "id": "C",
+                  "text": "Olvidó colocar la letra f antes de abrir las comillas: f\"Hola {usuario}...\"",
+                  "isCorrect": true
                 }
               ],
               "correctionTip": "Sin la 'f' inicial, Python trata a '{usuario}' como texto plano ordinario.",
@@ -410,17 +410,17 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "code": "f",
-                  "label": "f",
-                  "isCorrect": true,
-                  "explanation": "¡Correcto! El prefijo f convierte la cadena en un f-string activo, sustituyendo {facultad} y {costo}."
-                },
-                {
-                  "id": "B",
                   "code": "str",
                   "label": "str",
                   "isCorrect": false,
                   "explanation": "str no es un prefijo de string válido. Provocaría un error de sintaxis."
+                },
+                {
+                  "id": "B",
+                  "code": "f",
+                  "label": "f",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! El prefijo f convierte la cadena en un f-string activo, sustituyendo {facultad} y {costo}."
                 },
                 {
                   "id": "C",
@@ -464,7 +464,7 @@ const CURRICULUM = {
               "partLabel": "Paso 2 · Distinguiendo tipos",
               "title": "¿Cuál es el tipo de dato?",
               "code": "valor = \"3.1416\"",
-              "question": "¿A qué tipo de dato pertenece la variable <code>valor</code> en este código?",
+              "question": "¿A qué tipo de dato pertenece la variable `valor` en este código?",
               "theory": "Presta especial atención a la presencia de comillas en la asignación.",
               "options": [
                 {
@@ -498,20 +498,20 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "text": "9.0",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "4.54.5",
                   "isCorrect": false,
                   "whyIncorrect": "Como se usó float(horas_str), la variable ya no es texto, por lo que * 2 realiza multiplicación matemática, no repetición de texto."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "text": "9",
                   "isCorrect": false,
                   "whyIncorrect": "Al multiplicar un número decimal (float) en Python, el resultado conserva la parte decimal: 9.0."
+                },
+                {
+                  "id": "C",
+                  "text": "9.0",
+                  "isCorrect": true
                 }
               ],
               "correctionTip": "Al convertir con float(\"4.5\"), la multiplicación 4.5 * 2 produce un resultado float: 9.0.",
@@ -527,24 +527,24 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "code": "float",
-                  "label": "float",
-                  "isCorrect": true,
-                  "explanation": "¡Correcto! float(\"68.5\") preserva los decimales y permite la suma 68.5 + 1.5 = 70.0."
-                },
-                {
-                  "id": "B",
                   "code": "int",
                   "label": "int",
                   "isCorrect": false,
                   "explanation": "int(\"68.5\") genera un ValueError porque int() no sabe procesar puntos decimales contenidos en un string."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "code": "str",
                   "label": "str",
                   "isCorrect": false,
                   "explanation": "str() dejaría el dato como texto y al sumarle 1.5 Python arrojaría un TypeError."
+                },
+                {
+                  "id": "C",
+                  "code": "float",
+                  "label": "float",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! float(\"68.5\") preserva los decimales y permite la suma 68.5 + 1.5 = 70.0."
                 }
               ],
               "expectedOutput": "70.0"
@@ -586,14 +586,14 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "text": "2h 5m",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "2.08h 5m",
                   "isCorrect": false,
                   "whyIncorrect": "El operador // trunca los decimales, retornando estrictamente el entero 2, no 2.08."
+                },
+                {
+                  "id": "B",
+                  "text": "2h 5m",
+                  "isCorrect": true
                 },
                 {
                   "id": "C",
@@ -615,20 +615,20 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "text": "La división '/' se ejecuta primero que la suma '+', calculando 2.0 / 2 = 1.0 y luego 4.0 + 1.0 = 5.0",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "En Python las operaciones matemáticas se evalúan siempre de derecha a izquierda",
                   "isCorrect": false,
                   "whyIncorrect": "Python evalúa de izquierda a derecha respetando la jerarquía matemática universal (PEMDAS)."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "text": "El operador / redondea los resultados hacia arriba automáticamente",
                   "isCorrect": false,
                   "whyIncorrect": "El operador / no redondea arbitrariamente. El resultado es 5.0 porque 4.0 + (2.0 / 2) = 4.0 + 1.0 = 5.0."
+                },
+                {
+                  "id": "C",
+                  "text": "La división '/' se ejecuta primero que la suma '+', calculando 2.0 / 2 = 1.0 y luego 4.0 + 1.0 = 5.0",
+                  "isCorrect": true
                 }
               ],
               "correctionTip": "Para que la suma se realice antes de la división, debes agruparla entre paréntesis: (nota1 + nota2) / 2.",
@@ -644,17 +644,17 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "code": "(lab1 + lab2)",
-                  "label": "(lab1 + lab2)",
-                  "isCorrect": true,
-                  "explanation": "¡Exacto! Los paréntesis obligan a Python a sumar (4.0 + 3.0 = 7.0) antes de dividir entre 2, dando 3.5."
-                },
-                {
-                  "id": "B",
                   "code": "lab1 + lab2",
                   "label": "lab1 + lab2",
                   "isCorrect": false,
                   "explanation": "Sin paréntesis, la división se aplicaría únicamente a lab2, resultando en 4.0 + (3.0 / 2) = 5.5 en lugar de 3.5."
+                },
+                {
+                  "id": "B",
+                  "code": "(lab1 + lab2)",
+                  "label": "(lab1 + lab2)",
+                  "isCorrect": true,
+                  "explanation": "¡Exacto! Los paréntesis obligan a Python a sumar (4.0 + 3.0 = 7.0) antes de dividir entre 2, dando 3.5."
                 },
                 {
                   "id": "C",
@@ -698,25 +698,25 @@ const CURRICULUM = {
               "partLabel": "Paso 2 · Salida de math.sqrt",
               "title": "¿Qué valor retorna math.sqrt?",
               "code": "import math\n\nresultado = math.sqrt(25)\nprint(resultado)",
-              "question": "¿Qué valor exacto mostrará en pantalla la siguiente llamada a <code>math.sqrt()</code>?",
+              "question": "¿Qué valor exacto mostrará en pantalla la siguiente llamada a `math.sqrt()`?",
               "theory": "La función math.sqrt() calcula la raíz cuadrada y en Python siempre entrega un tipo float.",
               "options": [
                 {
                   "id": "A",
-                  "text": "5.0",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "5",
                   "isCorrect": false,
                   "whyIncorrect": "La función math.sqrt siempre retorna un número decimal float con punto (.0), nunca un entero int."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "text": "625",
                   "isCorrect": false,
                   "whyIncorrect": "math.sqrt calcula la raíz cuadrada de 25, no su cuadrado (25 al cuadrado sería 625)."
+                },
+                {
+                  "id": "C",
+                  "text": "5.0",
+                  "isCorrect": true
                 }
               ],
               "correctionTip": "math.sqrt(x) calcula la raíz cuadrada y su salida siempre es de tipo float (con punto decimal).",
@@ -727,19 +727,19 @@ const CURRICULUM = {
               "partLabel": "Paso 3 · Redondeos en ingeniería",
               "title": "Redondeo hacia arriba con math.ceil()",
               "code": "import math\n\nestudiantes = 25\ncapacidad_aula = 6\n# Necesitamos aulas suficientes para todos:\naulas = math.ceil(estudiantes / capacidad_aula)\nprint(aulas)",
-              "question": "25 / 6 da 4.1666... ¿Qué imprimirá <code>math.ceil()</code> en la consola?",
+              "question": "25 / 6 da 4.1666... ¿Qué imprimirá `math.ceil()` en la consola?",
               "theory": "math.ceil() (techo) redondea siempre hacia arriba al entero más cercano.",
               "options": [
                 {
                   "id": "A",
-                  "text": "5",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
                   "text": "4",
                   "isCorrect": false,
                   "whyIncorrect": "4 aulas solo albergarían 24 estudiantes, dejando 1 sin asiento. math.ceil redondea hacia arriba al entero mayor (5)."
+                },
+                {
+                  "id": "B",
+                  "text": "5",
+                  "isCorrect": true
                 },
                 {
                   "id": "C",
@@ -766,24 +766,24 @@ const CURRICULUM = {
               "options": [
                 {
                   "id": "A",
-                  "code": "math.sqrt",
-                  "label": "math.sqrt",
-                  "isCorrect": true,
-                  "explanation": "¡Brillante! math.sqrt(9 + 16) = math.sqrt(25) = 5.0. Has resuelto el triángulo clásico 3-4-5."
-                },
-                {
-                  "id": "B",
                   "code": "sqrt",
                   "label": "sqrt",
                   "isCorrect": false,
                   "explanation": "Genera NameError: name 'sqrt' is not defined porque la función sqrt pertenece a la librería math y requiere el prefijo math.sqrt()."
                 },
                 {
-                  "id": "C",
+                  "id": "B",
                   "code": "math.floor",
                   "label": "math.floor",
                   "isCorrect": false,
                   "explanation": "math.floor() trunca hacia abajo, no calcula la raíz cuadrada de una cantidad."
+                },
+                {
+                  "id": "C",
+                  "code": "math.sqrt",
+                  "label": "math.sqrt",
+                  "isCorrect": true,
+                  "explanation": "¡Brillante! math.sqrt(9 + 16) = math.sqrt(25) = 5.0. Has resuelto el triángulo clásico 3-4-5."
                 }
               ],
               "expectedOutput": "Hipotenusa: 5.0"

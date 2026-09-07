@@ -37,7 +37,9 @@ def trace_python_code(code_str, slot_value=None):
     for stmt in tree.body:
         buf = io.StringIO()
         old_stdout = sys.stdout
+        old_stdin = sys.stdin
         sys.stdout = buf
+        sys.stdin = io.StringIO("Sara\n20\n30\n5\n")
         try:
             compiled = compile(ast.Module(body=[stmt], type_ignores=[]), "<curriculum>", "exec")
             exec(compiled, scope)
@@ -45,6 +47,7 @@ def trace_python_code(code_str, slot_value=None):
             buf.write(f"Error: {e}\n")
         finally:
             sys.stdout = old_stdout
+            sys.stdin = old_stdin
 
         out = buf.getvalue()
         if out:

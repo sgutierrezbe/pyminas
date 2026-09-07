@@ -152,7 +152,9 @@ def execute_python_code(code_str: str) -> tuple[str, str]:
     """Ejecuta código en CPython aislado y retorna (stdout, error_str)."""
     buf = io.StringIO()
     old_stdout = sys.stdout
+    old_stdin = sys.stdin
     sys.stdout = buf
+    sys.stdin = io.StringIO("Sara\n20\n30\n5\n")
     error = ""
     scope = {}
     try:
@@ -162,6 +164,7 @@ def execute_python_code(code_str: str) -> tuple[str, str]:
         error = f"{type(e).__name__}: {e}"
     finally:
         sys.stdout = old_stdout
+        sys.stdin = old_stdin
     
     return buf.getvalue(), error
 

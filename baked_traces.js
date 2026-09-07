@@ -188,39 +188,26 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "Error: name 'escribir' is not defined"
   },
-  "# input() captura lo que el usuario escribe:\n# nombre = input(\"¿Tu nombre?: \")\n# El valor queda guardado en la variable:\nnombre = \"Valentina\"\nprint(\"Hola,\", nombre)": {
+  "nombre = input(\"¿Cómo te llamas?: \")\nprint(\"¡Mucho gusto,\", nombre, \"bienvenido a pyMinas!\")": {
     "lines": [
-      "# input() captura lo que el usuario escribe:",
-      "# nombre = input(\"¿Tu nombre?: \")",
-      "# El valor queda guardado en la variable:",
-      "nombre = \"Valentina\"",
-      "print(\"Hola,\", nombre)"
+      "nombre = input(\"¿Cómo te llamas?: \")",
+      "print(\"¡Mucho gusto,\", nombre, \"bienvenido a pyMinas!\")"
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Hola, Valentina",
+        "prints": "¿Cómo te llamas?: ",
         "outputSoFar": [
-          "Hola, Valentina"
+          "¿Cómo te llamas?: "
+        ]
+      },
+      {
+        "prints": "¡Mucho gusto, Sara bienvenido a pyMinas!",
+        "outputSoFar": [
+          "¿Cómo te llamas?: ¡Mucho gusto, Sara bienvenido a pyMinas!"
         ]
       }
     ],
-    "totalOutput": "Hola, Valentina"
+    "totalOutput": "¿Cómo te llamas?: ¡Mucho gusto, Sara bienvenido a pyMinas!"
   },
   "# Supongamos dos entradas obtenidas con input():\na = \"10\"\nb = \"20\"\ntotal = a + b\nprint(total)": {
     "lines": [
@@ -256,13 +243,13 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "1020"
   },
-  "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = int(entrada_str)\nprint(puntos + 5)": {
+  "# Entrada interactiva recibida del teclado:\nedad_str = input(\"Ingresa tu edad: \")\n# Convierte para poder sumar matemáticamente:\nedad = float(edad_str)\nprint(f\"El próximo año tendrás {edad + 1} años\")": {
     "lines": [
-      "# Entrada recibida como texto del teclado:",
-      "entrada_str = \"15\"",
+      "# Entrada interactiva recibida del teclado:",
+      "edad_str = input(\"Ingresa tu edad: \")",
       "# Convierte para poder sumar matemáticamente:",
-      "puntos = int(entrada_str)",
-      "print(puntos + 5)"
+      "edad = float(edad_str)",
+      "print(f\"El próximo año tendrás {edad + 1} años\")"
     ],
     "lineTrace": [
       {
@@ -270,33 +257,40 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "20",
+        "prints": "Ingresa tu edad: ",
         "outputSoFar": [
-          "20"
+          "Ingresa tu edad: "
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Ingresa tu edad: "
+        ]
+      },
+      {
+        "prints": "Error: could not convert string to float: 'Sara'",
+        "outputSoFar": [
+          "Ingresa tu edad: Error: could not convert string to float: 'Sara'"
+        ]
+      },
+      {
+        "prints": "Error: name 'edad' is not defined",
+        "outputSoFar": [
+          "Ingresa tu edad: Error: could not convert string to float: 'Sara'",
+          "Error: name 'edad' is not defined"
         ]
       }
     ],
-    "totalOutput": "20"
+    "totalOutput": "Ingresa tu edad: Error: could not convert string to float: 'Sara'\nError: name 'edad' is not defined"
   },
-  "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = str(entrada_str)\nprint(puntos + 5)": {
+  "# Entrada interactiva recibida del teclado:\nedad_str = input(\"Ingresa tu edad: \")\n# Convierte para poder sumar matemáticamente:\nedad = int(edad_str)\nprint(f\"El próximo año tendrás {edad + 1} años\")": {
     "lines": [
-      "# Entrada recibida como texto del teclado:",
-      "entrada_str = \"15\"",
+      "# Entrada interactiva recibida del teclado:",
+      "edad_str = input(\"Ingresa tu edad: \")",
       "# Convierte para poder sumar matemáticamente:",
-      "puntos = str(entrada_str)",
-      "print(puntos + 5)"
+      "edad = int(edad_str)",
+      "print(f\"El próximo año tendrás {edad + 1} años\")"
     ],
     "lineTrace": [
       {
@@ -304,59 +298,72 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
+        "prints": "Ingresa tu edad: ",
+        "outputSoFar": [
+          "Ingresa tu edad: "
+        ]
       },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Ingresa tu edad: "
+        ]
+      },
+      {
+        "prints": "Error: invalid literal for int() with base 10: 'Sara'",
+        "outputSoFar": [
+          "Ingresa tu edad: Error: invalid literal for int() with base 10: 'Sara'"
+        ]
+      },
+      {
+        "prints": "Error: name 'edad' is not defined",
+        "outputSoFar": [
+          "Ingresa tu edad: Error: invalid literal for int() with base 10: 'Sara'",
+          "Error: name 'edad' is not defined"
+        ]
+      }
+    ],
+    "totalOutput": "Ingresa tu edad: Error: invalid literal for int() with base 10: 'Sara'\nError: name 'edad' is not defined"
+  },
+  "# Entrada interactiva recibida del teclado:\nedad_str = input(\"Ingresa tu edad: \")\n# Convierte para poder sumar matemáticamente:\nedad = str(edad_str)\nprint(f\"El próximo año tendrás {edad + 1} años\")": {
+    "lines": [
+      "# Entrada interactiva recibida del teclado:",
+      "edad_str = input(\"Ingresa tu edad: \")",
+      "# Convierte para poder sumar matemáticamente:",
+      "edad = str(edad_str)",
+      "print(f\"El próximo año tendrás {edad + 1} años\")"
+    ],
+    "lineTrace": [
       {
         "prints": null,
         "outputSoFar": []
       },
       {
+        "prints": "Ingresa tu edad: ",
+        "outputSoFar": [
+          "Ingresa tu edad: "
+        ]
+      },
+      {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa tu edad: "
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Ingresa tu edad: "
+        ]
       },
       {
         "prints": "Error: can only concatenate str (not \"int\") to str",
         "outputSoFar": [
-          "Error: can only concatenate str (not \"int\") to str"
+          "Ingresa tu edad: Error: can only concatenate str (not \"int\") to str"
         ]
       }
     ],
-    "totalOutput": "Error: can only concatenate str (not \"int\") to str"
-  },
-  "# Entrada recibida como texto del teclado:\nentrada_str = \"15\"\n# Convierte para poder sumar matemáticamente:\npuntos = len(entrada_str)\nprint(puntos + 5)": {
-    "lines": [
-      "# Entrada recibida como texto del teclado:",
-      "entrada_str = \"15\"",
-      "# Convierte para poder sumar matemáticamente:",
-      "puntos = len(entrada_str)",
-      "print(puntos + 5)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "7",
-        "outputSoFar": [
-          "7"
-        ]
-      }
-    ],
-    "totalOutput": "7"
+    "totalOutput": "Ingresa tu edad: Error: can only concatenate str (not \"int\") to str"
   },
   "nombre = \"Carlos\"\nsemestre = 1\nprint(\"Estudiante:\", nombre, \"Semestre:\", semestre)": {
     "lines": [
@@ -592,40 +599,6 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "9.0"
   },
-  "# Dato recibido del sensor:\nlectura_sensor = \"68.5\"\n# Convierte para sumar la calibración:\npeso_real = float(lectura_sensor)\nprint(peso_real + 1.5)": {
-    "lines": [
-      "# Dato recibido del sensor:",
-      "lectura_sensor = \"68.5\"",
-      "# Convierte para sumar la calibración:",
-      "peso_real = float(lectura_sensor)",
-      "print(peso_real + 1.5)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "70.0",
-        "outputSoFar": [
-          "70.0"
-        ]
-      }
-    ],
-    "totalOutput": "70.0"
-  },
   "# Dato recibido del sensor:\nlectura_sensor = \"68.5\"\n# Convierte para sumar la calibración:\npeso_real = int(lectura_sensor)\nprint(peso_real + 1.5)": {
     "lines": [
       "# Dato recibido del sensor:",
@@ -696,6 +669,40 @@ window.BAKED_TRACES = {
       }
     ],
     "totalOutput": "Error: can only concatenate str (not \"float\") to str"
+  },
+  "# Dato recibido del sensor:\nlectura_sensor = \"68.5\"\n# Convierte para sumar la calibración:\npeso_real = float(lectura_sensor)\nprint(peso_real + 1.5)": {
+    "lines": [
+      "# Dato recibido del sensor:",
+      "lectura_sensor = \"68.5\"",
+      "# Convierte para sumar la calibración:",
+      "peso_real = float(lectura_sensor)",
+      "print(peso_real + 1.5)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "70.0",
+        "outputSoFar": [
+          "70.0"
+        ]
+      }
+    ],
+    "totalOutput": "70.0"
   },
   "# 1. División real (siempre entrega float):\nprint(7 / 2)\n# 2. División entera (trunca los decimales):\nprint(7 // 2)\n# 3. Módulo (residuo o sobrante de la división entera):\nprint(7 % 2)": {
     "lines": [
@@ -811,45 +818,6 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "5.0"
   },
-  "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = (lab1 + lab2) / 2\nprint(promedio)": {
-    "lines": [
-      "# Notas de laboratorio:",
-      "lab1 = 4.0",
-      "lab2 = 3.0",
-      "# Completa la expresión para calcular el promedio:",
-      "promedio = (lab1 + lab2) / 2",
-      "print(promedio)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "3.5",
-        "outputSoFar": [
-          "3.5"
-        ]
-      }
-    ],
-    "totalOutput": "3.5"
-  },
   "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = lab1 + lab2 / 2\nprint(promedio)": {
     "lines": [
       "# Notas de laboratorio:",
@@ -888,6 +856,45 @@ window.BAKED_TRACES = {
       }
     ],
     "totalOutput": "5.5"
+  },
+  "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = (lab1 + lab2) / 2\nprint(promedio)": {
+    "lines": [
+      "# Notas de laboratorio:",
+      "lab1 = 4.0",
+      "lab2 = 3.0",
+      "# Completa la expresión para calcular el promedio:",
+      "promedio = (lab1 + lab2) / 2",
+      "print(promedio)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "3.5",
+        "outputSoFar": [
+          "3.5"
+        ]
+      }
+    ],
+    "totalOutput": "3.5"
   },
   "# Notas de laboratorio:\nlab1 = 4.0\nlab2 = 3.0\n# Completa la expresión para calcular el promedio:\npromedio = [lab1 + lab2] / 2\nprint(promedio)": {
     "lines": [
@@ -1043,55 +1050,6 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "5"
   },
-  "import math\n\n# Catetos de un triángulo rectángulo:\ncateto_a = 3\ncateto_b = 4\n# c = √(a² + b²)\nhipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)\nprint(f\"Hipotenusa: {hipotenusa}\")": {
-    "lines": [
-      "import math",
-      "",
-      "# Catetos de un triángulo rectángulo:",
-      "cateto_a = 3",
-      "cateto_b = 4",
-      "# c = √(a² + b²)",
-      "hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)",
-      "print(f\"Hipotenusa: {hipotenusa}\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Hipotenusa: 5.0",
-        "outputSoFar": [
-          "Hipotenusa: 5.0"
-        ]
-      }
-    ],
-    "totalOutput": "Hipotenusa: 5.0"
-  },
   "import math\n\n# Catetos de un triángulo rectángulo:\ncateto_a = 3\ncateto_b = 4\n# c = √(a² + b²)\nhipotenusa = sqrt(cateto_a**2 + cateto_b**2)\nprint(f\"Hipotenusa: {hipotenusa}\")": {
     "lines": [
       "import math",
@@ -1192,5 +1150,54 @@ window.BAKED_TRACES = {
       }
     ],
     "totalOutput": "Hipotenusa: 25"
+  },
+  "import math\n\n# Catetos de un triángulo rectángulo:\ncateto_a = 3\ncateto_b = 4\n# c = √(a² + b²)\nhipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)\nprint(f\"Hipotenusa: {hipotenusa}\")": {
+    "lines": [
+      "import math",
+      "",
+      "# Catetos de un triángulo rectángulo:",
+      "cateto_a = 3",
+      "cateto_b = 4",
+      "# c = √(a² + b²)",
+      "hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)",
+      "print(f\"Hipotenusa: {hipotenusa}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Hipotenusa: 5.0",
+        "outputSoFar": [
+          "Hipotenusa: 5.0"
+        ]
+      }
+    ],
+    "totalOutput": "Hipotenusa: 5.0"
   }
 };

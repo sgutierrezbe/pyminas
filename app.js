@@ -863,6 +863,7 @@ function replaceSafePythonOperators(code) {
 
   // 2. Reemplazos seguros en la lógica del código
   tokenized = tokenized.replace(/\bTrue\b/g, 'true').replace(/\bFalse\b/g, 'false');
+  tokenized = tokenized.replace(/\btype\s*\(([^)]+)\)\.__name__/g, '((typeof ($1) === "number") ? (Number.isInteger($1) ? "int" : "float") : (typeof ($1) === "string" ? "str" : (typeof ($1) === "boolean" ? "bool" : "object")))');
   tokenized = tokenized.replace(/\bint\s*\(([^)]+)\)/g, 'Math.trunc(Number($1))');
   tokenized = tokenized.replace(/\bfloat\s*\(([^)]+)\)/g, 'Number($1)');
   tokenized = tokenized.replace(/\bstr\s*\(([^)]+)\)/g, 'String($1)');
@@ -972,9 +973,11 @@ function evaluateSafePrint(innerStr, scope, math) {
   return evaluatedParts.join(sep) + end;
 }
 
-function tracePythonExecution(code, expectedOutput) {
+function tracePythonExecution(code, expectedOutput, userInputs = {}) {
   const trimmed = (code || '').trim();
-  if (window.BAKED_TRACES && window.BAKED_TRACES[trimmed]) {
+  const hasInputCall = /\binput\s*\(/.test(trimmed);
+
+  if (!hasInputCall && window.BAKED_TRACES && window.BAKED_TRACES[trimmed]) {
     const baked = window.BAKED_TRACES[trimmed];
     return {
       lines: baked.lines,
@@ -1000,14 +1003,61 @@ function tracePythonExecution(code, expectedOutput) {
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i];
     const { code: codeWithoutComment } = splitCodeAndComment(raw);
-    const trimmed = codeWithoutComment.trim();
+    const trimmedLine = codeWithoutComment.trim();
 
-    if (!trimmed || trimmed.startsWith('import')) {
+    if (!trimmedLine || trimmedLine.startsWith('import')) {
       lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
 
-    const assignMatch = trimmed.match(/^([a-zA-Z_]\w*)\s*=\s*(.+)$/);
+    // Comprobar si la línea contiene una llamada a input()
+    const isInputLine = /\binput\s*\(/.test(trimmedLine);
+    if (isInputLine) {
+      const pMatch = trimmedLine.match(/\binput\s*\(\s*(?:(['"])([\s\S]*?)\1)?\s*\)/);
+      const prompt = pMatch && pMatch[2] !== undefined ? pMatch[2] : "";
+
+      const assignMatch = trimmedLine.match(/^([a-zA-Z_]\w*)\s*=\s*(.+)$/);
+      const varName = assignMatch ? assignMatch[1] : null;
+      const fullExpr = assignMatch ? assignMatch[2].trim() : trimmedLine;
+
+      let enteredVal = userInputs[i] !== undefined 
+        ? userInputs[i] 
+        : (window.FAST_ANIM ? (fullExpr.includes('int') ? "20" : "Valeria") : null);
+
+      if (enteredVal !== null) {
+        const safeValLiteral = JSON.stringify(String(enteredVal));
+        const replacedExpr = fullExpr.replace(/\binput\s*\(\s*(?:(['"])([\s\S]*?)\1)?\s*\)/, safeValLiteral);
+        try {
+          const val = evaluateSafeExpr(replacedExpr, scope, math);
+          if (varName) scope[varName] = val;
+        } catch (err) {
+          if (varName) scope[varName] = enteredVal;
+        }
+        stdoutBuffer += prompt + enteredVal + "\n";
+        lineTrace.push({
+          isInput: true,
+          isCompleted: true,
+          prompt: prompt,
+          userValue: enteredVal,
+          varName: varName,
+          prints: prompt + enteredVal,
+          outputSoFar: getOutputSoFar()
+        });
+      } else {
+        lineTrace.push({
+          isInput: true,
+          isCompleted: false,
+          prompt: prompt,
+          varName: varName,
+          fullExpr: fullExpr,
+          prints: prompt,
+          outputSoFar: stdoutBuffer ? [...stdoutBuffer.replace(/\n$/, '').split('\n'), prompt] : [prompt]
+        });
+      }
+      continue;
+    }
+
+    const assignMatch = trimmedLine.match(/^([a-zA-Z_]\w*)\s*=\s*(.+)$/);
     if (assignMatch) {
       const varName = assignMatch[1];
       const expr = assignMatch[2].trim();
@@ -1021,7 +1071,7 @@ function tracePythonExecution(code, expectedOutput) {
       continue;
     }
 
-    const printMatch = trimmed.match(/^print\s*\((.*)\)$/);
+    const printMatch = trimmedLine.match(/^print\s*\((.*)\)$/);
     if (printMatch) {
       const outputText = evaluateSafePrint(printMatch[1], scope, math);
       stdoutBuffer += outputText;
@@ -1254,8 +1304,10 @@ function codePlayerSetLine(playerId, targetIndex) {
       }
     } else {
       const state = player.lineTrace[targetIndex];
-      if (state && state.outputSoFar && state.outputSoFar.length > 0) {
-        termEl.innerHTML = `<div class="text-[#34d399] font-mono whitespace-pre-wrap">${escapeHtml(state.outputSoFar.join('\n'))}</div>`;
+      if (state && state.isInput && !state.isCompleted) {
+        renderInteractiveInputPrompt(playerId, targetIndex, state.prompt);
+      } else if (state && state.outputSoFar && state.outputSoFar.length > 0) {
+        termEl.innerHTML = `<div class="text-[#34d399] font-mono whitespace-pre-wrap leading-relaxed">${escapeHtml(state.outputSoFar.join('\n'))}</div>`;
       } else {
         termEl.innerHTML = '<span class="text-slate-600 italic select-none text-xs">(Línea en proceso, sin salida aún)</span>';
       }
@@ -1277,6 +1329,79 @@ function codePlayerSetLine(playerId, targetIndex) {
   playSound('step');
 }
 
+function renderInteractiveInputPrompt(playerId, lineIndex, promptText) {
+  const termEl = document.getElementById(`code-terminal-${playerId}`);
+  if (!termEl) return;
+
+  const player = codePlayerRegistry[playerId];
+  const prevLines = lineIndex > 0 && player && player.lineTrace[lineIndex - 1]?.outputSoFar
+    ? player.lineTrace[lineIndex - 1].outputSoFar
+    : [];
+
+  const prevText = prevLines.join('\n');
+
+  termEl.innerHTML = `
+    <div class="text-[#34d399] font-mono whitespace-pre-wrap leading-relaxed">
+      ${prevText ? `<div>${escapeHtml(prevText)}</div>` : ''}
+      <div class="flex flex-wrap items-center gap-2 mt-1.5 p-2 bg-[#052e16]/80 rounded-xl border border-emerald-500 shadow-md">
+        <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0">${escapeHtml(promptText)}</span>
+        <div class="flex items-center gap-1.5 flex-1 min-w-[150px]">
+          <input id="term-input-box-${playerId}" type="text" autocomplete="off" placeholder="Escribe aquí..." class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500" />
+          <button id="term-input-btn-${playerId}" onclick="handleTerminalInputSubmit('${playerId}', ${lineIndex})" type="button" class="choice-pill px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
+            <span>Enviar</span>
+            <span>↵</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (window.FAST_ANIM) {
+    setTimeout(() => handleTerminalInputSubmit(playerId, lineIndex), 5);
+    return;
+  }
+
+  setTimeout(() => {
+    const inputEl = document.getElementById(`term-input-box-${playerId}`);
+    if (inputEl) {
+      inputEl.focus();
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          e.stopPropagation();
+          handleTerminalInputSubmit(playerId, lineIndex);
+        }
+      });
+    }
+  }, 40);
+}
+
+function handleTerminalInputSubmit(playerId, lineIndex) {
+  const player = codePlayerRegistry[playerId];
+  if (!player) return;
+
+  const inputEl = document.getElementById(`term-input-box-${playerId}`);
+  const userVal = inputEl ? inputEl.value.trim() : "";
+  const finalVal = userVal.length > 0 ? userVal : "Samuel";
+
+  playSound('click');
+
+  if (!player.userInputs) player.userInputs = {};
+  player.userInputs[lineIndex] = finalVal;
+
+  const newTrace = tracePythonExecution(player.code, player.expectedOutput, player.userInputs);
+  player.lineTrace = newTrace.lineTrace;
+
+  codePlayerSetLine(playerId, lineIndex);
+
+  if (player.wasAutoPlaying) {
+    player.wasAutoPlaying = false;
+    setTimeout(() => {
+      resumeCodePlayerAutoAnimate(playerId, lineIndex + 1, player.onCompleteCallback);
+    }, window.FAST_ANIM ? 20 : 450);
+  }
+}
+
 function runCodePlayerAutoAnimate(playerId, onComplete) {
   const player = codePlayerRegistry[playerId];
   if (!player) {
@@ -1294,12 +1419,72 @@ function runCodePlayerAutoAnimate(playerId, onComplete) {
   player.isPlaying = true;
 
   let current = 0;
+  const firstState = player.lineTrace[current];
+  if (firstState && firstState.isInput && !firstState.isCompleted) {
+    player.isPlaying = false;
+    player.wasAutoPlaying = true;
+    player.onCompleteCallback = onComplete;
+    codePlayerSetLine(playerId, current);
+    return;
+  }
   codePlayerSetLine(playerId, current);
 
   const stepInterval = window.FAST_ANIM ? 20 : 550;
   player.timer = setInterval(() => {
     current++;
     if (current < player.lines.length) {
+      const state = player.lineTrace[current];
+      if (state && state.isInput && !state.isCompleted) {
+        clearInterval(player.timer);
+        player.timer = null;
+        player.isPlaying = false;
+        player.wasAutoPlaying = true;
+        player.onCompleteCallback = onComplete;
+        codePlayerSetLine(playerId, current);
+        return;
+      }
+      codePlayerSetLine(playerId, current);
+    } else {
+      clearInterval(player.timer);
+      player.timer = null;
+      player.isPlaying = false;
+
+      const statusEl = document.getElementById(`code-status-${playerId}`);
+      if (statusEl) statusEl.textContent = `✓ Finalizado`;
+
+      enableCodePlayerControls(playerId);
+
+      setTimeout(() => {
+        if (onComplete) onComplete();
+      }, window.FAST_ANIM ? 30 : 350);
+    }
+  }, stepInterval);
+}
+
+function resumeCodePlayerAutoAnimate(playerId, startIndex, onComplete) {
+  const player = codePlayerRegistry[playerId];
+  if (!player) return;
+
+  if (player.isPlaying && player.timer) {
+    clearInterval(player.timer);
+  }
+  player.isPlaying = true;
+
+  let current = startIndex - 1;
+  const stepInterval = window.FAST_ANIM ? 20 : 550;
+  player.timer = setInterval(() => {
+    current++;
+    if (current < player.lines.length) {
+      const state = player.lineTrace[current];
+      if (state && state.isInput && !state.isCompleted) {
+        clearInterval(player.timer);
+        player.timer = null;
+        player.isPlaying = false;
+        player.wasAutoPlaying = true;
+        player.onCompleteCallback = onComplete;
+        codePlayerSetLine(playerId, current);
+        return;
+      }
       codePlayerSetLine(playerId, current);
     } else {
       clearInterval(player.timer);
@@ -1446,6 +1631,10 @@ function codePlayerReset(playerId) {
     player.timer = null;
   }
 
+  player.userInputs = {};
+  const newTrace = tracePythonExecution(player.code, player.expectedOutput, player.userInputs);
+  player.lineTrace = newTrace.lineTrace;
+
   codePlayerSetLine(playerId, -1);
 
   const playText = document.getElementById(`code-play-text-${playerId}`);
@@ -1541,6 +1730,19 @@ function unlockExplanationContinue() {
   playSound('correct');
 }
 
+function formatRichText(str) {
+  if (!str) return '';
+  let text = String(str)
+    .replace(/<\/?code>/gi, '`')
+    .replace(/<\/?strong>/gi, '**')
+    .replace(/<\/?b>/gi, '**');
+  
+  let escaped = escapeHtml(text);
+  escaped = escaped.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 bg-slate-100 text-brand-700 font-mono text-xs sm:text-sm rounded-md border border-slate-200 font-bold break-all inline-block sm:inline max-w-full align-middle">$1</code>');
+  escaped = escaped.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-extrabold text-slate-900">$1</strong>');
+  return escaped;
+}
+
 // 0. Pantalla Explicativa con Reproductor Interactivo
 function renderExplanationStep(step, container) {
   const ex = step.examples[0] || { label: 'Ejemplo', code: 'print("Hola")', output: 'Hola', explanation: 'Salida básica' };
@@ -1555,11 +1757,11 @@ function renderExplanationStep(step, container) {
       </div>
 
       <h1 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
-        ${step.title}
+        ${formatRichText(step.title)}
       </h1>
 
       <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3.5 max-w-lg">
-        ${step.intro}
+        ${formatRichText(step.intro)}
       </p>
 
       <div class="w-full min-w-0 bg-white border-2 border-slate-200 rounded-2xl p-3.5 sm:p-4 shadow-sm text-left mb-3.5">
@@ -1572,7 +1774,7 @@ function renderExplanationStep(step, container) {
 
         <div class="pt-2.5 border-t border-slate-100 flex items-start gap-2 text-xs text-slate-500 leading-relaxed mt-3">
           <span class="font-extrabold text-brand-700 uppercase tracking-wider text-[10px] bg-brand-50 px-1.5 py-0.5 rounded border border-brand-200">Nota</span>
-          <span>${ex.explanation}</span>
+          <span>${formatRichText(ex.explanation)}</span>
         </div>
       </div>
 
@@ -1621,52 +1823,59 @@ function renderPredictStep(step, container) {
     optionsHtml = `
       <div class="flex flex-col gap-2.5 w-full mb-4" id="predict-options-row">
         ${step.options.map(opt => `
-          <button onclick="selectPredictPill('${opt.id}')" id="pill-${opt.id}" class="choice-pill w-full px-5 py-3 rounded-2xl border-2 border-slate-200 bg-white text-left text-sm font-semibold text-slate-800 hover:border-brand-500 hover:bg-slate-50 transition flex items-center gap-3 cursor-pointer">
-            <span id="pill-badge-${opt.id}" class="w-7 h-7 rounded-xl bg-slate-100 border border-slate-300 text-slate-600 font-mono font-bold text-xs flex items-center justify-center shrink-0">
+          <button onclick="selectPredictPill('${opt.id}')" id="pill-${opt.id}" class="choice-pill w-full px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-2xl border-2 border-slate-200 bg-white text-left text-xs sm:text-sm font-semibold text-slate-800 hover:border-brand-500 hover:bg-slate-50 transition flex items-center gap-2.5 sm:gap-3 cursor-pointer min-w-0">
+            <span id="pill-badge-${opt.id}" class="w-6 sm:w-7 h-6 sm:h-7 rounded-xl bg-slate-100 border border-slate-300 text-slate-600 font-mono font-bold text-xs flex items-center justify-center shrink-0">
               ${opt.id}
             </span>
-            <span class="leading-snug">${escapeHtml(opt.text)}</span>
+            <span class="leading-snug break-words min-w-0 flex-1">${formatRichText(opt.text)}</span>
           </button>
         `).join('')}
       </div>
     `;
   } else {
     optionsHtml = `
-      <div class="flex flex-wrap items-center justify-center gap-3 w-full mb-4" id="predict-options-row">
+      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 w-full mb-4" id="predict-options-row">
         ${step.options.map(opt => `
-          <button onclick="selectPredictPill('${opt.id}')" id="pill-${opt.id}" class="choice-pill px-6 py-3 rounded-2xl border-2 border-slate-200 bg-white font-mono text-sm font-bold text-slate-800 hover:border-brand-500 hover:bg-slate-50 transition flex items-center gap-2 cursor-pointer">
-            <span id="pill-badge-${opt.id}" class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-300 text-slate-600 text-xs flex items-center justify-center shrink-0">
+          <button onclick="selectPredictPill('${opt.id}')" id="pill-${opt.id}" class="choice-pill px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl border-2 border-slate-200 bg-white font-mono text-xs sm:text-sm font-bold text-slate-800 hover:border-brand-500 hover:bg-slate-50 transition flex items-center gap-2 cursor-pointer min-w-0">
+            <span id="pill-badge-${opt.id}" class="w-5 sm:w-6 h-5 sm:h-6 rounded-lg bg-slate-100 border border-slate-300 text-slate-600 text-xs flex items-center justify-center shrink-0">
               ${opt.id}
             </span>
-            <span>${escapeHtml(opt.text)}</span>
+            <span class="break-words min-w-0">${formatRichText(opt.text)}</span>
           </button>
         `).join('')}
       </div>
     `;
   }
 
-  const questionText = step.question || step.title || "¿Cuál es la salida de este programa?";
+  const headingTitle = step.title || "¿Cuál es la salida de este programa?";
+  const questionBody = step.question && step.question !== step.title ? step.question : null;
 
   container.innerHTML = `
-    <div class="w-full max-w-xl flex flex-col items-center text-center">
+    <div class="w-full max-w-xl min-w-0 flex flex-col items-center text-center px-1 sm:px-0">
       
       ${step.partLabel ? `
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-brand-700 border border-emerald-200 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-brand-700 border border-emerald-200 rounded-full text-xs font-bold uppercase tracking-wider mb-2.5 sm:mb-3">
           <span>${step.partLabel}</span>
         </div>
       ` : ''}
 
-      <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-3">
-        ${escapeHtml(questionText)}
+      <h2 class="text-base sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
+        ${formatRichText(headingTitle)}
       </h2>
 
+      ${questionBody ? `
+        <div class="text-xs sm:text-base text-slate-700 mb-3 sm:mb-4 leading-relaxed max-w-lg w-full min-w-0 font-medium break-words">
+          ${formatRichText(questionBody)}
+        </div>
+      ` : ''}
+
       ${step.theory ? `
-        <p class="text-xs sm:text-sm text-slate-500 mb-4 leading-relaxed max-w-lg">
-          ${step.theory}
+        <p class="text-xs sm:text-sm text-slate-500 mb-3 sm:mb-4 leading-relaxed max-w-lg w-full min-w-0 break-words">
+          ${formatRichText(step.theory)}
         </p>
       ` : ''}
 
-      ${codePlayerHtml ? `<div class="w-full mb-5">${codePlayerHtml}</div>` : ''}
+      ${codePlayerHtml ? `<div class="w-full mb-4 sm:mb-5">${codePlayerHtml}</div>` : ''}
 
       ${optionsHtml}
 
@@ -2255,12 +2464,14 @@ function runSingleMath(fn) {
 let currentGuidedStep = null;
 let selectedGuidedOptionId = null;
 let guidedStepCompleted = false;
+let sandboxUserInputs = {};
 
 function renderSandboxStep(step, container) {
   stopSandboxAnimation();
   currentGuidedStep = step;
   selectedGuidedOptionId = null;
   guidedStepCompleted = false;
+  sandboxUserInputs = {};
 
   const isGuided = Boolean(step.options && step.options.length > 0);
   const starterCode = (step.starterCode || '').trim();
@@ -2319,10 +2530,10 @@ function renderSandboxStep(step, container) {
       ` : ''}
 
       <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-words max-w-full mb-2">
-        ${step.title}
+        ${formatRichText(step.title)}
       </h2>
       <p class="text-slate-500 text-xs sm:text-sm mb-4 max-w-lg leading-relaxed">
-        ${step.instruction}
+        ${formatRichText(step.instruction)}
       </p>
 
       <!-- Editor de Código estilo VS Code (completo, sin recortes ni scrollbar) -->
@@ -2529,7 +2740,7 @@ async function executeGuidedSandbox() {
   const slotMarker = currentGuidedStep.slotMarker || "___";
   const fullCode = currentGuidedStep.starterCode.replace(slotMarker, opt.code);
 
-  const { lines, lineTrace } = tracePythonExecution(fullCode);
+  const { lines, lineTrace } = tracePythonExecution(fullCode, currentGuidedStep.expectedOutput, sandboxUserInputs);
 
   // Limpiar cualquier línea activa previa
   lines.forEach((_, i) => {
@@ -2571,8 +2782,19 @@ async function executeGuidedSandbox() {
         }
       });
 
-      // Actualizar terminal con lo acumulado hasta esta línea
       const state = lineTrace[currentIdx];
+      if (state && state.isInput && !state.isCompleted) {
+        clearTimeout(sandboxAnimTimer);
+        sandboxAnimTimer = null;
+        if (statusEl) {
+          statusEl.textContent = "esperando entrada de usuario...";
+          statusEl.className = "text-amber-400 font-normal";
+        }
+        renderSandboxInputPrompt(currentIdx, state.prompt, opt, fullCode, lineTrace);
+        return;
+      }
+
+      // Actualizar terminal con lo acumulado hasta esta línea
       if (term) {
         if (state && state.outputSoFar && state.outputSoFar.length > 0) {
           term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
@@ -2602,6 +2824,146 @@ async function executeGuidedSandbox() {
   }
 
   sandboxAnimTimer = setTimeout(stepSandbox, window.FAST_ANIM ? 5 : 120);
+}
+
+function renderSandboxInputPrompt(lineIndex, promptText, opt, fullCode, lineTrace) {
+  const term = document.getElementById('single-sandbox-term');
+  if (!term) return;
+
+  const prevLines = lineIndex > 0 && lineTrace[lineIndex - 1]?.outputSoFar
+    ? lineTrace[lineIndex - 1].outputSoFar
+    : [];
+  const prevText = prevLines.join('\n');
+
+  term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex flex-col justify-center leading-relaxed";
+  term.innerHTML = `
+    <div class="text-[#34d399] font-mono whitespace-pre-wrap leading-relaxed w-full">
+      ${prevText ? `<div>${escapeHtml(prevText)}</div>` : ''}
+      <div class="flex flex-wrap items-center gap-2 mt-1 p-2 bg-[#052e16]/90 rounded-xl border border-emerald-500 shadow-md">
+        <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0">${escapeHtml(promptText || 'Entrada: ')}</span>
+        <div class="flex items-center gap-1.5 flex-1 min-w-[140px]">
+          <input id="sandbox-term-input-box" type="text" autocomplete="off" placeholder="Escribe aquí..." class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500" />
+          <button id="sandbox-term-input-btn" onclick="handleSandboxInputSubmit(${lineIndex})" type="button" class="choice-pill px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
+            <span>Enviar</span>
+            <span>↵</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (window.FAST_ANIM) {
+    setTimeout(() => handleSandboxInputSubmit(lineIndex), 5);
+    return;
+  }
+
+  setTimeout(() => {
+    const inputEl = document.getElementById('sandbox-term-input-box');
+    if (inputEl) {
+      inputEl.focus();
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          e.stopPropagation();
+          handleSandboxInputSubmit(lineIndex);
+        }
+      });
+    }
+  }, 40);
+}
+
+function handleSandboxInputSubmit(lineIndex) {
+  if (!currentGuidedStep || !selectedGuidedOptionId) return;
+  const opt = currentGuidedStep.options.find(o => o.id === selectedGuidedOptionId);
+  if (!opt) return;
+
+  const inputEl = document.getElementById('sandbox-term-input-box');
+  const userVal = inputEl ? inputEl.value.trim() : "";
+  const slotMarker = currentGuidedStep.slotMarker || "___";
+  const fullCode = currentGuidedStep.starterCode.replace(slotMarker, opt.code);
+
+  const defaultVal = fullCode.toLowerCase().includes('edad') ? "20" : "Sara";
+  const finalVal = userVal.length > 0 ? userVal : defaultVal;
+
+  playSound('click');
+
+  if (!sandboxUserInputs) sandboxUserInputs = {};
+  sandboxUserInputs[lineIndex] = finalVal;
+
+  const { lines, lineTrace } = tracePythonExecution(fullCode, currentGuidedStep.expectedOutput, sandboxUserInputs);
+
+  resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace);
+}
+
+function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
+  const term = document.getElementById('single-sandbox-term');
+  const statusEl = document.getElementById('sandbox-term-status');
+
+  const state = lineTrace[lineIndex];
+  if (term && state && state.outputSoFar) {
+    term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
+    term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(state.outputSoFar.join('\n'))}</div>`;
+  }
+
+  const stepDelay = window.FAST_ANIM ? 10 : 420;
+  let currentIdx = lineIndex;
+
+  function stepSandboxCont() {
+    currentIdx++;
+    if (currentIdx < lines.length) {
+      lines.forEach((_, i) => {
+        const lineEl = document.getElementById(`sandbox-line-${i}`);
+        const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
+        if (lineEl && arrowEl) {
+          if (i === currentIdx) {
+            lineEl.classList.add('active');
+            arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
+          } else {
+            lineEl.classList.remove('active');
+            arrowEl.innerHTML = '';
+          }
+        }
+      });
+
+      const st = lineTrace[currentIdx];
+      if (st && st.isInput && !st.isCompleted) {
+        clearTimeout(sandboxAnimTimer);
+        sandboxAnimTimer = null;
+        if (statusEl) {
+          statusEl.textContent = "esperando entrada de usuario...";
+          statusEl.className = "text-amber-400 font-normal";
+        }
+        renderSandboxInputPrompt(currentIdx, st.prompt, opt, lines.join('\n'), lineTrace);
+        return;
+      }
+
+      if (term) {
+        if (st && st.outputSoFar && st.outputSoFar.length > 0) {
+          term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
+          term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(st.outputSoFar.join('\n'))}</div>`;
+        } else {
+          term.innerHTML = '<span class="text-slate-500 italic font-normal text-xs">(Línea en proceso, sin salida aún)</span>';
+        }
+      }
+
+      if (statusEl) {
+        statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
+      }
+
+      playSound('step');
+      sandboxAnimTimer = setTimeout(stepSandboxCont, stepDelay);
+    } else {
+      stopSandboxAnimation();
+      const lastLineEl = document.getElementById(`sandbox-line-${lines.length - 1}`);
+      const lastArrowEl = document.getElementById(`sandbox-arrow-${lines.length - 1}`);
+      if (lastLineEl) lastLineEl.classList.remove('active');
+      if (lastArrowEl) lastArrowEl.innerHTML = '';
+
+      finishGuidedSandboxExecution(opt, lineTrace);
+    }
+  }
+
+  sandboxAnimTimer = setTimeout(stepSandboxCont, stepDelay);
 }
 
 function finishGuidedSandboxExecution(opt, lineTrace) {
@@ -3644,6 +4006,17 @@ window.addEventListener('DOMContentLoaded', () => {
           codePlayerSetLine(pid, p.lines.length - 1);
         }
       });
+    }
+    if (urlParams.get('step0') === 'true') {
+      Object.keys(codePlayerRegistry).forEach(pid => {
+        codePlayerSetLine(pid, 0);
+      });
+    }
+    if (urlParams.get('runsandbox') === 'true') {
+      selectGuidedOption('B');
+      setTimeout(() => {
+        executeGuidedSandbox();
+      }, 60);
     }
   }
 });
