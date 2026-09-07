@@ -954,30 +954,6 @@ print("Hipotenusa calculada:", hipotenusa)`,
           ]
         }
       ]
-    },
-    {
-      id: "semana-2",
-      number: 2,
-      title: "Semana 2: Estructuras de Control y Decisiones",
-      description: "Condicionales if, elif, else, operadores de comparación (>, <, ==, !=) y operadores lógicos (and, or, not).",
-      status: "locked",
-      lessons: [
-        { id: "w2-l1", number: 1, shortTitle: "Condicionales", title: "Condicionales simples: if y else", duration: "10 min" },
-        { id: "w2-l2", number: 2, shortTitle: "Caminos elif", title: "Múltiples caminos con elif", duration: "12 min" },
-        { id: "w2-l3", number: 3, shortTitle: "Lógica booleana", title: "Operadores lógicos: and, or, not", duration: "15 min" }
-      ]
-    },
-    {
-      id: "semana-3",
-      number: 3,
-      title: "Semana 3: Bucles y Estructuras Repetitivas",
-      description: "Automatización de tareas repetitivas mediante ciclos for, while y la función range().",
-      status: "locked",
-      lessons: [
-        { id: "w3-l1", number: 1, shortTitle: "Ciclos for", title: "Ciclos contadores con for y range()", duration: "15 min" },
-        { id: "w3-l2", number: 2, shortTitle: "Ciclos while", title: "Ciclos condicionales con while", duration: "12 min" },
-        { id: "w3-l3", number: 3, shortTitle: "Control de flujo", title: "Control de flujo: break y continue", duration: "10 min" }
-      ]
     }
   ]
 };
