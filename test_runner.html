@@ -270,6 +270,7 @@
         assert(localStorage.getItem('pyminas_tour_completed') === 'true', "dismissTour registró tour completado en localStorage");
 
         // 13. Test Interactive input() execution in Code Player (w1-l2 step 0)
+        window.FAST_ANIM = false;
         openLessonDirect('w1-l2', 0);
         assert(currentStepIndex === 0, "Abrir w1-l2 paso 0 (input explicativo)");
         const inputPid = "expl_0";
@@ -301,7 +302,7 @@
         assert(continueBtn && !continueBtn.disabled, "Botón Continuar desbloqueado tras completar ejecución con input");
 
         // 14. Test APP_VERSION constant
-        assert(window.APP_VERSION === 'v1.34', "APP_VERSION está actualizado a v1.34");
+        assert(window.APP_VERSION === 'v1.35', "APP_VERSION está actualizado a v1.35");
 
         // 15. Test Semana 2 curriculum presence and navigation
         assert(CURRICULUM.weeks.length === 2, "CURRICULUM contiene exactamente 2 semanas");
@@ -313,6 +314,16 @@
         assert(currentStepIndex === 0, "Paso inicial de w2-l1 es 0");
         const w2ExplPid = "expl_0";
         assert(codePlayerRegistry[w2ExplPid] !== undefined, "CodePlayer inicializado para w2-l1");
+
+        // 16. Test ligaduras tipográficas desactivadas para comparadores Python (==, !=, <=, >=)
+        const testCodeEl = document.createElement('code');
+        testCodeEl.className = 'font-mono';
+        testCodeEl.textContent = '== !=';
+        document.body.appendChild(testCodeEl);
+        const codeStyle = window.getComputedStyle(testCodeEl);
+        const ligatures = codeStyle.fontVariantLigatures || codeStyle.getPropertyValue('font-variant-ligatures');
+        assert(ligatures === 'none', "Ligaduras tipográficas desactivadas (font-variant-ligatures: none)");
+        document.body.removeChild(testCodeEl);
 
         log("¡TODAS LAS PRUEBAS DE FASE 1 Y 2 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");

@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.34";
+const APP_VERSION = "v1.35";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
