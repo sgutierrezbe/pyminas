@@ -853,16 +853,44 @@ function highlightPythonSyntax(line, playerId = '') {
   return resultHtml + commentPart;
 }
 
+function __pyInt(val) {
+  if (typeof val === 'number') {
+    if (isNaN(val)) throw new Error("ValueError: invalid literal for int()");
+    return Math.trunc(val);
+  }
+  if (typeof val === 'boolean') return val ? 1 : 0;
+  const s = String(val).trim();
+  if (!/^-?\d+$/.test(s)) {
+    throw new Error(`ValueError: invalid literal for int() with base 10: '${val}'`);
+  }
+  return parseInt(s, 10);
+}
+
+function __pyFloat(val) {
+  if (typeof val === 'number') {
+    if (isNaN(val)) throw new Error("ValueError: could not convert string to float");
+    return val;
+  }
+  if (typeof val === 'boolean') return val ? 1.0 : 0.0;
+  const s = String(val).trim();
+  if (s === '' || isNaN(Number(s)) || !/^-?\d+(\.\d+)?$/.test(s)) {
+    throw new Error(`ValueError: could not convert string to float: '${val}'`);
+  }
+  return parseFloat(s);
+}
+
 function replaceSafePythonOperators(code) {
-  // 0. Soporte de f-strings en simulador (f"..." o f'...'): convertir a template literals `...`
-  code = code.replace(/\bf(["'])([\s\S]*?)\1/g, (match, q, content) => {
-    const jsTemplate = content.replace(/\{([^}]+)\}/g, '${$1}');
+  // 0. Transformar f-strings Python f"..." a template literals de JavaScript `...`
+  let transformed = code.replace(/\bf(["'])((?:(?=(\\?))\3.)*?)\1/g, (match, quote, content) => {
+    const jsTemplate = content.replace(/\{([^{}]+)\}/g, (exprMatch, expr) => {
+      return '${' + expr.trim() + '}';
+    });
     return '`' + jsTemplate + '`';
   });
 
   // 1. Proteger cadenas entre comillas simples o dobles para no alterar su contenido
   const stringLiterals = [];
-  let tokenized = code.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, (match) => {
+  let tokenized = transformed.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, (match) => {
     const placeholder = `__PY_STR_${stringLiterals.length}__`;
     stringLiterals.push(match);
     return placeholder;
@@ -875,8 +903,8 @@ function replaceSafePythonOperators(code) {
   tokenized = tokenized.replace(/\bnot\s+/g, '!');
   tokenized = tokenized.replace(/\bnot\s*\(/g, '!(');
   tokenized = tokenized.replace(/\btype\s*\(([^)]+)\)\.__name__/g, '((typeof ($1) === "number") ? (Number.isInteger($1) ? "int" : "float") : (typeof ($1) === "string" ? "str" : (typeof ($1) === "boolean" ? "bool" : "object")))');
-  tokenized = tokenized.replace(/\bint\s*\(([^)]+)\)/g, 'Math.trunc(Number($1))');
-  tokenized = tokenized.replace(/\bfloat\s*\(([^)]+)\)/g, 'Number($1)');
+  tokenized = tokenized.replace(/\bint\s*\(([^)]+)\)/g, '__pyInt($1)');
+  tokenized = tokenized.replace(/\bfloat\s*\(([^)]+)\)/g, '__pyFloat($1)');
   tokenized = tokenized.replace(/\bstr\s*\(([^)]+)\)/g, 'String($1)');
   tokenized = tokenized.replace(/([a-zA-Z0-9_]+)\s*\/\/\s*([a-zA-Z0-9_]+)/g, 'Math.floor(($1) / ($2))');
 
@@ -916,13 +944,16 @@ function evaluateSafeExpr(expr, scope, math) {
   const scopeVals = Object.values(scope);
 
   try {
-    const fn = new Function('math', ...scopeKeys, `return (${jsExpr});`);
-    const res = fn(math, ...scopeVals);
+    const fn = new Function('math', '__pyInt', '__pyFloat', ...scopeKeys, `return (${jsExpr});`);
+    const res = fn(math, __pyInt, __pyFloat, ...scopeVals);
     if (isPlainDivision && typeof res === 'number' && Number.isInteger(res)) {
       return res.toFixed(1);
     }
     return res;
   } catch (e) {
+    if (e.message && (e.message.startsWith('ValueError') || e.message.startsWith('TypeError') || e.message.startsWith('NameError'))) {
+      throw e;
+    }
     return expr;
   }
 }
@@ -1545,6 +1576,136 @@ function codePlayerSetLine(playerId, targetIndex) {
   playSound('step');
 }
 
+function validatePythonInputValue(context, value) {
+  let line = "";
+  let prompt = "";
+  let full = "";
+
+  if (typeof context === 'string') {
+    line = context;
+    full = context;
+  } else if (context && typeof context === 'object') {
+    line = context.codeLine || "";
+    prompt = context.prompt || "";
+    full = context.fullCode || context.code || line;
+  }
+
+  const val = (value !== undefined && value !== null) ? String(value).trim() : "";
+  const combined = `${line} ${prompt} ${full}`.toLowerCase();
+
+  // Check if expected to be integer
+  const isInt = /\bint\s*\(\s*input\b/i.test(line) ||
+                /\bint\s*\([^)]*input/i.test(line) ||
+                /\bint\s*\([^)]*str\b/i.test(full) ||
+                /\bint\s*\([^)]*edad\b/i.test(full) ||
+                combined.includes('entero') ||
+                combined.includes('edad');
+
+  // Check if expected to be float
+  const isFloat = !isInt && (
+    /\bfloat\s*\(\s*input\b/i.test(line) ||
+    /\bfloat\s*\([^)]*input/i.test(line) ||
+    /\bfloat\s*\([^)]*str\b/i.test(full) ||
+    combined.includes('nota final') ||
+    combined.includes('decimal') ||
+    combined.includes('float')
+  );
+
+  if (isInt) {
+    if (!val) {
+      return { valid: false, message: "Por favor ingresa un número entero (ej: 14 o 25)." };
+    }
+    // Student typed decimal with comma: e.g. "14,5"
+    if (/^[+-]?\d+,\d+$/.test(val)) {
+      return { valid: false, message: "Debes ingresar un número entero sin decimales (ej: 14 o 25)." };
+    }
+    // Student typed decimal with dot: e.g. "14.5"
+    if (/^[+-]?\d+\.\d+$/.test(val)) {
+      return { valid: false, message: "Debes ingresar un número entero sin decimales (ej: 14 o 25)." };
+    }
+    // Student typed text or non-integer
+    if (!/^[+-]?\d+$/.test(val)) {
+      return { valid: false, message: `"${val}" no es un número entero válido (ej: 14 o 25).` };
+    }
+    return { valid: true };
+  }
+
+  if (isFloat) {
+    if (!val) {
+      return { valid: false, message: "Por favor ingresa un número (ej: 4.2 o 3.0)." };
+    }
+    // Student typed comma instead of dot: e.g. "4,2"
+    if (/^[+-]?\d+,\d+$/.test(val)) {
+      return { valid: false, message: "En Python se usa punto (.) para decimales (ej: 4.2 en vez de 4,2)." };
+    }
+    // Check valid float
+    if (isNaN(Number(val)) || !/^[+-]?\d+(\.\d+)?$/.test(val)) {
+      return { valid: false, message: `"${val}" no es un número válido (ej: 4.2 o 5).` };
+    }
+    return { valid: true };
+  }
+
+  // Plain string input (e.g. name)
+  if (!val) {
+    return { valid: false, message: "Por favor escribe un texto antes de continuar." };
+  }
+
+  return { valid: true };
+}
+
+function showTerminalInputError(playerId, message) {
+  const inputEl = document.getElementById(`term-input-box-${playerId}`);
+  const errEl = document.getElementById(`term-input-err-${playerId}`);
+  const msgEl = document.getElementById(`term-input-err-msg-${playerId}`);
+  const containerEl = document.getElementById(`term-input-container-${playerId}`);
+
+  if (errEl && msgEl) {
+    msgEl.textContent = message;
+    errEl.classList.remove('hidden');
+  }
+
+  if (inputEl) {
+    inputEl.classList.remove('border-emerald-400', 'focus:ring-emerald-300');
+    inputEl.classList.add('border-rose-500', 'ring-2', 'ring-rose-500/50', 'bg-rose-950/40', 'text-rose-200');
+    inputEl.focus();
+    inputEl.select();
+
+    const onType = () => {
+      clearTerminalInputError(playerId);
+      inputEl.removeEventListener('input', onType);
+    };
+    inputEl.addEventListener('input', onType);
+  }
+
+  if (containerEl) {
+    containerEl.classList.remove('border-emerald-500');
+    containerEl.classList.add('border-rose-500', 'animate-shake');
+    setTimeout(() => {
+      containerEl.classList.remove('animate-shake');
+    }, 400);
+  }
+
+  playSound('wrong');
+}
+
+function clearTerminalInputError(playerId) {
+  const inputEl = document.getElementById(`term-input-box-${playerId}`);
+  const errEl = document.getElementById(`term-input-err-${playerId}`);
+  const containerEl = document.getElementById(`term-input-container-${playerId}`);
+
+  if (errEl) {
+    errEl.classList.add('hidden');
+  }
+  if (inputEl) {
+    inputEl.classList.remove('border-rose-500', 'ring-2', 'ring-rose-500/50', 'bg-rose-950/40', 'text-rose-200');
+    inputEl.classList.add('border-emerald-400', 'focus:ring-emerald-300', 'text-amber-300');
+  }
+  if (containerEl) {
+    containerEl.classList.remove('border-rose-500');
+    containerEl.classList.add('border-emerald-500');
+  }
+}
+
 function renderInteractiveInputPrompt(playerId, lineIndex, promptText) {
   const termEl = document.getElementById(`code-terminal-${playerId}`);
   if (!termEl) return;
@@ -1568,17 +1729,23 @@ function renderInteractiveInputPrompt(playerId, lineIndex, promptText) {
   termEl.innerHTML = `
     <div class="text-[#34d399] font-mono whitespace-pre-wrap leading-relaxed">
       ${prevText ? `<div>${escapeHtml(prevText)}</div>` : ''}
-      <div class="flex flex-wrap items-center gap-2 mt-1.5 p-2 bg-[#052e16]/90 rounded-xl border-2 border-emerald-500 shadow-lg animate-pulse" style="animation-duration: 3s;">
-        <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0 flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>${escapeHtml(cleanPrompt)}</span>
-        </span>
-        <div class="flex items-center gap-1.5 flex-1 min-w-[150px]">
-          <input id="term-input-box-${playerId}" type="text" autocomplete="off" autofocus placeholder="${placeholder}" class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1.5 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500" onkeydown="if(event.key==='Enter'){event.preventDefault();event.stopPropagation();handleTerminalInputSubmit('${playerId}', ${lineIndex});}" />
-          <button id="term-input-btn-${playerId}" onclick="handleTerminalInputSubmit('${playerId}', ${lineIndex})" type="button" class="choice-pill px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
-            <span>Enviar</span>
-            <span>↵</span>
-          </button>
+      <div id="term-input-container-${playerId}" class="flex flex-col gap-1.5 mt-1.5 p-2 bg-[#052e16]/90 rounded-xl border-2 border-emerald-500 shadow-lg transition-all">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>${escapeHtml(cleanPrompt)}</span>
+          </span>
+          <div class="flex items-center gap-1.5 flex-1 min-w-[150px]">
+            <input id="term-input-box-${playerId}" type="text" autocomplete="off" autofocus placeholder="${placeholder}" class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1.5 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500 transition-all" onkeydown="if(event.key==='Enter'){event.preventDefault();event.stopPropagation();handleTerminalInputSubmit('${playerId}', ${lineIndex});}" />
+            <button id="term-input-btn-${playerId}" onclick="handleTerminalInputSubmit('${playerId}', ${lineIndex})" type="button" class="choice-pill px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
+              <span>Enviar</span>
+              <span>↵</span>
+            </button>
+          </div>
+        </div>
+        <div id="term-input-err-${playerId}" class="hidden flex items-center gap-2 px-2.5 py-1.5 bg-rose-950/90 border border-rose-500/80 rounded-lg text-rose-200 text-xs font-mono font-semibold shadow-inner">
+          <span class="text-rose-400 text-sm shrink-0">⚠️</span>
+          <span id="term-input-err-msg-${playerId}"></span>
         </div>
       </div>
     </div>
@@ -1602,7 +1769,7 @@ function handleTerminalInputSubmit(playerId, lineIndex) {
   if (!player) return;
 
   const inputEl = document.getElementById(`term-input-box-${playerId}`);
-  const userVal = inputEl ? inputEl.value.trim() : "";
+  const rawUserVal = inputEl ? inputEl.value.trim() : "";
 
   const lineState = player.lineTrace && player.lineTrace[lineIndex];
   const promptText = (lineState && lineState.prompt ? lineState.prompt : (player.code || "")).toLowerCase();
@@ -1615,7 +1782,24 @@ function handleTerminalInputSubmit(playerId, lineIndex) {
   else if (promptText.includes('edad')) defaultVal = "14";
   else if (promptText.includes('llamas') || promptText.includes('nombre')) defaultVal = "Sara";
 
-  const finalVal = userVal.length > 0 ? userVal : defaultVal;
+  // En FAST_ANIM (suite de pruebas automatizadas), usar defaultVal si no hay entrada
+  const effectiveVal = (window.FAST_ANIM && !rawUserVal) ? defaultVal : rawUserVal;
+
+  const currentCodeLine = player.lines && player.lines[lineIndex] ? player.lines[lineIndex] : (player.code || "");
+  const validation = validatePythonInputValue({
+    codeLine: currentCodeLine,
+    prompt: promptText,
+    fullCode: player.code || ""
+  }, effectiveVal);
+
+  if (!validation.valid) {
+    showTerminalInputError(playerId, validation.message);
+    return;
+  }
+
+  clearTerminalInputError(playerId);
+
+  const finalVal = effectiveVal.length > 0 ? effectiveVal : defaultVal;
 
   playSound('click');
 
@@ -3195,6 +3379,59 @@ async function executeGuidedSandbox() {
   sandboxAnimTimer = setTimeout(stepSandbox, window.FAST_ANIM ? 5 : 120);
 }
 
+function showSandboxInputError(message) {
+  const inputEl = document.getElementById('sandbox-term-input-box');
+  const errEl = document.getElementById('sandbox-term-input-err');
+  const msgEl = document.getElementById('sandbox-term-input-err-msg');
+  const containerEl = document.getElementById('sandbox-term-input-container');
+
+  if (errEl && msgEl) {
+    msgEl.textContent = message;
+    errEl.classList.remove('hidden');
+  }
+
+  if (inputEl) {
+    inputEl.classList.remove('border-emerald-400', 'focus:ring-emerald-300');
+    inputEl.classList.add('border-rose-500', 'ring-2', 'ring-rose-500/50', 'bg-rose-950/40', 'text-rose-200');
+    inputEl.focus();
+    inputEl.select();
+
+    const onType = () => {
+      clearSandboxInputError();
+      inputEl.removeEventListener('input', onType);
+    };
+    inputEl.addEventListener('input', onType);
+  }
+
+  if (containerEl) {
+    containerEl.classList.remove('border-emerald-500');
+    containerEl.classList.add('border-rose-500', 'animate-shake');
+    setTimeout(() => {
+      containerEl.classList.remove('animate-shake');
+    }, 400);
+  }
+
+  playSound('wrong');
+}
+
+function clearSandboxInputError() {
+  const inputEl = document.getElementById('sandbox-term-input-box');
+  const errEl = document.getElementById('sandbox-term-input-err');
+  const containerEl = document.getElementById('sandbox-term-input-container');
+
+  if (errEl) {
+    errEl.classList.add('hidden');
+  }
+  if (inputEl) {
+    inputEl.classList.remove('border-rose-500', 'ring-2', 'ring-rose-500/50', 'bg-rose-950/40', 'text-rose-200');
+    inputEl.classList.add('border-emerald-400', 'focus:ring-emerald-300', 'text-amber-300');
+  }
+  if (containerEl) {
+    containerEl.classList.remove('border-rose-500');
+    containerEl.classList.add('border-emerald-500');
+  }
+}
+
 function renderSandboxInputPrompt(lineIndex, promptText, opt, fullCode, lineTrace) {
   const term = document.getElementById('single-sandbox-term');
   if (!term) return;
@@ -3208,14 +3445,23 @@ function renderSandboxInputPrompt(lineIndex, promptText, opt, fullCode, lineTrac
   term.innerHTML = `
     <div class="text-[#34d399] font-mono whitespace-pre-wrap leading-relaxed w-full">
       ${prevText ? `<div>${escapeHtml(prevText)}</div>` : ''}
-      <div class="flex flex-wrap items-center gap-2 mt-1 p-2 bg-[#052e16]/90 rounded-xl border border-emerald-500 shadow-md">
-        <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0">${escapeHtml(promptText || 'Entrada: ')}</span>
-        <div class="flex items-center gap-1.5 flex-1 min-w-[140px]">
-          <input id="sandbox-term-input-box" type="text" autocomplete="off" placeholder="Escribe aquí..." class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500" />
-          <button id="sandbox-term-input-btn" onclick="handleSandboxInputSubmit(${lineIndex})" type="button" class="choice-pill px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
-            <span>Enviar</span>
-            <span>↵</span>
-          </button>
+      <div id="sandbox-term-input-container" class="flex flex-col gap-1.5 mt-1 p-2 bg-[#052e16]/90 rounded-xl border-2 border-emerald-500 shadow-md transition-all">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>${escapeHtml(promptText || 'Entrada: ')}</span>
+          </span>
+          <div class="flex items-center gap-1.5 flex-1 min-w-[140px]">
+            <input id="sandbox-term-input-box" type="text" autocomplete="off" placeholder="Escribe aquí..." class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500 transition-all" />
+            <button id="sandbox-term-input-btn" onclick="handleSandboxInputSubmit(${lineIndex})" type="button" class="choice-pill px-3 py-1 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
+              <span>Enviar</span>
+              <span>↵</span>
+            </button>
+          </div>
+        </div>
+        <div id="sandbox-term-input-err" class="hidden flex items-center gap-2 px-2.5 py-1.5 bg-rose-950/90 border border-rose-500/80 rounded-lg text-rose-200 text-xs font-mono font-semibold shadow-inner">
+          <span class="text-rose-400 text-sm shrink-0">⚠️</span>
+          <span id="sandbox-term-input-err-msg"></span>
         </div>
       </div>
     </div>
@@ -3247,12 +3493,29 @@ function handleSandboxInputSubmit(lineIndex) {
   if (!opt) return;
 
   const inputEl = document.getElementById('sandbox-term-input-box');
-  const userVal = inputEl ? inputEl.value.trim() : "";
+  const rawUserVal = inputEl ? inputEl.value.trim() : "";
   const slotMarker = currentGuidedStep.slotMarker || "___";
   const fullCode = currentGuidedStep.starterCode.replace(slotMarker, opt.code);
+  const codeLines = fullCode.split('\n');
+  const currentCodeLine = codeLines[lineIndex] || "";
 
   const defaultVal = fullCode.toLowerCase().includes('edad') ? "20" : "Sara";
-  const finalVal = userVal.length > 0 ? userVal : defaultVal;
+  const effectiveVal = (window.FAST_ANIM && !rawUserVal) ? defaultVal : rawUserVal;
+
+  const validation = validatePythonInputValue({
+    codeLine: currentCodeLine,
+    prompt: currentCodeLine,
+    fullCode: fullCode
+  }, effectiveVal);
+
+  if (!validation.valid) {
+    showSandboxInputError(validation.message);
+    return;
+  }
+
+  clearSandboxInputError();
+
+  const finalVal = effectiveVal.length > 0 ? effectiveVal : defaultVal;
 
   playSound('click');
 
@@ -4824,6 +5087,17 @@ window.addEventListener('DOMContentLoaded', () => {
           const newTrace = tracePythonExecution(p.code, p.expectedOutput, p.userInputs);
           p.lineTrace = newTrace.lineTrace;
           codePlayerSetLine(pid, p.lines.length - 1);
+        }
+      });
+    }
+    if (urlParams.has('tryinput')) {
+      const tval = urlParams.get('tryinput');
+      Object.keys(codePlayerRegistry).forEach(pid => {
+        codePlayerSetLine(pid, 0);
+        const inp = document.getElementById(`term-input-box-${pid}`);
+        if (inp) {
+          inp.value = tval;
+          handleTerminalInputSubmit(pid, 0);
         }
       });
     }

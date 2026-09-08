@@ -361,6 +361,63 @@ print("Cierre del periodo académico")`;
         assert(!outReprob.includes("¡Felicitaciones! Has aprobado"), "Salida NO contiene mensaje de aprobado");
         assert(outReprob.includes("Reprobado, debes habilitar"), "Salida contiene mensaje de reprobado");
 
+        // 19. Test funciones de validación de entradas de Python (validatePythonInputValue)
+        const vIntDientes = validatePythonInputValue('edad = int(input("Ingresa tu edad: "))', 'dientes');
+        assert(vIntDientes.valid === false, "Validación rechaza 'dientes' para int(input)");
+        assert(vIntDientes.message.includes("no es un número entero válido"), "Mensaje de error pedagógico claro para entero");
+
+        const vIntFloat = validatePythonInputValue('edad = int(input("Ingresa tu edad: "))', '14.5');
+        assert(vIntFloat.valid === false, "Validación rechaza '14.5' para int(input)");
+        assert(vIntFloat.message.includes("sin decimales"), "Mensaje de error alerta que debe ser sin decimales");
+
+        const vIntOk = validatePythonInputValue('edad = int(input("Ingresa tu edad: "))', '14');
+        assert(vIntOk.valid === true, "Validación aprueba '14' para int(input)");
+
+        const vFloatComma = validatePythonInputValue('nota = float(input("Nota: "))', '4,2');
+        assert(vFloatComma.valid === false, "Validación detecta uso de coma en vez de punto para decimales");
+        assert(vFloatComma.message.includes("punto (.)"), "Mensaje de error enseña la regla de Python sobre el punto decimal");
+
+        const vFloatOk = validatePythonInputValue('nota = float(input("Nota: "))', '4.2');
+        assert(vFloatOk.valid === true, "Validación aprueba '4.2' para float(input)");
+
+        // 20. Test interactivo en UI: rechazo de 'dientes' en w2-l4 y desbloqueo con valor numérico válido
+        window.FAST_ANIM = false;
+        openLessonDirect('w2-l4', 0);
+        const w2l4Pid = "expl_0";
+        assert(codePlayerRegistry[w2l4Pid] !== undefined, "CodePlayer w2-l4 inicializado");
+        codePlayerTogglePlay(w2l4Pid);
+        assert(codePlayerRegistry[w2l4Pid].currentIndex === 0, "Detenido en línea 0 para entrada de edad");
+
+        const w2l4InputBox = document.getElementById(`term-input-box-${w2l4Pid}`);
+        const w2l4ErrEl = document.getElementById(`term-input-err-${w2l4Pid}`);
+        assert(w2l4InputBox !== null, "Campo de entrada edad presente");
+        assert(w2l4ErrEl !== null, "Contenedor de error de entrada presente");
+
+        // Intentar enviar "dientes"
+        w2l4InputBox.value = "dientes";
+        handleTerminalInputSubmit(w2l4Pid, 0);
+
+        assert(!w2l4ErrEl.classList.contains('hidden'), "Contenedor de error visible tras ingresar 'dientes'");
+        assert(w2l4ErrEl.textContent.includes("no es un número entero válido"), "Alerta visual en terminal indica que 'dientes' es inválido");
+        assert(!codePlayerRegistry[w2l4Pid].userInputs || !codePlayerRegistry[w2l4Pid].userInputs[0], "No se registraron inputs inválidos en el player");
+
+        // Ahora ingresar un entero válido (14)
+        w2l4InputBox.value = "14";
+        handleTerminalInputSubmit(w2l4Pid, 0);
+
+        assert(w2l4ErrEl.classList.contains('hidden'), "Contenedor de error oculto tras ingresar número válido");
+        assert(codePlayerRegistry[w2l4Pid].userInputs[0] === "14", "Input '14' aceptado y almacenado");
+
+        window.FAST_ANIM = true;
+        let w2l4Waits = 0;
+        while (!codePlayerRegistry[w2l4Pid] || codePlayerRegistry[w2l4Pid].currentIndex < 5) {
+          if (w2l4Waits++ > 60) break;
+          await new Promise(r => setTimeout(r, 50));
+        }
+        const finalTermOut = document.getElementById(`code-terminal-${w2l4Pid}`).textContent;
+        assert(finalTermOut.includes("Descuento del 5% aplicado"), "Con edad 14 se aplicó el descuento correctamente");
+        assert(finalTermOut.includes("Total a pagar: $ 4750"), "Total a pagar calcula 4750 con descuento");
+
         log("¡TODAS LAS PRUEBAS DE FASE 1 Y 2 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");
         window.TESTS_FINISHED = true;

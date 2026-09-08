@@ -177,6 +177,15 @@
       animation: loading-glow 1.8s ease-in-out infinite;
     }
 
+    @keyframes shake-input {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    .animate-shake {
+      animation: shake-input 0.35s ease-in-out;
+    }
+
     .step-segment {
       transition: all 0.3s ease;
     }
