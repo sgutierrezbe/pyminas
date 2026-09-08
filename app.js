@@ -988,12 +988,18 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
   const trimmed = (code || '').trim();
   const hasInputCall = /\binput\s*\(/.test(trimmed);
 
-  if (!hasInputCall && window.BAKED_TRACES && window.BAKED_TRACES[trimmed]) {
+  if (window.BAKED_TRACES && window.BAKED_TRACES[trimmed]) {
     const baked = window.BAKED_TRACES[trimmed];
-    return {
-      lines: baked.lines,
-      lineTrace: baked.lineTrace
-    };
+    if (!hasInputCall || baked.hasError) {
+      return {
+        lines: baked.lines,
+        lineTrace: baked.lineTrace,
+        hasError: Boolean(baked.hasError),
+        errorLine: baked.errorLine !== undefined ? baked.errorLine : null,
+        errorType: baked.errorType || null,
+        totalOutput: baked.totalOutput || ""
+      };
+    }
   }
 
   const lines = code.split('\n');
@@ -1020,6 +1026,73 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
     if (!trimmedLine) {
       lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
+    }
+
+    // Comprobación de errores sintácticos en cabeceras de condicionales (if, elif, else)
+    if (/^if\s+.*[^:]\s*$/.test(trimmedLine) && !trimmedLine.endsWith(':')) {
+      const errText = `  File "main.py", line ${i + 1}\n    ${raw}\nSyntaxError: expected ':'`;
+      stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
+      lineTrace.push({
+        prints: errText,
+        outputSoFar: stdoutBuffer.split('\n'),
+        hasError: true,
+        errorType: 'SyntaxError',
+        errorLine: i
+      });
+      for (let j = i + 1; j < lines.length; j++) {
+        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+      }
+      return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'SyntaxError', totalOutput: stdoutBuffer };
+    }
+
+    if (/^elif\s+.*[^:]\s*$/.test(trimmedLine) && !trimmedLine.endsWith(':')) {
+      const errText = `  File "main.py", line ${i + 1}\n    ${raw}\nSyntaxError: expected ':'`;
+      stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
+      lineTrace.push({
+        prints: errText,
+        outputSoFar: stdoutBuffer.split('\n'),
+        hasError: true,
+        errorType: 'SyntaxError',
+        errorLine: i
+      });
+      for (let j = i + 1; j < lines.length; j++) {
+        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+      }
+      return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'SyntaxError', totalOutput: stdoutBuffer };
+    }
+
+    if (/^(then|otherwise|si_no)\b/.test(trimmedLine) || (/^else\b/.test(trimmedLine) && trimmedLine !== 'else:')) {
+      const errText = `  File "main.py", line ${i + 1}\n    ${raw}\nSyntaxError: invalid syntax`;
+      stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
+      lineTrace.push({
+        prints: errText,
+        outputSoFar: stdoutBuffer.split('\n'),
+        hasError: true,
+        errorType: 'SyntaxError',
+        errorLine: i
+      });
+      for (let j = i + 1; j < lines.length; j++) {
+        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+      }
+      return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'SyntaxError', totalOutput: stdoutBuffer };
+    }
+
+    // Comprobación de funciones inexistentes (ej: mostrar(), escribir())
+    const callMatch = trimmedLine.match(/^([a-zA-Z_]\w*)\s*\(/);
+    if (callMatch && !['print', 'int', 'float', 'str', 'len', 'input', 'range', 'abs', 'round', 'bool', 'type'].includes(callMatch[1]) && !scope[callMatch[1]]) {
+      const errText = `Traceback (most recent call last):\n  File "main.py", line ${i + 1}, in <module>\n    ${trimmedLine}\nNameError: name '${callMatch[1]}' is not defined`;
+      stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
+      lineTrace.push({
+        prints: errText,
+        outputSoFar: stdoutBuffer.split('\n'),
+        hasError: true,
+        errorType: 'NameError',
+        errorLine: i
+      });
+      for (let j = i + 1; j < lines.length; j++) {
+        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+      }
+      return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'NameError', totalOutput: stdoutBuffer };
     }
 
     // Calcular sangría / indentación
@@ -2899,12 +2972,14 @@ function selectGuidedOption(optId) {
 
   playSound('click');
 
-  // Limpiar cualquier línea activa en el editor
+  // Limpiar cualquier línea activa o en estado de error en el editor
   const totalLines = (currentGuidedStep.starterCode || '').split('\n').length;
   for (let i = 0; i < totalLines; i++) {
     const lineEl = document.getElementById(`sandbox-line-${i}`);
     const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
-    if (lineEl) lineEl.classList.remove('active');
+    if (lineEl) {
+      lineEl.classList.remove('active', 'border-rose-500/80', 'bg-rose-950/50', 'border');
+    }
     if (arrowEl) arrowEl.innerHTML = '';
   }
 
@@ -2939,13 +3014,14 @@ function selectGuidedOption(optId) {
   // Si ya había completado el ejercicio exitosamente, permitir explorar por qué otras opciones eran incorrectas
   if (guidedStepCompleted) {
     if (feedbackCard) {
+      const expText = opt.explanation || opt.feedback;
       if (opt.isCorrect) {
         feedbackCard.className = "w-full mb-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
         feedbackCard.innerHTML = `
           <span class="w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✓</span>
           <div>
             <h4 class="font-extrabold text-emerald-900 text-sm mb-1">Opción correcta seleccionada</h4>
-            <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">${escapeHtml(opt.feedback || "Esta es la instrucción adecuada para el programa.")}</p>
+            <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">${escapeHtml(expText || "Esta es la instrucción adecuada para el programa.")}</p>
           </div>
         `;
       } else {
@@ -2954,7 +3030,7 @@ function selectGuidedOption(optId) {
           <span class="w-7 h-7 rounded-full bg-amber-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">ℹ</span>
           <div>
             <h4 class="font-extrabold text-amber-900 text-sm mb-1">¿Por qué esta opción es incorrecta?</h4>
-            <p class="text-xs sm:text-sm text-amber-800 leading-relaxed">${escapeHtml(opt.feedback || "Esta opción no cumple con la especificación del programa.")}</p>
+            <p class="text-xs sm:text-sm text-amber-800 leading-relaxed">${escapeHtml(expText || "Esta opción no cumple con la especificación del programa.")}</p>
           </div>
         `;
       }
@@ -3008,13 +3084,17 @@ async function executeGuidedSandbox() {
   const slotMarker = currentGuidedStep.slotMarker || "___";
   const fullCode = currentGuidedStep.starterCode.replace(slotMarker, opt.code);
 
-  const { lines, lineTrace } = tracePythonExecution(fullCode, currentGuidedStep.expectedOutput, sandboxUserInputs);
+  // Para opciones incorrectas nunca inyectar expectedOutput
+  const expOutput = opt.isCorrect ? (currentGuidedStep.expectedOutput || "") : "";
+  const { lines, lineTrace } = tracePythonExecution(fullCode, expOutput, sandboxUserInputs);
 
-  // Limpiar cualquier línea activa previa
+  // Limpiar cualquier línea activa o en estado de error previa
   lines.forEach((_, i) => {
     const lineEl = document.getElementById(`sandbox-line-${i}`);
     const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
-    if (lineEl) lineEl.classList.remove('active');
+    if (lineEl) {
+      lineEl.classList.remove('active', 'border-rose-500/80', 'bg-rose-950/50', 'border');
+    }
     if (arrowEl) arrowEl.innerHTML = '';
   });
 
@@ -3035,6 +3115,9 @@ async function executeGuidedSandbox() {
   function stepSandbox() {
     currentIdx++;
     if (currentIdx < lines.length) {
+      const state = lineTrace[currentIdx];
+      const isLineError = Boolean(state && state.hasError);
+
       // Actualizar highlight de líneas
       lines.forEach((_, i) => {
         const lineEl = document.getElementById(`sandbox-line-${i}`);
@@ -3042,7 +3125,12 @@ async function executeGuidedSandbox() {
         if (lineEl && arrowEl) {
           if (i === currentIdx) {
             lineEl.classList.add('active');
-            arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
+            if (isLineError) {
+              lineEl.classList.add('border', 'border-rose-500/80', 'bg-rose-950/50');
+              arrowEl.innerHTML = '<span class="text-rose-400 text-xs font-black">✗</span>';
+            } else {
+              arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
+            }
           } else {
             lineEl.classList.remove('active');
             arrowEl.innerHTML = '';
@@ -3050,7 +3138,6 @@ async function executeGuidedSandbox() {
         }
       });
 
-      const state = lineTrace[currentIdx];
       if (state && state.isInput && !state.isCompleted) {
         clearTimeout(sandboxAnimTimer);
         sandboxAnimTimer = null;
@@ -3065,15 +3152,29 @@ async function executeGuidedSandbox() {
       // Actualizar terminal con lo acumulado hasta esta línea
       if (term) {
         if (state && state.outputSoFar && state.outputSoFar.length > 0) {
-          term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
-          term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(state.outputSoFar.join('\n'))}</div>`;
+          const outText = state.outputSoFar.join('\n');
+          term.className = isLineError
+            ? "text-rose-400 min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed"
+            : "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
+          term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(outText)}</div>`;
         } else {
           term.innerHTML = '<span class="text-slate-500 italic font-normal text-xs">(Línea en proceso, sin salida aún)</span>';
         }
       }
 
       if (statusEl) {
-        statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
+        if (isLineError) {
+          statusEl.textContent = state.errorType ? `error: ${state.errorType}` : "error en ejecución";
+          statusEl.className = "text-rose-400 font-normal";
+        } else {
+          statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
+        }
+      }
+
+      if (isLineError) {
+        stopSandboxAnimation();
+        finishGuidedSandboxExecution(opt, lineTrace);
+        return;
       }
 
       playSound('step');
@@ -3158,7 +3259,8 @@ function handleSandboxInputSubmit(lineIndex) {
   if (!sandboxUserInputs) sandboxUserInputs = {};
   sandboxUserInputs[lineIndex] = finalVal;
 
-  const { lines, lineTrace } = tracePythonExecution(fullCode, currentGuidedStep.expectedOutput, sandboxUserInputs);
+  const expOutput = opt.isCorrect ? (currentGuidedStep.expectedOutput || "") : "";
+  const { lines, lineTrace } = tracePythonExecution(fullCode, expOutput, sandboxUserInputs);
 
   resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace);
 }
@@ -3179,13 +3281,21 @@ function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
   function stepSandboxCont() {
     currentIdx++;
     if (currentIdx < lines.length) {
+      const st = lineTrace[currentIdx];
+      const isLineError = Boolean(st && st.hasError);
+
       lines.forEach((_, i) => {
         const lineEl = document.getElementById(`sandbox-line-${i}`);
         const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
         if (lineEl && arrowEl) {
           if (i === currentIdx) {
             lineEl.classList.add('active');
-            arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
+            if (isLineError) {
+              lineEl.classList.add('border', 'border-rose-500/80', 'bg-rose-950/50');
+              arrowEl.innerHTML = '<span class="text-rose-400 text-xs font-black">✗</span>';
+            } else {
+              arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
+            }
           } else {
             lineEl.classList.remove('active');
             arrowEl.innerHTML = '';
@@ -3193,7 +3303,6 @@ function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
         }
       });
 
-      const st = lineTrace[currentIdx];
       if (st && st.isInput && !st.isCompleted) {
         clearTimeout(sandboxAnimTimer);
         sandboxAnimTimer = null;
@@ -3207,15 +3316,29 @@ function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
 
       if (term) {
         if (st && st.outputSoFar && st.outputSoFar.length > 0) {
-          term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
-          term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(st.outputSoFar.join('\n'))}</div>`;
+          const outText = st.outputSoFar.join('\n');
+          term.className = isLineError
+            ? "text-rose-400 min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed"
+            : "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
+          term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(outText)}</div>`;
         } else {
           term.innerHTML = '<span class="text-slate-500 italic font-normal text-xs">(Línea en proceso, sin salida aún)</span>';
         }
       }
 
       if (statusEl) {
-        statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
+        if (isLineError) {
+          statusEl.textContent = st.errorType ? `error: ${st.errorType}` : "error en ejecución";
+          statusEl.className = "text-rose-400 font-normal";
+        } else {
+          statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
+        }
+      }
+
+      if (isLineError) {
+        stopSandboxAnimation();
+        finishGuidedSandboxExecution(opt, lineTrace);
+        return;
       }
 
       playSound('step');
@@ -3246,14 +3369,27 @@ function finishGuidedSandboxExecution(opt, lineTrace) {
     currentLessonStats.questionsEvaluated.add(questionKey);
   }
 
-  const lastTrace = lineTrace && lineTrace.length > 0 ? lineTrace[lineTrace.length - 1] : null;
-  const finalOutputLines = lastTrace?.outputSoFar || [];
-  const hasError = finalOutputLines.some(l => l.startsWith('Error:'));
+  // Buscar el trace relevante (el que causó error o el último con salida acumulada)
+  const errTrace = (lineTrace || []).find(t => t && t.hasError);
+  const activeTraceWithOutput = (lineTrace || []).slice().reverse().find(t => t && t.outputSoFar && t.outputSoFar.length > 0);
+  const chosenTrace = errTrace || activeTraceWithOutput || (lineTrace && lineTrace.length > 0 ? lineTrace[lineTrace.length - 1] : null);
+
+  const finalOutputLines = chosenTrace?.outputSoFar || (chosenTrace?.prints ? [chosenTrace.prints] : []);
+  const fullOutputText = finalOutputLines.join('\n');
+  const hasError = finalOutputLines.some(l => 
+    l.startsWith('Error:') || 
+    l.includes('SyntaxError') || 
+    l.includes('IndentationError') || 
+    l.includes('Traceback') || 
+    l.includes('NameError') || 
+    l.includes('TypeError') || 
+    l.includes('ValueError')
+  ) || Boolean(lineTrace && lineTrace.some(t => t && t.hasError));
 
   if (term) {
     if (finalOutputLines.length > 0) {
       term.className = hasError ? "text-rose-400 min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed" : "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
-      term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(finalOutputLines.join('\n'))}</div>`;
+      term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(fullOutputText)}</div>`;
     } else {
       term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
       term.textContent = "(Ejecutado sin salida de texto)";
@@ -3273,11 +3409,12 @@ function finishGuidedSandboxExecution(opt, lineTrace) {
 
     if (feedbackCard) {
       feedbackCard.className = "w-full mb-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
+      const successFeedback = opt.explanation || opt.feedback || "Has completado la práctica guiada correctamente.";
       feedbackCard.innerHTML = `
         <span class="w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✓</span>
         <div>
           <h4 class="font-extrabold text-emerald-900 text-sm mb-1">¡Código completado con éxito!</h4>
-          <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">${escapeHtml(opt.feedback || "Has completado la práctica guiada correctamente.")}</p>
+          <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">${escapeHtml(successFeedback)}</p>
         </div>
       `;
       feedbackCard.classList.remove('hidden');
@@ -3301,18 +3438,39 @@ function finishGuidedSandboxExecution(opt, lineTrace) {
     playSound('wrong');
 
     if (statusEl) {
-      statusEl.textContent = hasError ? "error en ejecución" : "✗ revisa la solución";
+      let statusMsg = "✗ revisa la solución";
+      if (fullOutputText.includes("SyntaxError")) statusMsg = "error de sintaxis (SyntaxError)";
+      else if (fullOutputText.includes("IndentationError")) statusMsg = "error de sangría (IndentationError)";
+      else if (hasError) statusMsg = "error en ejecución (Python)";
+
+      statusEl.textContent = statusMsg;
       statusEl.className = "text-rose-400 font-normal";
     }
     if (indicator) indicator.className = "w-2 h-2 rounded-full bg-rose-400";
 
     if (feedbackCard) {
       feedbackCard.className = "w-full mb-4 bg-rose-50 border-2 border-rose-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
+      const explanationText = opt.explanation || opt.feedback || "Selecciona otra opción de la lista para corregir el programa.";
+      let cardTitle = "Casi, pero no es la opción adecuada";
+      if (fullOutputText.includes("SyntaxError")) {
+        cardTitle = "SyntaxError: Error de sintaxis en Python";
+      } else if (fullOutputText.includes("IndentationError")) {
+        cardTitle = "IndentationError: Error de sangría";
+      } else if (fullOutputText.includes("NameError")) {
+        cardTitle = "NameError: Identificador no definido";
+      } else if (fullOutputText.includes("TypeError")) {
+        cardTitle = "TypeError: Tipo de dato incompatible";
+      } else if (fullOutputText.includes("ValueError")) {
+        cardTitle = "ValueError: Valor inapropiado";
+      } else if (hasError) {
+        cardTitle = "Error en ejecución de Python";
+      }
+
       feedbackCard.innerHTML = `
         <span class="w-7 h-7 rounded-full bg-rose-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✗</span>
         <div>
-          <h4 class="font-extrabold text-rose-900 text-sm mb-1">${hasError ? 'Error al ejecutar esta opción' : 'Casi, pero no es la opción adecuada'}</h4>
-          <p class="text-xs sm:text-sm text-rose-800 leading-relaxed">${escapeHtml(opt.feedback || "Selecciona otra opción de la lista para corregir el programa.")}</p>
+          <h4 class="font-extrabold text-rose-900 text-sm mb-1">${cardTitle}</h4>
+          <p class="text-xs sm:text-sm text-rose-800 leading-relaxed">${escapeHtml(explanationText)}</p>
         </div>
       `;
       feedbackCard.classList.remove('hidden');
@@ -3414,10 +3572,13 @@ async function executeSingleSandbox() {
 
     } catch (err) {
       playSound('wrong');
+      const errMsg = err.message || String(err);
       term.className = "text-rose-400 min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
-      term.textContent = "Error: " + (err.message || err);
+      term.textContent = (errMsg.startsWith("  File") || errMsg.startsWith("Traceback") || errMsg.startsWith("Error:")) ? errMsg : ("Error: " + errMsg);
       if (statusEl) {
-        statusEl.textContent = "error en ejecución";
+        if (errMsg.includes("SyntaxError")) statusEl.textContent = "error de sintaxis (SyntaxError)";
+        else if (errMsg.includes("IndentationError")) statusEl.textContent = "error de sangría (IndentationError)";
+        else statusEl.textContent = "error en ejecución";
         statusEl.className = "text-rose-400 font-normal";
       }
       if (singleIndicator) singleIndicator.className = "w-2 h-2 rounded-full bg-rose-400";
@@ -3438,10 +3599,26 @@ function simulateSandbox(code) {
   };
   let out = [];
 
-  for (let rawLine of lines) {
+  for (let i = 0; i < lines.length; i++) {
+    const rawLine = lines[i];
     const { code: codeWithoutComment } = splitCodeAndComment(rawLine);
     let line = codeWithoutComment.trim();
     if (!line || line.startsWith('import')) continue;
+
+    if (/^if\s+.*[^:]\s*$/.test(line) && !line.endsWith(':')) {
+      throw new Error(`  File "main.py", line ${i + 1}\n    ${rawLine}\nSyntaxError: expected ':'`);
+    }
+    if (/^elif\s+.*[^:]\s*$/.test(line) && !line.endsWith(':')) {
+      throw new Error(`  File "main.py", line ${i + 1}\n    ${rawLine}\nSyntaxError: expected ':'`);
+    }
+    if (/^(then|otherwise|si_no)\b/.test(line) || (/^else\b/.test(line) && line !== 'else:')) {
+      throw new Error(`  File "main.py", line ${i + 1}\n    ${rawLine}\nSyntaxError: invalid syntax`);
+    }
+
+    const callMatch = line.match(/^([a-zA-Z_]\w*)\s*\(/);
+    if (callMatch && !['print', 'int', 'float', 'str', 'len', 'input', 'range', 'abs', 'round', 'bool', 'type'].includes(callMatch[1]) && !scope[callMatch[1]]) {
+      throw new Error(`Traceback (most recent call last):\n  File "main.py", line ${i + 1}, in <module>\n    ${line}\nNameError: name '${callMatch[1]}' is not defined`);
+    }
 
     const assignMatch = line.match(/^([a-zA-Z_]\w*)\s*=\s*(.+)$/);
     if (assignMatch) {
@@ -4651,7 +4828,8 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
     if (urlParams.get('runsandbox') === 'true') {
-      selectGuidedOption('B');
+      const optToRun = urlParams.get('opt') || 'B';
+      selectGuidedOption(optToRun);
       setTimeout(() => {
         executeGuidedSandbox();
       }, 60);
