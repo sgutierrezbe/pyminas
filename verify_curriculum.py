@@ -148,13 +148,66 @@ def load_baked_traces():
     except Exception:
         return {}
 
-def execute_python_code(code_str: str) -> tuple[str, str]:
+def extract_inputs_from_code_and_output(code_str: str, expected_output: str = "") -> list[str]:
+    prompts = re.findall(r'input\(\s*(?:["\'](.*?)["\'])?\s*\)', code_str)
+    if not prompts:
+        return ["Sara\n", "20\n", "30\n", "5\n"]
+    inputs = []
+    search_pos = 0
+    for p in prompts:
+        found = False
+        if p and expected_output:
+            idx = expected_output.find(p, search_pos)
+            if idx != -1:
+                sub = expected_output[idx + len(p):]
+                val = sub.split("\n")[0].strip()
+                if val:
+                    inputs.append(val + "\n")
+                    search_pos = idx + len(p) + len(val)
+                    found = True
+        if not found:
+            p_low = p.lower() if p else ""
+            if "nota" in p_low:
+                inputs.append("4.2\n")
+            elif any(k in p_low for k in ["segundo", "(y)"]):
+                inputs.append("20\n")
+            elif any(k in p_low for k in ["primer", "(x)"]):
+                inputs.append("10\n")
+            elif any(k in p_low for k in ["clasificar", "número", "numero"]):
+                inputs.append("-8\n")
+            elif "edad" in p_low:
+                inputs.append("14\n")
+            else:
+                inputs.append("Sara\n")
+    return inputs
+
+def execute_python_code(code_str: str, expected_output: str = "") -> tuple[str, str]:
     """Ejecuta código en CPython aislado y retorna (stdout, error_str)."""
     buf = io.StringIO()
     old_stdout = sys.stdout
     old_stdin = sys.stdin
     sys.stdout = buf
-    sys.stdin = io.StringIO("Sara\n20\n30\n5\n")
+
+    inputs = extract_inputs_from_code_and_output(code_str, expected_output)
+    
+    class EchoStdin:
+        def __init__(self, in_list):
+            self.inputs = list(in_list)
+        def readline(self, *args):
+            if self.inputs:
+                return self.inputs.pop(0)
+            return "20\n"
+
+    echo_stdin = EchoStdin(inputs)
+
+    class StdinWithEcho:
+        def readline(self, *args):
+            line = echo_stdin.readline(*args)
+            if line:
+                buf.write(line)
+            return line
+
+    sys.stdin = StdinWithEcho()
     error = ""
     scope = {}
     try:
@@ -273,7 +326,7 @@ class CurriculumAuditor:
                     continue
 
                 # 2. Ejecución real en CPython
-                real_out, err = execute_python_code(code)
+                real_out, err = execute_python_code(code, expected_output=expected_output)
                 self.check(not err, f"{ex_ctx} Excepción durante la ejecución en CPython: {err}")
 
                 # 3. Comparación de salida real vs salida declarada

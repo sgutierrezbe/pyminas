@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.36";
+const APP_VERSION = "v1.37";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
@@ -869,6 +869,10 @@ function replaceSafePythonOperators(code) {
 
   // 2. Reemplazos seguros en la lógica del código
   tokenized = tokenized.replace(/\bTrue\b/g, 'true').replace(/\bFalse\b/g, 'false');
+  tokenized = tokenized.replace(/\band\b/g, '&&');
+  tokenized = tokenized.replace(/\bor\b/g, '||');
+  tokenized = tokenized.replace(/\bnot\s+/g, '!');
+  tokenized = tokenized.replace(/\bnot\s*\(/g, '!(');
   tokenized = tokenized.replace(/\btype\s*\(([^)]+)\)\.__name__/g, '((typeof ($1) === "number") ? (Number.isInteger($1) ? "int" : "float") : (typeof ($1) === "string" ? "str" : (typeof ($1) === "boolean" ? "bool" : "object")))');
   tokenized = tokenized.replace(/\bint\s*\(([^)]+)\)/g, 'Math.trunc(Number($1))');
   tokenized = tokenized.replace(/\bfloat\s*\(([^)]+)\)/g, 'Number($1)');
@@ -1005,13 +1009,114 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
   const lineTrace = [];
   let stdoutBuffer = "";
   const getOutputSoFar = () => stdoutBuffer ? stdoutBuffer.replace(/\n$/, '').split('\n') : [];
+  const condStack = [];
 
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i];
     const { code: codeWithoutComment } = splitCodeAndComment(raw);
     const trimmedLine = codeWithoutComment.trim();
 
-    if (!trimmedLine || trimmedLine.startsWith('import')) {
+    if (!trimmedLine) {
+      lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+      continue;
+    }
+
+    // Calcular sangría / indentación
+    const indentMatch = raw.match(/^([ \t]*)/);
+    const currentIndent = indentMatch ? indentMatch[1].length : 0;
+
+    const isIf = /^if\s+(.+):\s*$/.test(trimmedLine);
+    const isElif = /^elif\s+(.+):\s*$/.test(trimmedLine);
+    const isElse = /^(else)\s*:\s*$/.test(trimmedLine);
+
+    // Ajustar la pila de condicionales al nivel de indentación actual
+    while (condStack.length > 0) {
+      const top = condStack[condStack.length - 1];
+      if (currentIndent <= top.baseIndent && !(currentIndent === top.baseIndent && (isElif || isElse))) {
+        condStack.pop();
+      } else {
+        break;
+      }
+    }
+
+    const currentFrame = condStack.length > 0 ? condStack[condStack.length - 1] : null;
+    const parentActive = condStack.length === 0 || condStack.every((frame, fIdx) => fIdx === condStack.length - 1 || frame.active);
+    const inActiveBranch = condStack.length === 0 || condStack.every(frame => frame.active);
+
+    // 1. Encabezado if
+    if (isIf) {
+      const ifMatch = trimmedLine.match(/^if\s+(.+):\s*$/);
+      const condExpr = ifMatch[1].trim();
+      let condVal = false;
+      const willEval = parentActive && (condStack.length === 0 || (currentFrame && currentFrame.active));
+      if (willEval) {
+        try {
+          condVal = Boolean(evaluateSafeExpr(condExpr, scope, math));
+        } catch (e) {
+          condVal = false;
+        }
+      }
+      condStack.push({
+        baseIndent: currentIndent,
+        chainMatched: condVal,
+        active: condVal,
+        parentActive: willEval
+      });
+      if (willEval) {
+        lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+      } else {
+        lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+      }
+      continue;
+    }
+
+    // 2. Encabezado elif
+    if (isElif) {
+      const elifMatch = trimmedLine.match(/^elif\s+(.+):\s*$/);
+      const condExpr = elifMatch[1].trim();
+      const top = condStack[condStack.length - 1];
+      if (top && top.parentActive && !top.chainMatched) {
+        let condVal = false;
+        try {
+          condVal = Boolean(evaluateSafeExpr(condExpr, scope, math));
+        } catch (e) {
+          condVal = false;
+        }
+        if (condVal) {
+          top.chainMatched = true;
+          top.active = true;
+        } else {
+          top.active = false;
+        }
+        lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+      } else {
+        if (top) top.active = false;
+        lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+      }
+      continue;
+    }
+
+    // 3. Encabezado else
+    if (isElse) {
+      const top = condStack[condStack.length - 1];
+      if (top && top.parentActive && !top.chainMatched) {
+        top.chainMatched = true;
+        top.active = true;
+        lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+      } else {
+        if (top) top.active = false;
+        lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+      }
+      continue;
+    }
+
+    // 4. Líneas dentro de ramas omitidas
+    if (!inActiveBranch) {
+      lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+      continue;
+    }
+
+    if (trimmedLine.startsWith('import')) {
       lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
@@ -1026,9 +1131,18 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
       const varName = assignMatch ? assignMatch[1] : null;
       const fullExpr = assignMatch ? assignMatch[2].trim() : trimmedLine;
 
+      const pLow = prompt.toLowerCase();
+      let smartDefault = "20";
+      if (pLow.includes('nota')) smartDefault = "4.2";
+      else if (pLow.includes('segundo') || pLow.includes('(y)')) smartDefault = "20";
+      else if (pLow.includes('primer') || pLow.includes('(x)')) smartDefault = "10";
+      else if (pLow.includes('clasificar') || pLow.includes('entero')) smartDefault = "-8";
+      else if (pLow.includes('edad')) smartDefault = "14";
+      else if (pLow.includes('llamas') || pLow.includes('nombre')) smartDefault = "Sara";
+
       let enteredVal = userInputs[i] !== undefined 
         ? userInputs[i] 
-        : (window.FAST_ANIM ? (fullExpr.includes('int') ? "20" : "Valeria") : null);
+        : (window.FAST_ANIM ? smartDefault : null);
 
       if (enteredVal !== null) {
         const safeValLiteral = JSON.stringify(String(enteredVal));
@@ -1283,6 +1397,7 @@ function codePlayerSetLine(playerId, targetIndex) {
   player.lines.forEach((_, idx) => {
     const arrowEl = document.getElementById(`code-arrow-${playerId}-${idx}`);
     const lineEl = document.getElementById(`code-line-${playerId}-${idx}`);
+    const state = player.lineTrace ? player.lineTrace[idx] : null;
     if (arrowEl && lineEl) {
       if (idx === targetIndex) {
         arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
@@ -1290,6 +1405,11 @@ function codePlayerSetLine(playerId, targetIndex) {
       } else {
         arrowEl.innerHTML = '';
         lineEl.classList.remove('active');
+      }
+      if (state && state.skipped && targetIndex >= 0) {
+        lineEl.classList.add('opacity-40');
+      } else {
+        lineEl.classList.remove('opacity-40');
       }
     }
   });
@@ -1324,12 +1444,25 @@ function codePlayerSetLine(playerId, targetIndex) {
   const statusEl = document.getElementById(`code-status-${playerId}`);
   if (statusEl) {
     const state = targetIndex >= 0 ? player.lineTrace[targetIndex] : null;
+    let isAtEnd = targetIndex >= player.lines.length - 1;
+    if (!isAtEnd && targetIndex >= 0) {
+      isAtEnd = true;
+      for (let k = targetIndex + 1; k < player.lines.length; k++) {
+        if (!player.lineTrace[k] || !player.lineTrace[k].skipped) {
+          isAtEnd = false;
+          break;
+        }
+      }
+    }
     if (targetIndex === -1) {
       statusEl.textContent = `Paso 0/${player.lines.length}`;
     } else if (state && state.isInput && !state.isCompleted) {
       statusEl.textContent = `Esperando entrada...`;
-    } else if (targetIndex === player.lines.length - 1) {
+    } else if (isAtEnd) {
       statusEl.textContent = `✓ Finalizado`;
+      if (playerId.startsWith('expl_')) {
+        unlockExplanationContinue();
+      }
     } else {
       statusEl.textContent = `Línea ${targetIndex + 1}/${player.lines.length}`;
     }
@@ -1349,9 +1482,14 @@ function renderInteractiveInputPrompt(playerId, lineIndex, promptText) {
 
   const prevText = prevLines.join('\n');
   const cleanPrompt = promptText || 'Entrada: ';
-  const placeholder = cleanPrompt.toLowerCase().includes('llamas') || cleanPrompt.toLowerCase().includes('nombre')
-    ? 'Escribe tu nombre aquí...'
-    : (cleanPrompt.toLowerCase().includes('edad') ? 'Ej: 20' : 'Escribe aquí...');
+  const pLow = cleanPrompt.toLowerCase();
+  let placeholder = 'Escribe aquí...';
+  if (pLow.includes('nota')) placeholder = 'Ej: 4.2 (o prueba 2.5)';
+  else if (pLow.includes('edad')) placeholder = 'Ej: 14 (o prueba 25)';
+  else if (pLow.includes('clasificar') || pLow.includes('entero')) placeholder = 'Ej: -8 (o prueba 15 ó 0)';
+  else if (pLow.includes('segundo') || pLow.includes('(y)')) placeholder = 'Ej: 20';
+  else if (pLow.includes('primer') || pLow.includes('(x)')) placeholder = 'Ej: 10';
+  else if (pLow.includes('llamas') || pLow.includes('nombre')) placeholder = 'Escribe tu nombre aquí...';
 
   termEl.innerHTML = `
     <div class="text-[#34d399] font-mono whitespace-pre-wrap leading-relaxed">
@@ -1391,7 +1529,18 @@ function handleTerminalInputSubmit(playerId, lineIndex) {
 
   const inputEl = document.getElementById(`term-input-box-${playerId}`);
   const userVal = inputEl ? inputEl.value.trim() : "";
-  const defaultVal = player.code.toLowerCase().includes('edad') ? "20" : "Sara";
+
+  const lineState = player.lineTrace && player.lineTrace[lineIndex];
+  const promptText = (lineState && lineState.prompt ? lineState.prompt : (player.code || "")).toLowerCase();
+  
+  let defaultVal = "20";
+  if (promptText.includes('nota')) defaultVal = "4.2";
+  else if (promptText.includes('segundo') || promptText.includes('(y)')) defaultVal = "20";
+  else if (promptText.includes('primer') || promptText.includes('(x)')) defaultVal = "10";
+  else if (promptText.includes('clasificar') || promptText.includes('entero')) defaultVal = "-8";
+  else if (promptText.includes('edad')) defaultVal = "14";
+  else if (promptText.includes('llamas') || promptText.includes('nombre')) defaultVal = "Sara";
+
   const finalVal = userVal.length > 0 ? userVal : defaultVal;
 
   playSound('click');
@@ -1429,6 +1578,9 @@ function runCodePlayerAutoAnimate(playerId, onComplete) {
   player.isPlaying = true;
 
   let current = 0;
+  while (current < player.lines.length && player.lineTrace[current] && player.lineTrace[current].skipped) {
+    current++;
+  }
   const firstState = player.lineTrace[current];
   if (firstState && firstState.isInput && !firstState.isCompleted) {
     player.isPlaying = false;
@@ -1442,6 +1594,9 @@ function runCodePlayerAutoAnimate(playerId, onComplete) {
   const stepInterval = window.FAST_ANIM ? 20 : 550;
   player.timer = setInterval(() => {
     current++;
+    while (current < player.lines.length && player.lineTrace[current] && player.lineTrace[current].skipped) {
+      current++;
+    }
     if (current < player.lines.length) {
       const state = player.lineTrace[current];
       if (state && state.isInput && !state.isCompleted) {
@@ -1489,6 +1644,9 @@ function resumeCodePlayerAutoAnimate(playerId, startIndex, onComplete) {
   const stepInterval = window.FAST_ANIM ? 20 : 550;
   player.timer = setInterval(() => {
     current++;
+    while (current < player.lines.length && player.lineTrace[current] && player.lineTrace[current].skipped) {
+      current++;
+    }
     if (current < player.lines.length) {
       const state = player.lineTrace[current];
       if (state && state.isInput && !state.isCompleted) {
@@ -1631,9 +1789,14 @@ function codePlayerNextStep(playerId) {
     }
   }
 
-  if (player.currentIndex < player.lines.length - 1) {
+  // Buscar la siguiente línea no omitida
+  let nextIdx = player.currentIndex + 1;
+  while (nextIdx < player.lines.length && player.lineTrace[nextIdx] && player.lineTrace[nextIdx].skipped) {
+    nextIdx++;
+  }
+
+  if (nextIdx < player.lines.length) {
     ensureCodeVisible(`code-player-wrapper-${playerId}`, false);
-    const nextIdx = player.currentIndex + 1;
     codePlayerSetLine(playerId, nextIdx);
     if (nextIdx >= player.lines.length - 1 && playerId.startsWith('expl_')) {
       unlockExplanationContinue();
@@ -1657,8 +1820,12 @@ function codePlayerPrevStep(playerId) {
   const player = codePlayerRegistry[playerId];
   if (!player) return;
   if (player.currentIndex > 0) {
+    let prevIdx = player.currentIndex - 1;
+    while (prevIdx > 0 && player.lineTrace[prevIdx] && player.lineTrace[prevIdx].skipped) {
+      prevIdx--;
+    }
     ensureCodeVisible(`code-player-wrapper-${playerId}`, false);
-    codePlayerSetLine(playerId, player.currentIndex - 1);
+    codePlayerSetLine(playerId, prevIdx);
   } else {
     codePlayerReset(playerId);
   }
@@ -4467,6 +4634,19 @@ window.addEventListener('DOMContentLoaded', () => {
     if (urlParams.get('step0') === 'true') {
       Object.keys(codePlayerRegistry).forEach(pid => {
         codePlayerSetLine(pid, 0);
+      });
+    }
+    if (urlParams.has('inputval')) {
+      const ival = urlParams.get('inputval');
+      Object.keys(codePlayerRegistry).forEach(pid => {
+        const p = codePlayerRegistry[pid];
+        if (p) {
+          if (!p.userInputs) p.userInputs = {};
+          p.userInputs[0] = ival;
+          const newTrace = tracePythonExecution(p.code, p.expectedOutput, p.userInputs);
+          p.lineTrace = newTrace.lineTrace;
+          codePlayerSetLine(pid, p.lines.length - 1);
+        }
       });
     }
     if (urlParams.get('runsandbox') === 'true') {

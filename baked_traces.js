@@ -195,19 +195,20 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "¿Cómo te llamas?: ",
+        "prints": "¿Cómo te llamas?: Sara",
         "outputSoFar": [
-          "¿Cómo te llamas?: "
+          "¿Cómo te llamas?: Sara"
         ]
       },
       {
         "prints": "¡Mucho gusto, Sara bienvenido a pyMinas!",
         "outputSoFar": [
-          "¿Cómo te llamas?: ¡Mucho gusto, Sara bienvenido a pyMinas!"
+          "¿Cómo te llamas?: Sara",
+          "¡Mucho gusto, Sara bienvenido a pyMinas!"
         ]
       }
     ],
-    "totalOutput": "¿Cómo te llamas?: ¡Mucho gusto, Sara bienvenido a pyMinas!"
+    "totalOutput": "¿Cómo te llamas?: Sara\n¡Mucho gusto, Sara bienvenido a pyMinas!"
   },
   "# Supongamos dos entradas obtenidas con input():\na = \"10\"\nb = \"20\"\ntotal = a + b\nprint(total)": {
     "lines": [
@@ -257,32 +258,32 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "Ingresa tu edad: ",
+        "prints": "Ingresa tu edad: 14",
         "outputSoFar": [
-          "Ingresa tu edad: "
+          "Ingresa tu edad: 14"
         ]
       },
       {
         "prints": null,
         "outputSoFar": [
-          "Ingresa tu edad: "
+          "Ingresa tu edad: 14"
         ]
       },
       {
-        "prints": "Error: could not convert string to float: 'Sara'",
+        "prints": null,
         "outputSoFar": [
-          "Ingresa tu edad: Error: could not convert string to float: 'Sara'"
+          "Ingresa tu edad: 14"
         ]
       },
       {
-        "prints": "Error: name 'edad' is not defined",
+        "prints": "El próximo año tendrás 15.0 años",
         "outputSoFar": [
-          "Ingresa tu edad: Error: could not convert string to float: 'Sara'",
-          "Error: name 'edad' is not defined"
+          "Ingresa tu edad: 14",
+          "El próximo año tendrás 15.0 años"
         ]
       }
     ],
-    "totalOutput": "Ingresa tu edad: Error: could not convert string to float: 'Sara'\nError: name 'edad' is not defined"
+    "totalOutput": "Ingresa tu edad: 14\nEl próximo año tendrás 15.0 años"
   },
   "# Entrada interactiva recibida del teclado:\nedad_str = input(\"Ingresa tu edad: \")\n# Convierte para poder sumar matemáticamente:\nedad = int(edad_str)\nprint(f\"El próximo año tendrás {edad + 1} años\")": {
     "lines": [
@@ -298,32 +299,32 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "Ingresa tu edad: ",
+        "prints": "Ingresa tu edad: 14",
         "outputSoFar": [
-          "Ingresa tu edad: "
+          "Ingresa tu edad: 14"
         ]
       },
       {
         "prints": null,
         "outputSoFar": [
-          "Ingresa tu edad: "
+          "Ingresa tu edad: 14"
         ]
       },
       {
-        "prints": "Error: invalid literal for int() with base 10: 'Sara'",
+        "prints": null,
         "outputSoFar": [
-          "Ingresa tu edad: Error: invalid literal for int() with base 10: 'Sara'"
+          "Ingresa tu edad: 14"
         ]
       },
       {
-        "prints": "Error: name 'edad' is not defined",
+        "prints": "El próximo año tendrás 15 años",
         "outputSoFar": [
-          "Ingresa tu edad: Error: invalid literal for int() with base 10: 'Sara'",
-          "Error: name 'edad' is not defined"
+          "Ingresa tu edad: 14",
+          "El próximo año tendrás 15 años"
         ]
       }
     ],
-    "totalOutput": "Ingresa tu edad: Error: invalid literal for int() with base 10: 'Sara'\nError: name 'edad' is not defined"
+    "totalOutput": "Ingresa tu edad: 14\nEl próximo año tendrás 15 años"
   },
   "# Entrada interactiva recibida del teclado:\nedad_str = input(\"Ingresa tu edad: \")\n# Convierte para poder sumar matemáticamente:\nedad = str(edad_str)\nprint(f\"El próximo año tendrás {edad + 1} años\")": {
     "lines": [
@@ -339,31 +340,32 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": "Ingresa tu edad: ",
+        "prints": "Ingresa tu edad: 14",
         "outputSoFar": [
-          "Ingresa tu edad: "
+          "Ingresa tu edad: 14"
         ]
       },
       {
         "prints": null,
         "outputSoFar": [
-          "Ingresa tu edad: "
+          "Ingresa tu edad: 14"
         ]
       },
       {
         "prints": null,
         "outputSoFar": [
-          "Ingresa tu edad: "
+          "Ingresa tu edad: 14"
         ]
       },
       {
         "prints": "Error: can only concatenate str (not \"int\") to str",
         "outputSoFar": [
-          "Ingresa tu edad: Error: can only concatenate str (not \"int\") to str"
+          "Ingresa tu edad: 14",
+          "Error: can only concatenate str (not \"int\") to str"
         ]
       }
     ],
-    "totalOutput": "Ingresa tu edad: Error: can only concatenate str (not \"int\") to str"
+    "totalOutput": "Ingresa tu edad: 14\nError: can only concatenate str (not \"int\") to str"
   },
   "nombre = \"Carlos\"\nsemestre = 1\nprint(\"Estudiante:\", nombre, \"Semestre:\", semestre)": {
     "lines": [
@@ -1200,32 +1202,41 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "Hipotenusa: 5.0"
   },
-  "x = 10\ny = 20\nprint(\"¿x es menor que y?:\", x < y)\nprint(\"¿x es igual a y?:\", x == y)\nprint(\"¿x es diferente de y?:\", x != y)": {
+  "x = int(input(\"Ingresa el primer número (x): \"))\ny = int(input(\"Ingresa el segundo número (y): \"))\nprint(\"¿x es menor que y?:\", x < y)\nprint(\"¿x es igual a y?:\", x == y)\nprint(\"¿x es diferente de y?:\", x != y)": {
     "lines": [
-      "x = 10",
-      "y = 20",
+      "x = int(input(\"Ingresa el primer número (x): \"))",
+      "y = int(input(\"Ingresa el segundo número (y): \"))",
       "print(\"¿x es menor que y?:\", x < y)",
       "print(\"¿x es igual a y?:\", x == y)",
       "print(\"¿x es diferente de y?:\", x != y)"
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": []
+        "prints": "Ingresa el primer número (x): 10",
+        "outputSoFar": [
+          "Ingresa el primer número (x): 10"
+        ]
       },
       {
-        "prints": null,
-        "outputSoFar": []
+        "prints": "Ingresa el segundo número (y): 20",
+        "outputSoFar": [
+          "Ingresa el primer número (x): 10",
+          "Ingresa el segundo número (y): 20"
+        ]
       },
       {
         "prints": "¿x es menor que y?: True",
         "outputSoFar": [
+          "Ingresa el primer número (x): 10",
+          "Ingresa el segundo número (y): 20",
           "¿x es menor que y?: True"
         ]
       },
       {
         "prints": "¿x es igual a y?: False",
         "outputSoFar": [
+          "Ingresa el primer número (x): 10",
+          "Ingresa el segundo número (y): 20",
           "¿x es menor que y?: True",
           "¿x es igual a y?: False"
         ]
@@ -1233,13 +1244,15 @@ window.BAKED_TRACES = {
       {
         "prints": "¿x es diferente de y?: True",
         "outputSoFar": [
+          "Ingresa el primer número (x): 10",
+          "Ingresa el segundo número (y): 20",
           "¿x es menor que y?: True",
           "¿x es igual a y?: False",
           "¿x es diferente de y?: True"
         ]
       }
     ],
-    "totalOutput": "¿x es menor que y?: True\n¿x es igual a y?: False\n¿x es diferente de y?: True"
+    "totalOutput": "Ingresa el primer número (x): 10\nIngresa el segundo número (y): 20\n¿x es menor que y?: True\n¿x es igual a y?: False\n¿x es diferente de y?: True"
   },
   "a = 15\nb = 15\nc = 30\nprint(a == b)\nprint(a + b > c)": {
     "lines": [
@@ -1658,47 +1671,57 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "¡Atención! Tanque casi lleno\nSensor en línea"
   },
-  "edad = 14\nprecio = 5000\nif edad < 18:\n    precio = precio * 0.95\n    print(\"Descuento aplicado por ser menor de edad\")\nprint(\"Total a pagar: $\", precio)": {
+  "edad = int(input(\"Ingresa tu edad: \"))\nprecio = 5000\nif edad < 18:\n    precio = precio * 0.95\n    print(\"Descuento del 5% aplicado por ser menor de edad\")\nprint(\"Total a pagar: $\", precio)": {
     "lines": [
-      "edad = 14",
+      "edad = int(input(\"Ingresa tu edad: \"))",
       "precio = 5000",
       "if edad < 18:",
       "    precio = precio * 0.95",
-      "    print(\"Descuento aplicado por ser menor de edad\")",
+      "    print(\"Descuento del 5% aplicado por ser menor de edad\")",
       "print(\"Total a pagar: $\", precio)"
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "Descuento aplicado por ser menor de edad",
+        "prints": "Ingresa tu edad: 14",
         "outputSoFar": [
-          "Descuento aplicado por ser menor de edad"
+          "Ingresa tu edad: 14"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Ingresa tu edad: 14"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Ingresa tu edad: 14"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Ingresa tu edad: 14"
+        ]
+      },
+      {
+        "prints": "Descuento del 5% aplicado por ser menor de edad",
+        "outputSoFar": [
+          "Ingresa tu edad: 14",
+          "Descuento del 5% aplicado por ser menor de edad"
         ]
       },
       {
         "prints": "Total a pagar: $ 4750.0",
         "outputSoFar": [
-          "Descuento aplicado por ser menor de edad",
+          "Ingresa tu edad: 14",
+          "Descuento del 5% aplicado por ser menor de edad",
           "Total a pagar: $ 4750.0"
         ]
       }
     ],
-    "totalOutput": "Descuento aplicado por ser menor de edad\nTotal a pagar: $ 4750.0"
+    "totalOutput": "Ingresa tu edad: 14\nDescuento del 5% aplicado por ser menor de edad\nTotal a pagar: $ 4750.0"
   },
   "nota = 2.8\nif nota >= 3.0:\n    print(\"Aprobado\")\nprint(\"Calificación registrada en el sistema\")": {
     "lines": [
@@ -1868,9 +1891,9 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "Radar activo"
   },
-  "nota = 4.2\nif nota >= 3.0:\n    print(\"¡Felicitaciones! Has aprobado\")\nelse:\n    print(\"Reprobado, debes habilitar\")\nprint(\"Cierre del periodo académico\")": {
+  "nota = float(input(\"Ingresa tu nota final (0.0 a 5.0): \"))\nif nota >= 3.0:\n    print(\"¡Felicitaciones! Has aprobado\")\nelse:\n    print(\"Reprobado, debes habilitar\")\nprint(\"Cierre del periodo académico\")": {
     "lines": [
-      "nota = 4.2",
+      "nota = float(input(\"Ingresa tu nota final (0.0 a 5.0): \"))",
       "if nota >= 3.0:",
       "    print(\"¡Felicitaciones! Has aprobado\")",
       "else:",
@@ -1879,36 +1902,46 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": []
+        "prints": "Ingresa tu nota final (0.0 a 5.0): 4.2",
+        "outputSoFar": [
+          "Ingresa tu nota final (0.0 a 5.0): 4.2"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa tu nota final (0.0 a 5.0): 4.2"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa tu nota final (0.0 a 5.0): 4.2"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa tu nota final (0.0 a 5.0): 4.2"
+        ]
       },
       {
         "prints": "¡Felicitaciones! Has aprobado",
         "outputSoFar": [
+          "Ingresa tu nota final (0.0 a 5.0): 4.2",
           "¡Felicitaciones! Has aprobado"
         ]
       },
       {
         "prints": "Cierre del periodo académico",
         "outputSoFar": [
+          "Ingresa tu nota final (0.0 a 5.0): 4.2",
           "¡Felicitaciones! Has aprobado",
           "Cierre del periodo académico"
         ]
       }
     ],
-    "totalOutput": "¡Felicitaciones! Has aprobado\nCierre del periodo académico"
+    "totalOutput": "Ingresa tu nota final (0.0 a 5.0): 4.2\n¡Felicitaciones! Has aprobado\nCierre del periodo académico"
   },
   "numero = 7\nif numero % 2 == 0:\n    print(\"El número es PAR\")\nelse:\n    print(\"El número es IMPAR\")": {
     "lines": [
@@ -2040,9 +2073,9 @@ window.BAKED_TRACES = {
     ],
     "totalOutput": "Fondos insuficientes\nSaldo disponible: $ 50000"
   },
-  "numero = -8\nif numero > 0:\n    print(\"El número es POSITIVO\")\nelif numero == 0:\n    print(\"El número es CERO\")\nelse:\n    print(\"El número es NEGATIVO\")\nprint(\"Clasificación terminada\")": {
+  "numero = int(input(\"Ingresa un número entero para clasificar: \"))\nif numero > 0:\n    print(\"El número es POSITIVO\")\nelif numero == 0:\n    print(\"El número es CERO\")\nelse:\n    print(\"El número es NEGATIVO\")\nprint(\"Clasificación terminada\")": {
     "lines": [
-      "numero = -8",
+      "numero = int(input(\"Ingresa un número entero para clasificar: \"))",
       "if numero > 0:",
       "    print(\"El número es POSITIVO\")",
       "elif numero == 0:",
@@ -2053,44 +2086,58 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": []
+        "prints": "Ingresa un número entero para clasificar: -8",
+        "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8"
+        ]
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8"
+        ]
       },
       {
         "prints": "El número es NEGATIVO",
         "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8",
           "El número es NEGATIVO"
         ]
       },
       {
         "prints": "Clasificación terminada",
         "outputSoFar": [
+          "Ingresa un número entero para clasificar: -8",
           "El número es NEGATIVO",
           "Clasificación terminada"
         ]
       }
     ],
-    "totalOutput": "El número es NEGATIVO\nClasificación terminada"
+    "totalOutput": "Ingresa un número entero para clasificar: -8\nEl número es NEGATIVO\nClasificación terminada"
   },
   "puntos = 85\nif puntos >= 90:\n    calificacion = \"Excelente\"\nelif puntos >= 80:\n    calificacion = \"Sobresaliente\"\nelif puntos >= 60:\n    calificacion = \"Aprobado\"\nelse:\n    calificacion = \"Insuficiente\"\nprint(\"Calificación final:\", calificacion)": {
     "lines": [

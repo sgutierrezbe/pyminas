@@ -195,7 +195,7 @@ const CURRICULUM = {
                 {
                   "label": "Captura interactiva por teclado",
                   "code": "nombre = input(\"¿Cómo te llamas?: \")\nprint(\"¡Mucho gusto,\", nombre, \"bienvenido a pyMinas!\")",
-                  "output": "¿Cómo te llamas?: ¡Mucho gusto, Sara bienvenido a pyMinas!",
+                  "output": "¿Cómo te llamas?: Sara\n¡Mucho gusto, Sara bienvenido a pyMinas!",
                   "explanation": "La función input() interactiva pausa el código, recibe lo que el usuario escribe en la terminal y lo guarda en la variable 'nombre'."
                 }
               ],
@@ -813,12 +813,12 @@ const CURRICULUM = {
               "type": "explanation",
               "partLabel": "Paso 1 · Operadores relacionales",
               "title": "¿Cómo compara valores una computadora?",
-              "intro": "Los operadores relacionales permiten comparar dos valores y responder siempre con una verdad lógica: <code>True</code> (Verdadero) o <code>False</code> (Falso).",
+              "intro": "Los operadores relacionales permiten comparar dos valores y responder siempre con una verdad lógica: <code>True</code> (Verdadero) o <code>False</code> (Falso). ¡Ingresa valores para ver cómo reaccionan los comparadores!",
               "examples": [
                 {
-                  "label": "Comparaciones numéricas",
-                  "code": "x = 10\ny = 20\nprint(\"¿x es menor que y?:\", x < y)\nprint(\"¿x es igual a y?:\", x == y)\nprint(\"¿x es diferente de y?:\", x != y)",
-                  "output": "¿x es menor que y?: True\n¿x es igual a y?: False\n¿x es diferente de y?: True",
+                  "label": "Comparaciones numéricas interactivas",
+                  "code": "x = int(input(\"Ingresa el primer número (x): \"))\ny = int(input(\"Ingresa el segundo número (y): \"))\nprint(\"¿x es menor que y?:\", x < y)\nprint(\"¿x es igual a y?:\", x == y)\nprint(\"¿x es diferente de y?:\", x != y)",
+                  "output": "Ingresa el primer número (x): 10\nIngresa el segundo número (y): 20\n¿x es menor que y?: True\n¿x es igual a y?: False\n¿x es diferente de y?: True",
                   "explanation": "Cada comparación produce un valor de tipo bool. En Python, '==' evalúa igualdad y '!=' evalúa diferencia."
                 }
               ],
@@ -1144,13 +1144,13 @@ const CURRICULUM = {
               "type": "explanation",
               "partLabel": "Paso 1 · La decisión simple",
               "title": "El condicional if en acción",
-              "intro": "Un programa interactivo debe reaccionar según los datos. Siguiendo el ejemplo del cuaderno de clase: se otorga un 5% de descuento en helados si el cliente es menor de edad.",
+              "intro": "Un programa interactivo bifurca su comportamiento según los datos del usuario: por ejemplo, otorgar un 5% de descuento en una compra únicamente si el cliente es menor de edad. ¡Prueba ingresando una edad menor a 18 y luego una mayor!",
               "examples": [
                 {
-                  "label": "Descuento a menores de edad",
-                  "code": "edad = 14\nprecio = 5000\nif edad < 18:\n    precio = precio * 0.95\n    print(\"Descuento aplicado por ser menor de edad\")\nprint(\"Total a pagar: $\", precio)",
-                  "output": "Descuento aplicado por ser menor de edad\nTotal a pagar: $ 4750.0",
-                  "explanation": "Como edad < 18 es True (14 < 18), se ejecuta el descuento del 5% y el precio baja a 4750."
+                  "label": "Descuento interactivo a menores de edad",
+                  "code": "edad = int(input(\"Ingresa tu edad: \"))\nprecio = 5000\nif edad < 18:\n    precio = precio * 0.95\n    print(\"Descuento del 5% aplicado por ser menor de edad\")\nprint(\"Total a pagar: $\", precio)",
+                  "output": "Ingresa tu edad: 14\nDescuento del 5% aplicado por ser menor de edad\nTotal a pagar: $ 4750.0",
+                  "explanation": "Si la edad es menor a 18 (ej. 14), se ejecuta el descuento del 5% y el precio baja a 4750. Si es 18 o más (ej. 25), el bloque condicional se omite."
                 }
               ],
               "keyTakeaway": "Si la condición evalúa a <code>True</code>, se ejecuta el bloque indentado. Si es <code>False</code>, el bloque se omite y el programa continúa."
@@ -1159,7 +1159,7 @@ const CURRICULUM = {
               "type": "predict",
               "partLabel": "Paso 2 · Aprobación académica",
               "title": "¿Se imprimirá el mensaje de aprobación?",
-              "question": "Basado en el Ejemplo 1 del cuaderno: si la nota es mayor o igual a 3.0, imprime 'Aprobado'. Si un estudiante tiene nota 2.8, ¿qué imprimirá?",
+              "question": "En el sistema de calificaciones: si la nota es mayor o igual a 3.0, el programa imprime 'Aprobado'. Si un estudiante tiene nota 2.8, ¿qué imprimirá exactamente?",
               "code": "nota = 2.8\nif nota >= 3.0:\n    print(\"Aprobado\")\nprint(\"Calificación registrada en el sistema\")",
               "options": [
                 {
@@ -1186,7 +1186,7 @@ const CURRICULUM = {
             {
               "type": "predict",
               "partLabel": "Paso 3 · Salario mínimo",
-              "title": "Ajuste salarial (Ejemplo 2 del cuaderno)",
+              "title": "Ajuste de salario mínimo",
               "question": "Si el salario de un empleado es de 1,500,000 y el salario mínimo es de 1,300,000, ¿cuál será el salario final tras evaluar el if?",
               "code": "SALARIO_MINIMO = 1300000\nsalario = 1500000\nif salario < SALARIO_MINIMO:\n    salario = salario * 1.10\nprint(\"Salario final:\", salario)",
               "options": [
@@ -1259,13 +1259,13 @@ const CURRICULUM = {
               "type": "explanation",
               "partLabel": "Paso 1 · La bifurcación doble",
               "title": "Manejando el caso contrario con else",
-              "intro": "En problemas reales, necesitamos ejecutar una acción si la condición se cumple, y **otra acción diferente** si no se cumple (Ejemplo 3 del cuaderno: aprobado o reprobado).",
+              "intro": "En problemas reales, necesitamos ejecutar una acción si la condición se cumple, y **otra acción diferente** si no se cumple: por ejemplo, aprobar o reprobar una materia. ¡Ingresa tu calificación y observa qué rama se ejecuta!",
               "examples": [
                 {
-                  "label": "Aprobado vs Reprobado",
-                  "code": "nota = 4.2\nif nota >= 3.0:\n    print(\"¡Felicitaciones! Has aprobado\")\nelse:\n    print(\"Reprobado, debes habilitar\")\nprint(\"Cierre del periodo académico\")",
-                  "output": "¡Felicitaciones! Has aprobado\nCierre del periodo académico",
-                  "explanation": "Como la nota es 4.2 (>= 3.0), se toma la rama del if. La rama del else se descarta por completo."
+                  "label": "Aprobado vs Reprobado interactivo",
+                  "code": "nota = float(input(\"Ingresa tu nota final (0.0 a 5.0): \"))\nif nota >= 3.0:\n    print(\"¡Felicitaciones! Has aprobado\")\nelse:\n    print(\"Reprobado, debes habilitar\")\nprint(\"Cierre del periodo académico\")",
+                  "output": "Ingresa tu nota final (0.0 a 5.0): 4.2\n¡Felicitaciones! Has aprobado\nCierre del periodo académico",
+                  "explanation": "Si la nota es >= 3.0 (ej. 4.2), se toma la rama del if. Si la nota es menor a 3.0 (ej. 2.4), se activa automáticamente la rama del else."
                 }
               ],
               "keyTakeaway": "La cláusula <code>else</code> nunca lleva condición propia: se activa automáticamente siempre que la condición del <code>if</code> resulte <code>False</code>."
@@ -1273,8 +1273,8 @@ const CURRICULUM = {
             {
               "type": "predict",
               "partLabel": "Paso 2 · Detección de par o impar",
-              "title": "Par o impar con operador módulo (Ejercicio 02)",
-              "question": "En el Ejercicio 02 del cuaderno de clase se usa el residuo (%) para saber si un número es par. ¿Qué imprimirá este código con el número 7?",
+              "title": "Detección de par o impar",
+              "question": "En programación se utiliza el residuo (%) para saber si un número es par. ¿Qué imprimirá este código con el número 7?",
               "code": "numero = 7\nif numero % 2 == 0:\n    print(\"El número es PAR\")\nelse:\n    print(\"El número es IMPAR\")",
               "options": [
                 {
@@ -1301,7 +1301,7 @@ const CURRICULUM = {
             {
               "type": "predict",
               "partLabel": "Paso 3 · Salario condicional compuesto",
-              "title": "Incremento escalonado (Ejemplo 4 del cuaderno)",
+              "title": "Incremento salarial escalonado",
               "question": "Si el salario es menor al mínimo se incrementa un 10%, de lo contrario se incrementa un 5%. ¿Qué salario imprimirá?",
               "code": "salario = 2000000\nminimo = 1300000\nif salario < minimo:\n    salario = salario * 1.10\nelse:\n    salario = salario * 1.05\nprint(\"Salario ajustado:\", int(salario))",
               "options": [
@@ -1374,13 +1374,13 @@ const CURRICULUM = {
               "type": "explanation",
               "partLabel": "Paso 1 · La escalera de decisiones",
               "title": "Clasificando con if-elif-else",
-              "intro": "Cuando un problema tiene 3 o más posibles caminos, usamos <code>elif</code> (abreviatura de *else if*). Python evalúa cada caso en orden de arriba a abajo y se detiene en el primero que sea <code>True</code> (Ejemplo 6 del cuaderno).",
+              "intro": "Cuando un problema tiene 3 o más posibles caminos, usamos <code>elif</code> (abreviatura de *else if*). Python evalúa cada caso en orden de arriba a abajo y se detiene en el primero que sea <code>True</code>. ¡Prueba con números positivos, cero o negativos!",
               "examples": [
                 {
-                  "label": "Positivo, cero o negativo",
-                  "code": "numero = -8\nif numero > 0:\n    print(\"El número es POSITIVO\")\nelif numero == 0:\n    print(\"El número es CERO\")\nelse:\n    print(\"El número es NEGATIVO\")\nprint(\"Clasificación terminada\")",
-                  "output": "El número es NEGATIVO\nClasificación terminada",
-                  "explanation": "-8 > 0 es False. Pasa al elif: -8 == 0 es False. Finalmente entra al else e imprime NEGATIVO."
+                  "label": "Clasificación interactiva de números",
+                  "code": "numero = int(input(\"Ingresa un número entero para clasificar: \"))\nif numero > 0:\n    print(\"El número es POSITIVO\")\nelif numero == 0:\n    print(\"El número es CERO\")\nelse:\n    print(\"El número es NEGATIVO\")\nprint(\"Clasificación terminada\")",
+                  "output": "Ingresa un número entero para clasificar: -8\nEl número es NEGATIVO\nClasificación terminada",
+                  "explanation": "Python evalúa en cascada: si es mayor a 0 entra al primer bloque; si es 0 entra al elif; y si no, entra al else."
                 }
               ],
               "keyTakeaway": "En cuanto una condición de la escalera resulta <code>True</code>, Python ejecuta ese bloque y <strong>salta todas las demás ramas restantes</strong>."
@@ -1444,8 +1444,8 @@ const CURRICULUM = {
             {
               "type": "code_sandbox",
               "partLabel": "Paso 4 · Práctica guiada",
-              "title": "Tarifa predial por estrato (Ejercicio 12)",
-              "instruction": "En Medellín el impuesto depende del estrato (Ejercicio 12 del cuaderno). Completa la condición para clasificar a los estratos medios (3 o 4) sin subsidio ni recargo.",
+              "title": "Tarifa predial por estrato",
+              "instruction": "En Medellín el impuesto predial depende del estrato socioeconómico. Completa la condición para clasificar a los estratos medios (3 o 4) sin subsidio ni recargo.",
               "slotMarker": "___",
               "starterCode": "estrato = 3\nif estrato <= 2:\n    regimen = \"Subsidio social\"\nelif ___:\n    regimen = \"Tarifa plena sin recargo\"\nelse:\n    regimen = \"Contribución solidaria\"\nprint(\"Régimen aplicado:\", regimen)",
               "options": [

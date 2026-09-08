@@ -302,7 +302,7 @@
         assert(continueBtn && !continueBtn.disabled, "Botón Continuar desbloqueado tras completar ejecución con input");
 
         // 14. Test APP_VERSION constant
-        assert(window.APP_VERSION === 'v1.36', "APP_VERSION está actualizado a v1.36");
+        assert(window.APP_VERSION === 'v1.37', "APP_VERSION está actualizado a v1.37");
 
         // 15. Test Semana 2 curriculum presence and navigation
         assert(CURRICULUM.weeks.length === 2, "CURRICULUM contiene exactamente 2 semanas");
@@ -334,6 +334,32 @@
         const styleLine3 = window.getComputedStyle(line3El);
         assert(styleLine3.whiteSpace === 'pre', "white-space es 'pre' para preservar la indentación");
         assert(line3El.textContent.startsWith('    '), "Línea 3 preserva 4 espacios de sangría al inicio");
+
+        // 18. Test interactivo de bifurcación condicional (w2-l5) con entradas dinámicas
+        const codeW2L5 = `nota = float(input("Ingresa tu nota final (0.0 a 5.0): "))
+if nota >= 3.0:
+    print("¡Felicitaciones! Has aprobado")
+else:
+    print("Reprobado, debes habilitar")
+print("Cierre del periodo académico")`;
+
+        // Caso A: Nota aprobatoria (4.2)
+        const traceAprob = tracePythonExecution(codeW2L5, "", { 0: "4.2" });
+        assert(traceAprob.lineTrace[0].userValue === "4.2", "Input capturado como 4.2");
+        assert(traceAprob.lineTrace[2].skipped !== true, "Línea de aprobado ejecutada");
+        assert(traceAprob.lineTrace[4].skipped === true, "Línea de else omitida");
+        const outAprob = traceAprob.lineTrace[traceAprob.lineTrace.length - 1].outputSoFar.join('\n');
+        assert(outAprob.includes("¡Felicitaciones! Has aprobado"), "Salida contiene mensaje de aprobado");
+        assert(!outAprob.includes("Reprobado"), "Salida NO contiene mensaje de reprobado");
+
+        // Caso B: Nota reprobatoria (2.0)
+        const traceReprob = tracePythonExecution(codeW2L5, "", { 0: "2.0" });
+        assert(traceReprob.lineTrace[0].userValue === "2.0", "Input capturado como 2.0");
+        assert(traceReprob.lineTrace[2].skipped === true, "Línea de aprobado omitida");
+        assert(traceReprob.lineTrace[4].skipped !== true, "Línea de else ejecutada");
+        const outReprob = traceReprob.lineTrace[traceReprob.lineTrace.length - 1].outputSoFar.join('\n');
+        assert(!outReprob.includes("¡Felicitaciones! Has aprobado"), "Salida NO contiene mensaje de aprobado");
+        assert(outReprob.includes("Reprobado, debes habilitar"), "Salida contiene mensaje de reprobado");
 
         log("¡TODAS LAS PRUEBAS DE FASE 1 Y 2 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");

@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent
 CURRICULUM_PATH = BASE_DIR / "curriculum.js"
 OUTPUT_PATH = BASE_DIR / "baked_traces.js"
 
-def trace_python_code(code_str, slot_value=None):
+def trace_python_code(code_str, slot_value=None, expected_output=""):
     lines = code_str.split("\n")
     if slot_value is not None:
         clean_code = code_str.replace("___", slot_value)
@@ -30,16 +30,37 @@ def trace_python_code(code_str, slot_value=None):
         print(f"  [WARN] No se pudo parsear AST: {e}")
         return None
 
+    from verify_curriculum import extract_inputs_from_code_and_output
+    inputs = extract_inputs_from_code_and_output(clean_code, expected_output)
+
     scope = {}
     captured_stdout_at_line = {}
     stdout_buffer = ""
+
+    class EchoStdin:
+        def __init__(self, in_list):
+            self.inputs = list(in_list)
+        def readline(self, *args):
+            if self.inputs:
+                return self.inputs.pop(0)
+            return "20\n"
+
+    echo_stdin = EchoStdin(inputs)
     
     for stmt in tree.body:
         buf = io.StringIO()
         old_stdout = sys.stdout
         old_stdin = sys.stdin
         sys.stdout = buf
-        sys.stdin = io.StringIO("Sara\n20\n30\n5\n")
+
+        class StdinWithEcho:
+            def readline(self, *args):
+                line = echo_stdin.readline(*args)
+                if line:
+                    buf.write(line)
+                return line
+
+        sys.stdin = StdinWithEcho()
         try:
             compiled = compile(ast.Module(body=[stmt], type_ignores=[]), "<curriculum>", "exec")
             exec(compiled, scope)
@@ -99,7 +120,7 @@ def main():
                     for ex in s.get("examples", []):
                         c = ex.get("code", "").strip()
                         if c:
-                            trace = trace_python_code(c)
+                            trace = trace_python_code(c, expected_output=ex.get("output", ""))
                             if trace:
                                 baked[c] = trace
                                 success_count += 1
