@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.33";
+const APP_VERSION = "v1.34";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
@@ -355,6 +355,7 @@ function renderDashboard() {
 
     // Cabecera Pill del Nivel
     const pillHeader = document.createElement('div');
+    pillHeader.id = 'week-header-' + week.id;
     pillHeader.className = 'w-full max-w-sm sm:max-w-md bg-white border-2 border-slate-200 rounded-2xl py-3 px-4 sm:px-6 text-center shadow-sm mb-6 z-20';
     pillHeader.innerHTML = `
       <div class="text-[11px] font-extrabold uppercase tracking-widest text-brand-700">NIVEL ${week.number}</div>

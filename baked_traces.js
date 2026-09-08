@@ -1199,5 +1199,1137 @@ window.BAKED_TRACES = {
       }
     ],
     "totalOutput": "Hipotenusa: 5.0"
+  },
+  "x = 10\ny = 20\nprint(\"¿x es menor que y?:\", x < y)\nprint(\"¿x es igual a y?:\", x == y)\nprint(\"¿x es diferente de y?:\", x != y)": {
+    "lines": [
+      "x = 10",
+      "y = 20",
+      "print(\"¿x es menor que y?:\", x < y)",
+      "print(\"¿x es igual a y?:\", x == y)",
+      "print(\"¿x es diferente de y?:\", x != y)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿x es menor que y?: True",
+        "outputSoFar": [
+          "¿x es menor que y?: True"
+        ]
+      },
+      {
+        "prints": "¿x es igual a y?: False",
+        "outputSoFar": [
+          "¿x es menor que y?: True",
+          "¿x es igual a y?: False"
+        ]
+      },
+      {
+        "prints": "¿x es diferente de y?: True",
+        "outputSoFar": [
+          "¿x es menor que y?: True",
+          "¿x es igual a y?: False",
+          "¿x es diferente de y?: True"
+        ]
+      }
+    ],
+    "totalOutput": "¿x es menor que y?: True\n¿x es igual a y?: False\n¿x es diferente de y?: True"
+  },
+  "a = 15\nb = 15\nc = 30\nprint(a == b)\nprint(a + b > c)": {
+    "lines": [
+      "a = 15",
+      "b = 15",
+      "c = 30",
+      "print(a == b)",
+      "print(a + b > c)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "True",
+        "outputSoFar": [
+          "True"
+        ]
+      },
+      {
+        "prints": "False",
+        "outputSoFar": [
+          "True",
+          "False"
+        ]
+      }
+    ],
+    "totalOutput": "True\nFalse"
+  },
+  "# Con un solo signo '=' guardamos el valor 100 en la variable:\npuntos = 100\n# Con doble signo '==' preguntamos si puntos es igual a 100:\nes_cien = (puntos == 100)\nprint(\"Puntos guardados:\", puntos)\nprint(\"¿Son exactamente 100?:\", es_cien)": {
+    "lines": [
+      "# Con un solo signo '=' guardamos el valor 100 en la variable:",
+      "puntos = 100",
+      "# Con doble signo '==' preguntamos si puntos es igual a 100:",
+      "es_cien = (puntos == 100)",
+      "print(\"Puntos guardados:\", puntos)",
+      "print(\"¿Son exactamente 100?:\", es_cien)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Puntos guardados: 100",
+        "outputSoFar": [
+          "Puntos guardados: 100"
+        ]
+      },
+      {
+        "prints": "¿Son exactamente 100?: True",
+        "outputSoFar": [
+          "Puntos guardados: 100",
+          "¿Son exactamente 100?: True"
+        ]
+      }
+    ],
+    "totalOutput": "Puntos guardados: 100\n¿Son exactamente 100?: True"
+  },
+  "menor = 25\nmayor = 50\nresultado = menor > mayor\nprint(\"¿Cumple el orden?:\", resultado)": {
+    "lines": [
+      "menor = 25",
+      "mayor = 50",
+      "resultado = menor > mayor",
+      "print(\"¿Cumple el orden?:\", resultado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿Cumple el orden?: False",
+        "outputSoFar": [
+          "¿Cumple el orden?: False"
+        ]
+      }
+    ],
+    "totalOutput": "¿Cumple el orden?: False"
+  },
+  "menor = 25\nmayor = 50\nresultado = menor == mayor\nprint(\"¿Cumple el orden?:\", resultado)": {
+    "lines": [
+      "menor = 25",
+      "mayor = 50",
+      "resultado = menor == mayor",
+      "print(\"¿Cumple el orden?:\", resultado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿Cumple el orden?: False",
+        "outputSoFar": [
+          "¿Cumple el orden?: False"
+        ]
+      }
+    ],
+    "totalOutput": "¿Cumple el orden?: False"
+  },
+  "menor = 25\nmayor = 50\nresultado = menor <= mayor\nprint(\"¿Cumple el orden?:\", resultado)": {
+    "lines": [
+      "menor = 25",
+      "mayor = 50",
+      "resultado = menor <= mayor",
+      "print(\"¿Cumple el orden?:\", resultado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿Cumple el orden?: True",
+        "outputSoFar": [
+          "¿Cumple el orden?: True"
+        ]
+      }
+    ],
+    "totalOutput": "¿Cumple el orden?: True"
+  },
+  "edad = 20\ntiene_licencia = True\npuede_conducir = (edad >= 18) and tiene_licencia\nprint(\"¿Puede conducir el auto?:\", puede_conducir)": {
+    "lines": [
+      "edad = 20",
+      "tiene_licencia = True",
+      "puede_conducir = (edad >= 18) and tiene_licencia",
+      "print(\"¿Puede conducir el auto?:\", puede_conducir)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿Puede conducir el auto?: True",
+        "outputSoFar": [
+          "¿Puede conducir el auto?: True"
+        ]
+      }
+    ],
+    "totalOutput": "¿Puede conducir el auto?: True"
+  },
+  "dia = \"domingo\"\nes_feriado = False\ndescanso = (dia == \"domingo\") or es_feriado\nprint(\"¿Es día de descanso?:\", descanso)\nprint(\"Inversión con not:\", not descanso)": {
+    "lines": [
+      "dia = \"domingo\"",
+      "es_feriado = False",
+      "descanso = (dia == \"domingo\") or es_feriado",
+      "print(\"¿Es día de descanso?:\", descanso)",
+      "print(\"Inversión con not:\", not descanso)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿Es día de descanso?: True",
+        "outputSoFar": [
+          "¿Es día de descanso?: True"
+        ]
+      },
+      {
+        "prints": "Inversión con not: False",
+        "outputSoFar": [
+          "¿Es día de descanso?: True",
+          "Inversión con not: False"
+        ]
+      }
+    ],
+    "totalOutput": "¿Es día de descanso?: True\nInversión con not: False"
+  },
+  "x = 5\nresultado = not (x > 10) and (x == 5)\nprint(\"Resultado lógico:\", resultado)": {
+    "lines": [
+      "x = 5",
+      "resultado = not (x > 10) and (x == 5)",
+      "print(\"Resultado lógico:\", resultado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Resultado lógico: True",
+        "outputSoFar": [
+          "Resultado lógico: True"
+        ]
+      }
+    ],
+    "totalOutput": "Resultado lógico: True"
+  },
+  "presion = 35\nes_segura = (presion >= 10) or (presion <= 50)\nprint(\"¿Presión en rango seguro?:\", es_segura)": {
+    "lines": [
+      "presion = 35",
+      "es_segura = (presion >= 10) or (presion <= 50)",
+      "print(\"¿Presión en rango seguro?:\", es_segura)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿Presión en rango seguro?: True",
+        "outputSoFar": [
+          "¿Presión en rango seguro?: True"
+        ]
+      }
+    ],
+    "totalOutput": "¿Presión en rango seguro?: True"
+  },
+  "presion = 35\nes_segura = (presion >= 10) and (presion <= 50)\nprint(\"¿Presión en rango seguro?:\", es_segura)": {
+    "lines": [
+      "presion = 35",
+      "es_segura = (presion >= 10) and (presion <= 50)",
+      "print(\"¿Presión en rango seguro?:\", es_segura)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¿Presión en rango seguro?: True",
+        "outputSoFar": [
+          "¿Presión en rango seguro?: True"
+        ]
+      }
+    ],
+    "totalOutput": "¿Presión en rango seguro?: True"
+  },
+  "print(\"1. Antes de la decisión\")\nif True:\n    print(\"2. Dentro del bloque condicional (4 espacios)\")\n    print(\"3. También dentro del bloque\")\nprint(\"4. Fuera del bloque (sin sangría)\")": {
+    "lines": [
+      "print(\"1. Antes de la decisión\")",
+      "if True:",
+      "    print(\"2. Dentro del bloque condicional (4 espacios)\")",
+      "    print(\"3. También dentro del bloque\")",
+      "print(\"4. Fuera del bloque (sin sangría)\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": "1. Antes de la decisión",
+        "outputSoFar": [
+          "1. Antes de la decisión"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "1. Antes de la decisión"
+        ]
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "1. Antes de la decisión"
+        ]
+      },
+      {
+        "prints": "2. Dentro del bloque condicional (4 espacios)\n3. También dentro del bloque",
+        "outputSoFar": [
+          "1. Antes de la decisión",
+          "2. Dentro del bloque condicional (4 espacios)",
+          "3. También dentro del bloque"
+        ]
+      },
+      {
+        "prints": "4. Fuera del bloque (sin sangría)",
+        "outputSoFar": [
+          "1. Antes de la decisión",
+          "2. Dentro del bloque condicional (4 espacios)",
+          "3. También dentro del bloque",
+          "4. Fuera del bloque (sin sangría)"
+        ]
+      }
+    ],
+    "totalOutput": "1. Antes de la decisión\n2. Dentro del bloque condicional (4 espacios)\n3. También dentro del bloque\n4. Fuera del bloque (sin sangría)"
+  },
+  "temperatura = 18\nif temperatura > 30:\n    print(\"Alerta: Ola de calor\")\n    print(\"Enciende el ventilador\")\nprint(\"Monitoreo climático finalizado\")": {
+    "lines": [
+      "temperatura = 18",
+      "if temperatura > 30:",
+      "    print(\"Alerta: Ola de calor\")",
+      "    print(\"Enciende el ventilador\")",
+      "print(\"Monitoreo climático finalizado\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Monitoreo climático finalizado",
+        "outputSoFar": [
+          "Monitoreo climático finalizado"
+        ]
+      }
+    ],
+    "totalOutput": "Monitoreo climático finalizado"
+  },
+  "nivel_tanque = 90\nif nivel_tanque > 80:\n    print(\"¡Atención! Tanque casi lleno\")\nprint(\"Sensor en línea\")": {
+    "lines": [
+      "nivel_tanque = 90",
+      "if nivel_tanque > 80:",
+      "    print(\"¡Atención! Tanque casi lleno\")",
+      "print(\"Sensor en línea\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¡Atención! Tanque casi lleno",
+        "outputSoFar": [
+          "¡Atención! Tanque casi lleno"
+        ]
+      },
+      {
+        "prints": "Sensor en línea",
+        "outputSoFar": [
+          "¡Atención! Tanque casi lleno",
+          "Sensor en línea"
+        ]
+      }
+    ],
+    "totalOutput": "¡Atención! Tanque casi lleno\nSensor en línea"
+  },
+  "edad = 14\nprecio = 5000\nif edad < 18:\n    precio = precio * 0.95\n    print(\"Descuento aplicado por ser menor de edad\")\nprint(\"Total a pagar: $\", precio)": {
+    "lines": [
+      "edad = 14",
+      "precio = 5000",
+      "if edad < 18:",
+      "    precio = precio * 0.95",
+      "    print(\"Descuento aplicado por ser menor de edad\")",
+      "print(\"Total a pagar: $\", precio)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Descuento aplicado por ser menor de edad",
+        "outputSoFar": [
+          "Descuento aplicado por ser menor de edad"
+        ]
+      },
+      {
+        "prints": "Total a pagar: $ 4750.0",
+        "outputSoFar": [
+          "Descuento aplicado por ser menor de edad",
+          "Total a pagar: $ 4750.0"
+        ]
+      }
+    ],
+    "totalOutput": "Descuento aplicado por ser menor de edad\nTotal a pagar: $ 4750.0"
+  },
+  "nota = 2.8\nif nota >= 3.0:\n    print(\"Aprobado\")\nprint(\"Calificación registrada en el sistema\")": {
+    "lines": [
+      "nota = 2.8",
+      "if nota >= 3.0:",
+      "    print(\"Aprobado\")",
+      "print(\"Calificación registrada en el sistema\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Calificación registrada en el sistema",
+        "outputSoFar": [
+          "Calificación registrada en el sistema"
+        ]
+      }
+    ],
+    "totalOutput": "Calificación registrada en el sistema"
+  },
+  "SALARIO_MINIMO = 1300000\nsalario = 1500000\nif salario < SALARIO_MINIMO:\n    salario = salario * 1.10\nprint(\"Salario final:\", salario)": {
+    "lines": [
+      "SALARIO_MINIMO = 1300000",
+      "salario = 1500000",
+      "if salario < SALARIO_MINIMO:",
+      "    salario = salario * 1.10",
+      "print(\"Salario final:\", salario)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Salario final: 1500000",
+        "outputSoFar": [
+          "Salario final: 1500000"
+        ]
+      }
+    ],
+    "totalOutput": "Salario final: 1500000"
+  },
+  "velocidad = 92\nlimite = 80\nif velocidad > limite:\n    print(\"¡Alerta! Exceso de velocidad detectado\")\nprint(\"Radar activo\")": {
+    "lines": [
+      "velocidad = 92",
+      "limite = 80",
+      "if velocidad > limite:",
+      "    print(\"¡Alerta! Exceso de velocidad detectado\")",
+      "print(\"Radar activo\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¡Alerta! Exceso de velocidad detectado",
+        "outputSoFar": [
+          "¡Alerta! Exceso de velocidad detectado"
+        ]
+      },
+      {
+        "prints": "Radar activo",
+        "outputSoFar": [
+          "¡Alerta! Exceso de velocidad detectado",
+          "Radar activo"
+        ]
+      }
+    ],
+    "totalOutput": "¡Alerta! Exceso de velocidad detectado\nRadar activo"
+  },
+  "velocidad = 92\nlimite = 80\nif velocidad == limite:\n    print(\"¡Alerta! Exceso de velocidad detectado\")\nprint(\"Radar activo\")": {
+    "lines": [
+      "velocidad = 92",
+      "limite = 80",
+      "if velocidad == limite:",
+      "    print(\"¡Alerta! Exceso de velocidad detectado\")",
+      "print(\"Radar activo\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Radar activo",
+        "outputSoFar": [
+          "Radar activo"
+        ]
+      }
+    ],
+    "totalOutput": "Radar activo"
+  },
+  "velocidad = 92\nlimite = 80\nif velocidad < limite:\n    print(\"¡Alerta! Exceso de velocidad detectado\")\nprint(\"Radar activo\")": {
+    "lines": [
+      "velocidad = 92",
+      "limite = 80",
+      "if velocidad < limite:",
+      "    print(\"¡Alerta! Exceso de velocidad detectado\")",
+      "print(\"Radar activo\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Radar activo",
+        "outputSoFar": [
+          "Radar activo"
+        ]
+      }
+    ],
+    "totalOutput": "Radar activo"
+  },
+  "nota = 4.2\nif nota >= 3.0:\n    print(\"¡Felicitaciones! Has aprobado\")\nelse:\n    print(\"Reprobado, debes habilitar\")\nprint(\"Cierre del periodo académico\")": {
+    "lines": [
+      "nota = 4.2",
+      "if nota >= 3.0:",
+      "    print(\"¡Felicitaciones! Has aprobado\")",
+      "else:",
+      "    print(\"Reprobado, debes habilitar\")",
+      "print(\"Cierre del periodo académico\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "¡Felicitaciones! Has aprobado",
+        "outputSoFar": [
+          "¡Felicitaciones! Has aprobado"
+        ]
+      },
+      {
+        "prints": "Cierre del periodo académico",
+        "outputSoFar": [
+          "¡Felicitaciones! Has aprobado",
+          "Cierre del periodo académico"
+        ]
+      }
+    ],
+    "totalOutput": "¡Felicitaciones! Has aprobado\nCierre del periodo académico"
+  },
+  "numero = 7\nif numero % 2 == 0:\n    print(\"El número es PAR\")\nelse:\n    print(\"El número es IMPAR\")": {
+    "lines": [
+      "numero = 7",
+      "if numero % 2 == 0:",
+      "    print(\"El número es PAR\")",
+      "else:",
+      "    print(\"El número es IMPAR\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "El número es IMPAR",
+        "outputSoFar": [
+          "El número es IMPAR"
+        ]
+      }
+    ],
+    "totalOutput": "El número es IMPAR"
+  },
+  "salario = 2000000\nminimo = 1300000\nif salario < minimo:\n    salario = salario * 1.10\nelse:\n    salario = salario * 1.05\nprint(\"Salario ajustado:\", int(salario))": {
+    "lines": [
+      "salario = 2000000",
+      "minimo = 1300000",
+      "if salario < minimo:",
+      "    salario = salario * 1.10",
+      "else:",
+      "    salario = salario * 1.05",
+      "print(\"Salario ajustado:\", int(salario))"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Salario ajustado: 2100000",
+        "outputSoFar": [
+          "Salario ajustado: 2100000"
+        ]
+      }
+    ],
+    "totalOutput": "Salario ajustado: 2100000"
+  },
+  "saldo = 50000\nretiro = 80000\nif retiro <= saldo:\n    saldo = saldo - retiro\n    print(\"Retiro exitoso\")\nelse:\n    print(\"Fondos insuficientes\")\nprint(\"Saldo disponible: $\", saldo)": {
+    "lines": [
+      "saldo = 50000",
+      "retiro = 80000",
+      "if retiro <= saldo:",
+      "    saldo = saldo - retiro",
+      "    print(\"Retiro exitoso\")",
+      "else:",
+      "    print(\"Fondos insuficientes\")",
+      "print(\"Saldo disponible: $\", saldo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Fondos insuficientes",
+        "outputSoFar": [
+          "Fondos insuficientes"
+        ]
+      },
+      {
+        "prints": "Saldo disponible: $ 50000",
+        "outputSoFar": [
+          "Fondos insuficientes",
+          "Saldo disponible: $ 50000"
+        ]
+      }
+    ],
+    "totalOutput": "Fondos insuficientes\nSaldo disponible: $ 50000"
+  },
+  "numero = -8\nif numero > 0:\n    print(\"El número es POSITIVO\")\nelif numero == 0:\n    print(\"El número es CERO\")\nelse:\n    print(\"El número es NEGATIVO\")\nprint(\"Clasificación terminada\")": {
+    "lines": [
+      "numero = -8",
+      "if numero > 0:",
+      "    print(\"El número es POSITIVO\")",
+      "elif numero == 0:",
+      "    print(\"El número es CERO\")",
+      "else:",
+      "    print(\"El número es NEGATIVO\")",
+      "print(\"Clasificación terminada\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "El número es NEGATIVO",
+        "outputSoFar": [
+          "El número es NEGATIVO"
+        ]
+      },
+      {
+        "prints": "Clasificación terminada",
+        "outputSoFar": [
+          "El número es NEGATIVO",
+          "Clasificación terminada"
+        ]
+      }
+    ],
+    "totalOutput": "El número es NEGATIVO\nClasificación terminada"
+  },
+  "puntos = 85\nif puntos >= 90:\n    calificacion = \"Excelente\"\nelif puntos >= 80:\n    calificacion = \"Sobresaliente\"\nelif puntos >= 60:\n    calificacion = \"Aprobado\"\nelse:\n    calificacion = \"Insuficiente\"\nprint(\"Calificación final:\", calificacion)": {
+    "lines": [
+      "puntos = 85",
+      "if puntos >= 90:",
+      "    calificacion = \"Excelente\"",
+      "elif puntos >= 80:",
+      "    calificacion = \"Sobresaliente\"",
+      "elif puntos >= 60:",
+      "    calificacion = \"Aprobado\"",
+      "else:",
+      "    calificacion = \"Insuficiente\"",
+      "print(\"Calificación final:\", calificacion)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Calificación final: Sobresaliente",
+        "outputSoFar": [
+          "Calificación final: Sobresaliente"
+        ]
+      }
+    ],
+    "totalOutput": "Calificación final: Sobresaliente"
+  },
+  "edad = 70\nif edad >= 18:\n    print(\"Adulto general\")\nelif edad >= 65:\n    print(\"Adulto mayor con descuento especial\")": {
+    "lines": [
+      "edad = 70",
+      "if edad >= 18:",
+      "    print(\"Adulto general\")",
+      "elif edad >= 65:",
+      "    print(\"Adulto mayor con descuento especial\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Adulto general",
+        "outputSoFar": [
+          "Adulto general"
+        ]
+      }
+    ],
+    "totalOutput": "Adulto general"
+  },
+  "estrato = 3\nif estrato <= 2:\n    regimen = \"Subsidio social\"\nelif estrato > 4:\n    regimen = \"Tarifa plena sin recargo\"\nelse:\n    regimen = \"Contribución solidaria\"\nprint(\"Régimen aplicado:\", regimen)": {
+    "lines": [
+      "estrato = 3",
+      "if estrato <= 2:",
+      "    regimen = \"Subsidio social\"",
+      "elif estrato > 4:",
+      "    regimen = \"Tarifa plena sin recargo\"",
+      "else:",
+      "    regimen = \"Contribución solidaria\"",
+      "print(\"Régimen aplicado:\", regimen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Régimen aplicado: Contribución solidaria",
+        "outputSoFar": [
+          "Régimen aplicado: Contribución solidaria"
+        ]
+      }
+    ],
+    "totalOutput": "Régimen aplicado: Contribución solidaria"
+  },
+  "estrato = 3\nif estrato <= 2:\n    regimen = \"Subsidio social\"\nelif estrato <= 4:\n    regimen = \"Tarifa plena sin recargo\"\nelse:\n    regimen = \"Contribución solidaria\"\nprint(\"Régimen aplicado:\", regimen)": {
+    "lines": [
+      "estrato = 3",
+      "if estrato <= 2:",
+      "    regimen = \"Subsidio social\"",
+      "elif estrato <= 4:",
+      "    regimen = \"Tarifa plena sin recargo\"",
+      "else:",
+      "    regimen = \"Contribución solidaria\"",
+      "print(\"Régimen aplicado:\", regimen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Régimen aplicado: Tarifa plena sin recargo",
+        "outputSoFar": [
+          "Régimen aplicado: Tarifa plena sin recargo"
+        ]
+      }
+    ],
+    "totalOutput": "Régimen aplicado: Tarifa plena sin recargo"
+  },
+  "estrato = 3\nif estrato <= 2:\n    regimen = \"Subsidio social\"\nelif estrato == 6:\n    regimen = \"Tarifa plena sin recargo\"\nelse:\n    regimen = \"Contribución solidaria\"\nprint(\"Régimen aplicado:\", regimen)": {
+    "lines": [
+      "estrato = 3",
+      "if estrato <= 2:",
+      "    regimen = \"Subsidio social\"",
+      "elif estrato == 6:",
+      "    regimen = \"Tarifa plena sin recargo\"",
+      "else:",
+      "    regimen = \"Contribución solidaria\"",
+      "print(\"Régimen aplicado:\", regimen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "Régimen aplicado: Contribución solidaria",
+        "outputSoFar": [
+          "Régimen aplicado: Contribución solidaria"
+        ]
+      }
+    ],
+    "totalOutput": "Régimen aplicado: Contribución solidaria"
   }
 };

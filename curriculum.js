@@ -791,6 +791,691 @@ const CURRICULUM = {
           ]
         }
       ]
+    },
+    {
+      "id": "semana-2",
+      "number": 2,
+      "title": "Semana 2: Condicionales (7 sep - 13 sep)",
+      "description": "Toma de decisiones en Python, operadores relacionales, lógica booleana, if, else y elif.",
+      "status": "active",
+      "lessons": [
+        {
+          "id": "w2-l1",
+          "weekId": "semana-2",
+          "number": 1,
+          "tag": "Lógica",
+          "shortTitle": "Comparadores",
+          "title": "Operadores Relacionales y Comparaciones",
+          "description": "Aprende a comparar números y cadenas en Python para obtener respuestas booleanas (True o False).",
+          "duration": "8 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · Operadores relacionales",
+              "title": "¿Cómo compara valores una computadora?",
+              "intro": "Los operadores relacionales permiten comparar dos valores y responder siempre con una verdad lógica: <code>True</code> (Verdadero) o <code>False</code> (Falso).",
+              "examples": [
+                {
+                  "label": "Comparaciones numéricas",
+                  "code": "x = 10\ny = 20\nprint(\"¿x es menor que y?:\", x < y)\nprint(\"¿x es igual a y?:\", x == y)\nprint(\"¿x es diferente de y?:\", x != y)",
+                  "output": "¿x es menor que y?: True\n¿x es igual a y?: False\n¿x es diferente de y?: True",
+                  "explanation": "Cada comparación produce un valor de tipo bool. En Python, '==' evalúa igualdad y '!=' evalúa diferencia."
+                }
+              ],
+              "keyTakeaway": "Los operadores relacionales (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>) siempre producen un dato de tipo <strong>bool</strong>."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Predicción relacional",
+              "title": "¿Cuál es el resultado de la comparación?",
+              "question": "Observa el valor de las variables y determina qué imprimirá exactamente este código:",
+              "code": "a = 15\nb = 15\nc = 30\nprint(a == b)\nprint(a + b > c)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "True\nTrue",
+                  "isCorrect": false,
+                  "whyIncorrect": "a + b es 30, y 30 NO es estrictamente mayor que 30 (son iguales, por lo que > da False)."
+                },
+                {
+                  "id": "B",
+                  "text": "True\nFalse",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "False\nFalse",
+                  "isCorrect": false,
+                  "whyIncorrect": "a == b es True porque ambas variables valen exactamente 15."
+                }
+              ],
+              "correctionTip": "Recuerda que 30 > 30 es False. Para que fuera True tendría que usarse el operador mayor o igual (>=).",
+              "fullAnswerExplanation": "¡Exacto! 15 == 15 es True, pero 30 > 30 es False porque la comparación estricta requiere que el primer valor supere al segundo."
+            },
+            {
+              "type": "explanation",
+              "partLabel": "Paso 3 · La trampa clásica",
+              "title": "Diferencia crítica entre = y ==",
+              "intro": "Uno de los errores más frecuentes en programación es confundir la asignación con la comparación de igualdad.",
+              "examples": [
+                {
+                  "label": "Asignar vs Comparar",
+                  "code": "# Con un solo signo '=' guardamos el valor 100 en la variable:\npuntos = 100\n# Con doble signo '==' preguntamos si puntos es igual a 100:\nes_cien = (puntos == 100)\nprint(\"Puntos guardados:\", puntos)\nprint(\"¿Son exactamente 100?:\", es_cien)",
+                  "output": "Puntos guardados: 100\n¿Son exactamente 100?: True",
+                  "explanation": "Un solo signo '=' modifica la variable. El doble signo '==' solo compara sin alterar el dato."
+                }
+              ],
+              "keyTakeaway": "Usa <code>=</code> para <strong>guardar</strong> datos y <code>==</code> para <strong>preguntar</strong> si dos valores son iguales."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Práctica guiada",
+              "title": "Verificación de orden numérico",
+              "instruction": "Completa el código para verificar si la variable `menor` es efectivamente menor o igual que `mayor`.",
+              "slotMarker": "___",
+              "starterCode": "menor = 25\nmayor = 50\nresultado = menor ___ mayor\nprint(\"¿Cumple el orden?:\", resultado)",
+              "options": [
+                {
+                  "id": "A",
+                  "code": ">",
+                  "label": ">",
+                  "isCorrect": false,
+                  "explanation": "El operador > pregunta si 25 es mayor que 50, lo cual evaluaría a False."
+                },
+                {
+                  "id": "B",
+                  "code": "==",
+                  "label": "==",
+                  "isCorrect": false,
+                  "explanation": "El operador == verifica igualdad exacta (25 == 50 es False)."
+                },
+                {
+                  "id": "C",
+                  "code": "<=",
+                  "label": "<=",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! 25 <= 50 es True porque 25 es menor o igual que 50."
+                }
+              ],
+              "expectedOutput": "¿Cumple el orden?: True"
+            }
+          ]
+        },
+        {
+          "id": "w2-l2",
+          "weekId": "semana-2",
+          "number": 2,
+          "tag": "Lógica",
+          "shortTitle": "Lógica and/or",
+          "title": "Operadores Lógicos y Tablas de Verdad",
+          "description": "Combina múltiples condiciones con los operadores lógicos and, or y not.",
+          "duration": "8 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · Conjunción lógica (and)",
+              "title": "Condiciones compuestas con and",
+              "intro": "A menudo una decisión requiere que varias cosas ocurran al mismo tiempo. El operador <code>and</code> devuelve <code>True</code> únicamente si <strong>ambas</strong> condiciones son verdaderas.",
+              "examples": [
+                {
+                  "label": "Verificación de requisitos",
+                  "code": "edad = 20\ntiene_licencia = True\npuede_conducir = (edad >= 18) and tiene_licencia\nprint(\"¿Puede conducir el auto?:\", puede_conducir)",
+                  "output": "¿Puede conducir el auto?: True",
+                  "explanation": "Como la edad es >= 18 (True) Y tiene_licencia es True, el resultado global es True."
+                }
+              ],
+              "keyTakeaway": "El operador <code>and</code> es exigente: basta con que una sola condición sea <code>False</code> para que todo el resultado sea <code>False</code>."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Disyunción lógica (or)",
+              "title": "Evaluando la alternativa con or",
+              "question": "El operador `or` es flexible: es True si al menos una de las partes es verdadera. ¿Qué mostrará este código?",
+              "code": "dia = \"domingo\"\nes_feriado = False\ndescanso = (dia == \"domingo\") or es_feriado\nprint(\"¿Es día de descanso?:\", descanso)\nprint(\"Inversión con not:\", not descanso)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "¿Es día de descanso?: False\nInversión con not: True",
+                  "isCorrect": false,
+                  "whyIncorrect": "dia == 'domingo' es True, y en un 'or' basta con que una parte sea True para que todo sea True."
+                },
+                {
+                  "id": "B",
+                  "text": "¿Es día de descanso?: True\nInversión con not: False",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "¿Es día de descanso?: True\nInversión con not: True",
+                  "isCorrect": false,
+                  "whyIncorrect": "not invierte el valor booleano: si descanso es True, not descanso obligatoriamente es False."
+                }
+              ],
+              "correctionTip": "True or False produce True. Luego, not True se convierte en False.",
+              "fullAnswerExplanation": "¡Excelente! Con 'or', al cumplirse que el día es domingo, la variable descanso es True. Luego, el operador 'not' invierte True a False."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Precedencia lógica",
+              "title": "Jerarquía de operadores lógicos",
+              "question": "En Python, `not` se evalúa primero, luego `and`, y finalmente `or`. ¿Cuál es la salida de esta expresión?",
+              "code": "x = 5\nresultado = not (x > 10) and (x == 5)\nprint(\"Resultado lógico:\", resultado)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Resultado lógico: True",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Resultado lógico: False",
+                  "isCorrect": false,
+                  "whyIncorrect": "x > 10 es False. not False da True. Luego True and True da True."
+                },
+                {
+                  "id": "C",
+                  "text": "Error: no se pueden combinar not y and",
+                  "isCorrect": false,
+                  "whyIncorrect": "En Python es completamente válido y muy común encadenar operadores lógicos."
+                }
+              ],
+              "correctionTip": "Evalúa primero el paréntesis: 5 > 10 es False. not False se vuelve True. Luego True and (5 == 5) es True.",
+              "fullAnswerExplanation": "¡Correcto! not (False) produce True. Luego evaluamos True and True, resultando en True."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Práctica guiada",
+              "title": "Rango de presión seguro",
+              "instruction": "En ingeniería química, un reactor opera seguro si la presión está entre 10 y 50 MPa inclusive. Completa con el operador lógico adecuado.",
+              "slotMarker": "___",
+              "starterCode": "presion = 35\nes_segura = (presion >= 10) ___ (presion <= 50)\nprint(\"¿Presión en rango seguro?:\", es_segura)",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "or",
+                  "label": "or",
+                  "isCorrect": false,
+                  "explanation": "Con 'or', una presión peligrosa de 100 MPa daría True porque 100 >= 10 es True. Necesitas que ambos límites se cumplan."
+                },
+                {
+                  "id": "B",
+                  "code": "and",
+                  "label": "and",
+                  "isCorrect": true,
+                  "explanation": "¡Brillante! Se deben cumplir ambas condiciones simultáneamente: presión >= 10 Y presión <= 50."
+                },
+                {
+                  "id": "C",
+                  "code": "not",
+                  "label": "not",
+                  "isCorrect": false,
+                  "explanation": "'not' es un operador unario (afecta a un solo término), no puede colocarse entre dos expresiones."
+                }
+              ],
+              "expectedOutput": "¿Presión en rango seguro?: True"
+            }
+          ]
+        },
+        {
+          "id": "w2-l3",
+          "weekId": "semana-2",
+          "number": 3,
+          "tag": "Sintaxis",
+          "shortTitle": "Indentación",
+          "title": "La Regla de Indentación en Python (Off-side Rule)",
+          "description": "Aprende cómo Python define qué código pertenece a una estructura usando 4 espacios y los dos puntos (:).",
+          "duration": "7 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · La regla del fuera de juego",
+              "title": "Bloques de código sin llaves {}",
+              "intro": "A diferencia de lenguajes como C++ o Java que usan llaves <code>{}</code>, Python utiliza la <strong>indentación</strong> (sangría) para saber exactamente qué instrucciones pertenecen a un condicional.",
+              "examples": [
+                {
+                  "label": "Estructura de bloques",
+                  "code": "print(\"1. Antes de la decisión\")\nif True:\n    print(\"2. Dentro del bloque condicional (4 espacios)\")\n    print(\"3. También dentro del bloque\")\nprint(\"4. Fuera del bloque (sin sangría)\")",
+                  "output": "1. Antes de la decisión\n2. Dentro del bloque condicional (4 espacios)\n3. También dentro del bloque\n4. Fuera del bloque (sin sangría)",
+                  "explanation": "Las líneas con 4 espacios pertenecen al 'if'. La línea 4, al no tener sangría, se ejecuta siempre."
+                }
+              ],
+              "keyTakeaway": "La línea de condición siempre termina con dos puntos <code>:</code> y el bloque subordinado lleva <strong>4 espacios</strong> de sangría."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Identificación de bloques",
+              "title": "¿Qué líneas se ejecutarán?",
+              "question": "Observa con atención la sangría de cada instrucción print. ¿Cuál será la salida en consola?",
+              "code": "temperatura = 18\nif temperatura > 30:\n    print(\"Alerta: Ola de calor\")\n    print(\"Enciende el ventilador\")\nprint(\"Monitoreo climático finalizado\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Alerta: Ola de calor\nMonitoreo climático finalizado",
+                  "isCorrect": false,
+                  "whyIncorrect": "Como 18 > 30 es False, todo el bloque indentado bajo el if se salta."
+                },
+                {
+                  "id": "B",
+                  "text": "Monitoreo climático finalizado",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "No imprime nada",
+                  "isCorrect": false,
+                  "whyIncorrect": "El último print no tiene sangría, por lo que está fuera del if y siempre se ejecuta."
+                }
+              ],
+              "correctionTip": "La condición 18 > 30 es False. Las dos líneas indentadas se omiten y el programa continúa con la línea sin sangría.",
+              "fullAnswerExplanation": "¡Exacto! El bloque del if no se ejecuta porque 18 no supera 30. Solo se imprime la línea que está fuera del condicional."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Detección de error",
+              "title": "¿Qué ocurre si falta la sangría?",
+              "question": "Un estudiante escribe `if activo:` pero olvida la sangría en la siguiente línea: `print(\"El sistema está activo\")`. ¿Cómo responderá Python al ejecutarlo?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Python asume automáticamente que está dentro y lo imprime.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Python no asume sangrías ausentes: la indentación es estricta por diseño del lenguaje."
+                },
+                {
+                  "id": "B",
+                  "text": "Produce un IndentationError: expected an indented block after 'if' statement.",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "El programa imprime 'None'.",
+                  "isCorrect": false,
+                  "whyIncorrect": "No devuelve None; el intérprete detiene la ejecución inmediatamente con un error de indentación."
+                }
+              ],
+              "correctionTip": "En Python, cualquier línea posterior a dos puntos (:) requiere obligatoriamente sangría.",
+              "fullAnswerExplanation": "¡Correcto! En Python la indentación no es estética, es sintaxis obligatoria. Si falta, el compilador genera IndentationError."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Práctica guiada",
+              "title": "Sintaxis con dos puntos",
+              "instruction": "Completa la cabecera del condicional para que la sintaxis sea válida en Python.",
+              "slotMarker": "___",
+              "starterCode": "nivel_tanque = 90\nif nivel_tanque > 80___\n    print(\"¡Atención! Tanque casi lleno\")\nprint(\"Sensor en línea\")",
+              "options": [
+                {
+                  "id": "A",
+                  "code": ";",
+                  "label": ";",
+                  "isCorrect": false,
+                  "explanation": "En Python las sentencias condicionales no se cierran con punto y coma (;)."
+                },
+                {
+                  "id": "B",
+                  "code": " then",
+                  "label": "then",
+                  "isCorrect": false,
+                  "explanation": "La palabra clave 'then' se usa en otros lenguajes como Pascal o SQL, no en Python."
+                },
+                {
+                  "id": "C",
+                  "code": ":",
+                  "label": ":",
+                  "isCorrect": true,
+                  "explanation": "¡Perfecto! Toda cabecera condicional en Python concluye con dos puntos (:) antes de abrir el bloque."
+                }
+              ],
+              "expectedOutput": "¡Atención! Tanque casi lleno\nSensor en línea"
+            }
+          ]
+        },
+        {
+          "id": "w2-l4",
+          "weekId": "semana-2",
+          "number": 4,
+          "tag": "Decisiones",
+          "shortTitle": "Condicional if",
+          "title": "Toma de Decisiones: Condicional Simple",
+          "description": "Aprende a bifurcar el flujo de tu programa para ejecutar código solo cuando una condición es verdadera.",
+          "duration": "8 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · La decisión simple",
+              "title": "El condicional if en acción",
+              "intro": "Un programa interactivo debe reaccionar según los datos. Siguiendo el ejemplo del cuaderno de clase: se otorga un 5% de descuento en helados si el cliente es menor de edad.",
+              "examples": [
+                {
+                  "label": "Descuento a menores de edad",
+                  "code": "edad = 14\nprecio = 5000\nif edad < 18:\n    precio = precio * 0.95\n    print(\"Descuento aplicado por ser menor de edad\")\nprint(\"Total a pagar: $\", precio)",
+                  "output": "Descuento aplicado por ser menor de edad\nTotal a pagar: $ 4750.0",
+                  "explanation": "Como edad < 18 es True (14 < 18), se ejecuta el descuento del 5% y el precio baja a 4750."
+                }
+              ],
+              "keyTakeaway": "Si la condición evalúa a <code>True</code>, se ejecuta el bloque indentado. Si es <code>False</code>, el bloque se omite y el programa continúa."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Aprobación académica",
+              "title": "¿Se imprimirá el mensaje de aprobación?",
+              "question": "Basado en el Ejemplo 1 del cuaderno: si la nota es mayor o igual a 3.0, imprime 'Aprobado'. Si un estudiante tiene nota 2.8, ¿qué imprimirá?",
+              "code": "nota = 2.8\nif nota >= 3.0:\n    print(\"Aprobado\")\nprint(\"Calificación registrada en el sistema\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Aprobado\nCalificación registrada en el sistema",
+                  "isCorrect": false,
+                  "whyIncorrect": "2.8 >= 3.0 es False, por lo que el print('Aprobado') jamás se ejecuta."
+                },
+                {
+                  "id": "B",
+                  "text": "Calificación registrada en el sistema",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "No imprime nada",
+                  "isCorrect": false,
+                  "whyIncorrect": "El último mensaje está fuera del if y se ejecuta incondicionalmente."
+                }
+              ],
+              "correctionTip": "La condición 2.8 >= 3.0 es False. El print('Aprobado') se salta.",
+              "fullAnswerExplanation": "¡Exacto! Como 2.8 no es mayor ni igual que 3.0, la condición falla y únicamente se muestra el mensaje final sin sangría."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Salario mínimo",
+              "title": "Ajuste salarial (Ejemplo 2 del cuaderno)",
+              "question": "Si el salario de un empleado es de 1,500,000 y el salario mínimo es de 1,300,000, ¿cuál será el salario final tras evaluar el if?",
+              "code": "SALARIO_MINIMO = 1300000\nsalario = 1500000\nif salario < SALARIO_MINIMO:\n    salario = salario * 1.10\nprint(\"Salario final:\", salario)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Salario final: 1650000.0",
+                  "isCorrect": false,
+                  "whyIncorrect": "El incremento del 10% solo se aplica si el salario es inferior al mínimo (1500000 < 1300000 es False)."
+                },
+                {
+                  "id": "B",
+                  "text": "Salario final: 1300000",
+                  "isCorrect": false,
+                  "whyIncorrect": "El salario no se reduce al mínimo."
+                },
+                {
+                  "id": "C",
+                  "text": "Salario final: 1500000",
+                  "isCorrect": true
+                }
+              ],
+              "correctionTip": "1500000 < 1300000 es False, por lo que el bloque dentro del if no se ejecuta y el salario no cambia.",
+              "fullAnswerExplanation": "¡Correcto! Al ganar más que el mínimo, la condición no se cumple y el salario se mantiene en 1,500,000 intacto."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Práctica guiada",
+              "title": "Control de velocidad en carretera",
+              "instruction": "Completa la condición para advertir si un vehículo sobrepasa el límite permitido de 80 km/h.",
+              "slotMarker": "___",
+              "starterCode": "velocidad = 92\nlimite = 80\nif ___:\n    print(\"¡Alerta! Exceso de velocidad detectado\")\nprint(\"Radar activo\")",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "velocidad > limite",
+                  "label": "velocidad > limite",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! 92 > 80 es True, activando la advertencia por superar el límite."
+                },
+                {
+                  "id": "B",
+                  "code": "velocidad == limite",
+                  "label": "velocidad == limite",
+                  "isCorrect": false,
+                  "explanation": "El operador == solo detectaría si viaja a exactamente 80 km/h."
+                },
+                {
+                  "id": "C",
+                  "code": "velocidad < limite",
+                  "label": "velocidad < limite",
+                  "isCorrect": false,
+                  "explanation": "Con < la condición daría False (92 no es menor que 80) y no advertiría la infracción."
+                }
+              ],
+              "expectedOutput": "¡Alerta! Exceso de velocidad detectado\nRadar activo"
+            }
+          ]
+        },
+        {
+          "id": "w2-l5",
+          "weekId": "semana-2",
+          "number": 5,
+          "tag": "Decisiones",
+          "shortTitle": "Estructura else",
+          "title": "El Camino Alternativo: Condicional Doble if-else",
+          "description": "Maneja bifurcaciones de dos caminos: qué hacer cuando la condición es verdadera y qué hacer cuando es falsa.",
+          "duration": "8 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · La bifurcación doble",
+              "title": "Manejando el caso contrario con else",
+              "intro": "En problemas reales, necesitamos ejecutar una acción si la condición se cumple, y **otra acción diferente** si no se cumple (Ejemplo 3 del cuaderno: aprobado o reprobado).",
+              "examples": [
+                {
+                  "label": "Aprobado vs Reprobado",
+                  "code": "nota = 4.2\nif nota >= 3.0:\n    print(\"¡Felicitaciones! Has aprobado\")\nelse:\n    print(\"Reprobado, debes habilitar\")\nprint(\"Cierre del periodo académico\")",
+                  "output": "¡Felicitaciones! Has aprobado\nCierre del periodo académico",
+                  "explanation": "Como la nota es 4.2 (>= 3.0), se toma la rama del if. La rama del else se descarta por completo."
+                }
+              ],
+              "keyTakeaway": "La cláusula <code>else</code> nunca lleva condición propia: se activa automáticamente siempre que la condición del <code>if</code> resulte <code>False</code>."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Detección de par o impar",
+              "title": "Par o impar con operador módulo (Ejercicio 02)",
+              "question": "En el Ejercicio 02 del cuaderno de clase se usa el residuo (%) para saber si un número es par. ¿Qué imprimirá este código con el número 7?",
+              "code": "numero = 7\nif numero % 2 == 0:\n    print(\"El número es PAR\")\nelse:\n    print(\"El número es IMPAR\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "El número es PAR",
+                  "isCorrect": false,
+                  "whyIncorrect": "7 % 2 es 1 (el residuo no es 0), por lo que entra al bloque del else."
+                },
+                {
+                  "id": "B",
+                  "text": "El número es IMPAR",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "Error: no se puede usar % dentro de un if",
+                  "isCorrect": false,
+                  "whyIncorrect": "Las operaciones aritméticas son totalmente válidas dentro de una condición lógica."
+                }
+              ],
+              "correctionTip": "7 dividido 2 da cociente 3 con residuo 1. Como 1 == 0 es False, salta al bloque else.",
+              "fullAnswerExplanation": "¡Exacto! 7 % 2 entrega 1. La comparación 1 == 0 es False, por lo que el programa ejecuta inmediatamente la rama else imprimiendo 'El número es IMPAR'."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Salario condicional compuesto",
+              "title": "Incremento escalonado (Ejemplo 4 del cuaderno)",
+              "question": "Si el salario es menor al mínimo se incrementa un 10%, de lo contrario se incrementa un 5%. ¿Qué salario imprimirá?",
+              "code": "salario = 2000000\nminimo = 1300000\nif salario < minimo:\n    salario = salario * 1.10\nelse:\n    salario = salario * 1.05\nprint(\"Salario ajustado:\", int(salario))",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Salario ajustado: 2100000",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Salario ajustado: 2200000",
+                  "isCorrect": false,
+                  "whyIncorrect": "2,000,000 no es menor al mínimo, por lo que no recibe el 10% sino el 5% del bloque else."
+                },
+                {
+                  "id": "C",
+                  "text": "Salario ajustado: 2000000",
+                  "isCorrect": false,
+                  "whyIncorrect": "El bloque else incrementa el salario en un 5% (2000000 * 1.05 = 2100000)."
+                }
+              ],
+              "correctionTip": "Como 2,000,000 < 1,300,000 es False, entra al else: 2000000 * 1.05 = 2100000.",
+              "fullAnswerExplanation": "¡Muy bien! Al no ser menor al mínimo, se ejecuta el else con aumento del 5%: 2,000,000 * 1.05 = 2,100,000."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Práctica guiada",
+              "title": "Cajero automático: retiro de fondos",
+              "instruction": "Completa el bloque alternativo para informar cuando el saldo no sea suficiente para el retiro.",
+              "slotMarker": "___",
+              "starterCode": "saldo = 50000\nretiro = 80000\nif retiro <= saldo:\n    saldo = saldo - retiro\n    print(\"Retiro exitoso\")\n___:\n    print(\"Fondos insuficientes\")\nprint(\"Saldo disponible: $\", saldo)",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "elif",
+                  "label": "elif",
+                  "isCorrect": false,
+                  "explanation": "'elif' exige escribir una condición adicional; aquí queremos cubrir todos los demás casos de forma directa."
+                },
+                {
+                  "id": "B",
+                  "code": "else",
+                  "label": "else",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! 'else:' captura cualquier situación donde retiro <= saldo resulte False."
+                },
+                {
+                  "id": "C",
+                  "code": "otherwise",
+                  "label": "otherwise",
+                  "isCorrect": false,
+                  "explanation": "'otherwise' no es una palabra reservada en Python; se utiliza siempre 'else:'."
+                }
+              ],
+              "expectedOutput": "Fondos insuficientes\nSaldo disponible: $ 50000"
+            }
+          ]
+        },
+        {
+          "id": "w2-l6",
+          "weekId": "semana-2",
+          "number": 6,
+          "tag": "Decisiones",
+          "shortTitle": "Escalera elif",
+          "title": "Múltiples Alternativas: Condicionales if-elif-else",
+          "description": "Evalúa múltiples casos excluyentes en cadena, como clasificar números, escalas de notas o categorías de tarifas.",
+          "duration": "9 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · La escalera de decisiones",
+              "title": "Clasificando con if-elif-else",
+              "intro": "Cuando un problema tiene 3 o más posibles caminos, usamos <code>elif</code> (abreviatura de *else if*). Python evalúa cada caso en orden de arriba a abajo y se detiene en el primero que sea <code>True</code> (Ejemplo 6 del cuaderno).",
+              "examples": [
+                {
+                  "label": "Positivo, cero o negativo",
+                  "code": "numero = -8\nif numero > 0:\n    print(\"El número es POSITIVO\")\nelif numero == 0:\n    print(\"El número es CERO\")\nelse:\n    print(\"El número es NEGATIVO\")\nprint(\"Clasificación terminada\")",
+                  "output": "El número es NEGATIVO\nClasificación terminada",
+                  "explanation": "-8 > 0 es False. Pasa al elif: -8 == 0 es False. Finalmente entra al else e imprime NEGATIVO."
+                }
+              ],
+              "keyTakeaway": "En cuanto una condición de la escalera resulta <code>True</code>, Python ejecuta ese bloque y <strong>salta todas las demás ramas restantes</strong>."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Escala de calificaciones",
+              "title": "¿Cuál bloque se activará?",
+              "question": "Un estudiante obtiene 85 puntos en su examen. ¿Cuál mensaje exacto mostrará el programa?",
+              "code": "puntos = 85\nif puntos >= 90:\n    calificacion = \"Excelente\"\nelif puntos >= 80:\n    calificacion = \"Sobresaliente\"\nelif puntos >= 60:\n    calificacion = \"Aprobado\"\nelse:\n    calificacion = \"Insuficiente\"\nprint(\"Calificación final:\", calificacion)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Calificación final: Excelente",
+                  "isCorrect": false,
+                  "whyIncorrect": "85 >= 90 es False, por lo que no entra al primer bloque."
+                },
+                {
+                  "id": "B",
+                  "text": "Calificación final: Sobresaliente",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "Calificación final: Aprobado",
+                  "isCorrect": false,
+                  "whyIncorrect": "Aunque 85 >= 60 también es True, Python ya entró en el elif de >= 80 y se detuvo ahí."
+                }
+              ],
+              "correctionTip": "La primera condición verdadera encontrada es 85 >= 80, por lo que calificacion se fija en 'Sobresaliente' y no evalúa más.",
+              "fullAnswerExplanation": "¡Exacto! Python evalúa en cascada. Como 85 >= 80 es True, asigna 'Sobresaliente' y omite inmediatamente las siguientes comparaciones."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · El orden de las condiciones",
+              "title": "La trampa del orden en elif",
+              "question": "¿Qué problema tiene este código al verificar la edad para un descuento especial de adulto mayor (65+)?",
+              "code": "edad = 70\nif edad >= 18:\n    print(\"Adulto general\")\nelif edad >= 65:\n    print(\"Adulto mayor con descuento especial\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "El programa imprime ambos mensajes.",
+                  "isCorrect": false,
+                  "whyIncorrect": "En una estructura if-elif solo se puede ejecutar una rama como máximo."
+                },
+                {
+                  "id": "B",
+                  "text": "Imprime 'Adulto general' y nunca llega a evaluar el descuento de 65+ porque 70 >= 18 ya fue True.",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "Produce un error de sintaxis por no incluir la cláusula else.",
+                  "isCorrect": false,
+                  "whyIncorrect": "La cláusula else es totalmente opcional en Python."
+                }
+              ],
+              "correctionTip": "Como 70 >= 18 es True, entra a la primera rama y salta el elif. Las condiciones más específicas siempre deben ir antes.",
+              "fullAnswerExplanation": "¡Brillante observación! En una escalera condicional las condiciones más específicas y restrictivas deben colocarse primero, o de lo contrario una condición amplia las 'ocultará'."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 4 · Práctica guiada",
+              "title": "Tarifa predial por estrato (Ejercicio 12)",
+              "instruction": "En Medellín el impuesto depende del estrato (Ejercicio 12 del cuaderno). Completa la condición para clasificar a los estratos medios (3 o 4) sin subsidio ni recargo.",
+              "slotMarker": "___",
+              "starterCode": "estrato = 3\nif estrato <= 2:\n    regimen = \"Subsidio social\"\nelif ___:\n    regimen = \"Tarifa plena sin recargo\"\nelse:\n    regimen = \"Contribución solidaria\"\nprint(\"Régimen aplicado:\", regimen)",
+              "options": [
+                {
+                  "id": "A",
+                  "code": "estrato > 4",
+                  "label": "estrato > 4",
+                  "isCorrect": false,
+                  "explanation": "Con estrato > 4 estarías clasificando estratos 5 y 6 en tarifa plena en lugar de contribución solidaria."
+                },
+                {
+                  "id": "B",
+                  "code": "estrato <= 4",
+                  "label": "estrato <= 4",
+                  "isCorrect": true,
+                  "explanation": "¡Perfecto! Como los estratos 1 y 2 ya fueron filtrados por el primer if, 'estrato <= 4' atrapa exactamente los estratos 3 y 4."
+                },
+                {
+                  "id": "C",
+                  "code": "estrato == 6",
+                  "label": "estrato == 6",
+                  "isCorrect": false,
+                  "explanation": "El estrato 6 corresponde a estratos altos con contribución solidaria."
+                }
+              ],
+              "expectedOutput": "Régimen aplicado: Tarifa plena sin recargo"
+            }
+          ]
+        }
+      ]
     }
   ]
 };
