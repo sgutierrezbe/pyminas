@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.35";
+const APP_VERSION = "v1.36";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
@@ -1185,7 +1185,7 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
       <div id="code-line-${playerId}-${idx}" class="code-exec-line flex items-center py-1 px-2 rounded-lg font-mono text-xs sm:text-sm min-w-0 w-max sm:w-full">
         <span class="w-5 sm:w-6 shrink-0 flex items-center justify-center font-bold text-white text-xs select-none" id="code-arrow-${playerId}-${idx}"></span>
         <span class="w-5 sm:w-6 shrink-0 text-slate-500 text-right pr-2 sm:pr-3 text-xs select-none">${idx + 1}</span>
-        <span class="text-slate-200 flex-1 leading-relaxed">${highlightPythonSyntax(line, playerId) || '&nbsp;'}</span>
+        <span class="code-line-text text-slate-200 flex-1 leading-relaxed whitespace-pre">${highlightPythonSyntax(line, playerId) || '&nbsp;'}</span>
       </div>
     `;
   }).join('');

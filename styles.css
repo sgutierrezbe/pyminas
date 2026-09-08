@@ -6,3 +6,13 @@ code *, pre *, kbd *, samp *, .font-mono *, [class*="font-mono"] *, .code-slot-b
   font-feature-settings: "liga" 0, "calt" 0, "dlig" 0, "clig" 0 !important;
   -webkit-font-feature-settings: "liga" 0, "calt" 0, "dlig" 0, "clig" 0 !important;
 }
+
+/* Preservar indentación (4 espacios) en todas las líneas de código ejecutables */
+.code-exec-line {
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+.code-exec-line .code-line-text,
+.code-exec-line > span:last-child {
+  white-space: pre !important;
+}

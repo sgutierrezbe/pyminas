@@ -302,7 +302,7 @@
         assert(continueBtn && !continueBtn.disabled, "Botón Continuar desbloqueado tras completar ejecución con input");
 
         // 14. Test APP_VERSION constant
-        assert(window.APP_VERSION === 'v1.35', "APP_VERSION está actualizado a v1.35");
+        assert(window.APP_VERSION === 'v1.36', "APP_VERSION está actualizado a v1.36");
 
         // 15. Test Semana 2 curriculum presence and navigation
         assert(CURRICULUM.weeks.length === 2, "CURRICULUM contiene exactamente 2 semanas");
@@ -324,6 +324,16 @@
         const ligatures = codeStyle.fontVariantLigatures || codeStyle.getPropertyValue('font-variant-ligatures');
         assert(ligatures === 'none', "Ligaduras tipográficas desactivadas (font-variant-ligatures: none)");
         document.body.removeChild(testCodeEl);
+
+        // 17. Test indentación de 4 espacios en CodePlayer (w2-l3 paso 0)
+        openLessonDirect('w2-l3', 0);
+        const w2l3Pid = "expl_0";
+        assert(codePlayerRegistry[w2l3Pid] !== undefined, "CodePlayer inicializado para w2-l3");
+        const line3El = document.querySelector(`#code-line-${w2l3Pid}-2 .code-line-text`);
+        assert(line3El !== null, "Línea 3 de código encontrada");
+        const styleLine3 = window.getComputedStyle(line3El);
+        assert(styleLine3.whiteSpace === 'pre', "white-space es 'pre' para preservar la indentación");
+        assert(line3El.textContent.startsWith('    '), "Línea 3 preserva 4 espacios de sangría al inicio");
 
         log("¡TODAS LAS PRUEBAS DE FASE 1 Y 2 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");
