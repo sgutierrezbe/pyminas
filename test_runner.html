@@ -300,6 +300,9 @@
         const continueBtn = document.getElementById('explanation-continue-btn');
         assert(continueBtn && !continueBtn.disabled, "Botón Continuar desbloqueado tras completar ejecución con input");
 
+        // 14. Test APP_VERSION constant
+        assert(window.APP_VERSION === 'v1.33', "APP_VERSION está actualizado a v1.33");
+
         log("¡TODAS LAS PRUEBAS DE FASE 1 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");
         window.TESTS_FINISHED = true;

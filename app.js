@@ -3,7 +3,11 @@
  * Mapa de aventura con nodos circulares 3D, títulos cortos y ruta sinuosa.
  */
 
-// ==================== ESTADO GLOBAL ====================
+// ==================== VERSIÓN Y ESTADO GLOBAL ====================
+const APP_VERSION = "v1.33";
+window.APP_VERSION = APP_VERSION;
+console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
+
 let currentLesson = null;
 let currentStepIndex = 0;
 let soundEnabled = true;
