@@ -3962,15 +3962,16 @@ const TOUR_STEPS = [
     targetId: 'course-intro-card',
     title: '¡Bienvenido a pyMinas! 🐍',
     text: '¡Hola! Soy tu guía en <strong>pyMinas</strong>, la plataforma de microaprendizaje para practicar tus habilidades de Python cada semana, siguiendo los temas de <strong>Fundamentos de Programación</strong> (Facultad de Minas - UNAL).',
-    padding: 12,
+    padding: 10,
     borderRadius: 24,
     placement: 'right'
   },
   {
     targetId: 'game-map-container',
+    mobileTargetId: 'map-node-w1-l1',
     title: 'Niveles y Retos Temáticos 🗺️',
-    text: '¡Estos de aquí son los niveles con cada uno de los temas! Cada nivel tiene ejercicios interactivos muy cortos. Mientras más preguntas correctas contestes al primer intento, ¡mayor será tu puntaje y precisión!',
-    padding: 14,
+    text: '¡Estos son los niveles con cada uno de los temas! Cada nivel tiene ejercicios interactivos muy cortos. Mientras más preguntas correctas contestes al primer intento, ¡mayor será tu puntaje y precisión!',
+    padding: 12,
     borderRadius: 24,
     placement: 'left'
   },
@@ -3978,17 +3979,19 @@ const TOUR_STEPS = [
     targetId: 'nav-streak-badge',
     title: 'Tu Racha Semanal 🔥',
     text: '¡Esta es tu racha! Realiza una clase cada semana para mantenerla encendida, compite sanamente con tus compañeros y sigue practicando sin perder el ritmo.',
-    padding: 8,
+    padding: 6,
     borderRadius: 9999,
-    placement: 'bottom'
+    placement: 'bottom',
+    mobilePlacement: 'under-header'
   },
   {
     targetId: 'nav-user-profile',
     title: 'Progreso y Credenciales 🎓',
     text: 'Tus avances van ligados a tu usuario y contraseña institucional (<em>@unal.edu.co</em>). ¡No los pierdas para continuar tu progreso desde cualquier computador o celular!',
-    padding: 8,
+    padding: 6,
     borderRadius: 9999,
-    placement: 'bottom'
+    placement: 'bottom',
+    mobilePlacement: 'under-header'
   }
 ];
 
@@ -4004,6 +4007,18 @@ function startInteractiveTour(force = false) {
 
   isTourActive = true;
   tourCurrentStep = 0;
+  document.body.style.overflow = 'hidden';
+  if (window.scrollX > 0) {
+    window.scrollTo({ left: 0, top: 0 });
+  }
+
+  const backdropCatcher = document.getElementById('tour-backdrop-catcher');
+  if (backdropCatcher) {
+    backdropCatcher.onclick = () => {
+      nextTourStep();
+    };
+  }
+
   overlay.classList.remove('hidden');
   overlay.style.opacity = '0';
   setTimeout(() => {
@@ -4019,6 +4034,9 @@ function startInteractiveTour(force = false) {
 
 function handleTourReposition() {
   if (!isTourActive) return;
+  if (window.scrollX > 0) {
+    window.scrollTo({ left: 0, top: window.scrollY });
+  }
   updateSpotlightPosition();
 }
 
@@ -4057,8 +4075,8 @@ function renderTourStep(idx) {
   const dotsContainer = document.getElementById('tour-dots-indicator');
   if (dotsContainer) {
     dotsContainer.innerHTML = TOUR_STEPS.map((_, i) => `
-      <button onclick="goToTourStep(${i})" class="h-2 rounded-full transition-all cursor-pointer ${
-        i === idx ? 'bg-emerald-600 w-6' : i < idx ? 'bg-emerald-300 w-2' : 'bg-slate-200 hover:bg-slate-300 w-2'
+      <button onclick="goToTourStep(${i})" class="h-2 rounded-full transition-all cursor-pointer shrink-0 ${
+        i === idx ? 'bg-emerald-600 w-5 sm:w-6' : i < idx ? 'bg-emerald-300 w-2' : 'bg-slate-200 hover:bg-slate-300 w-2'
       }" title="Ir al paso ${i + 1}"></button>
     `).join('');
   }
@@ -4069,10 +4087,10 @@ function renderTourStep(idx) {
   if (nextBtn) {
     if (idx === TOUR_STEPS.length - 1) {
       nextBtn.innerHTML = `<span>¡Empezar! 🚀</span>`;
-      nextBtn.className = "px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-black rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center gap-1.5 cursor-pointer";
+      nextBtn.className = "px-3.5 sm:px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-black rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center gap-1.5 cursor-pointer shrink-0";
     } else {
       nextBtn.innerHTML = `<span>Siguiente</span><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>`;
-      nextBtn.className = "px-3.5 sm:px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center gap-1.5 cursor-pointer";
+      nextBtn.className = "px-3 sm:px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center gap-1.5 cursor-pointer shrink-0";
     }
   }
 
@@ -4084,20 +4102,24 @@ function renderTourStep(idx) {
     }
   }
 
-  const target = document.getElementById(step.targetId);
+  const isMobile = window.innerWidth < 640;
+  const targetId = (isMobile && step.mobileTargetId) ? step.mobileTargetId : step.targetId;
+  const target = document.getElementById(targetId) || document.getElementById(step.targetId);
+
   if (target) {
-    if (idx === 0 || idx === 1) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (idx === 0) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      setTimeout(updateSpotlightPosition, 260);
+    } else if (idx === 1) {
+      if (isMobile) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+      } else {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }
       setTimeout(updateSpotlightPosition, 260);
     } else {
-      const r = target.getBoundingClientRect();
-      const isOutOfView = r.top < 60 || r.bottom > window.innerHeight - 60;
-      if (isOutOfView) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        setTimeout(updateSpotlightPosition, 260);
-      } else {
-        updateSpotlightPosition();
-      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      setTimeout(updateSpotlightPosition, 260);
     }
   } else {
     updateSpotlightPosition();
@@ -4140,6 +4162,10 @@ function dismissTour() {
 
 function dismissTourUI() {
   isTourActive = false;
+  document.body.style.overflow = '';
+  if (window.scrollX > 0) {
+    window.scrollTo({ left: 0, top: window.scrollY });
+  }
   window.removeEventListener('resize', handleTourReposition);
   window.removeEventListener('scroll', handleTourReposition);
   window.removeEventListener('keydown', handleTourKeydown);
@@ -4160,7 +4186,9 @@ function updateSpotlightPosition() {
   if (!spotlightBox || !dialog || tourCurrentStep < 0 || tourCurrentStep >= TOUR_STEPS.length) return;
 
   const step = TOUR_STEPS[tourCurrentStep];
-  const target = document.getElementById(step.targetId);
+  const isMobile = window.innerWidth < 640;
+  const targetId = (isMobile && step.mobileTargetId) ? step.mobileTargetId : step.targetId;
+  const target = document.getElementById(targetId) || document.getElementById(step.targetId);
   if (!target) return;
 
   const rect = target.getBoundingClientRect();
@@ -4179,27 +4207,34 @@ function updateSpotlightPosition() {
   spotlightBox.style.borderRadius = `${step.borderRadius || 20}px`;
 
   // Ubicación del diálogo flotante
-  const isMobile = window.innerWidth < 640;
-  const dialogWidth = Math.min(window.innerWidth - 32, 420);
-  dialog.style.width = `${dialogWidth}px`;
-
   if (isMobile) {
-    dialog.style.left = '16px';
-    dialog.style.right = '16px';
+    dialog.style.left = '12px';
+    dialog.style.right = '12px';
+    dialog.style.width = 'auto';
+    dialog.style.maxWidth = '440px';
     dialog.style.margin = '0 auto';
     dialog.style.transform = 'none';
 
-    if (rect.top > window.innerHeight * 0.45) {
-      dialog.style.top = '16px';
+    if (step.mobilePlacement === 'under-header' || rect.top <= 64) {
+      // Elemento en la barra superior -> anclar justo debajo del navbar
+      dialog.style.top = '68px';
+      dialog.style.bottom = 'auto';
+    } else if (rect.top > window.innerHeight * 0.48) {
+      // Objetivo en mitad inferior -> anclar arriba
+      dialog.style.top = '68px';
       dialog.style.bottom = 'auto';
     } else {
+      // Objetivo en mitad superior -> anclar abajo
       dialog.style.top = 'auto';
       dialog.style.bottom = '16px';
     }
   } else {
+    dialog.style.width = '420px';
+    dialog.style.maxWidth = '440px';
     dialog.style.margin = '0';
     dialog.style.transform = 'none';
-    const dialogHeight = dialog.offsetHeight || 220;
+    const dialogHeight = dialog.offsetHeight || 200;
+    const dialogWidth = 420;
 
     let placed = false;
 
@@ -4248,7 +4283,6 @@ function updateSpotlightPosition() {
     }
 
     if (!placed) {
-      // Fallback: anclado cómodamente en parte inferior
       dialog.style.top = 'auto';
       dialog.style.bottom = '20px';
       dialog.style.left = '50%';
