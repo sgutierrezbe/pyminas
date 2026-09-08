@@ -290,8 +290,8 @@
 
         let iwaits = 0;
         while (!codePlayerRegistry[inputPid] || codePlayerRegistry[inputPid].currentIndex < 1) {
-          if (iwaits++ > 30) break;
-          await new Promise(r => setTimeout(r, 40));
+          if (iwaits++ > 60) break;
+          await new Promise(r => setTimeout(r, 50));
         }
 
         const terminalOutput = document.getElementById(`code-terminal-${inputPid}`).textContent;

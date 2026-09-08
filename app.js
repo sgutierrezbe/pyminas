@@ -555,7 +555,8 @@ function showLessonLoadingScreen(callback) {
   const percentEl = document.getElementById('loading-percent-label');
   const tipEl = document.getElementById('loading-tip-text');
 
-  if (!loadingScreen) {
+  if (!loadingScreen || window.FAST_ANIM) {
+    if (loadingScreen) loadingScreen.classList.add('hidden');
     if (callback) callback();
     return;
   }
