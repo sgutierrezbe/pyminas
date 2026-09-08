@@ -269,6 +269,37 @@
         assert(isTourActive === false, "dismissTour cerró el tour");
         assert(localStorage.getItem('pyminas_tour_completed') === 'true', "dismissTour registró tour completado en localStorage");
 
+        // 13. Test Interactive input() execution in Code Player (w1-l2 step 0)
+        openLessonDirect('w1-l2', 0);
+        assert(currentStepIndex === 0, "Abrir w1-l2 paso 0 (input explicativo)");
+        const inputPid = "expl_0";
+        assert(codePlayerRegistry[inputPid] !== undefined, "CodePlayer inicializado para w1-l2");
+        assert(codePlayerRegistry[inputPid].lines[0].includes('input'), "Línea 0 contiene llamada a input()");
+
+        codePlayerTogglePlay(inputPid);
+        assert(codePlayerRegistry[inputPid].currentIndex === 0, "CodePlayer se detiene exactamente en línea 0 para input");
+        assert(codePlayerRegistry[inputPid].isPlaying === false, "isPlaying se pausa en espera del usuario");
+        assert(codePlayerRegistry[inputPid].wasAutoPlaying === true, "wasAutoPlaying registrado para reanudar");
+
+        const termInputBox = document.getElementById(`term-input-box-${inputPid}`);
+        assert(termInputBox !== null, "Campo de entrada interactiva renderizado en terminal");
+
+        termInputBox.value = "Sara";
+        handleTerminalInputSubmit(inputPid, 0);
+
+        let iwaits = 0;
+        while (!codePlayerRegistry[inputPid] || codePlayerRegistry[inputPid].currentIndex < 1) {
+          if (iwaits++ > 30) break;
+          await new Promise(r => setTimeout(r, 40));
+        }
+
+        const terminalOutput = document.getElementById(`code-terminal-${inputPid}`).textContent;
+        assert(terminalOutput.includes('Sara'), "Salida de terminal incluye el nombre ingresado 'Sara'");
+        assert(terminalOutput.includes('¡Mucho gusto, Sara'), "Segunda línea se ejecutó con la variable 'Sara' correctamente");
+
+        const continueBtn = document.getElementById('explanation-continue-btn');
+        assert(continueBtn && !continueBtn.disabled, "Botón Continuar desbloqueado tras completar ejecución con input");
+
         log("¡TODAS LAS PRUEBAS DE FASE 1 PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");
         window.TESTS_FINISHED = true;

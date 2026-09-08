@@ -1318,8 +1318,11 @@ function codePlayerSetLine(playerId, targetIndex) {
   // Actualizar badge de estado
   const statusEl = document.getElementById(`code-status-${playerId}`);
   if (statusEl) {
+    const state = targetIndex >= 0 ? player.lineTrace[targetIndex] : null;
     if (targetIndex === -1) {
       statusEl.textContent = `Paso 0/${player.lines.length}`;
+    } else if (state && state.isInput && !state.isCompleted) {
+      statusEl.textContent = `Esperando entrada...`;
     } else if (targetIndex === player.lines.length - 1) {
       statusEl.textContent = `✓ Finalizado`;
     } else {
@@ -1340,15 +1343,22 @@ function renderInteractiveInputPrompt(playerId, lineIndex, promptText) {
     : [];
 
   const prevText = prevLines.join('\n');
+  const cleanPrompt = promptText || 'Entrada: ';
+  const placeholder = cleanPrompt.toLowerCase().includes('llamas') || cleanPrompt.toLowerCase().includes('nombre')
+    ? 'Escribe tu nombre aquí...'
+    : (cleanPrompt.toLowerCase().includes('edad') ? 'Ej: 20' : 'Escribe aquí...');
 
   termEl.innerHTML = `
     <div class="text-[#34d399] font-mono whitespace-pre-wrap leading-relaxed">
       ${prevText ? `<div>${escapeHtml(prevText)}</div>` : ''}
-      <div class="flex flex-wrap items-center gap-2 mt-1.5 p-2 bg-[#052e16]/80 rounded-xl border border-emerald-500 shadow-md">
-        <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0">${escapeHtml(promptText)}</span>
+      <div class="flex flex-wrap items-center gap-2 mt-1.5 p-2 bg-[#052e16]/90 rounded-xl border-2 border-emerald-500 shadow-lg animate-pulse" style="animation-duration: 3s;">
+        <span class="text-emerald-300 font-bold text-xs sm:text-sm shrink-0 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>${escapeHtml(cleanPrompt)}</span>
+        </span>
         <div class="flex items-center gap-1.5 flex-1 min-w-[150px]">
-          <input id="term-input-box-${playerId}" type="text" autocomplete="off" placeholder="Escribe aquí..." class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500" />
-          <button id="term-input-btn-${playerId}" onclick="handleTerminalInputSubmit('${playerId}', ${lineIndex})" type="button" class="choice-pill px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
+          <input id="term-input-box-${playerId}" type="text" autocomplete="off" autofocus placeholder="${placeholder}" class="w-full bg-black text-amber-300 font-mono text-xs sm:text-sm px-2.5 py-1.5 rounded-lg border-2 border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 font-bold placeholder-slate-500" onkeydown="if(event.key==='Enter'){event.preventDefault();event.stopPropagation();handleTerminalInputSubmit('${playerId}', ${lineIndex});}" />
+          <button id="term-input-btn-${playerId}" onclick="handleTerminalInputSubmit('${playerId}', ${lineIndex})" type="button" class="choice-pill px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-mono font-black text-xs rounded-lg transition shadow flex items-center gap-1 cursor-pointer shrink-0">
             <span>Enviar</span>
             <span>↵</span>
           </button>
@@ -1362,19 +1372,12 @@ function renderInteractiveInputPrompt(playerId, lineIndex, promptText) {
     return;
   }
 
-  setTimeout(() => {
-    const inputEl = document.getElementById(`term-input-box-${playerId}`);
-    if (inputEl) {
-      inputEl.focus();
-      inputEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          e.stopPropagation();
-          handleTerminalInputSubmit(playerId, lineIndex);
-        }
-      });
-    }
-  }, 40);
+  // Enfocar el input inmediatamente
+  const inputEl = document.getElementById(`term-input-box-${playerId}`);
+  if (inputEl) {
+    inputEl.focus();
+    inputEl.select();
+  }
 }
 
 function handleTerminalInputSubmit(playerId, lineIndex) {
@@ -1383,7 +1386,8 @@ function handleTerminalInputSubmit(playerId, lineIndex) {
 
   const inputEl = document.getElementById(`term-input-box-${playerId}`);
   const userVal = inputEl ? inputEl.value.trim() : "";
-  const finalVal = userVal.length > 0 ? userVal : "Samuel";
+  const defaultVal = player.code.toLowerCase().includes('edad') ? "20" : "Sara";
+  const finalVal = userVal.length > 0 ? userVal : defaultVal;
 
   playSound('click');
 
@@ -1471,6 +1475,11 @@ function resumeCodePlayerAutoAnimate(playerId, startIndex, onComplete) {
   }
   player.isPlaying = true;
 
+  const playText = document.getElementById(`code-play-text-${playerId}`);
+  const playIcon = document.getElementById(`code-play-icon-${playerId}`);
+  if (playText) playText.textContent = "Pausar";
+  if (playIcon) playIcon.textContent = "⏸";
+
   let current = startIndex - 1;
   const stepInterval = window.FAST_ANIM ? 20 : 550;
   player.timer = setInterval(() => {
@@ -1484,18 +1493,31 @@ function resumeCodePlayerAutoAnimate(playerId, startIndex, onComplete) {
         player.wasAutoPlaying = true;
         player.onCompleteCallback = onComplete;
         codePlayerSetLine(playerId, current);
+        if (playText) playText.textContent = "Esperando entrada";
+        if (playIcon) playIcon.textContent = "⌨️";
         return;
       }
       codePlayerSetLine(playerId, current);
+      if (current >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+        unlockExplanationContinue();
+      }
     } else {
       clearInterval(player.timer);
       player.timer = null;
       player.isPlaying = false;
+      player.wasAutoPlaying = false;
 
       const statusEl = document.getElementById(`code-status-${playerId}`);
       if (statusEl) statusEl.textContent = `✓ Finalizado`;
 
+      if (playText) playText.textContent = "Reiniciar";
+      if (playIcon) playIcon.textContent = "↺";
+
       enableCodePlayerControls(playerId);
+
+      if (playerId.startsWith('expl_')) {
+        unlockExplanationContinue();
+      }
 
       setTimeout(() => {
         if (onComplete) onComplete();
@@ -1590,10 +1612,25 @@ function codePlayerNextStep(playerId) {
     playBtn.classList.remove('ring-2', 'ring-emerald-400', 'ring-offset-2', 'ring-offset-slate-900', 'animate-pulse');
   }
 
+  // Si la línea actual es un input esperando que el usuario escriba, NO permitir saltarla
+  if (player.currentIndex >= 0) {
+    const currentState = player.lineTrace[player.currentIndex];
+    if (currentState && currentState.isInput && !currentState.isCompleted) {
+      const inputEl = document.getElementById(`term-input-box-${playerId}`);
+      if (inputEl) {
+        inputEl.focus();
+        inputEl.classList.add('ring-4', 'ring-amber-400');
+        setTimeout(() => inputEl && inputEl.classList.remove('ring-4', 'ring-amber-400'), 600);
+      }
+      return;
+    }
+  }
+
   if (player.currentIndex < player.lines.length - 1) {
     ensureCodeVisible(`code-player-wrapper-${playerId}`, false);
-    codePlayerSetLine(playerId, player.currentIndex + 1);
-    if (player.currentIndex >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+    const nextIdx = player.currentIndex + 1;
+    codePlayerSetLine(playerId, nextIdx);
+    if (nextIdx >= player.lines.length - 1 && playerId.startsWith('expl_')) {
       unlockExplanationContinue();
     }
   } else {
@@ -1631,6 +1668,8 @@ function codePlayerReset(playerId) {
     player.isPlaying = false;
     player.timer = null;
   }
+  player.isPlaying = false;
+  player.wasAutoPlaying = false;
 
   player.userInputs = {};
   const newTrace = tracePythonExecution(player.code, player.expectedOutput, player.userInputs);
@@ -1656,9 +1695,12 @@ function codePlayerTogglePlay(playerId) {
   }
 
   if (player.isPlaying) {
-    clearInterval(player.timer);
+    if (player.timer) {
+      clearInterval(player.timer);
+      player.timer = null;
+    }
     player.isPlaying = false;
-    player.timer = null;
+    player.wasAutoPlaying = false;
     if (playText) playText.textContent = "Continuar";
     if (playIcon) playIcon.textContent = "▶";
 
@@ -1680,6 +1722,34 @@ function codePlayerTogglePlay(playerId) {
     // Encuadrar perfectamente la ventanita de código en pantalla al dar clic a ejecutar
     ensureCodeVisible(`code-player-wrapper-${playerId}`);
 
+    // Si la línea actual ya está esperando input del usuario, solo enfocarla
+    if (player.currentIndex >= 0) {
+      const curSt = player.lineTrace[player.currentIndex];
+      if (curSt && curSt.isInput && !curSt.isCompleted) {
+        const inputEl = document.getElementById(`term-input-box-${playerId}`);
+        if (inputEl) {
+          inputEl.focus();
+          inputEl.classList.add('ring-4', 'ring-amber-400');
+          setTimeout(() => inputEl && inputEl.classList.remove('ring-4', 'ring-amber-400'), 600);
+        }
+        return;
+      }
+    }
+
+    // Determinar siguiente línea
+    const nextIdx = player.currentIndex + 1;
+    const nextState = player.lineTrace[nextIdx];
+
+    // Si el siguiente paso es un input no completado, avanzar a él y pausar esperando al usuario
+    if (nextState && nextState.isInput && !nextState.isCompleted) {
+      player.isPlaying = false;
+      player.wasAutoPlaying = true;
+      codePlayerSetLine(playerId, nextIdx);
+      if (playText) playText.textContent = "Esperando entrada";
+      if (playIcon) playIcon.textContent = "⌨️";
+      return;
+    }
+
     player.isPlaying = true;
     if (playText) playText.textContent = "Pausar";
     if (playIcon) playIcon.textContent = "⏸";
@@ -1698,17 +1768,37 @@ function codePlayerTogglePlay(playerId) {
     }
 
     // Avanzar primer paso de inmediato si está en -1
-    if (player.currentIndex === -1) {
-      codePlayerNextStep(playerId);
+    codePlayerSetLine(playerId, nextIdx);
+    if (nextIdx >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+      unlockExplanationContinue();
     }
 
     const interval = window.FAST_ANIM ? 30 : 600;
     player.timer = setInterval(() => {
       if (player.currentIndex < player.lines.length - 1) {
-        codePlayerNextStep(playerId);
+        const upcomingIdx = player.currentIndex + 1;
+        const upcomingState = player.lineTrace[upcomingIdx];
+
+        // Si la próxima línea es un input, avanzar y DETENER EL TIMER de inmediato!
+        if (upcomingState && upcomingState.isInput && !upcomingState.isCompleted) {
+          clearInterval(player.timer);
+          player.timer = null;
+          player.isPlaying = false;
+          player.wasAutoPlaying = true;
+          codePlayerSetLine(playerId, upcomingIdx);
+          if (playText) playText.textContent = "Esperando entrada";
+          if (playIcon) playIcon.textContent = "⌨️";
+          return;
+        }
+
+        codePlayerSetLine(playerId, upcomingIdx);
+        if (upcomingIdx >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+          unlockExplanationContinue();
+        }
       } else {
         clearInterval(player.timer);
         player.isPlaying = false;
+        player.wasAutoPlaying = false;
         player.timer = null;
         if (playText) playText.textContent = "Reiniciar";
         if (playIcon) playIcon.textContent = "↺";
