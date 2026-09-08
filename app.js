@@ -1829,7 +1829,11 @@ function formatRichText(str) {
     .replace(/<\/?b>/gi, '**');
   
   let escaped = escapeHtml(text);
-  escaped = escaped.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 bg-slate-100 text-brand-700 font-mono text-xs sm:text-sm rounded-md border border-slate-200 font-bold break-all inline-block sm:inline max-w-full align-middle">$1</code>');
+  escaped = escaped.replace(/`([^`]+)`/g, (match, codeContent) => {
+    const isSingleToken = !codeContent.trim().includes(' ');
+    const wrapClass = isSingleToken ? 'whitespace-nowrap' : 'break-words';
+    return `<code class="px-1.5 py-0.5 bg-slate-100 text-brand-700 font-mono text-xs sm:text-sm rounded-md border border-slate-200 font-bold inline-block max-w-full align-middle ${wrapClass}">${codeContent}</code>`;
+  });
   escaped = escaped.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-extrabold text-slate-900">$1</strong>');
   return escaped;
 }
@@ -2679,7 +2683,7 @@ function renderSandboxStep(step, container) {
                 <span class="w-7 h-7 rounded-xl bg-slate-100 group-hover:bg-brand-100 text-slate-600 group-hover:text-brand-700 font-bold text-xs flex items-center justify-center border border-slate-300 group-hover:border-brand-300 shrink-0 font-mono opt-badge transition">
                   ${opt.id}
                 </span>
-                <code class="font-mono text-xs sm:text-sm text-slate-800 font-semibold opt-code break-all sm:break-normal text-left flex-1">
+                <code class="font-mono text-xs sm:text-sm text-slate-800 font-semibold opt-code break-words sm:break-normal text-left flex-1">
                   ${escapeHtml(opt.label || opt.code)}
                 </code>
               </button>
