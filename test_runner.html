@@ -15,6 +15,11 @@
     <div id="nav-streak-badge"></div>
     <div id="nav-user-profile"></div>
     <div id="unit-nodes-container"></div>
+    <div id="nav-xp-badge">
+      <span id="nav-level-icon"></span>
+      <span id="nav-level-title"></span>
+      <span id="nav-xp-text"></span>
+    </div>
   </div>
 
   <div id="tour-spotlight-overlay" class="hidden fixed inset-0">
@@ -35,6 +40,10 @@
       <button id="lesson-prev-step-btn" class="hidden"></button>
       <span id="lesson-header-title"></span>
       <div id="lesson-segments-container"></div>
+      <div id="lesson-xp-badge">
+        <span id="lesson-level-icon"></span>
+        <span id="lesson-xp-text"></span>
+      </div>
       <div id="lesson-streak-badge"><span id="lesson-streak-text"></span></div>
     </header>
     <main id="lesson-content-area"></main>
@@ -47,7 +56,34 @@
   <div id="victory-lesson-modal" class="hidden">
     <h3 id="victory-modal-title"></h3>
     <div id="victory-xp-counter"></div>
+    <div id="victory-precision-counter"></div>
+    <div id="victory-streak-counter"></div>
+    <div id="victory-first-try-badge"></div>
+    <div id="victory-first-try-desc"></div>
+    <div id="victory-flawless-badge" class="hidden"></div>
+    <div id="victory-level-icon"></div>
+    <div id="victory-level-label"></div>
+    <div id="victory-level-title"></div>
+    <div id="victory-level-xp-text"></div>
+    <div id="victory-level-next-text"></div>
+    <div id="victory-level-bar"></div>
+    <div id="victory-level-up-banner" class="hidden"></div>
+    <div id="victory-week-complete-banner" class="hidden"></div>
     <button id="victory-next-btn"></button>
+  </div>
+  <div id="week-completion-modal" class="hidden">
+    <h2 id="week-celebration-title"></h2>
+    <p id="week-celebration-subtitle"></p>
+    <span id="week-stat-lessons"></span>
+    <span id="week-stat-first-try"></span>
+    <span id="week-stat-xp"></span>
+    <span id="week-badge-title"></span>
+    <span id="week-badge-type"></span>
+    <button id="week-celebration-next-btn"></button>
+  </div>
+  <div id="level-info-modal" class="hidden">
+    <div id="level-modal-current-card"></div>
+    <div id="level-tiers-list"></div>
   </div>
   <div id="lesson-loading-screen" class="hidden">
     <div id="loading-lesson-tag"></div>
@@ -302,7 +338,7 @@
         assert(continueBtn && !continueBtn.disabled, "Botón Continuar desbloqueado tras completar ejecución con input");
 
         // 14. Test APP_VERSION constant
-        assert(window.APP_VERSION === 'v1.37', "APP_VERSION está actualizado a v1.37");
+        assert(window.APP_VERSION === 'v1.38', "APP_VERSION está actualizado a v1.38");
 
         // 15. Test Semana 2 curriculum presence and navigation
         assert(CURRICULUM.weeks.length === 2, "CURRICULUM contiene exactamente 2 semanas");
@@ -418,7 +454,95 @@ print("Cierre del periodo académico")`;
         assert(finalTermOut.includes("Descuento del 5% aplicado"), "Con edad 14 se aplicó el descuento correctamente");
         assert(finalTermOut.includes("Total a pagar: $ 4750"), "Total a pagar calcula 4750 con descuento");
 
-        log("¡TODAS LAS PRUEBAS DE FASE 1 Y 2 PASARON CON ÉXITO!", true);
+        // 21. Test Sistema de Niveles y Rangos UNAL (LEVEL_TIERS & getUserLevelInfo)
+        assert(Array.isArray(window.LEVEL_TIERS) && window.LEVEL_TIERS.length === 9, "LEVEL_TIERS contiene los 9 rangos de ingeniería UNAL");
+        assert(window.LEVEL_TIERS[0].title === 'Novato de Minas' && window.LEVEL_TIERS[0].icon === '⛏️', "Nivel 1 es Novato de Minas ⛏️");
+        assert(window.LEVEL_TIERS[1].title === 'Explorador de Código' && window.LEVEL_TIERS[1].icon === '🧭', "Nivel 2 es Explorador de Código 🧭");
+        assert(window.LEVEL_TIERS[8].title === 'Leyenda de la Facultad de Minas' && window.LEVEL_TIERS[8].icon === '👑', "Nivel 9 es Leyenda de la Facultad de Minas 👑");
+
+        const lvl0 = getUserLevelInfo(0);
+        assert(lvl0.level === 1 && lvl0.percent === 0, "0 XP corresponde a Nivel 1 con 0% de progreso");
+        assert(lvl0.xpNeeded === 121, "Faltan 121 XP para Nivel 2 desde 0 XP");
+
+        const lvl1Max = getUserLevelInfo(120);
+        assert(lvl1Max.level === 1 && lvl1Max.percent === 100, "120 XP completa el 100% de la barra del Nivel 1");
+        assert(lvl1Max.xpNeeded === 1, "Falta 1 XP para ascender a Nivel 2");
+
+        const lvl2 = getUserLevelInfo(121);
+        assert(lvl2.level === 2 && lvl2.title === 'Explorador de Código', "121 XP asciende a Nivel 2 (Explorador de Código)");
+
+        const lvlMax = getUserLevelInfo(4500);
+        assert(lvlMax.level === 9 && lvlMax.nextTier === null, "4500 XP corresponde al Nivel 9 (Leyenda) sin nivel siguiente");
+
+        // 22. Test Cálculo de XP y Bonificación de Primer Intento (calculateLessonXpBreakdown)
+        // Caso A: 100% al primer intento (3 preguntas correctas en intento 1)
+        window.currentLessonStats = {
+          lessonId: 'w2-l1',
+          questionsEvaluated: new Set(['q1', 'q2', 'q3']),
+          questionsWrongAttempts: { 'q1': 0, 'q2': 0, 'q3': 0 }
+        };
+        const xpFlawless = calculateLessonXpBreakdown(false);
+        assert(xpFlawless.firstTryCount === 3, "3 preguntas acertadas al primer intento");
+        assert(xpFlawless.firstTryXp === 75, "75 XP ganados por primer intento (3 * 25)");
+        assert(xpFlawless.isFlawless === true, "Detecta perfección impecable (100% al 1er intento)");
+        assert(xpFlawless.flawlessBonusXp === 40, "40 XP de bono especial de perfección");
+        assert(xpFlawless.totalGainedXp === 165, "Total ganado impecable es 165 XP (50 base + 75 primer intento + 40 bono)");
+
+        // Caso B: Con reintentos (2 al primer intento, 1 con fallo previo)
+        window.currentLessonStats = {
+          lessonId: 'w2-l1',
+          questionsEvaluated: new Set(['q1', 'q2', 'q3']),
+          questionsWrongAttempts: { 'q1': 0, 'q2': 1, 'q3': 0 }
+        };
+        const xpRetries = calculateLessonXpBreakdown(false);
+        assert(xpRetries.firstTryCount === 2, "2 preguntas acertadas al primer intento");
+        assert(xpRetries.retryCount === 1, "1 pregunta superada tras reintento");
+        assert(xpRetries.isFlawless === false, "No es perfección impecable debido a fallo en q2");
+        assert(xpRetries.flawlessBonusXp === 0, "Bono de perfección es 0");
+        assert(xpRetries.totalGainedXp === 110, "Total ganado con reintento es 110 XP (50 base + 50 primer intento + 10 reintento)");
+
+        // Caso C: Modo repaso de lección ya completada
+        const xpReview = calculateLessonXpBreakdown(true);
+        assert(xpReview.isReview === true, "Identifica modo repaso");
+        assert(xpReview.totalGainedXp === 25, "Repaso otorga +25 XP de práctica");
+
+        // 23. Test Actualización de Indicadores de XP en la Interfaz (updateUserXpDisplay)
+        currentUser.xp = 220;
+        updateUserXpDisplay();
+        const navXpEl = document.getElementById('nav-xp-text');
+        const navLvlEl = document.getElementById('nav-level-title');
+        const lessonXpEl = document.getElementById('lesson-xp-text');
+        assert(navXpEl && navXpEl.textContent === '220 XP', "Badge de navbar muestra 220 XP");
+        assert(navLvlEl && navLvlEl.textContent === 'Nivel 2', "Badge de navbar muestra Nivel 2");
+        assert(lessonXpEl && lessonXpEl.textContent === '220 XP', "Badge de lección muestra 220 XP");
+
+        // 24. Test Modal de Celebración de Fin de Módulo Semanal (showWeekCelebrationModal)
+        assert(window.WEEK_TROPHIES['semana-1'] !== undefined, "Trofeo de Semana 1 definido");
+        assert(window.WEEK_TROPHIES['semana-2'] !== undefined, "Trofeo de Semana 2 definido");
+        assert(window.WEEK_TROPHIES['semana-1'].badgeTitle.includes("Fundamentos de Python"), "Título de insignia de Semana 1 verificado");
+
+        showWeekCelebrationModal('semana-1');
+        const weekModal = document.getElementById('week-completion-modal');
+        const weekTitle = document.getElementById('week-celebration-title');
+        const weekStatL = document.getElementById('week-stat-lessons');
+        assert(weekModal && !weekModal.classList.contains('hidden'), "Modal de celebración semanal se abre y es visible");
+        assert(weekTitle && weekTitle.textContent.includes("Semana 1"), "Título del trofeo muestra Semana 1");
+        assert(weekStatL && weekStatL.textContent.includes("6"), "Métricas muestran 6 lecciones dominadas");
+
+        dismissWeekCelebrationModal();
+        assert(weekModal && weekModal.classList.contains('hidden'), "Modal de celebración semanal se cierra correctamente");
+
+        // 25. Test Modal de Rangos y Jerarquía de Ingeniería UNAL (openLevelInfoModal)
+        openLevelInfoModal();
+        const lvlModal = document.getElementById('level-info-modal');
+        const lvlList = document.getElementById('level-tiers-list');
+        assert(lvlModal && !lvlModal.classList.contains('hidden'), "Modal de rangos de ingeniería se abre correctamente");
+        assert(lvlList && lvlList.children.length === 9, "Modal de rangos renderiza los 9 niveles de la carrera");
+
+        dismissLevelInfoModal();
+        assert(lvlModal && lvlModal.classList.contains('hidden'), "Modal de rangos de ingeniería se cierra correctamente");
+
+        log("¡TODAS LAS PRUEBAS DE FASE 1, 2 Y 3 (XP, NIVELES Y CELEBRACIÓN) PASARON CON ÉXITO!", true);
         console.log("PHASE 1 ALL TESTS PASSED");
         window.TESTS_FINISHED = true;
       } catch (err) {

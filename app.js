@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.37";
+const APP_VERSION = "v1.38";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
@@ -21,11 +21,325 @@ const AUTH_EMAIL_KEY = 'pyminas_auth_email';
 let currentUser = {
   email: localStorage.getItem(AUTH_EMAIL_KEY) || '',
   token: localStorage.getItem(AUTH_TOKEN_KEY) || '',
-  xp: 0,
+  xp: parseInt(localStorage.getItem('pyminas_user_xp') || '0', 10) || 0,
   weeklyStreak: parseInt(localStorage.getItem('pyminas_weekly_streak') || '0', 10) || 0,
   lastActiveWeek: localStorage.getItem('pyminas_last_active_week') || ''
 };
 window.currentUser = currentUser;
+
+// ==================== SISTEMA DE RANGOS Y NIVELES (INGENIERÍA UNAL) ====================
+const LEVEL_TIERS = [
+  { level: 1, title: 'Novato de Minas', icon: '⛏️', minXp: 0, maxXp: 120, badgeColor: 'from-slate-400 to-slate-600' },
+  { level: 2, title: 'Explorador de Código', icon: '🧭', minXp: 121, maxXp: 280, badgeColor: 'from-emerald-400 to-teal-600' },
+  { level: 3, title: 'Minero Algorítmico', icon: '⚡', minXp: 281, maxXp: 500, badgeColor: 'from-cyan-400 to-blue-600' },
+  { level: 4, title: 'Programador Jr. UNAL', icon: '🐍', minXp: 501, maxXp: 800, badgeColor: 'from-blue-500 to-indigo-600' },
+  { level: 5, title: 'Maestro de la Lógica', icon: '🧠', minXp: 801, maxXp: 1200, badgeColor: 'from-violet-500 to-purple-700' },
+  { level: 6, title: 'Ingeniero de Software', icon: '🏗️', minXp: 1201, maxXp: 1700, badgeColor: 'from-amber-400 to-orange-600' },
+  { level: 7, title: 'Arquitecto de Sistemas', icon: '💻', minXp: 1701, maxXp: 2300, badgeColor: 'from-rose-500 to-pink-600' },
+  { level: 8, title: 'Especialista en Computación', icon: '🚀', minXp: 2301, maxXp: 3000, badgeColor: 'from-fuchsia-600 to-rose-700' },
+  { level: 9, title: 'Leyenda de la Facultad de Minas', icon: '👑', minXp: 3001, maxXp: 99999, badgeColor: 'from-yellow-400 via-amber-500 to-yellow-600' }
+];
+window.LEVEL_TIERS = LEVEL_TIERS;
+
+const WEEK_TROPHIES = {
+  'semana-1': {
+    weekNumber: 1,
+    title: 'Semana 1: Introducción a la Programación',
+    badgeTitle: 'Medalla de Oro: Fundamentos de Python',
+    badgeType: 'Insignia de Honor UNAL · Semana 1',
+    subtitle: '¡Felicitaciones Ingeniero! Has conquistado variables, casting, expresiones aritméticas y el módulo math de la Facultad de Minas.',
+    nextWeekId: 'semana-2',
+    nextWeekTitle: 'Semana 2: Condicionales'
+  },
+  'semana-2': {
+    weekNumber: 2,
+    title: 'Semana 2: Estructuras Condicionales',
+    badgeTitle: 'Medalla de Oro: Maestro de la Lógica Booleana',
+    badgeType: 'Insignia de Honor UNAL · Semana 2',
+    subtitle: '¡Extraordinario trabajo! Has dominado comparadores, operadores lógicos, indentación y ramificaciones if-elif-else en Python.',
+    nextWeekId: null,
+    nextWeekTitle: null
+  }
+};
+window.WEEK_TROPHIES = WEEK_TROPHIES;
+
+function getUserLevelInfo(xp = 0) {
+  const currentXp = Math.max(0, parseInt(xp, 10) || 0);
+  let tierIndex = LEVEL_TIERS.findIndex(t => currentXp <= t.maxXp);
+  if (tierIndex === -1) tierIndex = LEVEL_TIERS.length - 1;
+  const currentTier = LEVEL_TIERS[tierIndex];
+  const nextTier = LEVEL_TIERS[tierIndex + 1] || null;
+  const tierMin = currentTier.minXp;
+  const tierMax = currentTier.maxXp;
+  const range = tierMax - tierMin;
+  const progressInTier = Math.max(0, currentXp - tierMin);
+  const percent = nextTier ? Math.min(100, Math.max(0, Math.round((progressInTier / (range || 1)) * 100))) : 100;
+  const xpNeeded = nextTier ? Math.max(0, tierMax + 1 - currentXp) : 0;
+  return {
+    ...currentTier,
+    tierIndex,
+    currentXp,
+    percent,
+    xpNeeded,
+    nextTier
+  };
+}
+window.getUserLevelInfo = getUserLevelInfo;
+
+function calculateLessonXpBreakdown(isReview = false, customStats = null) {
+  if (isReview) {
+    return {
+      baseXp: 25,
+      totalQuestions: 0,
+      firstTryCount: 0,
+      retryCount: 0,
+      firstTryXp: 0,
+      retryXp: 0,
+      isFlawless: false,
+      flawlessBonusXp: 0,
+      totalGainedXp: 25,
+      isReview: true
+    };
+  }
+
+  const activeStats = customStats || (typeof window !== 'undefined' && window.currentLessonStats ? window.currentLessonStats : (typeof currentLessonStats !== 'undefined' ? currentLessonStats : null));
+  const evaluated = (activeStats && activeStats.questionsEvaluated) ? Array.from(activeStats.questionsEvaluated) : [];
+  const totalQuestions = evaluated.length;
+  let firstTryCount = 0;
+  let retryCount = 0;
+
+  if (totalQuestions > 0 && activeStats) {
+    evaluated.forEach(qKey => {
+      const wrong = (activeStats.questionsWrongAttempts && activeStats.questionsWrongAttempts[qKey]) || 0;
+      if (wrong === 0) {
+        firstTryCount++;
+      } else {
+        retryCount++;
+      }
+    });
+  }
+
+  const baseXp = 50;
+  const firstTryXp = firstTryCount * 25;
+  const retryXp = retryCount * 10;
+  const isFlawless = (totalQuestions > 0) && (firstTryCount === totalQuestions);
+  const flawlessBonusXp = isFlawless ? 40 : 0;
+  const totalGainedXp = baseXp + firstTryXp + retryXp + flawlessBonusXp;
+
+  return {
+    baseXp,
+    totalQuestions,
+    firstTryCount,
+    retryCount,
+    firstTryXp,
+    retryXp,
+    isFlawless,
+    flawlessBonusXp,
+    totalGainedXp,
+    isReview: false
+  };
+}
+window.calculateLessonXpBreakdown = calculateLessonXpBreakdown;
+
+function updateUserXpDisplay() {
+  const currentXp = currentUser.xp || 0;
+  const levelInfo = getUserLevelInfo(currentXp);
+
+  // Navbar dashboard
+  const navLevelIcon = document.getElementById('nav-level-icon');
+  const navLevelTitle = document.getElementById('nav-level-title');
+  const navXpText = document.getElementById('nav-xp-text');
+  const navXpBadge = document.getElementById('nav-xp-badge');
+
+  if (navLevelIcon) navLevelIcon.textContent = levelInfo.icon;
+  if (navLevelTitle) navLevelTitle.textContent = `Nivel ${levelInfo.level}`;
+  if (navXpText) navXpText.textContent = `${currentXp} XP`;
+  if (navXpBadge) {
+    navXpBadge.title = `Nivel ${levelInfo.level}: ${levelInfo.title} (${currentXp} XP) — Clic para ver detalles`;
+  }
+
+  // Navbar reproductor de lección
+  const lessonLevelIcon = document.getElementById('lesson-level-icon');
+  const lessonXpText = document.getElementById('lesson-xp-text');
+  if (lessonLevelIcon) lessonLevelIcon.textContent = levelInfo.icon;
+  if (lessonXpText) lessonXpText.textContent = `${currentXp} XP`;
+}
+window.updateUserXpDisplay = updateUserXpDisplay;
+
+function getCelebratedWeeks() {
+  try {
+    const raw = localStorage.getItem('pyminas_celebrated_weeks');
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+window.getCelebratedWeeks = getCelebratedWeeks;
+
+function markWeekCelebrated(weekId) {
+  const list = getCelebratedWeeks();
+  if (!list.includes(weekId)) {
+    list.push(weekId);
+    localStorage.setItem('pyminas_celebrated_weeks', JSON.stringify(list));
+  }
+}
+window.markWeekCelebrated = markWeekCelebrated;
+
+function openLevelInfoModal() {
+  const modal = document.getElementById('level-info-modal');
+  if (!modal) return;
+  playSound('select');
+
+  const currentXp = currentUser.xp || 0;
+  const info = getUserLevelInfo(currentXp);
+
+  // Tarjeta actual
+  const currentCard = document.getElementById('level-modal-current-card');
+  if (currentCard) {
+    currentCard.innerHTML = `
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-2xl bg-white border border-amber-300 flex items-center justify-center text-2xl shadow-sm shrink-0">
+          ${info.icon}
+        </div>
+        <div>
+          <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-800">Tu Rango Actual · Nivel ${info.level}</div>
+          <div class="text-sm font-black text-slate-900">${info.title}</div>
+          <div class="text-xs font-mono font-bold text-amber-700 mt-0.5">${currentXp} XP acumulados</div>
+        </div>
+      </div>
+      <div class="text-right shrink-0">
+        ${info.nextTier ? `
+          <div class="text-[10px] text-slate-400 font-bold uppercase">Siguiente Nivel</div>
+          <div class="text-xs font-black text-slate-700">${info.nextTier.title} ${info.nextTier.icon}</div>
+          <div class="text-[11px] font-bold text-emerald-600 mt-0.5">Faltan ${info.xpNeeded} XP</div>
+        ` : `
+          <div class="text-xs font-black text-amber-600">¡Nivel Máximo! 👑</div>
+        `}
+      </div>
+    `;
+  }
+
+  // Lista de niveles
+  const listEl = document.getElementById('level-tiers-list');
+  if (listEl) {
+    listEl.innerHTML = LEVEL_TIERS.map(tier => {
+      const isCurrent = tier.level === info.level;
+      const isUnlocked = currentXp >= tier.minXp;
+      const borderClass = isCurrent 
+        ? 'border-2 border-amber-400 bg-amber-50/70 shadow-sm' 
+        : (isUnlocked ? 'border border-slate-200 bg-white' : 'border border-slate-200 bg-slate-50/60 opacity-60');
+
+      return `
+        <div class="flex items-center justify-between p-2.5 sm:p-3 rounded-2xl ${borderClass} transition">
+          <div class="flex items-center gap-3">
+            <span class="text-xl sm:text-2xl">${tier.icon}</span>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-black text-slate-900">Nivel ${tier.level}: ${tier.title}</span>
+                ${isCurrent ? '<span class="px-2 py-0.5 bg-amber-400 text-amber-950 font-black text-[9px] rounded-full uppercase">Actual</span>' : ''}
+              </div>
+              <span class="text-[11px] font-mono text-slate-500 font-medium">${tier.minXp} - ${tier.maxXp === 99999 ? '∞' : tier.maxXp} XP</span>
+            </div>
+          </div>
+          <div class="text-right">
+            ${isUnlocked 
+              ? '<span class="text-xs font-black text-emerald-600 flex items-center gap-1"><span>✓</span> <span class="hidden sm:inline">Desbloqueado</span></span>' 
+              : '<span class="text-xs font-bold text-slate-400 flex items-center gap-1"><span>🔒</span> <span class="hidden sm:inline">Bloqueado</span></span>'
+            }
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  modal.classList.remove('hidden');
+}
+window.openLevelInfoModal = openLevelInfoModal;
+
+function dismissLevelInfoModal() {
+  const modal = document.getElementById('level-info-modal');
+  if (modal) modal.classList.add('hidden');
+}
+window.dismissLevelInfoModal = dismissLevelInfoModal;
+
+function showWeekCelebrationModal(weekId) {
+  const modal = document.getElementById('week-completion-modal');
+  if (!modal) return;
+
+  const targetWeekId = weekId || (currentLesson ? currentLesson.weekId : 'semana-1');
+  const trophyData = WEEK_TROPHIES[targetWeekId] || WEEK_TROPHIES['semana-1'];
+  const weekObj = CURRICULUM.weeks.find(w => w.id === targetWeekId);
+
+  const titleEl = document.getElementById('week-celebration-title');
+  const subEl = document.getElementById('week-celebration-subtitle');
+  const statLessons = document.getElementById('week-stat-lessons');
+  const statFirstTry = document.getElementById('week-stat-first-try');
+  const statXp = document.getElementById('week-stat-xp');
+  const badgeTitle = document.getElementById('week-badge-title');
+  const badgeType = document.getElementById('week-badge-type');
+  const nextBtn = document.getElementById('week-celebration-next-btn');
+
+  if (titleEl) titleEl.textContent = `¡${trophyData.title} Conquistada!`;
+  if (subEl) subEl.textContent = trophyData.subtitle;
+  if (badgeTitle) badgeTitle.textContent = trophyData.badgeTitle;
+  if (badgeType) badgeType.textContent = trophyData.badgeType;
+
+  const totalLessons = weekObj ? weekObj.lessons.length : 6;
+  const completedInWeek = weekObj ? weekObj.lessons.filter(l => completedLessons.includes(l.id)).length : totalLessons;
+  if (statLessons) statLessons.textContent = `${completedInWeek} / ${totalLessons}`;
+
+  // XP aproximado del módulo
+  const approxXp = completedInWeek * 110;
+  if (statXp) statXp.textContent = `+${approxXp} XP`;
+  if (statFirstTry) statFirstTry.textContent = `100%`;
+
+  if (nextBtn) {
+    if (trophyData.nextWeekId) {
+      nextBtn.style.display = 'inline-flex';
+      nextBtn.textContent = `Continuar a ${trophyData.nextWeekTitle} ➔`;
+      nextBtn.onclick = () => {
+        dismissWeekCelebrationModal();
+        const nextWeek = CURRICULUM.weeks.find(w => w.id === trophyData.nextWeekId);
+        if (nextWeek && nextWeek.lessons.length > 0) {
+          startLesson(nextWeek.lessons[0].id);
+        } else {
+          backToDashboard();
+        }
+      };
+    } else {
+      nextBtn.style.display = 'none';
+    }
+  }
+
+  modal.classList.remove('hidden');
+  markWeekCelebrated(targetWeekId);
+
+  // Fanfarria polifónica triunfal y mega fuegos artificiales
+  playSound('moduleComplete');
+  triggerMegaWeekConfetti();
+}
+window.showWeekCelebrationModal = showWeekCelebrationModal;
+
+function dismissWeekCelebrationModal() {
+  const modal = document.getElementById('week-completion-modal');
+  if (modal) modal.classList.add('hidden');
+  backToDashboard();
+}
+window.dismissWeekCelebrationModal = dismissWeekCelebrationModal;
+
+function triggerWeekCelebrationFromVictory() {
+  const victoryModal = document.getElementById('victory-lesson-modal');
+  if (victoryModal) victoryModal.classList.add('hidden');
+  if (currentLesson && currentLesson.weekId) {
+    showWeekCelebrationModal(currentLesson.weekId);
+  }
+}
+window.triggerWeekCelebrationFromVictory = triggerWeekCelebrationFromVictory;
+
+function goToNextWeekFromCelebration() {
+  dismissWeekCelebrationModal();
+}
+window.goToNextWeekFromCelebration = goToNextWeekFromCelebration;
 
 // --- Sistema de Rachas Semanales (Weekly Streaks) ---
 function getMondayOfWeek(d = new Date()) {
@@ -261,6 +575,69 @@ function playSound(type) {
         osc.start(ctx.currentTime + idx * 0.08);
         osc.stop(ctx.currentTime + idx * 0.08 + 0.38);
       });
+    } else if (type === 'levelUp') {
+      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.06);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime + idx * 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.06 + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + idx * 0.06);
+        osc.stop(ctx.currentTime + idx * 0.06 + 0.32);
+      });
+      // Acorde final brillante
+      [1046.50, 1567.98].forEach(freq => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + 0.32);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime + 0.32);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.9);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + 0.32);
+        osc.stop(ctx.currentTime + 0.95);
+      });
+    } else if (type === 'moduleComplete') {
+      // Fanfarria triunfal polifónica
+      const fanfarePhrase = [
+        { f: 392.00, t: 0.00, d: 0.14 },
+        { f: 523.25, t: 0.15, d: 0.14 },
+        { f: 659.25, t: 0.30, d: 0.14 },
+        { f: 783.99, t: 0.45, d: 0.28 },
+        { f: 659.25, t: 0.75, d: 0.12 },
+        { f: 783.99, t: 0.88, d: 0.14 },
+        { f: 1046.50, t: 1.04, d: 0.50 }
+      ];
+      fanfarePhrase.forEach(n => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(n.f, ctx.currentTime + n.t);
+        gain.gain.setValueAtTime(0.16, ctx.currentTime + n.t);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + n.t + n.d);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + n.t);
+        osc.stop(ctx.currentTime + n.t + n.d + 0.05);
+      });
+      // Gran acorde final polifónico sostenido
+      [523.25, 659.25, 783.99, 1046.50].forEach(f => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, ctx.currentTime + 1.1);
+        gain.gain.setValueAtTime(0.10, ctx.currentTime + 1.1);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + 1.1);
+        osc.stop(ctx.currentTime + 2.45);
+      });
     }
   } catch (err) {
     console.warn("Audio error:", err);
@@ -291,6 +668,29 @@ function triggerGrandConfetti() {
     frame();
   }
 }
+
+function triggerMegaWeekConfetti() {
+  if (!window.confetti) return;
+  const duration = 3500;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 32, spread: 360, ticks: 120, zIndex: 9999 };
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+    const particleCount = 45 * (timeLeft / duration);
+    confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }, colors: ['#f59e0b', '#fbbf24', '#10b981', '#34d399', '#38bdf8'] });
+    confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }, colors: ['#f59e0b', '#fbbf24', '#10b981', '#ec4899', '#a855f7'] });
+    confetti({ ...defaults, particleCount: Math.floor(particleCount * 0.6), origin: { x: 0.5, y: randomInRange(0.3, 0.55) }, colors: ['#ffd700', '#10b981', '#60a5fa'] });
+  }, 220);
+}
+window.triggerMegaWeekConfetti = triggerMegaWeekConfetti;
 
 function toggleSound() {
   soundEnabled = !soundEnabled;
@@ -356,11 +756,32 @@ function renderDashboard() {
     // Cabecera Pill del Nivel
     const pillHeader = document.createElement('div');
     pillHeader.id = 'week-header-' + week.id;
-    pillHeader.className = 'w-full max-w-sm sm:max-w-md bg-white border-2 border-slate-200 rounded-2xl py-3 px-4 sm:px-6 text-center shadow-sm mb-6 z-20';
-    pillHeader.innerHTML = `
-      <div class="text-[11px] font-extrabold uppercase tracking-widest text-brand-700">NIVEL ${week.number}</div>
-      <div class="text-base font-extrabold text-slate-900 mt-0.5">${week.title.replace(`Semana ${week.number}: `, '')}</div>
-    `;
+
+    const isWeekFullyCompleted = week.lessons && week.lessons.length > 0 && week.lessons.every(l => completedLessons.includes(l.id));
+
+    if (isWeekFullyCompleted) {
+      pillHeader.className = 'w-full max-w-sm sm:max-w-md bg-gradient-to-r from-amber-50 via-yellow-50 to-emerald-50 border-2 border-amber-300 rounded-2xl py-3 px-4 sm:px-6 text-center shadow-md mb-6 z-20 relative';
+      pillHeader.innerHTML = `
+        <div class="flex items-center justify-between gap-2 mb-1">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-amber-400 text-amber-950 font-black text-[10px] rounded-full uppercase tracking-wider shadow-xs">
+            <span>🏆 MÓDULO 100% SUPERADO</span>
+          </div>
+          <button onclick="showWeekCelebrationModal('${week.id}')" class="inline-flex items-center gap-1 px-2.5 py-1 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-extrabold text-[11px] rounded-xl shadow-xs transition cursor-pointer" title="Ver celebración y trofeo del módulo">
+            <span>Ver Trofeo</span> 🏆
+          </button>
+        </div>
+        <div class="text-base font-extrabold text-slate-900 mt-0.5">${week.title.replace(`Semana ${week.number}: `, '')}</div>
+        <div class="text-[11px] font-bold text-amber-800/90 mt-0.5 flex items-center justify-center gap-1.5">
+          <span>⭐ 6 de 6 lecciones dominadas con éxito</span>
+        </div>
+      `;
+    } else {
+      pillHeader.className = 'w-full max-w-sm sm:max-w-md bg-white border-2 border-slate-200 rounded-2xl py-3 px-4 sm:px-6 text-center shadow-sm mb-6 z-20';
+      pillHeader.innerHTML = `
+        <div class="text-[11px] font-extrabold uppercase tracking-widest text-brand-700">NIVEL ${week.number}</div>
+        <div class="text-base font-extrabold text-slate-900 mt-0.5">${week.title.replace(`Semana ${week.number}: `, '')}</div>
+      `;
+    }
     weekSection.appendChild(pillHeader);
 
     if (week.lessons) {
@@ -3904,14 +4325,29 @@ function simulateSandbox(code) {
 function renderLessonVictory() {
   const container = document.getElementById('lesson-content-area');
 
-  if (!completedLessons.includes(currentLesson.id)) {
+  const isReview = completedLessons.includes(currentLesson.id);
+  const xpBreakdown = calculateLessonXpBreakdown(isReview);
+  const oldXp = currentUser.xp || 0;
+  const oldLevelInfo = getUserLevelInfo(oldXp);
+
+  if (!isReview) {
     completedLessons.push(currentLesson.id);
-    currentUser.xp = (currentUser.xp || 0) + 50;
+    currentUser.xp = oldXp + xpBreakdown.totalGainedXp;
     localStorage.setItem('py101_completed_lessons', JSON.stringify(completedLessons));
-    if (typeof syncProgressToServer === 'function') {
-      syncProgressToServer();
-    }
+  } else {
+    currentUser.xp = oldXp + xpBreakdown.totalGainedXp;
   }
+  localStorage.setItem('pyminas_user_xp', String(currentUser.xp));
+
+  const newLevelInfo = getUserLevelInfo(currentUser.xp);
+  const didLevelUp = newLevelInfo.level > oldLevelInfo.level;
+
+  if (typeof syncProgressToServer === 'function') {
+    syncProgressToServer();
+  }
+
+  updateUserXpDisplay();
+
   // Al completar la lección, reiniciar el progreso de pasos a 0 para que al repasar comience de nuevo
   saveLessonStep(currentLesson.id, 0);
 
@@ -3920,6 +4356,11 @@ function renderLessonVictory() {
 
   triggerGrandConfetti();
   playSound('victory');
+  if (didLevelUp) {
+    setTimeout(() => {
+      playSound('levelUp');
+    }, 450);
+  }
 
   const week = CURRICULUM.weeks.find(w => w.id === currentLesson.weekId);
   const nextLesson = week?.lessons.find(l => l.number === currentLesson.number + 1);
@@ -3956,11 +4397,11 @@ function renderLessonVictory() {
   const victoryPrecision = document.getElementById('victory-precision-counter');
   if (victoryPrecision) {
     if (finalPrecision >= 90) {
-      victoryPrecision.className = "text-xl font-black text-emerald-600";
+      victoryPrecision.className = "text-lg sm:text-xl font-black text-emerald-600";
     } else if (finalPrecision >= 70) {
-      victoryPrecision.className = "text-xl font-black text-amber-500";
+      victoryPrecision.className = "text-lg sm:text-xl font-black text-amber-500";
     } else {
-      victoryPrecision.className = "text-xl font-black text-rose-500";
+      victoryPrecision.className = "text-lg sm:text-xl font-black text-rose-500";
     }
 
     let p = 0;
@@ -3978,20 +4419,92 @@ function renderLessonVictory() {
   if (victoryXp) {
     let xp = 0;
     victoryXp.textContent = '+0 XP';
+    const targetXp = xpBreakdown.totalGainedXp;
+    const step = Math.max(1, Math.round(targetXp / 15));
     const xpInterval = setInterval(() => {
-      xp += 5;
-      if (xp >= 50) {
-        xp = 50;
+      xp += step;
+      if (xp >= targetXp) {
+        xp = targetXp;
         clearInterval(xpInterval);
       }
       victoryXp.textContent = `+${xp} XP`;
-    }, 40);
+    }, 30);
   }
 
   const victoryStreak = document.getElementById('victory-streak-counter');
   if (victoryStreak) {
     const effStreak = getEffectiveWeeklyStreak();
     victoryStreak.textContent = `🔥 ${effStreak} ${effStreak === 1 ? 'sem' : 'sems'}`;
+  }
+
+  // Tarjeta de desglose por 1er intento
+  const firstTryBadge = document.getElementById('victory-first-try-badge');
+  const firstTryDesc = document.getElementById('victory-first-try-desc');
+  const flawlessBadge = document.getElementById('victory-flawless-badge');
+
+  if (firstTryBadge) {
+    firstTryBadge.textContent = `+${xpBreakdown.firstTryXp} XP`;
+  }
+  if (firstTryDesc) {
+    if (xpBreakdown.isReview) {
+      firstTryDesc.textContent = `Modo repaso: Has ganado +25 XP de práctica por reforzar conceptos.`;
+    } else if (xpBreakdown.totalQuestions === 0) {
+      firstTryDesc.textContent = `Lección completada con éxito. Ganaste +${xpBreakdown.baseXp} XP base.`;
+    } else {
+      firstTryDesc.textContent = `${xpBreakdown.firstTryCount} de ${xpBreakdown.totalQuestions} retos respondidos al primer intento (+${xpBreakdown.firstTryXp} XP).`;
+    }
+  }
+  if (flawlessBadge) {
+    if (xpBreakdown.isFlawless && !xpBreakdown.isReview) {
+      flawlessBadge.classList.remove('hidden');
+    } else {
+      flawlessBadge.classList.add('hidden');
+    }
+  }
+
+  // Tarjeta de Nivel y Barra de Experiencia
+  const levelIcon = document.getElementById('victory-level-icon');
+  const levelLabel = document.getElementById('victory-level-label');
+  const levelTitle = document.getElementById('victory-level-title');
+  const levelXpText = document.getElementById('victory-level-xp-text');
+  const levelNextText = document.getElementById('victory-level-next-text');
+  const levelBar = document.getElementById('victory-level-bar');
+  const levelUpBanner = document.getElementById('victory-level-up-banner');
+
+  if (levelIcon) levelIcon.textContent = newLevelInfo.icon;
+  if (levelLabel) levelLabel.textContent = `Nivel ${newLevelInfo.level}`;
+  if (levelTitle) levelTitle.textContent = newLevelInfo.title;
+  if (levelXpText) {
+    const maxStr = newLevelInfo.maxXp === 99999 ? '∞' : newLevelInfo.maxXp;
+    levelXpText.textContent = `${newLevelInfo.currentXp} / ${maxStr} XP`;
+  }
+  if (levelNextText) {
+    levelNextText.textContent = newLevelInfo.nextTier ? `Faltan ${newLevelInfo.xpNeeded} XP para Nivel ${newLevelInfo.nextTier.level}` : 'Nivel Máximo de Honor';
+  }
+  if (levelBar) {
+    levelBar.style.width = '0%';
+    setTimeout(() => {
+      levelBar.style.width = `${newLevelInfo.percent}%`;
+    }, 150);
+  }
+  if (levelUpBanner) {
+    if (didLevelUp) {
+      levelUpBanner.textContent = `🎉 ¡SUBISTE DE NIVEL! Ahora eres ${newLevelInfo.title} ${newLevelInfo.icon}`;
+      levelUpBanner.classList.remove('hidden');
+    } else {
+      levelUpBanner.classList.add('hidden');
+    }
+  }
+
+  // Banner de Fin de Semana (si 100% de la semana está completada)
+  const weekCompleteBanner = document.getElementById('victory-week-complete-banner');
+  const isWeekComplete = week && week.lessons.every(l => completedLessons.includes(l.id));
+  if (weekCompleteBanner) {
+    if (isWeekComplete) {
+      weekCompleteBanner.classList.remove('hidden');
+    } else {
+      weekCompleteBanner.classList.add('hidden');
+    }
   }
 
   if (victoryModal) {
@@ -4015,11 +4528,11 @@ function renderLessonVictory() {
 
       <div class="grid grid-cols-3 gap-3 w-full mb-8">
         <div class="bg-white border-2 border-slate-200 rounded-2xl p-3">
-          <div class="text-xl font-black text-amber-500">100%</div>
+          <div class="text-xl font-black text-amber-500">${finalPrecision}%</div>
           <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Precisión</div>
         </div>
         <div class="bg-white border-2 border-slate-200 rounded-2xl p-3">
-          <div class="text-xl font-black text-brand-600">+50 XP</div>
+          <div class="text-xl font-black text-brand-600 font-mono">+${xpBreakdown.totalGainedXp} XP</div>
           <div class="text-[10px] font-bold text-slate-400 uppercase mt-0.5">Puntos XP</div>
         </div>
         <div class="bg-white border-2 border-slate-200 rounded-2xl p-3">
@@ -4047,6 +4560,18 @@ function dismissVictoryModal(goToNext) {
   const victoryModal = document.getElementById('victory-lesson-modal');
   if (victoryModal) {
     victoryModal.classList.add('hidden');
+  }
+
+  // Si la semana acaba de ser completada y aún no se ha celebrado, mostrar la celebración de la semana
+  if (currentLesson && currentLesson.weekId) {
+    const week = CURRICULUM.weeks.find(w => w.id === currentLesson.weekId);
+    if (week && week.lessons.every(l => completedLessons.includes(l.id))) {
+      const celebrated = getCelebratedWeeks();
+      if (!celebrated.includes(week.id)) {
+        showWeekCelebrationModal(week.id);
+        return;
+      }
+    }
   }
 
   if (goToNext) {
@@ -4483,6 +5008,7 @@ async function handleAuthLogin(event) {
       }
       if (typeof data.progress.xp === 'number') {
         currentUser.xp = data.progress.xp;
+        localStorage.setItem('pyminas_user_xp', String(currentUser.xp));
       }
       if (typeof data.progress.weeklyStreak === 'number') {
         currentUser.weeklyStreak = data.progress.weeklyStreak;
@@ -4495,6 +5021,7 @@ async function handleAuthLogin(event) {
     }
 
     updateStreakDisplay();
+    updateUserXpDisplay();
     updateUserBadge(data.email);
     switchView('dashboard');
     renderDashboard();
@@ -4576,6 +5103,7 @@ async function checkAuthSessionOnStartup() {
       }
       if (typeof data.progress.xp === 'number') {
         currentUser.xp = data.progress.xp;
+        localStorage.setItem('pyminas_user_xp', String(currentUser.xp));
       }
       if (typeof data.progress.weeklyStreak === 'number') {
         currentUser.weeklyStreak = data.progress.weeklyStreak;
@@ -4588,6 +5116,7 @@ async function checkAuthSessionOnStartup() {
     }
 
     updateStreakDisplay();
+    updateUserXpDisplay();
     updateUserBadge(data.email);
     switchView('dashboard');
     renderDashboard();
@@ -4597,6 +5126,7 @@ async function checkAuthSessionOnStartup() {
     console.warn('Modo offline / API de auth no accesible, usando estado en caché:', err);
     if (currentUser.email) {
       updateStreakDisplay();
+      updateUserXpDisplay();
       updateUserBadge(currentUser.email);
       switchView('dashboard');
       renderDashboard();
@@ -4651,11 +5181,14 @@ async function logoutUser() {
   localStorage.removeItem(AUTH_EMAIL_KEY);
   localStorage.removeItem('pyminas_weekly_streak');
   localStorage.removeItem('pyminas_last_active_week');
+  localStorage.removeItem('pyminas_user_xp');
   currentUser.token = '';
   currentUser.email = '';
   currentUser.weeklyStreak = 0;
   currentUser.lastActiveWeek = '';
+  currentUser.xp = 0;
   updateStreakDisplay();
+  updateUserXpDisplay();
   updateUserBadge('Estudiante UNAL');
   showLoginView('Has cerrado sesión correctamente.');
 }
@@ -5015,6 +5548,7 @@ function checkAutoStartTour() {
 
 window.addEventListener('DOMContentLoaded', () => {
   updateStreakDisplay();
+  updateUserXpDisplay();
   renderDashboard();
   setTimeout(initPyodide, 800);
   checkAuthSessionOnStartup();
@@ -5118,6 +5652,17 @@ window.addEventListener('DOMContentLoaded', () => {
         goToTourStep(stepIdx);
       }
     }, 450);
+  }
+  if (urlParams.has('celebrate')) {
+    const cWeek = urlParams.get('celebrate') || 'semana-1';
+    setTimeout(() => {
+      showWeekCelebrationModal(cWeek);
+    }, 400);
+  }
+  if (urlParams.get('levelinfo') === 'true') {
+    setTimeout(() => {
+      openLevelInfoModal();
+    }, 400);
   }
 });
 
