@@ -215,16 +215,24 @@ def main():
                         starter = s["starterCode"].strip()
                         marker = s.get("slotMarker", "___")
                         for opt in s.get("options", []):
-                            code_val = opt.get("code")
-                            if code_val is not None:
-                                filled = starter.replace(marker, code_val)
-                                exp_out = s.get("expectedOutput", "") if opt.get("isCorrect") else ""
-                                trace = trace_python_code(filled, expected_output=exp_out)
-                                if trace:
-                                    baked[filled] = trace
-                                    success_count += 1
-                                    err_status = f" ({trace['errorType']})" if trace.get("hasError") else ""
-                                    print(f"    [SANDBOX] {l.get('id', '')} opt '{code_val}'{err_status}: {len(trace['lineTrace'])} líneas")
+                            if opt.get("slots"):
+                                filled = starter
+                                for slot_val in opt["slots"]:
+                                    filled = filled.replace(marker, slot_val, 1)
+                                code_val = opt.get("code") or " / ".join(opt["slots"])
+                            else:
+                                code_val = opt.get("code")
+                                if code_val is not None:
+                                    filled = starter.replace(marker, code_val)
+                                else:
+                                    continue
+                            exp_out = s.get("expectedOutput", "") if opt.get("isCorrect") else ""
+                            trace = trace_python_code(filled, expected_output=exp_out)
+                            if trace:
+                                baked[filled] = trace
+                                success_count += 1
+                                err_status = f" ({trace['errorType']})" if trace.get("hasError") else ""
+                                print(f"    [SANDBOX] {l.get('id', '')} opt '{code_val}'{err_status}: {len(trace['lineTrace'])} líneas")
     except Exception as e:
         print(f"  [WARN] Curriculum baking: {e}")
 

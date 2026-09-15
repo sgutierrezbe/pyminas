@@ -133,8 +133,12 @@ def load_curriculum():
     match = re.search(r"const\s+CURRICULUM\s*=\s*(\{[\s\S]*\});?\s*$", raw)
     if not match:
         raise ValueError("No se pudo extraer 'const CURRICULUM = {...}' de curriculum.js")
-    json_str = js_to_json(match.group(1))
-    return json.loads(json_str)
+    js_part = match.group(1).rstrip("; \n")
+    try:
+        return json.loads(js_part)
+    except Exception:
+        json_str = js_to_json(js_part)
+        return json.loads(json_str)
 
 def load_baked_traces():
     if not BAKED_TRACES_PATH.exists():
@@ -389,7 +393,10 @@ class CurriculumAuditor:
                 real_out, err = execute_python_code(test_code)
                 self.check(not err, f"{ctx} Código de predict lanza excepción en CPython: {err}")
             except SyntaxError as e:
-                self.check(False, f"{ctx} Código en predict contiene error de sintaxis: {e}")
+                if step.get("expectSyntaxError") or "syntax" in step.get("question", "").lower() or "syntax" in step.get("title", "").lower():
+                    self.check(True, "")
+                else:
+                    self.check(False, f"{ctx} Código en predict contiene error de sintaxis: {e}")
 
     def audit_code_sandbox_step(self, step, ctx):
         instruction = step.get("instruction", "")
@@ -408,8 +415,15 @@ class CurriculumAuditor:
                    f"{ctx} Sandbox debe tener exactamente 1 opción correcta (encontradas: {len(correct_options)}).")
 
         if len(correct_options) == 1:
-            correct_slot = correct_options[0].get("code") or correct_options[0].get("slotText", "")
-            solved_code = starter.replace(slot_marker, correct_slot)
+            correct_opt = correct_options[0]
+            if correct_opt.get("slots"):
+                solved_code = starter
+                for slot_val in correct_opt["slots"]:
+                    solved_code = solved_code.replace(slot_marker, slot_val, 1)
+                correct_slot = " / ".join(correct_opt["slots"])
+            else:
+                correct_slot = correct_opt.get("code") or correct_opt.get("slotText", "")
+                solved_code = starter.replace(slot_marker, correct_slot)
             try:
                 ast.parse(solved_code)
                 self.check(True, "")

@@ -3426,13 +3426,16 @@ function renderSandboxStep(step, container) {
 
   let codeAreaHtml = '';
   if (isGuided) {
+    let slotGlobalIdx = 0;
     const linesRowsHtml = lines.map((line, idx) => {
       let contentHtml = '';
       if (line.includes(slotMarker)) {
         const parts = line.split(slotMarker);
-        const prefix = parts[0];
-        const suffix = parts.slice(1).join(slotMarker);
-        contentHtml = `${highlightPythonSyntax(prefix)}<span id="guided-code-slot" class="code-slot-box slot-empty px-2.5 py-0.5 text-xs font-bold font-mono select-none inline-flex items-center min-w-[50px]"><span class="blinking-cursor"></span></span>${highlightPythonSyntax(suffix)}`;
+        contentHtml = highlightPythonSyntax(parts[0]);
+        for (let p = 1; p < parts.length; p++) {
+          contentHtml += `<span id="guided-code-slot-${slotGlobalIdx}" data-slot-idx="${slotGlobalIdx}" class="guided-code-slot code-slot-box slot-empty px-2.5 py-0.5 text-xs font-bold font-mono select-none inline-flex items-center min-w-[50px]"><span class="blinking-cursor"></span></span>${highlightPythonSyntax(parts[p])}`;
+          slotGlobalIdx++;
+        }
       } else {
         contentHtml = highlightPythonSyntax(line) || '&nbsp;';
       }
@@ -3606,11 +3609,21 @@ function selectGuidedOption(optId) {
     }
   });
 
-  // Rellenar el recuadro dentro del código con sintaxis Python resaltada
-  const slotEl = document.getElementById('guided-code-slot');
-  if (slotEl) {
-    slotEl.className = "code-slot-box slot-filled animate-modal-pop px-2.5 py-0.5 text-xs font-bold font-mono inline-flex items-center";
-    slotEl.innerHTML = highlightPythonSyntax(opt.code);
+  // Rellenar el recuadro o recuadros dentro del código con sintaxis Python resaltada
+  const slotEls = document.querySelectorAll('.guided-code-slot');
+  const slotsList = Array.isArray(opt.slots) ? opt.slots : [opt.code];
+  if (slotEls && slotEls.length > 0) {
+    slotEls.forEach((el, sIdx) => {
+      const val = slotsList[sIdx] !== undefined ? slotsList[sIdx] : (slotsList[0] || "");
+      el.className = "guided-code-slot code-slot-box slot-filled animate-modal-pop px-2.5 py-0.5 text-xs font-bold font-mono inline-flex items-center";
+      el.innerHTML = highlightPythonSyntax(val);
+    });
+  } else {
+    const singleSlot = document.getElementById('guided-code-slot');
+    if (singleSlot) {
+      singleSlot.className = "code-slot-box slot-filled animate-modal-pop px-2.5 py-0.5 text-xs font-bold font-mono inline-flex items-center";
+      singleSlot.innerHTML = highlightPythonSyntax(slotsList[0] || opt.code);
+    }
   }
 
   const feedbackCard = document.getElementById('guided-feedback-card');
@@ -3687,7 +3700,14 @@ async function executeGuidedSandbox() {
   if (feedbackCard) feedbackCard.classList.add('hidden');
 
   const slotMarker = currentGuidedStep.slotMarker || "___";
-  const fullCode = currentGuidedStep.starterCode.replace(slotMarker, opt.code);
+  let fullCode = currentGuidedStep.starterCode;
+  if (Array.isArray(opt.slots)) {
+    opt.slots.forEach(slotVal => {
+      fullCode = fullCode.replace(slotMarker, slotVal);
+    });
+  } else {
+    fullCode = fullCode.replace(slotMarker, opt.code);
+  }
 
   // Para opciones incorrectas nunca inyectar expectedOutput
   const expOutput = opt.isCorrect ? (currentGuidedStep.expectedOutput || "") : "";

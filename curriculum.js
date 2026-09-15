@@ -1,8 +1,6 @@
 /**
  * pyMinas — Plataforma Interactiva de Fundamentos de Programación
  * Facultad de Minas · Universidad Nacional de Colombia - Sede Medellín
- * Diseñado pedagógicamente para estudiantes de ingeniería.
- * Enfoque: Intuición primero, retos táctiles, progresión guiada y ejecución en vivo.
  */
 
 const CURRICULUM = {
@@ -1472,6 +1470,1214 @@ const CURRICULUM = {
                 }
               ],
               "expectedOutput": "Régimen aplicado: Tarifa plena sin recargo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "semana-3",
+      "number": 3,
+      "title": "Semana 3: Aplicaciones Prácticas y Resolución de Problemas",
+      "description": "Casos prácticos de ingeniería integrando operadores aritméticos, lógica booleana, condicionales y reportes técnicos.",
+      "status": "active",
+      "lessons": [
+        {
+          "id": "w3-l1",
+          "weekId": "semana-3",
+          "number": 1,
+          "tag": "Operadores",
+          "shortTitle": "Logística Minera",
+          "title": "Logística Minera: Fórmulas y Operadores",
+          "description": "Resolución de problemas con división entera, residuo y precedencia en transporte y tolvas.",
+          "duration": "10 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · La tolva y los viajes en camión",
+              "title": "División entera y residuo en transporte de carga",
+              "intro": "En una mina de carbón no puedes enviar medio camión: los viajes son cantidades enteras. La división entera // calcula los viajes completos y el residuo % nos da el remanente que se queda en acopio.",
+              "examples": [
+                {
+                  "label": "Viajes y acopio",
+                  "code": "material = 95\ncapacidad = 20\nviajes = material // capacidad\nsobrante = material % capacidad\nprint(\"Viajes llenos:\", viajes)\nprint(\"Toneladas en acopio:\", sobrante)",
+                  "output": "Viajes llenos: 4\nToneladas en acopio: 15",
+                  "explanation": "El operador // calcula cuántas veces cabe 20 en 95 (4 veces), y % extrae las 15 toneladas restantes."
+                }
+              ],
+              "keyTakeaway": "Usa // para contar unidades discretas indivisibles y % para saber exactamente cuánto material sobra."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Reparto de cargamento",
+              "title": "¿Cuánto cemento queda en bodega?",
+              "question": "Una cuadrilla tiene 74 bultos de cemento y cada camioneta transporta 12 bultos. ¿Cuál es el valor exacto de sobrante al ejecutar este código?",
+              "code": "bultos = 74\ncapacidad = 12\nsobrante = bultos % capacidad\nprint(sobrante)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "6",
+                  "isCorrect": false,
+                  "whyIncorrect": "12 * 6 = 72; el residuo restante de 74 - 72 es 2 bultos, no 6."
+                },
+                {
+                  "id": "B",
+                  "text": "2",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "6.16",
+                  "isCorrect": false,
+                  "whyIncorrect": "El operador % calcula el residuo entero exacto, nunca entrega decimales fraccionarios."
+                },
+                {
+                  "id": "D",
+                  "text": "0",
+                  "isCorrect": false,
+                  "whyIncorrect": "74 no es divisible exactamente entre 12; sobran bultos en bodega."
+                }
+              ],
+              "correctionTip": "El operador % extrae el sobrante de una división: 74 = (12 * 6) + 2.",
+              "fullAnswerExplanation": "¡Exacto! 12 cabe 6 veces en 74 dando 72 bultos transportados, y sobran exactamente 2 bultos."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Spot the Bug: La trampa de la división real",
+              "title": "¿Por qué falló el cálculo logístico?",
+              "question": "Un ingeniero novato escribió este código para saber cuántas volquetas completas se necesitan, pero el programa arrojó un error lógico en la operación. ¿Cuál es la falla?",
+              "code": "toneladas = 50\ncapacidad = 8\nvolquetas = toneladas / capacidad\nprint(\"Volquetas requeridas:\", volquetas)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "toneladas no puede dividirse porque fue declarada como texto.",
+                  "isCorrect": false,
+                  "whyIncorrect": "50 fue declarado como número entero int sin comillas."
+                },
+                {
+                  "id": "B",
+                  "text": "En Python el operador de división no existe y causa SyntaxError.",
+                  "isCorrect": false,
+                  "whyIncorrect": "La barra diagonal / es el operador nativo de división real en Python."
+                },
+                {
+                  "id": "C",
+                  "text": "Se usó / que produce 6.25; para unidades físicas indivisibles se debe usar división entera //.",
+                  "isCorrect": true
+                },
+                {
+                  "id": "D",
+                  "text": "Falta convertir capacidad con la función float().",
+                  "isCorrect": false,
+                  "whyIncorrect": "La división con enteros es perfectamente válida y genera flotante sin conversión previa."
+                }
+              ],
+              "correctionTip": "La división real / genera decimales; para vehículos o viajes completos se emplea //.",
+              "fullAnswerExplanation": "¡Brillante diagnóstico! En operaciones físicas no existen 6.25 volquetas; se debe emplear // para cantidades enteras."
+            },
+            {
+              "type": "explanation",
+              "partLabel": "Paso 4 · Potencia y resistencia cuadrática",
+              "title": "La precedencia de la exponenciación (**)",
+              "intro": "La resistencia aerodinámica de los camiones aumenta con el cuadrado de la velocidad (v**2). En Python, el operador de exponenciación ** tiene mayor precedencia que la multiplicación *.",
+              "examples": [
+                {
+                  "label": "Cálculo de potencia",
+                  "code": "velocidad = 6\nfactor = 3\npotencia = factor * velocidad ** 2\nprint(\"Potencia requerida (kW):\", potencia)",
+                  "output": "Potencia requerida (kW): 108",
+                  "explanation": "Python evalúa primero velocidad ** 2 (6**2 = 36), y luego multiplica por factor (3 * 36 = 108)."
+                }
+              ],
+              "keyTakeaway": "La potencia (**) se calcula antes que la multiplicación (*). Si deseas multiplicar primero, debes usar paréntesis."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 5 · Precedencia en la fórmula de potencia",
+              "title": "¿Qué alteran los paréntesis?",
+              "question": "Si un estudiante altera los paréntesis en el cálculo anterior, ¿cuál será la salida exacta de este código?",
+              "code": "factor = 2\nbase = 3\nresultado = (factor * base) ** 2\nprint(resultado)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "18",
+                  "isCorrect": false,
+                  "whyIncorrect": "18 resultaría de 2 * (3 ** 2) = 2 * 9; aquí los paréntesis fuerzan primero 2 * 3 = 6."
+                },
+                {
+                  "id": "B",
+                  "text": "12",
+                  "isCorrect": false,
+                  "whyIncorrect": "Confundes elevar al cuadrado con multiplicar por 2: (6) * 2 = 12."
+                },
+                {
+                  "id": "C",
+                  "text": "24",
+                  "isCorrect": false,
+                  "whyIncorrect": "24 no corresponde a ninguna combinación válida de las variables dadas."
+                },
+                {
+                  "id": "D",
+                  "text": "36",
+                  "isCorrect": true
+                }
+              ],
+              "correctionTip": "Los paréntesis tienen la máxima prioridad: primero (2 * 3) = 6, y luego 6 ** 2.",
+              "fullAnswerExplanation": "¡Exacto! Los paréntesis obligan a evaluar primero la multiplicación factor * base = 6, y 6 elevado al cuadrado da 36."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
+              "title": "Tolvas y material restante",
+              "instruction": "Completa el código con los operadores adecuados para calcular: 1) el número de viajes completos y 2) los kilogramos que quedan en el silo.",
+              "slotMarker": "___",
+              "starterCode": "kilos_totales = 850\ncapacidad_camion = 200\n\nviajes = kilos_totales ___ capacidad_camion\nrestante = kilos_totales ___ capacidad_camion\n\nprint(\"Viajes completos:\", viajes)\nprint(\"Kilos restantes:\", restante)",
+              "expectedOutput": "Viajes completos: 4\nKilos restantes: 50",
+              "options": [
+                {
+                  "id": "A",
+                  "slots": [
+                    "//",
+                    "%"
+                  ],
+                  "label": "//  y  %",
+                  "code": "//  y  %",
+                  "isCorrect": true,
+                  "explanation": "¡Excelente! // calcula los 4 viajes enteros y % extrae los 50 kg restantes sin fraccionar."
+                },
+                {
+                  "id": "B",
+                  "slots": [
+                    "/",
+                    "%"
+                  ],
+                  "label": "/  y  %",
+                  "code": "/  y  %",
+                  "isCorrect": false,
+                  "explanation": "Usar / daría 4.25 viajes con decimales en vez de un conteo entero de vehículos."
+                },
+                {
+                  "id": "C",
+                  "slots": [
+                    "%",
+                    "//"
+                  ],
+                  "label": "%  y  //",
+                  "code": "%  y  //",
+                  "isCorrect": false,
+                  "explanation": "Los operadores están invertidos; calcularías 50 viajes y 4 kilos sobrantes."
+                },
+                {
+                  "id": "D",
+                  "slots": [
+                    "//",
+                    "/"
+                  ],
+                  "label": "//  y  /",
+                  "code": "//  y  /",
+                  "isCorrect": false,
+                  "explanation": "La segunda ranura debe ser % para calcular el residuo, no la división real."
+                }
+              ]
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 7 · Caso Borde: Descarga exacta",
+              "title": "¿Qué pasa si no sobra nada?",
+              "question": "¿Qué imprime la variable sobrante si el material a despachar es múltiplo exacto de la capacidad del vehículo?",
+              "code": "cajas = 60\ncapacidad = 15\nsobrante = cajas % capacidad\nprint(\"Sobrante:\", sobrante)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Sobrante: 4",
+                  "isCorrect": false,
+                  "whyIncorrect": "4 es el resultado de la división 60 // 15, no el sobrante de la operación."
+                },
+                {
+                  "id": "B",
+                  "text": "Sobrante: None",
+                  "isCorrect": false,
+                  "whyIncorrect": "El operador módulo siempre devuelve un número entero, nunca None."
+                },
+                {
+                  "id": "C",
+                  "text": "Sobrante: 0",
+                  "isCorrect": true
+                },
+                {
+                  "id": "D",
+                  "text": "Sobrante: 15",
+                  "isCorrect": false,
+                  "whyIncorrect": "Si sobran 15 unidades, cabría exactamente un viaje completo adicional."
+                }
+              ],
+              "correctionTip": "Cuando una cantidad es divisible exactamente por otra, el residuo es estrictamente 0.",
+              "fullAnswerExplanation": "¡Correcto! Como 15 * 4 = 60 exactos, no queda ninguna unidad suelta y el residuo es 0."
+            }
+          ]
+        },
+        {
+          "id": "w3-l2",
+          "weekId": "semana-3",
+          "number": 2,
+          "tag": "Lógica Booleana",
+          "shortTitle": "Seguridad Industrial",
+          "title": "Seguridad Industrial: Sensores y Lógica Booleana",
+          "description": "Monitoreo de parámetros críticos con operadores relacionales y combinaciones lógicas.",
+          "duration": "10 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · Alerta en la caldera de vapor",
+              "title": "Condiciones compuestas con and",
+              "intro": "En una planta térmica, una alarma de emergencia solo debe activarse si dos condiciones críticas ocurren simultáneamente: alta presión Y alta temperatura.",
+              "examples": [
+                {
+                  "label": "Monitoreo de caldera",
+                  "code": "presion_psi = 160\ntemp_celsius = 95\nalarma = (presion_psi > 150) and (temp_celsius > 90)\nprint(\"¿Activar alarma de caldera?\", alarma)",
+                  "output": "¿Activar alarma de caldera? True",
+                  "explanation": "Como ambas comparaciones son verdaderas (160 > 150 y 95 > 90), el operador and resulta en True."
+                }
+              ],
+              "keyTakeaway": "El operador and exige que ambas condiciones sean verdaderas para dar True. Si una sola falla, todo es False."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Condición de parada de emergencia",
+              "title": "¿Cuándo se detiene la cinta?",
+              "question": "El sistema detiene una cinta transportadora si el botón de paro está pulsado O si el peso excede 500 kg. ¿Qué imprimirá este programa?",
+              "code": "boton_paro = False\npeso_kg = 580\ndetener = boton_paro or (peso_kg > 500)\nprint(\"Detener cinta:\", detener)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Detener cinta: False",
+                  "isCorrect": false,
+                  "whyIncorrect": "En el operador or, basta con que una sola de las dos ramas sea True para que todo sea True."
+                },
+                {
+                  "id": "B",
+                  "text": "Detener cinta: True",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "Detener cinta: 580",
+                  "isCorrect": false,
+                  "whyIncorrect": "Una expresión con operadores relacionales produce un booleano True/False, no el número."
+                },
+                {
+                  "id": "D",
+                  "text": "Detener cinta: Error",
+                  "isCorrect": false,
+                  "whyIncorrect": "Mezclar booleanos y comparaciones numéricas con or es sintaxis totalmente válida en Python."
+                }
+              ],
+              "correctionTip": "El operador or devuelve True si al menos una de las condiciones es verdadera.",
+              "fullAnswerExplanation": "¡Muy bien! Como peso_kg > 500 es True (580 > 500), el operador or produce True inmediatamente."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Spot the Bug: El falso or sin variable",
+              "title": "¿Por qué este condicional siempre da True?",
+              "question": "Un estudiante quería verificar si el voltaje es 110 o 220 voltios, pero escribió el código de abajo. ¿Por qué este código siempre imprime True sin importar el voltaje?",
+              "code": "voltaje = 15\nvalido = (voltaje == 110 or 220)\nprint(\"¿Voltaje válido?\", bool(valido))",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "En Python or 220 no compara con voltaje; como el número 220 no es cero, siempre se evalúa como True.",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Porque la variable voltaje debe declararse obligatoriamente con decimales float.",
+                  "isCorrect": false,
+                  "whyIncorrect": "El tipo de dato entero es perfectamente adecuado para representar voltajes nominales."
+                },
+                {
+                  "id": "C",
+                  "text": "Porque el operador == debe colocarse después del paréntesis.",
+                  "isCorrect": false,
+                  "whyIncorrect": "La sintaxis de los paréntesis es válida, el fallo es la expresión booleana incompleta del or."
+                },
+                {
+                  "id": "D",
+                  "text": "Porque la función bool() produce un error al recibir números enteros.",
+                  "isCorrect": false,
+                  "whyIncorrect": "bool(n) convierte cualquier número entero distinto de 0 en True sin generar errores."
+                }
+              ],
+              "correctionTip": "Cada lado del or debe ser una comparación completa: voltaje == 110 or voltaje == 220.",
+              "fullAnswerExplanation": "¡Clave fundamental! En Python, 220 es un valor truthy. Debes escribir explícitamente: (voltaje == 110 or voltaje == 220)."
+            },
+            {
+              "type": "explanation",
+              "partLabel": "Paso 4 · El operador not e inversión de sensores",
+              "title": "Inversión lógica de señales con not",
+              "intro": "Muchos sensores industriales entregan True cuando la válvula está bloqueada. Para verificar si el flujo está libre, invertimos la señal usando not.",
+              "examples": [
+                {
+                  "label": "Inversión de estado",
+                  "code": "valvula_bloqueada = False\nflujo_activo = not valvula_bloqueada\nprint(\"¿Hay flujo en la tubería?\", flujo_activo)",
+                  "output": "¿Hay flujo en la tubería? True",
+                  "explanation": "El operador not convierte False en True y viceversa."
+                }
+              ],
+              "keyTakeaway": "El operador not invierte el valor de verdad: not True es False, y not False es True."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 5 · Verificación de ventilación y gases",
+              "title": "¿Es seguro ingresar al túnel?",
+              "question": "En un túnel subterráneo, la entrada es segura si los gases tóxicos NO están presentes Y los ventiladores están encendidos. ¿Qué imprimirá?",
+              "code": "gas_detectado = False\nventilacion_on = True\nseguro = (not gas_detectado) and ventilacion_on\nprint(\"Ingreso seguro:\", seguro)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ingreso seguro: False",
+                  "isCorrect": false,
+                  "whyIncorrect": "not gas_detectado se convierte en True, y True and True resulta en True."
+                },
+                {
+                  "id": "B",
+                  "text": "Ingreso seguro: None",
+                  "isCorrect": false,
+                  "whyIncorrect": "Las expresiones booleanas devuelven exclusivamente True o False en este caso."
+                },
+                {
+                  "id": "C",
+                  "text": "Ingreso seguro: True",
+                  "isCorrect": true
+                },
+                {
+                  "id": "D",
+                  "text": "Ingreso seguro: Error",
+                  "isCorrect": false,
+                  "whyIncorrect": "La expresión lógica está perfectamente estructurada en sintaxis Python."
+                }
+              ],
+              "correctionTip": "not False es True; luego True and True da True.",
+              "fullAnswerExplanation": "¡Exacto! Como no hay gas (not False = True) y la ventilación está encendida (True), el túnel es seguro."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
+              "title": "Protocolo de emergencia",
+              "instruction": "Completa el código para activar la alarma si la temperatura excede los 80 grados Y el sistema de refrigeración NO está encendido.",
+              "slotMarker": "___",
+              "starterCode": "temperatura = 92\nrefrigeracion_activa = False\n\nalarma = (temperatura > 80) ___ (___ refrigeracion_activa)\nprint(\"Alarma crítica:\", alarma)",
+              "expectedOutput": "Alarma crítica: True",
+              "options": [
+                {
+                  "id": "A",
+                  "slots": [
+                    "or",
+                    "not"
+                  ],
+                  "label": "or  y  not",
+                  "code": "or  y  not",
+                  "isCorrect": false,
+                  "explanation": "Con or la alarma sonaría si la temperatura sube aunque la refrigeración funcione bien."
+                },
+                {
+                  "id": "B",
+                  "slots": [
+                    "and",
+                    "bool"
+                  ],
+                  "label": "and  y  bool",
+                  "code": "and  y  bool",
+                  "isCorrect": false,
+                  "explanation": "Usar bool dejaría la refrigeración en False, activando alarma sin invertir."
+                },
+                {
+                  "id": "C",
+                  "slots": [
+                    "==",
+                    "not"
+                  ],
+                  "label": "==  y  not",
+                  "code": "==  y  not",
+                  "isCorrect": false,
+                  "explanation": "== compara igualdad entre condiciones en lugar de combinarlas lógicamente."
+                },
+                {
+                  "id": "D",
+                  "slots": [
+                    "and",
+                    "not"
+                  ],
+                  "label": "and  y  not",
+                  "code": "and  y  not",
+                  "isCorrect": true,
+                  "explanation": "¡Correcto! Exige alta temperatura (and) junto con la ausencia de refrigeración (not refrigeracion_activa)."
+                }
+              ]
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 7 · Caso Borde: Cortocircuito en and",
+              "title": "¿Qué sucede con el error de división?",
+              "question": "En la evaluación lógica de Python, si la primera condición de un and es False, Python descarta evaluar la segunda parte (cortocircuito). ¿Cuál es la salida?",
+              "code": "sistema_online = False\nprint(sistema_online and (10 / 0 > 1))",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "ZeroDivisionError: division by zero",
+                  "isCorrect": false,
+                  "whyIncorrect": "Como el primer término es False, Python nunca ejecuta la división por cortocircuito."
+                },
+                {
+                  "id": "B",
+                  "text": "True",
+                  "isCorrect": false,
+                  "whyIncorrect": "Un and donde el primer operando es False jamás puede evaluar a True."
+                },
+                {
+                  "id": "C",
+                  "text": "False",
+                  "isCorrect": true
+                },
+                {
+                  "id": "D",
+                  "text": "None",
+                  "isCorrect": false,
+                  "whyIncorrect": "El resultado de una operación lógica con booleanos es estrictamente False."
+                }
+              ],
+              "correctionTip": "Por la regla de cortocircuito, Python se detiene en cuanto sabe que el resultado no puede cambiar.",
+              "fullAnswerExplanation": "¡Principio avanzado de Python! Al ver False en el lado izquierdo del and, Python no evalúa la derecha y evita el error de división."
+            }
+          ]
+        },
+        {
+          "id": "w3-l3",
+          "weekId": "semana-3",
+          "number": 3,
+          "tag": "Condicionales",
+          "shortTitle": "Tarifas Escalonadas",
+          "title": "Facturación Energética: Tarifas Escalonadas",
+          "description": "Modelos de cobro por bloques de consumo y rangos numéricos con if-elif-else.",
+          "duration": "10 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · Los tres rangos de consumo eléctrico",
+              "title": "Clasificación por bloques con if-elif-else",
+              "intro": "Las empresas de energía cobran el kilovatio-hora según el nivel de consumo: Tarifa Básica (hasta 100 kWh), Tarifa Intermedia (hasta 200 kWh) y Tarifa Industrial (más de 200 kWh).",
+              "examples": [
+                {
+                  "label": "Facturación por rangos",
+                  "code": "consumo = 140\nif consumo <= 100:\n    tarifa = 500\nelif consumo <= 200:\n    tarifa = 750\nelse:\n    tarifa = 1100\nprint(\"Tarifa aplicada ($/kWh):\", tarifa)",
+                  "output": "Tarifa aplicada ($/kWh): 750",
+                  "explanation": "Como 140 no es <= 100 pero sí es <= 200, entra a la rama elif y asigna la tarifa de 750."
+                }
+              ],
+              "keyTakeaway": "elif solo se evalúa si las condiciones previas fueron False; una vez que una rama se cumple, Python salta todo el resto del bloque."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Asignación de categoría",
+              "title": "¿Cuál tarifa aplica a la fábrica?",
+              "question": "Si una fábrica pequeña registra un consumo de 250 kWh, ¿qué tarifa imprime el programa?",
+              "code": "consumo = 250\nif consumo <= 100:\n    costo = 400\nelif consumo <= 200:\n    costo = 650\nelse:\n    costo = 900\nprint(\"Costo unitario:\", costo)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Costo unitario: 400",
+                  "isCorrect": false,
+                  "whyIncorrect": "250 no es menor ni igual a 100, por lo que la primera condición es False."
+                },
+                {
+                  "id": "B",
+                  "text": "Costo unitario: 650",
+                  "isCorrect": false,
+                  "whyIncorrect": "250 tampoco es menor o igual a 200; la rama elif también falla."
+                },
+                {
+                  "id": "C",
+                  "text": "Costo unitario: 900",
+                  "isCorrect": true
+                },
+                {
+                  "id": "D",
+                  "text": "Costo unitario: 1950",
+                  "isCorrect": false,
+                  "whyIncorrect": "Python no suma los costos de las ramas, ejecuta una sola rama de la estructura."
+                }
+              ],
+              "correctionTip": "Como 250 supera tanto a 100 como a 200, entra en la cláusula de descarte else.",
+              "fullAnswerExplanation": "¡Exacto! Al fallar tanto el if (<= 100) como el elif (<= 200), el flujo desemboca en la rama else asignando 900."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Spot the Bug: El error del orden invertido",
+              "title": "¿Por qué nunca llega a Industrial?",
+              "question": "Un programador novato invirtió el orden de las comparaciones en este script de clasificación. Si un usuario consume 300 kWh, ¿qué error genera este código?",
+              "code": "consumo = 300\nif consumo > 50:\n    categoria = \"Básico\"\nelif consumo > 200:\n    categoria = \"Industrial\"\nprint(categoria)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Imprime 'Básico' porque 300 > 50 es True, eclipsando la rama de 'Industrial'.",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Causa un SyntaxError porque los elif deben ir siempre antes del if.",
+                  "isCorrect": false,
+                  "whyIncorrect": "La sintaxis es válida; el fallo es de lógica algorítmica por orden de evaluación."
+                },
+                {
+                  "id": "C",
+                  "text": "Imprime 'Industrial' porque Python busca la condición con el número más grande.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Python evalúa de arriba a abajo en orden secuencial estricto."
+                },
+                {
+                  "id": "D",
+                  "text": "Produce un error de indentación en la variable categoria.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Las líneas interiores están correctamente indentadas con 4 espacios."
+                }
+              ],
+              "correctionTip": "Las condiciones deben ordenarse de la más restrictiva a la más general para no tapar los casos específicos.",
+              "fullAnswerExplanation": "¡Lección crítica de diseño! Como 300 > 50 es True, entra a 'Básico' y jamás evalúa > 200. Debió ordenar primero > 200."
+            },
+            {
+              "type": "explanation",
+              "partLabel": "Paso 4 · Cargo fijo según estrato",
+              "title": "Combinar categorías con or dentro de if",
+              "intro": "En servicios públicos domiciliarios, el cargo fijo cambia según el estrato socioeconómico. Puedes agrupar estratos con or en la cabecera condicional.",
+              "examples": [
+                {
+                  "label": "Cargo fijo estratificado",
+                  "code": "estrato = 2\ncargo_fijo = 0\nif estrato == 1 or estrato == 2:\n    cargo_fijo = 5000\nelif estrato == 3 or estrato == 4:\n    cargo_fijo = 12000\nelse:\n    cargo_fijo = 25000\nprint(\"Cargo fijo liquidado: $\", cargo_fijo, sep=\"\")",
+                  "output": "Cargo fijo liquidado: $5000",
+                  "explanation": "Como estrato == 2 es True, la primera rama se ejecuta y fija el cargo en 5000."
+                }
+              ],
+              "keyTakeaway": "Puedes usar operadores lógicos dentro de if y elif para simplificar la lógica y evitar anidar código innecesariamente."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 5 · Liquidación de estrato medio",
+              "title": "¿Cuál es el cargo para estrato 4?",
+              "question": "Si el predio pertenece a estrato = 4, ¿cuál es el valor exacto de cargo tras la ejecución?",
+              "code": "estrato = 4\nif estrato <= 2:\n    cargo = 6000\nelif estrato <= 4:\n    cargo = 14000\nelse:\n    cargo = 28000\nprint(\"Cargo:\", cargo)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Cargo: 6000",
+                  "isCorrect": false,
+                  "whyIncorrect": "4 no es menor o igual a 2, por lo que el primer if da False."
+                },
+                {
+                  "id": "B",
+                  "text": "Cargo: 14000",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "Cargo: 28000",
+                  "isCorrect": false,
+                  "whyIncorrect": "La rama else solo se ejecuta si estrato es estrictamente mayor que 4."
+                },
+                {
+                  "id": "D",
+                  "text": "Cargo: 20000",
+                  "isCorrect": false,
+                  "whyIncorrect": "No se suman tarifas intermedias, solo se asigna el valor de la rama activa."
+                }
+              ],
+              "correctionTip": "4 <= 4 es True, activando inmediatamente el bloque del elif.",
+              "fullAnswerExplanation": "¡Muy bien! Como 4 no es <= 2 pero sí cumple 4 <= 4, se le asigna la tarifa de 14000."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
+              "title": "Tarifario de consumo de agua",
+              "instruction": "Completa las dos ranuras del condicional para clasificar el consumo de agua: hasta 20 m³ es 'Consumo normal', y si supera 20 pero es menor o igual a 40 es 'Consumo alto'.",
+              "slotMarker": "___",
+              "starterCode": "metros_cubicos = 35\n\nif metros_cubicos ___ 20:\n    tipo = \"Consumo normal\"\n___ metros_cubicos <= 40:\n    tipo = \"Consumo alto\"\nelse:\n    tipo = \"Consumo crítico\"\n\nprint(\"Diagnóstico:\", tipo)",
+              "expectedOutput": "Diagnóstico: Consumo alto",
+              "options": [
+                {
+                  "id": "A",
+                  "slots": [
+                    "<",
+                    "else"
+                  ],
+                  "label": "<  y  else",
+                  "code": "<  y  else",
+                  "isCorrect": false,
+                  "explanation": "Si pones else, no puedes incluir una condición posterior como <= 40."
+                },
+                {
+                  "id": "B",
+                  "slots": [
+                    "==",
+                    "elif"
+                  ],
+                  "label": "==  y  elif",
+                  "code": "==  y  elif",
+                  "isCorrect": false,
+                  "explanation": "Con == 20 dejarías por fuera todos los consumos menores a 20 m³."
+                },
+                {
+                  "id": "C",
+                  "slots": [
+                    "<=",
+                    "elif"
+                  ],
+                  "label": "<=  y  elif",
+                  "code": "<=  y  elif",
+                  "isCorrect": true,
+                  "explanation": "¡Perfecto! <= captura hasta 20 m³, y elif evalúa la siguiente condición de hasta 40 m³."
+                },
+                {
+                  "id": "D",
+                  "slots": [
+                    ">=",
+                    "elif"
+                  ],
+                  "label": ">=  y  elif",
+                  "code": ">=  y  elif",
+                  "isCorrect": false,
+                  "explanation": "Con >= 20 atraparías 35 en la primera rama clasificándolo erróneamente como 'Consumo normal'."
+                }
+              ]
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 7 · Caso Borde: Valor exactamente en la frontera",
+              "title": "¿Qué sucede en el punto de corte exacto?",
+              "question": "Observa con atención los operadores: ¿qué ocurre cuando el valor evaluado es exactamente igual al límite 20?",
+              "code": "temperatura = 20\nif temperatura < 20:\n    estado = \"Frío\"\nelif temperatura > 20:\n    estado = \"Caliente\"\nelse:\n    estado = \"Neutro\"\nprint(\"Estado:\", estado)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Estado: Frío",
+                  "isCorrect": false,
+                  "whyIncorrect": "La condición exige estrictamente < 20; 20 no es menor que 20."
+                },
+                {
+                  "id": "B",
+                  "text": "Estado: Caliente",
+                  "isCorrect": false,
+                  "whyIncorrect": "La condición exige estrictamente > 20; 20 no es mayor que 20."
+                },
+                {
+                  "id": "C",
+                  "text": "Estado: None",
+                  "isCorrect": false,
+                  "whyIncorrect": "Al no cumplirse ni if ni elif, el flujo desemboca en la cláusula else."
+                },
+                {
+                  "id": "D",
+                  "text": "Estado: Neutro",
+                  "isCorrect": true
+                }
+              ],
+              "correctionTip": "Como 20 no es estrictamente menor ni mayor que 20, cae en la cláusula else.",
+              "fullAnswerExplanation": "¡Atención al detalle! 20 no cumple < 20 ni > 20. Por descarte exacto de frontera, se ejecuta el else dando 'Neutro'."
+            }
+          ]
+        },
+        {
+          "id": "w3-l4",
+          "weekId": "semana-3",
+          "number": 4,
+          "tag": "Anidamiento",
+          "shortTitle": "Control de Calidad",
+          "title": "Control de Calidad: Diagnóstico Multicriterio",
+          "description": "Decisiones anidadas, banderas booleanas y filtros multicriterio en laboratorio.",
+          "duration": "10 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · Clasificación de mineral de cobre",
+              "title": "Condicionales anidados (un if dentro de otro)",
+              "intro": "En el laboratorio de metalurgia, una muestra de cobre se clasifica como 'Premium' solo si su pureza supera el 85% Y su humedad es menor al 8%. Si la pureza es alta pero tiene humedad, se manda a secado.",
+              "examples": [
+                {
+                  "label": "Filtro de laboratorio",
+                  "code": "pureza = 88\nhumedad = 5\nif pureza >= 85:\n    if humedad < 8:\n        dictamen = \"Lote Premium\"\n    else:\n        dictamen = \"Requiere Secado\"\nelse:\n    dictamen = \"Rechazado por baja ley\"\nprint(\"Resultado de laboratorio:\", dictamen)",
+                  "output": "Resultado de laboratorio: Lote Premium",
+                  "explanation": "El if interno solo se evalúa si la muestra supera primero el umbral de pureza (pureza >= 85)."
+                }
+              ],
+              "keyTakeaway": "Los condicionales anidados permiten tomar decisiones secundarias solo después de haber superado un primer filtro principal."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Trazado de lote húmedo",
+              "title": "¿Qué dictamen recibe la muestra?",
+              "question": "Si ingresa una muestra con pureza = 90 y humedad = 14, ¿cuál es el resultado exacto de la evaluación?",
+              "code": "pureza = 90\nhumedad = 14\nif pureza >= 85:\n    if humedad < 8:\n        print(\"Aprobado directo\")\n    else:\n        print(\"Aprobado con secado previo\")\nelse:\n    print(\"Rechazado\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Aprobado con secado previo",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Aprobado directo",
+                  "isCorrect": false,
+                  "whyIncorrect": "La humedad de 14 no es menor a 8, por lo que no entra al primer print."
+                },
+                {
+                  "id": "C",
+                  "text": "Rechazado",
+                  "isCorrect": false,
+                  "whyIncorrect": "La pureza de 90 supera 85, por lo que no cae en el rechazo general externo."
+                },
+                {
+                  "id": "D",
+                  "text": "Error: indentación inválida",
+                  "isCorrect": false,
+                  "whyIncorrect": "El anidamiento con 4 y 8 espacios es completamente válido en Python."
+                }
+              ],
+              "correctionTip": "Supera la pureza (90 >= 85), pero al tener 14 de humedad entra al else interior.",
+              "fullAnswerExplanation": "¡Excelente trazado! Entra al bloque principal porque 90 >= 85, y dentro falla la humedad (14 < 8 es False), cayendo en el else interno."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Spot the Bug: Asignación vs comparación",
+              "title": "¿Por qué falló la comparación de texto?",
+              "question": "Un estudiante de ingeniería de materiales escribió este condicional para verificar si la muestra era de tipo 'Au' (oro), pero el intérprete arrojó SyntaxError. ¿Por qué?",
+              "code": "mineral = \"Au\"\nif mineral = \"Au\":\n    print(\"Muestra de oro detectada\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Las cadenas de texto no pueden compararse en condicionales if.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Los textos se comparan habitualmente con los operadores relacionales == o !=."
+                },
+                {
+                  "id": "B",
+                  "text": "Se debe usar la palabra reservada equals en lugar del signo igual.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Python no tiene palabra clave equals, utiliza operadores relacionales."
+                },
+                {
+                  "id": "C",
+                  "text": "Falta cerrar el texto con comillas dobles triples.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Las comillas estándar 'Au' son completamente correctas."
+                },
+                {
+                  "id": "D",
+                  "text": "Se usó el operador de asignación = en lugar del operador de comparación relacional ==.",
+                  "isCorrect": true
+                }
+              ],
+              "correctionTip": "Un solo = asigna valores; para comparar igualdad en un condicional se usa ==.",
+              "fullAnswerExplanation": "¡Error clásico de principiantes! Un solo '=' intenta asignar una variable, lo cual es ilegal en la condición de un if. Se debe usar '=='."
+            },
+            {
+              "type": "explanation",
+              "partLabel": "Paso 4 · El uso de banderas de control (flags)",
+              "title": "Banderas booleanas para control multicriterio",
+              "intro": "En software de ingeniería es una práctica excelente usar una variable booleana como 'bandera' (aprobado = True). Si alguna prueba de laboratorio falla, la bandera se conmuta a False.",
+              "examples": [
+                {
+                  "label": "Inspección de concreto",
+                  "code": "resistencia_mpa = 28\ngrietas_visibles = False\naprobado = True\nif resistencia_mpa < 25:\n    aprobado = False\nif grietas_visibles:\n    aprobado = False\nprint(\"¿El concreto superó la prueba técnica?\", aprobado)",
+                  "output": "¿El concreto superó la prueba técnica? True",
+                  "explanation": "Como la resistencia superó los 25 MPa y no hay grietas, aprobado permanece en True."
+                }
+              ],
+              "keyTakeaway": "Las banderas permiten evaluar múltiples reglas de validación independientes sin necesidad de escaleras complejas de if-else."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 5 · Inspección estructural con bandera",
+              "title": "¿Supera la viga la prueba de deflexión?",
+              "question": "Si una viga de acero tiene una deflexión de 12 mm y el límite permitido es 10 mm, ¿cuál será el valor impreso de viga_segura?",
+              "code": "deflexion_mm = 12\nlimite = 10\nviga_segura = True\nif deflexion_mm > limite:\n    viga_segura = False\nprint(\"Segura:\", viga_segura)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Segura: True",
+                  "isCorrect": false,
+                  "whyIncorrect": "Como 12 > 10 es True, la línea interior conmuta la variable a False."
+                },
+                {
+                  "id": "B",
+                  "text": "Segura: False",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "Segura: 12",
+                  "isCorrect": false,
+                  "whyIncorrect": "La variable viga_segura almacena un valor booleano, no la deflexión."
+                },
+                {
+                  "id": "D",
+                  "text": "Segura: 2",
+                  "isCorrect": false,
+                  "whyIncorrect": "No se realiza una resta, sino una asignación booleana directa a False."
+                }
+              ],
+              "correctionTip": "Al superar el límite (12 > 10), la bandera viga_segura se apaga a False.",
+              "fullAnswerExplanation": "¡Exacto! La condición 12 > 10 se cumple, ejecutando la asignación viga_segura = False."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
+              "title": "Filtro de aptitud de roca para cimentación",
+              "instruction": "Completa el código con las ranuras faltantes: verifica que la dureza sea al menos 7.0 Y que la densidad sea estrictamente mayor a 3.5 para marcar la roca como apta.",
+              "slotMarker": "___",
+              "starterCode": "dureza_mohs = 7.5\ndensidad_gcm3 = 4.2\n\nif dureza_mohs ___ 7.0 and densidad_gcm3 ___ 3.5:\n    dictamen = \"Apta para cimentación\"\nelse:\n    dictamen = \"Roca descartada\"\n\nprint(\"Diagnóstico final:\", dictamen)",
+              "expectedOutput": "Diagnóstico final: Apta para cimentación",
+              "options": [
+                {
+                  "id": "A",
+                  "slots": [
+                    ">=",
+                    ">"
+                  ],
+                  "label": ">=  y  >",
+                  "code": ">=  y  >",
+                  "isCorrect": true,
+                  "explanation": "¡Excelente! >= 7.0 asegura al menos 7.0 de dureza y > 3.5 exige densidad superior al umbral."
+                },
+                {
+                  "id": "B",
+                  "slots": [
+                    "==",
+                    "<"
+                  ],
+                  "label": "==  y  <",
+                  "code": "==  y  <",
+                  "isCorrect": false,
+                  "explanation": "Exigiría exactamente 7.0 y densidad baja, descartando la roca apta."
+                },
+                {
+                  "id": "C",
+                  "slots": [
+                    "<=",
+                    ">"
+                  ],
+                  "label": "<=  y  >",
+                  "code": "<=  y  >",
+                  "isCorrect": false,
+                  "explanation": "<= admitiría rocas blandas con dureza inferior a la requerida."
+                },
+                {
+                  "id": "D",
+                  "slots": [
+                    ">=",
+                    "<="
+                  ],
+                  "label": ">=  y  <=",
+                  "code": ">=  y  <=",
+                  "isCorrect": false,
+                  "explanation": "La segunda ranura admitiría densidades bajas en lugar de altas."
+                }
+              ]
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 7 · Caso Borde: Sensibilidad a mayúsculas",
+              "title": "¿Son iguales 'COBRE' y 'cobre'?",
+              "question": "Un operador escribe el mineral en mayúscula 'COBRE', pero el sistema compara contra 'cobre'. ¿Qué salida produce Python?",
+              "code": "mineral = \"COBRE\"\nif mineral == \"cobre\":\n    precio = 4.5\nelse:\n    precio = 0.0\nprint(\"Precio:\", precio)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Precio: 4.5",
+                  "isCorrect": false,
+                  "whyIncorrect": "En Python la comparación de texto distingue entre mayúsculas y minúsculas (case-sensitive)."
+                },
+                {
+                  "id": "B",
+                  "text": "Precio: 0.0",
+                  "isCorrect": true
+                },
+                {
+                  "id": "C",
+                  "text": "TypeError",
+                  "isCorrect": false,
+                  "whyIncorrect": "Comparar cadenas con diferente mayúscula es válido y da False sin errores."
+                },
+                {
+                  "id": "D",
+                  "text": "Precio: None",
+                  "isCorrect": false,
+                  "whyIncorrect": "La variable precio se inicializa limpiamente en la rama else con 0.0."
+                }
+              ],
+              "correctionTip": "Python es case-sensitive: 'COBRE' != 'cobre'. Para igualarlos se usaría .lower().",
+              "fullAnswerExplanation": "¡Atención! Las mayúsculas y minúsculas tienen códigos de caracter distintos. Al no ser idénticos, salta al else dando 0.0."
+            }
+          ]
+        },
+        {
+          "id": "w3-l5",
+          "weekId": "semana-3",
+          "number": 5,
+          "tag": "Integración",
+          "shortTitle": "Reto Integrador",
+          "title": "Reto Integrador: Del Sensor al Reporte Técnico",
+          "description": "Pipeline completo: entrada, conversión de datos, cómputo con fórmulas y reporte con f-strings.",
+          "duration": "12 min",
+          "steps": [
+            {
+              "type": "explanation",
+              "partLabel": "Paso 1 · La anatomía de un script de ingeniería",
+              "title": "El ciclo Entrada -> Procesamiento -> Decisión -> Reporte",
+              "intro": "Todo programa profesional de ingeniería sigue una estructura limpia en 4 fases: 1) Entrada de datos, 2) Procesamiento y cálculos físicos, 3) Decisión lógica y 4) Salida de reporte técnico con f-strings.",
+              "examples": [
+                {
+                  "label": "Cálculo hidráulico y reporte",
+                  "code": "diametro_m = 0.5\ncaudal_m3s = 0.25\narea = 3.1416 * (diametro_m / 2) ** 2\nvelocidad = caudal_m3s / area\nestado = \"Adecuada\" if velocidad <= 2.0 else \"Excesiva\"\nprint(f\"Velocidad: {velocidad:.2f} m/s | Estado: {estado}\")",
+                  "output": "Velocidad: 1.27 m/s | Estado: Adecuada",
+                  "explanation": "Calcula el área, obtiene la velocidad y reporta el diagnóstico formateado con 2 decimales."
+                }
+              ],
+              "keyTakeaway": "Integrar cálculo físico y toma de decisiones permite generar reportes técnicos claros y automatizados."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 2 · Trazado de consumo de bomba hidráulica",
+              "title": "¿Cuál es la potencia y qué motor se asigna?",
+              "question": "Una bomba eleva agua a un tanque. Si la altura es 30 metros y el caudal es 5 litros/segundo, ¿qué potencia imprime este script?",
+              "code": "altura = 30\ncaudal = 5\npotencia_kw = (altura * caudal) / 100\nif potencia_kw > 1.0:\n    motor = \"Trifásico\"\nelse:\n    motor = \"Monofásico\"\nprint(f\"Potencia: {potencia_kw} kW -> Motor {motor}\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Potencia: 15.0 kW -> Motor Trifásico",
+                  "isCorrect": false,
+                  "whyIncorrect": "(30 * 5) / 100 = 150 / 100 = 1.5, no 15.0."
+                },
+                {
+                  "id": "B",
+                  "text": "Potencia: 1.5 kW -> Motor Monofásico",
+                  "isCorrect": false,
+                  "whyIncorrect": "Como 1.5 > 1.0 es True, el motor asignado es Trifásico."
+                },
+                {
+                  "id": "C",
+                  "text": "Potencia: 1.5 kW -> Motor Trifásico",
+                  "isCorrect": true
+                },
+                {
+                  "id": "D",
+                  "text": "Potencia: 1 kW -> Motor Trifásico",
+                  "isCorrect": false,
+                  "whyIncorrect": "El operador / produce un float con decimales exactos 1.5."
+                }
+              ],
+              "correctionTip": "(30 * 5) / 100 = 1.5 kW. Al superar 1.0 kW, se selecciona motor Trifásico.",
+              "fullAnswerExplanation": "¡Cálculo impecable! 150 / 100 da 1.5 kW; al superar 1.0 kW el condicional activa el motor Trifásico."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 3 · Spot the Bug: La trampa de input() sin casting",
+              "title": "¿Por qué no duplicó la dosificación?",
+              "question": "Un estudiante recolectó datos con input() y quiso duplicar la dosificación, pero ocurrió una falla al ejecutar. ¿Cuál es el error exacto?",
+              "code": "dosis_texto = \"50\"\ntotal = dosis_texto * 2\nprint(\"Dosificación final:\", total)",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Produce un error de sintaxis SyntaxError por usar comillas en un número.",
+                  "isCorrect": false,
+                  "whyIncorrect": "\"50\" es un string válido en Python, no genera ningún SyntaxError."
+                },
+                {
+                  "id": "B",
+                  "text": "Imprime 100 porque Python convierte automáticamente los strings numéricos al multiplicar.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Python no hace coerción implícita de str a int en multiplicación."
+                },
+                {
+                  "id": "C",
+                  "text": "Produce un TypeError porque los strings no admiten el operador *.",
+                  "isCorrect": false,
+                  "whyIncorrect": "Los strings sí admiten * pero para duplicar texto: \"50\" * 2 = \"5050\"."
+                },
+                {
+                  "id": "D",
+                  "text": "Imprime '5050' en lugar de 100 porque repite el texto dos veces; falta convertir con int().",
+                  "isCorrect": true
+                }
+              ],
+              "correctionTip": "Multiplicar texto por 2 concatena dos veces la cadena. Se debe convertir con int(dosis_texto).",
+              "fullAnswerExplanation": "¡Error clásico de input()! Multiplicar un str por un entero repite el texto ('50' * 2 = '5050'). Se requería int(dosis_texto) * 2 = 100."
+            },
+            {
+              "type": "explanation",
+              "partLabel": "Paso 4 · Redondeo técnico en f-strings",
+              "title": "El modificador :.2f para decimales limpios",
+              "intro": "En minería y obras civiles, los informes técnicos no deben mostrar 15 decimales como 8.4720000000. Usamos :.2f en la f-string para formatear a exactamente 2 decimales limpios.",
+              "examples": [
+                {
+                  "label": "Formato de pendiente",
+                  "code": "pendiente = 0.08472\nporcentaje = pendiente * 100\nprint(f\"Pendiente de la rampa: {porcentaje:.2f}%\")",
+                  "output": "Pendiente de la rampa: 8.47%",
+                  "explanation": "El especificador :.2f redondea visualmente el número a 2 decimales."
+                }
+              ],
+              "keyTakeaway": "Dentro de las llaves {variable:.2f} de una f-string puedes controlar la cantidad exacta de decimales para reportes profesionales."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 5 · Formato técnico de presión en bar",
+              "title": "¿Cuál es la salida con :.1f?",
+              "question": "¿Cuál es la salida exacta de este reporte de presión formateado con 1 decimal (:.1f)?",
+              "code": "presion_psi = 145.68\npresion_bar = presion_psi * 0.068947\nprint(f\"Presión: {presion_bar:.1f} bar\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Presión: 10.0 bar",
+                  "isCorrect": true
+                },
+                {
+                  "id": "B",
+                  "text": "Presión: 10 bar",
+                  "isCorrect": false,
+                  "whyIncorrect": "El especificador :.1f siempre muestra el punto y exactamente un dígito decimal: 10.0."
+                },
+                {
+                  "id": "C",
+                  "text": "Presión: 10.04 bar",
+                  "isCorrect": false,
+                  "whyIncorrect": ":.1f formatea a un solo decimal, no a dos."
+                },
+                {
+                  "id": "D",
+                  "text": "Presión: {presion_bar:.1f} bar",
+                  "isCorrect": false,
+                  "whyIncorrect": "Al llevar la 'f' inicial antes de las comillas, las llaves se interpolan con el valor."
+                }
+              ],
+              "correctionTip": "145.68 * 0.068947 = 10.044... Redondeado a 1 decimal se formatea como 10.0.",
+              "fullAnswerExplanation": "¡Exacto! El cálculo da 10.044..., que formateado con :.1f muestra '10.0 bar'."
+            },
+            {
+              "type": "code_sandbox",
+              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
+              "title": "Sistema integral de bombeo",
+              "instruction": "Completa el script del sistema de drenaje: 1) convierte el caudal recibido en texto a decimal float y 2) define la condición para encender la bomba auxiliar si la presión es menor a 2.5 bar.",
+              "slotMarker": "___",
+              "starterCode": "caudal_str = \"15.5\"\ncaudal = ___ (caudal_str)\n\npresion = caudal * 0.18\n\nif presion ___ 2.5:\n    accion = \"Encender bomba auxiliar\"\nelse:\n    accion = \"Presión óptima en línea\"\n\nprint(f\"Presión: {presion:.2f} bar | Acción: {accion}\")",
+              "expectedOutput": "Presión: 2.79 bar | Acción: Presión óptima en línea",
+              "options": [
+                {
+                  "id": "A",
+                  "slots": [
+                    "str",
+                    ">"
+                  ],
+                  "label": "str  y  >",
+                  "code": "str  y  >",
+                  "isCorrect": false,
+                  "explanation": "caudal_str ya es string y > encendería la bomba cuando la presión es alta en vez de baja."
+                },
+                {
+                  "id": "B",
+                  "slots": [
+                    "float",
+                    "<"
+                  ],
+                  "label": "float  y  <",
+                  "code": "float  y  <",
+                  "isCorrect": true,
+                  "explanation": "¡Brillante integración! float() permite operar el texto con decimales y < detecta la caída de presión."
+                },
+                {
+                  "id": "C",
+                  "slots": [
+                    "int",
+                    "<="
+                  ],
+                  "label": "int  y  <=",
+                  "code": "int  y  <=",
+                  "isCorrect": false,
+                  "explanation": "int(\"15.5\") causaría un ValueError porque el texto contiene un punto decimal."
+                },
+                {
+                  "id": "D",
+                  "slots": [
+                    "float",
+                    "=="
+                  ],
+                  "label": "float  y  ==",
+                  "code": "float  y  ==",
+                  "isCorrect": false,
+                  "explanation": "La bomba debe arrancar con cualquier valor por debajo de 2.5 bar, no solo exactamente 2.5."
+                }
+              ]
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 7 · Caso Borde: Prevención de división por cero",
+              "title": "¿Cómo se evita el colapso del programa?",
+              "question": "En una fórmula de rendimiento de maquinaria, si las horas trabajadas son 0, dividir directamente causaría ZeroDivisionError. ¿Cómo evita este script el colapso?",
+              "code": "produccion = 500\nhoras = 0\nif horas > 0:\n    rendimiento = produccion / horas\nelse:\n    rendimiento = 0.0\nprint(f\"Rendimiento: {rendimiento} ton/h\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "El programa colapsa con ZeroDivisionError en la línea del if.",
+                  "isCorrect": false,
+                  "whyIncorrect": "La condición horas > 0 es False, por lo que nunca entra a ejecutar la división."
+                },
+                {
+                  "id": "B",
+                  "text": "Imprime Rendimiento: 500 ton/h.",
+                  "isCorrect": false,
+                  "whyIncorrect": "No se copia la producción, se asigna 0.0 en la rama else."
+                },
+                {
+                  "id": "C",
+                  "text": "Imprime Rendimiento: 0.0 ton/h.",
+                  "isCorrect": true
+                },
+                {
+                  "id": "D",
+                  "text": "Imprime Rendimiento: None ton/h.",
+                  "isCorrect": false,
+                  "whyIncorrect": "En la rama else se asignó explícitamente el flotante 0.0."
+                }
+              ],
+              "correctionTip": "La guarda condicional if horas > 0 previene la división por cero y asigna un valor seguro 0.0.",
+              "fullAnswerExplanation": "¡Técnica esencial de ingeniería! Antes de dividir por una variable, un condicional previene que una entrada de 0 tumbe el software."
+            },
+            {
+              "type": "predict",
+              "partLabel": "Paso 8 · Consolidación de variables acumuladas",
+              "title": "¿Cuál es el monto final a pagar?",
+              "question": "Se aplica un descuento por volumen de compra de tubería PVC. Si el precio base es 1000 y la cantidad es 15 metros, ¿cuál es el total a pagar tras la bonificación?",
+              "code": "precio_metro = 1000\nmetros = 15\nsubtotal = precio_metro * metros\nif metros >= 10:\n    descuento = subtotal * 0.10\nelse:\n    descuento = 0.0\ntotal = subtotal - descuento\nprint(f\"Total a pagar: ${total:.0f}\")",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Total a pagar: $15000",
+                  "isCorrect": false,
+                  "whyIncorrect": "15000 es el subtotal bruto sin aplicar el 10% de descuento ganado."
+                },
+                {
+                  "id": "B",
+                  "text": "Total a pagar: $1500",
+                  "isCorrect": false,
+                  "whyIncorrect": "1500 es el valor del descuento, no el total final a pagar."
+                },
+                {
+                  "id": "C",
+                  "text": "Total a pagar: $12000",
+                  "isCorrect": false,
+                  "whyIncorrect": "El 10% de 15000 es 1500, no 3000."
+                },
+                {
+                  "id": "D",
+                  "text": "Total a pagar: $13500",
+                  "isCorrect": true
+                }
+              ],
+              "correctionTip": "Subtotal = 15 * 1000 = 15000; Descuento = 1500; Total = 15000 - 1500 = 13500.",
+              "fullAnswerExplanation": "¡Consolidación exitosa! El subtotal es 15000, supera los 10 metros activando el 10% de descuento (1500), resultando en 13500 a pagar."
             }
           ]
         }

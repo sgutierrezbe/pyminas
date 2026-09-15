@@ -1,5 +1,5 @@
 // Archivo generado automaticamente por bake_curriculum.py
-// CPython 3.13
+// CPython 3.14
 window.BAKED_TRACES = {
   "# En programación, esta secuencia lógica se llama ALGORITMO:\n# 1. Poner agua a hervir\n# 2. Agregar el café\n# 3. Servir en la taza\nprint(\"¡Café listo para beber!\")": {
     "lines": [
@@ -3254,6 +3254,2837 @@ window.BAKED_TRACES = {
       }
     ],
     "totalOutput": "Régimen aplicado: Contribución solidaria",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "material = 95\ncapacidad = 20\nviajes = material // capacidad\nsobrante = material % capacidad\nprint(\"Viajes llenos:\", viajes)\nprint(\"Toneladas en acopio:\", sobrante)": {
+    "lines": [
+      "material = 95",
+      "capacidad = 20",
+      "viajes = material // capacidad",
+      "sobrante = material % capacidad",
+      "print(\"Viajes llenos:\", viajes)",
+      "print(\"Toneladas en acopio:\", sobrante)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Viajes llenos: 4",
+        "outputSoFar": [
+          "Viajes llenos: 4"
+        ],
+        "hasError": false
+      },
+      {
+        "prints": "Toneladas en acopio: 15",
+        "outputSoFar": [
+          "Viajes llenos: 4",
+          "Toneladas en acopio: 15"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Viajes llenos: 4\nToneladas en acopio: 15",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bultos = 74\ncapacidad = 12\nsobrante = bultos % capacidad\nprint(sobrante)": {
+    "lines": [
+      "bultos = 74",
+      "capacidad = 12",
+      "sobrante = bultos % capacidad",
+      "print(sobrante)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "2",
+        "outputSoFar": [
+          "2"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "2",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "toneladas = 50\ncapacidad = 8\nvolquetas = toneladas / capacidad\nprint(\"Volquetas requeridas:\", volquetas)": {
+    "lines": [
+      "toneladas = 50",
+      "capacidad = 8",
+      "volquetas = toneladas / capacidad",
+      "print(\"Volquetas requeridas:\", volquetas)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Volquetas requeridas: 6.25",
+        "outputSoFar": [
+          "Volquetas requeridas: 6.25"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Volquetas requeridas: 6.25",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "velocidad = 6\nfactor = 3\npotencia = factor * velocidad ** 2\nprint(\"Potencia requerida (kW):\", potencia)": {
+    "lines": [
+      "velocidad = 6",
+      "factor = 3",
+      "potencia = factor * velocidad ** 2",
+      "print(\"Potencia requerida (kW):\", potencia)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Potencia requerida (kW): 108",
+        "outputSoFar": [
+          "Potencia requerida (kW): 108"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Potencia requerida (kW): 108",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "factor = 2\nbase = 3\nresultado = (factor * base) ** 2\nprint(resultado)": {
+    "lines": [
+      "factor = 2",
+      "base = 3",
+      "resultado = (factor * base) ** 2",
+      "print(resultado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "36",
+        "outputSoFar": [
+          "36"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "36",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "kilos_totales = 850\ncapacidad_camion = 200\n\nviajes = kilos_totales // capacidad_camion\nrestante = kilos_totales % capacidad_camion\n\nprint(\"Viajes completos:\", viajes)\nprint(\"Kilos restantes:\", restante)": {
+    "lines": [
+      "kilos_totales = 850",
+      "capacidad_camion = 200",
+      "",
+      "viajes = kilos_totales // capacidad_camion",
+      "restante = kilos_totales % capacidad_camion",
+      "",
+      "print(\"Viajes completos:\", viajes)",
+      "print(\"Kilos restantes:\", restante)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Viajes completos: 4",
+        "outputSoFar": [
+          "Viajes completos: 4"
+        ],
+        "hasError": false
+      },
+      {
+        "prints": "Kilos restantes: 50",
+        "outputSoFar": [
+          "Viajes completos: 4",
+          "Kilos restantes: 50"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Viajes completos: 4\nKilos restantes: 50",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "kilos_totales = 850\ncapacidad_camion = 200\n\nviajes = kilos_totales / capacidad_camion\nrestante = kilos_totales % capacidad_camion\n\nprint(\"Viajes completos:\", viajes)\nprint(\"Kilos restantes:\", restante)": {
+    "lines": [
+      "kilos_totales = 850",
+      "capacidad_camion = 200",
+      "",
+      "viajes = kilos_totales / capacidad_camion",
+      "restante = kilos_totales % capacidad_camion",
+      "",
+      "print(\"Viajes completos:\", viajes)",
+      "print(\"Kilos restantes:\", restante)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Viajes completos: 4.25",
+        "outputSoFar": [
+          "Viajes completos: 4.25"
+        ],
+        "hasError": false
+      },
+      {
+        "prints": "Kilos restantes: 50",
+        "outputSoFar": [
+          "Viajes completos: 4.25",
+          "Kilos restantes: 50"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Viajes completos: 4.25\nKilos restantes: 50",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "kilos_totales = 850\ncapacidad_camion = 200\n\nviajes = kilos_totales % capacidad_camion\nrestante = kilos_totales // capacidad_camion\n\nprint(\"Viajes completos:\", viajes)\nprint(\"Kilos restantes:\", restante)": {
+    "lines": [
+      "kilos_totales = 850",
+      "capacidad_camion = 200",
+      "",
+      "viajes = kilos_totales % capacidad_camion",
+      "restante = kilos_totales // capacidad_camion",
+      "",
+      "print(\"Viajes completos:\", viajes)",
+      "print(\"Kilos restantes:\", restante)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Viajes completos: 50",
+        "outputSoFar": [
+          "Viajes completos: 50"
+        ],
+        "hasError": false
+      },
+      {
+        "prints": "Kilos restantes: 4",
+        "outputSoFar": [
+          "Viajes completos: 50",
+          "Kilos restantes: 4"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Viajes completos: 50\nKilos restantes: 4",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "kilos_totales = 850\ncapacidad_camion = 200\n\nviajes = kilos_totales // capacidad_camion\nrestante = kilos_totales / capacidad_camion\n\nprint(\"Viajes completos:\", viajes)\nprint(\"Kilos restantes:\", restante)": {
+    "lines": [
+      "kilos_totales = 850",
+      "capacidad_camion = 200",
+      "",
+      "viajes = kilos_totales // capacidad_camion",
+      "restante = kilos_totales / capacidad_camion",
+      "",
+      "print(\"Viajes completos:\", viajes)",
+      "print(\"Kilos restantes:\", restante)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Viajes completos: 4",
+        "outputSoFar": [
+          "Viajes completos: 4"
+        ],
+        "hasError": false
+      },
+      {
+        "prints": "Kilos restantes: 4.25",
+        "outputSoFar": [
+          "Viajes completos: 4",
+          "Kilos restantes: 4.25"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Viajes completos: 4\nKilos restantes: 4.25",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cajas = 60\ncapacidad = 15\nsobrante = cajas % capacidad\nprint(\"Sobrante:\", sobrante)": {
+    "lines": [
+      "cajas = 60",
+      "capacidad = 15",
+      "sobrante = cajas % capacidad",
+      "print(\"Sobrante:\", sobrante)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Sobrante: 0",
+        "outputSoFar": [
+          "Sobrante: 0"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Sobrante: 0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "presion_psi = 160\ntemp_celsius = 95\nalarma = (presion_psi > 150) and (temp_celsius > 90)\nprint(\"¿Activar alarma de caldera?\", alarma)": {
+    "lines": [
+      "presion_psi = 160",
+      "temp_celsius = 95",
+      "alarma = (presion_psi > 150) and (temp_celsius > 90)",
+      "print(\"¿Activar alarma de caldera?\", alarma)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "¿Activar alarma de caldera? True",
+        "outputSoFar": [
+          "¿Activar alarma de caldera? True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "¿Activar alarma de caldera? True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "boton_paro = False\npeso_kg = 580\ndetener = boton_paro or (peso_kg > 500)\nprint(\"Detener cinta:\", detener)": {
+    "lines": [
+      "boton_paro = False",
+      "peso_kg = 580",
+      "detener = boton_paro or (peso_kg > 500)",
+      "print(\"Detener cinta:\", detener)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Detener cinta: True",
+        "outputSoFar": [
+          "Detener cinta: True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Detener cinta: True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "voltaje = 15\nvalido = (voltaje == 110 or 220)\nprint(\"¿Voltaje válido?\", bool(valido))": {
+    "lines": [
+      "voltaje = 15",
+      "valido = (voltaje == 110 or 220)",
+      "print(\"¿Voltaje válido?\", bool(valido))"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "¿Voltaje válido? True",
+        "outputSoFar": [
+          "¿Voltaje válido? True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "¿Voltaje válido? True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "valvula_bloqueada = False\nflujo_activo = not valvula_bloqueada\nprint(\"¿Hay flujo en la tubería?\", flujo_activo)": {
+    "lines": [
+      "valvula_bloqueada = False",
+      "flujo_activo = not valvula_bloqueada",
+      "print(\"¿Hay flujo en la tubería?\", flujo_activo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "¿Hay flujo en la tubería? True",
+        "outputSoFar": [
+          "¿Hay flujo en la tubería? True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "¿Hay flujo en la tubería? True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "gas_detectado = False\nventilacion_on = True\nseguro = (not gas_detectado) and ventilacion_on\nprint(\"Ingreso seguro:\", seguro)": {
+    "lines": [
+      "gas_detectado = False",
+      "ventilacion_on = True",
+      "seguro = (not gas_detectado) and ventilacion_on",
+      "print(\"Ingreso seguro:\", seguro)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Ingreso seguro: True",
+        "outputSoFar": [
+          "Ingreso seguro: True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Ingreso seguro: True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "temperatura = 92\nrefrigeracion_activa = False\n\nalarma = (temperatura > 80) or (not refrigeracion_activa)\nprint(\"Alarma crítica:\", alarma)": {
+    "lines": [
+      "temperatura = 92",
+      "refrigeracion_activa = False",
+      "",
+      "alarma = (temperatura > 80) or (not refrigeracion_activa)",
+      "print(\"Alarma crítica:\", alarma)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Alarma crítica: True",
+        "outputSoFar": [
+          "Alarma crítica: True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Alarma crítica: True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "temperatura = 92\nrefrigeracion_activa = False\n\nalarma = (temperatura > 80) and (bool refrigeracion_activa)\nprint(\"Alarma crítica:\", alarma)": {
+    "lines": [
+      "temperatura = 92",
+      "refrigeracion_activa = False",
+      "",
+      "alarma = (temperatura > 80) and (bool refrigeracion_activa)",
+      "print(\"Alarma crítica:\", alarma)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "File \"main.py\", line 4\n    alarma = (temperatura > 80) and (bool refrigeracion_activa)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Perhaps you forgot a comma?",
+        "outputSoFar": [
+          "File \"main.py\", line 4",
+          "    alarma = (temperatura > 80) and (bool refrigeracion_activa)",
+          "                                     ^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "SyntaxError: invalid syntax. Perhaps you forgot a comma?"
+        ],
+        "hasError": true,
+        "errorType": "SyntaxError",
+        "errorLine": 3
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 4",
+          "    alarma = (temperatura > 80) and (bool refrigeracion_activa)",
+          "                                     ^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "SyntaxError: invalid syntax. Perhaps you forgot a comma?"
+        ],
+        "skipped": true
+      }
+    ],
+    "totalOutput": "File \"main.py\", line 4\n    alarma = (temperatura > 80) and (bool refrigeracion_activa)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Perhaps you forgot a comma?",
+    "hasError": true,
+    "errorLine": 3,
+    "errorType": "SyntaxError"
+  },
+  "temperatura = 92\nrefrigeracion_activa = False\n\nalarma = (temperatura > 80) == (not refrigeracion_activa)\nprint(\"Alarma crítica:\", alarma)": {
+    "lines": [
+      "temperatura = 92",
+      "refrigeracion_activa = False",
+      "",
+      "alarma = (temperatura > 80) == (not refrigeracion_activa)",
+      "print(\"Alarma crítica:\", alarma)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Alarma crítica: True",
+        "outputSoFar": [
+          "Alarma crítica: True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Alarma crítica: True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "temperatura = 92\nrefrigeracion_activa = False\n\nalarma = (temperatura > 80) and (not refrigeracion_activa)\nprint(\"Alarma crítica:\", alarma)": {
+    "lines": [
+      "temperatura = 92",
+      "refrigeracion_activa = False",
+      "",
+      "alarma = (temperatura > 80) and (not refrigeracion_activa)",
+      "print(\"Alarma crítica:\", alarma)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Alarma crítica: True",
+        "outputSoFar": [
+          "Alarma crítica: True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Alarma crítica: True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "sistema_online = False\nprint(sistema_online and (10 / 0 > 1))": {
+    "lines": [
+      "sistema_online = False",
+      "print(sistema_online and (10 / 0 > 1))"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "False",
+        "outputSoFar": [
+          "False"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "False",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "consumo = 140\nif consumo <= 100:\n    tarifa = 500\nelif consumo <= 200:\n    tarifa = 750\nelse:\n    tarifa = 1100\nprint(\"Tarifa aplicada ($/kWh):\", tarifa)": {
+    "lines": [
+      "consumo = 140",
+      "if consumo <= 100:",
+      "    tarifa = 500",
+      "elif consumo <= 200:",
+      "    tarifa = 750",
+      "else:",
+      "    tarifa = 1100",
+      "print(\"Tarifa aplicada ($/kWh):\", tarifa)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Tarifa aplicada ($/kWh): 750",
+        "outputSoFar": [
+          "Tarifa aplicada ($/kWh): 750"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Tarifa aplicada ($/kWh): 750",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "consumo = 250\nif consumo <= 100:\n    costo = 400\nelif consumo <= 200:\n    costo = 650\nelse:\n    costo = 900\nprint(\"Costo unitario:\", costo)": {
+    "lines": [
+      "consumo = 250",
+      "if consumo <= 100:",
+      "    costo = 400",
+      "elif consumo <= 200:",
+      "    costo = 650",
+      "else:",
+      "    costo = 900",
+      "print(\"Costo unitario:\", costo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Costo unitario: 900",
+        "outputSoFar": [
+          "Costo unitario: 900"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Costo unitario: 900",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "consumo = 300\nif consumo > 50:\n    categoria = \"Básico\"\nelif consumo > 200:\n    categoria = \"Industrial\"\nprint(categoria)": {
+    "lines": [
+      "consumo = 300",
+      "if consumo > 50:",
+      "    categoria = \"Básico\"",
+      "elif consumo > 200:",
+      "    categoria = \"Industrial\"",
+      "print(categoria)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Básico",
+        "outputSoFar": [
+          "Básico"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Básico",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "estrato = 2\ncargo_fijo = 0\nif estrato == 1 or estrato == 2:\n    cargo_fijo = 5000\nelif estrato == 3 or estrato == 4:\n    cargo_fijo = 12000\nelse:\n    cargo_fijo = 25000\nprint(\"Cargo fijo liquidado: $\", cargo_fijo, sep=\"\")": {
+    "lines": [
+      "estrato = 2",
+      "cargo_fijo = 0",
+      "if estrato == 1 or estrato == 2:",
+      "    cargo_fijo = 5000",
+      "elif estrato == 3 or estrato == 4:",
+      "    cargo_fijo = 12000",
+      "else:",
+      "    cargo_fijo = 25000",
+      "print(\"Cargo fijo liquidado: $\", cargo_fijo, sep=\"\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Cargo fijo liquidado: $5000",
+        "outputSoFar": [
+          "Cargo fijo liquidado: $5000"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Cargo fijo liquidado: $5000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "estrato = 4\nif estrato <= 2:\n    cargo = 6000\nelif estrato <= 4:\n    cargo = 14000\nelse:\n    cargo = 28000\nprint(\"Cargo:\", cargo)": {
+    "lines": [
+      "estrato = 4",
+      "if estrato <= 2:",
+      "    cargo = 6000",
+      "elif estrato <= 4:",
+      "    cargo = 14000",
+      "else:",
+      "    cargo = 28000",
+      "print(\"Cargo:\", cargo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Cargo: 14000",
+        "outputSoFar": [
+          "Cargo: 14000"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Cargo: 14000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "metros_cubicos = 35\n\nif metros_cubicos < 20:\n    tipo = \"Consumo normal\"\nelse metros_cubicos <= 40:\n    tipo = \"Consumo alto\"\nelse:\n    tipo = \"Consumo crítico\"\n\nprint(\"Diagnóstico:\", tipo)": {
+    "lines": [
+      "metros_cubicos = 35",
+      "",
+      "if metros_cubicos < 20:",
+      "    tipo = \"Consumo normal\"",
+      "else metros_cubicos <= 40:",
+      "    tipo = \"Consumo alto\"",
+      "else:",
+      "    tipo = \"Consumo crítico\"",
+      "",
+      "print(\"Diagnóstico:\", tipo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "File \"main.py\", line 5\n    else metros_cubicos <= 40:\n         ^^^^^^^^^^^^^^\nSyntaxError: expected ':'",
+        "outputSoFar": [
+          "File \"main.py\", line 5",
+          "    else metros_cubicos <= 40:",
+          "         ^^^^^^^^^^^^^^",
+          "SyntaxError: expected ':'"
+        ],
+        "hasError": true,
+        "errorType": "SyntaxError",
+        "errorLine": 4
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 5",
+          "    else metros_cubicos <= 40:",
+          "         ^^^^^^^^^^^^^^",
+          "SyntaxError: expected ':'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 5",
+          "    else metros_cubicos <= 40:",
+          "         ^^^^^^^^^^^^^^",
+          "SyntaxError: expected ':'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 5",
+          "    else metros_cubicos <= 40:",
+          "         ^^^^^^^^^^^^^^",
+          "SyntaxError: expected ':'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 5",
+          "    else metros_cubicos <= 40:",
+          "         ^^^^^^^^^^^^^^",
+          "SyntaxError: expected ':'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 5",
+          "    else metros_cubicos <= 40:",
+          "         ^^^^^^^^^^^^^^",
+          "SyntaxError: expected ':'"
+        ],
+        "skipped": true
+      }
+    ],
+    "totalOutput": "File \"main.py\", line 5\n    else metros_cubicos <= 40:\n         ^^^^^^^^^^^^^^\nSyntaxError: expected ':'",
+    "hasError": true,
+    "errorLine": 4,
+    "errorType": "SyntaxError"
+  },
+  "metros_cubicos = 35\n\nif metros_cubicos == 20:\n    tipo = \"Consumo normal\"\nelif metros_cubicos <= 40:\n    tipo = \"Consumo alto\"\nelse:\n    tipo = \"Consumo crítico\"\n\nprint(\"Diagnóstico:\", tipo)": {
+    "lines": [
+      "metros_cubicos = 35",
+      "",
+      "if metros_cubicos == 20:",
+      "    tipo = \"Consumo normal\"",
+      "elif metros_cubicos <= 40:",
+      "    tipo = \"Consumo alto\"",
+      "else:",
+      "    tipo = \"Consumo crítico\"",
+      "",
+      "print(\"Diagnóstico:\", tipo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Diagnóstico: Consumo alto",
+        "outputSoFar": [
+          "Diagnóstico: Consumo alto"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Diagnóstico: Consumo alto",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "metros_cubicos = 35\n\nif metros_cubicos <= 20:\n    tipo = \"Consumo normal\"\nelif metros_cubicos <= 40:\n    tipo = \"Consumo alto\"\nelse:\n    tipo = \"Consumo crítico\"\n\nprint(\"Diagnóstico:\", tipo)": {
+    "lines": [
+      "metros_cubicos = 35",
+      "",
+      "if metros_cubicos <= 20:",
+      "    tipo = \"Consumo normal\"",
+      "elif metros_cubicos <= 40:",
+      "    tipo = \"Consumo alto\"",
+      "else:",
+      "    tipo = \"Consumo crítico\"",
+      "",
+      "print(\"Diagnóstico:\", tipo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Diagnóstico: Consumo alto",
+        "outputSoFar": [
+          "Diagnóstico: Consumo alto"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Diagnóstico: Consumo alto",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "metros_cubicos = 35\n\nif metros_cubicos >= 20:\n    tipo = \"Consumo normal\"\nelif metros_cubicos <= 40:\n    tipo = \"Consumo alto\"\nelse:\n    tipo = \"Consumo crítico\"\n\nprint(\"Diagnóstico:\", tipo)": {
+    "lines": [
+      "metros_cubicos = 35",
+      "",
+      "if metros_cubicos >= 20:",
+      "    tipo = \"Consumo normal\"",
+      "elif metros_cubicos <= 40:",
+      "    tipo = \"Consumo alto\"",
+      "else:",
+      "    tipo = \"Consumo crítico\"",
+      "",
+      "print(\"Diagnóstico:\", tipo)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Diagnóstico: Consumo normal",
+        "outputSoFar": [
+          "Diagnóstico: Consumo normal"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Diagnóstico: Consumo normal",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "temperatura = 20\nif temperatura < 20:\n    estado = \"Frío\"\nelif temperatura > 20:\n    estado = \"Caliente\"\nelse:\n    estado = \"Neutro\"\nprint(\"Estado:\", estado)": {
+    "lines": [
+      "temperatura = 20",
+      "if temperatura < 20:",
+      "    estado = \"Frío\"",
+      "elif temperatura > 20:",
+      "    estado = \"Caliente\"",
+      "else:",
+      "    estado = \"Neutro\"",
+      "print(\"Estado:\", estado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Estado: Neutro",
+        "outputSoFar": [
+          "Estado: Neutro"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Estado: Neutro",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "pureza = 88\nhumedad = 5\nif pureza >= 85:\n    if humedad < 8:\n        dictamen = \"Lote Premium\"\n    else:\n        dictamen = \"Requiere Secado\"\nelse:\n    dictamen = \"Rechazado por baja ley\"\nprint(\"Resultado de laboratorio:\", dictamen)": {
+    "lines": [
+      "pureza = 88",
+      "humedad = 5",
+      "if pureza >= 85:",
+      "    if humedad < 8:",
+      "        dictamen = \"Lote Premium\"",
+      "    else:",
+      "        dictamen = \"Requiere Secado\"",
+      "else:",
+      "    dictamen = \"Rechazado por baja ley\"",
+      "print(\"Resultado de laboratorio:\", dictamen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Resultado de laboratorio: Lote Premium",
+        "outputSoFar": [
+          "Resultado de laboratorio: Lote Premium"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Resultado de laboratorio: Lote Premium",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "pureza = 90\nhumedad = 14\nif pureza >= 85:\n    if humedad < 8:\n        print(\"Aprobado directo\")\n    else:\n        print(\"Aprobado con secado previo\")\nelse:\n    print(\"Rechazado\")": {
+    "lines": [
+      "pureza = 90",
+      "humedad = 14",
+      "if pureza >= 85:",
+      "    if humedad < 8:",
+      "        print(\"Aprobado directo\")",
+      "    else:",
+      "        print(\"Aprobado con secado previo\")",
+      "else:",
+      "    print(\"Rechazado\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Aprobado con secado previo",
+        "outputSoFar": [
+          "Aprobado con secado previo"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Aprobado con secado previo",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "mineral = \"Au\"\nif mineral = \"Au\":\n    print(\"Muestra de oro detectada\")": {
+    "lines": [
+      "mineral = \"Au\"",
+      "if mineral = \"Au\":",
+      "    print(\"Muestra de oro detectada\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": []
+      },
+      {
+        "prints": "File \"main.py\", line 2\n    if mineral = \"Au\":\n       ^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?",
+        "outputSoFar": [
+          "File \"main.py\", line 2",
+          "    if mineral = \"Au\":",
+          "       ^^^^^^^^^^^^^^",
+          "SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?"
+        ],
+        "hasError": true,
+        "errorType": "SyntaxError",
+        "errorLine": 1
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 2",
+          "    if mineral = \"Au\":",
+          "       ^^^^^^^^^^^^^^",
+          "SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?"
+        ],
+        "skipped": true
+      }
+    ],
+    "totalOutput": "File \"main.py\", line 2\n    if mineral = \"Au\":\n       ^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "SyntaxError"
+  },
+  "resistencia_mpa = 28\ngrietas_visibles = False\naprobado = True\nif resistencia_mpa < 25:\n    aprobado = False\nif grietas_visibles:\n    aprobado = False\nprint(\"¿El concreto superó la prueba técnica?\", aprobado)": {
+    "lines": [
+      "resistencia_mpa = 28",
+      "grietas_visibles = False",
+      "aprobado = True",
+      "if resistencia_mpa < 25:",
+      "    aprobado = False",
+      "if grietas_visibles:",
+      "    aprobado = False",
+      "print(\"¿El concreto superó la prueba técnica?\", aprobado)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "¿El concreto superó la prueba técnica? True",
+        "outputSoFar": [
+          "¿El concreto superó la prueba técnica? True"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "¿El concreto superó la prueba técnica? True",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "deflexion_mm = 12\nlimite = 10\nviga_segura = True\nif deflexion_mm > limite:\n    viga_segura = False\nprint(\"Segura:\", viga_segura)": {
+    "lines": [
+      "deflexion_mm = 12",
+      "limite = 10",
+      "viga_segura = True",
+      "if deflexion_mm > limite:",
+      "    viga_segura = False",
+      "print(\"Segura:\", viga_segura)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Segura: False",
+        "outputSoFar": [
+          "Segura: False"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Segura: False",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "dureza_mohs = 7.5\ndensidad_gcm3 = 4.2\n\nif dureza_mohs >= 7.0 and densidad_gcm3 > 3.5:\n    dictamen = \"Apta para cimentación\"\nelse:\n    dictamen = \"Roca descartada\"\n\nprint(\"Diagnóstico final:\", dictamen)": {
+    "lines": [
+      "dureza_mohs = 7.5",
+      "densidad_gcm3 = 4.2",
+      "",
+      "if dureza_mohs >= 7.0 and densidad_gcm3 > 3.5:",
+      "    dictamen = \"Apta para cimentación\"",
+      "else:",
+      "    dictamen = \"Roca descartada\"",
+      "",
+      "print(\"Diagnóstico final:\", dictamen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Diagnóstico final: Apta para cimentación",
+        "outputSoFar": [
+          "Diagnóstico final: Apta para cimentación"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Diagnóstico final: Apta para cimentación",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "dureza_mohs = 7.5\ndensidad_gcm3 = 4.2\n\nif dureza_mohs == 7.0 and densidad_gcm3 < 3.5:\n    dictamen = \"Apta para cimentación\"\nelse:\n    dictamen = \"Roca descartada\"\n\nprint(\"Diagnóstico final:\", dictamen)": {
+    "lines": [
+      "dureza_mohs = 7.5",
+      "densidad_gcm3 = 4.2",
+      "",
+      "if dureza_mohs == 7.0 and densidad_gcm3 < 3.5:",
+      "    dictamen = \"Apta para cimentación\"",
+      "else:",
+      "    dictamen = \"Roca descartada\"",
+      "",
+      "print(\"Diagnóstico final:\", dictamen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Diagnóstico final: Roca descartada",
+        "outputSoFar": [
+          "Diagnóstico final: Roca descartada"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Diagnóstico final: Roca descartada",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "dureza_mohs = 7.5\ndensidad_gcm3 = 4.2\n\nif dureza_mohs <= 7.0 and densidad_gcm3 > 3.5:\n    dictamen = \"Apta para cimentación\"\nelse:\n    dictamen = \"Roca descartada\"\n\nprint(\"Diagnóstico final:\", dictamen)": {
+    "lines": [
+      "dureza_mohs = 7.5",
+      "densidad_gcm3 = 4.2",
+      "",
+      "if dureza_mohs <= 7.0 and densidad_gcm3 > 3.5:",
+      "    dictamen = \"Apta para cimentación\"",
+      "else:",
+      "    dictamen = \"Roca descartada\"",
+      "",
+      "print(\"Diagnóstico final:\", dictamen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Diagnóstico final: Roca descartada",
+        "outputSoFar": [
+          "Diagnóstico final: Roca descartada"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Diagnóstico final: Roca descartada",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "dureza_mohs = 7.5\ndensidad_gcm3 = 4.2\n\nif dureza_mohs >= 7.0 and densidad_gcm3 <= 3.5:\n    dictamen = \"Apta para cimentación\"\nelse:\n    dictamen = \"Roca descartada\"\n\nprint(\"Diagnóstico final:\", dictamen)": {
+    "lines": [
+      "dureza_mohs = 7.5",
+      "densidad_gcm3 = 4.2",
+      "",
+      "if dureza_mohs >= 7.0 and densidad_gcm3 <= 3.5:",
+      "    dictamen = \"Apta para cimentación\"",
+      "else:",
+      "    dictamen = \"Roca descartada\"",
+      "",
+      "print(\"Diagnóstico final:\", dictamen)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Diagnóstico final: Roca descartada",
+        "outputSoFar": [
+          "Diagnóstico final: Roca descartada"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Diagnóstico final: Roca descartada",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "mineral = \"COBRE\"\nif mineral == \"cobre\":\n    precio = 4.5\nelse:\n    precio = 0.0\nprint(\"Precio:\", precio)": {
+    "lines": [
+      "mineral = \"COBRE\"",
+      "if mineral == \"cobre\":",
+      "    precio = 4.5",
+      "else:",
+      "    precio = 0.0",
+      "print(\"Precio:\", precio)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Precio: 0.0",
+        "outputSoFar": [
+          "Precio: 0.0"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Precio: 0.0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "diametro_m = 0.5\ncaudal_m3s = 0.25\narea = 3.1416 * (diametro_m / 2) ** 2\nvelocidad = caudal_m3s / area\nestado = \"Adecuada\" if velocidad <= 2.0 else \"Excesiva\"\nprint(f\"Velocidad: {velocidad:.2f} m/s | Estado: {estado}\")": {
+    "lines": [
+      "diametro_m = 0.5",
+      "caudal_m3s = 0.25",
+      "area = 3.1416 * (diametro_m / 2) ** 2",
+      "velocidad = caudal_m3s / area",
+      "estado = \"Adecuada\" if velocidad <= 2.0 else \"Excesiva\"",
+      "print(f\"Velocidad: {velocidad:.2f} m/s | Estado: {estado}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Velocidad: 1.27 m/s | Estado: Adecuada",
+        "outputSoFar": [
+          "Velocidad: 1.27 m/s | Estado: Adecuada"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Velocidad: 1.27 m/s | Estado: Adecuada",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "altura = 30\ncaudal = 5\npotencia_kw = (altura * caudal) / 100\nif potencia_kw > 1.0:\n    motor = \"Trifásico\"\nelse:\n    motor = \"Monofásico\"\nprint(f\"Potencia: {potencia_kw} kW -> Motor {motor}\")": {
+    "lines": [
+      "altura = 30",
+      "caudal = 5",
+      "potencia_kw = (altura * caudal) / 100",
+      "if potencia_kw > 1.0:",
+      "    motor = \"Trifásico\"",
+      "else:",
+      "    motor = \"Monofásico\"",
+      "print(f\"Potencia: {potencia_kw} kW -> Motor {motor}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Potencia: 1.5 kW -> Motor Trifásico",
+        "outputSoFar": [
+          "Potencia: 1.5 kW -> Motor Trifásico"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Potencia: 1.5 kW -> Motor Trifásico",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "dosis_texto = \"50\"\ntotal = dosis_texto * 2\nprint(\"Dosificación final:\", total)": {
+    "lines": [
+      "dosis_texto = \"50\"",
+      "total = dosis_texto * 2",
+      "print(\"Dosificación final:\", total)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Dosificación final: 5050",
+        "outputSoFar": [
+          "Dosificación final: 5050"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Dosificación final: 5050",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "pendiente = 0.08472\nporcentaje = pendiente * 100\nprint(f\"Pendiente de la rampa: {porcentaje:.2f}%\")": {
+    "lines": [
+      "pendiente = 0.08472",
+      "porcentaje = pendiente * 100",
+      "print(f\"Pendiente de la rampa: {porcentaje:.2f}%\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Pendiente de la rampa: 8.47%",
+        "outputSoFar": [
+          "Pendiente de la rampa: 8.47%"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Pendiente de la rampa: 8.47%",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "presion_psi = 145.68\npresion_bar = presion_psi * 0.068947\nprint(f\"Presión: {presion_bar:.1f} bar\")": {
+    "lines": [
+      "presion_psi = 145.68",
+      "presion_bar = presion_psi * 0.068947",
+      "print(f\"Presión: {presion_bar:.1f} bar\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Presión: 10.0 bar",
+        "outputSoFar": [
+          "Presión: 10.0 bar"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Presión: 10.0 bar",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "caudal_str = \"15.5\"\ncaudal = str (caudal_str)\n\npresion = caudal * 0.18\n\nif presion > 2.5:\n    accion = \"Encender bomba auxiliar\"\nelse:\n    accion = \"Presión óptima en línea\"\n\nprint(f\"Presión: {presion:.2f} bar | Acción: {accion}\")": {
+    "lines": [
+      "caudal_str = \"15.5\"",
+      "caudal = str (caudal_str)",
+      "",
+      "presion = caudal * 0.18",
+      "",
+      "if presion > 2.5:",
+      "    accion = \"Encender bomba auxiliar\"",
+      "else:",
+      "    accion = \"Presión óptima en línea\"",
+      "",
+      "print(f\"Presión: {presion:.2f} bar | Acción: {accion}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    presion = caudal * 0.18\nTypeError: can't multiply sequence by non-int of type 'float'",
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "hasError": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    presion = caudal * 0.18",
+          "TypeError: can't multiply sequence by non-int of type 'float'"
+        ],
+        "skipped": true
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    presion = caudal * 0.18\nTypeError: can't multiply sequence by non-int of type 'float'",
+    "hasError": true,
+    "errorLine": 3,
+    "errorType": "TypeError"
+  },
+  "caudal_str = \"15.5\"\ncaudal = float (caudal_str)\n\npresion = caudal * 0.18\n\nif presion < 2.5:\n    accion = \"Encender bomba auxiliar\"\nelse:\n    accion = \"Presión óptima en línea\"\n\nprint(f\"Presión: {presion:.2f} bar | Acción: {accion}\")": {
+    "lines": [
+      "caudal_str = \"15.5\"",
+      "caudal = float (caudal_str)",
+      "",
+      "presion = caudal * 0.18",
+      "",
+      "if presion < 2.5:",
+      "    accion = \"Encender bomba auxiliar\"",
+      "else:",
+      "    accion = \"Presión óptima en línea\"",
+      "",
+      "print(f\"Presión: {presion:.2f} bar | Acción: {accion}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Presión: 2.79 bar | Acción: Presión óptima en línea",
+        "outputSoFar": [
+          "Presión: 2.79 bar | Acción: Presión óptima en línea"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Presión: 2.79 bar | Acción: Presión óptima en línea",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "caudal_str = \"15.5\"\ncaudal = int (caudal_str)\n\npresion = caudal * 0.18\n\nif presion <= 2.5:\n    accion = \"Encender bomba auxiliar\"\nelse:\n    accion = \"Presión óptima en línea\"\n\nprint(f\"Presión: {presion:.2f} bar | Acción: {accion}\")": {
+    "lines": [
+      "caudal_str = \"15.5\"",
+      "caudal = int (caudal_str)",
+      "",
+      "presion = caudal * 0.18",
+      "",
+      "if presion <= 2.5:",
+      "    accion = \"Encender bomba auxiliar\"",
+      "else:",
+      "    accion = \"Presión óptima en línea\"",
+      "",
+      "print(f\"Presión: {presion:.2f} bar | Acción: {accion}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    caudal = int (caudal_str)\nValueError: invalid literal for int() with base 10: '15.5'",
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "hasError": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    caudal = int (caudal_str)",
+          "ValueError: invalid literal for int() with base 10: '15.5'"
+        ],
+        "skipped": true
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    caudal = int (caudal_str)\nValueError: invalid literal for int() with base 10: '15.5'",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "ValueError"
+  },
+  "caudal_str = \"15.5\"\ncaudal = float (caudal_str)\n\npresion = caudal * 0.18\n\nif presion == 2.5:\n    accion = \"Encender bomba auxiliar\"\nelse:\n    accion = \"Presión óptima en línea\"\n\nprint(f\"Presión: {presion:.2f} bar | Acción: {accion}\")": {
+    "lines": [
+      "caudal_str = \"15.5\"",
+      "caudal = float (caudal_str)",
+      "",
+      "presion = caudal * 0.18",
+      "",
+      "if presion == 2.5:",
+      "    accion = \"Encender bomba auxiliar\"",
+      "else:",
+      "    accion = \"Presión óptima en línea\"",
+      "",
+      "print(f\"Presión: {presion:.2f} bar | Acción: {accion}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Presión: 2.79 bar | Acción: Presión óptima en línea",
+        "outputSoFar": [
+          "Presión: 2.79 bar | Acción: Presión óptima en línea"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Presión: 2.79 bar | Acción: Presión óptima en línea",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "produccion = 500\nhoras = 0\nif horas > 0:\n    rendimiento = produccion / horas\nelse:\n    rendimiento = 0.0\nprint(f\"Rendimiento: {rendimiento} ton/h\")": {
+    "lines": [
+      "produccion = 500",
+      "horas = 0",
+      "if horas > 0:",
+      "    rendimiento = produccion / horas",
+      "else:",
+      "    rendimiento = 0.0",
+      "print(f\"Rendimiento: {rendimiento} ton/h\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Rendimiento: 0.0 ton/h",
+        "outputSoFar": [
+          "Rendimiento: 0.0 ton/h"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Rendimiento: 0.0 ton/h",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "precio_metro = 1000\nmetros = 15\nsubtotal = precio_metro * metros\nif metros >= 10:\n    descuento = subtotal * 0.10\nelse:\n    descuento = 0.0\ntotal = subtotal - descuento\nprint(f\"Total a pagar: ${total:.0f}\")": {
+    "lines": [
+      "precio_metro = 1000",
+      "metros = 15",
+      "subtotal = precio_metro * metros",
+      "if metros >= 10:",
+      "    descuento = subtotal * 0.10",
+      "else:",
+      "    descuento = 0.0",
+      "total = subtotal - descuento",
+      "print(f\"Total a pagar: ${total:.0f}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Total a pagar: $13500",
+        "outputSoFar": [
+          "Total a pagar: $13500"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Total a pagar: $13500",
     "hasError": false,
     "errorLine": null,
     "errorType": null
