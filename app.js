@@ -2664,11 +2664,12 @@ function codePlayerTogglePlay(playerId) {
 function unlockExplanationContinue() {
   const btn = document.getElementById('explanation-continue-btn');
   if (!btn || btn.dataset.unlocked === 'true') return;
+  const isLastStep = Boolean(currentLesson && currentStepIndex >= currentLesson.steps.length - 1);
   btn.dataset.unlocked = 'true';
   btn.disabled = false;
   btn.onclick = advanceNextStep;
   btn.className = "btn-3d w-full max-w-md bg-brand-500 hover:bg-brand-600 active:scale-95 text-white font-extrabold text-base py-3.5 px-8 rounded-2xl shadow-brilliant-btn border-b-4 border-brand-700 transition cursor-pointer animate-modal-pop flex items-center justify-center gap-2";
-  btn.innerHTML = `Continuar ➔`;
+  btn.innerHTML = isLastStep ? `Finalizar lección ➔` : `Continuar ➔`;
   playSound('correct');
 }
 
@@ -2694,6 +2695,7 @@ function renderExplanationStep(step, container) {
   const ex = step.examples[0] || { label: 'Ejemplo', code: 'print("Hola")', output: 'Hola', explanation: 'Salida básica' };
   const playerId = 'expl_' + currentStepIndex;
   const hasCode = ex && ex.code && ex.code.trim().length > 0;
+  const isLastStep = Boolean(currentLesson && currentStepIndex >= currentLesson.steps.length - 1);
 
   container.innerHTML = `
     <div class="w-full max-w-xl min-w-0 flex flex-col items-center text-center">
@@ -2738,7 +2740,7 @@ function renderExplanationStep(step, container) {
         </button>
       ` : `
         <button onclick="advanceNextStep()" class="btn-3d w-full max-w-md bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition">
-          Continuar ➔
+          ${isLastStep ? "Finalizar lección ➔" : "Continuar ➔"}
         </button>
       `}
 
@@ -3125,6 +3127,9 @@ function renderPredictApprovedActions() {
   const actionsContainer = document.getElementById('predict-actions-container');
   if (!actionsContainer) return;
 
+  const isLastStep = Boolean(currentLesson && currentStepIndex >= currentLesson.steps.length - 1);
+  const nextBtnText = isLastStep ? "Finalizar lección ➔" : "Continuar ➔";
+
   actionsContainer.innerHTML = `
     <div class="flex items-center justify-center gap-3 w-full max-w-md animate-modal-pop">
       <button id="predict-why-btn" onclick="togglePredictWhyExplanation()" class="bg-[#2a2d34] hover:bg-[#383d47] active:scale-95 text-white font-bold py-3.5 px-6 rounded-full shadow-md transition-all flex items-center justify-center gap-2 text-sm shrink-0 cursor-pointer">
@@ -3132,7 +3137,7 @@ function renderPredictApprovedActions() {
         ¿Por qué?
       </button>
       <button id="predict-continue-btn" onclick="advanceNextStep()" class="flex-1 bg-brand-500 hover:bg-brand-600 active:scale-95 text-white font-extrabold py-3.5 px-8 rounded-full shadow-brilliant-btn border-b-4 border-brand-700 transition-all text-sm sm:text-base flex items-center justify-center gap-2 cursor-pointer">
-        Continuar ➔
+        ${nextBtnText}
       </button>
     </div>
   `;
@@ -3176,14 +3181,16 @@ function togglePredictWhyExplanation() {
   }
 }
 
-function unlockVisualizerContinue(text = "Continuar al editor ➔") {
+function unlockVisualizerContinue(text) {
   const btn = document.getElementById('visualizer-continue-btn');
   if (!btn || btn.dataset.unlocked === 'true') return;
+  const isLastStep = Boolean(currentLesson && currentStepIndex >= currentLesson.steps.length - 1);
+  const defaultText = isLastStep ? "Finalizar lección ➔" : "Continuar al editor ➔";
   btn.dataset.unlocked = 'true';
   btn.disabled = false;
   btn.onclick = advanceNextStep;
   btn.className = "btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 active:scale-95 text-white font-extrabold text-base py-3.5 px-8 rounded-2xl shadow-brilliant-btn border-b-4 border-brand-700 transition cursor-pointer animate-modal-pop flex items-center justify-center gap-2";
-  btn.innerHTML = text;
+  btn.innerHTML = text || defaultText;
 }
 
 // 2. Laboratorio Interactivo
@@ -4370,11 +4377,14 @@ function finishGuidedSandboxExecution(optOrResult, lineTrace) {
       feedbackCard.classList.remove('hidden');
     }
 
+    const isLastStep = Boolean(currentLesson && currentStepIndex >= currentLesson.steps.length - 1);
+    const nextBtnText = isLastStep ? "Finalizar lección ➔" : "Continuar ➔";
+
     const actionContainer = document.getElementById('sandbox-action-buttons');
     if (actionContainer) {
       actionContainer.innerHTML = `
         <button id="guided-finish-btn" onclick="advanceNextStep()" class="btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition animate-bounce-subtle cursor-pointer">
-          Finalizar lección ➔
+          ${nextBtnText}
         </button>
         <button id="single-run-btn" onclick="executeGuidedSandbox()" class="px-4 py-3 rounded-2xl border-2 border-slate-300 text-slate-700 hover:text-slate-900 font-bold hover:bg-slate-100 transition text-sm flex items-center gap-1.5 cursor-pointer">
           <span>↺</span> Volver a ejecutar
@@ -4521,7 +4531,8 @@ async function executeSingleSandbox() {
       playSound('correct');
       triggerConfetti();
 
-      runBtn.textContent = "Finalizar lección ➔";
+      const isLastStep = Boolean(currentLesson && currentStepIndex >= currentLesson.steps.length - 1);
+      runBtn.textContent = isLastStep ? "Finalizar lección ➔" : "Continuar ➔";
       runBtn.className = "btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition";
       runBtn.disabled = false;
       runBtn.onclick = advanceNextStep;
