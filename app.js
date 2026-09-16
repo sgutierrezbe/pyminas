@@ -3411,6 +3411,77 @@ let currentGuidedStep = null;
 let selectedGuidedOptionId = null;
 let guidedStepCompleted = false;
 let sandboxUserInputs = {};
+let guidedSlots = [];
+let guidedSlotValues = [];
+let guidedActiveSlotIdx = 0;
+
+function extractStepSlots(step) {
+  const slotMarker = step.slotMarker || "___";
+  const starter = step.starterCode || "";
+  const countInCode = (starter.split(slotMarker).length - 1);
+
+  if (Array.isArray(step.slots) && step.slots.length > 0) {
+    return step.slots.map((s, idx) => ({
+      index: idx,
+      id: s.id || `slot-${idx}`,
+      label: s.label || `Casilla ${idx + 1}`,
+      shortLabel: s.shortLabel || `Casilla ${idx + 1}`,
+      options: (s.options || []).map(opt => ({
+        id: opt.id,
+        code: opt.code,
+        label: opt.label || opt.code,
+        explanation: opt.explanation || ""
+      }))
+    }));
+  }
+
+  if (Array.isArray(step.options) && step.options.length > 0) {
+    if (countInCode > 1 && step.options.some(o => Array.isArray(o.slots))) {
+      const total = Math.max(countInCode, ...step.options.map(o => (o.slots ? o.slots.length : 0)));
+      const result = [];
+      for (let i = 0; i < total; i++) {
+        const seen = new Set();
+        const slotOpts = [];
+        let optLetterIdx = 0;
+        const letters = ["A", "B", "C", "D", "E"];
+        step.options.forEach(o => {
+          const val = o.slots ? o.slots[i] : (i === 0 ? o.code : "");
+          if (val !== undefined && !seen.has(val)) {
+            seen.add(val);
+            slotOpts.push({
+              id: letters[optLetterIdx++] || String(optLetterIdx),
+              code: val,
+              label: val
+            });
+          }
+        });
+        result.push({
+          index: i,
+          id: `slot-${i}`,
+          label: `Casilla ${i + 1}`,
+          shortLabel: `Casilla ${i + 1}`,
+          options: slotOpts
+        });
+      }
+      return result;
+    } else {
+      return [{
+        index: 0,
+        id: "slot-0",
+        label: "Elige la opción que completa el código:",
+        shortLabel: "Casilla 1",
+        options: step.options.map(opt => ({
+          id: opt.id,
+          code: opt.code,
+          label: opt.label || opt.code,
+          explanation: opt.explanation || ""
+        }))
+      }];
+    }
+  }
+
+  return [];
+}
 
 function renderSandboxStep(step, container) {
   stopSandboxAnimation();
@@ -3419,10 +3490,14 @@ function renderSandboxStep(step, container) {
   guidedStepCompleted = false;
   sandboxUserInputs = {};
 
-  const isGuided = Boolean(step.options && step.options.length > 0);
+  const isGuided = Boolean((step.options && step.options.length > 0) || (step.slots && step.slots.length > 0));
   const starterCode = (step.starterCode || '').trim();
   const lines = starterCode.split('\n');
   const slotMarker = step.slotMarker || "___";
+
+  guidedSlots = isGuided ? extractStepSlots(step) : [];
+  guidedSlotValues = new Array(guidedSlots.length).fill(null);
+  guidedActiveSlotIdx = 0;
 
   let codeAreaHtml = '';
   if (isGuided) {
@@ -3433,7 +3508,9 @@ function renderSandboxStep(step, container) {
         const parts = line.split(slotMarker);
         contentHtml = highlightPythonSyntax(parts[0]);
         for (let p = 1; p < parts.length; p++) {
-          contentHtml += `<span id="guided-code-slot-${slotGlobalIdx}" data-slot-idx="${slotGlobalIdx}" class="guided-code-slot code-slot-box slot-empty px-2.5 py-0.5 text-xs font-bold font-mono select-none inline-flex items-center min-w-[50px]"><span class="blinking-cursor"></span></span>${highlightPythonSyntax(parts[p])}`;
+          const sIdx = slotGlobalIdx;
+          const isActive = (sIdx === 0);
+          contentHtml += `<button type="button" id="guided-code-slot-${sIdx}" data-slot-idx="${sIdx}" onclick="focusGuidedSlot(${sIdx})" class="guided-code-slot code-slot-box ${isActive ? 'slot-active' : 'slot-empty'} slot-clickable px-2.5 py-0.5 text-xs font-bold font-mono select-none inline-flex items-center min-w-[50px] transition-all cursor-pointer"><span class="slot-text">${isActive ? '<span class="blinking-cursor"></span>' : '···'}</span></button>${highlightPythonSyntax(parts[p])}`;
           slotGlobalIdx++;
         }
       } else {
@@ -3517,33 +3594,15 @@ function renderSandboxStep(step, container) {
           </div>
           <div id="single-sandbox-term" class="text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed">
             <span class="text-slate-500 italic font-normal text-xs">
-              ${isGuided ? 'Selecciona una opción y haz clic en «▶ Ejecutar código»...' : 'Presiona «▶ Ejecutar código» para probar tu solución...'}
+              ${isGuided ? 'Elige las fichas para cada casilla y haz clic en «▶ Ejecutar código»...' : 'Presiona «▶ Ejecutar código» para probar tu solución...'}
             </span>
           </div>
         </div>
       </div>
 
       ${isGuided ? `
-        <!-- Opciones de código para rellenar el slot estilo Brilliant -->
-        <div class="w-full mb-4 text-left">
-          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
-            <span>Elige la opción que completa el código:</span>
-            <span class="text-[11px] text-brand-600 font-semibold font-sans hidden sm:inline">Haz clic en una opción</span>
-          </div>
-          <div class="${step.options.some(opt => (opt.label || opt.code || '').length > 18) ? 'flex flex-col gap-2.5 w-full' : 'grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full'}" id="guided-options-group">
-            ${step.options.map(opt => `
-              <button type="button" id="guided-opt-${opt.id}" onclick="selectGuidedOption('${opt.id}')"
-                class="guided-option-btn group text-left px-4 py-3 rounded-2xl border-2 border-slate-200 hover:border-brand-400 bg-white hover:bg-emerald-50/40 shadow-sm transition-all flex items-center gap-3 cursor-pointer w-full">
-                <span class="w-7 h-7 rounded-xl bg-slate-100 group-hover:bg-brand-100 text-slate-600 group-hover:text-brand-700 font-bold text-xs flex items-center justify-center border border-slate-300 group-hover:border-brand-300 shrink-0 font-mono opt-badge transition">
-                  ${opt.id}
-                </span>
-                <code class="font-mono text-xs sm:text-sm text-slate-800 font-semibold opt-code break-words sm:break-normal text-left flex-1">
-                  ${escapeHtml(opt.label || opt.code)}
-                </code>
-              </button>
-            `).join('')}
-          </div>
-        </div>
+        <!-- Área de controles dinámicos de casillas estilo Brilliant -->
+        <div id="guided-controls-area" class="w-full mb-4 text-left"></div>
 
         <!-- Tarjeta de feedback (éxito o error con explicación) -->
         <div id="guided-feedback-card" class="w-full mb-4 hidden"></div>
@@ -3552,7 +3611,7 @@ function renderSandboxStep(step, container) {
       <div class="w-full flex items-center justify-center gap-3" id="sandbox-action-buttons">
         ${isGuided ? `
           <button id="single-run-btn" onclick="executeGuidedSandbox()" disabled class="w-full max-w-sm bg-slate-200 text-slate-400 cursor-not-allowed font-extrabold text-base py-3 px-8 rounded-2xl border-2 border-slate-300 transition">
-            Selecciona una opción primero
+            ${guidedSlots.length > 1 ? `Completa las casillas (0/${guidedSlots.length})` : 'Selecciona una opción primero'}
           </button>
         ` : `
           <button id="single-run-btn" onclick="executeSingleSandbox()" class="btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition">
@@ -3564,124 +3623,262 @@ function renderSandboxStep(step, container) {
     </div>
   `;
 
-  if (!isGuided) {
+  if (isGuided) {
+    renderGuidedControls();
+  } else {
     setupSandboxEditor();
   }
   initPyodide();
 }
 
-function selectGuidedOption(optId) {
-  if (!currentGuidedStep || !currentGuidedStep.options) return;
-  stopSandboxAnimation();
+function renderGuidedControls() {
+  const container = document.getElementById('guided-controls-area');
+  if (!container || !currentGuidedStep || guidedSlots.length === 0) return;
 
-  selectedGuidedOptionId = optId;
-  const opt = currentGuidedStep.options.find(o => o.id === optId);
-  if (!opt) return;
+  const totalSlots = guidedSlots.length;
+  const currentSlot = guidedSlots[guidedActiveSlotIdx] || guidedSlots[0];
+  if (!currentSlot) return;
+
+  let tabsHtml = '';
+  if (totalSlots > 1) {
+    const tabs = guidedSlots.map((s, idx) => {
+      const isActive = (idx === guidedActiveSlotIdx);
+      const val = guidedSlotValues[idx];
+      const isFilled = (val !== null && val !== undefined);
+      
+      let pillStyle = '';
+      let badgeStyle = '';
+
+      if (isActive) {
+        pillStyle = 'bg-amber-500 text-white border-amber-600 shadow-md ring-2 ring-amber-300';
+        badgeStyle = 'bg-amber-600 text-amber-100 border border-amber-400';
+      } else if (isFilled) {
+        pillStyle = 'bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border-emerald-300 shadow-sm';
+        badgeStyle = 'bg-emerald-500 text-white';
+      } else {
+        pillStyle = 'bg-slate-100 hover:bg-slate-200 text-slate-600 border-slate-200';
+        badgeStyle = 'bg-slate-300 text-slate-700';
+      }
+
+      const displayVal = isFilled ? val : 'vacía';
+
+      return `
+        <button type="button" onclick="focusGuidedSlot(${idx})" id="slot-tab-${idx}"
+          class="slot-tab-btn px-3 py-1.5 rounded-xl font-mono text-xs font-bold flex items-center gap-2 border transition-all cursor-pointer ${pillStyle}">
+          <span class="w-4 h-4 rounded-md flex items-center justify-center text-[10px] font-mono shrink-0 ${badgeStyle}">
+            ${idx + 1}
+          </span>
+          <span class="font-sans font-semibold text-[11px] truncate max-w-[120px]">${escapeHtml(s.shortLabel || `Casilla ${idx + 1}`)}:</span>
+          <code class="px-1.5 py-0.5 rounded text-[11px] font-mono font-extrabold ${isFilled ? (isActive ? 'bg-black/30 text-amber-100' : 'bg-emerald-200/60 text-emerald-950') : 'text-slate-400 italic font-normal'}">
+            ${escapeHtml(displayVal)}
+          </code>
+        </button>
+      `;
+    }).join('');
+
+    const filledCount = guidedSlotValues.filter(v => v !== null && v !== undefined).length;
+    tabsHtml = `
+      <div class="mb-3 w-full">
+        <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+          <span>Casillas a completar (${filledCount}/${totalSlots}):</span>
+          <span class="text-[11px] text-amber-700 font-semibold font-sans">Haz clic en una casilla para seleccionarla</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          ${tabs}
+        </div>
+      </div>
+    `;
+  }
+
+  const currentVal = guidedSlotValues[guidedActiveSlotIdx];
+  const options = currentSlot.options || [];
+
+  const optionsGridHtml = `
+    <div class="${options.some(opt => (opt.label || opt.code || '').length > 20) ? 'flex flex-col gap-2.5 w-full' : 'grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full'}" id="guided-options-group">
+      ${options.map(opt => {
+        const isChosen = (currentVal === opt.code);
+        return `
+          <button type="button" id="guided-opt-${opt.id}" onclick="chooseGuidedSlotToken('${escapeHtml(opt.code)}', '${opt.id}')"
+            class="guided-option-btn group text-left px-4 py-3 rounded-2xl border-2 transition-all flex items-center gap-3 cursor-pointer w-full ${
+              isChosen
+                ? 'border-amber-500 bg-amber-50 shadow-md ring-2 ring-amber-300'
+                : 'border-slate-200 hover:border-brand-400 bg-white hover:bg-emerald-50/40 shadow-sm'
+            }">
+            <span class="w-7 h-7 rounded-xl font-bold text-xs flex items-center justify-center border shrink-0 font-mono opt-badge transition ${
+              isChosen
+                ? 'bg-amber-500 text-white border-amber-600'
+                : 'bg-slate-100 group-hover:bg-brand-100 text-slate-600 group-hover:text-brand-700 border-slate-300 group-hover:border-brand-300'
+            }">
+              ${opt.id}
+            </span>
+            <code class="font-mono text-xs sm:text-sm text-slate-800 font-semibold opt-code break-words sm:break-normal text-left flex-1">
+              ${escapeHtml(opt.label || opt.code)}
+            </code>
+            ${isChosen ? '<span class="text-amber-700 font-bold text-xs shrink-0">✓ Elegida</span>' : ''}
+          </button>
+        `;
+      }).join('')}
+    </div>
+  `;
+
+  container.innerHTML = `
+    ${tabsHtml}
+    <div class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 bg-amber-100 text-amber-900 border border-amber-300 rounded-md font-extrabold text-[11px] font-mono">
+          Casilla ${guidedActiveSlotIdx + 1} de ${totalSlots}
+        </span>
+        <span class="text-slate-800 font-semibold normal-case text-xs sm:text-sm">
+          ${escapeHtml(currentSlot.label || "Elige la ficha adecuada:")}
+        </span>
+      </div>
+      <span class="text-[11px] text-brand-600 font-semibold font-sans hidden sm:inline">Haz clic en una opción</span>
+    </div>
+    ${optionsGridHtml}
+  `;
+}
+
+function focusGuidedSlot(idx) {
+  if (idx < 0 || idx >= guidedSlots.length) return;
+  guidedActiveSlotIdx = idx;
+
+  for (let i = 0; i < guidedSlots.length; i++) {
+    const el = document.getElementById(`guided-code-slot-${i}`);
+    if (!el) continue;
+    const isFilled = (guidedSlotValues[i] !== null && guidedSlotValues[i] !== undefined);
+    
+    if (i === idx) {
+      el.classList.add('slot-active');
+      const textSpan = el.querySelector('.slot-text');
+      if (!isFilled && textSpan) {
+        textSpan.innerHTML = '<span class="blinking-cursor"></span>';
+      }
+    } else {
+      el.classList.remove('slot-active');
+      const textSpan = el.querySelector('.slot-text');
+      if (!isFilled && textSpan) {
+        textSpan.innerHTML = '···';
+      }
+    }
+  }
+
+  renderGuidedControls();
+}
+
+function chooseGuidedSlotToken(codeVal, optId) {
+  if (!currentGuidedStep || guidedSlots.length === 0) return;
+  stopSandboxAnimation();
 
   playSound('click');
 
-  // Limpiar cualquier línea activa o en estado de error en el editor
+  // Guardar el valor en la ranura activa
+  guidedSlotValues[guidedActiveSlotIdx] = codeVal;
+  selectedGuidedOptionId = optId;
+
+  // Actualizar el elemento en el código
+  const slotEl = document.getElementById(`guided-code-slot-${guidedActiveSlotIdx}`);
+  if (slotEl) {
+    slotEl.classList.remove('slot-empty');
+    slotEl.classList.add('slot-filled');
+    const textSpan = slotEl.querySelector('.slot-text');
+    if (textSpan) {
+      textSpan.innerHTML = highlightPythonSyntax(codeVal);
+    } else {
+      slotEl.innerHTML = highlightPythonSyntax(codeVal);
+    }
+  }
+
+  // Ocultar feedback previo si el alumno está editando
+  const feedbackCard = document.getElementById('guided-feedback-card');
+  if (feedbackCard && !guidedStepCompleted) {
+    feedbackCard.classList.add('hidden');
+  }
+
+  // Limpiar cualquier línea de error anterior
   const totalLines = (currentGuidedStep.starterCode || '').split('\n').length;
   for (let i = 0; i < totalLines; i++) {
     const lineEl = document.getElementById(`sandbox-line-${i}`);
     const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
-    if (lineEl) {
-      lineEl.classList.remove('active', 'border-rose-500/80', 'bg-rose-950/50', 'border');
-    }
+    if (lineEl) lineEl.classList.remove('active', 'border-rose-500/80', 'bg-rose-950/50', 'border');
     if (arrowEl) arrowEl.innerHTML = '';
   }
 
-  // Actualizar estilos de los botones de opciones
-  currentGuidedStep.options.forEach(o => {
-    const btn = document.getElementById(`guided-opt-${o.id}`);
-    if (!btn) return;
-    const badge = btn.querySelector('.opt-badge');
-    if (o.id === optId) {
-      btn.className = "guided-option-btn text-left px-4 py-3 rounded-2xl border-2 border-brand-500 bg-brand-50 shadow-md ring-2 ring-brand-300 transition-all flex items-center gap-3 cursor-pointer w-full";
-      if (badge) {
-        badge.className = "w-7 h-7 rounded-xl bg-brand-500 text-white font-bold text-xs flex items-center justify-center border border-brand-600 shrink-0 font-mono opt-badge transition";
-      }
-    } else {
-      btn.className = "guided-option-btn group text-left px-4 py-3 rounded-2xl border-2 border-slate-200 hover:border-brand-400 bg-white hover:bg-emerald-50/40 shadow-sm transition-all flex items-center gap-3 cursor-pointer w-full";
-      if (badge) {
-        badge.className = "w-7 h-7 rounded-xl bg-slate-100 group-hover:bg-brand-100 text-slate-600 group-hover:text-brand-700 font-bold text-xs flex items-center justify-center border border-slate-300 group-hover:border-brand-300 shrink-0 font-mono opt-badge transition";
+  // Buscar si hay otra casilla vacía a la que avanzar automáticamente
+  let nextEmptyIdx = -1;
+  for (let i = guidedActiveSlotIdx + 1; i < guidedSlots.length; i++) {
+    if (guidedSlotValues[i] === null || guidedSlotValues[i] === undefined) {
+      nextEmptyIdx = i;
+      break;
+    }
+  }
+  if (nextEmptyIdx === -1) {
+    for (let i = 0; i < guidedActiveSlotIdx; i++) {
+      if (guidedSlotValues[i] === null || guidedSlotValues[i] === undefined) {
+        nextEmptyIdx = i;
+        break;
       }
     }
-  });
+  }
 
-  // Rellenar el recuadro o recuadros dentro del código con sintaxis Python resaltada
-  const slotEls = document.querySelectorAll('.guided-code-slot');
-  const slotsList = Array.isArray(opt.slots) ? opt.slots : [opt.code];
-  if (slotEls && slotEls.length > 0) {
-    slotEls.forEach((el, sIdx) => {
-      const val = slotsList[sIdx] !== undefined ? slotsList[sIdx] : (slotsList[0] || "");
-      el.className = "guided-code-slot code-slot-box slot-filled animate-modal-pop px-2.5 py-0.5 text-xs font-bold font-mono inline-flex items-center";
-      el.innerHTML = highlightPythonSyntax(val);
-    });
+  if (nextEmptyIdx !== -1) {
+    focusGuidedSlot(nextEmptyIdx);
   } else {
-    const singleSlot = document.getElementById('guided-code-slot');
-    if (singleSlot) {
-      singleSlot.className = "code-slot-box slot-filled animate-modal-pop px-2.5 py-0.5 text-xs font-bold font-mono inline-flex items-center";
-      singleSlot.innerHTML = highlightPythonSyntax(slotsList[0] || opt.code);
-    }
+    renderGuidedControls();
   }
 
-  const feedbackCard = document.getElementById('guided-feedback-card');
-  const actionContainer = document.getElementById('sandbox-action-buttons');
+  updateGuidedActionButton();
+}
 
-  // Si ya había completado el ejercicio exitosamente, permitir explorar por qué otras opciones eran incorrectas
-  if (guidedStepCompleted) {
-    if (feedbackCard) {
-      const expText = opt.explanation || opt.feedback;
-      if (opt.isCorrect) {
-        feedbackCard.className = "w-full mb-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
-        feedbackCard.innerHTML = `
-          <span class="w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✓</span>
-          <div>
-            <h4 class="font-extrabold text-emerald-900 text-sm mb-1">Opción correcta seleccionada</h4>
-            <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">${escapeHtml(expText || "Esta es la instrucción adecuada para el programa.")}</p>
-          </div>
-        `;
-      } else {
-        feedbackCard.className = "w-full mb-4 bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
-        feedbackCard.innerHTML = `
-          <span class="w-7 h-7 rounded-full bg-amber-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">ℹ</span>
-          <div>
-            <h4 class="font-extrabold text-amber-900 text-sm mb-1">¿Por qué esta opción es incorrecta?</h4>
-            <p class="text-xs sm:text-sm text-amber-800 leading-relaxed">${escapeHtml(expText || "Esta opción no cumple con la especificación del programa.")}</p>
-          </div>
-        `;
-      }
-      feedbackCard.classList.remove('hidden');
-    }
-
-    if (actionContainer) {
-      actionContainer.innerHTML = `
-        <button id="guided-finish-btn" onclick="advanceNextStep()" class="btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition cursor-pointer">
-          Finalizar lección ➔
-        </button>
-        <button id="single-run-btn" onclick="executeGuidedSandbox()" class="px-4 py-3 rounded-2xl border-2 border-slate-300 text-slate-700 hover:text-slate-900 font-bold hover:bg-slate-100 transition text-sm flex items-center gap-1.5 cursor-pointer">
-          <span>▶</span> Probar en terminal
-        </button>
-      `;
-    }
-    return;
-  }
-
-  // Si aún no ha completado el ejercicio, habilitar el botón de Ejecutar código
+function updateGuidedActionButton() {
   const runBtn = document.getElementById('single-run-btn');
-  if (runBtn) {
+  if (!runBtn || guidedStepCompleted) return;
+
+  const totalSlots = guidedSlots.length;
+  const filledCount = guidedSlotValues.filter(v => v !== null && v !== undefined).length;
+
+  if (filledCount === totalSlots) {
     runBtn.disabled = false;
     runBtn.className = "btn-3d w-full max-w-sm bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-base py-3 px-8 rounded-2xl shadow-brilliant-btn border-brand-700 transition cursor-pointer";
     runBtn.textContent = "▶ Ejecutar código";
     runBtn.onclick = executeGuidedSandbox;
+  } else {
+    runBtn.disabled = true;
+    runBtn.className = "w-full max-w-sm bg-slate-200 text-slate-400 cursor-not-allowed font-extrabold text-base py-3 px-8 rounded-2xl border-2 border-slate-300 transition";
+    runBtn.textContent = totalSlots > 1 ? `Completa las casillas (${filledCount}/${totalSlots})` : 'Selecciona una opción primero';
+  }
+}
+
+function selectGuidedOption(optId) {
+  if (!currentGuidedStep) return;
+  const currentSlot = guidedSlots[guidedActiveSlotIdx] || guidedSlots[0];
+  if (!currentSlot) return;
+  const opt = currentSlot.options.find(o => o.id === optId);
+  if (opt) {
+    chooseGuidedSlotToken(opt.code, opt.id);
   }
 }
 
 async function executeGuidedSandbox() {
-  if (!currentGuidedStep || !selectedGuidedOptionId) return;
-  const opt = currentGuidedStep.options.find(o => o.id === selectedGuidedOptionId);
-  if (!opt) return;
+  if (!currentGuidedStep) return;
+
+  const totalSlots = guidedSlots.length;
+  const emptyIdx = guidedSlotValues.findIndex(v => v === null || v === undefined);
+  if (emptyIdx !== -1) {
+    focusGuidedSlot(emptyIdx);
+    const feedbackCard = document.getElementById('guided-feedback-card');
+    if (feedbackCard) {
+      feedbackCard.className = "w-full mb-4 bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
+      feedbackCard.innerHTML = `
+        <span class="w-7 h-7 rounded-full bg-amber-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">ℹ</span>
+        <div>
+          <h4 class="font-extrabold text-amber-900 text-sm mb-1">Faltan casillas por completar</h4>
+          <p class="text-xs sm:text-sm text-amber-800 leading-relaxed">Por favor selecciona una ficha para la Casilla ${emptyIdx + 1} antes de ejecutar.</p>
+        </div>
+      `;
+      feedbackCard.classList.remove('hidden');
+    }
+    return;
+  }
 
   stopSandboxAnimation();
   ensureCodeVisible('sandbox-editor-container');
@@ -3701,16 +3898,36 @@ async function executeGuidedSandbox() {
 
   const slotMarker = currentGuidedStep.slotMarker || "___";
   let fullCode = currentGuidedStep.starterCode;
-  if (Array.isArray(opt.slots)) {
-    opt.slots.forEach(slotVal => {
-      fullCode = fullCode.replace(slotMarker, slotVal);
-    });
-  } else {
-    fullCode = fullCode.replace(slotMarker, opt.code);
+  guidedSlotValues.forEach(val => {
+    fullCode = fullCode.replace(slotMarker, val || "");
+  });
+
+  // Determinar si la solución es correcta
+  let isCorrect = false;
+  let matchingOption = null;
+
+  if (Array.isArray(currentGuidedStep.solution)) {
+    isCorrect = (
+      guidedSlotValues.length === currentGuidedStep.solution.length &&
+      guidedSlotValues.every((val, i) => (val || '').trim() === (currentGuidedStep.solution[i] || '').trim())
+    );
+  } else if (typeof currentGuidedStep.solution === 'string') {
+    isCorrect = (guidedSlotValues[0] || '').trim() === currentGuidedStep.solution.trim();
   }
 
-  // Para opciones incorrectas nunca inyectar expectedOutput
-  const expOutput = opt.isCorrect ? (currentGuidedStep.expectedOutput || "") : "";
+  if (!isCorrect && Array.isArray(currentGuidedStep.options)) {
+    matchingOption = currentGuidedStep.options.find(opt => {
+      if (Array.isArray(opt.slots)) {
+        return opt.slots.every((val, i) => (val || '').trim() === (guidedSlotValues[i] || '').trim());
+      }
+      return (opt.code || '').trim() === (guidedSlotValues[0] || '').trim();
+    });
+    if (matchingOption && matchingOption.isCorrect) {
+      isCorrect = true;
+    }
+  }
+
+  const expOutput = isCorrect ? (currentGuidedStep.expectedOutput || "") : "";
   const { lines, lineTrace } = tracePythonExecution(fullCode, expOutput, sandboxUserInputs);
 
   // Limpiar cualquier línea activa o en estado de error previa
@@ -3743,7 +3960,6 @@ async function executeGuidedSandbox() {
       const state = lineTrace[currentIdx];
       const isLineError = Boolean(state && state.hasError);
 
-      // Actualizar highlight de líneas
       lines.forEach((_, i) => {
         const lineEl = document.getElementById(`sandbox-line-${i}`);
         const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
@@ -3770,7 +3986,7 @@ async function executeGuidedSandbox() {
           statusEl.textContent = "esperando entrada de usuario...";
           statusEl.className = "text-amber-400 font-normal";
         }
-        renderSandboxInputPrompt(currentIdx, state.prompt, opt, fullCode, lineTrace);
+        renderSandboxInputPrompt(currentIdx, state.prompt, matchingOption || { isCorrect }, fullCode, lineTrace);
         return;
       }
 
@@ -3798,7 +4014,7 @@ async function executeGuidedSandbox() {
 
       if (isLineError) {
         stopSandboxAnimation();
-        finishGuidedSandboxExecution(opt, lineTrace);
+        finishGuidedSandboxExecution({ isCorrect, matchingOption }, lineTrace);
         return;
       }
 
@@ -3807,13 +4023,12 @@ async function executeGuidedSandbox() {
     } else {
       stopSandboxAnimation();
 
-      // Limpiar flecha activa de la última línea
       const lastLineEl = document.getElementById(`sandbox-line-${lines.length - 1}`);
       const lastArrowEl = document.getElementById(`sandbox-arrow-${lines.length - 1}`);
       if (lastLineEl) lastLineEl.classList.remove('active');
       if (lastArrowEl) lastArrowEl.innerHTML = '';
 
-      finishGuidedSandboxExecution(opt, lineTrace);
+      finishGuidedSandboxExecution({ isCorrect, matchingOption }, lineTrace);
     }
   }
 
@@ -3929,14 +4144,15 @@ function renderSandboxInputPrompt(lineIndex, promptText, opt, fullCode, lineTrac
 }
 
 function handleSandboxInputSubmit(lineIndex) {
-  if (!currentGuidedStep || !selectedGuidedOptionId) return;
-  const opt = currentGuidedStep.options.find(o => o.id === selectedGuidedOptionId);
-  if (!opt) return;
+  if (!currentGuidedStep) return;
 
   const inputEl = document.getElementById('sandbox-term-input-box');
   const rawUserVal = inputEl ? inputEl.value.trim() : "";
   const slotMarker = currentGuidedStep.slotMarker || "___";
-  const fullCode = currentGuidedStep.starterCode.replace(slotMarker, opt.code);
+  let fullCode = currentGuidedStep.starterCode;
+  guidedSlotValues.forEach(val => {
+    fullCode = fullCode.replace(slotMarker, val || "");
+  });
   const codeLines = fullCode.split('\n');
   const currentCodeLine = codeLines[lineIndex] || "";
 
@@ -3963,13 +4179,38 @@ function handleSandboxInputSubmit(lineIndex) {
   if (!sandboxUserInputs) sandboxUserInputs = {};
   sandboxUserInputs[lineIndex] = finalVal;
 
-  const expOutput = opt.isCorrect ? (currentGuidedStep.expectedOutput || "") : "";
+  // Determinar si la solución es correcta
+  let isCorrect = false;
+  let matchingOption = null;
+
+  if (Array.isArray(currentGuidedStep.solution)) {
+    isCorrect = (
+      guidedSlotValues.length === currentGuidedStep.solution.length &&
+      guidedSlotValues.every((val, i) => (val || '').trim() === (currentGuidedStep.solution[i] || '').trim())
+    );
+  } else if (typeof currentGuidedStep.solution === 'string') {
+    isCorrect = (guidedSlotValues[0] || '').trim() === currentGuidedStep.solution.trim();
+  }
+
+  if (!isCorrect && Array.isArray(currentGuidedStep.options)) {
+    matchingOption = currentGuidedStep.options.find(opt => {
+      if (Array.isArray(opt.slots)) {
+        return opt.slots.every((val, i) => (val || '').trim() === (guidedSlotValues[i] || '').trim());
+      }
+      return (opt.code || '').trim() === (guidedSlotValues[0] || '').trim();
+    });
+    if (matchingOption && matchingOption.isCorrect) {
+      isCorrect = true;
+    }
+  }
+
+  const expOutput = isCorrect ? (currentGuidedStep.expectedOutput || "") : "";
   const { lines, lineTrace } = tracePythonExecution(fullCode, expOutput, sandboxUserInputs);
 
-  resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace);
+  resumeSandboxAfterInput(lineIndex, { isCorrect, matchingOption }, lines, lineTrace);
 }
 
-function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
+function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
   const term = document.getElementById('single-sandbox-term');
   const statusEl = document.getElementById('sandbox-term-status');
 
@@ -4014,7 +4255,7 @@ function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
           statusEl.textContent = "esperando entrada de usuario...";
           statusEl.className = "text-amber-400 font-normal";
         }
-        renderSandboxInputPrompt(currentIdx, st.prompt, opt, lines.join('\n'), lineTrace);
+        renderSandboxInputPrompt(currentIdx, st.prompt, optOrResult, lines.join('\n'), lineTrace);
         return;
       }
 
@@ -4041,7 +4282,7 @@ function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
 
       if (isLineError) {
         stopSandboxAnimation();
-        finishGuidedSandboxExecution(opt, lineTrace);
+        finishGuidedSandboxExecution(optOrResult, lineTrace);
         return;
       }
 
@@ -4054,14 +4295,19 @@ function resumeSandboxAfterInput(lineIndex, opt, lines, lineTrace) {
       if (lastLineEl) lastLineEl.classList.remove('active');
       if (lastArrowEl) lastArrowEl.innerHTML = '';
 
-      finishGuidedSandboxExecution(opt, lineTrace);
+      finishGuidedSandboxExecution(optOrResult, lineTrace);
     }
   }
 
   sandboxAnimTimer = setTimeout(stepSandboxCont, stepDelay);
 }
 
-function finishGuidedSandboxExecution(opt, lineTrace) {
+function finishGuidedSandboxExecution(optOrResult, lineTrace) {
+  const isCorrect = (optOrResult && typeof optOrResult.isCorrect === 'boolean')
+    ? optOrResult.isCorrect
+    : Boolean(optOrResult?.isCorrect);
+  const matchingOption = optOrResult?.matchingOption || (optOrResult?.id ? optOrResult : null);
+
   const term = document.getElementById('single-sandbox-term');
   const statusEl = document.getElementById('sandbox-term-status');
   const indicator = document.getElementById('sandbox-term-indicator');
@@ -4100,7 +4346,7 @@ function finishGuidedSandboxExecution(opt, lineTrace) {
     }
   }
 
-  if (opt.isCorrect && !hasError) {
+  if (isCorrect && !hasError) {
     guidedStepCompleted = true;
     playSound('correct');
     triggerConfetti();
@@ -4113,7 +4359,7 @@ function finishGuidedSandboxExecution(opt, lineTrace) {
 
     if (feedbackCard) {
       feedbackCard.className = "w-full mb-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
-      const successFeedback = opt.explanation || opt.feedback || "Has completado la práctica guiada correctamente.";
+      const successFeedback = currentGuidedStep.explanation || matchingOption?.explanation || "¡Has completado la práctica guiada correctamente!";
       feedbackCard.innerHTML = `
         <span class="w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✓</span>
         <div>
@@ -4154,21 +4400,27 @@ function finishGuidedSandboxExecution(opt, lineTrace) {
 
     if (feedbackCard) {
       feedbackCard.className = "w-full mb-4 bg-rose-50 border-2 border-rose-300 rounded-2xl p-4 text-left shadow-sm flex items-start gap-3 animate-slide-up";
-      const explanationText = opt.explanation || opt.feedback || "Selecciona otra opción de la lista para corregir el programa.";
-      let cardTitle = "Casi, pero no es la opción adecuada";
-      if (fullOutputText.includes("SyntaxError")) {
-        cardTitle = "SyntaxError: Error de sintaxis en Python";
-      } else if (fullOutputText.includes("IndentationError")) {
-        cardTitle = "IndentationError: Error de sangría";
-      } else if (fullOutputText.includes("NameError")) {
-        cardTitle = "NameError: Identificador no definido";
-      } else if (fullOutputText.includes("TypeError")) {
-        cardTitle = "TypeError: Tipo de dato incompatible";
-      } else if (fullOutputText.includes("ValueError")) {
-        cardTitle = "ValueError: Valor inapropiado";
-      } else if (hasError) {
-        cardTitle = "Error en ejecución de Python";
+      
+      let explanationText = matchingOption?.explanation;
+      if (!explanationText && currentGuidedStep.slotFeedbacks) {
+        for (let i = 0; i < guidedSlotValues.length; i++) {
+          const val = guidedSlotValues[i];
+          if (currentGuidedStep.slotFeedbacks[i] && currentGuidedStep.slotFeedbacks[i][val]) {
+            explanationText = currentGuidedStep.slotFeedbacks[i][val];
+            break;
+          }
+        }
       }
+      if (!explanationText) {
+        explanationText = "La combinación seleccionada no produce el resultado esperado. Haz clic en las casillas para corregirlas y vuelve a ejecutar.";
+      }
+
+      let cardTitle = "Casi, pero no es la combinación adecuada";
+      if (fullOutputText.includes("SyntaxError")) cardTitle = "SyntaxError: Error de sintaxis en Python";
+      else if (fullOutputText.includes("IndentationError")) cardTitle = "IndentationError: Error de sangría";
+      else if (fullOutputText.includes("NameError")) cardTitle = "NameError: Identificador no definido";
+      else if (fullOutputText.includes("TypeError")) cardTitle = "TypeError: Tipo de dato incompatible";
+      else if (fullOutputText.includes("ValueError")) cardTitle = "ValueError: Valor inapropiado";
 
       feedbackCard.innerHTML = `
         <span class="w-7 h-7 rounded-full bg-rose-500 text-white font-bold text-base flex items-center justify-center shrink-0 mt-0.5">✗</span>

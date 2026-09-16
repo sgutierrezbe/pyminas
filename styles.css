@@ -16,3 +16,18 @@ code *, pre *, kbd *, samp *, .font-mono *, [class*="font-mono"] *, .code-slot-b
 .code-exec-line > span:last-child {
   white-space: pre !important;
 }
+
+.code-slot-box.slot-active {
+  border: 2px solid #f59e0b !important;
+  background: #451a03 !important;
+  color: #fef3c7 !important;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.65) !important;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.code-slot-box.slot-clickable {
+  cursor: pointer;
+}
+.code-slot-box.slot-clickable:hover {
+  filter: brightness(1.25);
+}

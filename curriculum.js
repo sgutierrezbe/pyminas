@@ -1632,6 +1632,40 @@ const CURRICULUM = {
               "slotMarker": "___",
               "starterCode": "kilos_totales = 850\ncapacidad_camion = 200\n\nviajes = kilos_totales ___ capacidad_camion\nrestante = kilos_totales ___ capacidad_camion\n\nprint(\"Viajes completos:\", viajes)\nprint(\"Kilos restantes:\", restante)",
               "expectedOutput": "Viajes completos: 4\nKilos restantes: 50",
+              "slots": [
+                {
+                  "id": "slot-0",
+                  "label": "Operador para calcular viajes completos (división entera)",
+                  "shortLabel": "1: Viajes",
+                  "options": [
+                    { "id": "A", "code": "//", "label": "// (división entera)" },
+                    { "id": "B", "code": "/", "label": "/ (división decimal flotante)" },
+                    { "id": "C", "code": "%", "label": "% (módulo o residuo)" }
+                  ]
+                },
+                {
+                  "id": "slot-1",
+                  "label": "Operador para calcular kilos sobrantes (residuo)",
+                  "shortLabel": "2: Sobrante",
+                  "options": [
+                    { "id": "A", "code": "%", "label": "% (módulo o residuo)" },
+                    { "id": "B", "code": "//", "label": "// (división entera)" },
+                    { "id": "C", "code": "*", "label": "* (multiplicación)" }
+                  ]
+                }
+              ],
+              "solution": ["//", "%"],
+              "slotFeedbacks": {
+                "0": {
+                  "/": "Usar / produce 4.25 camiones (flotante con decimales) en vez de un conteo de viajes enteros.",
+                  "%": "El operador % extrae el residuo, no la cantidad de viajes completos a realizar."
+                },
+                "1": {
+                  "//": "El operador // calcula el cociente entero, no los kilogramos sobrantes sin despachar.",
+                  "*": "El operador * multiplicaría kilos por capacidad del camión, lo cual no calcula el material restante."
+                }
+              },
+              "explanation": "¡Excelente! // calcula los 4 viajes enteros (850 // 200 = 4) y % extrae los 50 kg restantes (850 % 200 = 50).",
               "options": [
                 {
                   "id": "A",
@@ -1865,6 +1899,40 @@ const CURRICULUM = {
               "slotMarker": "___",
               "starterCode": "temperatura = 92\nrefrigeracion_activa = False\n\nalarma = (temperatura > 80) ___ (___ refrigeracion_activa)\nprint(\"Alarma crítica:\", alarma)",
               "expectedOutput": "Alarma crítica: True",
+              "slots": [
+                {
+                  "id": "slot-0",
+                  "label": "Operador lógico para exigir ambas condiciones (conjunción)",
+                  "shortLabel": "1: Conjunción",
+                  "options": [
+                    { "id": "A", "code": "and", "label": "and (ambas obligatorias)" },
+                    { "id": "B", "code": "or", "label": "or (al menos una de las dos)" },
+                    { "id": "C", "code": "==", "label": "== (comparación de igualdad)" }
+                  ]
+                },
+                {
+                  "id": "slot-1",
+                  "label": "Operador lógico para invertir False a True (negación)",
+                  "shortLabel": "2: Negación",
+                  "options": [
+                    { "id": "A", "code": "not", "label": "not (inversor booleano)" },
+                    { "id": "B", "code": "bool", "label": "bool (función constructora)" },
+                    { "id": "C", "code": "!", "label": "! (signo no válido en Python)" }
+                  ]
+                }
+              ],
+              "solution": ["and", "not"],
+              "slotFeedbacks": {
+                "0": {
+                  "or": "Con 'or' la alarma sonaría si sube la temperatura aunque la refrigeración funcione perfectamente al 100%.",
+                  "==": "El operador '==' compararía booleanos en vez de encadenar las dos condiciones de emergencia."
+                },
+                "1": {
+                  "bool": "'bool(False)' evalúa a False, por lo que la condición de refrigeración inactiva no activaría la alarma.",
+                  "!": "En Python el operador de negación es la palabra 'not', el símbolo '!' genera un error de sintaxis."
+                }
+              },
+              "explanation": "¡Correcto! Se requiere 'and' para exigir simultáneamente temperatura alta y refrigeración inactiva, y 'not' para negar False a True.",
               "options": [
                 {
                   "id": "A",
@@ -2098,6 +2166,40 @@ const CURRICULUM = {
               "slotMarker": "___",
               "starterCode": "metros_cubicos = 35\n\nif metros_cubicos ___ 20:\n    tipo = \"Consumo normal\"\n___ metros_cubicos <= 40:\n    tipo = \"Consumo alto\"\nelse:\n    tipo = \"Consumo crítico\"\n\nprint(\"Diagnóstico:\", tipo)",
               "expectedOutput": "Diagnóstico: Consumo alto",
+              "slots": [
+                {
+                  "id": "slot-0",
+                  "label": "Operador relacional de límite superior (hasta 20 m³)",
+                  "shortLabel": "1: Límite normal",
+                  "options": [
+                    { "id": "A", "code": "<=", "label": "<= (menor o igual a 20)" },
+                    { "id": "B", "code": "<", "label": "< (estrictamente menor a 20)" },
+                    { "id": "C", "code": "==", "label": "== (exactamente 20)" }
+                  ]
+                },
+                {
+                  "id": "slot-1",
+                  "label": "Cláusula condicional intermedia con condición",
+                  "shortLabel": "2: Condicional",
+                  "options": [
+                    { "id": "A", "code": "elif", "label": "elif (alternativa con condición)" },
+                    { "id": "B", "code": "else", "label": "else (caso por descarte)" },
+                    { "id": "C", "code": "if", "label": "if (inicia nuevo condicional)" }
+                  ]
+                }
+              ],
+              "solution": ["<=", "elif"],
+              "slotFeedbacks": {
+                "0": {
+                  "<": "Con '<' el valor frontera de 20 m³ quedaría excluido del consumo normal.",
+                  "==": "Con '==' solo clasificarías como normal exactamente 20 m³, ignorando consumos menores."
+                },
+                "1": {
+                  "else": "La cláusula 'else' no admite ninguna condición como 'metros_cubicos <= 40', genera SyntaxError.",
+                  "if": "Iniciar un nuevo 'if' rompería la cadena lógica de descarte anterior."
+                }
+              },
+              "explanation": "¡Perfecto! <= incluye el límite de 20 m³ en consumo normal, y elif permite evaluar el tramo de consumo alto (<= 40).",
               "options": [
                 {
                   "id": "A",
@@ -2331,6 +2433,40 @@ const CURRICULUM = {
               "slotMarker": "___",
               "starterCode": "dureza_mohs = 7.5\ndensidad_gcm3 = 4.2\n\nif dureza_mohs ___ 7.0 and densidad_gcm3 ___ 3.5:\n    dictamen = \"Apta para cimentación\"\nelse:\n    dictamen = \"Roca descartada\"\n\nprint(\"Diagnóstico final:\", dictamen)",
               "expectedOutput": "Diagnóstico final: Apta para cimentación",
+              "slots": [
+                {
+                  "id": "slot-0",
+                  "label": "Comparador de dureza mínima (al menos 7.0)",
+                  "shortLabel": "1: Dureza",
+                  "options": [
+                    { "id": "A", "code": ">=", "label": ">= (al menos / mayor o igual)" },
+                    { "id": "B", "code": ">", "label": "> (estrictamente mayor que 7.0)" },
+                    { "id": "C", "code": "==", "label": "== (exactamente 7.0)" }
+                  ]
+                },
+                {
+                  "id": "slot-1",
+                  "label": "Comparador de densidad (estrictamente mayor a 3.5)",
+                  "shortLabel": "2: Densidad",
+                  "options": [
+                    { "id": "A", "code": ">", "label": "> (estrictamente mayor a 3.5)" },
+                    { "id": "B", "code": ">=", "label": ">= (mayor o igual a 3.5)" },
+                    { "id": "C", "code": "<", "label": "< (menor a 3.5)" }
+                  ]
+                }
+              ],
+              "solution": [">=", ">"],
+              "slotFeedbacks": {
+                "0": {
+                  ">": "Con '>' descartarías una roca con dureza 7.0 exacta, a pesar de que el pliego exige 'al menos 7.0'.",
+                  "==": "Con '==' solo aceptarías rocas de exactamente 7.0, descartando rocas con mejor dureza como 7.5 u 8.0."
+                },
+                "1": {
+                  ">=": "El criterio técnico exige que la densidad sea estrictamente mayor a 3.5, no mayor o igual.",
+                  "<": "Con '<' estarías filtrando rocas livianas en lugar de rocas densas aptas para cimentación."
+                }
+              },
+              "explanation": "¡Excelente! >= 7.0 asegura al menos 7.0 de dureza y > 3.5 exige densidad estrictamente superior.",
               "options": [
                 {
                   "id": "A",
@@ -2564,6 +2700,40 @@ const CURRICULUM = {
               "slotMarker": "___",
               "starterCode": "caudal_str = \"15.5\"\ncaudal = ___ (caudal_str)\n\npresion = caudal * 0.18\n\nif presion ___ 2.5:\n    accion = \"Encender bomba auxiliar\"\nelse:\n    accion = \"Presión óptima en línea\"\n\nprint(f\"Presión: {presion:.2f} bar | Acción: {accion}\")",
               "expectedOutput": "Presión: 2.79 bar | Acción: Presión óptima en línea",
+              "slots": [
+                {
+                  "id": "slot-0",
+                  "label": "Función para convertir texto con decimales a número real",
+                  "shortLabel": "1: Conversión",
+                  "options": [
+                    { "id": "A", "code": "float", "label": "float (número decimal real)" },
+                    { "id": "B", "code": "int", "label": "int (entero sin decimales)" },
+                    { "id": "C", "code": "str", "label": "str (conservar como texto)" }
+                  ]
+                },
+                {
+                  "id": "slot-1",
+                  "label": "Condición para encender la bomba si hay caída de presión (< 2.5 bar)",
+                  "shortLabel": "2: Caída presión",
+                  "options": [
+                    { "id": "A", "code": "<", "label": "< (presión inferior a 2.5 bar)" },
+                    { "id": "B", "code": ">", "label": "> (presión superior a 2.5 bar)" },
+                    { "id": "C", "code": "==", "label": "== (presión exactamente 2.5 bar)" }
+                  ]
+                }
+              ],
+              "solution": ["float", "<"],
+              "slotFeedbacks": {
+                "0": {
+                  "int": "'int(\"15.5\")' produce un ValueError en Python porque el texto contiene un punto decimal.",
+                  "str": "Dejar caudal como 'str' generaría un TypeError al intentar multiplicarlo por el factor numérico 0.18."
+                },
+                "1": {
+                  ">": "Con '>' la bomba auxiliar se encendería ante presiones altas, en lugar de activarse por caída de presión.",
+                  "==": "Con '==' la bomba solo se encendería si la presión marcara exactamente 2.5 bar, ignorando caídas a 1.0 o 0.5 bar."
+                }
+              },
+              "explanation": "¡Brillante integración! float() permite operar el caudal decimal y < detecta la caída de presión para encender la bomba auxiliar.",
               "options": [
                 {
                   "id": "A",
