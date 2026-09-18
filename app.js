@@ -1841,7 +1841,7 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
             <span class="ml-2 text-slate-300 font-semibold">ejecución.py</span>
           </span>
-          <span id="code-status-${playerId}" class="text-[11px] text-slate-400 font-mono">Paso 0/${lines.length}</span>
+          <span id="code-status-${playerId}" class="text-[11px] text-slate-400 font-mono">Paso 0/${(lineTrace && lineTrace.length > 0) ? lineTrace.length : lines.length}</span>
         </div>
 
         <div class="p-2.5 sm:p-3 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto space-y-0.5 max-w-full" id="code-lines-${playerId}">
@@ -1916,26 +1916,27 @@ function codePlayerSetLine(playerId, targetIndex) {
   const player = codePlayerRegistry[playerId];
   if (!player) return;
 
-  targetIndex = Math.max(-1, Math.min(targetIndex, player.lines.length - 1));
+  const totalSteps = (player.lineTrace && player.lineTrace.length > 0) ? player.lineTrace.length : player.lines.length;
+  targetIndex = Math.max(-1, Math.min(targetIndex, totalSteps - 1));
   player.currentIndex = targetIndex;
+
+  const currentStep = (targetIndex >= 0 && player.lineTrace) ? player.lineTrace[targetIndex] : null;
+  const activeLineIdx = currentStep ? (currentStep.line !== undefined ? currentStep.line : targetIndex) : (targetIndex >= 0 ? targetIndex : -1);
 
   // Actualizar flechas e iluminación de cada línea
   player.lines.forEach((_, idx) => {
     const arrowEl = document.getElementById(`code-arrow-${playerId}-${idx}`);
     const lineEl = document.getElementById(`code-line-${playerId}-${idx}`);
-    const state = player.lineTrace ? player.lineTrace[idx] : null;
     if (arrowEl && lineEl) {
-      if (idx === targetIndex) {
+      if (idx === activeLineIdx) {
         arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
         lineEl.classList.add('active');
+        try {
+          lineEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        } catch(e) {}
       } else {
         arrowEl.innerHTML = '';
         lineEl.classList.remove('active');
-      }
-      if (state && state.skipped && targetIndex >= 0) {
-        lineEl.classList.add('opacity-40');
-      } else {
-        lineEl.classList.remove('opacity-40');
       }
     }
   });
@@ -1955,7 +1956,7 @@ function codePlayerSetLine(playerId, targetIndex) {
         termEl.innerHTML = '<span class="text-slate-600 italic select-none text-xs">Presiona ▶ para ejecutar línea por línea...</span>';
       }
     } else {
-      const state = player.lineTrace[targetIndex];
+      const state = currentStep;
       if (state && state.isInput && !state.isCompleted) {
         renderInteractiveInputPrompt(playerId, targetIndex, state.prompt);
       } else if (state && state.outputSoFar && state.outputSoFar.length > 0) {
@@ -1969,20 +1970,10 @@ function codePlayerSetLine(playerId, targetIndex) {
   // Actualizar badge de estado
   const statusEl = document.getElementById(`code-status-${playerId}`);
   if (statusEl) {
-    const state = targetIndex >= 0 ? player.lineTrace[targetIndex] : null;
-    let isAtEnd = targetIndex >= player.lines.length - 1;
-    if (!isAtEnd && targetIndex >= 0) {
-      isAtEnd = true;
-      for (let k = targetIndex + 1; k < player.lines.length; k++) {
-        if (!player.lineTrace[k] || !player.lineTrace[k].skipped) {
-          isAtEnd = false;
-          break;
-        }
-      }
-    }
+    const isAtEnd = targetIndex >= totalSteps - 1;
     if (targetIndex === -1) {
-      statusEl.textContent = `Paso 0/${player.lines.length}`;
-    } else if (state && state.isInput && !state.isCompleted) {
+      statusEl.textContent = `Paso 0/${totalSteps}`;
+    } else if (currentStep && currentStep.isInput && !currentStep.isCompleted) {
       statusEl.textContent = `Esperando entrada...`;
     } else if (isAtEnd) {
       statusEl.textContent = `✓ Finalizado`;
@@ -1990,7 +1981,7 @@ function codePlayerSetLine(playerId, targetIndex) {
         unlockExplanationContinue();
       }
     } else {
-      statusEl.textContent = `Línea ${targetIndex + 1}/${player.lines.length}`;
+      statusEl.textContent = `Paso ${targetIndex + 1}/${totalSteps}`;
     }
   }
 
@@ -2226,6 +2217,8 @@ function handleTerminalInputSubmit(playerId, lineIndex) {
 
   if (!player.userInputs) player.userInputs = {};
   player.userInputs[lineIndex] = finalVal;
+  const activeLineIdx = (lineState && lineState.line !== undefined) ? lineState.line : lineIndex;
+  player.userInputs[activeLineIdx] = finalVal;
 
   const newTrace = tracePythonExecution(player.code, player.expectedOutput, player.userInputs);
   player.lineTrace = newTrace.lineTrace;
@@ -2256,11 +2249,12 @@ function runCodePlayerAutoAnimate(playerId, onComplete) {
   ensureCodeVisible(`code-player-wrapper-${playerId}`);
   player.isPlaying = true;
 
+  const totalSteps = (player.lineTrace && player.lineTrace.length > 0) ? player.lineTrace.length : player.lines.length;
   let current = 0;
-  while (current < player.lines.length && player.lineTrace[current] && player.lineTrace[current].skipped) {
+  while (current < totalSteps && player.lineTrace && player.lineTrace[current] && player.lineTrace[current].skipped) {
     current++;
   }
-  const firstState = player.lineTrace[current];
+  const firstState = player.lineTrace ? player.lineTrace[current] : null;
   if (firstState && firstState.isInput && !firstState.isCompleted) {
     player.isPlaying = false;
     player.wasAutoPlaying = true;
@@ -2270,14 +2264,14 @@ function runCodePlayerAutoAnimate(playerId, onComplete) {
   }
   codePlayerSetLine(playerId, current);
 
-  const stepInterval = window.FAST_ANIM ? 20 : 550;
+  const stepInterval = window.FAST_ANIM ? 20 : 500;
   player.timer = setInterval(() => {
     current++;
-    while (current < player.lines.length && player.lineTrace[current] && player.lineTrace[current].skipped) {
+    while (current < totalSteps && player.lineTrace && player.lineTrace[current] && player.lineTrace[current].skipped) {
       current++;
     }
-    if (current < player.lines.length) {
-      const state = player.lineTrace[current];
+    if (current < totalSteps) {
+      const state = player.lineTrace ? player.lineTrace[current] : null;
       if (state && state.isInput && !state.isCompleted) {
         clearInterval(player.timer);
         player.timer = null;
@@ -2319,15 +2313,16 @@ function resumeCodePlayerAutoAnimate(playerId, startIndex, onComplete) {
   if (playText) playText.textContent = "Pausar";
   if (playIcon) playIcon.textContent = "⏸";
 
+  const totalSteps = (player.lineTrace && player.lineTrace.length > 0) ? player.lineTrace.length : player.lines.length;
   let current = startIndex - 1;
-  const stepInterval = window.FAST_ANIM ? 20 : 550;
+  const stepInterval = window.FAST_ANIM ? 20 : 500;
   player.timer = setInterval(() => {
     current++;
-    while (current < player.lines.length && player.lineTrace[current] && player.lineTrace[current].skipped) {
+    while (current < totalSteps && player.lineTrace && player.lineTrace[current] && player.lineTrace[current].skipped) {
       current++;
     }
-    if (current < player.lines.length) {
-      const state = player.lineTrace[current];
+    if (current < totalSteps) {
+      const state = player.lineTrace ? player.lineTrace[current] : null;
       if (state && state.isInput && !state.isCompleted) {
         clearInterval(player.timer);
         player.timer = null;
@@ -2340,7 +2335,7 @@ function resumeCodePlayerAutoAnimate(playerId, startIndex, onComplete) {
         return;
       }
       codePlayerSetLine(playerId, current);
-      if (current >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+      if (current >= totalSteps - 1 && playerId.startsWith('expl_')) {
         unlockExplanationContinue();
       }
     } else {
@@ -2442,7 +2437,8 @@ function resetCodePlayerLocked(playerId) {
   }
 
   const statusEl = document.getElementById(`code-status-${playerId}`);
-  if (statusEl) statusEl.textContent = `Paso 0/${player.lines.length}`;
+  const totalSteps = (player.lineTrace && player.lineTrace.length > 0) ? player.lineTrace.length : player.lines.length;
+  if (statusEl) statusEl.textContent = `Paso 0/${totalSteps}`;
 }
 
 function codePlayerNextStep(playerId) {
@@ -2454,9 +2450,11 @@ function codePlayerNextStep(playerId) {
     playBtn.classList.remove('ring-2', 'ring-emerald-400', 'ring-offset-2', 'ring-offset-slate-900', 'animate-pulse');
   }
 
+  const totalSteps = (player.lineTrace && player.lineTrace.length > 0) ? player.lineTrace.length : player.lines.length;
+
   // Si la línea actual es un input esperando que el usuario escriba, NO permitir saltarla
   if (player.currentIndex >= 0) {
-    const currentState = player.lineTrace[player.currentIndex];
+    const currentState = player.lineTrace ? player.lineTrace[player.currentIndex] : null;
     if (currentState && currentState.isInput && !currentState.isCompleted) {
       const inputEl = document.getElementById(`term-input-box-${playerId}`);
       if (inputEl) {
@@ -2468,16 +2466,16 @@ function codePlayerNextStep(playerId) {
     }
   }
 
-  // Buscar la siguiente línea no omitida
+  // Buscar el siguiente paso no omitido
   let nextIdx = player.currentIndex + 1;
-  while (nextIdx < player.lines.length && player.lineTrace[nextIdx] && player.lineTrace[nextIdx].skipped) {
+  while (nextIdx < totalSteps && player.lineTrace && player.lineTrace[nextIdx] && player.lineTrace[nextIdx].skipped) {
     nextIdx++;
   }
 
-  if (nextIdx < player.lines.length) {
+  if (nextIdx < totalSteps) {
     ensureCodeVisible(`code-player-wrapper-${playerId}`, false);
     codePlayerSetLine(playerId, nextIdx);
-    if (nextIdx >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+    if (nextIdx >= totalSteps - 1 && playerId.startsWith('expl_')) {
       unlockExplanationContinue();
     }
   } else {
@@ -2500,7 +2498,7 @@ function codePlayerPrevStep(playerId) {
   if (!player) return;
   if (player.currentIndex > 0) {
     let prevIdx = player.currentIndex - 1;
-    while (prevIdx > 0 && player.lineTrace[prevIdx] && player.lineTrace[prevIdx].skipped) {
+    while (prevIdx > 0 && player.lineTrace && player.lineTrace[prevIdx] && player.lineTrace[prevIdx].skipped) {
       prevIdx--;
     }
     ensureCodeVisible(`code-player-wrapper-${playerId}`, false);
@@ -2545,6 +2543,8 @@ function codePlayerTogglePlay(playerId) {
     playBtn.classList.remove('ring-2', 'ring-emerald-400', 'ring-offset-2', 'ring-offset-slate-900', 'animate-pulse');
   }
 
+  const totalSteps = (player.lineTrace && player.lineTrace.length > 0) ? player.lineTrace.length : player.lines.length;
+
   if (player.isPlaying) {
     if (player.timer) {
       clearInterval(player.timer);
@@ -2566,7 +2566,7 @@ function codePlayerTogglePlay(playerId) {
     }
   } else {
     // Si ya estaba al final, reiniciar antes de reproducir
-    if (player.currentIndex >= player.lines.length - 1) {
+    if (player.currentIndex >= totalSteps - 1) {
       codePlayerReset(playerId);
     }
 
@@ -2575,7 +2575,7 @@ function codePlayerTogglePlay(playerId) {
 
     // Si la línea actual ya está esperando input del usuario, solo enfocarla
     if (player.currentIndex >= 0) {
-      const curSt = player.lineTrace[player.currentIndex];
+      const curSt = player.lineTrace ? player.lineTrace[player.currentIndex] : null;
       if (curSt && curSt.isInput && !curSt.isCompleted) {
         const inputEl = document.getElementById(`term-input-box-${playerId}`);
         if (inputEl) {
@@ -2589,7 +2589,7 @@ function codePlayerTogglePlay(playerId) {
 
     // Determinar siguiente línea
     const nextIdx = player.currentIndex + 1;
-    const nextState = player.lineTrace[nextIdx];
+    const nextState = player.lineTrace ? player.lineTrace[nextIdx] : null;
 
     // Si el siguiente paso es un input no completado, avanzar a él y pausar esperando al usuario
     if (nextState && nextState.isInput && !nextState.isCompleted) {
@@ -2620,15 +2620,15 @@ function codePlayerTogglePlay(playerId) {
 
     // Avanzar primer paso de inmediato si está en -1
     codePlayerSetLine(playerId, nextIdx);
-    if (nextIdx >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+    if (nextIdx >= totalSteps - 1 && playerId.startsWith('expl_')) {
       unlockExplanationContinue();
     }
 
-    const interval = window.FAST_ANIM ? 30 : 600;
+    const interval = window.FAST_ANIM ? 30 : 500;
     player.timer = setInterval(() => {
-      if (player.currentIndex < player.lines.length - 1) {
+      if (player.currentIndex < totalSteps - 1) {
         const upcomingIdx = player.currentIndex + 1;
-        const upcomingState = player.lineTrace[upcomingIdx];
+        const upcomingState = player.lineTrace ? player.lineTrace[upcomingIdx] : null;
 
         // Si la próxima línea es un input, avanzar y DETENER EL TIMER de inmediato!
         if (upcomingState && upcomingState.isInput && !upcomingState.isCompleted) {
@@ -2643,7 +2643,7 @@ function codePlayerTogglePlay(playerId) {
         }
 
         codePlayerSetLine(playerId, upcomingIdx);
-        if (upcomingIdx >= player.lines.length - 1 && playerId.startsWith('expl_')) {
+        if (upcomingIdx >= totalSteps - 1 && playerId.startsWith('expl_')) {
           unlockExplanationContinue();
         }
       } else {
@@ -3960,18 +3960,20 @@ async function executeGuidedSandbox() {
 
   const stepDelay = window.FAST_ANIM ? 10 : 420;
   let currentIdx = -1;
+  const totalTraceSteps = (lineTrace && lineTrace.length > 0) ? lineTrace.length : lines.length;
 
   function stepSandbox() {
     currentIdx++;
-    if (currentIdx < lines.length) {
-      const state = lineTrace[currentIdx];
+    if (currentIdx < totalTraceSteps) {
+      const state = lineTrace ? lineTrace[currentIdx] : null;
       const isLineError = Boolean(state && state.hasError);
+      const activeLineIdx = (state && state.line !== undefined) ? state.line : currentIdx;
 
       lines.forEach((_, i) => {
         const lineEl = document.getElementById(`sandbox-line-${i}`);
         const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
         if (lineEl && arrowEl) {
-          if (i === currentIdx) {
+          if (i === activeLineIdx) {
             lineEl.classList.add('active');
             if (isLineError) {
               lineEl.classList.add('border', 'border-rose-500/80', 'bg-rose-950/50');
@@ -3979,6 +3981,9 @@ async function executeGuidedSandbox() {
             } else {
               arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
             }
+            try {
+              lineEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            } catch(e) {}
           } else {
             lineEl.classList.remove('active');
             arrowEl.innerHTML = '';
@@ -3993,11 +3998,11 @@ async function executeGuidedSandbox() {
           statusEl.textContent = "esperando entrada de usuario...";
           statusEl.className = "text-amber-400 font-normal";
         }
-        renderSandboxInputPrompt(currentIdx, state.prompt, matchingOption || { isCorrect }, fullCode, lineTrace);
+        renderSandboxInputPrompt(activeLineIdx, state.prompt, matchingOption || { isCorrect }, fullCode, lineTrace);
         return;
       }
 
-      // Actualizar terminal con lo acumulado hasta esta línea
+      // Actualizar terminal con lo acumulado hasta este paso
       if (term) {
         if (state && state.outputSoFar && state.outputSoFar.length > 0) {
           const outText = state.outputSoFar.join('\n');
@@ -4015,7 +4020,7 @@ async function executeGuidedSandbox() {
           statusEl.textContent = state.errorType ? `error: ${state.errorType}` : "error en ejecución";
           statusEl.className = "text-rose-400 font-normal";
         } else {
-          statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
+          statusEl.textContent = `paso ${currentIdx + 1}/${totalTraceSteps}...`;
         }
       }
 
@@ -4030,10 +4035,12 @@ async function executeGuidedSandbox() {
     } else {
       stopSandboxAnimation();
 
-      const lastLineEl = document.getElementById(`sandbox-line-${lines.length - 1}`);
-      const lastArrowEl = document.getElementById(`sandbox-arrow-${lines.length - 1}`);
-      if (lastLineEl) lastLineEl.classList.remove('active');
-      if (lastArrowEl) lastArrowEl.innerHTML = '';
+      lines.forEach((_, i) => {
+        const lineEl = document.getElementById(`sandbox-line-${i}`);
+        const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
+        if (lineEl) lineEl.classList.remove('active');
+        if (arrowEl) arrowEl.innerHTML = '';
+      });
 
       finishGuidedSandboxExecution({ isCorrect, matchingOption }, lineTrace);
     }
@@ -4221,7 +4228,7 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
   const term = document.getElementById('single-sandbox-term');
   const statusEl = document.getElementById('sandbox-term-status');
 
-  const state = lineTrace[lineIndex];
+  const state = lineTrace ? lineTrace[lineIndex] : null;
   if (term && state && state.outputSoFar) {
     term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
     term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(state.outputSoFar.join('\n'))}</div>`;
@@ -4229,18 +4236,20 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
 
   const stepDelay = window.FAST_ANIM ? 10 : 420;
   let currentIdx = lineIndex;
+  const totalTraceSteps = (lineTrace && lineTrace.length > 0) ? lineTrace.length : lines.length;
 
   function stepSandboxCont() {
     currentIdx++;
-    if (currentIdx < lines.length) {
-      const st = lineTrace[currentIdx];
+    if (currentIdx < totalTraceSteps) {
+      const st = lineTrace ? lineTrace[currentIdx] : null;
       const isLineError = Boolean(st && st.hasError);
+      const activeLineIdx = (st && st.line !== undefined) ? st.line : currentIdx;
 
       lines.forEach((_, i) => {
         const lineEl = document.getElementById(`sandbox-line-${i}`);
         const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
         if (lineEl && arrowEl) {
-          if (i === currentIdx) {
+          if (i === activeLineIdx) {
             lineEl.classList.add('active');
             if (isLineError) {
               lineEl.classList.add('border', 'border-rose-500/80', 'bg-rose-950/50');
@@ -4248,6 +4257,9 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
             } else {
               arrowEl.innerHTML = '<span class="text-white text-xs font-black animate-pulse">▶</span>';
             }
+            try {
+              lineEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            } catch(e) {}
           } else {
             lineEl.classList.remove('active');
             arrowEl.innerHTML = '';
@@ -4262,7 +4274,7 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
           statusEl.textContent = "esperando entrada de usuario...";
           statusEl.className = "text-amber-400 font-normal";
         }
-        renderSandboxInputPrompt(currentIdx, st.prompt, optOrResult, lines.join('\n'), lineTrace);
+        renderSandboxInputPrompt(activeLineIdx, st.prompt, optOrResult, lines.join('\n'), lineTrace);
         return;
       }
 
@@ -4283,7 +4295,7 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
           statusEl.textContent = st.errorType ? `error: ${st.errorType}` : "error en ejecución";
           statusEl.className = "text-rose-400 font-normal";
         } else {
-          statusEl.textContent = `línea ${currentIdx + 1}/${lines.length}...`;
+          statusEl.textContent = `paso ${currentIdx + 1}/${totalTraceSteps}...`;
         }
       }
 
@@ -4297,10 +4309,12 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
       sandboxAnimTimer = setTimeout(stepSandboxCont, stepDelay);
     } else {
       stopSandboxAnimation();
-      const lastLineEl = document.getElementById(`sandbox-line-${lines.length - 1}`);
-      const lastArrowEl = document.getElementById(`sandbox-arrow-${lines.length - 1}`);
-      if (lastLineEl) lastLineEl.classList.remove('active');
-      if (lastArrowEl) lastArrowEl.innerHTML = '';
+      lines.forEach((_, i) => {
+        const lineEl = document.getElementById(`sandbox-line-${i}`);
+        const arrowEl = document.getElementById(`sandbox-arrow-${i}`);
+        if (lineEl) lineEl.classList.remove('active');
+        if (arrowEl) arrowEl.innerHTML = '';
+      });
 
       finishGuidedSandboxExecution(optOrResult, lineTrace);
     }

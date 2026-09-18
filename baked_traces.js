@@ -11,30 +11,11 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "¡Café listo para beber!",
+        "line": 4,
         "outputSoFar": [
           "¡Café listo para beber!"
         ],
+        "prints": "¡Café listo para beber!",
         "hasError": false
       }
     ],
@@ -52,32 +33,30 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Línea 1: Verificando datos",
+        "line": 1,
         "outputSoFar": [
           "Línea 1: Verificando datos"
         ],
+        "prints": "Línea 1: Verificando datos",
         "hasError": false
       },
       {
-        "prints": "Línea 2: Procesando cálculo",
+        "line": 2,
         "outputSoFar": [
           "Línea 1: Verificando datos",
           "Línea 2: Procesando cálculo"
         ],
+        "prints": "Línea 2: Procesando cálculo",
         "hasError": false
       },
       {
-        "prints": "Línea 3: Operación terminada",
+        "line": 3,
         "outputSoFar": [
           "Línea 1: Verificando datos",
           "Línea 2: Procesando cálculo",
           "Línea 3: Operación terminada"
         ],
+        "prints": "Línea 3: Operación terminada",
         "hasError": false
       }
     ],
@@ -94,27 +73,30 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "1. Encendiendo motor",
+        "line": 0,
         "outputSoFar": [
           "1. Encendiendo motor"
         ],
+        "prints": "1. Encendiendo motor",
         "hasError": false
       },
       {
-        "prints": "2. Calentando turbinas",
+        "line": 1,
         "outputSoFar": [
           "1. Encendiendo motor",
           "2. Calentando turbinas"
         ],
+        "prints": "2. Calentando turbinas",
         "hasError": false
       },
       {
-        "prints": "3. ¡Despegue!",
+        "line": 2,
         "outputSoFar": [
           "1. Encendiendo motor",
           "2. Calentando turbinas",
           "3. ¡Despegue!"
         ],
+        "prints": "3. ¡Despegue!",
         "hasError": false
       }
     ],
@@ -131,25 +113,20 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "Modo normal activado",
+        "line": 0,
         "outputSoFar": [
           "Modo normal activado"
         ],
+        "prints": "Modo normal activado",
         "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [
-          "Modo normal activado"
-        ],
-        "skipped": false
-      },
-      {
-        "prints": "Todo funcionando correctamente",
+        "line": 2,
         "outputSoFar": [
           "Modo normal activado",
           "Todo funcionando correctamente"
         ],
+        "prints": "Todo funcionando correctamente",
         "hasError": false
       }
     ],
@@ -165,15 +142,11 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "¡Bienvenido a la Facultad de Minas!",
+        "line": 1,
         "outputSoFar": [
           "¡Bienvenido a la Facultad de Minas!"
         ],
+        "prints": "¡Bienvenido a la Facultad de Minas!",
         "hasError": false
       }
     ],
@@ -189,19 +162,17 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    mostrar(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'mostrar' is not defined",
+        "line": 1,
         "outputSoFar": [
           "Traceback (most recent call last):",
           "  File \"main.py\", line 2, in <module>",
           "    mostrar(\"¡Bienvenido a la Facultad de Minas!\")",
           "NameError: name 'mostrar' is not defined"
         ],
-        "hasError": true
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    mostrar(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'mostrar' is not defined",
+        "hasError": true,
+        "errorType": "NameError",
+        "errorLine": 1
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    mostrar(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'mostrar' is not defined",
@@ -216,19 +187,17 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    escribir(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'escribir' is not defined",
+        "line": 1,
         "outputSoFar": [
           "Traceback (most recent call last):",
           "  File \"main.py\", line 2, in <module>",
           "    escribir(\"¡Bienvenido a la Facultad de Minas!\")",
           "NameError: name 'escribir' is not defined"
         ],
-        "hasError": true
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    escribir(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'escribir' is not defined",
+        "hasError": true,
+        "errorType": "NameError",
+        "errorLine": 1
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    escribir(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'escribir' is not defined",
@@ -243,18 +212,20 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "¿Cómo te llamas?: Sara",
+        "line": 0,
         "outputSoFar": [
           "¿Cómo te llamas?: Sara"
         ],
+        "prints": "¿Cómo te llamas?: Sara",
         "hasError": false
       },
       {
-        "prints": "¡Mucho gusto, Sara bienvenido a pyMinas!",
+        "line": 1,
         "outputSoFar": [
           "¿Cómo te llamas?: Sara",
           "¡Mucho gusto, Sara bienvenido a pyMinas!"
         ],
+        "prints": "¡Mucho gusto, Sara bienvenido a pyMinas!",
         "hasError": false
       }
     ],
@@ -273,30 +244,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "1020",
+        "line": 4,
         "outputSoFar": [
           "1020"
         ],
+        "prints": "1020",
         "hasError": false
       }
     ],
@@ -315,37 +285,28 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
+        "line": 1,
+        "outputSoFar": [
+          "Ingresa tu edad: 14"
+        ],
         "prints": "Ingresa tu edad: 14",
-        "outputSoFar": [
-          "Ingresa tu edad: 14"
-        ],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [
           "Ingresa tu edad: 14"
         ],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [
-          "Ingresa tu edad: 14"
-        ],
         "hasError": false
       },
       {
-        "prints": "El próximo año tendrás 15.0 años",
+        "line": 4,
         "outputSoFar": [
           "Ingresa tu edad: 14",
           "El próximo año tendrás 15.0 años"
         ],
+        "prints": "El próximo año tendrás 15.0 años",
         "hasError": false
       }
     ],
@@ -364,37 +325,28 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
+        "line": 1,
+        "outputSoFar": [
+          "Ingresa tu edad: 14"
+        ],
         "prints": "Ingresa tu edad: 14",
-        "outputSoFar": [
-          "Ingresa tu edad: 14"
-        ],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [
           "Ingresa tu edad: 14"
         ],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [
-          "Ingresa tu edad: 14"
-        ],
         "hasError": false
       },
       {
-        "prints": "El próximo año tendrás 15 años",
+        "line": 4,
         "outputSoFar": [
           "Ingresa tu edad: 14",
           "El próximo año tendrás 15 años"
         ],
+        "prints": "El próximo año tendrás 15 años",
         "hasError": false
       }
     ],
@@ -413,33 +365,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
+        "line": 1,
+        "outputSoFar": [
+          "Ingresa tu edad: 14"
+        ],
         "prints": "Ingresa tu edad: 14",
-        "outputSoFar": [
-          "Ingresa tu edad: 14"
-        ],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [
           "Ingresa tu edad: 14"
         ],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [
-          "Ingresa tu edad: 14"
-        ],
         "hasError": false
       },
       {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(f\"El próximo año tendrás {edad + 1} años\")\nTypeError: can only concatenate str (not \"int\") to str",
+        "line": 4,
         "outputSoFar": [
           "Ingresa tu edad: 14",
           "Traceback (most recent call last):",
@@ -447,7 +389,10 @@ window.BAKED_TRACES = {
           "    print(f\"El próximo año tendrás {edad + 1} años\")",
           "TypeError: can only concatenate str (not \"int\") to str"
         ],
-        "hasError": true
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(f\"El próximo año tendrás {edad + 1} años\")\nTypeError: can only concatenate str (not \"int\") to str",
+        "hasError": true,
+        "errorType": "TypeError",
+        "errorLine": 4
       }
     ],
     "totalOutput": "Ingresa tu edad: 14\nTraceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(f\"El próximo año tendrás {edad + 1} años\")\nTypeError: can only concatenate str (not \"int\") to str",
@@ -463,20 +408,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Estudiante: Carlos Semestre: 1",
+        "line": 2,
         "outputSoFar": [
           "Estudiante: Carlos Semestre: 1"
         ],
+        "prints": "Estudiante: Carlos Semestre: 1",
         "hasError": false
       }
     ],
@@ -493,20 +441,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¡Bienvenido a pyMinas versión 2026!",
+        "line": 2,
         "outputSoFar": [
           "¡Bienvenido a pyMinas versión 2026!"
         ],
+        "prints": "¡Bienvenido a pyMinas versión 2026!",
         "hasError": false
       }
     ],
@@ -523,20 +474,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Área del rectángulo: 50 m2",
+        "line": 2,
         "outputSoFar": [
           "Área del rectángulo: 50 m2"
         ],
+        "prints": "Área del rectángulo: 50 m2",
         "hasError": false
       }
     ],
@@ -552,15 +506,17 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Hola {usuario}, bienvenido al laboratorio",
+        "line": 1,
         "outputSoFar": [
           "Hola {usuario}, bienvenido al laboratorio"
         ],
+        "prints": "Hola {usuario}, bienvenido al laboratorio",
         "hasError": false
       }
     ],
@@ -628,30 +584,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Facultad de Minas · Costo: $0",
+        "line": 4,
         "outputSoFar": [
           "Facultad de Minas · Costo: $0"
         ],
+        "prints": "Facultad de Minas · Costo: $0",
         "hasError": false
       }
     ],
@@ -670,30 +625,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Facultad de {facultad} · Costo: ${costo}",
+        "line": 4,
         "outputSoFar": [
           "Facultad de {facultad} · Costo: ${costo}"
         ],
+        "prints": "Facultad de {facultad} · Costo: ${costo}",
         "hasError": false
       }
     ],
@@ -712,30 +666,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "21 1.78 Andrés True",
+        "line": 4,
         "outputSoFar": [
           "21 1.78 Andrés True"
         ],
+        "prints": "21 1.78 Andrés True",
         "hasError": false
       }
     ],
@@ -750,8 +709,9 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -769,25 +729,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "9.0",
+        "line": 3,
         "outputSoFar": [
           "9.0"
         ],
+        "prints": "9.0",
         "hasError": false
       }
     ],
@@ -806,39 +770,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
+        "line": 3,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 4, in <module>",
+          "    peso_real = int(lectura_sensor)",
+          "ValueError: invalid literal for int() with base 10: '68.5'"
+        ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    peso_real = int(lectura_sensor)\nValueError: invalid literal for int() with base 10: '68.5'",
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 4, in <module>",
-          "    peso_real = int(lectura_sensor)",
-          "ValueError: invalid literal for int() with base 10: '68.5'"
-        ],
-        "hasError": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 4, in <module>",
-          "    peso_real = int(lectura_sensor)",
-          "ValueError: invalid literal for int() with base 10: '68.5'"
-        ],
-        "skipped": true
+        "hasError": true,
+        "errorType": "ValueError",
+        "errorLine": 3
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    peso_real = int(lectura_sensor)\nValueError: invalid literal for int() with base 10: '68.5'",
@@ -856,34 +804,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(peso_real + 1.5)\nTypeError: can only concatenate str (not \"float\") to str",
+        "line": 4,
         "outputSoFar": [
           "Traceback (most recent call last):",
           "  File \"main.py\", line 5, in <module>",
           "    print(peso_real + 1.5)",
           "TypeError: can only concatenate str (not \"float\") to str"
         ],
-        "hasError": true
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(peso_real + 1.5)\nTypeError: can only concatenate str (not \"float\") to str",
+        "hasError": true,
+        "errorType": "TypeError",
+        "errorLine": 4
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(peso_real + 1.5)\nTypeError: can only concatenate str (not \"float\") to str",
@@ -901,30 +844,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "70.0",
+        "line": 4,
         "outputSoFar": [
           "70.0"
         ],
+        "prints": "70.0",
         "hasError": false
       }
     ],
@@ -944,47 +880,30 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
+        "line": 1,
+        "outputSoFar": [
+          "3.5"
+        ],
         "prints": "3.5",
-        "outputSoFar": [
-          "3.5"
-        ],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [
-          "3.5"
+          "3.5",
+          "3"
         ],
-        "skipped": false
-      },
-      {
         "prints": "3",
-        "outputSoFar": [
-          "3.5",
-          "3"
-        ],
         "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [
-          "3.5",
-          "3"
-        ],
-        "skipped": false
-      },
-      {
-        "prints": "1",
+        "line": 5,
         "outputSoFar": [
           "3.5",
           "3",
           "1"
         ],
+        "prints": "1",
         "hasError": false
       }
     ],
@@ -1002,25 +921,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "2h 5m",
+        "line": 3,
         "outputSoFar": [
           "2h 5m"
         ],
+        "prints": "2h 5m",
         "hasError": false
       }
     ],
@@ -1039,30 +962,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "5.0",
+        "line": 4,
         "outputSoFar": [
           "5.0"
         ],
+        "prints": "5.0",
         "hasError": false
       }
     ],
@@ -1082,35 +1004,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "5.5",
+        "line": 5,
         "outputSoFar": [
           "5.5"
         ],
+        "prints": "5.5",
         "hasError": false
       }
     ],
@@ -1130,35 +1046,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "3.5",
+        "line": 5,
         "outputSoFar": [
           "3.5"
         ],
+        "prints": "3.5",
         "hasError": false
       }
     ],
@@ -1178,44 +1088,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
+        "line": 4,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 5, in <module>",
+          "    promedio = [lab1 + lab2] / 2",
+          "TypeError: unsupported operand type(s) for /: 'list' and 'int'"
+        ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    promedio = [lab1 + lab2] / 2\nTypeError: unsupported operand type(s) for /: 'list' and 'int'",
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 5, in <module>",
-          "    promedio = [lab1 + lab2] / 2",
-          "TypeError: unsupported operand type(s) for /: 'list' and 'int'"
-        ],
-        "hasError": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 5, in <module>",
-          "    promedio = [lab1 + lab2] / 2",
-          "TypeError: unsupported operand type(s) for /: 'list' and 'int'"
-        ],
-        "skipped": true
+        "hasError": true,
+        "errorType": "TypeError",
+        "errorLine": 4
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    promedio = [lab1 + lab2] / 2\nTypeError: unsupported operand type(s) for /: 'list' and 'int'",
@@ -1234,35 +1129,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Área: 28.27",
+        "line": 5,
         "outputSoFar": [
           "Área: 28.27"
         ],
+        "prints": "Área: 28.27",
         "hasError": false
       }
     ],
@@ -1280,25 +1169,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "5.0",
+        "line": 3,
         "outputSoFar": [
           "5.0"
         ],
+        "prints": "5.0",
         "hasError": false
       }
     ],
@@ -1319,40 +1206,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 5,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "5",
+        "line": 6,
         "outputSoFar": [
           "5"
         ],
+        "prints": "5",
         "hasError": false
       }
     ],
@@ -1374,54 +1256,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
+        "line": 6,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 7, in <module>",
+          "    hipotenusa = sqrt(cateto_a**2 + cateto_b**2)",
+          "NameError: name 'sqrt' is not defined"
+        ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 7, in <module>\n    hipotenusa = sqrt(cateto_a**2 + cateto_b**2)\nNameError: name 'sqrt' is not defined",
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 7, in <module>",
-          "    hipotenusa = sqrt(cateto_a**2 + cateto_b**2)",
-          "NameError: name 'sqrt' is not defined"
-        ],
-        "hasError": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 7, in <module>",
-          "    hipotenusa = sqrt(cateto_a**2 + cateto_b**2)",
-          "NameError: name 'sqrt' is not defined"
-        ],
-        "skipped": true
+        "hasError": true,
+        "errorType": "NameError",
+        "errorLine": 6
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 7, in <module>\n    hipotenusa = sqrt(cateto_a**2 + cateto_b**2)\nNameError: name 'sqrt' is not defined",
@@ -1442,45 +1305,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 6,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Hipotenusa: 25",
+        "line": 7,
         "outputSoFar": [
           "Hipotenusa: 25"
         ],
+        "prints": "Hipotenusa: 25",
         "hasError": false
       }
     ],
@@ -1502,45 +1355,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 6,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Hipotenusa: 5.0",
+        "line": 7,
         "outputSoFar": [
           "Hipotenusa: 5.0"
         ],
+        "prints": "Hipotenusa: 5.0",
         "hasError": false
       }
     ],
@@ -1559,41 +1402,45 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "Ingresa el primer número (x): 10",
+        "line": 0,
         "outputSoFar": [
           "Ingresa el primer número (x): 10"
         ],
+        "prints": "Ingresa el primer número (x): 10",
         "hasError": false
       },
       {
-        "prints": "Ingresa el segundo número (y): 20",
+        "line": 1,
         "outputSoFar": [
           "Ingresa el primer número (x): 10",
           "Ingresa el segundo número (y): 20"
         ],
+        "prints": "Ingresa el segundo número (y): 20",
         "hasError": false
       },
       {
-        "prints": "¿x es menor que y?: True",
+        "line": 2,
         "outputSoFar": [
           "Ingresa el primer número (x): 10",
           "Ingresa el segundo número (y): 20",
           "¿x es menor que y?: True"
         ],
+        "prints": "¿x es menor que y?: True",
         "hasError": false
       },
       {
-        "prints": "¿x es igual a y?: False",
+        "line": 3,
         "outputSoFar": [
           "Ingresa el primer número (x): 10",
           "Ingresa el segundo número (y): 20",
           "¿x es menor que y?: True",
           "¿x es igual a y?: False"
         ],
+        "prints": "¿x es igual a y?: False",
         "hasError": false
       },
       {
-        "prints": "¿x es diferente de y?: True",
+        "line": 4,
         "outputSoFar": [
           "Ingresa el primer número (x): 10",
           "Ingresa el segundo número (y): 20",
@@ -1601,6 +1448,7 @@ window.BAKED_TRACES = {
           "¿x es igual a y?: False",
           "¿x es diferente de y?: True"
         ],
+        "prints": "¿x es diferente de y?: True",
         "hasError": false
       }
     ],
@@ -1619,33 +1467,38 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "True",
+        "line": 3,
         "outputSoFar": [
           "True"
         ],
+        "prints": "True",
         "hasError": false
       },
       {
-        "prints": "False",
+        "line": 4,
         "outputSoFar": [
           "True",
           "False"
         ],
+        "prints": "False",
         "hasError": false
       }
     ],
@@ -1665,38 +1518,32 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Puntos guardados: 100",
+        "line": 4,
         "outputSoFar": [
           "Puntos guardados: 100"
         ],
+        "prints": "Puntos guardados: 100",
         "hasError": false
       },
       {
-        "prints": "¿Son exactamente 100?: True",
+        "line": 5,
         "outputSoFar": [
           "Puntos guardados: 100",
           "¿Son exactamente 100?: True"
         ],
+        "prints": "¿Son exactamente 100?: True",
         "hasError": false
       }
     ],
@@ -1714,25 +1561,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¿Cumple el orden?: False",
+        "line": 3,
         "outputSoFar": [
           "¿Cumple el orden?: False"
         ],
+        "prints": "¿Cumple el orden?: False",
         "hasError": false
       }
     ],
@@ -1750,25 +1601,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¿Cumple el orden?: False",
+        "line": 3,
         "outputSoFar": [
           "¿Cumple el orden?: False"
         ],
+        "prints": "¿Cumple el orden?: False",
         "hasError": false
       }
     ],
@@ -1786,25 +1641,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¿Cumple el orden?: True",
+        "line": 3,
         "outputSoFar": [
           "¿Cumple el orden?: True"
         ],
+        "prints": "¿Cumple el orden?: True",
         "hasError": false
       }
     ],
@@ -1822,25 +1681,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¿Puede conducir el auto?: True",
+        "line": 3,
         "outputSoFar": [
           "¿Puede conducir el auto?: True"
         ],
+        "prints": "¿Puede conducir el auto?: True",
         "hasError": false
       }
     ],
@@ -1859,33 +1722,38 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¿Es día de descanso?: True",
+        "line": 3,
         "outputSoFar": [
           "¿Es día de descanso?: True"
         ],
+        "prints": "¿Es día de descanso?: True",
         "hasError": false
       },
       {
-        "prints": "Inversión con not: False",
+        "line": 4,
         "outputSoFar": [
           "¿Es día de descanso?: True",
           "Inversión con not: False"
         ],
+        "prints": "Inversión con not: False",
         "hasError": false
       }
     ],
@@ -1902,20 +1770,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Resultado lógico: True",
+        "line": 2,
         "outputSoFar": [
           "Resultado lógico: True"
         ],
+        "prints": "Resultado lógico: True",
         "hasError": false
       }
     ],
@@ -1932,20 +1803,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¿Presión en rango seguro?: True",
+        "line": 2,
         "outputSoFar": [
           "¿Presión en rango seguro?: True"
         ],
+        "prints": "¿Presión en rango seguro?: True",
         "hasError": false
       }
     ],
@@ -1962,20 +1836,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "¿Presión en rango seguro?: True",
+        "line": 2,
         "outputSoFar": [
           "¿Presión en rango seguro?: True"
         ],
+        "prints": "¿Presión en rango seguro?: True",
         "hasError": false
       }
     ],
@@ -2033,43 +1910,49 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "1. Antes de la decisión",
+        "line": 0,
         "outputSoFar": [
           "1. Antes de la decisión"
         ],
+        "prints": "1. Antes de la decisión",
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [
           "1. Antes de la decisión"
         ],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [
-          "1. Antes de la decisión"
-        ],
-        "skipped": false
+        "hasError": false
       },
       {
-        "prints": "2. Dentro del bloque condicional (4 espacios)\n3. También dentro del bloque",
+        "line": 2,
+        "outputSoFar": [
+          "1. Antes de la decisión",
+          "2. Dentro del bloque condicional (4 espacios)"
+        ],
+        "prints": "2. Dentro del bloque condicional (4 espacios)",
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "1. Antes de la decisión",
           "2. Dentro del bloque condicional (4 espacios)",
           "3. También dentro del bloque"
         ],
+        "prints": "3. También dentro del bloque",
         "hasError": false
       },
       {
-        "prints": "4. Fuera del bloque (sin sangría)",
+        "line": 4,
         "outputSoFar": [
           "1. Antes de la decisión",
           "2. Dentro del bloque condicional (4 espacios)",
           "3. También dentro del bloque",
           "4. Fuera del bloque (sin sangría)"
         ],
+        "prints": "4. Fuera del bloque (sin sangría)",
         "hasError": false
       }
     ],
@@ -2088,30 +1971,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Monitoreo climático finalizado",
+        "line": 4,
         "outputSoFar": [
           "Monitoreo climático finalizado"
         ],
+        "prints": "Monitoreo climático finalizado",
         "hasError": false
       }
     ],
@@ -2229,28 +2105,32 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "¡Atención! Tanque casi lleno",
+        "line": 2,
         "outputSoFar": [
           "¡Atención! Tanque casi lleno"
         ],
+        "prints": "¡Atención! Tanque casi lleno",
         "hasError": false
       },
       {
-        "prints": "Sensor en línea",
+        "line": 3,
         "outputSoFar": [
           "¡Atención! Tanque casi lleno",
           "Sensor en línea"
         ],
+        "prints": "Sensor en línea",
         "hasError": false
       }
     ],
@@ -2270,48 +2150,54 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
+        "line": 0,
+        "outputSoFar": [
+          "Ingresa tu edad: 14"
+        ],
         "prints": "Ingresa tu edad: 14",
-        "outputSoFar": [
-          "Ingresa tu edad: 14"
-        ],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [
           "Ingresa tu edad: 14"
         ],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [
           "Ingresa tu edad: 14"
         ],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [
           "Ingresa tu edad: 14"
         ],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Descuento del 5% aplicado por ser menor de edad",
+        "line": 4,
         "outputSoFar": [
           "Ingresa tu edad: 14",
           "Descuento del 5% aplicado por ser menor de edad"
         ],
+        "prints": "Descuento del 5% aplicado por ser menor de edad",
         "hasError": false
       },
       {
-        "prints": "Total a pagar: $ 4750.0",
+        "line": 5,
         "outputSoFar": [
           "Ingresa tu edad: 14",
           "Descuento del 5% aplicado por ser menor de edad",
           "Total a pagar: $ 4750.0"
         ],
+        "prints": "Total a pagar: $ 4750.0",
         "hasError": false
       }
     ],
@@ -2329,25 +2215,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Calificación registrada en el sistema",
+        "line": 3,
         "outputSoFar": [
           "Calificación registrada en el sistema"
         ],
+        "prints": "Calificación registrada en el sistema",
         "hasError": false
       }
     ],
@@ -2366,30 +2250,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Salario final: 1500000",
+        "line": 4,
         "outputSoFar": [
           "Salario final: 1500000"
         ],
+        "prints": "Salario final: 1500000",
         "hasError": false
       }
     ],
@@ -2408,33 +2291,38 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "¡Alerta! Exceso de velocidad detectado",
+        "line": 3,
         "outputSoFar": [
           "¡Alerta! Exceso de velocidad detectado"
         ],
+        "prints": "¡Alerta! Exceso de velocidad detectado",
         "hasError": false
       },
       {
-        "prints": "Radar activo",
+        "line": 4,
         "outputSoFar": [
           "¡Alerta! Exceso de velocidad detectado",
           "Radar activo"
         ],
+        "prints": "Radar activo",
         "hasError": false
       }
     ],
@@ -2453,30 +2341,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Radar activo",
+        "line": 4,
         "outputSoFar": [
           "Radar activo"
         ],
+        "prints": "Radar activo",
         "hasError": false
       }
     ],
@@ -2495,30 +2382,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Radar activo",
+        "line": 4,
         "outputSoFar": [
           "Radar activo"
         ],
+        "prints": "Radar activo",
         "hasError": false
       }
     ],
@@ -2538,48 +2424,38 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "Ingresa tu nota final (0.0 a 5.0): 4.2",
+        "line": 0,
         "outputSoFar": [
           "Ingresa tu nota final (0.0 a 5.0): 4.2"
         ],
+        "prints": "Ingresa tu nota final (0.0 a 5.0): 4.2",
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [
           "Ingresa tu nota final (0.0 a 5.0): 4.2"
         ],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [
-          "Ingresa tu nota final (0.0 a 5.0): 4.2"
-        ],
-        "skipped": false
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [
-          "Ingresa tu nota final (0.0 a 5.0): 4.2"
-        ],
-        "skipped": false
-      },
-      {
-        "prints": "¡Felicitaciones! Has aprobado",
+        "line": 2,
         "outputSoFar": [
           "Ingresa tu nota final (0.0 a 5.0): 4.2",
           "¡Felicitaciones! Has aprobado"
         ],
+        "prints": "¡Felicitaciones! Has aprobado",
         "hasError": false
       },
       {
-        "prints": "Cierre del periodo académico",
+        "line": 5,
         "outputSoFar": [
           "Ingresa tu nota final (0.0 a 5.0): 4.2",
           "¡Felicitaciones! Has aprobado",
           "Cierre del periodo académico"
         ],
+        "prints": "Cierre del periodo académico",
         "hasError": false
       }
     ],
@@ -2598,30 +2474,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "El número es IMPAR",
+        "line": 4,
         "outputSoFar": [
           "El número es IMPAR"
         ],
+        "prints": "El número es IMPAR",
         "hasError": false
       }
     ],
@@ -2642,40 +2511,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Salario ajustado: 2100000",
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
         "outputSoFar": [
           "Salario ajustado: 2100000"
         ],
+        "prints": "Salario ajustado: 2100000",
         "hasError": false
       }
     ],
@@ -2767,48 +2631,38 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Fondos insuficientes",
+        "line": 6,
         "outputSoFar": [
           "Fondos insuficientes"
         ],
+        "prints": "Fondos insuficientes",
         "hasError": false
       },
       {
-        "prints": "Saldo disponible: $ 50000",
+        "line": 7,
         "outputSoFar": [
           "Fondos insuficientes",
           "Saldo disponible: $ 50000"
         ],
+        "prints": "Saldo disponible: $ 50000",
         "hasError": false
       }
     ],
@@ -2900,62 +2754,46 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": "Ingresa un número entero para clasificar: -8",
+        "line": 0,
         "outputSoFar": [
           "Ingresa un número entero para clasificar: -8"
         ],
+        "prints": "Ingresa un número entero para clasificar: -8",
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [
           "Ingresa un número entero para clasificar: -8"
         ],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [
           "Ingresa un número entero para clasificar: -8"
         ],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [
-          "Ingresa un número entero para clasificar: -8"
-        ],
-        "skipped": false
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [
-          "Ingresa un número entero para clasificar: -8"
-        ],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Ingresa un número entero para clasificar: -8"
-        ],
-        "skipped": false
-      },
-      {
-        "prints": "El número es NEGATIVO",
+        "line": 6,
         "outputSoFar": [
           "Ingresa un número entero para clasificar: -8",
           "El número es NEGATIVO"
         ],
+        "prints": "El número es NEGATIVO",
         "hasError": false
       },
       {
-        "prints": "Clasificación terminada",
+        "line": 7,
         "outputSoFar": [
           "Ingresa un número entero para clasificar: -8",
           "El número es NEGATIVO",
           "Clasificación terminada"
         ],
+        "prints": "Clasificación terminada",
         "hasError": false
       }
     ],
@@ -2979,55 +2817,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Calificación final: Sobresaliente",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 9,
         "outputSoFar": [
           "Calificación final: Sobresaliente"
         ],
+        "prints": "Calificación final: Sobresaliente",
         "hasError": false
       }
     ],
@@ -3046,30 +2864,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Adulto general",
+        "line": 2,
         "outputSoFar": [
           "Adulto general"
         ],
+        "prints": "Adulto general",
         "hasError": false
       }
     ],
@@ -3091,45 +2902,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Régimen aplicado: Contribución solidaria",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
         "outputSoFar": [
           "Régimen aplicado: Contribución solidaria"
         ],
+        "prints": "Régimen aplicado: Contribución solidaria",
         "hasError": false
       }
     ],
@@ -3151,45 +2952,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Régimen aplicado: Tarifa plena sin recargo",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
         "outputSoFar": [
           "Régimen aplicado: Tarifa plena sin recargo"
         ],
+        "prints": "Régimen aplicado: Tarifa plena sin recargo",
         "hasError": false
       }
     ],
@@ -3211,45 +3002,35 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Régimen aplicado: Contribución solidaria",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
         "outputSoFar": [
           "Régimen aplicado: Contribución solidaria"
         ],
+        "prints": "Régimen aplicado: Contribución solidaria",
         "hasError": false
       }
     ],
@@ -3266,22 +3047,69 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Muestra: oro\nMuestra: plata\nMuestra: cobre",
+        "line": 2,
+        "outputSoFar": [
+          "Muestra: oro"
+        ],
+        "prints": "Muestra: oro",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Muestra: oro"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Muestra: oro",
+          "Muestra: plata"
+        ],
+        "prints": "Muestra: plata",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Muestra: oro",
+          "Muestra: plata"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
         "outputSoFar": [
           "Muestra: oro",
           "Muestra: plata",
           "Muestra: cobre"
         ],
+        "prints": "Muestra: cobre",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Muestra: oro",
+          "Muestra: plata",
+          "Muestra: cobre"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -3300,30 +3128,89 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "M-I-N-A-S-",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
         "outputSoFar": [
           "M-I-N-A-S-"
         ],
+        "prints": "M-I-N-A-S-",
         "hasError": false
       }
     ],
@@ -3340,29 +3227,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    for i in alumnos:",
+          "TypeError: 'int' object is not iterable"
+        ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    for i in alumnos:\nTypeError: 'int' object is not iterable",
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    for i in alumnos:",
-          "TypeError: 'int' object is not iterable"
-        ],
-        "hasError": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    for i in alumnos:",
-          "TypeError: 'int' object is not iterable"
-        ],
-        "skipped": true
+        "hasError": true,
+        "errorType": "TypeError",
+        "errorLine": 1
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    for i in alumnos:\nTypeError: 'int' object is not iterable",
@@ -3379,26 +3260,91 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Alerta: 240V\nAlerta: 440V",
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "Alerta: 240V"
+        ],
+        "prints": "Alerta: 240V",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Alerta: 240V"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Alerta: 240V"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Alerta: 240V"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Alerta: 240V"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "Alerta: 240V",
           "Alerta: 440V"
         ],
+        "prints": "Alerta: 440V",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Alerta: 240V",
+          "Alerta: 440V"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -3416,26 +3362,91 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "15\n23",
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "15"
+        ],
+        "prints": "15",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "15"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "15"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "15"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "15"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "15",
           "23"
         ],
+        "prints": "23",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "15",
+          "23"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -3452,29 +3463,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    while mineral == muestras:",
+          "NameError: name 'mineral' is not defined"
+        ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while mineral == muestras:\nNameError: name 'mineral' is not defined",
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while mineral == muestras:",
-          "NameError: name 'mineral' is not defined"
-        ],
-        "hasError": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while mineral == muestras:",
-          "NameError: name 'mineral' is not defined"
-        ],
-        "skipped": true
+        "hasError": true,
+        "errorType": "NameError",
+        "errorLine": 1
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while mineral == muestras:\nNameError: name 'mineral' is not defined",
@@ -3490,22 +3495,69 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Muestra: hierro\nMuestra: cuarzo\nMuestra: oro",
+        "line": 2,
+        "outputSoFar": [
+          "Muestra: hierro"
+        ],
+        "prints": "Muestra: hierro",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Muestra: hierro"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Muestra: hierro",
+          "Muestra: cuarzo"
+        ],
+        "prints": "Muestra: cuarzo",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Muestra: hierro",
+          "Muestra: cuarzo"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
         "outputSoFar": [
           "Muestra: hierro",
           "Muestra: cuarzo",
           "Muestra: oro"
         ],
+        "prints": "Muestra: oro",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Muestra: hierro",
+          "Muestra: cuarzo",
+          "Muestra: oro"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -3561,29 +3613,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    if mineral in muestras:",
+          "NameError: name 'mineral' is not defined"
+        ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    if mineral in muestras:\nNameError: name 'mineral' is not defined",
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    if mineral in muestras:",
-          "NameError: name 'mineral' is not defined"
-        ],
-        "hasError": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    if mineral in muestras:",
-          "NameError: name 'mineral' is not defined"
-        ],
-        "skipped": true
+        "hasError": true,
+        "errorType": "NameError",
+        "errorLine": 1
       }
     ],
     "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    if mineral in muestras:\nNameError: name 'mineral' is not defined",
@@ -3599,20 +3645,53 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Último item: cuarzo",
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
         "outputSoFar": [
           "Último item: cuarzo"
         ],
+        "prints": "Último item: cuarzo",
         "hasError": false
       }
     ],
@@ -3634,48 +3713,98 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Total personas: 3",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
         "outputSoFar": [
           "Total personas: 3"
         ],
+        "prints": "Total personas: 3",
         "hasError": false
       },
       {
-        "prints": "Total dinero: ",
+        "line": 7,
         "outputSoFar": [
           "Total personas: 3",
           "Total dinero: "
         ],
+        "prints": "Total dinero: ",
         "hasError": false
       }
     ],
@@ -3694,30 +3823,65 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "4",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
         "outputSoFar": [
           "4"
         ],
+        "prints": "4",
         "hasError": false
       }
     ],
@@ -3736,30 +3900,77 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Total: 8000",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
         "outputSoFar": [
           "Total: 8000"
         ],
+        "prints": "Total: 8000",
         "hasError": false
       }
     ],
@@ -3781,45 +3992,95 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Promedio: 4.2",
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
         "outputSoFar": [
           "Promedio: 4.2"
         ],
+        "prints": "Promedio: 4.2",
         "hasError": false
       }
     ],
@@ -3839,35 +4100,83 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "3 60",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
         "outputSoFar": [
           "3 60"
         ],
+        "prints": "3 60",
         "hasError": false
       }
     ],
@@ -3888,40 +4197,89 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "1 12000",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
         "outputSoFar": [
           "1 12000"
         ],
+        "prints": "1 12000",
         "hasError": false
       }
     ],
@@ -3942,40 +4300,89 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "3 12000",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
         "outputSoFar": [
           "3 12000"
         ],
+        "prints": "3 12000",
         "hasError": false
       }
     ],
@@ -3996,40 +4403,89 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "3 42000",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
         "outputSoFar": [
           "3 42000"
         ],
+        "prints": "3 42000",
         "hasError": false
       }
     ],
@@ -4050,40 +4506,89 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "1 42000",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
         "outputSoFar": [
           "1 42000"
         ],
+        "prints": "1 42000",
         "hasError": false
       }
     ],
@@ -4104,40 +4609,29 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Sin registros",
+        "line": 6,
         "outputSoFar": [
           "Sin registros"
         ],
+        "prints": "Sin registros",
         "hasError": false
       }
     ],
@@ -4153,17 +4647,63 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Piso 1\nPiso 2\nPiso 3",
+        "line": 1,
+        "outputSoFar": [
+          "Piso 1"
+        ],
+        "prints": "Piso 1",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Piso 1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Piso 1",
+          "Piso 2"
+        ],
+        "prints": "Piso 2",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Piso 1",
+          "Piso 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
         "outputSoFar": [
           "Piso 1",
           "Piso 2",
           "Piso 3"
         ],
+        "prints": "Piso 3",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Piso 1",
+          "Piso 2",
+          "Piso 3"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -4181,25 +4721,71 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "6",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "6"
         ],
+        "prints": "6",
         "hasError": false
       }
     ],
@@ -4216,20 +4802,17 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "¡Despegue!",
+        "line": 2,
         "outputSoFar": [
           "¡Despegue!"
         ],
+        "prints": "¡Despegue!",
         "hasError": false
       }
     ],
@@ -4245,18 +4828,85 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Par: 2\nPar: 4\nPar: 6\nPar: 8",
+        "line": 1,
+        "outputSoFar": [
+          "Par: 2"
+        ],
+        "prints": "Par: 2",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Par: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Par: 2",
+          "Par: 4"
+        ],
+        "prints": "Par: 4",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Par: 2",
+          "Par: 4"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Par: 2",
+          "Par: 4",
+          "Par: 6"
+        ],
+        "prints": "Par: 6",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Par: 2",
+          "Par: 4",
+          "Par: 6"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
         "outputSoFar": [
           "Par: 2",
           "Par: 4",
           "Par: 6",
           "Par: 8"
         ],
+        "prints": "Par: 8",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Par: 2",
+          "Par: 4",
+          "Par: 6",
+          "Par: 8"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -4274,25 +4924,59 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "6 4 2",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "6 4 2"
         ],
+        "prints": "6 4 2",
         "hasError": false
       }
     ],
@@ -4308,18 +4992,85 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "10\n15\n20\n25",
+        "line": 1,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": "10",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "15"
+        ],
+        "prints": "15",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "15"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20"
+        ],
+        "prints": "20",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
         "outputSoFar": [
           "10",
           "15",
           "20",
           "25"
         ],
+        "prints": "25",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20",
+          "25"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -4335,12 +5086,659 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29",
+        "line": 1,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": "10",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11"
+        ],
+        "prints": "11",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "prints": "13",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "prints": "14",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15"
+        ],
+        "prints": "15",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "prints": "16",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ],
+        "prints": "17",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18"
+        ],
+        "prints": "18",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "prints": "20",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22"
+        ],
+        "prints": "22",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "prints": "23",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24"
+        ],
+        "prints": "24",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25"
+        ],
+        "prints": "25",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26"
+        ],
+        "prints": "26",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27"
+        ],
+        "prints": "27",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "prints": "28",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
         "outputSoFar": [
           "10",
           "11",
@@ -4363,6 +5761,34 @@ window.BAKED_TRACES = {
           "28",
           "29"
         ],
+        "prints": "29",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -4378,17 +5804,63 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "10\n20\n30",
+        "line": 1,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": "10",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "20"
+        ],
+        "prints": "20",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "20"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
         "outputSoFar": [
           "10",
           "20",
           "30"
         ],
+        "prints": "30",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "20",
+          "30"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -4404,12 +5876,89 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "10\n15\n20\n25\n30",
+        "line": 1,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": "10",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "15"
+        ],
+        "prints": "15",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "15"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20"
+        ],
+        "prints": "20",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20",
+          "25"
+        ],
+        "prints": "25",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20",
+          "25"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
         "outputSoFar": [
           "10",
           "15",
@@ -4417,6 +5966,19 @@ window.BAKED_TRACES = {
           "25",
           "30"
         ],
+        "prints": "30",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "15",
+          "20",
+          "25",
+          "30"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -4434,25 +5996,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Iteraciones: 0",
+        "line": 3,
         "outputSoFar": [
           "Iteraciones: 0"
         ],
+        "prints": "Iteraciones: 0",
         "hasError": false
       }
     ],
@@ -4471,37 +6031,107 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
+        "line": 2,
+        "outputSoFar": [
+          "Batería restante: 3"
+        ],
+        "prints": "Batería restante: 3",
+        "hasError": false
       },
       {
-        "prints": "Batería restante: 3\nBatería restante: 2\nBatería restante: 1",
+        "line": 3,
+        "outputSoFar": [
+          "Batería restante: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Batería restante: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Batería restante: 3",
+          "Batería restante: 2"
+        ],
+        "prints": "Batería restante: 2",
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "Batería restante: 3",
+          "Batería restante: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Batería restante: 3",
+          "Batería restante: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
         "outputSoFar": [
           "Batería restante: 3",
           "Batería restante: 2",
           "Batería restante: 1"
         ],
+        "prints": "Batería restante: 1",
         "hasError": false
       },
       {
-        "prints": "Dispositivo apagado.",
+        "line": 3,
+        "outputSoFar": [
+          "Batería restante: 3",
+          "Batería restante: 2",
+          "Batería restante: 1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Batería restante: 3",
+          "Batería restante: 2",
+          "Batería restante: 1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
         "outputSoFar": [
           "Batería restante: 3",
           "Batería restante: 2",
           "Batería restante: 1",
           "Dispositivo apagado."
         ],
+        "prints": "Dispositivo apagado.",
         "hasError": false
       }
     ],
@@ -4521,35 +6151,83 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "3 1",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
         "outputSoFar": [
           "3 1"
         ],
+        "prints": "3 1",
         "hasError": false
       }
     ],
@@ -4567,60 +6245,1278 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)",
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "... (15 salidas repetidas omitidas)",
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while segundos > 0:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
-        ],
-        "hasError": true
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "... (15 salidas repetidas omitidas)",
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while segundos > 0:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
+          "Contando: 3"
         ],
-        "skipped": true
+        "prints": "Contando: 3",
+        "hasError": false
       },
       {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3"
+        ],
         "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
         "outputSoFar": [
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
-          "... (15 salidas repetidas omitidas)",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3"
+        ],
+        "prints": "Contando: 3",
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "Contando: 3",
+          "... (24 salidas repetidas omitidas)",
           "Traceback (most recent call last):",
           "  File \"main.py\", line 2, in <module>",
           "    while segundos > 0:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
+          "TimeoutError: Límite de pasos de ejecución excedido (bucle infinito)"
         ],
-        "skipped": true
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
+        "hasError": true,
+        "errorType": "TimeoutError",
+        "errorLine": 1
       }
     ],
-    "totalOutput": "Contando: 3\nContando: 3\nContando: 3\nContando: 3\nContando: 3\n... (15 salidas repetidas omitidas)\nTraceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)",
+    "totalOutput": "Contando: 3\nContando: 3\nContando: 3\nContando: 3\nContando: 3\n... (24 salidas repetidas omitidas)\nTraceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
     "hasError": true,
     "errorLine": 1,
     "errorType": "TimeoutError"
@@ -4635,30 +7531,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Sistema en reposo.",
+        "line": 4,
         "outputSoFar": [
           "Sistema en reposo."
         ],
+        "prints": "Sistema en reposo.",
         "hasError": false
       }
     ],
@@ -4676,25 +7565,59 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Final: 8",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "Final: 8"
         ],
+        "prints": "Final: 8",
         "hasError": false
       }
     ],
@@ -4712,25 +7635,71 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Tolva llena: 100",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "Tolva llena: 100"
         ],
+        "prints": "Tolva llena: 100",
         "hasError": false
       }
     ],
@@ -4748,25 +7717,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Tolva llena: 0",
+        "line": 3,
         "outputSoFar": [
           "Tolva llena: 0"
         ],
+        "prints": "Tolva llena: 0",
         "hasError": false
       }
     ],
@@ -4784,42 +7751,374 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)",
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while toneladas <= 100:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
-        ],
-        "hasError": true
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
       },
       {
+        "line": 2,
+        "outputSoFar": [],
         "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while toneladas <= 100:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
-        ],
-        "skipped": true
+        "hasError": false
       },
       {
+        "line": 1,
+        "outputSoFar": [],
         "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
         "outputSoFar": [
           "Traceback (most recent call last):",
           "  File \"main.py\", line 2, in <module>",
           "    while toneladas <= 100:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
+          "TimeoutError: Límite de pasos de ejecución excedido (bucle infinito)"
         ],
-        "skipped": true
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
+        "hasError": true,
+        "errorType": "TimeoutError",
+        "errorLine": 1
       }
     ],
-    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)",
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
     "hasError": true,
     "errorLine": 1,
     "errorType": "TimeoutError"
@@ -4833,25 +8132,23 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Tolva llena: 0",
+        "line": 3,
         "outputSoFar": [
           "Tolva llena: 0"
         ],
+        "prints": "Tolva llena: 0",
         "hasError": false
       }
     ],
@@ -4869,25 +8166,71 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Salida: 2",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "Salida: 2"
         ],
+        "prints": "Salida: 2",
         "hasError": false
       }
     ],
@@ -4906,31 +8249,57 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
+        "line": 4,
+        "outputSoFar": [
+          "Procesando: tornillo"
+        ],
+        "prints": "Procesando: tornillo",
+        "hasError": false
       },
       {
+        "line": 0,
+        "outputSoFar": [
+          "Procesando: tornillo"
+        ],
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
+        "hasError": false
       },
       {
-        "prints": "Procesando: tornillo\n¡Parada de emergencia!",
+        "line": 1,
+        "outputSoFar": [
+          "Procesando: tornillo"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
         "outputSoFar": [
           "Procesando: tornillo",
           "¡Parada de emergencia!"
         ],
+        "prints": "¡Parada de emergencia!",
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "Procesando: tornillo",
+          "¡Parada de emergencia!"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -4950,35 +8319,71 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Total: 15",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
         "outputSoFar": [
           "Total: 15"
         ],
+        "prints": "Total: 15",
         "hasError": false
       }
     ],
@@ -4998,74 +8403,542 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while i < 4:\nTimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)",
-        "outputSoFar": [
-          "0",
-          "1",
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while i < 4:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
-        ],
-        "hasError": true
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
       },
       {
+        "line": 2,
+        "outputSoFar": [],
         "prints": null,
-        "outputSoFar": [
-          "0",
-          "1",
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while i < 4:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
-        ],
-        "skipped": true
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [
-          "0",
-          "1",
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while i < 4:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
+          "0"
         ],
-        "skipped": true
+        "prints": "0",
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 5,
         "outputSoFar": [
-          "0",
-          "1",
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while i < 4:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
+          "0"
         ],
-        "skipped": true
+        "prints": null,
+        "hasError": false
       },
       {
+        "line": 1,
+        "outputSoFar": [
+          "0"
+        ],
         "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": "1",
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "1"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "0",
           "1",
           "Traceback (most recent call last):",
-          "  File \"main.py\", line 2, in <module>",
-          "    while i < 4:",
-          "TimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)"
+          "  File \"main.py\", line 4, in <module>",
+          "    continue",
+          "TimeoutError: Límite de pasos de ejecución excedido (bucle infinito)"
         ],
-        "skipped": true
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    continue\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
+        "hasError": true,
+        "errorType": "TimeoutError",
+        "errorLine": 3
       }
     ],
-    "totalOutput": "0\n1\nTraceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while i < 4:\nTimeoutError: Límite de tiempo de ejecución excedido (bucle infinito)",
+    "totalOutput": "0\n1\nTraceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    continue\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
     "hasError": true,
-    "errorLine": 1,
+    "errorLine": 3,
     "errorType": "TimeoutError"
   },
   "for n in [1, 2, 3, 4]:\n    if n % 2 != 0:\n        continue\n    print(f\"Par detectado: {n}\")": {
@@ -5077,26 +8950,99 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Par detectado: 2\nPar detectado: 4",
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "Par detectado: 2"
+        ],
+        "prints": "Par detectado: 2",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Par detectado: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Par detectado: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Par detectado: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Par detectado: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Par detectado: 2"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
         "outputSoFar": [
           "Par detectado: 2",
           "Par detectado: 4"
         ],
+        "prints": "Par detectado: 4",
+        "hasError": false
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "Par detectado: 2",
+          "Par detectado: 4"
+        ],
+        "prints": null,
         "hasError": false
       }
     ],
@@ -5116,35 +9062,113 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Consonantes: 3",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
         "outputSoFar": [
           "Consonantes: 3"
         ],
+        "prints": "Consonantes: 3",
         "hasError": false
       }
     ],
@@ -5167,50 +9191,65 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Válidas: 1",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
         "outputSoFar": [
           "Válidas: 1"
         ],
+        "prints": "Válidas: 1",
         "hasError": false
       }
     ],
@@ -5233,50 +9272,149 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Válidas: 4",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
         "outputSoFar": [
           "Válidas: 4"
         ],
+        "prints": "Válidas: 4",
         "hasError": false
       }
     ],
@@ -5299,50 +9437,113 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Válidas: 2",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
         "outputSoFar": [
           "Válidas: 2"
         ],
+        "prints": "Válidas: 2",
         "hasError": false
       }
     ],
@@ -5365,50 +9566,65 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Válidas: 1",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
         "outputSoFar": [
           "Válidas: 1"
         ],
+        "prints": "Válidas: 1",
         "hasError": false
       }
     ],
@@ -5427,33 +9643,34 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "A",
-        "outputSoFar": [
-          "A"
-        ],
         "hasError": false
       },
       {
-        "prints": "C",
+        "line": 1,
+        "outputSoFar": [
+          "A"
+        ],
+        "prints": "A",
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "A"
+        ],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
         "outputSoFar": [
           "A",
           "C"
         ],
+        "prints": "C",
         "hasError": false
       }
     ],
@@ -5474,40 +9691,77 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Carga total: 350",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
         "outputSoFar": [
           "Carga total: 350"
         ],
+        "prints": "Carga total: 350",
         "hasError": false
       }
     ],
@@ -5530,50 +9784,119 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "3 120",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
         "outputSoFar": [
           "3 120"
         ],
+        "prints": "3 120",
         "hasError": false
       }
     ],
@@ -5593,35 +9916,77 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Total neto: 29",
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
         "outputSoFar": [
           "Total neto: 29"
         ],
+        "prints": "Total neto: 29",
         "hasError": false
       }
     ],
@@ -5641,35 +10006,101 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Temperatura máxima: 41°C",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
         "outputSoFar": [
           "Temperatura máxima: 41°C"
         ],
+        "prints": "Temperatura máxima: 41°C",
         "hasError": false
       }
     ],
@@ -5689,35 +10120,107 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Aprobados: 3",
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
         "outputSoFar": [
           "Aprobados: 3"
         ],
+        "prints": "Aprobados: 3",
         "hasError": false
       }
     ],
@@ -5741,55 +10244,149 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Candidato 1: 0 de 1",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 9,
         "outputSoFar": [
           "Candidato 1: 0 de 1"
         ],
+        "prints": "Candidato 1: 0 de 1",
         "hasError": false
       }
     ],
@@ -5813,55 +10410,161 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Candidato 1: 3 de 4",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 9,
         "outputSoFar": [
           "Candidato 1: 3 de 4"
         ],
+        "prints": "Candidato 1: 3 de 4",
         "hasError": false
       }
     ],
@@ -5885,55 +10588,191 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Candidato 1: 3 de 5",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 9,
         "outputSoFar": [
           "Candidato 1: 3 de 5"
         ],
+        "prints": "Candidato 1: 3 de 5",
         "hasError": false
       }
     ],
@@ -5957,55 +10796,47 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": "Candidato 1: 0 de 0",
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false
+      },
+      {
+        "line": 9,
         "outputSoFar": [
           "Candidato 1: 0 de 0"
         ],
+        "prints": "Candidato 1: 0 de 0",
         "hasError": false
       }
     ],
@@ -6031,65 +10862,53 @@ window.BAKED_TRACES = {
     ],
     "lineTrace": [
       {
-        "prints": null,
+        "line": 0,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 1,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 2,
         "outputSoFar": [],
+        "prints": null,
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 3,
         "outputSoFar": [],
-        "skipped": false
-      },
-      {
         "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "hasError": false
       },
       {
-        "prints": null,
+        "line": 4,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 5,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": null,
+        "line": 8,
         "outputSoFar": [],
-        "skipped": false
+        "prints": null,
+        "hasError": false
       },
       {
-        "prints": "Sin datos",
+        "line": 11,
         "outputSoFar": [
           "Sin datos"
         ],
+        "prints": "Sin datos",
         "hasError": false
       }
     ],

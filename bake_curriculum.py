@@ -76,13 +76,6 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
     from verify_curriculum import extract_inputs_from_code_and_output
     inputs = extract_inputs_from_code_and_output(clean_code, expected_output)
 
-    scope = {}
-    captured_stdout_at_line = {}
-    stdout_buffer = ""
-    has_runtime_error = False
-    error_line = None
-    error_type = None
-
     class EchoStdin:
         def __init__(self, in_list):
             self.inputs = list(in_list)
@@ -92,108 +85,133 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
             return "20\n"
 
     echo_stdin = EchoStdin(inputs)
-    
-    for stmt in tree.body:
-        buf = io.StringIO()
-        old_stdout = sys.stdout
-        old_stdin = sys.stdin
-        sys.stdout = buf
 
-        class StdinWithEcho:
-            def readline(self, *args):
-                line = echo_stdin.readline(*args)
-                if line:
-                    buf.write(line)
-                return line
+    scope = {}
+    buf = io.StringIO()
+    steps = []
+    last_pos = 0
+    MAX_STEPS = 60
 
-        sys.stdin = StdinWithEcho()
-        stmt_error = None
-        has_timer = hasattr(signal, "SIGALRM")
+    def tracer(frame, event, arg):
+        nonlocal last_pos
+        if frame.f_code.co_filename == "main.py" and event == "line":
+            if len(steps) >= MAX_STEPS:
+                raise InfiniteLoopTimeout("Límite de pasos de ejecución excedido (bucle infinito)")
+            cur_val = buf.getvalue()
+            if steps:
+                steps[-1]["outputSoFar"] = [l for l in cur_val.split("\n") if l]
+                steps[-1]["prints"] = cur_val[last_pos:].rstrip("\n") if cur_val[last_pos:] else None
+                last_pos = len(cur_val)
+            lineno = max(0, min(frame.f_lineno - 1, len(lines) - 1))
+            steps.append({
+                "line": lineno,
+                "outputSoFar": [l for l in cur_val.split("\n") if l],
+                "prints": None,
+                "hasError": False
+            })
+        return tracer
+
+    old_stdout = sys.stdout
+    old_stdin = sys.stdin
+    sys.stdout = buf
+
+    class StdinWithEcho:
+        def __init__(self, echo_source, out_buf):
+            self.echo_source = echo_source
+            self.out_buf = out_buf
+        def readline(self, *args):
+            line = self.echo_source.readline(*args)
+            if line:
+                self.out_buf.write(line)
+            return line
+
+    sys.stdin = StdinWithEcho(echo_stdin, buf)
+    stmt_error = None
+    has_timer = hasattr(signal, "SIGALRM")
+    if has_timer:
+        old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
+        signal.alarm(1)
+
+    sys.settrace(tracer)
+    try:
+        compiled = compile(clean_code, "main.py", "exec")
+        exec(compiled, scope)
+    except InfiniteLoopTimeout as te:
+        stmt_error = TimeoutError(str(te))
+    except Exception as e:
+        stmt_error = e
+    finally:
+        sys.settrace(None)
         if has_timer:
-            old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
-            signal.alarm(1)
-        try:
-            compiled = compile(ast.Module(body=[stmt], type_ignores=[]), "main.py", "exec")
-            exec(compiled, scope)
-        except InfiniteLoopTimeout as te:
-            stmt_error = TimeoutError(str(te))
-        except Exception as e:
-            stmt_error = e
-        finally:
-            if has_timer:
-                signal.alarm(0)
-                signal.signal(signal.SIGALRM, old_handler)
-            sys.stdout = old_stdout
-            sys.stdin = old_stdin
+            signal.alarm(0)
+            signal.signal(signal.SIGALRM, old_handler)
+        sys.stdout = old_stdout
+        sys.stdin = old_stdin
 
-        out = buf.getvalue()
-        if out:
-            out_lines = out.split("\n")
-            if len(out_lines) > 20:
-                out = "\n".join(out_lines[:20]) + "\n"
-            stdout_buffer += out
+        cur_val = buf.getvalue()
+        if steps:
+            steps[-1]["outputSoFar"] = [l for l in cur_val.split("\n") if l]
+            steps[-1]["prints"] = cur_val[last_pos:].rstrip("\n") if cur_val[last_pos:] else None
 
-        stmt_end_idx = stmt.end_lineno - 1
+    has_runtime_error = False
+    error_line = None
+    error_type = None
 
-        if stmt_error:
-            has_runtime_error = True
-            error_line = stmt.lineno - 1
-            error_type = type(stmt_error).__name__
-            code_line_str = lines[stmt.lineno - 1].strip() if 0 <= stmt.lineno - 1 < len(lines) else ""
-            error_msg = f"Traceback (most recent call last):\n  File \"main.py\", line {stmt.lineno}, in <module>\n    {code_line_str}\n{type(stmt_error).__name__}: {stmt_error}"
-            
-            buf_lines = [l for l in stdout_buffer.split("\n") if l]
-            if len(buf_lines) > 5:
-                buf_lines = buf_lines[:5] + [f"... ({len(buf_lines) - 5} salidas repetidas omitidas)"]
-            stdout_buffer = "\n".join(buf_lines)
+    if stmt_error:
+        has_runtime_error = True
+        error_type = type(stmt_error).__name__
+        tb = stmt_error.__traceback__
+        while tb and tb.tb_next:
+            tb = tb.tb_next
+        if tb and tb.tb_frame.f_code.co_filename == "main.py":
+            error_line = max(0, min(tb.tb_lineno - 1, len(lines) - 1))
+        elif steps:
+            error_line = steps[-1]["line"]
+        else:
+            error_line = 0
 
-            if stdout_buffer:
-                full_out = stdout_buffer.rstrip("\n") + "\n" + error_msg
-            else:
-                full_out = error_msg
+        code_line_str = lines[error_line].strip() if 0 <= error_line < len(lines) else ""
+        error_msg = f"Traceback (most recent call last):\n  File \"main.py\", line {error_line + 1}, in <module>\n    {code_line_str}\n{error_type}: {stmt_error}"
 
-            stdout_buffer = full_out
-            lines_so_far = stdout_buffer.split("\n")
-            captured_stdout_at_line[error_line] = {
+        buf_lines = [l for l in buf.getvalue().split("\n") if l]
+        if len(buf_lines) > 5:
+            buf_lines = buf_lines[:5] + [f"... ({len(buf_lines) - 5} salidas repetidas omitidas)"]
+        stdout_buffer = "\n".join(buf_lines)
+        if stdout_buffer:
+            stdout_buffer = stdout_buffer + "\n" + error_msg
+        else:
+            stdout_buffer = error_msg
+
+        if steps:
+            steps[-1]["hasError"] = True
+            steps[-1]["errorType"] = error_type
+            steps[-1]["errorLine"] = error_line
+            steps[-1]["prints"] = error_msg
+            steps[-1]["outputSoFar"] = stdout_buffer.split("\n")
+        else:
+            steps.append({
+                "line": error_line,
                 "prints": error_msg,
-                "outputSoFar": lines_so_far,
+                "outputSoFar": stdout_buffer.split("\n"),
                 "hasError": True,
                 "errorType": error_type,
                 "errorLine": error_line
-            }
-            break
-        else:
-            lines_so_far = stdout_buffer.rstrip("\n").split("\n") if stdout_buffer else []
-            captured_stdout_at_line[stmt_end_idx] = {
-                "prints": out.rstrip("\n") if out.endswith("\n") else (out if out else None),
-                "outputSoFar": lines_so_far
-            }
-
-    line_trace = []
-    current_output = []
-    encountered_error = False
-
-    for idx in range(len(lines)):
-        entry = captured_stdout_at_line.get(idx)
-        if entry:
-            current_output = list(entry["outputSoFar"])
-            line_trace.append({
-                "prints": entry["prints"],
-                "outputSoFar": current_output,
-                "hasError": entry.get("hasError", False)
             })
-            if entry.get("hasError"):
-                encountered_error = True
-        else:
-            line_trace.append({
+    else:
+        stdout_buffer = buf.getvalue()
+
+    if not steps:
+        for idx in range(len(lines)):
+            steps.append({
+                "line": idx,
                 "prints": None,
-                "outputSoFar": list(current_output),
-                "skipped": encountered_error
+                "outputSoFar": [],
+                "hasError": False
             })
 
     return {
         "lines": lines,
-        "lineTrace": line_trace,
+        "lineTrace": steps,
         "totalOutput": stdout_buffer.rstrip("\n"),
         "hasError": has_runtime_error,
         "errorLine": error_line if has_runtime_error else None,
