@@ -3381,12 +3381,12 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "total = 0\nfor gasto in [15000, 22000, 8000]:\n    total = 0\n    total += gasto\nprint(\"Total:\", total)": {
+  "total = 0\ntotal = 15000\ntotal = 22000\ntotal = 8000\nprint(\"Total:\", total)": {
     "lines": [
       "total = 0",
-      "for gasto in [15000, 22000, 8000]:",
-      "    total = 0",
-      "    total += gasto",
+      "total = 15000",
+      "total = 22000",
+      "total = 8000",
       "print(\"Total:\", total)"
     ],
     "lineTrace": [
@@ -3398,12 +3398,12 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "skipped": false
+        "hasError": false
       },
       {
         "prints": null,
         "outputSoFar": [],
-        "skipped": false
+        "hasError": false
       },
       {
         "prints": null,
@@ -3459,13 +3459,20 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "cant = 0\nsuma = 0\nfor peso in [10, 20, 30]:\n    cant += 1\n    suma += peso\nprint(cant, suma)": {
+  "cant = 0\nsuma = 0\n\ncant += 1\nsuma += 10\n\ncant += 1\nsuma += 20\n\ncant += 1\nsuma += 30\n\nprint(cant, suma)": {
     "lines": [
       "cant = 0",
       "suma = 0",
-      "for peso in [10, 20, 30]:",
-      "    cant += 1",
-      "    suma += peso",
+      "",
+      "cant += 1",
+      "suma += 10",
+      "",
+      "cant += 1",
+      "suma += 20",
+      "",
+      "cant += 1",
+      "suma += 30",
+      "",
       "print(cant, suma)"
     ],
     "lineTrace": [
@@ -3487,12 +3494,47 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
         "skipped": false
       },
       {
         "prints": null,
         "outputSoFar": [],
         "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
       },
       {
         "prints": "3 60",
@@ -3507,15 +3549,16 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos = 1\n    total_plata = peaje\nprint(vehiculos, total_plata)": {
+  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos = 1\nrecaudo = 18000\n\nprint(vehiculos, recaudo)": {
     "lines": [
-      "vehiculos = 0",
-      "total_plata = 0",
-      "tarifas = [12000, 18000, 12000]",
-      "for peaje in tarifas:",
-      "    vehiculos = 1",
-      "    total_plata = peaje",
-      "print(vehiculos, total_plata)"
+      "vehiculos = 1",
+      "recaudo = 12000",
+      "",
+      "# Llega un segundo vehículo con tarifa de 18000",
+      "vehiculos = 1",
+      "recaudo = 18000",
+      "",
+      "print(vehiculos, recaudo)"
     ],
     "lineTrace": [
       {
@@ -3531,11 +3574,6 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "skipped": false
       },
       {
@@ -3549,27 +3587,38 @@ window.BAKED_TRACES = {
         "hasError": false
       },
       {
-        "prints": "1 12000",
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "1 18000",
         "outputSoFar": [
-          "1 12000"
+          "1 18000"
         ],
         "hasError": false
       }
     ],
-    "totalOutput": "1 12000",
+    "totalOutput": "1 18000",
     "hasError": false,
     "errorLine": null,
     "errorType": null
   },
-  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos += 1\n    total_plata = peaje\nprint(vehiculos, total_plata)": {
+  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos += 1\nrecaudo = 18000\n\nprint(vehiculos, recaudo)": {
     "lines": [
-      "vehiculos = 0",
-      "total_plata = 0",
-      "tarifas = [12000, 18000, 12000]",
-      "for peaje in tarifas:",
-      "    vehiculos += 1",
-      "    total_plata = peaje",
-      "print(vehiculos, total_plata)"
+      "vehiculos = 1",
+      "recaudo = 12000",
+      "",
+      "# Llega un segundo vehículo con tarifa de 18000",
+      "vehiculos += 1",
+      "recaudo = 18000",
+      "",
+      "print(vehiculos, recaudo)"
     ],
     "lineTrace": [
       {
@@ -3585,11 +3634,6 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "skipped": false
       },
       {
@@ -3603,27 +3647,38 @@ window.BAKED_TRACES = {
         "hasError": false
       },
       {
-        "prints": "3 12000",
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "2 18000",
         "outputSoFar": [
-          "3 12000"
+          "2 18000"
         ],
         "hasError": false
       }
     ],
-    "totalOutput": "3 12000",
+    "totalOutput": "2 18000",
     "hasError": false,
     "errorLine": null,
     "errorType": null
   },
-  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos += 1\n    total_plata += peaje\nprint(vehiculos, total_plata)": {
+  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos += 1\nrecaudo += 18000\n\nprint(vehiculos, recaudo)": {
     "lines": [
-      "vehiculos = 0",
-      "total_plata = 0",
-      "tarifas = [12000, 18000, 12000]",
-      "for peaje in tarifas:",
-      "    vehiculos += 1",
-      "    total_plata += peaje",
-      "print(vehiculos, total_plata)"
+      "vehiculos = 1",
+      "recaudo = 12000",
+      "",
+      "# Llega un segundo vehículo con tarifa de 18000",
+      "vehiculos += 1",
+      "recaudo += 18000",
+      "",
+      "print(vehiculos, recaudo)"
     ],
     "lineTrace": [
       {
@@ -3639,11 +3694,6 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "skipped": false
       },
       {
@@ -3657,27 +3707,38 @@ window.BAKED_TRACES = {
         "hasError": false
       },
       {
-        "prints": "3 42000",
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "2 30000",
         "outputSoFar": [
-          "3 42000"
+          "2 30000"
         ],
         "hasError": false
       }
     ],
-    "totalOutput": "3 42000",
+    "totalOutput": "2 30000",
     "hasError": false,
     "errorLine": null,
     "errorType": null
   },
-  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos = 1\n    total_plata += peaje\nprint(vehiculos, total_plata)": {
+  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos = 1\nrecaudo += 18000\n\nprint(vehiculos, recaudo)": {
     "lines": [
-      "vehiculos = 0",
-      "total_plata = 0",
-      "tarifas = [12000, 18000, 12000]",
-      "for peaje in tarifas:",
-      "    vehiculos = 1",
-      "    total_plata += peaje",
-      "print(vehiculos, total_plata)"
+      "vehiculos = 1",
+      "recaudo = 12000",
+      "",
+      "# Llega un segundo vehículo con tarifa de 18000",
+      "vehiculos = 1",
+      "recaudo += 18000",
+      "",
+      "print(vehiculos, recaudo)"
     ],
     "lineTrace": [
       {
@@ -3693,11 +3754,6 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "skipped": false
       },
       {
@@ -3711,14 +3767,24 @@ window.BAKED_TRACES = {
         "hasError": false
       },
       {
-        "prints": "1 42000",
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "1 30000",
         "outputSoFar": [
-          "1 42000"
+          "1 30000"
         ],
         "hasError": false
       }
     ],
-    "totalOutput": "1 42000",
+    "totalOutput": "1 30000",
     "hasError": false,
     "errorLine": null,
     "errorType": null

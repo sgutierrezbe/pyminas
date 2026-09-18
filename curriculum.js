@@ -1546,36 +1546,36 @@ const CURRICULUM = {
                         "type": "predict",
                         "partLabel": "Paso 3 · Spot the Bug",
                         "title": "El acumulador que no retiene",
-                        "code": "total = 0\nfor gasto in [15000, 22000, 8000]:\n    total = 0\n    total += gasto\nprint(\"Total:\", total)",
-                        "question": "El programa imprime Total: 8000 en vez de 45000. ¿Cuál es la causa exacta del error?",
-                        "theory": "Fíjate bien en qué líneas están dentro del bloque indentado del ciclo.",
+                        "code": "total = 0\ntotal = 15000\ntotal = 22000\ntotal = 8000\nprint(\"Total:\", total)",
+                        "question": "Queríamos calcular el total de tres gastos ($15.000, $22.000 y $8.000), pero el programa imprime Total: 8000 en vez de 45000. ¿Cuál es la causa exacta del error?",
+                        "theory": "Recuerda la diferencia fundamental entre el operador de asignación simple (=) y el operador de acumulación (+=).",
                         "options": [
                             {
                                 "id": "A",
-                                "text": "El operador += no funciona con números enteros dentro de un ciclo.",
+                                "text": "El operador = solo está permitido para números negativos o textos.",
                                 "isCorrect": false,
-                                "whyIncorrect": "El operador '+=' funciona perfectamente con números enteros en cualquier parte del código."
+                                "whyIncorrect": "El operador '=' funciona con cualquier tipo de dato numérico; el fallo es que sobrescribe en lugar de sumar."
                             },
                             {
                                 "id": "B",
-                                "text": "Falta convertir total con la función int() antes de imprimirlo en terminal.",
+                                "text": "Falta convertir la variable total con la función int() antes de imprimir.",
                                 "isCorrect": false,
-                                "whyIncorrect": "La variable ya es un número entero; no requiere ninguna conversión de tipo de dato."
+                                "whyIncorrect": "La variable ya contiene números enteros; no requiere ninguna conversión de tipo de dato."
                             },
                             {
                                 "id": "C",
-                                "text": "La variable gasto no puede recibir valores de una lista de corchetes.",
+                                "text": "La variable total debió nombrarse obligatoriamente suma para poder acumular.",
                                 "isCorrect": false,
-                                "whyIncorrect": "El ciclo for recorre la lista correctamente asignando cada elemento a la variable 'gasto'."
+                                "whyIncorrect": "El nombre de la variable es libre; lo que determina la acumulación es usar el operador '+='."
                             },
                             {
                                 "id": "D",
-                                "text": "La línea total = 0 está dentro del ciclo, reinicializando la suma en cada vuelta y borrando lo acumulado.",
+                                "text": "Se usó asignación simple (=) en vez de acumulación (+=), sobreescribiendo y borrando los montos previos.",
                                 "isCorrect": true
                             }
                         ],
-                        "correctionTip": "Al poner total = 0 dentro del for, en cada vuelta se borra el total acumulado y solo sobrevive el último gasto.",
-                        "fullAnswerExplanation": "¡Exacto! Los acumuladores y contadores SIEMPRE deben inicializarse en 0 antes de que comience el ciclo; de lo contrario, se resetean en cada iteración."
+                        "correctionTip": "Al usar '=' sobreescribes la variable en cada línea. Para acumular montos debes usar '+=': total += gasto.",
+                        "fullAnswerExplanation": "¡Exacto! El operador '=' reemplaza por completo el valor previo en memoria. Para acumular sin perder el historial anterior, se debe usar '+=': total += gasto."
                     },
                     {
                         "type": "explanation",
@@ -1596,9 +1596,9 @@ const CURRICULUM = {
                         "type": "predict",
                         "partLabel": "Paso 5 · Trazado simultáneo",
                         "title": "Actualización simultánea",
-                        "code": "cant = 0\nsuma = 0\nfor peso in [10, 20, 30]:\n    cant += 1\n    suma += peso\nprint(cant, suma)",
-                        "question": "¿Qué valores imprime exactamente Python al finalizar el ciclo?",
-                        "theory": "cant cuenta de uno en uno; suma va acumulando cada peso individual.",
+                        "code": "cant = 0\nsuma = 0\n\ncant += 1\nsuma += 10\n\ncant += 1\nsuma += 20\n\ncant += 1\nsuma += 30\n\nprint(cant, suma)",
+                        "question": "Sigue los valores de cant y suma paso a paso a medida que llegan los tres paquetes. ¿Qué valores imprime exactamente Python al final?",
+                        "theory": "cant actúa como contador (suma 1 en 1) y suma actúa como acumulador (suma el peso de cada paquete).",
                         "options": [
                             {
                                 "id": "A",
@@ -1609,7 +1609,7 @@ const CURRICULUM = {
                                 "id": "B",
                                 "text": "3 30",
                                 "isCorrect": false,
-                                "whyIncorrect": "Olvidaste acumular los dos primeros elementos (10 y 20); la suma total es 10 + 20 + 30 = 60."
+                                "whyIncorrect": "Olvidaste acumular los dos primeros paquetes (10 y 20); la suma total es 10 + 20 + 30 = 60."
                             },
                             {
                                 "id": "C",
@@ -1621,20 +1621,20 @@ const CURRICULUM = {
                                 "id": "D",
                                 "text": "4 60",
                                 "isCorrect": false,
-                                "whyIncorrect": "El ciclo solo tiene 3 elementos en la lista, por lo que 'cant' se incrementa exactamente 3 veces."
+                                "whyIncorrect": "Se ejecutaron exactamente 3 incrementos de una unidad en cant (1 + 1 + 1 = 3), no 4."
                             }
                         ],
-                        "correctionTip": "cant cuenta 3 elementos (cant=3); suma acumula 10 + 20 + 30 = 60.",
-                        "fullAnswerExplanation": "¡Impecable! cant cuenta 3 vueltas (1 + 1 + 1 = 3) y suma acumula los pesos (10 + 20 + 30 = 60)."
+                        "correctionTip": "cant suma 1 + 1 + 1 = 3; suma acumula 10 + 20 + 30 = 60. Imprime 3 60.",
+                        "fullAnswerExplanation": "¡Impecable! cant cuenta 3 registros (1 + 1 + 1 = 3) y suma acumula los pesos individuales (10 + 20 + 30 = 60)."
                     },
                     {
                         "type": "code_sandbox",
                         "partLabel": "Paso 6 · Práctica guiada",
                         "title": "Caja de peaje vehicular",
-                        "instruction": "Completa las dos ranuras con el operador adecuado para que vehiculos cuente de 1 en 1 y total_plata acumule las tarifas:",
-                        "starterCode": "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos ___ 1\n    total_plata ___ peaje\nprint(vehiculos, total_plata)",
+                        "instruction": "Completa las dos ranuras con el operador adecuado para que vehiculos cuente de 1 en 1 y recaudo acumule las tarifas cobradas:",
+                        "starterCode": "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos ___ 1\nrecaudo ___ 18000\n\nprint(vehiculos, recaudo)",
                         "slotMarker": "___",
-                        "expectedOutput": "3 42000",
+                        "expectedOutput": "2 30000",
                         "options": [
                             {
                                 "id": "A",
@@ -1645,7 +1645,7 @@ const CURRICULUM = {
                                 "label": "=  y  =",
                                 "code": "=  y  =",
                                 "isCorrect": false,
-                                "whyIncorrect": "El operador '=' sobrescribe el valor en vez de acumularlo; dejaría vehiculos=1 y total_plata=12000."
+                                "whyIncorrect": "El operador '=' sobreescribe las variables en vez de acumular; dejaría vehiculos=1 y recaudo=18000."
                             },
                             {
                                 "id": "B",
@@ -1656,7 +1656,7 @@ const CURRICULUM = {
                                 "label": "+=  y  =",
                                 "code": "+=  y  =",
                                 "isCorrect": false,
-                                "whyIncorrect": "Al usar '=' en total_plata, solo conservarás la última tarifa cobrada en lugar de sumarlas todas."
+                                "whyIncorrect": "Al usar '=' en recaudo, se borran los 12000 anteriores y solo sobrevive la última tarifa de 18000."
                             },
                             {
                                 "id": "C",
@@ -1667,7 +1667,7 @@ const CURRICULUM = {
                                 "label": "+=  y  +=",
                                 "code": "+=  y  +=",
                                 "isCorrect": true,
-                                "explanation": "¡Excelente! Ambos requieren += para que el valor de cada iteración se agregue a la memoria acumulada previa."
+                                "explanation": "¡Excelente! Ambos requieren += para que el nuevo valor se agregue a la memoria acumulada previa."
                             },
                             {
                                 "id": "D",
@@ -1678,7 +1678,7 @@ const CURRICULUM = {
                                 "label": "=  y  +=",
                                 "code": "=  y  +=",
                                 "isCorrect": false,
-                                "whyIncorrect": "Al usar '=' en vehiculos, la cuenta siempre se sobreescribirá en 1 al salir del ciclo."
+                                "whyIncorrect": "Al usar '=' en vehiculos, el contador se reinicia a 1 en lugar de avanzar al segundo auto (2)."
                             }
                         ]
                     },
