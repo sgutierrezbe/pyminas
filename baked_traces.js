@@ -3258,591 +3258,6 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "pasajeros = 0\nrecaudo = 0\n\npasajeros += 1\nrecaudo += 3200\n\npasajeros += 1\nrecaudo += 3200\n\nprint(f\"Total personas: {pasajeros}\")\nprint(f\"Total dinero: ${recaudo}\")": {
-    "lines": [
-      "pasajeros = 0",
-      "recaudo = 0",
-      "",
-      "pasajeros += 1",
-      "recaudo += 3200",
-      "",
-      "pasajeros += 1",
-      "recaudo += 3200",
-      "",
-      "print(f\"Total personas: {pasajeros}\")",
-      "print(f\"Total dinero: ${recaudo}\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Total personas: 2",
-        "outputSoFar": [
-          "Total personas: 2"
-        ],
-        "hasError": false
-      },
-      {
-        "prints": "Total dinero: $6400",
-        "outputSoFar": [
-          "Total personas: 2",
-          "Total dinero: $6400"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "Total personas: 2\nTotal dinero: $6400",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "piezas = 0\npiezas += 1\npiezas += 1\npiezas += 2\nprint(piezas)": {
-    "lines": [
-      "piezas = 0",
-      "piezas += 1",
-      "piezas += 1",
-      "piezas += 2",
-      "print(piezas)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "4",
-        "outputSoFar": [
-          "4"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "4",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "total = 0\ntotal = 15000\ntotal = 22000\ntotal = 8000\nprint(\"Total:\", total)": {
-    "lines": [
-      "total = 0",
-      "total = 15000",
-      "total = 22000",
-      "total = 8000",
-      "print(\"Total:\", total)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "Total: 8000",
-        "outputSoFar": [
-          "Total: 8000"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "Total: 8000",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "suma_notas = 4.2 + 3.8 + 4.6\ncantidad = 3\npromedio = suma_notas / cantidad\nprint(f\"Promedio: {promedio:.1f}\")": {
-    "lines": [
-      "suma_notas = 4.2 + 3.8 + 4.6",
-      "cantidad = 3",
-      "promedio = suma_notas / cantidad",
-      "print(f\"Promedio: {promedio:.1f}\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "Promedio: 4.2",
-        "outputSoFar": [
-          "Promedio: 4.2"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "Promedio: 4.2",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "cant = 0\nsuma = 0\n\ncant += 1\nsuma += 10\n\ncant += 1\nsuma += 20\n\ncant += 1\nsuma += 30\n\nprint(cant, suma)": {
-    "lines": [
-      "cant = 0",
-      "suma = 0",
-      "",
-      "cant += 1",
-      "suma += 10",
-      "",
-      "cant += 1",
-      "suma += 20",
-      "",
-      "cant += 1",
-      "suma += 30",
-      "",
-      "print(cant, suma)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "3 60",
-        "outputSoFar": [
-          "3 60"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "3 60",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos = 1\nrecaudo = 18000\n\nprint(vehiculos, recaudo)": {
-    "lines": [
-      "vehiculos = 1",
-      "recaudo = 12000",
-      "",
-      "# Llega un segundo vehículo con tarifa de 18000",
-      "vehiculos = 1",
-      "recaudo = 18000",
-      "",
-      "print(vehiculos, recaudo)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "1 18000",
-        "outputSoFar": [
-          "1 18000"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "1 18000",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos += 1\nrecaudo = 18000\n\nprint(vehiculos, recaudo)": {
-    "lines": [
-      "vehiculos = 1",
-      "recaudo = 12000",
-      "",
-      "# Llega un segundo vehículo con tarifa de 18000",
-      "vehiculos += 1",
-      "recaudo = 18000",
-      "",
-      "print(vehiculos, recaudo)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "2 18000",
-        "outputSoFar": [
-          "2 18000"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "2 18000",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos += 1\nrecaudo += 18000\n\nprint(vehiculos, recaudo)": {
-    "lines": [
-      "vehiculos = 1",
-      "recaudo = 12000",
-      "",
-      "# Llega un segundo vehículo con tarifa de 18000",
-      "vehiculos += 1",
-      "recaudo += 18000",
-      "",
-      "print(vehiculos, recaudo)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "2 30000",
-        "outputSoFar": [
-          "2 30000"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "2 30000",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "vehiculos = 1\nrecaudo = 12000\n\n# Llega un segundo vehículo con tarifa de 18000\nvehiculos = 1\nrecaudo += 18000\n\nprint(vehiculos, recaudo)": {
-    "lines": [
-      "vehiculos = 1",
-      "recaudo = 12000",
-      "",
-      "# Llega un segundo vehículo con tarifa de 18000",
-      "vehiculos = 1",
-      "recaudo += 18000",
-      "",
-      "print(vehiculos, recaudo)"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "1 30000",
-        "outputSoFar": [
-          "1 30000"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "1 30000",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "contador = 0\nacumulador = 0\nif contador > 0:\n    promedio = acumulador / contador\n    print(\"Promedio:\", promedio)\nelse:\n    print(\"Sin registros\")": {
-    "lines": [
-      "contador = 0",
-      "acumulador = 0",
-      "if contador > 0:",
-      "    promedio = acumulador / contador",
-      "    print(\"Promedio:\", promedio)",
-      "else:",
-      "    print(\"Sin registros\")"
-    ],
-    "lineTrace": [
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": "Sin registros",
-        "outputSoFar": [
-          "Sin registros"
-        ],
-        "hasError": false
-      }
-    ],
-    "totalOutput": "Sin registros",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
   "minerales = [\"oro\", \"plata\", \"cobre\"]\nfor mineral in minerales:\n    print(f\"Muestra: {mineral}\")": {
     "lines": [
       "minerales = [\"oro\", \"plata\", \"cobre\"]",
@@ -3955,14 +3370,12 @@ window.BAKED_TRACES = {
     "errorLine": 1,
     "errorType": "TypeError"
   },
-  "voltajes = [110, 240, 115, 440]\naltos = 0\nfor v in voltajes:\n    if v > 200:\n        altos += 1\nprint(f\"Líneas de alto voltaje: {altos}\")": {
+  "voltajes = [110, 240, 115, 440]\nfor v in voltajes:\n    if v > 200:\n        print(f\"Alerta: {v}V\")": {
     "lines": [
       "voltajes = [110, 240, 115, 440]",
-      "altos = 0",
       "for v in voltajes:",
       "    if v > 200:",
-      "        altos += 1",
-      "print(f\"Líneas de alto voltaje: {altos}\")"
+      "        print(f\"Alerta: {v}V\")"
     ],
     "lineTrace": [
       {
@@ -3973,11 +3386,6 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "skipped": false
       },
       {
@@ -3986,31 +3394,25 @@ window.BAKED_TRACES = {
         "skipped": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "Líneas de alto voltaje: 2",
+        "prints": "Alerta: 240V\nAlerta: 440V",
         "outputSoFar": [
-          "Líneas de alto voltaje: 2"
+          "Alerta: 240V",
+          "Alerta: 440V"
         ],
         "hasError": false
       }
     ],
-    "totalOutput": "Líneas de alto voltaje: 2",
+    "totalOutput": "Alerta: 240V\nAlerta: 440V",
     "hasError": false,
     "errorLine": null,
     "errorType": null
   },
-  "valores = [10, -5, 20, -3]\npositivos = 0\nfor n in valores:\n    if n > 0:\n        positivos += n\nprint(\"Suma positivos:\", positivos)": {
+  "numeros = [4, 15, 8, 23]\nfor n in numeros:\n    if n > 10:\n        print(n)": {
     "lines": [
-      "valores = [10, -5, 20, -3]",
-      "positivos = 0",
-      "for n in valores:",
-      "    if n > 0:",
-      "        positivos += n",
-      "print(\"Suma positivos:\", positivos)"
+      "numeros = [4, 15, 8, 23]",
+      "for n in numeros:",
+      "    if n > 10:",
+      "        print(n)"
     ],
     "lineTrace": [
       {
@@ -4021,11 +3423,6 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "skipped": false
       },
       {
@@ -4034,31 +3431,24 @@ window.BAKED_TRACES = {
         "skipped": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "Suma positivos: 30",
+        "prints": "15\n23",
         "outputSoFar": [
-          "Suma positivos: 30"
+          "15",
+          "23"
         ],
         "hasError": false
       }
     ],
-    "totalOutput": "Suma positivos: 30",
+    "totalOutput": "15\n23",
     "hasError": false,
     "errorLine": null,
     "errorType": null
   },
-  "muestras = [85, 42, 91, 38]\naprobadas = 0\nwhile muestra == muestras:\n    if muestra >= 50:\n        aprobadas += 1\nprint(\"Aprobadas:\", aprobadas)": {
+  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nwhile mineral == muestras:\n    print(\"Muestra:\", mineral)": {
     "lines": [
-      "muestras = [85, 42, 91, 38]",
-      "aprobadas = 0",
-      "while muestra == muestras:",
-      "    if muestra >= 50:",
-      "        aprobadas += 1",
-      "print(\"Aprobadas:\", aprobadas)"
+      "muestras = [\"hierro\", \"cuarzo\", \"oro\"]",
+      "while mineral == muestras:",
+      "    print(\"Muestra:\", mineral)"
     ],
     "lineTrace": [
       {
@@ -4067,17 +3457,12 @@ window.BAKED_TRACES = {
         "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    while muestra == muestras:\nNameError: name 'muestra' is not defined",
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while mineral == muestras:\nNameError: name 'mineral' is not defined",
         "outputSoFar": [
           "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    while muestra == muestras:",
-          "NameError: name 'muestra' is not defined"
+          "  File \"main.py\", line 2, in <module>",
+          "    while mineral == muestras:",
+          "NameError: name 'mineral' is not defined"
         ],
         "hasError": true
       },
@@ -4085,46 +3470,23 @@ window.BAKED_TRACES = {
         "prints": null,
         "outputSoFar": [
           "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    while muestra == muestras:",
-          "NameError: name 'muestra' is not defined"
-        ],
-        "skipped": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    while muestra == muestras:",
-          "NameError: name 'muestra' is not defined"
-        ],
-        "skipped": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    while muestra == muestras:",
-          "NameError: name 'muestra' is not defined"
+          "  File \"main.py\", line 2, in <module>",
+          "    while mineral == muestras:",
+          "NameError: name 'mineral' is not defined"
         ],
         "skipped": true
       }
     ],
-    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    while muestra == muestras:\nNameError: name 'muestra' is not defined",
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while mineral == muestras:\nNameError: name 'mineral' is not defined",
     "hasError": true,
-    "errorLine": 2,
+    "errorLine": 1,
     "errorType": "NameError"
   },
-  "muestras = [85, 42, 91, 38]\naprobadas = 0\nfor muestra in muestras:\n    if muestra >= 50:\n        aprobadas += 1\nprint(\"Aprobadas:\", aprobadas)": {
+  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nfor mineral in muestras:\n    print(\"Muestra:\", mineral)": {
     "lines": [
-      "muestras = [85, 42, 91, 38]",
-      "aprobadas = 0",
-      "for muestra in muestras:",
-      "    if muestra >= 50:",
-      "        aprobadas += 1",
-      "print(\"Aprobadas:\", aprobadas)"
+      "muestras = [\"hierro\", \"cuarzo\", \"oro\"]",
+      "for mineral in muestras:",
+      "    print(\"Muestra:\", mineral)"
     ],
     "lineTrace": [
       {
@@ -4135,44 +3497,28 @@ window.BAKED_TRACES = {
       {
         "prints": null,
         "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
         "skipped": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "skipped": false
-      },
-      {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "Aprobadas: 2",
+        "prints": "Muestra: hierro\nMuestra: cuarzo\nMuestra: oro",
         "outputSoFar": [
-          "Aprobadas: 2"
+          "Muestra: hierro",
+          "Muestra: cuarzo",
+          "Muestra: oro"
         ],
         "hasError": false
       }
     ],
-    "totalOutput": "Aprobadas: 2",
+    "totalOutput": "Muestra: hierro\nMuestra: cuarzo\nMuestra: oro",
     "hasError": false,
     "errorLine": null,
     "errorType": null
   },
-  "muestras = [85, 42, 91, 38]\naprobadas = 0\nfor muestra == muestras:\n    if muestra >= 50:\n        aprobadas += 1\nprint(\"Aprobadas:\", aprobadas)": {
+  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nfor mineral == muestras:\n    print(\"Muestra:\", mineral)": {
     "lines": [
-      "muestras = [85, 42, 91, 38]",
-      "aprobadas = 0",
-      "for muestra == muestras:",
-      "    if muestra >= 50:",
-      "        aprobadas += 1",
-      "print(\"Aprobadas:\", aprobadas)"
+      "muestras = [\"hierro\", \"cuarzo\", \"oro\"]",
+      "for mineral == muestras:",
+      "    print(\"Muestra:\", mineral)"
     ],
     "lineTrace": [
       {
@@ -4180,65 +3526,38 @@ window.BAKED_TRACES = {
         "outputSoFar": []
       },
       {
-        "prints": null,
-        "outputSoFar": []
-      },
-      {
-        "prints": "File \"main.py\", line 3\n    for muestra == muestras:\n                ^^\nSyntaxError: invalid syntax",
+        "prints": "File \"main.py\", line 2\n    for mineral == muestras:\n                ^^\nSyntaxError: invalid syntax",
         "outputSoFar": [
-          "File \"main.py\", line 3",
-          "    for muestra == muestras:",
+          "File \"main.py\", line 2",
+          "    for mineral == muestras:",
           "                ^^",
           "SyntaxError: invalid syntax"
         ],
         "hasError": true,
         "errorType": "SyntaxError",
-        "errorLine": 2
+        "errorLine": 1
       },
       {
         "prints": null,
         "outputSoFar": [
-          "File \"main.py\", line 3",
-          "    for muestra == muestras:",
-          "                ^^",
-          "SyntaxError: invalid syntax"
-        ],
-        "skipped": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "File \"main.py\", line 3",
-          "    for muestra == muestras:",
-          "                ^^",
-          "SyntaxError: invalid syntax"
-        ],
-        "skipped": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "File \"main.py\", line 3",
-          "    for muestra == muestras:",
+          "File \"main.py\", line 2",
+          "    for mineral == muestras:",
           "                ^^",
           "SyntaxError: invalid syntax"
         ],
         "skipped": true
       }
     ],
-    "totalOutput": "File \"main.py\", line 3\n    for muestra == muestras:\n                ^^\nSyntaxError: invalid syntax",
+    "totalOutput": "File \"main.py\", line 2\n    for mineral == muestras:\n                ^^\nSyntaxError: invalid syntax",
     "hasError": true,
-    "errorLine": 2,
+    "errorLine": 1,
     "errorType": "SyntaxError"
   },
-  "muestras = [85, 42, 91, 38]\naprobadas = 0\nif muestra in muestras:\n    if muestra >= 50:\n        aprobadas += 1\nprint(\"Aprobadas:\", aprobadas)": {
+  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nif mineral in muestras:\n    print(\"Muestra:\", mineral)": {
     "lines": [
-      "muestras = [85, 42, 91, 38]",
-      "aprobadas = 0",
-      "if muestra in muestras:",
-      "    if muestra >= 50:",
-      "        aprobadas += 1",
-      "print(\"Aprobadas:\", aprobadas)"
+      "muestras = [\"hierro\", \"cuarzo\", \"oro\"]",
+      "if mineral in muestras:",
+      "    print(\"Muestra:\", mineral)"
     ],
     "lineTrace": [
       {
@@ -4247,17 +3566,12 @@ window.BAKED_TRACES = {
         "hasError": false
       },
       {
-        "prints": null,
-        "outputSoFar": [],
-        "hasError": false
-      },
-      {
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    if muestra in muestras:\nNameError: name 'muestra' is not defined",
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    if mineral in muestras:\nNameError: name 'mineral' is not defined",
         "outputSoFar": [
           "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    if muestra in muestras:",
-          "NameError: name 'muestra' is not defined"
+          "  File \"main.py\", line 2, in <module>",
+          "    if mineral in muestras:",
+          "NameError: name 'mineral' is not defined"
         ],
         "hasError": true
       },
@@ -4265,36 +3579,16 @@ window.BAKED_TRACES = {
         "prints": null,
         "outputSoFar": [
           "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    if muestra in muestras:",
-          "NameError: name 'muestra' is not defined"
-        ],
-        "skipped": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    if muestra in muestras:",
-          "NameError: name 'muestra' is not defined"
-        ],
-        "skipped": true
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "Traceback (most recent call last):",
-          "  File \"main.py\", line 3, in <module>",
-          "    if muestra in muestras:",
-          "NameError: name 'muestra' is not defined"
+          "  File \"main.py\", line 2, in <module>",
+          "    if mineral in muestras:",
+          "NameError: name 'mineral' is not defined"
         ],
         "skipped": true
       }
     ],
-    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    if muestra in muestras:\nNameError: name 'muestra' is not defined",
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    if mineral in muestras:\nNameError: name 'mineral' is not defined",
     "hasError": true,
-    "errorLine": 2,
+    "errorLine": 1,
     "errorType": "NameError"
   },
   "for item in [\"arcilla\", \"grava\", \"cuarzo\"]:\n    pass\nprint(\"Último item:\", item)": {
@@ -4323,6 +3617,531 @@ window.BAKED_TRACES = {
       }
     ],
     "totalOutput": "Último item: cuarzo",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "pasajeros = 0\nrecaudo = 0\ntarifas = [3200, 3200, 3200]\nfor tarifa in tarifas:\n    pasajeros += 1\n    recaudo += tarifa\nprint(f\"Total personas: {pasajeros}\")\nprint(f\"Total dinero: \")": {
+    "lines": [
+      "pasajeros = 0",
+      "recaudo = 0",
+      "tarifas = [3200, 3200, 3200]",
+      "for tarifa in tarifas:",
+      "    pasajeros += 1",
+      "    recaudo += tarifa",
+      "print(f\"Total personas: {pasajeros}\")",
+      "print(f\"Total dinero: \")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Total personas: 3",
+        "outputSoFar": [
+          "Total personas: 3"
+        ],
+        "hasError": false
+      },
+      {
+        "prints": "Total dinero: ",
+        "outputSoFar": [
+          "Total personas: 3",
+          "Total dinero: "
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Total personas: 3\nTotal dinero: ",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "piezas = 0\nlotes = [1, 1, 2]\nfor n in lotes:\n    piezas += n\nprint(piezas)": {
+    "lines": [
+      "piezas = 0",
+      "lotes = [1, 1, 2]",
+      "for n in lotes:",
+      "    piezas += n",
+      "print(piezas)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "4",
+        "outputSoFar": [
+          "4"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "4",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "total = 0\nfor gasto in [15000, 22000, 8000]:\n    total = 0\n    total += gasto\nprint(\"Total:\", total)": {
+    "lines": [
+      "total = 0",
+      "for gasto in [15000, 22000, 8000]:",
+      "    total = 0",
+      "    total += gasto",
+      "print(\"Total:\", total)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Total: 8000",
+        "outputSoFar": [
+          "Total: 8000"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Total: 8000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "suma_notas = 0\ncantidad = 0\nnotas = [4.2, 3.8, 4.6]\nfor nota in notas:\n    suma_notas += nota\n    cantidad += 1\npromedio = suma_notas / cantidad\nprint(f\"Promedio: {promedio:.1f}\")": {
+    "lines": [
+      "suma_notas = 0",
+      "cantidad = 0",
+      "notas = [4.2, 3.8, 4.6]",
+      "for nota in notas:",
+      "    suma_notas += nota",
+      "    cantidad += 1",
+      "promedio = suma_notas / cantidad",
+      "print(f\"Promedio: {promedio:.1f}\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "Promedio: 4.2",
+        "outputSoFar": [
+          "Promedio: 4.2"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Promedio: 4.2",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cant = 0\nsuma = 0\nfor peso in [10, 20, 30]:\n    cant += 1\n    suma += peso\nprint(cant, suma)": {
+    "lines": [
+      "cant = 0",
+      "suma = 0",
+      "for peso in [10, 20, 30]:",
+      "    cant += 1",
+      "    suma += peso",
+      "print(cant, suma)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "3 60",
+        "outputSoFar": [
+          "3 60"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "3 60",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos = 1\n    total_plata = peaje\nprint(vehiculos, total_plata)": {
+    "lines": [
+      "vehiculos = 0",
+      "total_plata = 0",
+      "tarifas = [12000, 18000, 12000]",
+      "for peaje in tarifas:",
+      "    vehiculos = 1",
+      "    total_plata = peaje",
+      "print(vehiculos, total_plata)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "1 12000",
+        "outputSoFar": [
+          "1 12000"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "1 12000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos += 1\n    total_plata = peaje\nprint(vehiculos, total_plata)": {
+    "lines": [
+      "vehiculos = 0",
+      "total_plata = 0",
+      "tarifas = [12000, 18000, 12000]",
+      "for peaje in tarifas:",
+      "    vehiculos += 1",
+      "    total_plata = peaje",
+      "print(vehiculos, total_plata)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "3 12000",
+        "outputSoFar": [
+          "3 12000"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "3 12000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos += 1\n    total_plata += peaje\nprint(vehiculos, total_plata)": {
+    "lines": [
+      "vehiculos = 0",
+      "total_plata = 0",
+      "tarifas = [12000, 18000, 12000]",
+      "for peaje in tarifas:",
+      "    vehiculos += 1",
+      "    total_plata += peaje",
+      "print(vehiculos, total_plata)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "3 42000",
+        "outputSoFar": [
+          "3 42000"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "3 42000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos = 1\n    total_plata += peaje\nprint(vehiculos, total_plata)": {
+    "lines": [
+      "vehiculos = 0",
+      "total_plata = 0",
+      "tarifas = [12000, 18000, 12000]",
+      "for peaje in tarifas:",
+      "    vehiculos = 1",
+      "    total_plata += peaje",
+      "print(vehiculos, total_plata)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": "1 42000",
+        "outputSoFar": [
+          "1 42000"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "1 42000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "contador = 0\nacumulador = 0\nif contador > 0:\n    promedio = acumulador / contador\n    print(\"Promedio:\", promedio)\nelse:\n    print(\"Sin registros\")": {
+    "lines": [
+      "contador = 0",
+      "acumulador = 0",
+      "if contador > 0:",
+      "    promedio = acumulador / contador",
+      "    print(\"Promedio:\", promedio)",
+      "else:",
+      "    print(\"Sin registros\")"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "hasError": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "skipped": false
+      },
+      {
+        "prints": "Sin registros",
+        "outputSoFar": [
+          "Sin registros"
+        ],
+        "hasError": false
+      }
+    ],
+    "totalOutput": "Sin registros",
     "hasError": false,
     "errorLine": null,
     "errorType": null
