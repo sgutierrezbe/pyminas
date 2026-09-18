@@ -185,7 +185,15 @@ def extract_inputs_from_code_and_output(code_str: str, expected_output: str = ""
                 inputs.append("Sara\n")
     return inputs
 
-def execute_python_code(code_str: str, expected_output: str = "") -> tuple[str, str]:
+import signal
+
+class InfiniteLoopTimeout(Exception):
+    pass
+
+def _timeout_handler(signum, frame):
+    raise InfiniteLoopTimeout("Límite de tiempo excedido (posible bucle infinito)")
+
+def execute_python_code(code_str: str, expected_output: str = "", timeout_secs: int = 1) -> tuple[str, str]:
     """Ejecuta código en CPython aislado y retorna (stdout, error_str)."""
     buf = io.StringIO()
     old_stdout = sys.stdout
@@ -214,12 +222,21 @@ def execute_python_code(code_str: str, expected_output: str = "") -> tuple[str, 
     sys.stdin = StdinWithEcho()
     error = ""
     scope = {}
+    has_timer = hasattr(signal, "SIGALRM")
+    if has_timer:
+        old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
+        signal.alarm(timeout_secs)
     try:
         compiled = compile(code_str, "<verify_curriculum>", "exec")
         exec(compiled, scope)
+    except InfiniteLoopTimeout as te:
+        error = f"TimeoutError: {te}"
     except Exception as e:
         error = f"{type(e).__name__}: {e}"
     finally:
+        if has_timer:
+            signal.alarm(0)
+            signal.signal(signal.SIGALRM, old_handler)
         sys.stdout = old_stdout
         sys.stdin = old_stdin
     
@@ -391,7 +408,30 @@ class CurriculumAuditor:
                 ast.parse(test_code)
                 self.check(True, "")
                 real_out, err = execute_python_code(test_code)
-                self.check(not err, f"{ctx} Código de predict lanza excepción en CPython: {err}")
+                if err:
+                    err_type = err.split(":")[0].strip().lower()
+                    is_infinite_loop_expected = (
+                        "infinito" in step.get("title", "").lower() or
+                        "infinito" in step.get("question", "").lower() or
+                        "infinito" in step.get("theory", "").lower() or
+                        any("infinito" in opt.get("text", "").lower() or "infinito" in opt.get("whyIncorrect", "").lower() for opt in options)
+                    )
+                    is_error_expected = (
+                        step.get("expectError") or
+                        step.get("expectException") or
+                        "bug" in step.get("partLabel", "").lower() or
+                        "error" in step.get("question", "").lower() or
+                        "arroja" in step.get("question", "").lower() or
+                        err_type in step.get("question", "").lower() or
+                        err_type in step.get("title", "").lower() or
+                        ("TimeoutError" in err and is_infinite_loop_expected)
+                    )
+                    if is_error_expected:
+                        self.check(True, "")
+                    else:
+                        self.check(False, f"{ctx} Código de predict lanza excepción en CPython: {err}")
+                else:
+                    self.check(True, "")
             except SyntaxError as e:
                 if step.get("expectSyntaxError") or "syntax" in step.get("question", "").lower() or "syntax" in step.get("title", "").lower():
                     self.check(True, "")

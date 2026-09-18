@@ -1476,1382 +1476,1435 @@ const CURRICULUM = {
       ]
     },
     {
-      "id": "semana-3",
-      "number": 3,
-      "title": "Semana 3: Aplicaciones Prácticas y Resolución de Problemas",
-      "description": "Casos prácticos de ingeniería integrando operadores aritméticos, lógica booleana, condicionales y reportes técnicos.",
-      "status": "active",
-      "lessons": [
-        {
-          "id": "w3-l1",
-          "weekId": "semana-3",
-          "number": 1,
-          "tag": "Operadores",
-          "shortTitle": "Logística Minera",
-          "title": "Logística Minera: Fórmulas y Operadores",
-          "description": "Resolución de problemas con división entera, residuo y precedencia en transporte y tolvas.",
-          "duration": "10 min",
-          "steps": [
+        "id": "semana-3",
+        "number": 3,
+        "title": "Semana 3: Ciclos y Repetición",
+        "description": "Automatización de tareas repetitivas con for, while, range, acumuladores, centinelas y control de flujo.",
+        "status": "active",
+        "lessons": [
             {
-              "type": "explanation",
-              "partLabel": "Paso 1 · La tolva y los viajes en camión",
-              "title": "División entera y residuo en transporte de carga",
-              "intro": "En una mina de carbón no puedes enviar medio camión: los viajes son cantidades enteras. La división entera // calcula los viajes completos y el residuo % nos da el remanente que se queda en acopio.",
-              "examples": [
-                {
-                  "label": "Viajes y acopio",
-                  "code": "material = 95\ncapacidad = 20\nviajes = material // capacidad\nsobrante = material % capacidad\nprint(\"Viajes llenos:\", viajes)\nprint(\"Toneladas en acopio:\", sobrante)",
-                  "output": "Viajes llenos: 4\nToneladas en acopio: 15",
-                  "explanation": "El operador // calcula cuántas veces cabe 20 en 95 (4 veces), y % extrae las 15 toneladas restantes."
-                }
-              ],
-              "keyTakeaway": "Usa // para contar unidades discretas indivisibles y % para saber exactamente cuánto material sobra."
+                "id": "w3-l1",
+                "weekId": "semana-3",
+                "number": 1,
+                "tag": "Ciclos",
+                "shortTitle": "Contadores y Acumuladores",
+                "title": "Variables de memoria cíclica: Contadores y Acumuladores",
+                "description": "Incrementos fijos vs acumulaciones variables y promedios estadísticos.",
+                "duration": "8 min",
+                "steps": [
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 1 · El concepto",
+                        "title": "El torniquete y la alcancía",
+                        "intro": "Un torniquete de metro es un contador: suma una persona fija en cada giro. Una alcancía es un acumulador: cada moneda tiene un valor variable ($500, $1000, $200) que se agrega al saldo total.",
+                        "examples": [
+                            {
+                                "label": "Contador y acumulador en taquilla",
+                                "code": "pasajeros = 0\nrecaudo = 0\n\npasajeros += 1\nrecaudo += 3200\n\npasajeros += 1\nrecaudo += 3200\n\nprint(f\"Total personas: {pasajeros}\")\nprint(f\"Total dinero: ${recaudo}\")",
+                                "output": "Total personas: 2\nTotal dinero: $6400",
+                                "explanation": "pasajeros suma de 1 en 1 (contador); recaudo suma el precio de cada boleto (acumulador)."
+                            }
+                        ],
+                        "keyTakeaway": "Un contador suma una cantidad constante (suele ser += 1); un acumulador suma valores variables o montos cambiantes (+= valor)."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 2 · Trazado mental",
+                        "title": "Conteo en la línea de ensamble",
+                        "code": "piezas = 0\npiezas += 1\npiezas += 1\npiezas += 2\nprint(piezas)",
+                        "question": "¿Qué número imprimirá Python en la consola al finalizar este script?",
+                        "theory": "Rastrea el valor de piezas en cada línea: 0 -> 1 -> 2 -> 4.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "3",
+                                "isCorrect": false,
+                                "whyIncorrect": "Sumaste las 3 líneas de código en vez de los valores reales asignados en cada suma (1 + 1 + 2)."
+                            },
+                            {
+                                "id": "B",
+                                "text": "4",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "C",
+                                "text": "2",
+                                "isCorrect": false,
+                                "whyIncorrect": "Solo tomaste el último incremento de 2, olvidando que los anteriores ya habían acumulado 2 piezas."
+                            },
+                            {
+                                "id": "D",
+                                "text": "5",
+                                "isCorrect": false,
+                                "whyIncorrect": "Calculaste un incremento de más; las sumas son 0 + 1 + 1 + 2 = 4."
+                            }
+                        ],
+                        "correctionTip": "Sigue la traza en cada suma: 0 + 1 = 1; 1 + 1 = 2; 2 + 2 = 4.",
+                        "fullAnswerExplanation": "¡Correcto! La variable piezas arranca en 0 y va mutando: 0 -> 1 -> 2 -> 4."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 3 · Spot the Bug",
+                        "title": "El acumulador que no retiene",
+                        "code": "total = 0\nfor gasto in [15000, 22000, 8000]:\n    total = 0\n    total += gasto\nprint(\"Total:\", total)",
+                        "question": "El programa imprime Total: 8000 en vez de 45000. ¿Cuál es la causa exacta del error?",
+                        "theory": "Fíjate bien en qué líneas están dentro del bloque indentado del ciclo.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "El operador += no funciona con números enteros dentro de un ciclo.",
+                                "isCorrect": false,
+                                "whyIncorrect": "El operador '+=' funciona perfectamente con números enteros en cualquier parte del código."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Falta convertir total con la función int() antes de imprimirlo en terminal.",
+                                "isCorrect": false,
+                                "whyIncorrect": "La variable ya es un número entero; no requiere ninguna conversión de tipo de dato."
+                            },
+                            {
+                                "id": "C",
+                                "text": "La variable gasto no puede recibir valores de una lista de corchetes.",
+                                "isCorrect": false,
+                                "whyIncorrect": "El ciclo for recorre la lista correctamente asignando cada elemento a la variable 'gasto'."
+                            },
+                            {
+                                "id": "D",
+                                "text": "La línea total = 0 está dentro del ciclo, reinicializando la suma en cada vuelta y borrando lo acumulado.",
+                                "isCorrect": true
+                            }
+                        ],
+                        "correctionTip": "Al poner total = 0 dentro del for, en cada vuelta se borra el total acumulado y solo sobrevive el último gasto.",
+                        "fullAnswerExplanation": "¡Exacto! Los acumuladores y contadores SIEMPRE deben inicializarse en 0 antes de que comience el ciclo; de lo contrario, se resetean en cada iteración."
+                    },
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 4 · Promedios",
+                        "title": "El cálculo del promedio",
+                        "intro": "Para calcular una nota definitiva o el peso promedio de mineral, combinas los dos conceptos: la suma acumulada dividida entre el número de muestras contadas.",
+                        "examples": [
+                            {
+                                "label": "Promedio aritmético",
+                                "code": "suma_notas = 4.2 + 3.8 + 4.6\ncantidad = 3\npromedio = suma_notas / cantidad\nprint(f\"Promedio: {promedio:.1f}\")",
+                                "output": "Promedio: 4.2",
+                                "explanation": "Se divide la suma total entre la cantidad de notas para obtener la media exacta."
+                            }
+                        ],
+                        "keyTakeaway": "La fórmula estadística fundamental en programación es: promedio = acumulador / contador. Ambos deben completarse antes de realizar la división."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 5 · Trazado simultáneo",
+                        "title": "Actualización simultánea",
+                        "code": "cant = 0\nsuma = 0\nfor peso in [10, 20, 30]:\n    cant += 1\n    suma += peso\nprint(cant, suma)",
+                        "question": "¿Qué valores imprime exactamente Python al finalizar el ciclo?",
+                        "theory": "cant cuenta de uno en uno; suma va acumulando cada peso individual.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "3 60",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "B",
+                                "text": "3 30",
+                                "isCorrect": false,
+                                "whyIncorrect": "Olvidaste acumular los dos primeros elementos (10 y 20); la suma total es 10 + 20 + 30 = 60."
+                            },
+                            {
+                                "id": "C",
+                                "text": "60 3",
+                                "isCorrect": false,
+                                "whyIncorrect": "Invertiste las variables en el print: primero se imprime 'cant' (3) y luego 'suma' (60)."
+                            },
+                            {
+                                "id": "D",
+                                "text": "4 60",
+                                "isCorrect": false,
+                                "whyIncorrect": "El ciclo solo tiene 3 elementos en la lista, por lo que 'cant' se incrementa exactamente 3 veces."
+                            }
+                        ],
+                        "correctionTip": "cant cuenta 3 elementos (cant=3); suma acumula 10 + 20 + 30 = 60.",
+                        "fullAnswerExplanation": "¡Impecable! cant cuenta 3 vueltas (1 + 1 + 1 = 3) y suma acumula los pesos (10 + 20 + 30 = 60)."
+                    },
+                    {
+                        "type": "code_sandbox",
+                        "partLabel": "Paso 6 · Práctica guiada",
+                        "title": "Caja de peaje vehicular",
+                        "instruction": "Completa las dos ranuras con el operador adecuado para que vehiculos cuente de 1 en 1 y total_plata acumule las tarifas:",
+                        "starterCode": "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos ___ 1\n    total_plata ___ peaje\nprint(vehiculos, total_plata)",
+                        "slotMarker": "___",
+                        "expectedOutput": "3 42000",
+                        "options": [
+                            {
+                                "id": "A",
+                                "slots": [
+                                    "=",
+                                    "="
+                                ],
+                                "label": "=  y  =",
+                                "code": "=  y  =",
+                                "isCorrect": false,
+                                "whyIncorrect": "El operador '=' sobrescribe el valor en vez de acumularlo; dejaría vehiculos=1 y total_plata=12000."
+                            },
+                            {
+                                "id": "B",
+                                "slots": [
+                                    "+=",
+                                    "="
+                                ],
+                                "label": "+=  y  =",
+                                "code": "+=  y  =",
+                                "isCorrect": false,
+                                "whyIncorrect": "Al usar '=' en total_plata, solo conservarás la última tarifa cobrada en lugar de sumarlas todas."
+                            },
+                            {
+                                "id": "C",
+                                "slots": [
+                                    "+=",
+                                    "+="
+                                ],
+                                "label": "+=  y  +=",
+                                "code": "+=  y  +=",
+                                "isCorrect": true,
+                                "explanation": "¡Excelente! Ambos requieren += para que el valor de cada iteración se agregue a la memoria acumulada previa."
+                            },
+                            {
+                                "id": "D",
+                                "slots": [
+                                    "=",
+                                    "+="
+                                ],
+                                "label": "=  y  +=",
+                                "code": "=  y  +=",
+                                "isCorrect": false,
+                                "whyIncorrect": "Al usar '=' en vehiculos, la cuenta siempre se sobreescribirá en 1 al salir del ciclo."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 7 · Caso Borde",
+                        "title": "El peaje vacío",
+                        "code": "contador = 0\nacumulador = 0\nif contador > 0:\n    promedio = acumulador / contador\n    print(\"Promedio:\", promedio)\nelse:\n    print(\"Sin registros\")",
+                        "question": "Si una estación de peaje no registró ningún vehículo (contador = 0), ¿por qué es indispensable proteger el cálculo del promedio con un condicional?",
+                        "theory": "¿Qué sucede matemáticamente y en Python al dividir cualquier número entre 0?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Porque Python no permite que una variable valga 0 al terminar el programa.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Las variables numéricas pueden valer 0 sin ningún inconveniente en Python."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Porque dividir entre cero causaría un colapso fatal con ZeroDivisionError.",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "C",
+                                "text": "Porque la función print() falla si se le pasa una variable que almacena 0.",
+                                "isCorrect": false,
+                                "whyIncorrect": "print() puede imprimir el número 0 perfectamente; el problema es la operación matemática de división."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Porque las variables no inicializadas se borran automáticamente de la memoria.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Las variables sí fueron inicializadas en 0 y permanecen vivas en el ámbito del script."
+                            }
+                        ],
+                        "correctionTip": "Dividir acumulador / contador con contador=0 lanza un ZeroDivisionError inmediato.",
+                        "fullAnswerExplanation": "¡Exacto! Siempre que calcules un promedio a partir de un contador, debes verificar que contador > 0 para evitar el temido ZeroDivisionError."
+                    }
+                ]
             },
             {
-              "type": "predict",
-              "partLabel": "Paso 2 · Reparto de cargamento",
-              "title": "¿Cuánto cemento queda en bodega?",
-              "question": "Una cuadrilla tiene 74 bultos de cemento y cada camioneta transporta 12 bultos. ¿Cuál es el valor exacto de sobrante al ejecutar este código?",
-              "code": "bultos = 74\ncapacidad = 12\nsobrante = bultos % capacidad\nprint(sobrante)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "6",
-                  "isCorrect": false,
-                  "whyIncorrect": "12 * 6 = 72; el residuo restante de 74 - 72 es 2 bultos, no 6."
-                },
-                {
-                  "id": "B",
-                  "text": "2",
-                  "isCorrect": true
-                },
-                {
-                  "id": "C",
-                  "text": "6.16",
-                  "isCorrect": false,
-                  "whyIncorrect": "El operador % calcula el residuo entero exacto, nunca entrega decimales fraccionarios."
-                },
-                {
-                  "id": "D",
-                  "text": "0",
-                  "isCorrect": false,
-                  "whyIncorrect": "74 no es divisible exactamente entre 12; sobran bultos en bodega."
-                }
-              ],
-              "correctionTip": "El operador % extrae el sobrante de una división: 74 = (12 * 6) + 2.",
-              "fullAnswerExplanation": "¡Exacto! 12 cabe 6 veces en 74 dando 72 bultos transportados, y sobran exactamente 2 bultos."
+                "id": "w3-l2",
+                "weekId": "semana-3",
+                "number": 2,
+                "tag": "Ciclos",
+                "shortTitle": "El Ciclo FOR",
+                "title": "Recorrido de secuencias iterables con FOR",
+                "description": "Iteración sobre listas y cadenas, variable iteradora y filtros con condicionales.",
+                "duration": "8 min",
+                "steps": [
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 1 · El concepto",
+                        "title": "La cinta transportadora de elementos",
+                        "intro": "En una planta de fundición, una cinta transportadora acerca lingotes de diferentes metales uno detrás de otro. El ciclo for toma cada elemento de la colección de izquierda a derecha sin necesidad de índices manuales.",
+                        "examples": [
+                            {
+                                "label": "Recorrido de lista",
+                                "code": "minerales = [\"oro\", \"plata\", \"cobre\"]\nfor mineral in minerales:\n    print(f\"Muestra: {mineral}\")",
+                                "output": "Muestra: oro\nMuestra: plata\nMuestra: cobre",
+                                "explanation": "La variable mineral toma automáticamente cada string de la lista en cada iteración."
+                            }
+                        ],
+                        "keyTakeaway": "La sintaxis for variable in coleccion: extrae secuencialmente cada elemento de la colección de principio a fin."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 2 · Cadenas iterables",
+                        "title": "Recorrido de una cadena de texto",
+                        "code": "palabra = \"MINAS\"\nsalida = \"\"\nfor letra in palabra:\n    salida += letra + \"-\"\nprint(salida)",
+                        "question": "Las cadenas de texto (str) también son secuencias de caracteres iterables. ¿Qué imprimirá este programa?",
+                        "theory": "En cada vuelta, letra toma un solo caracter de la cadena 'MINAS'.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "MINAS-",
+                                "isCorrect": false,
+                                "whyIncorrect": "El ciclo no toma la palabra completa de golpe; itera letra por letra añadiendo un guión a cada una."
+                            },
+                            {
+                                "id": "B",
+                                "text": "-M-I-N-A-S",
+                                "isCorrect": false,
+                                "whyIncorrect": "El guión se concatena después de cada letra (`letra + '-'`), no antes."
+                            },
+                            {
+                                "id": "C",
+                                "text": "M I N A S",
+                                "isCorrect": false,
+                                "whyIncorrect": "El programa concatena guiones medios '-', no espacios en blanco."
+                            },
+                            {
+                                "id": "D",
+                                "text": "M-I-N-A-S-",
+                                "isCorrect": true
+                            }
+                        ],
+                        "correctionTip": "Cada una de las 5 letras de 'MINAS' recibe un '-' al final: 'M-' + 'I-' + 'N-' + 'A-' + 'S-'.",
+                        "fullAnswerExplanation": "¡Correcto! En cada vuelta, letra toma un caracter de 'MINAS' y le anexa un guión al final de salida."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 3 · Spot the Bug",
+                        "title": "El intento de iterar sobre un entero",
+                        "code": "alumnos = 35\nfor i in alumnos:\n    print(f\"Alumno {i}\")",
+                        "question": "Al ejecutar este código, Python arroja TypeError: 'int' object is not iterable. ¿A qué se debe este error?",
+                        "theory": "¿Qué tipos de datos se pueden recorrer con un ciclo for en Python?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Los números enteros son escalares atómicos individuales, no secuencias iterables de elementos.",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "B",
+                                "text": "La variable i solo puede utilizarse para recorrer palabras y no variables numéricas.",
+                                "isCorrect": false,
+                                "whyIncorrect": "'i' es solo un nombre de variable arbitrario; puede recibir cualquier tipo de dato si la colección es iterable."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Falta envolver el número 35 entre comillas dobles para que Python pueda iterarlo.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Poner '35' iteraría sobre los caracteres '3' y '5' (2 vueltas), lo cual no es la lista de 35 alumnos buscada."
+                            },
+                            {
+                                "id": "D",
+                                "text": "La palabra clave for está obsoleta en Python 3 para números enteros.",
+                                "isCorrect": false,
+                                "whyIncorrect": "'for' es una palabra clave vigente y central; para generar una secuencia numérica se debe usar 'range()'."
+                            }
+                        ],
+                        "correctionTip": "Los tipos int y float no tienen elementos internos. Para iterar 35 veces debes usar range(alumnos).",
+                        "fullAnswerExplanation": "¡Exacto! Los tipos primitivos int y float no son iterables. Para iterar 35 veces numéricamente se utiliza range(alumnos)."
+                    },
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 4 · Filtros",
+                        "title": "Filtrando elementos con condicionales",
+                        "intro": "En una subestación eléctrica, un sensor monitorea voltajes. Podemos colocar un condicional if dentro del for para contabilizar únicamente las líneas peligrosas.",
+                        "examples": [
+                            {
+                                "label": "Filtro de alto voltaje",
+                                "code": "voltajes = [110, 240, 115, 440]\naltos = 0\nfor v in voltajes:\n    if v > 200:\n        altos += 1\nprint(f\"Líneas de alto voltaje: {altos}\")",
+                                "output": "Líneas de alto voltaje: 2",
+                                "explanation": "Solo 240 y 440 superan el límite de 200V, incrementando el contador altos dos veces."
+                            }
+                        ],
+                        "keyTakeaway": "Puedes anidar estructuras if dentro de un ciclo for para filtrar, clasificar o procesar selectivamente elementos específicos."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 5 · Trazado con filtro",
+                        "title": "Trazado con acumulador y condición",
+                        "code": "valores = [10, -5, 20, -3]\npositivos = 0\nfor n in valores:\n    if n > 0:\n        positivos += n\nprint(\"Suma positivos:\", positivos)",
+                        "question": "¿Cuál será el valor final de positivos al terminar la ejecución?",
+                        "theory": "Revisa cuáles elementos de la lista cumplen estrictamente n > 0.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Suma positivos: 22",
+                                "isCorrect": false,
+                                "whyIncorrect": "Sumaste todos los números incluyendo los negativos (10 - 5 + 20 - 3 = 22), pero el if filtró solo los mayores a 0."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Suma positivos: 38",
+                                "isCorrect": false,
+                                "whyIncorrect": "Sumaste el valor absoluto de los números negativos en lugar de ignorarlos como manda la condición."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Suma positivos: 30",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "D",
+                                "text": "Suma positivos: 25",
+                                "isCorrect": false,
+                                "whyIncorrect": "El resultado de sumar únicamente los números estrictamente positivos (10 + 20) es exactamente 30."
+                            }
+                        ],
+                        "correctionTip": "Solo 10 y 20 cumplen n > 0. La suma acumulada es 10 + 20 = 30.",
+                        "fullAnswerExplanation": "¡Muy bien analizado! El condicional n > 0 solo deja pasar a 10 y 20; los negativos se descartan, sumando 30."
+                    },
+                    {
+                        "type": "code_sandbox",
+                        "partLabel": "Paso 6 · Práctica guiada",
+                        "title": "Control de calidad de mineral",
+                        "instruction": "Completa las dos ranuras para estructurar el ciclo for que inspecciona la lista de muestras:",
+                        "starterCode": "muestras = [85, 42, 91, 38]\naprobadas = 0\n___ muestra ___ muestras:\n    if muestra >= 50:\n        aprobadas += 1\nprint(\"Aprobadas:\", aprobadas)",
+                        "slotMarker": "___",
+                        "expectedOutput": "Aprobadas: 2",
+                        "options": [
+                            {
+                                "id": "A",
+                                "slots": [
+                                    "while",
+                                    "=="
+                                ],
+                                "label": "while  y  ==",
+                                "code": "while  y  ==",
+                                "isCorrect": false,
+                                "whyIncorrect": "'while' evalúa una condición booleana, no una relación de pertenencia sobre una lista."
+                            },
+                            {
+                                "id": "B",
+                                "slots": [
+                                    "for",
+                                    "in"
+                                ],
+                                "label": "for  y  in",
+                                "code": "for  y  in",
+                                "isCorrect": true,
+                                "explanation": "¡Excelente! La construcción canónica en Python para iterar colecciones es for <elemento> in <coleccion>:."
+                            },
+                            {
+                                "id": "C",
+                                "slots": [
+                                    "for",
+                                    "=="
+                                ],
+                                "label": "for  y  ==",
+                                "code": "for  y  ==",
+                                "isCorrect": false,
+                                "whyIncorrect": "El operador '==' compara igualdad de valores; para iterar sobre una colección se utiliza la palabra 'in'."
+                            },
+                            {
+                                "id": "D",
+                                "slots": [
+                                    "if",
+                                    "in"
+                                ],
+                                "label": "if  y  in",
+                                "code": "if  y  in",
+                                "isCorrect": false,
+                                "whyIncorrect": "'if muestra in muestras' evaluaría una sola vez la condición sin generar ninguna repetición cíclica."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 7 · Caso Borde",
+                        "title": "Estado de la variable tras terminar el ciclo",
+                        "code": "for item in [\"arcilla\", \"grava\", \"cuarzo\"]:\n    pass\nprint(\"Último item:\", item)",
+                        "question": "¿Qué ocurre con la variable item cuando el ciclo for termina de iterar sobre todos los elementos?",
+                        "theory": "¿Sobreviven las variables del ciclo en el ámbito actual de Python?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Causa un error NameError porque las variables de ciclo se eliminan al salir.",
+                                "isCorrect": false,
+                                "whyIncorrect": "En Python, a diferencia de lenguajes como C++ o Java, la variable del ciclo no tiene un ámbito local aislado."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Se reinicia al valor inicial de la lista (\"arcilla\").",
+                                "isCorrect": false,
+                                "whyIncorrect": "La variable no se rebobina al finalizar; conserva la última asignación que recibió."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Su valor pasa a ser None.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Python no limpia la variable asignándole None; mantiene en memoria su último contenido asignado."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Conserva en memoria el último valor que procesó (\"cuarzo\").",
+                                "isCorrect": true
+                            }
+                        ],
+                        "correctionTip": "En Python, las variables de ciclo permanecen en el ámbito y conservan el último valor asignado en la iteración final.",
+                        "fullAnswerExplanation": "¡Gran observación! En Python, la variable del ciclo permanece viva en el ámbito actual con el último elemento que tomó de la secuencia."
+                    }
+                ]
             },
             {
-              "type": "predict",
-              "partLabel": "Paso 3 · Spot the Bug: La trampa de la división real",
-              "title": "¿Por qué falló el cálculo logístico?",
-              "question": "Un ingeniero novato escribió este código para saber cuántas volquetas completas se necesitan, pero el programa arrojó un error lógico en la operación. ¿Cuál es la falla?",
-              "code": "toneladas = 50\ncapacidad = 8\nvolquetas = toneladas / capacidad\nprint(\"Volquetas requeridas:\", volquetas)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "toneladas no puede dividirse porque fue declarada como texto.",
-                  "isCorrect": false,
-                  "whyIncorrect": "50 fue declarado como número entero int sin comillas."
-                },
-                {
-                  "id": "B",
-                  "text": "En Python el operador de división no existe y causa SyntaxError.",
-                  "isCorrect": false,
-                  "whyIncorrect": "La barra diagonal / es el operador nativo de división real en Python."
-                },
-                {
-                  "id": "C",
-                  "text": "Se usó / que produce 6.25; para unidades físicas indivisibles se debe usar división entera //.",
-                  "isCorrect": true
-                },
-                {
-                  "id": "D",
-                  "text": "Falta convertir capacidad con la función float().",
-                  "isCorrect": false,
-                  "whyIncorrect": "La división con enteros es perfectamente válida y genera flotante sin conversión previa."
-                }
-              ],
-              "correctionTip": "La división real / genera decimales; para vehículos o viajes completos se emplea //.",
-              "fullAnswerExplanation": "¡Brillante diagnóstico! En operaciones físicas no existen 6.25 volquetas; se debe emplear // para cantidades enteras."
+                "id": "w3-l3",
+                "weekId": "semana-3",
+                "number": 3,
+                "tag": "Ciclos",
+                "shortTitle": "Función range()",
+                "title": "Generación automática de secuencias con range()",
+                "description": "Rangos con inicio, fin y paso; límites superiores abiertos y cuentas regresivas.",
+                "duration": "8 min",
+                "steps": [
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 1 · El concepto",
+                        "title": "El odómetro numérico y el límite abierto",
+                        "intro": "Un cortador láser corta varillas marcadas del centímetro 1 al 4. Al indicarle range(1, 4), el láser se detiene en seco justo antes del 4. En Python, el valor final nunca se incluye.",
+                        "examples": [
+                            {
+                                "label": "Rango secuencial",
+                                "code": "for i in range(1, 4):\n    print(f\"Piso {i}\")",
+                                "output": "Piso 1\nPiso 2\nPiso 3",
+                                "explanation": "range(1, 4) produce los números 1, 2 y 3. El 4 queda estrictamente por fuera."
+                            }
+                        ],
+                        "keyTakeaway": "¡Regla de oro! range(inicio, fin) arranca en inicio y llega hasta fin - 1. Si quieres llegar a N, el fin debe ser N + 1."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 2 · Límite con range(n)",
+                        "title": "Trazado del límite con range(n)",
+                        "code": "conteo = 0\nfor k in range(4):\n    conteo += k\nprint(conteo)",
+                        "question": "Cuando pasas un solo argumento a range(4), Python asume que empieza en 0. ¿Qué número imprimirá este script?",
+                        "theory": "¿Qué secuencia exacta de números genera range(4)?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "6",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "B",
+                                "text": "10",
+                                "isCorrect": false,
+                                "whyIncorrect": "Sumaste 0 + 1 + 2 + 3 + 4 = 10, pero range(4) se detiene en 3 y nunca llega al 4."
+                            },
+                            {
+                                "id": "C",
+                                "text": "4",
+                                "isCorrect": false,
+                                "whyIncorrect": "4 es el valor del parámetro stop, no la suma de los valores producidos (0 + 1 + 2 + 3)."
+                            },
+                            {
+                                "id": "D",
+                                "text": "3",
+                                "isCorrect": false,
+                                "whyIncorrect": "3 es el último valor individual que toma 'k', pero la variable 'conteo' los va sumando todos acumulativamente."
+                            }
+                        ],
+                        "correctionTip": "range(4) produce 0, 1, 2, 3. La suma es 0 + 1 + 2 + 3 = 6.",
+                        "fullAnswerExplanation": "¡Correcto! range(4) genera los valores 0, 1, 2, 3. La suma acumulada es 0 + 1 + 2 + 3 = 6."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 3 · Spot the Bug",
+                        "title": "El rango vacío inesperado",
+                        "code": "for s in range(5, 1):\n    print(s)\nprint(\"¡Despegue!\")",
+                        "question": "Queremos imprimir una cuenta regresiva 5, 4, 3, 2, 1, pero el programa solo imprime ¡Despegue! sin ningún número. ¿Por qué?",
+                        "theory": "¿Cuál es el paso por defecto de range() cuando no se especifica el tercer argumento?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "La función range() solo admite un único argumento numérico y falla con dos.",
+                                "isCorrect": false,
+                                "whyIncorrect": "range() acepta perfectamente 1, 2 o 3 argumentos enteros."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Las variables de una sola letra como s no son válidas en ciclos numéricos.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Cualquier identificador válido en Python puede ser usado como variable de ciclo."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Con el paso por defecto (+1), un inicio mayor que el final genera un rango vacío (0 vueltas).",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "D",
+                                "text": "Python requiere que los rangos hacia atrás se escriban dentro de una lista con corchetes.",
+                                "isCorrect": false,
+                                "whyIncorrect": "No requiere listas; simplemente necesita el tercer parámetro de paso negativo: `range(5, 0, -1)`."
+                            }
+                        ],
+                        "correctionTip": "Con paso +1, si inicio >= fin el rango se considera completado inmediatamente.",
+                        "fullAnswerExplanation": "¡Exacto! El paso por defecto de range es +1. Si el inicio (5) es mayor que el fin (1), Python produce una secuencia vacía."
+                    },
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 4 · El paso (step)",
+                        "title": "El tercer parámetro: el paso (step)",
+                        "intro": "Subir una escalera de dos en dos escalones nos ahorra tiempo. El tercer parámetro range(inicio, fin, paso) define el tamaño y la dirección del salto en cada iteración.",
+                        "examples": [
+                            {
+                                "label": "Saltos de 2 en 2",
+                                "code": "for num in range(2, 9, 2):\n    print(f\"Par: {num}\")",
+                                "output": "Par: 2\nPar: 4\nPar: 6\nPar: 8",
+                                "explanation": "Comienza en 2, suma 2 en cada salto (4, 6, 8) y se detiene antes de 9."
+                            }
+                        ],
+                        "keyTakeaway": "El parámetro paso determina el incremento sucesivo. Si el paso es negativo (ej. -1), la secuencia cuenta hacia atrás."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 5 · Cuenta regresiva",
+                        "title": "Trazado de cuenta regresiva",
+                        "code": "salida = \"\"\nfor x in range(6, 1, -2):\n    salida += str(x) + \" \"\nprint(salida.strip())",
+                        "question": "¿Cuál es la salida exacta producida por este ciclo con paso negativo?",
+                        "theory": "Comienza en 6 y resta 2 mientras el valor sea estrictamente mayor a 1.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "6 5 4 3 2 1",
+                                "isCorrect": false,
+                                "whyIncorrect": "El paso es -2, por lo que desciende dando saltos de 2 en 2, no de 1 en 1."
+                            },
+                            {
+                                "id": "B",
+                                "text": "6 4 2",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "C",
+                                "text": "6 4",
+                                "isCorrect": false,
+                                "whyIncorrect": "El 2 sigue siendo estrictamente mayor que el límite 1, por lo que el 2 sí entra en el ciclo."
+                            },
+                            {
+                                "id": "D",
+                                "text": "4 2 0",
+                                "isCorrect": false,
+                                "whyIncorrect": "El rango comienza obligatoriamente en 6 (el inicio especificado) y no en 4."
+                            }
+                        ],
+                        "correctionTip": "x toma 6, luego 4, luego 2. El siguiente sería 0, que no es > 1.",
+                        "fullAnswerExplanation": "¡Brillante! Arranca en 6, resta 2 (4), resta 2 (2). El siguiente sería 0, que no cumple x > 1. Imprime 6 4 2."
+                    },
+                    {
+                        "type": "code_sandbox",
+                        "partLabel": "Paso 6 · Práctica guiada",
+                        "title": "Múltiplos de 5",
+                        "instruction": "Completa las dos ranuras para imprimir los múltiplos de 5 desde el 10 hasta el 30 inclusive:",
+                        "starterCode": "for m in range(10, ___, ___):\n    print(m)",
+                        "slotMarker": "___",
+                        "expectedOutput": "10\n15\n20\n25\n30",
+                        "options": [
+                            {
+                                "id": "A",
+                                "slots": [
+                                    "30",
+                                    "5"
+                                ],
+                                "label": "30  y  5",
+                                "code": "30  y  5",
+                                "isCorrect": false,
+                                "whyIncorrect": "Como el límite superior es abierto, poner 30 se detendría en 25 excluyendo el 30."
+                            },
+                            {
+                                "id": "B",
+                                "slots": [
+                                    "30",
+                                    "1"
+                                ],
+                                "label": "30  y  1",
+                                "code": "30  y  1",
+                                "isCorrect": false,
+                                "whyIncorrect": "Con paso 1 imprimiría todos los enteros consecutivos (10, 11, 12...), no los múltiplos de 5."
+                            },
+                            {
+                                "id": "C",
+                                "slots": [
+                                    "35",
+                                    "10"
+                                ],
+                                "label": "35  y  10",
+                                "code": "35  y  10",
+                                "isCorrect": false,
+                                "whyIncorrect": "Con paso 10 daría saltos de 10 en 10 (10, 20, 30), omitiendo 15 y 25."
+                            },
+                            {
+                                "id": "D",
+                                "slots": [
+                                    "35",
+                                    "5"
+                                ],
+                                "label": "35  y  5",
+                                "code": "35  y  5",
+                                "isCorrect": true,
+                                "explanation": "¡Perfecto! Para incluir el 30 con paso 5, el límite superior debe ser un número mayor a 30 (como 31 o 35)."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 7 · Caso Borde",
+                        "title": "Límites idénticos range(n, n)",
+                        "code": "vueltas = 0\nfor i in range(10, 10):\n    vueltas += 1\nprint(\"Iteraciones:\", vueltas)",
+                        "question": "¿Cuántas veces se ejecuta el cuerpo del ciclo si el inicio y el fin son exactamente el mismo número?",
+                        "theory": "¿Existe algún número entero que cumpla 10 <= x < 10?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "0 veces, porque no existe ningún entero que cumpla 10 <= i < 10.",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "B",
+                                "text": "1 vez, ejecutando la iteración con i = 10.",
+                                "isCorrect": false,
+                                "whyIncorrect": "El límite superior siempre se excluye; al no haber espacio entre inicio y fin, el rango es vacío."
+                            },
+                            {
+                                "id": "C",
+                                "text": "10 veces, tomando el número especificado como cantidad de repeticiones.",
+                                "isCorrect": false,
+                                "whyIncorrect": "range(10, 10) no significa '10 veces'; especifica inicio=10 y fin=10."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Produce un error de tipo ValueError por parámetros redundantes.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Es una instrucción válida en Python que simplemente produce un generador sin elementos."
+                            }
+                        ],
+                        "correctionTip": "La regla matemática es inicio <= x < fin. Con 10 <= x < 10 no hay ningún entero posible.",
+                        "fullAnswerExplanation": "¡Exacto! La condición de pertenencia es inicio <= x < fin. Si ambos son 10, el conjunto es vacío y no da ninguna vuelta."
+                    }
+                ]
             },
             {
-              "type": "explanation",
-              "partLabel": "Paso 4 · Potencia y resistencia cuadrática",
-              "title": "La precedencia de la exponenciación (**)",
-              "intro": "La resistencia aerodinámica de los camiones aumenta con el cuadrado de la velocidad (v**2). En Python, el operador de exponenciación ** tiene mayor precedencia que la multiplicación *.",
-              "examples": [
-                {
-                  "label": "Cálculo de potencia",
-                  "code": "velocidad = 6\nfactor = 3\npotencia = factor * velocidad ** 2\nprint(\"Potencia requerida (kW):\", potencia)",
-                  "output": "Potencia requerida (kW): 108",
-                  "explanation": "Python evalúa primero velocidad ** 2 (6**2 = 36), y luego multiplica por factor (3 * 36 = 108)."
-                }
-              ],
-              "keyTakeaway": "La potencia (**) se calcula antes que la multiplicación (*). Si deseas multiplicar primero, debes usar paréntesis."
+                "id": "w3-l4",
+                "weekId": "semana-3",
+                "number": 4,
+                "tag": "Ciclos",
+                "shortTitle": "El Ciclo WHILE",
+                "title": "Repetición condicional y prevención de bucles infinitos",
+                "description": "Las tres reglas del while: inicialización, condición de guardia y actualización.",
+                "duration": "9 min",
+                "steps": [
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 1 · El concepto",
+                        "title": "La bomba de achique y la condición de parada",
+                        "intro": "Una bomba de drenaje en un túnel subterráneo debe operar mientras el nivel del agua sea mayor a cero. No sabemos cuántos minutos tomará: mientras la condición sea verdadera, el motor sigue encendido.",
+                        "examples": [
+                            {
+                                "label": "Drenaje controlado",
+                                "code": "bateria = 3\nwhile bateria > 0:\n    print(f\"Batería restante: {bateria}\")\n    bateria -= 1\nprint(\"Dispositivo apagado.\")",
+                                "output": "Batería restante: 3\nBatería restante: 2\nBatería restante: 1\nDispositivo apagado.",
+                                "explanation": "El ciclo evalúa bateria > 0. Al llegar a 0, la condición se vuelve False y el ciclo finaliza."
+                            }
+                        ],
+                        "keyTakeaway": "El ciclo while repite su bloque mientras su condición lógica sea True. En cuanto se evalúa False, termina inmediatamente."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 2 · Trazado mental",
+                        "title": "Trazado mental de reducción",
+                        "code": "n = 8\npasos = 0\nwhile n > 1:\n    n //= 2\n    pasos += 1\nprint(pasos, n)",
+                        "question": "Sigue mentalmente los valores de n y pasos. ¿Qué números imprimirá Python al finalizar?",
+                        "theory": "En cada ciclo, n se divide a la mitad de forma entera y pasos suma 1.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "4 0",
+                                "isCorrect": false,
+                                "whyIncorrect": "La división entera se detiene cuando n llega a 1 (1 > 1 es False), nunca llega a 0."
+                            },
+                            {
+                                "id": "B",
+                                "text": "2 2",
+                                "isCorrect": false,
+                                "whyIncorrect": "Cuando n vale 2, la condición 2 > 1 sigue siendo True, por lo que da una vuelta más dividiendo a 1."
+                            },
+                            {
+                                "id": "C",
+                                "text": "3 1",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "D",
+                                "text": "3 2",
+                                "isCorrect": false,
+                                "whyIncorrect": "En el tercer paso, n se divide de 2 entre 2 quedando en 1, no en 2."
+                            }
+                        ],
+                        "correctionTip": "Vuelta 1: n=4, pasos=1. Vuelta 2: n=2, pasos=2. Vuelta 3: n=1, pasos=3. Termina porque 1 > 1 es False.",
+                        "fullAnswerExplanation": "¡Excelente trazado! Vuelta 1: n=4, pasos=1. Vuelta 2: n=2, pasos=2. Vuelta 3: n=1, pasos=3. Como 1 > 1 es False, imprime 3 1."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 3 · Spot the Bug",
+                        "title": "La pesadilla del bucle infinito",
+                        "code": "segundos = 3\nwhile segundos > 0:\n    print(\"Contando:\", segundos)\nprint(\"¡Tiempo!\")",
+                        "question": "Este temporizador se queda congelado consumiendo memoria y CPU sin llegar nunca a imprimir ¡Tiempo!. ¿Cuál es el error crítico?",
+                        "theory": "¿Qué le ocurre a una condición si sus variables nunca cambian de valor dentro del ciclo?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "La condición segundos > 0 evalúa como False desde la primera línea.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Al inicio segundos vale 3, por lo que 3 > 0 es True y el ciclo sí inicia."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Falta actualizar la variable adentro (segundos -= 1), haciendo que la condición sea eternamente True.",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "C",
+                                "text": "Falta un bloque else al final de la instrucción while para cerrar el flujo.",
+                                "isCorrect": false,
+                                "whyIncorrect": "El bloque 'else' en ciclos es completamente opcional y no tiene relación con el bucle infinito."
+                            },
+                            {
+                                "id": "D",
+                                "text": "La función print() no está permitida dentro del cuerpo de un ciclo condicional.",
+                                "isCorrect": false,
+                                "whyIncorrect": "print() puede usarse con total libertad dentro de cualquier ciclo."
+                            }
+                        ],
+                        "correctionTip": "Si la variable de control no cambia dentro del ciclo, la condición nunca se convertirá en False.",
+                        "fullAnswerExplanation": "¡Exacto! Todo ciclo while requiere una instrucción que modifique la variable hacia la condición de parada; si no se resta segundos, el ciclo es infinito."
+                    },
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 4 · Pre-evaluación",
+                        "title": "¿Qué pasa si la condición es False de entrada?",
+                        "intro": "Si intentas encender la calefacción cuando la temperatura ya es alta, el termostato ni siquiera activa los quemadores. El while funciona exactamente igual.",
+                        "examples": [
+                            {
+                                "label": "Condición falsa inicial",
+                                "code": "nivel_alerta = 0\nwhile nivel_alerta > 5:\n    print(\"¡Alarma sonando!\")\n    nivel_alerta -= 1\nprint(\"Sistema en reposo.\")",
+                                "output": "Sistema en reposo.",
+                                "explanation": "Como 0 > 5 es False, el bloque indentado se ignora por completo."
+                            }
+                        ],
+                        "keyTakeaway": "En Python, la condición del while se evalúa antes de entrar a cada vuelta. Si es falsa desde el principio, el cuerpo se ejecuta 0 veces."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 5 · Operador <=",
+                        "title": "Trazado con operador <=",
+                        "code": "p = 1\nwhile p <= 4:\n    p *= 2\nprint(\"Final:\", p)",
+                        "question": "¿Cuál será el valor final de p al salir del ciclo?",
+                        "theory": "Rastrea el valor de p en cada multiplicación: 1 -> 2 -> 4 -> 8.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Final: 4",
+                                "isCorrect": false,
+                                "whyIncorrect": "Cuando p vale 4, la condición 4 <= 4 es True, por lo que vuelve a entrar y se multiplica por 2 a 8."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Final: 2",
+                                "isCorrect": false,
+                                "whyIncorrect": "El ciclo no se detiene en 2 porque 2 <= 4 sigue siendo verdadero."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Final: 16",
+                                "isCorrect": false,
+                                "whyIncorrect": "Para llegar a 16 necesitaría entrar cuando p vale 8, pero 8 <= 4 es False."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Final: 8",
+                                "isCorrect": true
+                            }
+                        ],
+                        "correctionTip": "1 <= 4 (entra -> 2); 2 <= 4 (entra -> 4); 4 <= 4 (entra -> 8); 8 <= 4 es False (sale).",
+                        "fullAnswerExplanation": "¡Correcto! Rastro de p: 1 -> 2 -> 4 -> 8. Cuando vale 8, 8 <= 4 es False y el ciclo finaliza."
+                    },
+                    {
+                        "type": "code_sandbox",
+                        "partLabel": "Paso 6 · Práctica guiada",
+                        "title": "Llenado de tolva",
+                        "instruction": "Completa el operador de comparación y el de asignación compuesta para llenar la tolva hasta alcanzar 100 toneladas:",
+                        "starterCode": "toneladas = 0\nwhile toneladas ___ 100:\n    toneladas ___ 25\nprint(\"Tolva llena:\", toneladas)",
+                        "slotMarker": "___",
+                        "expectedOutput": "Tolva llena: 100",
+                        "options": [
+                            {
+                                "id": "A",
+                                "slots": [
+                                    "<",
+                                    "+="
+                                ],
+                                "label": "<  y  +=",
+                                "code": "<  y  +=",
+                                "isCorrect": true,
+                                "explanation": "¡Excelente! Mientras toneladas < 100, se suman += 25 en cada viaje hasta alcanzar exactamente 100."
+                            },
+                            {
+                                "id": "B",
+                                "slots": [
+                                    ">",
+                                    "+="
+                                ],
+                                "label": ">  y  +=",
+                                "code": ">  y  +=",
+                                "isCorrect": false,
+                                "whyIncorrect": "Al inicio toneladas=0; como 0 > 100 es False, nunca entraría al ciclo y terminaría en 0."
+                            },
+                            {
+                                "id": "C",
+                                "slots": [
+                                    "<=",
+                                    "="
+                                ],
+                                "label": "<=  y  =",
+                                "code": "<=  y  =",
+                                "isCorrect": false,
+                                "whyIncorrect": "Usar '=' asignaría siempre el valor fijo 25 en cada ciclo, provocando un bucle infinito."
+                            },
+                            {
+                                "id": "D",
+                                "slots": [
+                                    "==",
+                                    "+="
+                                ],
+                                "label": "==  y  +=",
+                                "code": "==  y  +=",
+                                "isCorrect": false,
+                                "whyIncorrect": "0 == 100 es False desde el primer momento, impidiendo que el ciclo se ejecute."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 7 · Caso Borde",
+                        "title": "El valor exacto al salir del bucle",
+                        "code": "x = 10\nwhile x > 3:\n    x -= 2\nprint(\"Salida:\", x)",
+                        "question": "¿Qué valor exacto tiene la variable x justo después de terminar el ciclo?",
+                        "theory": "Sigue los decrementos de 2 en 2: 10 -> 8 -> 6 -> 4 -> 2.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Salida: 3",
+                                "isCorrect": false,
+                                "whyIncorrect": "x disminuye de 2 en 2: 10 -> 8 -> 6 -> 4 -> 2. Nunca toma el valor 3."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Salida: 4",
+                                "isCorrect": false,
+                                "whyIncorrect": "Cuando x vale 4, 4 > 3 sigue siendo True, por lo que entra una última vez y resta a 2."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Salida: 2",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "D",
+                                "text": "Salida: 0",
+                                "isCorrect": false,
+                                "whyIncorrect": "Cuando x llega a 2, 2 > 3 es False y el ciclo se detiene de inmediato sin llegar a 0."
+                            }
+                        ],
+                        "correctionTip": "Cuando x vale 4 entra y resta a 2. Como 2 > 3 es False, el bucle termina con x = 2.",
+                        "fullAnswerExplanation": "¡Exacto! El ciclo se detiene cuando la condición se rompe: al restar 2 a 4, x queda en 2, haciendo que 2 > 3 sea False."
+                    }
+                ]
             },
             {
-              "type": "predict",
-              "partLabel": "Paso 5 · Precedencia en la fórmula de potencia",
-              "title": "¿Qué alteran los paréntesis?",
-              "question": "Si un estudiante altera los paréntesis en el cálculo anterior, ¿cuál será la salida exacta de este código?",
-              "code": "factor = 2\nbase = 3\nresultado = (factor * base) ** 2\nprint(resultado)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "18",
-                  "isCorrect": false,
-                  "whyIncorrect": "18 resultaría de 2 * (3 ** 2) = 2 * 9; aquí los paréntesis fuerzan primero 2 * 3 = 6."
-                },
-                {
-                  "id": "B",
-                  "text": "12",
-                  "isCorrect": false,
-                  "whyIncorrect": "Confundes elevar al cuadrado con multiplicar por 2: (6) * 2 = 12."
-                },
-                {
-                  "id": "C",
-                  "text": "24",
-                  "isCorrect": false,
-                  "whyIncorrect": "24 no corresponde a ninguna combinación válida de las variables dadas."
-                },
-                {
-                  "id": "D",
-                  "text": "36",
-                  "isCorrect": true
-                }
-              ],
-              "correctionTip": "Los paréntesis tienen la máxima prioridad: primero (2 * 3) = 6, y luego 6 ** 2.",
-              "fullAnswerExplanation": "¡Exacto! Los paréntesis obligan a evaluar primero la multiplicación factor * base = 6, y 6 elevado al cuadrado da 36."
+                "id": "w3-l5",
+                "weekId": "semana-3",
+                "number": 5,
+                "tag": "Ciclos",
+                "shortTitle": "break y continue",
+                "title": "Alteración de flujo en ciclos con break y continue",
+                "description": "Parada abrupta de emergencia vs salto de iteración y trampas en bucles while.",
+                "duration": "8 min",
+                "steps": [
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 1 · El concepto",
+                        "title": "El freno de mano de emergencia (break)",
+                        "intro": "En una cinta de equipaje, si el sensor detecta un paquete peligroso, se activa la parada de emergencia (break): el sistema se frena por completo y no revisa ninguna maleta más.",
+                        "examples": [
+                            {
+                                "label": "Parada con break",
+                                "code": "for item in [\"tornillo\", \"piedra\", \"arandela\"]:\n    if item == \"piedra\":\n        print(\"¡Parada de emergencia!\")\n        break\n    print(\"Procesando:\", item)",
+                                "output": "Procesando: tornillo\n¡Parada de emergencia!",
+                                "explanation": "Al encontrar 'piedra', el break cancela el ciclo de inmediato e ignora 'arandela'."
+                            }
+                        ],
+                        "keyTakeaway": "break rompe y finaliza el ciclo en el acto. La ejecución salta a la primera línea fuera del bucle, ignorando lo restante."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 2 · Trazado con break",
+                        "title": "Trazado con break y acumulación",
+                        "code": "suma = 0\nfor n in [5, 10, -1, 20]:\n    if n < 0:\n        break\n    suma += n\nprint(\"Total:\", suma)",
+                        "question": "¿Cuál será el valor impreso de total al ejecutarse este programa?",
+                        "theory": "¿Qué ocurre con la variable suma cuando n vale -1?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Total: 35",
+                                "isCorrect": false,
+                                "whyIncorrect": "Sumaste todos los números ignorando la instrucción break que cancela el ciclo en el -1."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Total: 15",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "C",
+                                "text": "Total: 14",
+                                "isCorrect": false,
+                                "whyIncorrect": "El -1 activa el break antes de sumarse, por lo que la suma es 5 + 10 = 15, no 14."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Total: 0",
+                                "isCorrect": false,
+                                "whyIncorrect": "Las dos primeras iteraciones (5 y 10) se ejecutan y acumulan normalmente antes del break."
+                            }
+                        ],
+                        "correctionTip": "Suma 5, luego 10 (suma=15). En -1 se activa el break antes de sumar, por lo que 20 nunca se procesa.",
+                        "fullAnswerExplanation": "¡Correcto! Suma 5, luego 10 (suma = 15). Al llegar a -1, n < 0 es True y break interrumpe el ciclo antes de sumar 20."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 3 · Spot the Bug",
+                        "title": "El continue atrapado en while",
+                        "code": "i = 0\nwhile i < 4:\n    if i == 2:\n        continue\n    print(i)\n    i += 1",
+                        "question": "Un estudiante escribió este código para saltarse el número 2. Al ejecutarlo imprime 0 y 1, pero luego se congela en un bucle infinito. ¿Por qué?",
+                        "theory": "¿Qué líneas se saltan cuando se ejecuta continue en un ciclo while?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "La palabra clave continue solo está permitida en ciclos for.",
+                                "isCorrect": false,
+                                "whyIncorrect": "continue es completamente legal tanto en for como en while."
+                            },
+                            {
+                                "id": "B",
+                                "text": "El operador == debe sustituirse por = para asignar el nuevo valor.",
+                                "isCorrect": false,
+                                "whyIncorrect": "'=' asignaría un valor dentro del if en lugar de comparar; la condición requiere '=='."
+                            },
+                            {
+                                "id": "C",
+                                "text": "La condición i < 4 se vuelve falsa antes de tiempo.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Al contrario: i se queda congelado en 2 y 2 < 4 sigue siendo siempre True."
+                            },
+                            {
+                                "id": "D",
+                                "text": "continue salta a la siguiente vuelta sin ejecutar i += 1, dejando a i estancado para siempre en 2.",
+                                "isCorrect": true
+                            }
+                        ],
+                        "correctionTip": "Al saltarse el incremento i += 1, 'i' se queda en 2 indefinidamente, repitiendo la condición True.",
+                        "fullAnswerExplanation": "¡Fallo clásico de novato! Al ejecutar continue, Python salta al inicio del while sin ejecutar las líneas posteriores, por lo que i += 1 nunca se ejecuta cuando i == 2."
+                    },
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 4 · Salto con continue",
+                        "title": "Saltar el turno con continue",
+                        "intro": "En un control de calidad, si una botella viene vacía, no queremos apagar la fábrica: simplemente la descartamos (continue) y pasamos a inspeccionar la siguiente.",
+                        "examples": [
+                            {
+                                "label": "Filtro de números impares",
+                                "code": "for n in [1, 2, 3, 4]:\n    if n % 2 != 0:\n        continue\n    print(f\"Par detectado: {n}\")",
+                                "output": "Par detectado: 2\nPar detectado: 4",
+                                "explanation": "Cuando n es impar, continue salta directamente al siguiente número sin imprimir."
+                            }
+                        ],
+                        "keyTakeaway": "continue termina únicamente la iteración en curso y avanza directamente al siguiente elemento de la secuencia."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 5 · Trazado con continue",
+                        "title": "Trazado combinando continue",
+                        "code": "conteo = 0\nfor letra in \"MINAS\":\n    if letra in \"IA\":\n        continue\n    conteo += 1\nprint(\"Consonantes:\", conteo)",
+                        "question": "¿Qué número imprimirá este contador de consonantes al saltarse las vocales 'I' y 'A'?",
+                        "theory": "Revisa cuáles letras de 'MINAS' ejecutan el conteo y cuáles ejecutan continue.",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Consonantes: 3",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "B",
+                                "text": "Consonantes: 2",
+                                "isCorrect": false,
+                                "whyIncorrect": "2 es la cantidad de vocales que fueron omitidas ('I' y 'A'), pero contamos las consonantes."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Consonantes: 5",
+                                "isCorrect": false,
+                                "whyIncorrect": "5 es la longitud total de 'MINAS', pero las vocales fueron omitidas por el continue."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Consonantes: 4",
+                                "isCorrect": false,
+                                "whyIncorrect": "'MINAS' tiene exactamente 3 consonantes (M, N, S) y 2 vocales (I, A)."
+                            }
+                        ],
+                        "correctionTip": "Para 'M', 'N' y 'S' se suma 1 a conteo. Para 'I' y 'A' el continue salta la suma. Total = 3.",
+                        "fullAnswerExplanation": "¡Exacto! Para 'M', 'N' y 'S', conteo se incrementa; para 'I' y 'A', continue salta el incremento. Total: 3."
+                    },
+                    {
+                        "type": "code_sandbox",
+                        "partLabel": "Paso 6 · Práctica guiada",
+                        "title": "Filtro y parada de emergencia",
+                        "instruction": "Completa las dos ranuras para omitir lecturas en cero usando continue y detener ante valores negativos usando break:",
+                        "starterCode": "sensores = [14, 0, 18, -99, 25]\nlecturas_validas = 0\nfor s in sensores:\n    if s == 0:\n        ___\n    if s < 0:\n        ___\n    lecturas_validas += 1\nprint(\"Válidas:\", lecturas_validas)",
+                        "slotMarker": "___",
+                        "expectedOutput": "Válidas: 2",
+                        "options": [
+                            {
+                                "id": "A",
+                                "slots": [
+                                    "break",
+                                    "continue"
+                                ],
+                                "label": "break  y  continue",
+                                "code": "break  y  continue",
+                                "isCorrect": false,
+                                "whyIncorrect": "Si pones break en s == 0, detendrías todo el programa en la segunda lectura contabilizando solo 1."
+                            },
+                            {
+                                "id": "B",
+                                "slots": [
+                                    "continue",
+                                    "pass"
+                                ],
+                                "label": "continue  y  pass",
+                                "code": "continue  y  pass",
+                                "isCorrect": false,
+                                "whyIncorrect": "Usar 'pass' en s < 0 procesaría la lectura -99 como válida, arrojando 3 lecturas en vez de 2."
+                            },
+                            {
+                                "id": "C",
+                                "slots": [
+                                    "continue",
+                                    "break"
+                                ],
+                                "label": "continue  y  break",
+                                "code": "continue  y  break",
+                                "isCorrect": true,
+                                "explanation": "¡Gran trabajo! continue ignora el 0 sin detener el programa, y break detiene todo ante la alarma crítica -99."
+                            },
+                            {
+                                "id": "D",
+                                "slots": [
+                                    "break",
+                                    "break"
+                                ],
+                                "label": "break  y  break",
+                                "code": "break  y  break",
+                                "isCorrect": false,
+                                "whyIncorrect": "Poner break en ambas condiciones abortaría en la lectura 0, registrando solo 1 válida."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 7 · Caso Borde",
+                        "title": "Código inalcanzable tras un break",
+                        "code": "for k in [1, 2, 3]:\n    print(\"A\")\n    break\n    print(\"B\")\nprint(\"C\")",
+                        "question": "¿Cuál es la salida exacta producida en la terminal por este script?",
+                        "theory": "¿Se ejecuta alguna instrucción que esté inmediatamente después de un break dentro del mismo bloque?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "A\\nB\\nC",
+                                "isCorrect": false,
+                                "whyIncorrect": "La línea `print('B')` nunca se ejecuta porque el break anterior interrumpe el ciclo de inmediato."
+                            },
+                            {
+                                "id": "B",
+                                "text": "A\nC",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "C",
+                                "text": "A\nA\nA\nC",
+                                "isCorrect": false,
+                                "whyIncorrect": "El break finaliza el ciclo en la primera vuelta; no llega a ejecutarse para el 2 ni para el 3."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Produce un error de sintaxis SyntaxError: unreachable code.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Python permite escribir código después de un break sin lanzar error de sintaxis; simplemente no lo ejecuta jamás."
+                            }
+                        ],
+                        "correctionTip": "Imprime 'A', luego el break termina el for inmediatamente saltando a print('C'). 'B' nunca se imprime.",
+                        "fullAnswerExplanation": "¡Perfecto! Imprime 'A', el break cancela el ciclo (dejando a print('B') inalcanzable) y continúa en print('C')."
+                    }
+                ]
             },
             {
-              "type": "code_sandbox",
-              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
-              "title": "Tolvas y material restante",
-              "instruction": "Completa el código con los operadores adecuados para calcular: 1) el número de viajes completos y 2) los kilogramos que quedan en el silo.",
-              "slotMarker": "___",
-              "starterCode": "kilos_totales = 850\ncapacidad_camion = 200\n\nviajes = kilos_totales ___ capacidad_camion\nrestante = kilos_totales ___ capacidad_camion\n\nprint(\"Viajes completos:\", viajes)\nprint(\"Kilos restantes:\", restante)",
-              "expectedOutput": "Viajes completos: 4\nKilos restantes: 50",
-              "slots": [
-                {
-                  "id": "slot-0",
-                  "label": "Operador para calcular viajes completos (división entera)",
-                  "shortLabel": "1: Viajes",
-                  "options": [
-                    { "id": "A", "code": "//", "label": "// (división entera)" },
-                    { "id": "B", "code": "/", "label": "/ (división decimal flotante)" },
-                    { "id": "C", "code": "%", "label": "% (módulo o residuo)" }
-                  ]
-                },
-                {
-                  "id": "slot-1",
-                  "label": "Operador para calcular kilos sobrantes (residuo)",
-                  "shortLabel": "2: Sobrante",
-                  "options": [
-                    { "id": "A", "code": "%", "label": "% (módulo o residuo)" },
-                    { "id": "B", "code": "//", "label": "// (división entera)" },
-                    { "id": "C", "code": "*", "label": "* (multiplicación)" }
-                  ]
-                }
-              ],
-              "solution": ["//", "%"],
-              "slotFeedbacks": {
-                "0": {
-                  "/": "Usar / produce 4.25 camiones (flotante con decimales) en vez de un conteo de viajes enteros.",
-                  "%": "El operador % extrae el residuo, no la cantidad de viajes completos a realizar."
-                },
-                "1": {
-                  "//": "El operador // calcula el cociente entero, no los kilogramos sobrantes sin despachar.",
-                  "*": "El operador * multiplicaría kilos por capacidad del camión, lo cual no calcula el material restante."
-                }
-              },
-              "explanation": "¡Excelente! // calcula los 4 viajes enteros (850 // 200 = 4) y % extrae los 50 kg restantes (850 % 200 = 50).",
-              "options": [
-                {
-                  "id": "A",
-                  "slots": [
-                    "//",
-                    "%"
-                  ],
-                  "label": "//  y  %",
-                  "code": "//  y  %",
-                  "isCorrect": true,
-                  "explanation": "¡Excelente! // calcula los 4 viajes enteros y % extrae los 50 kg restantes sin fraccionar."
-                },
-                {
-                  "id": "B",
-                  "slots": [
-                    "/",
-                    "%"
-                  ],
-                  "label": "/  y  %",
-                  "code": "/  y  %",
-                  "isCorrect": false,
-                  "explanation": "Usar / daría 4.25 viajes con decimales en vez de un conteo entero de vehículos."
-                },
-                {
-                  "id": "C",
-                  "slots": [
-                    "%",
-                    "//"
-                  ],
-                  "label": "%  y  //",
-                  "code": "%  y  //",
-                  "isCorrect": false,
-                  "explanation": "Los operadores están invertidos; calcularías 50 viajes y 4 kilos sobrantes."
-                },
-                {
-                  "id": "D",
-                  "slots": [
-                    "//",
-                    "/"
-                  ],
-                  "label": "//  y  /",
-                  "code": "//  y  /",
-                  "isCorrect": false,
-                  "explanation": "La segunda ranura debe ser % para calcular el residuo, no la división real."
-                }
-              ]
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 7 · Caso Borde: Descarga exacta",
-              "title": "¿Qué pasa si no sobra nada?",
-              "question": "¿Qué imprime la variable sobrante si el material a despachar es múltiplo exacto de la capacidad del vehículo?",
-              "code": "cajas = 60\ncapacidad = 15\nsobrante = cajas % capacidad\nprint(\"Sobrante:\", sobrante)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Sobrante: 4",
-                  "isCorrect": false,
-                  "whyIncorrect": "4 es el resultado de la división 60 // 15, no el sobrante de la operación."
-                },
-                {
-                  "id": "B",
-                  "text": "Sobrante: None",
-                  "isCorrect": false,
-                  "whyIncorrect": "El operador módulo siempre devuelve un número entero, nunca None."
-                },
-                {
-                  "id": "C",
-                  "text": "Sobrante: 0",
-                  "isCorrect": true
-                },
-                {
-                  "id": "D",
-                  "text": "Sobrante: 15",
-                  "isCorrect": false,
-                  "whyIncorrect": "Si sobran 15 unidades, cabría exactamente un viaje completo adicional."
-                }
-              ],
-              "correctionTip": "Cuando una cantidad es divisible exactamente por otra, el residuo es estrictamente 0.",
-              "fullAnswerExplanation": "¡Correcto! Como 15 * 4 = 60 exactos, no queda ninguna unidad suelta y el residuo es 0."
+                "id": "w3-l6",
+                "weekId": "semana-3",
+                "number": 6,
+                "tag": "Ciclos",
+                "shortTitle": "Centinelas y Validación",
+                "title": "Reto Integrador: Valores centinela y robustez algorítmica",
+                "description": "Lectura continua hasta centinela de fin, cálculo de máximos y prevención de ZeroDivisionError.",
+                "duration": "10 min",
+                "steps": [
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 1 · El concepto",
+                        "title": "El valor centinela",
+                        "intro": "En una báscula para camiones mineros, no sabemos cuántos vehículos llegarán en el turno. El operario pesa camión tras camión hasta que ingresa una clave especial (ej. -1 o 'fin'). Ese dato especial de parada es el centinela.",
+                        "examples": [
+                            {
+                                "label": "Parada con centinela -1",
+                                "code": "total = 0\nentradas = [150, 200, -1, 80]\nfor peso in entradas:\n    if peso == -1:\n        break\n    total += peso\nprint(\"Carga total:\", total)",
+                                "output": "Carga total: 350",
+                                "explanation": "El -1 señala el final de la jornada; 80 queda ignorado y la carga acumulada es 150 + 200 = 350."
+                            }
+                        ],
+                        "keyTakeaway": "Un centinela es un valor especial de control que no forma parte de los datos reales y sirve exclusivamente para indicar el fin de la captura."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 2 · Trazado con centinela",
+                        "title": "Trazado con centinela y contador",
+                        "code": "cantidad = 0\nsuma = 0\ndatos = [40, 60, 20, 0, 99]\nfor x in datos:\n    if x == 0:\n        break\n    cantidad += 1\n    suma += x\nprint(cantidad, suma)",
+                        "question": "El número 0 actúa como centinela en esta serie de datos. ¿Qué imprimirá el script al finalizar?",
+                        "theory": "¿Se procesa el número 99 después del centinela 0?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "4 120",
+                                "isCorrect": false,
+                                "whyIncorrect": "El 0 activa el break antes de incrementar la cantidad, por lo que se contaron 3 valores, no 4."
+                            },
+                            {
+                                "id": "B",
+                                "text": "5 219",
+                                "isCorrect": false,
+                                "whyIncorrect": "El break interrumpe el ciclo al llegar al 0; el número 99 nunca llega a procesarse."
+                            },
+                            {
+                                "id": "C",
+                                "text": "3 219",
+                                "isCorrect": false,
+                                "whyIncorrect": "La suma solo incluye 40 + 60 + 20 = 120; el 99 está después del centinela de salida."
+                            },
+                            {
+                                "id": "D",
+                                "text": "3 120",
+                                "isCorrect": true
+                            }
+                        ],
+                        "correctionTip": "Procesa 40, 60 y 20 (cantidad=3, suma=120). En 0 hace break y no llega al 99.",
+                        "fullAnswerExplanation": "¡Correcto! Procesa 40, 60 y 20 (cantidad = 3, suma = 120). Al encontrar el centinela 0, sale inmediatamente."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 3 · Spot the Bug",
+                        "title": "El centinela colado en la suma",
+                        "code": "total = 0\nfor v in [10, 20, -1]:\n    total += v\n    if v == -1:\n        break\nprint(\"Total neto:\", total)",
+                        "question": "El programa debería sumar los ingresos hasta que se digite -1. Sin embargo, imprime Total neto: 29 en vez de 30. ¿Cuál es el error de diseño?",
+                        "theory": "¿En qué orden se debe acumular y verificar el centinela?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "El valor del centinela -1 se acumuló en total antes de verificar si debía detener el ciclo.",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "B",
+                                "text": "La variable total debió inicializarse en -1 para compensar la resta.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Los acumuladores de sumas siempre deben iniciar en 0; parchear con -1 solo funcionaría por azar en este caso."
+                            },
+                            {
+                                "id": "C",
+                                "text": "El ciclo for no permite números negativos en sus colecciones.",
+                                "isCorrect": false,
+                                "whyIncorrect": "Las listas de Python aceptan cualquier número positivo, negativo o decimal."
+                            },
+                            {
+                                "id": "D",
+                                "text": "La instrucción if requiere obligatoriamente un bloque else para ejecutar un break.",
+                                "isCorrect": false,
+                                "whyIncorrect": "El condicional if simple es perfectamente válido y autosuficiente sin bloque else."
+                            }
+                        ],
+                        "correctionTip": "La comprobación if v == -1 debe hacerse antes de total += v, para no sumarle el -1 al total.",
+                        "fullAnswerExplanation": "¡Exacto! El orden de las instrucciones es crucial: la verificación del centinela debe hacerse antes de procesar o acumular el dato."
+                    },
+                    {
+                        "type": "explanation",
+                        "partLabel": "Paso 4 · Cálculo de máximos",
+                        "title": "Búsqueda del valor máximo",
+                        "intro": "Para recordar la temperatura récord de un reactor químico, guardamos la primera lectura como el campeón actual. Cada vez que una nueva lectura supera al campeón, la coronamos como el nuevo récord.",
+                        "examples": [
+                            {
+                                "label": "Máximo elemento",
+                                "code": "temperaturas = [24, 38, 19, 41, 30]\nmaxima = temperaturas[0]\nfor t in temperaturas:\n    if t > maxima:\n        maxima = t\nprint(f\"Temperatura máxima: {maxima}°C\")",
+                                "output": "Temperatura máxima: 41°C",
+                                "explanation": "maxima arranca en 24, sube a 38, y finalmente a 41 cuando se compara con 41."
+                            }
+                        ],
+                        "keyTakeaway": "Para encontrar el mayor de una serie, inicializa tu variable con el primer dato conocido y actualízala cada vez que encuentres uno estrictamente mayor."
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 5 · Trazado condicional",
+                        "title": "Trazado de conteo condicional",
+                        "code": "notas = [4.5, 2.8, 3.2, 1.9, 3.0]\nganaron = 0\nfor n in notas:\n    if n >= 3.0:\n        ganaron += 1\nprint(\"Aprobados:\", ganaron)",
+                        "question": "Un profesor procesa las notas para saber cuántos aprobaron la materia (nota mínima: 3.0). ¿Qué imprime este programa?",
+                        "theory": "¿Cuáles notas son mayores o iguales a 3.0?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "Aprobados: 2",
+                                "isCorrect": false,
+                                "whyIncorrect": "No contaste la nota 3.0, pero el operador '>=' incluye exactamente las notas iguales a 3.0."
+                            },
+                            {
+                                "id": "B",
+                                "text": "Aprobados: 4",
+                                "isCorrect": false,
+                                "whyIncorrect": "Las notas 2.8 y 1.9 no superan el 3.0, por lo que no deben contabilizarse."
+                            },
+                            {
+                                "id": "C",
+                                "text": "Aprobados: 3",
+                                "isCorrect": true
+                            },
+                            {
+                                "id": "D",
+                                "text": "Aprobados: 5",
+                                "isCorrect": false,
+                                "whyIncorrect": "Solo 3 de los 5 estudiantes tienen nota mayor o igual a 3.0 (4.5, 3.2 y 3.0)."
+                            }
+                        ],
+                        "correctionTip": "4.5 >= 3.0 (sí); 2.8 (no); 3.2 (sí); 1.9 (no); 3.0 >= 3.0 (sí). Total = 3.",
+                        "fullAnswerExplanation": "¡Correcto! Cumplen la condición n >= 3.0 las notas 4.5, 3.2 y 3.0, dando un total de 3 aprobados."
+                    },
+                    {
+                        "type": "code_sandbox",
+                        "partLabel": "Paso 6 · Práctica guiada",
+                        "title": "Procesador de votaciones",
+                        "instruction": "Completa las dos ranuras para detener el conteo cuando el voto sea 0 (centinela de urna cerrada) usando break:",
+                        "starterCode": "votos_c1 = 0\ntotal_votos = 0\nurnas = [1, 2, 1, 1, 0, 2]\nfor voto in urnas:\n    if voto ___ 0:\n        ___\n    total_votos += 1\n    if voto == 1:\n        votos_c1 += 1\nprint(f\"Candidato 1: {votos_c1} de {total_votos}\")",
+                        "slotMarker": "___",
+                        "expectedOutput": "Candidato 1: 3 de 4",
+                        "options": [
+                            {
+                                "id": "A",
+                                "slots": [
+                                    "!=",
+                                    "continue"
+                                ],
+                                "label": "!=  y  continue",
+                                "code": "!=  y  continue",
+                                "isCorrect": false,
+                                "whyIncorrect": "'!=' saltaría todos los votos válidos y solo procesaría los ceros."
+                            },
+                            {
+                                "id": "B",
+                                "slots": [
+                                    "==",
+                                    "break"
+                                ],
+                                "label": "==  y  break",
+                                "code": "==  y  break",
+                                "isCorrect": true,
+                                "explanation": "¡Excelente lógica electoral! Al verificar voto == 0, break cierra la urna en el momento justo sin contar votos posteriores."
+                            },
+                            {
+                                "id": "C",
+                                "slots": [
+                                    "==",
+                                    "continue"
+                                ],
+                                "label": "==  y  continue",
+                                "code": "==  y  continue",
+                                "isCorrect": false,
+                                "whyIncorrect": "'continue' solo omitiría el 0 y seguiría contando los votos posteriores a la urna cerrada."
+                            },
+                            {
+                                "id": "D",
+                                "slots": [
+                                    ">",
+                                    "break"
+                                ],
+                                "label": ">  y  break",
+                                "code": ">  y  break",
+                                "isCorrect": false,
+                                "whyIncorrect": "'>' detendría el conteo inmediatamente en el primer voto positivo recibido."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "predict",
+                        "partLabel": "Paso 7 · Caso Borde",
+                        "title": "Centinela inmediato en el primer dato",
+                        "code": "entradas = [-1]\ncontador = 0\nsuma = 0\nfor val in entradas:\n    if val == -1:\n        break\n    contador += 1\n    suma += val\nif contador > 0:\n    print(suma / contador)\nelse:\n    print(\"Sin datos\")",
+                        "question": "Si una cuadrilla no realizó ningún trabajo y el primer dato digitado es inmediatamente el centinela -1, ¿qué imprime el programa?",
+                        "theory": "¿Llega a ejecutarse la división si contador queda en 0?",
+                        "options": [
+                            {
+                                "id": "A",
+                                "text": "0.0",
+                                "isCorrect": false,
+                                "whyIncorrect": "Como contador quedó en 0, no entra al bloque if y no evalúa ninguna división matemática."
+                            },
+                            {
+                                "id": "B",
+                                "text": "-1",
+                                "isCorrect": false,
+                                "whyIncorrect": "El centinela activa el break inmediatamente sin almacenarse ni en suma ni en contador."
+                            },
+                            {
+                                "id": "C",
+                                "text": "ZeroDivisionError: division by zero",
+                                "isCorrect": false,
+                                "whyIncorrect": "El condicional if contador > 0 protegió exitosamente al programa evitando ejecutar la división."
+                            },
+                            {
+                                "id": "D",
+                                "text": "Sin datos",
+                                "isCorrect": true
+                            }
+                        ],
+                        "correctionTip": "Al entrar con -1, se ejecuta el break. contador queda en 0, por lo que va al else e imprime 'Sin datos'.",
+                        "fullAnswerExplanation": "¡Dominio total de casos borde! El break se dispara en el primer intento dejando contador = 0. El if-else previene la caída del sistema y emite el mensaje seguro 'Sin datos'."
+                    }
+                ]
             }
-          ]
-        },
-        {
-          "id": "w3-l2",
-          "weekId": "semana-3",
-          "number": 2,
-          "tag": "Lógica Booleana",
-          "shortTitle": "Seguridad Industrial",
-          "title": "Seguridad Industrial: Sensores y Lógica Booleana",
-          "description": "Monitoreo de parámetros críticos con operadores relacionales y combinaciones lógicas.",
-          "duration": "10 min",
-          "steps": [
-            {
-              "type": "explanation",
-              "partLabel": "Paso 1 · Alerta en la caldera de vapor",
-              "title": "Condiciones compuestas con and",
-              "intro": "En una planta térmica, una alarma de emergencia solo debe activarse si dos condiciones críticas ocurren simultáneamente: alta presión Y alta temperatura.",
-              "examples": [
-                {
-                  "label": "Monitoreo de caldera",
-                  "code": "presion_psi = 160\ntemp_celsius = 95\nalarma = (presion_psi > 150) and (temp_celsius > 90)\nprint(\"¿Activar alarma de caldera?\", alarma)",
-                  "output": "¿Activar alarma de caldera? True",
-                  "explanation": "Como ambas comparaciones son verdaderas (160 > 150 y 95 > 90), el operador and resulta en True."
-                }
-              ],
-              "keyTakeaway": "El operador and exige que ambas condiciones sean verdaderas para dar True. Si una sola falla, todo es False."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 2 · Condición de parada de emergencia",
-              "title": "¿Cuándo se detiene la cinta?",
-              "question": "El sistema detiene una cinta transportadora si el botón de paro está pulsado O si el peso excede 500 kg. ¿Qué imprimirá este programa?",
-              "code": "boton_paro = False\npeso_kg = 580\ndetener = boton_paro or (peso_kg > 500)\nprint(\"Detener cinta:\", detener)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Detener cinta: False",
-                  "isCorrect": false,
-                  "whyIncorrect": "En el operador or, basta con que una sola de las dos ramas sea True para que todo sea True."
-                },
-                {
-                  "id": "B",
-                  "text": "Detener cinta: True",
-                  "isCorrect": true
-                },
-                {
-                  "id": "C",
-                  "text": "Detener cinta: 580",
-                  "isCorrect": false,
-                  "whyIncorrect": "Una expresión con operadores relacionales produce un booleano True/False, no el número."
-                },
-                {
-                  "id": "D",
-                  "text": "Detener cinta: Error",
-                  "isCorrect": false,
-                  "whyIncorrect": "Mezclar booleanos y comparaciones numéricas con or es sintaxis totalmente válida en Python."
-                }
-              ],
-              "correctionTip": "El operador or devuelve True si al menos una de las condiciones es verdadera.",
-              "fullAnswerExplanation": "¡Muy bien! Como peso_kg > 500 es True (580 > 500), el operador or produce True inmediatamente."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 3 · Spot the Bug: El falso or sin variable",
-              "title": "¿Por qué este condicional siempre da True?",
-              "question": "Un estudiante quería verificar si el voltaje es 110 o 220 voltios, pero escribió el código de abajo. ¿Por qué este código siempre imprime True sin importar el voltaje?",
-              "code": "voltaje = 15\nvalido = (voltaje == 110 or 220)\nprint(\"¿Voltaje válido?\", bool(valido))",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "En Python or 220 no compara con voltaje; como el número 220 no es cero, siempre se evalúa como True.",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
-                  "text": "Porque la variable voltaje debe declararse obligatoriamente con decimales float.",
-                  "isCorrect": false,
-                  "whyIncorrect": "El tipo de dato entero es perfectamente adecuado para representar voltajes nominales."
-                },
-                {
-                  "id": "C",
-                  "text": "Porque el operador == debe colocarse después del paréntesis.",
-                  "isCorrect": false,
-                  "whyIncorrect": "La sintaxis de los paréntesis es válida, el fallo es la expresión booleana incompleta del or."
-                },
-                {
-                  "id": "D",
-                  "text": "Porque la función bool() produce un error al recibir números enteros.",
-                  "isCorrect": false,
-                  "whyIncorrect": "bool(n) convierte cualquier número entero distinto de 0 en True sin generar errores."
-                }
-              ],
-              "correctionTip": "Cada lado del or debe ser una comparación completa: voltaje == 110 or voltaje == 220.",
-              "fullAnswerExplanation": "¡Clave fundamental! En Python, 220 es un valor truthy. Debes escribir explícitamente: (voltaje == 110 or voltaje == 220)."
-            },
-            {
-              "type": "explanation",
-              "partLabel": "Paso 4 · El operador not e inversión de sensores",
-              "title": "Inversión lógica de señales con not",
-              "intro": "Muchos sensores industriales entregan True cuando la válvula está bloqueada. Para verificar si el flujo está libre, invertimos la señal usando not.",
-              "examples": [
-                {
-                  "label": "Inversión de estado",
-                  "code": "valvula_bloqueada = False\nflujo_activo = not valvula_bloqueada\nprint(\"¿Hay flujo en la tubería?\", flujo_activo)",
-                  "output": "¿Hay flujo en la tubería? True",
-                  "explanation": "El operador not convierte False en True y viceversa."
-                }
-              ],
-              "keyTakeaway": "El operador not invierte el valor de verdad: not True es False, y not False es True."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 5 · Verificación de ventilación y gases",
-              "title": "¿Es seguro ingresar al túnel?",
-              "question": "En un túnel subterráneo, la entrada es segura si los gases tóxicos NO están presentes Y los ventiladores están encendidos. ¿Qué imprimirá?",
-              "code": "gas_detectado = False\nventilacion_on = True\nseguro = (not gas_detectado) and ventilacion_on\nprint(\"Ingreso seguro:\", seguro)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Ingreso seguro: False",
-                  "isCorrect": false,
-                  "whyIncorrect": "not gas_detectado se convierte en True, y True and True resulta en True."
-                },
-                {
-                  "id": "B",
-                  "text": "Ingreso seguro: None",
-                  "isCorrect": false,
-                  "whyIncorrect": "Las expresiones booleanas devuelven exclusivamente True o False en este caso."
-                },
-                {
-                  "id": "C",
-                  "text": "Ingreso seguro: True",
-                  "isCorrect": true
-                },
-                {
-                  "id": "D",
-                  "text": "Ingreso seguro: Error",
-                  "isCorrect": false,
-                  "whyIncorrect": "La expresión lógica está perfectamente estructurada en sintaxis Python."
-                }
-              ],
-              "correctionTip": "not False es True; luego True and True da True.",
-              "fullAnswerExplanation": "¡Exacto! Como no hay gas (not False = True) y la ventilación está encendida (True), el túnel es seguro."
-            },
-            {
-              "type": "code_sandbox",
-              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
-              "title": "Protocolo de emergencia",
-              "instruction": "Completa el código para activar la alarma si la temperatura excede los 80 grados Y el sistema de refrigeración NO está encendido.",
-              "slotMarker": "___",
-              "starterCode": "temperatura = 92\nrefrigeracion_activa = False\n\nalarma = (temperatura > 80) ___ (___ refrigeracion_activa)\nprint(\"Alarma crítica:\", alarma)",
-              "expectedOutput": "Alarma crítica: True",
-              "slots": [
-                {
-                  "id": "slot-0",
-                  "label": "Operador lógico para exigir ambas condiciones (conjunción)",
-                  "shortLabel": "1: Conjunción",
-                  "options": [
-                    { "id": "A", "code": "and", "label": "and (ambas obligatorias)" },
-                    { "id": "B", "code": "or", "label": "or (al menos una de las dos)" },
-                    { "id": "C", "code": "==", "label": "== (comparación de igualdad)" }
-                  ]
-                },
-                {
-                  "id": "slot-1",
-                  "label": "Operador lógico para invertir False a True (negación)",
-                  "shortLabel": "2: Negación",
-                  "options": [
-                    { "id": "A", "code": "not", "label": "not (inversor booleano)" },
-                    { "id": "B", "code": "bool", "label": "bool (función constructora)" },
-                    { "id": "C", "code": "!", "label": "! (signo no válido en Python)" }
-                  ]
-                }
-              ],
-              "solution": ["and", "not"],
-              "slotFeedbacks": {
-                "0": {
-                  "or": "Con 'or' la alarma sonaría si sube la temperatura aunque la refrigeración funcione perfectamente al 100%.",
-                  "==": "El operador '==' compararía booleanos en vez de encadenar las dos condiciones de emergencia."
-                },
-                "1": {
-                  "bool": "'bool(False)' evalúa a False, por lo que la condición de refrigeración inactiva no activaría la alarma.",
-                  "!": "En Python el operador de negación es la palabra 'not', el símbolo '!' genera un error de sintaxis."
-                }
-              },
-              "explanation": "¡Correcto! Se requiere 'and' para exigir simultáneamente temperatura alta y refrigeración inactiva, y 'not' para negar False a True.",
-              "options": [
-                {
-                  "id": "A",
-                  "slots": [
-                    "or",
-                    "not"
-                  ],
-                  "label": "or  y  not",
-                  "code": "or  y  not",
-                  "isCorrect": false,
-                  "explanation": "Con or la alarma sonaría si la temperatura sube aunque la refrigeración funcione bien."
-                },
-                {
-                  "id": "B",
-                  "slots": [
-                    "and",
-                    "bool"
-                  ],
-                  "label": "and  y  bool",
-                  "code": "and  y  bool",
-                  "isCorrect": false,
-                  "explanation": "Usar bool dejaría la refrigeración en False, activando alarma sin invertir."
-                },
-                {
-                  "id": "C",
-                  "slots": [
-                    "==",
-                    "not"
-                  ],
-                  "label": "==  y  not",
-                  "code": "==  y  not",
-                  "isCorrect": false,
-                  "explanation": "== compara igualdad entre condiciones en lugar de combinarlas lógicamente."
-                },
-                {
-                  "id": "D",
-                  "slots": [
-                    "and",
-                    "not"
-                  ],
-                  "label": "and  y  not",
-                  "code": "and  y  not",
-                  "isCorrect": true,
-                  "explanation": "¡Correcto! Exige alta temperatura (and) junto con la ausencia de refrigeración (not refrigeracion_activa)."
-                }
-              ]
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 7 · Caso Borde: Cortocircuito en and",
-              "title": "¿Qué sucede con el error de división?",
-              "question": "En la evaluación lógica de Python, si la primera condición de un and es False, Python descarta evaluar la segunda parte (cortocircuito). ¿Cuál es la salida?",
-              "code": "sistema_online = False\nprint(sistema_online and (10 / 0 > 1))",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "ZeroDivisionError: division by zero",
-                  "isCorrect": false,
-                  "whyIncorrect": "Como el primer término es False, Python nunca ejecuta la división por cortocircuito."
-                },
-                {
-                  "id": "B",
-                  "text": "True",
-                  "isCorrect": false,
-                  "whyIncorrect": "Un and donde el primer operando es False jamás puede evaluar a True."
-                },
-                {
-                  "id": "C",
-                  "text": "False",
-                  "isCorrect": true
-                },
-                {
-                  "id": "D",
-                  "text": "None",
-                  "isCorrect": false,
-                  "whyIncorrect": "El resultado de una operación lógica con booleanos es estrictamente False."
-                }
-              ],
-              "correctionTip": "Por la regla de cortocircuito, Python se detiene en cuanto sabe que el resultado no puede cambiar.",
-              "fullAnswerExplanation": "¡Principio avanzado de Python! Al ver False en el lado izquierdo del and, Python no evalúa la derecha y evita el error de división."
-            }
-          ]
-        },
-        {
-          "id": "w3-l3",
-          "weekId": "semana-3",
-          "number": 3,
-          "tag": "Condicionales",
-          "shortTitle": "Tarifas Escalonadas",
-          "title": "Facturación Energética: Tarifas Escalonadas",
-          "description": "Modelos de cobro por bloques de consumo y rangos numéricos con if-elif-else.",
-          "duration": "10 min",
-          "steps": [
-            {
-              "type": "explanation",
-              "partLabel": "Paso 1 · Los tres rangos de consumo eléctrico",
-              "title": "Clasificación por bloques con if-elif-else",
-              "intro": "Las empresas de energía cobran el kilovatio-hora según el nivel de consumo: Tarifa Básica (hasta 100 kWh), Tarifa Intermedia (hasta 200 kWh) y Tarifa Industrial (más de 200 kWh).",
-              "examples": [
-                {
-                  "label": "Facturación por rangos",
-                  "code": "consumo = 140\nif consumo <= 100:\n    tarifa = 500\nelif consumo <= 200:\n    tarifa = 750\nelse:\n    tarifa = 1100\nprint(\"Tarifa aplicada ($/kWh):\", tarifa)",
-                  "output": "Tarifa aplicada ($/kWh): 750",
-                  "explanation": "Como 140 no es <= 100 pero sí es <= 200, entra a la rama elif y asigna la tarifa de 750."
-                }
-              ],
-              "keyTakeaway": "elif solo se evalúa si las condiciones previas fueron False; una vez que una rama se cumple, Python salta todo el resto del bloque."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 2 · Asignación de categoría",
-              "title": "¿Cuál tarifa aplica a la fábrica?",
-              "question": "Si una fábrica pequeña registra un consumo de 250 kWh, ¿qué tarifa imprime el programa?",
-              "code": "consumo = 250\nif consumo <= 100:\n    costo = 400\nelif consumo <= 200:\n    costo = 650\nelse:\n    costo = 900\nprint(\"Costo unitario:\", costo)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Costo unitario: 400",
-                  "isCorrect": false,
-                  "whyIncorrect": "250 no es menor ni igual a 100, por lo que la primera condición es False."
-                },
-                {
-                  "id": "B",
-                  "text": "Costo unitario: 650",
-                  "isCorrect": false,
-                  "whyIncorrect": "250 tampoco es menor o igual a 200; la rama elif también falla."
-                },
-                {
-                  "id": "C",
-                  "text": "Costo unitario: 900",
-                  "isCorrect": true
-                },
-                {
-                  "id": "D",
-                  "text": "Costo unitario: 1950",
-                  "isCorrect": false,
-                  "whyIncorrect": "Python no suma los costos de las ramas, ejecuta una sola rama de la estructura."
-                }
-              ],
-              "correctionTip": "Como 250 supera tanto a 100 como a 200, entra en la cláusula de descarte else.",
-              "fullAnswerExplanation": "¡Exacto! Al fallar tanto el if (<= 100) como el elif (<= 200), el flujo desemboca en la rama else asignando 900."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 3 · Spot the Bug: El error del orden invertido",
-              "title": "¿Por qué nunca llega a Industrial?",
-              "question": "Un programador novato invirtió el orden de las comparaciones en este script de clasificación. Si un usuario consume 300 kWh, ¿qué error genera este código?",
-              "code": "consumo = 300\nif consumo > 50:\n    categoria = \"Básico\"\nelif consumo > 200:\n    categoria = \"Industrial\"\nprint(categoria)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Imprime 'Básico' porque 300 > 50 es True, eclipsando la rama de 'Industrial'.",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
-                  "text": "Causa un SyntaxError porque los elif deben ir siempre antes del if.",
-                  "isCorrect": false,
-                  "whyIncorrect": "La sintaxis es válida; el fallo es de lógica algorítmica por orden de evaluación."
-                },
-                {
-                  "id": "C",
-                  "text": "Imprime 'Industrial' porque Python busca la condición con el número más grande.",
-                  "isCorrect": false,
-                  "whyIncorrect": "Python evalúa de arriba a abajo en orden secuencial estricto."
-                },
-                {
-                  "id": "D",
-                  "text": "Produce un error de indentación en la variable categoria.",
-                  "isCorrect": false,
-                  "whyIncorrect": "Las líneas interiores están correctamente indentadas con 4 espacios."
-                }
-              ],
-              "correctionTip": "Las condiciones deben ordenarse de la más restrictiva a la más general para no tapar los casos específicos.",
-              "fullAnswerExplanation": "¡Lección crítica de diseño! Como 300 > 50 es True, entra a 'Básico' y jamás evalúa > 200. Debió ordenar primero > 200."
-            },
-            {
-              "type": "explanation",
-              "partLabel": "Paso 4 · Cargo fijo según estrato",
-              "title": "Combinar categorías con or dentro de if",
-              "intro": "En servicios públicos domiciliarios, el cargo fijo cambia según el estrato socioeconómico. Puedes agrupar estratos con or en la cabecera condicional.",
-              "examples": [
-                {
-                  "label": "Cargo fijo estratificado",
-                  "code": "estrato = 2\ncargo_fijo = 0\nif estrato == 1 or estrato == 2:\n    cargo_fijo = 5000\nelif estrato == 3 or estrato == 4:\n    cargo_fijo = 12000\nelse:\n    cargo_fijo = 25000\nprint(\"Cargo fijo liquidado: $\", cargo_fijo, sep=\"\")",
-                  "output": "Cargo fijo liquidado: $5000",
-                  "explanation": "Como estrato == 2 es True, la primera rama se ejecuta y fija el cargo en 5000."
-                }
-              ],
-              "keyTakeaway": "Puedes usar operadores lógicos dentro de if y elif para simplificar la lógica y evitar anidar código innecesariamente."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 5 · Liquidación de estrato medio",
-              "title": "¿Cuál es el cargo para estrato 4?",
-              "question": "Si el predio pertenece a estrato = 4, ¿cuál es el valor exacto de cargo tras la ejecución?",
-              "code": "estrato = 4\nif estrato <= 2:\n    cargo = 6000\nelif estrato <= 4:\n    cargo = 14000\nelse:\n    cargo = 28000\nprint(\"Cargo:\", cargo)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Cargo: 6000",
-                  "isCorrect": false,
-                  "whyIncorrect": "4 no es menor o igual a 2, por lo que el primer if da False."
-                },
-                {
-                  "id": "B",
-                  "text": "Cargo: 14000",
-                  "isCorrect": true
-                },
-                {
-                  "id": "C",
-                  "text": "Cargo: 28000",
-                  "isCorrect": false,
-                  "whyIncorrect": "La rama else solo se ejecuta si estrato es estrictamente mayor que 4."
-                },
-                {
-                  "id": "D",
-                  "text": "Cargo: 20000",
-                  "isCorrect": false,
-                  "whyIncorrect": "No se suman tarifas intermedias, solo se asigna el valor de la rama activa."
-                }
-              ],
-              "correctionTip": "4 <= 4 es True, activando inmediatamente el bloque del elif.",
-              "fullAnswerExplanation": "¡Muy bien! Como 4 no es <= 2 pero sí cumple 4 <= 4, se le asigna la tarifa de 14000."
-            },
-            {
-              "type": "code_sandbox",
-              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
-              "title": "Tarifario de consumo de agua",
-              "instruction": "Completa las dos ranuras del condicional para clasificar el consumo de agua: hasta 20 m³ es 'Consumo normal', y si supera 20 pero es menor o igual a 40 es 'Consumo alto'.",
-              "slotMarker": "___",
-              "starterCode": "metros_cubicos = 35\n\nif metros_cubicos ___ 20:\n    tipo = \"Consumo normal\"\n___ metros_cubicos <= 40:\n    tipo = \"Consumo alto\"\nelse:\n    tipo = \"Consumo crítico\"\n\nprint(\"Diagnóstico:\", tipo)",
-              "expectedOutput": "Diagnóstico: Consumo alto",
-              "slots": [
-                {
-                  "id": "slot-0",
-                  "label": "Operador relacional de límite superior (hasta 20 m³)",
-                  "shortLabel": "1: Límite normal",
-                  "options": [
-                    { "id": "A", "code": "<=", "label": "<= (menor o igual a 20)" },
-                    { "id": "B", "code": "<", "label": "< (estrictamente menor a 20)" },
-                    { "id": "C", "code": "==", "label": "== (exactamente 20)" }
-                  ]
-                },
-                {
-                  "id": "slot-1",
-                  "label": "Cláusula condicional intermedia con condición",
-                  "shortLabel": "2: Condicional",
-                  "options": [
-                    { "id": "A", "code": "elif", "label": "elif (alternativa con condición)" },
-                    { "id": "B", "code": "else", "label": "else (caso por descarte)" },
-                    { "id": "C", "code": "if", "label": "if (inicia nuevo condicional)" }
-                  ]
-                }
-              ],
-              "solution": ["<=", "elif"],
-              "slotFeedbacks": {
-                "0": {
-                  "<": "Con '<' el valor frontera de 20 m³ quedaría excluido del consumo normal.",
-                  "==": "Con '==' solo clasificarías como normal exactamente 20 m³, ignorando consumos menores."
-                },
-                "1": {
-                  "else": "La cláusula 'else' no admite ninguna condición como 'metros_cubicos <= 40', genera SyntaxError.",
-                  "if": "Iniciar un nuevo 'if' rompería la cadena lógica de descarte anterior."
-                }
-              },
-              "explanation": "¡Perfecto! <= incluye el límite de 20 m³ en consumo normal, y elif permite evaluar el tramo de consumo alto (<= 40).",
-              "options": [
-                {
-                  "id": "A",
-                  "slots": [
-                    "<",
-                    "else"
-                  ],
-                  "label": "<  y  else",
-                  "code": "<  y  else",
-                  "isCorrect": false,
-                  "explanation": "Si pones else, no puedes incluir una condición posterior como <= 40."
-                },
-                {
-                  "id": "B",
-                  "slots": [
-                    "==",
-                    "elif"
-                  ],
-                  "label": "==  y  elif",
-                  "code": "==  y  elif",
-                  "isCorrect": false,
-                  "explanation": "Con == 20 dejarías por fuera todos los consumos menores a 20 m³."
-                },
-                {
-                  "id": "C",
-                  "slots": [
-                    "<=",
-                    "elif"
-                  ],
-                  "label": "<=  y  elif",
-                  "code": "<=  y  elif",
-                  "isCorrect": true,
-                  "explanation": "¡Perfecto! <= captura hasta 20 m³, y elif evalúa la siguiente condición de hasta 40 m³."
-                },
-                {
-                  "id": "D",
-                  "slots": [
-                    ">=",
-                    "elif"
-                  ],
-                  "label": ">=  y  elif",
-                  "code": ">=  y  elif",
-                  "isCorrect": false,
-                  "explanation": "Con >= 20 atraparías 35 en la primera rama clasificándolo erróneamente como 'Consumo normal'."
-                }
-              ]
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 7 · Caso Borde: Valor exactamente en la frontera",
-              "title": "¿Qué sucede en el punto de corte exacto?",
-              "question": "Observa con atención los operadores: ¿qué ocurre cuando el valor evaluado es exactamente igual al límite 20?",
-              "code": "temperatura = 20\nif temperatura < 20:\n    estado = \"Frío\"\nelif temperatura > 20:\n    estado = \"Caliente\"\nelse:\n    estado = \"Neutro\"\nprint(\"Estado:\", estado)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Estado: Frío",
-                  "isCorrect": false,
-                  "whyIncorrect": "La condición exige estrictamente < 20; 20 no es menor que 20."
-                },
-                {
-                  "id": "B",
-                  "text": "Estado: Caliente",
-                  "isCorrect": false,
-                  "whyIncorrect": "La condición exige estrictamente > 20; 20 no es mayor que 20."
-                },
-                {
-                  "id": "C",
-                  "text": "Estado: None",
-                  "isCorrect": false,
-                  "whyIncorrect": "Al no cumplirse ni if ni elif, el flujo desemboca en la cláusula else."
-                },
-                {
-                  "id": "D",
-                  "text": "Estado: Neutro",
-                  "isCorrect": true
-                }
-              ],
-              "correctionTip": "Como 20 no es estrictamente menor ni mayor que 20, cae en la cláusula else.",
-              "fullAnswerExplanation": "¡Atención al detalle! 20 no cumple < 20 ni > 20. Por descarte exacto de frontera, se ejecuta el else dando 'Neutro'."
-            }
-          ]
-        },
-        {
-          "id": "w3-l4",
-          "weekId": "semana-3",
-          "number": 4,
-          "tag": "Anidamiento",
-          "shortTitle": "Control de Calidad",
-          "title": "Control de Calidad: Diagnóstico Multicriterio",
-          "description": "Decisiones anidadas, banderas booleanas y filtros multicriterio en laboratorio.",
-          "duration": "10 min",
-          "steps": [
-            {
-              "type": "explanation",
-              "partLabel": "Paso 1 · Clasificación de mineral de cobre",
-              "title": "Condicionales anidados (un if dentro de otro)",
-              "intro": "En el laboratorio de metalurgia, una muestra de cobre se clasifica como 'Premium' solo si su pureza supera el 85% Y su humedad es menor al 8%. Si la pureza es alta pero tiene humedad, se manda a secado.",
-              "examples": [
-                {
-                  "label": "Filtro de laboratorio",
-                  "code": "pureza = 88\nhumedad = 5\nif pureza >= 85:\n    if humedad < 8:\n        dictamen = \"Lote Premium\"\n    else:\n        dictamen = \"Requiere Secado\"\nelse:\n    dictamen = \"Rechazado por baja ley\"\nprint(\"Resultado de laboratorio:\", dictamen)",
-                  "output": "Resultado de laboratorio: Lote Premium",
-                  "explanation": "El if interno solo se evalúa si la muestra supera primero el umbral de pureza (pureza >= 85)."
-                }
-              ],
-              "keyTakeaway": "Los condicionales anidados permiten tomar decisiones secundarias solo después de haber superado un primer filtro principal."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 2 · Trazado de lote húmedo",
-              "title": "¿Qué dictamen recibe la muestra?",
-              "question": "Si ingresa una muestra con pureza = 90 y humedad = 14, ¿cuál es el resultado exacto de la evaluación?",
-              "code": "pureza = 90\nhumedad = 14\nif pureza >= 85:\n    if humedad < 8:\n        print(\"Aprobado directo\")\n    else:\n        print(\"Aprobado con secado previo\")\nelse:\n    print(\"Rechazado\")",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Aprobado con secado previo",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
-                  "text": "Aprobado directo",
-                  "isCorrect": false,
-                  "whyIncorrect": "La humedad de 14 no es menor a 8, por lo que no entra al primer print."
-                },
-                {
-                  "id": "C",
-                  "text": "Rechazado",
-                  "isCorrect": false,
-                  "whyIncorrect": "La pureza de 90 supera 85, por lo que no cae en el rechazo general externo."
-                },
-                {
-                  "id": "D",
-                  "text": "Error: indentación inválida",
-                  "isCorrect": false,
-                  "whyIncorrect": "El anidamiento con 4 y 8 espacios es completamente válido en Python."
-                }
-              ],
-              "correctionTip": "Supera la pureza (90 >= 85), pero al tener 14 de humedad entra al else interior.",
-              "fullAnswerExplanation": "¡Excelente trazado! Entra al bloque principal porque 90 >= 85, y dentro falla la humedad (14 < 8 es False), cayendo en el else interno."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 3 · Spot the Bug: Asignación vs comparación",
-              "title": "¿Por qué falló la comparación de texto?",
-              "question": "Un estudiante de ingeniería de materiales escribió este condicional para verificar si la muestra era de tipo 'Au' (oro), pero el intérprete arrojó SyntaxError. ¿Por qué?",
-              "code": "mineral = \"Au\"\nif mineral = \"Au\":\n    print(\"Muestra de oro detectada\")",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Las cadenas de texto no pueden compararse en condicionales if.",
-                  "isCorrect": false,
-                  "whyIncorrect": "Los textos se comparan habitualmente con los operadores relacionales == o !=."
-                },
-                {
-                  "id": "B",
-                  "text": "Se debe usar la palabra reservada equals en lugar del signo igual.",
-                  "isCorrect": false,
-                  "whyIncorrect": "Python no tiene palabra clave equals, utiliza operadores relacionales."
-                },
-                {
-                  "id": "C",
-                  "text": "Falta cerrar el texto con comillas dobles triples.",
-                  "isCorrect": false,
-                  "whyIncorrect": "Las comillas estándar 'Au' son completamente correctas."
-                },
-                {
-                  "id": "D",
-                  "text": "Se usó el operador de asignación = en lugar del operador de comparación relacional ==.",
-                  "isCorrect": true
-                }
-              ],
-              "correctionTip": "Un solo = asigna valores; para comparar igualdad en un condicional se usa ==.",
-              "fullAnswerExplanation": "¡Error clásico de principiantes! Un solo '=' intenta asignar una variable, lo cual es ilegal en la condición de un if. Se debe usar '=='."
-            },
-            {
-              "type": "explanation",
-              "partLabel": "Paso 4 · El uso de banderas de control (flags)",
-              "title": "Banderas booleanas para control multicriterio",
-              "intro": "En software de ingeniería es una práctica excelente usar una variable booleana como 'bandera' (aprobado = True). Si alguna prueba de laboratorio falla, la bandera se conmuta a False.",
-              "examples": [
-                {
-                  "label": "Inspección de concreto",
-                  "code": "resistencia_mpa = 28\ngrietas_visibles = False\naprobado = True\nif resistencia_mpa < 25:\n    aprobado = False\nif grietas_visibles:\n    aprobado = False\nprint(\"¿El concreto superó la prueba técnica?\", aprobado)",
-                  "output": "¿El concreto superó la prueba técnica? True",
-                  "explanation": "Como la resistencia superó los 25 MPa y no hay grietas, aprobado permanece en True."
-                }
-              ],
-              "keyTakeaway": "Las banderas permiten evaluar múltiples reglas de validación independientes sin necesidad de escaleras complejas de if-else."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 5 · Inspección estructural con bandera",
-              "title": "¿Supera la viga la prueba de deflexión?",
-              "question": "Si una viga de acero tiene una deflexión de 12 mm y el límite permitido es 10 mm, ¿cuál será el valor impreso de viga_segura?",
-              "code": "deflexion_mm = 12\nlimite = 10\nviga_segura = True\nif deflexion_mm > limite:\n    viga_segura = False\nprint(\"Segura:\", viga_segura)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Segura: True",
-                  "isCorrect": false,
-                  "whyIncorrect": "Como 12 > 10 es True, la línea interior conmuta la variable a False."
-                },
-                {
-                  "id": "B",
-                  "text": "Segura: False",
-                  "isCorrect": true
-                },
-                {
-                  "id": "C",
-                  "text": "Segura: 12",
-                  "isCorrect": false,
-                  "whyIncorrect": "La variable viga_segura almacena un valor booleano, no la deflexión."
-                },
-                {
-                  "id": "D",
-                  "text": "Segura: 2",
-                  "isCorrect": false,
-                  "whyIncorrect": "No se realiza una resta, sino una asignación booleana directa a False."
-                }
-              ],
-              "correctionTip": "Al superar el límite (12 > 10), la bandera viga_segura se apaga a False.",
-              "fullAnswerExplanation": "¡Exacto! La condición 12 > 10 se cumple, ejecutando la asignación viga_segura = False."
-            },
-            {
-              "type": "code_sandbox",
-              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
-              "title": "Filtro de aptitud de roca para cimentación",
-              "instruction": "Completa el código con las ranuras faltantes: verifica que la dureza sea al menos 7.0 Y que la densidad sea estrictamente mayor a 3.5 para marcar la roca como apta.",
-              "slotMarker": "___",
-              "starterCode": "dureza_mohs = 7.5\ndensidad_gcm3 = 4.2\n\nif dureza_mohs ___ 7.0 and densidad_gcm3 ___ 3.5:\n    dictamen = \"Apta para cimentación\"\nelse:\n    dictamen = \"Roca descartada\"\n\nprint(\"Diagnóstico final:\", dictamen)",
-              "expectedOutput": "Diagnóstico final: Apta para cimentación",
-              "slots": [
-                {
-                  "id": "slot-0",
-                  "label": "Comparador de dureza mínima (al menos 7.0)",
-                  "shortLabel": "1: Dureza",
-                  "options": [
-                    { "id": "A", "code": ">=", "label": ">= (al menos / mayor o igual)" },
-                    { "id": "B", "code": ">", "label": "> (estrictamente mayor que 7.0)" },
-                    { "id": "C", "code": "==", "label": "== (exactamente 7.0)" }
-                  ]
-                },
-                {
-                  "id": "slot-1",
-                  "label": "Comparador de densidad (estrictamente mayor a 3.5)",
-                  "shortLabel": "2: Densidad",
-                  "options": [
-                    { "id": "A", "code": ">", "label": "> (estrictamente mayor a 3.5)" },
-                    { "id": "B", "code": ">=", "label": ">= (mayor o igual a 3.5)" },
-                    { "id": "C", "code": "<", "label": "< (menor a 3.5)" }
-                  ]
-                }
-              ],
-              "solution": [">=", ">"],
-              "slotFeedbacks": {
-                "0": {
-                  ">": "Con '>' descartarías una roca con dureza 7.0 exacta, a pesar de que el pliego exige 'al menos 7.0'.",
-                  "==": "Con '==' solo aceptarías rocas de exactamente 7.0, descartando rocas con mejor dureza como 7.5 u 8.0."
-                },
-                "1": {
-                  ">=": "El criterio técnico exige que la densidad sea estrictamente mayor a 3.5, no mayor o igual.",
-                  "<": "Con '<' estarías filtrando rocas livianas en lugar de rocas densas aptas para cimentación."
-                }
-              },
-              "explanation": "¡Excelente! >= 7.0 asegura al menos 7.0 de dureza y > 3.5 exige densidad estrictamente superior.",
-              "options": [
-                {
-                  "id": "A",
-                  "slots": [
-                    ">=",
-                    ">"
-                  ],
-                  "label": ">=  y  >",
-                  "code": ">=  y  >",
-                  "isCorrect": true,
-                  "explanation": "¡Excelente! >= 7.0 asegura al menos 7.0 de dureza y > 3.5 exige densidad superior al umbral."
-                },
-                {
-                  "id": "B",
-                  "slots": [
-                    "==",
-                    "<"
-                  ],
-                  "label": "==  y  <",
-                  "code": "==  y  <",
-                  "isCorrect": false,
-                  "explanation": "Exigiría exactamente 7.0 y densidad baja, descartando la roca apta."
-                },
-                {
-                  "id": "C",
-                  "slots": [
-                    "<=",
-                    ">"
-                  ],
-                  "label": "<=  y  >",
-                  "code": "<=  y  >",
-                  "isCorrect": false,
-                  "explanation": "<= admitiría rocas blandas con dureza inferior a la requerida."
-                },
-                {
-                  "id": "D",
-                  "slots": [
-                    ">=",
-                    "<="
-                  ],
-                  "label": ">=  y  <=",
-                  "code": ">=  y  <=",
-                  "isCorrect": false,
-                  "explanation": "La segunda ranura admitiría densidades bajas en lugar de altas."
-                }
-              ]
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 7 · Caso Borde: Sensibilidad a mayúsculas",
-              "title": "¿Son iguales 'COBRE' y 'cobre'?",
-              "question": "Un operador escribe el mineral en mayúscula 'COBRE', pero el sistema compara contra 'cobre'. ¿Qué salida produce Python?",
-              "code": "mineral = \"COBRE\"\nif mineral == \"cobre\":\n    precio = 4.5\nelse:\n    precio = 0.0\nprint(\"Precio:\", precio)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Precio: 4.5",
-                  "isCorrect": false,
-                  "whyIncorrect": "En Python la comparación de texto distingue entre mayúsculas y minúsculas (case-sensitive)."
-                },
-                {
-                  "id": "B",
-                  "text": "Precio: 0.0",
-                  "isCorrect": true
-                },
-                {
-                  "id": "C",
-                  "text": "TypeError",
-                  "isCorrect": false,
-                  "whyIncorrect": "Comparar cadenas con diferente mayúscula es válido y da False sin errores."
-                },
-                {
-                  "id": "D",
-                  "text": "Precio: None",
-                  "isCorrect": false,
-                  "whyIncorrect": "La variable precio se inicializa limpiamente en la rama else con 0.0."
-                }
-              ],
-              "correctionTip": "Python es case-sensitive: 'COBRE' != 'cobre'. Para igualarlos se usaría .lower().",
-              "fullAnswerExplanation": "¡Atención! Las mayúsculas y minúsculas tienen códigos de caracter distintos. Al no ser idénticos, salta al else dando 0.0."
-            }
-          ]
-        },
-        {
-          "id": "w3-l5",
-          "weekId": "semana-3",
-          "number": 5,
-          "tag": "Integración",
-          "shortTitle": "Reto Integrador",
-          "title": "Reto Integrador: Del Sensor al Reporte Técnico",
-          "description": "Pipeline completo: entrada, conversión de datos, cómputo con fórmulas y reporte con f-strings.",
-          "duration": "12 min",
-          "steps": [
-            {
-              "type": "explanation",
-              "partLabel": "Paso 1 · La anatomía de un script de ingeniería",
-              "title": "El ciclo Entrada -> Procesamiento -> Decisión -> Reporte",
-              "intro": "Todo programa profesional de ingeniería sigue una estructura limpia en 4 fases: 1) Entrada de datos, 2) Procesamiento y cálculos físicos, 3) Decisión lógica y 4) Salida de reporte técnico con f-strings.",
-              "examples": [
-                {
-                  "label": "Cálculo hidráulico y reporte",
-                  "code": "diametro_m = 0.5\ncaudal_m3s = 0.25\narea = 3.1416 * (diametro_m / 2) ** 2\nvelocidad = caudal_m3s / area\nestado = \"Adecuada\" if velocidad <= 2.0 else \"Excesiva\"\nprint(f\"Velocidad: {velocidad:.2f} m/s | Estado: {estado}\")",
-                  "output": "Velocidad: 1.27 m/s | Estado: Adecuada",
-                  "explanation": "Calcula el área, obtiene la velocidad y reporta el diagnóstico formateado con 2 decimales."
-                }
-              ],
-              "keyTakeaway": "Integrar cálculo físico y toma de decisiones permite generar reportes técnicos claros y automatizados."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 2 · Trazado de consumo de bomba hidráulica",
-              "title": "¿Cuál es la potencia y qué motor se asigna?",
-              "question": "Una bomba eleva agua a un tanque. Si la altura es 30 metros y el caudal es 5 litros/segundo, ¿qué potencia imprime este script?",
-              "code": "altura = 30\ncaudal = 5\npotencia_kw = (altura * caudal) / 100\nif potencia_kw > 1.0:\n    motor = \"Trifásico\"\nelse:\n    motor = \"Monofásico\"\nprint(f\"Potencia: {potencia_kw} kW -> Motor {motor}\")",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Potencia: 15.0 kW -> Motor Trifásico",
-                  "isCorrect": false,
-                  "whyIncorrect": "(30 * 5) / 100 = 150 / 100 = 1.5, no 15.0."
-                },
-                {
-                  "id": "B",
-                  "text": "Potencia: 1.5 kW -> Motor Monofásico",
-                  "isCorrect": false,
-                  "whyIncorrect": "Como 1.5 > 1.0 es True, el motor asignado es Trifásico."
-                },
-                {
-                  "id": "C",
-                  "text": "Potencia: 1.5 kW -> Motor Trifásico",
-                  "isCorrect": true
-                },
-                {
-                  "id": "D",
-                  "text": "Potencia: 1 kW -> Motor Trifásico",
-                  "isCorrect": false,
-                  "whyIncorrect": "El operador / produce un float con decimales exactos 1.5."
-                }
-              ],
-              "correctionTip": "(30 * 5) / 100 = 1.5 kW. Al superar 1.0 kW, se selecciona motor Trifásico.",
-              "fullAnswerExplanation": "¡Cálculo impecable! 150 / 100 da 1.5 kW; al superar 1.0 kW el condicional activa el motor Trifásico."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 3 · Spot the Bug: La trampa de input() sin casting",
-              "title": "¿Por qué no duplicó la dosificación?",
-              "question": "Un estudiante recolectó datos con input() y quiso duplicar la dosificación, pero ocurrió una falla al ejecutar. ¿Cuál es el error exacto?",
-              "code": "dosis_texto = \"50\"\ntotal = dosis_texto * 2\nprint(\"Dosificación final:\", total)",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Produce un error de sintaxis SyntaxError por usar comillas en un número.",
-                  "isCorrect": false,
-                  "whyIncorrect": "\"50\" es un string válido en Python, no genera ningún SyntaxError."
-                },
-                {
-                  "id": "B",
-                  "text": "Imprime 100 porque Python convierte automáticamente los strings numéricos al multiplicar.",
-                  "isCorrect": false,
-                  "whyIncorrect": "Python no hace coerción implícita de str a int en multiplicación."
-                },
-                {
-                  "id": "C",
-                  "text": "Produce un TypeError porque los strings no admiten el operador *.",
-                  "isCorrect": false,
-                  "whyIncorrect": "Los strings sí admiten * pero para duplicar texto: \"50\" * 2 = \"5050\"."
-                },
-                {
-                  "id": "D",
-                  "text": "Imprime '5050' en lugar de 100 porque repite el texto dos veces; falta convertir con int().",
-                  "isCorrect": true
-                }
-              ],
-              "correctionTip": "Multiplicar texto por 2 concatena dos veces la cadena. Se debe convertir con int(dosis_texto).",
-              "fullAnswerExplanation": "¡Error clásico de input()! Multiplicar un str por un entero repite el texto ('50' * 2 = '5050'). Se requería int(dosis_texto) * 2 = 100."
-            },
-            {
-              "type": "explanation",
-              "partLabel": "Paso 4 · Redondeo técnico en f-strings",
-              "title": "El modificador :.2f para decimales limpios",
-              "intro": "En minería y obras civiles, los informes técnicos no deben mostrar 15 decimales como 8.4720000000. Usamos :.2f en la f-string para formatear a exactamente 2 decimales limpios.",
-              "examples": [
-                {
-                  "label": "Formato de pendiente",
-                  "code": "pendiente = 0.08472\nporcentaje = pendiente * 100\nprint(f\"Pendiente de la rampa: {porcentaje:.2f}%\")",
-                  "output": "Pendiente de la rampa: 8.47%",
-                  "explanation": "El especificador :.2f redondea visualmente el número a 2 decimales."
-                }
-              ],
-              "keyTakeaway": "Dentro de las llaves {variable:.2f} de una f-string puedes controlar la cantidad exacta de decimales para reportes profesionales."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 5 · Formato técnico de presión en bar",
-              "title": "¿Cuál es la salida con :.1f?",
-              "question": "¿Cuál es la salida exacta de este reporte de presión formateado con 1 decimal (:.1f)?",
-              "code": "presion_psi = 145.68\npresion_bar = presion_psi * 0.068947\nprint(f\"Presión: {presion_bar:.1f} bar\")",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Presión: 10.0 bar",
-                  "isCorrect": true
-                },
-                {
-                  "id": "B",
-                  "text": "Presión: 10 bar",
-                  "isCorrect": false,
-                  "whyIncorrect": "El especificador :.1f siempre muestra el punto y exactamente un dígito decimal: 10.0."
-                },
-                {
-                  "id": "C",
-                  "text": "Presión: 10.04 bar",
-                  "isCorrect": false,
-                  "whyIncorrect": ":.1f formatea a un solo decimal, no a dos."
-                },
-                {
-                  "id": "D",
-                  "text": "Presión: {presion_bar:.1f} bar",
-                  "isCorrect": false,
-                  "whyIncorrect": "Al llevar la 'f' inicial antes de las comillas, las llaves se interpolan con el valor."
-                }
-              ],
-              "correctionTip": "145.68 * 0.068947 = 10.044... Redondeado a 1 decimal se formatea como 10.0.",
-              "fullAnswerExplanation": "¡Exacto! El cálculo da 10.044..., que formateado con :.1f muestra '10.0 bar'."
-            },
-            {
-              "type": "code_sandbox",
-              "partLabel": "Paso 6 · Práctica guiada con ranuras múltiples",
-              "title": "Sistema integral de bombeo",
-              "instruction": "Completa el script del sistema de drenaje: 1) convierte el caudal recibido en texto a decimal float y 2) define la condición para encender la bomba auxiliar si la presión es menor a 2.5 bar.",
-              "slotMarker": "___",
-              "starterCode": "caudal_str = \"15.5\"\ncaudal = ___ (caudal_str)\n\npresion = caudal * 0.18\n\nif presion ___ 2.5:\n    accion = \"Encender bomba auxiliar\"\nelse:\n    accion = \"Presión óptima en línea\"\n\nprint(f\"Presión: {presion:.2f} bar | Acción: {accion}\")",
-              "expectedOutput": "Presión: 2.79 bar | Acción: Presión óptima en línea",
-              "slots": [
-                {
-                  "id": "slot-0",
-                  "label": "Función para convertir texto con decimales a número real",
-                  "shortLabel": "1: Conversión",
-                  "options": [
-                    { "id": "A", "code": "float", "label": "float (número decimal real)" },
-                    { "id": "B", "code": "int", "label": "int (entero sin decimales)" },
-                    { "id": "C", "code": "str", "label": "str (conservar como texto)" }
-                  ]
-                },
-                {
-                  "id": "slot-1",
-                  "label": "Condición para encender la bomba si hay caída de presión (< 2.5 bar)",
-                  "shortLabel": "2: Caída presión",
-                  "options": [
-                    { "id": "A", "code": "<", "label": "< (presión inferior a 2.5 bar)" },
-                    { "id": "B", "code": ">", "label": "> (presión superior a 2.5 bar)" },
-                    { "id": "C", "code": "==", "label": "== (presión exactamente 2.5 bar)" }
-                  ]
-                }
-              ],
-              "solution": ["float", "<"],
-              "slotFeedbacks": {
-                "0": {
-                  "int": "'int(\"15.5\")' produce un ValueError en Python porque el texto contiene un punto decimal.",
-                  "str": "Dejar caudal como 'str' generaría un TypeError al intentar multiplicarlo por el factor numérico 0.18."
-                },
-                "1": {
-                  ">": "Con '>' la bomba auxiliar se encendería ante presiones altas, en lugar de activarse por caída de presión.",
-                  "==": "Con '==' la bomba solo se encendería si la presión marcara exactamente 2.5 bar, ignorando caídas a 1.0 o 0.5 bar."
-                }
-              },
-              "explanation": "¡Brillante integración! float() permite operar el caudal decimal y < detecta la caída de presión para encender la bomba auxiliar.",
-              "options": [
-                {
-                  "id": "A",
-                  "slots": [
-                    "str",
-                    ">"
-                  ],
-                  "label": "str  y  >",
-                  "code": "str  y  >",
-                  "isCorrect": false,
-                  "explanation": "caudal_str ya es string y > encendería la bomba cuando la presión es alta en vez de baja."
-                },
-                {
-                  "id": "B",
-                  "slots": [
-                    "float",
-                    "<"
-                  ],
-                  "label": "float  y  <",
-                  "code": "float  y  <",
-                  "isCorrect": true,
-                  "explanation": "¡Brillante integración! float() permite operar el texto con decimales y < detecta la caída de presión."
-                },
-                {
-                  "id": "C",
-                  "slots": [
-                    "int",
-                    "<="
-                  ],
-                  "label": "int  y  <=",
-                  "code": "int  y  <=",
-                  "isCorrect": false,
-                  "explanation": "int(\"15.5\") causaría un ValueError porque el texto contiene un punto decimal."
-                },
-                {
-                  "id": "D",
-                  "slots": [
-                    "float",
-                    "=="
-                  ],
-                  "label": "float  y  ==",
-                  "code": "float  y  ==",
-                  "isCorrect": false,
-                  "explanation": "La bomba debe arrancar con cualquier valor por debajo de 2.5 bar, no solo exactamente 2.5."
-                }
-              ]
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 7 · Caso Borde: Prevención de división por cero",
-              "title": "¿Cómo se evita el colapso del programa?",
-              "question": "En una fórmula de rendimiento de maquinaria, si las horas trabajadas son 0, dividir directamente causaría ZeroDivisionError. ¿Cómo evita este script el colapso?",
-              "code": "produccion = 500\nhoras = 0\nif horas > 0:\n    rendimiento = produccion / horas\nelse:\n    rendimiento = 0.0\nprint(f\"Rendimiento: {rendimiento} ton/h\")",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "El programa colapsa con ZeroDivisionError en la línea del if.",
-                  "isCorrect": false,
-                  "whyIncorrect": "La condición horas > 0 es False, por lo que nunca entra a ejecutar la división."
-                },
-                {
-                  "id": "B",
-                  "text": "Imprime Rendimiento: 500 ton/h.",
-                  "isCorrect": false,
-                  "whyIncorrect": "No se copia la producción, se asigna 0.0 en la rama else."
-                },
-                {
-                  "id": "C",
-                  "text": "Imprime Rendimiento: 0.0 ton/h.",
-                  "isCorrect": true
-                },
-                {
-                  "id": "D",
-                  "text": "Imprime Rendimiento: None ton/h.",
-                  "isCorrect": false,
-                  "whyIncorrect": "En la rama else se asignó explícitamente el flotante 0.0."
-                }
-              ],
-              "correctionTip": "La guarda condicional if horas > 0 previene la división por cero y asigna un valor seguro 0.0.",
-              "fullAnswerExplanation": "¡Técnica esencial de ingeniería! Antes de dividir por una variable, un condicional previene que una entrada de 0 tumbe el software."
-            },
-            {
-              "type": "predict",
-              "partLabel": "Paso 8 · Consolidación de variables acumuladas",
-              "title": "¿Cuál es el monto final a pagar?",
-              "question": "Se aplica un descuento por volumen de compra de tubería PVC. Si el precio base es 1000 y la cantidad es 15 metros, ¿cuál es el total a pagar tras la bonificación?",
-              "code": "precio_metro = 1000\nmetros = 15\nsubtotal = precio_metro * metros\nif metros >= 10:\n    descuento = subtotal * 0.10\nelse:\n    descuento = 0.0\ntotal = subtotal - descuento\nprint(f\"Total a pagar: ${total:.0f}\")",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Total a pagar: $15000",
-                  "isCorrect": false,
-                  "whyIncorrect": "15000 es el subtotal bruto sin aplicar el 10% de descuento ganado."
-                },
-                {
-                  "id": "B",
-                  "text": "Total a pagar: $1500",
-                  "isCorrect": false,
-                  "whyIncorrect": "1500 es el valor del descuento, no el total final a pagar."
-                },
-                {
-                  "id": "C",
-                  "text": "Total a pagar: $12000",
-                  "isCorrect": false,
-                  "whyIncorrect": "El 10% de 15000 es 1500, no 3000."
-                },
-                {
-                  "id": "D",
-                  "text": "Total a pagar: $13500",
-                  "isCorrect": true
-                }
-              ],
-              "correctionTip": "Subtotal = 15 * 1000 = 15000; Descuento = 1500; Total = 15000 - 1500 = 13500.",
-              "fullAnswerExplanation": "¡Consolidación exitosa! El subtotal es 15000, supera los 10 metros activando el 10% de descuento (1500), resultando en 13500 a pagar."
-            }
-          ]
-        }
-      ]
+        ]
     }
   ]
 };

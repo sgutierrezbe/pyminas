@@ -12,9 +12,16 @@ import ast
 import io
 import json
 import re
+import signal
 import sys
 import traceback
 from pathlib import Path
+
+class InfiniteLoopTimeout(Exception):
+    pass
+
+def _timeout_handler(signum, frame):
+    raise InfiniteLoopTimeout("Límite de tiempo de ejecución excedido (bucle infinito)")
 
 BASE_DIR = Path(__file__).resolve().parent
 CURRICULUM_PATH = BASE_DIR / "curriculum.js"
@@ -101,17 +108,29 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
 
         sys.stdin = StdinWithEcho()
         stmt_error = None
+        has_timer = hasattr(signal, "SIGALRM")
+        if has_timer:
+            old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
+            signal.alarm(1)
         try:
             compiled = compile(ast.Module(body=[stmt], type_ignores=[]), "main.py", "exec")
             exec(compiled, scope)
+        except InfiniteLoopTimeout as te:
+            stmt_error = TimeoutError(str(te))
         except Exception as e:
             stmt_error = e
         finally:
+            if has_timer:
+                signal.alarm(0)
+                signal.signal(signal.SIGALRM, old_handler)
             sys.stdout = old_stdout
             sys.stdin = old_stdin
 
         out = buf.getvalue()
         if out:
+            out_lines = out.split("\n")
+            if len(out_lines) > 20:
+                out = "\n".join(out_lines[:20]) + "\n"
             stdout_buffer += out
 
         stmt_end_idx = stmt.end_lineno - 1
@@ -123,6 +142,11 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
             code_line_str = lines[stmt.lineno - 1].strip() if 0 <= stmt.lineno - 1 < len(lines) else ""
             error_msg = f"Traceback (most recent call last):\n  File \"main.py\", line {stmt.lineno}, in <module>\n    {code_line_str}\n{type(stmt_error).__name__}: {stmt_error}"
             
+            buf_lines = [l for l in stdout_buffer.split("\n") if l]
+            if len(buf_lines) > 5:
+                buf_lines = buf_lines[:5] + [f"... ({len(buf_lines) - 5} salidas repetidas omitidas)"]
+            stdout_buffer = "\n".join(buf_lines)
+
             if stdout_buffer:
                 full_out = stdout_buffer.rstrip("\n") + "\n" + error_msg
             else:
