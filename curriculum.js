@@ -1737,8 +1737,8 @@ const CURRICULUM = {
                             "examples": [
                                 {
                                     "label": "Contador y acumulador en taquilla",
-                                    "code": "pasajeros = 0\nrecaudo = 0\ntarifas = [3200, 3200, 3200]\nfor tarifa in tarifas:\n    pasajeros += 1\n    recaudo += tarifa\nprint(f\"Total personas: {pasajeros}\")\nprint(f\"Total dinero: \")",
-                                    "output": "Total personas: 3\nTotal dinero: ",
+                                    "code": "pasajeros = 0\nrecaudo = 0\ntarifas = [3200, 3200, 3200]\nfor tarifa in tarifas:\n    pasajeros += 1\n    recaudo += tarifa\nprint(f\"Total personas: {pasajeros}\")\nprint(f\"Total dinero: ${recaudo}\")",
+                                    "output": "Total personas: 3\nTotal dinero: $9600",
                                     "explanation": "pasajeros suma de 1 en 1 en cada vuelta (contador); recaudo acumula el precio de cada boleto (acumulador)."
                                 }
                             ],

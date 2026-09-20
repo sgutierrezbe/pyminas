@@ -3700,7 +3700,7 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "pasajeros = 0\nrecaudo = 0\ntarifas = [3200, 3200, 3200]\nfor tarifa in tarifas:\n    pasajeros += 1\n    recaudo += tarifa\nprint(f\"Total personas: {pasajeros}\")\nprint(f\"Total dinero: \")": {
+  "pasajeros = 0\nrecaudo = 0\ntarifas = [3200, 3200, 3200]\nfor tarifa in tarifas:\n    pasajeros += 1\n    recaudo += tarifa\nprint(f\"Total personas: {pasajeros}\")\nprint(f\"Total dinero: ${recaudo}\")": {
     "lines": [
       "pasajeros = 0",
       "recaudo = 0",
@@ -3709,7 +3709,7 @@ window.BAKED_TRACES = {
       "    pasajeros += 1",
       "    recaudo += tarifa",
       "print(f\"Total personas: {pasajeros}\")",
-      "print(f\"Total dinero: \")"
+      "print(f\"Total dinero: ${recaudo}\")"
     ],
     "lineTrace": [
       {
@@ -3802,13 +3802,13 @@ window.BAKED_TRACES = {
         "line": 7,
         "outputSoFar": [
           "Total personas: 3",
-          "Total dinero: "
+          "Total dinero: $9600"
         ],
-        "prints": "Total dinero: ",
+        "prints": "Total dinero: $9600",
         "hasError": false
       }
     ],
-    "totalOutput": "Total personas: 3\nTotal dinero: ",
+    "totalOutput": "Total personas: 3\nTotal dinero: $9600",
     "hasError": false,
     "errorLine": null,
     "errorType": null
