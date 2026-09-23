@@ -76,6 +76,11 @@ La antigua guía de homeserver se conserva en
 [`archivo/HANDOFF.md`](archivo/HANDOFF.md). Es una referencia histórica y puede no
 reflejar la arquitectura actual.
 
+La interfaz carga Tailwind desde `assets/vendor/tailwind.min.js`, servido por
+pyMinas. Así el diseño y la visibilidad de los paneles no dependen de que el
+navegador del estudiante pueda acceder a `cdn.tailwindcss.com`. Pyodide y los
+efectos de confeti siguen siendo recursos externos independientes del diseño.
+
 ---
 
 ## 🚀 Cómo ejecutar localmente

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Phase 1 Test Suite</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../assets/vendor/tailwind.min.js?v=1.52"></script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="bg-slate-100 p-8">
@@ -126,6 +126,13 @@
     async function runTests() {
       try {
         log("Iniciando pruebas de Fase 1...", true);
+
+        // La interfaz debe conservar sus utilidades CSS sin conexión al CDN.
+        assert(Boolean(window.tailwind), "Tailwind se carga desde el recurso local");
+        for (let i = 0; i < 40 && getComputedStyle(document.body).paddingTop !== '32px'; i++) {
+          await new Promise(resolve => setTimeout(resolve, 50));
+        }
+        assert(getComputedStyle(document.body).paddingTop === '32px', "Las utilidades Tailwind locales se aplican al diseño");
 
         // 1. Test Step Persistence
         localStorage.clear();
@@ -257,28 +264,34 @@
         assert(monday1 === monday2, "Misma semana genera el mismo lunes identificador");
         assert(getWeekDiff(monday1, monday3) === 1, "Semana siguiente calcula diferencia exacta de 1 semana");
         assert(getWeekDiff(monday1, getMondayString(new Date('2026-09-20'))) === 2, "Dos semanas de diferencia calcula diff=2");
+        assert(getActiveWeekDiff('2026-09-07', '2026-09-14') === 0, "La semana del 14 de septiembre está en pausa y no suma racha");
+        assert(getActiveWeekDiff('2026-09-07', '2026-09-21') === 1, "La semana en pausa no rompe la continuidad al volver");
+        assert(getActiveWeekDiff('2026-09-07', '2026-09-28') === 2, "La pausa no protege una segunda semana activa sin completar");
 
         // Test streak increment upon lesson completion
         currentUser.weeklyStreak = 0;
         currentUser.lastActiveWeek = '';
-        recordLessonCompletionStreak();
+        recordLessonCompletionStreak(new Date('2026-09-22'));
         assert(currentUser.weeklyStreak === 1, "Completar lección por primera vez inicia racha en 1 semana");
-        assert(currentUser.lastActiveWeek === getMondayString(), "Registra la semana actual");
-        assert(getEffectiveWeeklyStreak() === 1, "Racha efectiva es 1");
+        assert(currentUser.lastActiveWeek === '2026-09-21', "Registra la semana actual");
+        assert(getEffectiveWeeklyStreak(new Date('2026-09-22')) === 1, "Racha efectiva es 1");
 
-        // Simular que la semana anterior tenía racha 2 y hoy completa otra
+        // Tenía dos semanas de racha antes de la pausa: se preserva y luego continúa.
         currentUser.weeklyStreak = 2;
-        currentUser.lastActiveWeek = getMondayString(new Date(Date.now() - 7 * 86400000));
-        recordLessonCompletionStreak();
-        assert(currentUser.weeklyStreak === 3, "Completar lección en semana consecutiva incrementa la racha a 3");
+        currentUser.lastActiveWeek = '2026-09-07';
+        assert(getEffectiveWeeklyStreak(new Date('2026-09-22')) === 2, "La racha previa de 2 semanas sigue visible tras la pausa");
+        recordLessonCompletionStreak(new Date('2026-09-15'));
+        assert(currentUser.weeklyStreak === 2, "Completar durante la pausa no regala una semana de racha");
+        recordLessonCompletionStreak(new Date('2026-09-22'));
+        assert(currentUser.weeklyStreak === 3, "Completar al volver de la pausa incrementa la racha a 3");
 
-        // Simular que pasaron 3 semanas sin actividad (racha rota)
+        // Faltar a otra semana activa sí rompe la racha.
         currentUser.weeklyStreak = 5;
-        currentUser.lastActiveWeek = getMondayString(new Date(Date.now() - 21 * 86400000));
-        assert(getEffectiveWeeklyStreak() === 0, "Racha se muestra en 0 si pasaron más de 1 semana sin entrar");
-        recordLessonCompletionStreak();
+        currentUser.lastActiveWeek = '2026-08-31';
+        assert(getEffectiveWeeklyStreak(new Date('2026-09-22')) === 0, "Racha se muestra en 0 si faltaron otras semanas activas");
+        recordLessonCompletionStreak(new Date('2026-09-22'));
         assert(currentUser.weeklyStreak === 1, "Al retomar tras semanas inactivo, la racha se reinicia en 1");
-        updateStreakDisplay();
+        updateStreakDisplay(new Date('2026-09-22'));
         assert(document.getElementById('lesson-streak-text').textContent === '1 sem', "Badge de racha semanal en pantalla de ejercicios muestra '1 sem'");
 
         // 10. Test Auto-Scroll to Code Window (ensureCodeVisible)
@@ -358,7 +371,7 @@
         assert(continueBtn && !continueBtn.disabled, "Botón Continuar desbloqueado tras completar ejecución con input");
 
         // 14. Test APP_VERSION constant
-        assert(window.APP_VERSION === 'v1.50', "APP_VERSION está actualizado a v1.50");
+        assert(window.APP_VERSION === 'v1.52', "APP_VERSION está actualizado a v1.52");
 
         // 15. Test Semana 2 curriculum presence and navigation
         assert(CURRICULUM.weeks.length === 3, "CURRICULUM contiene exactamente 3 semanas");

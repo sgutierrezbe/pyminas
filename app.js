@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.50";
+const APP_VERSION = "v1.52";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
@@ -342,6 +342,9 @@ function goToNextWeekFromCelebration() {
 window.goToNextWeekFromCelebration = goToNextWeekFromCelebration;
 
 // --- Sistema de Rachas Semanales (Weekly Streaks) ---
+// No hubo niveles nuevos del 14 al 20 de septiembre: esa semana no rompe ni suma racha.
+const PAUSED_STREAK_WEEKS = new Set(['2026-09-14']);
+
 function getMondayOfWeek(d = new Date()) {
   const date = new Date(d);
   const day = date.getDay(); // 0: Dom, 1: Lun, ..., 6: Sáb
@@ -369,22 +372,32 @@ function getWeekDiff(mondayStrA, mondayStrB) {
   return Math.round((dateB.getTime() - dateA.getTime()) / msPerWeek);
 }
 
-function getEffectiveWeeklyStreak() {
-  const currentWeek = getMondayString();
+function getActiveWeekDiff(lastWeek, currentWeek) {
+  const calendarDiff = getWeekDiff(lastWeek, currentWeek);
+  if (!Number.isFinite(calendarDiff) || calendarDiff <= 0) return calendarDiff;
+
+  const pausedWeeksBetween = [...PAUSED_STREAK_WEEKS].filter(
+    week => getWeekDiff(lastWeek, week) > 0 && getWeekDiff(week, currentWeek) >= 0
+  ).length;
+  return Math.max(0, calendarDiff - pausedWeeksBetween);
+}
+
+function getEffectiveWeeklyStreak(now = new Date()) {
+  const currentWeek = getMondayString(now);
   const lastWeek = currentUser.lastActiveWeek || localStorage.getItem('pyminas_last_active_week') || '';
   const rawStreak = parseInt(currentUser.weeklyStreak || localStorage.getItem('pyminas_weekly_streak') || 0, 10) || 0;
 
   if (rawStreak <= 0 || !lastWeek) return 0;
-  const diff = getWeekDiff(lastWeek, currentWeek);
-  // Si completó lección en la semana actual (diff=0) o la semana inmediatamente anterior (diff=1), la racha sigue viva
+  const diff = getActiveWeekDiff(lastWeek, currentWeek);
+  // Una semana sin niveles nuevos no cuenta como hueco en la racha.
   if (diff <= 1) {
     return rawStreak;
   }
   return 0;
 }
 
-function updateStreakDisplay() {
-  const effectiveStreak = getEffectiveWeeklyStreak();
+function updateStreakDisplay(now = new Date()) {
+  const effectiveStreak = getEffectiveWeeklyStreak(now);
   const streakText = `${effectiveStreak} ${effectiveStreak === 1 ? 'sem' : 'sems'}`;
 
   // Badge en cabecera principal (Navbar del Dashboard)
@@ -426,23 +439,23 @@ function updateStreakDisplay() {
   }
 }
 
-function recordLessonCompletionStreak() {
-  const currentWeek = getMondayString();
+function recordLessonCompletionStreak(now = new Date()) {
+  const currentWeek = getMondayString(now);
   const lastWeek = currentUser.lastActiveWeek || localStorage.getItem('pyminas_last_active_week') || '';
   let streak = parseInt(currentUser.weeklyStreak || localStorage.getItem('pyminas_weekly_streak') || 0, 10) || 0;
 
   if (!lastWeek) {
     streak = 1;
   } else {
-    const diff = getWeekDiff(lastWeek, currentWeek);
+    const diff = getActiveWeekDiff(lastWeek, currentWeek);
     if (diff === 0) {
-      // Misma semana: si estaba en 0, inicia en 1; si ya tenía racha se mantiene
+      // Misma semana o semana en pausa: conserva la racha sin sumar una semana nueva.
       if (streak < 1) streak = 1;
     } else if (diff === 1) {
-      // Semana consecutiva siguiente: racha continúa (+1 semana)
+      // Siguiente semana con actividad requerida: racha continúa (+1 semana).
       streak = (streak < 1 ? 1 : streak) + 1;
     } else if (diff > 1) {
-      // Pasó más de una semana sin completar: la racha se reinicia en 1
+      // Pasó más de una semana activa sin completar: la racha se reinicia en 1.
       streak = 1;
     } else {
       if (streak < 1) streak = 1;
