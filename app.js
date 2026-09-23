@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.38";
+const APP_VERSION = "v1.50";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
@@ -1436,6 +1436,45 @@ function evaluateSafePrint(innerStr, scope, math) {
   return evaluatedParts.join(sep) + end;
 }
 
+function describeMemoryValue(value) {
+  let type = typeof value;
+  let display = String(value);
+
+  if (value === null || value === undefined) {
+    type = 'NoneType';
+    display = 'None';
+  } else if (Array.isArray(value)) {
+    type = 'list';
+    display = `[${value.map(item => describeMemoryValue(item).value).join(', ')}]`;
+  } else if (type === 'string') {
+    type = 'str';
+    display = JSON.stringify(value);
+  } else if (type === 'number') {
+    type = Number.isInteger(value) ? 'int' : 'float';
+  } else if (type === 'boolean') {
+    type = 'bool';
+    display = value ? 'True' : 'False';
+  } else if (type === 'object') {
+    type = 'dict';
+    try {
+      display = JSON.stringify(value);
+    } catch (e) {
+      display = String(value);
+    }
+  }
+
+  if (display.length > 90) display = display.slice(0, 87) + '...';
+  return { value: display, type };
+}
+
+function snapshotRuntimeVariables(scope) {
+  return Object.fromEntries(
+    Object.entries(scope || {})
+      .filter(([name, value]) => !name.startsWith('__') && typeof value !== 'function')
+      .map(([name, value]) => [name, describeMemoryValue(value)])
+  );
+}
+
 function tracePythonExecution(code, expectedOutput, userInputs = {}) {
   const trimmed = (code || '').trim();
   const hasInputCall = /\binput\s*\(/.test(trimmed);
@@ -1466,6 +1505,10 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
   };
 
   const lineTrace = [];
+  const recordTrace = state => lineTrace.push({
+    variables: snapshotRuntimeVariables(scope),
+    ...state
+  });
   let stdoutBuffer = "";
   const getOutputSoFar = () => stdoutBuffer ? stdoutBuffer.replace(/\n$/, '').split('\n') : [];
   const condStack = [];
@@ -1476,7 +1519,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
     const trimmedLine = codeWithoutComment.trim();
 
     if (!trimmedLine) {
-      lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+      recordTrace({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
 
@@ -1484,7 +1527,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
     if (/^if\s+.*[^:]\s*$/.test(trimmedLine) && !trimmedLine.endsWith(':')) {
       const errText = `  File "main.py", line ${i + 1}\n    ${raw}\nSyntaxError: expected ':'`;
       stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
-      lineTrace.push({
+      recordTrace({
         prints: errText,
         outputSoFar: stdoutBuffer.split('\n'),
         hasError: true,
@@ -1492,7 +1535,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
         errorLine: i
       });
       for (let j = i + 1; j < lines.length; j++) {
-        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+        recordTrace({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
       }
       return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'SyntaxError', totalOutput: stdoutBuffer };
     }
@@ -1500,7 +1543,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
     if (/^elif\s+.*[^:]\s*$/.test(trimmedLine) && !trimmedLine.endsWith(':')) {
       const errText = `  File "main.py", line ${i + 1}\n    ${raw}\nSyntaxError: expected ':'`;
       stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
-      lineTrace.push({
+      recordTrace({
         prints: errText,
         outputSoFar: stdoutBuffer.split('\n'),
         hasError: true,
@@ -1508,7 +1551,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
         errorLine: i
       });
       for (let j = i + 1; j < lines.length; j++) {
-        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+        recordTrace({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
       }
       return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'SyntaxError', totalOutput: stdoutBuffer };
     }
@@ -1516,7 +1559,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
     if (/^(then|otherwise|si_no)\b/.test(trimmedLine) || (/^else\b/.test(trimmedLine) && trimmedLine !== 'else:')) {
       const errText = `  File "main.py", line ${i + 1}\n    ${raw}\nSyntaxError: invalid syntax`;
       stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
-      lineTrace.push({
+      recordTrace({
         prints: errText,
         outputSoFar: stdoutBuffer.split('\n'),
         hasError: true,
@@ -1524,7 +1567,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
         errorLine: i
       });
       for (let j = i + 1; j < lines.length; j++) {
-        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+        recordTrace({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
       }
       return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'SyntaxError', totalOutput: stdoutBuffer };
     }
@@ -1534,7 +1577,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
     if (callMatch && !['print', 'int', 'float', 'str', 'len', 'input', 'range', 'abs', 'round', 'bool', 'type'].includes(callMatch[1]) && !scope[callMatch[1]]) {
       const errText = `Traceback (most recent call last):\n  File "main.py", line ${i + 1}, in <module>\n    ${trimmedLine}\nNameError: name '${callMatch[1]}' is not defined`;
       stdoutBuffer = stdoutBuffer ? stdoutBuffer.replace(/\n$/, '') + '\n' + errText : errText;
-      lineTrace.push({
+      recordTrace({
         prints: errText,
         outputSoFar: stdoutBuffer.split('\n'),
         hasError: true,
@@ -1542,7 +1585,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
         errorLine: i
       });
       for (let j = i + 1; j < lines.length; j++) {
-        lineTrace.push({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
+        recordTrace({ prints: null, outputSoFar: stdoutBuffer.split('\n'), skipped: true });
       }
       return { lines, lineTrace, hasError: true, errorLine: i, errorType: 'NameError', totalOutput: stdoutBuffer };
     }
@@ -1589,9 +1632,9 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
         parentActive: willEval
       });
       if (willEval) {
-        lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+        recordTrace({ prints: null, outputSoFar: getOutputSoFar() });
       } else {
-        lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+        recordTrace({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
       }
       continue;
     }
@@ -1614,10 +1657,10 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
         } else {
           top.active = false;
         }
-        lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+        recordTrace({ prints: null, outputSoFar: getOutputSoFar() });
       } else {
         if (top) top.active = false;
-        lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+        recordTrace({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
       }
       continue;
     }
@@ -1628,22 +1671,22 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
       if (top && top.parentActive && !top.chainMatched) {
         top.chainMatched = true;
         top.active = true;
-        lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+        recordTrace({ prints: null, outputSoFar: getOutputSoFar() });
       } else {
         if (top) top.active = false;
-        lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+        recordTrace({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
       }
       continue;
     }
 
     // 4. Líneas dentro de ramas omitidas
     if (!inActiveBranch) {
-      lineTrace.push({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
+      recordTrace({ skipped: true, prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
 
     if (trimmedLine.startsWith('import')) {
-      lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+      recordTrace({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
 
@@ -1680,7 +1723,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
           if (varName) scope[varName] = enteredVal;
         }
         stdoutBuffer += prompt + enteredVal + "\n";
-        lineTrace.push({
+        recordTrace({
           isInput: true,
           isCompleted: true,
           prompt: prompt,
@@ -1690,7 +1733,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
           outputSoFar: getOutputSoFar()
         });
       } else {
-        lineTrace.push({
+        recordTrace({
           isInput: true,
           isCompleted: false,
           prompt: prompt,
@@ -1713,7 +1756,7 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
       } catch (err) {
         scope[varName] = expr;
       }
-      lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+      recordTrace({ prints: null, outputSoFar: getOutputSoFar() });
       continue;
     }
 
@@ -1721,11 +1764,11 @@ function tracePythonExecution(code, expectedOutput, userInputs = {}) {
     if (printMatch) {
       const outputText = evaluateSafePrint(printMatch[1], scope, math);
       stdoutBuffer += outputText;
-      lineTrace.push({ prints: outputText.replace(/\n$/, ''), outputSoFar: getOutputSoFar() });
+      recordTrace({ prints: outputText.replace(/\n$/, ''), outputSoFar: getOutputSoFar() });
       continue;
     }
 
-    lineTrace.push({ prints: null, outputSoFar: getOutputSoFar() });
+    recordTrace({ prints: null, outputSoFar: getOutputSoFar() });
   }
 
   if (!stdoutBuffer && expectedOutput) {
@@ -1806,6 +1849,66 @@ function ensureCodeVisible(target, forceCenter = true) {
   });
 }
 window.ensureCodeVisible = ensureCodeVisible;
+
+function getPreviousVariables(lineTrace, targetIndex) {
+  for (let i = targetIndex - 1; i >= 0; i--) {
+    if (lineTrace && lineTrace[i] && lineTrace[i].variables) {
+      return lineTrace[i].variables;
+    }
+  }
+  return {};
+}
+
+function updateMemoryPanel(panelId, lineTrace, targetIndex, isLocked = false) {
+  const panel = document.getElementById(panelId);
+  if (!panel) return;
+
+  if (targetIndex < 0) {
+    panel.innerHTML = `
+      <div class="memory-empty-state">
+        <span class="memory-empty-icon">${isLocked ? '🔒' : '◌'}</span>
+        <span>${isLocked ? 'La memoria se revelará al comprobar.' : 'Ejecuta el código para observar sus variables.'}</span>
+      </div>
+    `;
+    return;
+  }
+
+  const variables = lineTrace?.[targetIndex]?.variables || {};
+  const previousVariables = getPreviousVariables(lineTrace, targetIndex);
+  const entries = Object.entries(variables);
+
+  if (entries.length === 0) {
+    panel.innerHTML = `
+      <div class="memory-empty-state">
+        <span class="memory-empty-icon">◌</span>
+        <span>Aún no hay variables guardadas.</span>
+      </div>
+    `;
+    return;
+  }
+
+  panel.innerHTML = entries.map(([name, rawEntry]) => {
+    const entry = rawEntry && typeof rawEntry === 'object' && Object.hasOwn(rawEntry, 'value')
+      ? rawEntry
+      : describeMemoryValue(rawEntry);
+    const previousRaw = previousVariables[name];
+    const previousEntry = previousRaw && typeof previousRaw === 'object' && Object.hasOwn(previousRaw, 'value')
+      ? previousRaw
+      : (previousRaw !== undefined ? describeMemoryValue(previousRaw) : null);
+    const changed = !previousEntry || previousEntry.value !== entry.value || previousEntry.type !== entry.type;
+
+    return `
+      <div class="memory-variable-row ${changed ? 'memory-variable-changed' : ''}" data-memory-variable="${escapeHtml(name)}">
+        <div class="memory-variable-meta">
+          <span class="memory-variable-name">${escapeHtml(name)}</span>
+          <span class="memory-variable-type">${escapeHtml(entry.type || 'valor')}</span>
+        </div>
+        <div class="memory-variable-value" title="${escapeHtml(entry.value)}">${escapeHtml(entry.value)}</div>
+        ${changed ? '<span class="memory-change-label">valor actualizado</span>' : ''}
+      </div>
+    `;
+  }).join('');
+}
 
 function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) {
   const { lines, lineTrace } = tracePythonExecution(code, expectedOutput);
@@ -1891,21 +1994,36 @@ function renderCodePlayerHTML(playerId, code, expectedOutput, isLocked = false) 
         </div>
       </div>
 
-      <!-- 2. Pantalla de salida (Consola verde ubicada DEBAJO del código, estilo IDE) -->
-      <div class="w-full min-w-0 bg-[#000000] border-2 border-[#10b981] rounded-2xl p-3 sm:p-3.5 font-mono text-xs sm:text-sm text-[#34d399] min-h-[58px] shadow-sm flex flex-col justify-center text-left">
-        <div class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider mb-1 flex items-center justify-between border-b border-emerald-950 pb-1">
-          <span>Salida en pantalla (Terminal)</span>
-          <span class="w-2 h-2 rounded-full ${isLocked ? 'bg-amber-400' : 'bg-emerald-400'} animate-ping"></span>
+      <!-- 2. Salida y memoria: apiladas en móvil, lado a lado en pantallas amplias -->
+      <div class="w-full min-w-0 grid grid-cols-1 sm:grid-cols-[minmax(0,2fr)_minmax(180px,1fr)] gap-3">
+        <div class="min-w-0 bg-[#000000] border-2 border-[#10b981] rounded-2xl p-3 sm:p-3.5 font-mono text-xs sm:text-sm text-[#34d399] min-h-[92px] shadow-sm flex flex-col justify-center text-left">
+          <div class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider mb-1 flex items-center justify-between border-b border-emerald-950 pb-1">
+            <span>Salida en pantalla (Terminal)</span>
+            <span class="w-2 h-2 rounded-full ${isLocked ? 'bg-amber-400' : 'bg-emerald-400'} animate-ping"></span>
+          </div>
+          <div id="code-terminal-${playerId}" class="min-h-[22px] whitespace-pre-wrap font-semibold leading-relaxed">
+            ${isLocked ? `
+              <span class="text-slate-400 italic select-none text-xs flex items-center gap-2 py-0.5">
+                <svg class="w-3.5 h-3.5 text-amber-400 inline shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Piensa tu respuesta. El código se ejecutará al comprobar...</span>
+              </span>
+            ` : `
+              <span class="text-slate-600 italic select-none text-xs">Presiona ▶ para ejecutar línea por línea...</span>
+            `}
+          </div>
         </div>
-        <div id="code-terminal-${playerId}" class="min-h-[22px] whitespace-pre-wrap font-semibold leading-relaxed">
-          ${isLocked ? `
-            <span class="text-slate-400 italic select-none text-xs flex items-center gap-2 py-0.5">
-              <svg class="w-3.5 h-3.5 text-amber-400 inline shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              <span>Piensa tu respuesta. El código se ejecutará al comprobar...</span>
-            </span>
-          ` : `
-            <span class="text-slate-600 italic select-none text-xs">Presiona ▶ para ejecutar línea por línea...</span>
-          `}
+
+        <div class="memory-panel min-w-0 rounded-2xl p-3 sm:p-3.5 min-h-[92px] text-left shadow-sm">
+          <div class="memory-panel-header">
+            <span class="flex items-center gap-1.5"><span class="memory-status-dot"></span>Memoria</span>
+            <span class="memory-panel-hint">después de la línea</span>
+          </div>
+          <div id="code-memory-${playerId}" class="memory-panel-body" aria-live="polite">
+            <div class="memory-empty-state">
+              <span class="memory-empty-icon">${isLocked ? '🔒' : '◌'}</span>
+              <span>${isLocked ? 'La memoria se revelará al comprobar.' : 'Ejecuta el código para observar sus variables.'}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1966,6 +2084,8 @@ function codePlayerSetLine(playerId, targetIndex) {
       }
     }
   }
+
+  updateMemoryPanel(`code-memory-${playerId}`, player.lineTrace, targetIndex, player.isLocked);
 
   // Actualizar badge de estado
   const statusEl = document.getElementById(`code-status-${playerId}`);
@@ -2264,7 +2384,8 @@ function runCodePlayerAutoAnimate(playerId, onComplete) {
   }
   codePlayerSetLine(playerId, current);
 
-  const stepInterval = window.FAST_ANIM ? 20 : 500;
+  const hasLoopTimeout = player.lineTrace?.some(state => state.errorType === 'TimeoutError');
+  const stepInterval = window.FAST_ANIM ? 20 : (hasLoopTimeout ? 160 : 500);
   player.timer = setInterval(() => {
     current++;
     while (current < totalSteps && player.lineTrace && player.lineTrace[current] && player.lineTrace[current].skipped) {
@@ -2315,7 +2436,8 @@ function resumeCodePlayerAutoAnimate(playerId, startIndex, onComplete) {
 
   const totalSteps = (player.lineTrace && player.lineTrace.length > 0) ? player.lineTrace.length : player.lines.length;
   let current = startIndex - 1;
-  const stepInterval = window.FAST_ANIM ? 20 : 500;
+  const hasLoopTimeout = player.lineTrace?.some(state => state.errorType === 'TimeoutError');
+  const stepInterval = window.FAST_ANIM ? 20 : (hasLoopTimeout ? 160 : 500);
   player.timer = setInterval(() => {
     current++;
     while (current < totalSteps && player.lineTrace && player.lineTrace[current] && player.lineTrace[current].skipped) {
@@ -3588,22 +3710,37 @@ function renderSandboxStep(step, container) {
 
         ${codeAreaHtml}
 
-        <!-- Terminal integrada inferior (Consola verde idéntica a Brilliant) -->
-        <div class="bg-[#000000] border-t-2 border-[#10b981] p-3.5 font-mono text-xs text-left">
-          <div class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider mb-1.5 flex items-center justify-between border-b border-emerald-950/80 pb-1">
-            <span class="flex items-center gap-1.5">
-              <span>Salida en pantalla (Terminal)</span>
-            </span>
-            <div class="flex items-center gap-2">
-              <span id="sandbox-term-status" class="text-emerald-500/70 font-normal">esperando ejecución</span>
-              <span id="sandbox-term-indicator" class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <!-- Terminal y memoria integradas -->
+        <div class="grid grid-cols-1 ${isGuided ? 'sm:grid-cols-[minmax(0,2fr)_minmax(180px,1fr)]' : ''} border-t-2 border-[#10b981] bg-[#050508]">
+          <div class="bg-[#000000] p-3.5 font-mono text-xs text-left sm:border-r sm:border-violet-900/70">
+            <div class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider mb-1.5 flex items-center justify-between border-b border-emerald-950/80 pb-1">
+              <span class="flex items-center gap-1.5">
+                <span>Salida en pantalla (Terminal)</span>
+              </span>
+              <div class="flex items-center gap-2">
+                <span id="sandbox-term-status" class="text-emerald-500/70 font-normal">esperando ejecución</span>
+                <span id="sandbox-term-indicator" class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              </div>
+            </div>
+            <div id="single-sandbox-term" class="text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed">
+              <span class="text-slate-500 italic font-normal text-xs">
+                ${isGuided ? 'Elige las fichas para cada casilla y haz clic en «▶ Ejecutar código»...' : 'Presiona «▶ Ejecutar código» para probar tu solución...'}
+              </span>
             </div>
           </div>
-          <div id="single-sandbox-term" class="text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed">
-            <span class="text-slate-500 italic font-normal text-xs">
-              ${isGuided ? 'Elige las fichas para cada casilla y haz clic en «▶ Ejecutar código»...' : 'Presiona «▶ Ejecutar código» para probar tu solución...'}
-            </span>
-          </div>
+
+          ${isGuided ? `<div class="memory-panel border-0 rounded-none p-3.5 min-h-[92px] text-left">
+            <div class="memory-panel-header">
+              <span class="flex items-center gap-1.5"><span class="memory-status-dot"></span>Memoria</span>
+              <span class="memory-panel-hint">después de la línea</span>
+            </div>
+            <div id="sandbox-memory" class="memory-panel-body" aria-live="polite">
+              <div class="memory-empty-state">
+                <span class="memory-empty-icon">◌</span>
+                <span>Ejecuta el código para observar sus variables.</span>
+              </div>
+            </div>
+          </div>` : ''}
         </div>
       </div>
 
@@ -3775,6 +3912,7 @@ function focusGuidedSlot(idx) {
 function chooseGuidedSlotToken(codeVal, optId) {
   if (!currentGuidedStep || guidedSlots.length === 0) return;
   stopSandboxAnimation();
+  updateMemoryPanel('sandbox-memory', null, -1);
 
   playSound('click');
 
@@ -3936,6 +4074,7 @@ async function executeGuidedSandbox() {
 
   const expOutput = isCorrect ? (currentGuidedStep.expectedOutput || "") : "";
   const { lines, lineTrace } = tracePythonExecution(fullCode, expOutput, sandboxUserInputs);
+  updateMemoryPanel('sandbox-memory', lineTrace, -1);
 
   // Limpiar cualquier línea activa o en estado de error previa
   lines.forEach((_, i) => {
@@ -3958,7 +4097,8 @@ async function executeGuidedSandbox() {
     term.innerHTML = '<span class="text-slate-500 italic font-normal text-xs">Iniciando ejecución...</span>';
   }
 
-  const stepDelay = window.FAST_ANIM ? 10 : 420;
+  const hasLoopTimeout = lineTrace?.some(state => state.errorType === 'TimeoutError');
+  const stepDelay = window.FAST_ANIM ? 10 : (hasLoopTimeout ? 160 : 420);
   let currentIdx = -1;
   const totalTraceSteps = (lineTrace && lineTrace.length > 0) ? lineTrace.length : lines.length;
 
@@ -3968,6 +4108,7 @@ async function executeGuidedSandbox() {
       const state = lineTrace ? lineTrace[currentIdx] : null;
       const isLineError = Boolean(state && state.hasError);
       const activeLineIdx = (state && state.line !== undefined) ? state.line : currentIdx;
+      updateMemoryPanel('sandbox-memory', lineTrace, currentIdx);
 
       lines.forEach((_, i) => {
         const lineEl = document.getElementById(`sandbox-line-${i}`);
@@ -4229,12 +4370,14 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
   const statusEl = document.getElementById('sandbox-term-status');
 
   const state = lineTrace ? lineTrace[lineIndex] : null;
+  updateMemoryPanel('sandbox-memory', lineTrace, lineIndex);
   if (term && state && state.outputSoFar) {
     term.className = "text-[#34d399] min-h-[42px] whitespace-pre-wrap font-mono text-xs sm:text-sm font-semibold flex items-center leading-relaxed";
     term.innerHTML = `<div class="font-mono whitespace-pre-wrap font-semibold leading-relaxed">${escapeHtml(state.outputSoFar.join('\n'))}</div>`;
   }
 
-  const stepDelay = window.FAST_ANIM ? 10 : 420;
+  const hasLoopTimeout = lineTrace?.some(state => state.errorType === 'TimeoutError');
+  const stepDelay = window.FAST_ANIM ? 10 : (hasLoopTimeout ? 160 : 420);
   let currentIdx = lineIndex;
   const totalTraceSteps = (lineTrace && lineTrace.length > 0) ? lineTrace.length : lines.length;
 
@@ -4244,6 +4387,7 @@ function resumeSandboxAfterInput(lineIndex, optOrResult, lines, lineTrace) {
       const st = lineTrace ? lineTrace[currentIdx] : null;
       const isLineError = Boolean(st && st.hasError);
       const activeLineIdx = (st && st.line !== undefined) ? st.line : currentIdx;
+      updateMemoryPanel('sandbox-memory', lineTrace, currentIdx);
 
       lines.forEach((_, i) => {
         const lineEl = document.getElementById(`sandbox-line-${i}`);
@@ -5962,4 +6106,3 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 400);
   }
 });
-

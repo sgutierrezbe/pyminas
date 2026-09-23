@@ -39,7 +39,7 @@ graph TD
 ### Etapa 1: Ingesta Automatizada del Notebook
 El notebook se procesa con la herramienta de extracción del repositorio:
 ```bash
-python3 ingest_notebook.py ruta/al/notebook_del_profesor.ipynb
+python3 scripts/ingest_notebook.py ruta/al/notebook_del_profesor.ipynb
 ```
 El script realiza:
 * Lectura del JSON del notebook y extracción de celdas Markdown y de Código.
@@ -64,13 +64,13 @@ Cada nivel se compone de **4 a 6 micro-pasos** diseñados bajo los 4 arquetipos 
 ### Etapa 5: Pipeline de Auditoría, Horneado y Despliegue
 ```bash
 # 1. Auditar con CPython real (salidas exactas, syntax, options)
-python3 verify_curriculum.py
+python3 scripts/verify_curriculum.py
 
 # 2. Hornear trazas de ejecución línea por línea
-python3 bake_curriculum.py
+python3 scripts/bake_curriculum.py
 
 # 3. Validar interfaz en modo headless
-google-chrome --headless --virtual-time-budget=2000 --dump-dom "http://localhost:8080/test_runner.html" | grep "TODAS"
+google-chrome --headless --virtual-time-budget=2000 --dump-dom "http://localhost:8080/tests/test_runner.html" | grep "TODAS"
 
 # 4. Git commit y push
 git add curriculum.js baked_traces.js index.html
@@ -279,16 +279,16 @@ Para evitar bugs en producción, toda nueva lección debe superar el pipeline au
 
 ```bash
 # 1. Auditoría automática del currículo (salida, sintaxis, IDs)
-python3 verify_curriculum.py
+python3 scripts/verify_curriculum.py
 
 # 2. Generación de trazas de ejecución pre-horneadas
-python3 bake_curriculum.py
+python3 scripts/bake_curriculum.py
 
 # 3. Verificación de tests de navegación y racha
-google-chrome --headless --virtual-time-budget=2000 --dump-dom "http://localhost:8080/test_runner.html" | grep "TODAS"
+google-chrome --headless --virtual-time-budget=2000 --dump-dom "http://localhost:8080/tests/test_runner.html" | grep "TODAS"
 ```
 
-El script [`verify_curriculum.py`](file:///verify_curriculum.py) ejecuta cada fragmento con el motor CPython del sistema, comprobando que:
+El script [`scripts/verify_curriculum.py`](../../scripts/verify_curriculum.py) ejecuta cada fragmento con el motor CPython del sistema, comprobando que:
 * No existan IDs duplicados.
 * La propiedad `output` de los `explanation` sea exacta (espacios, saltos de línea, mayúsculas).
 * Cada opción de `code_sandbox` genere código sintácticamente ejecutable.
@@ -299,13 +299,13 @@ El script [`verify_curriculum.py`](file:///verify_curriculum.py) ejecuta cada fr
 ## 📋 6. Checklist de Aprobación para Nuevos Niveles
 
 Antes de dar por finalizada la creación de un nivel:
-- [ ] ¿Se extrajo la temática a partir del `.ipynb` usando `ingest_notebook.py`?
+- [ ] ¿Se extrajo la temática a partir del `.ipynb` usando `scripts/ingest_notebook.py`?
 - [ ] ¿El nivel enseña un **único concepto atómico** y no una mezcla de temas?
 - [ ] ¿Cada pantalla se puede resolver en aproximadamente **15 segundos**?
 - [ ] ¿Los snippets de código tienen entre **3 y 6 líneas**?
 - [ ] ¿Cada opción falsa en `predict` tiene un `whyIncorrect` diagnóstico claro?
 - [ ] ¿Los ejercicios `code_sandbox` usan el marcador `___` y compilan en CPython?
-- [ ] ¿Ejecutaste `python3 verify_curriculum.py` con **0 errores**?
-- [ ] ¿Ejecutaste `python3 bake_curriculum.py` para sincronizar `baked_traces.js`?
-- [ ] ¿Probaste `test_runner.html` en el navegador?
+- [ ] ¿Ejecutaste `python3 scripts/verify_curriculum.py` con **0 errores**?
+- [ ] ¿Ejecutaste `python3 scripts/bake_curriculum.py` para sincronizar `baked_traces.js`?
+- [ ] ¿Probaste `tests/test_runner.html` en el navegador?
 - [ ] ¿Incrementaste el número de versión de caché en `index.html`?

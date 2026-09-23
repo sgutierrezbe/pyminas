@@ -10,22 +10,47 @@ de ejecución (NameError, TypeError, etc.) formateados tal como los emite CPytho
 
 import ast
 import io
+import itertools
 import json
 import re
 import signal
 import sys
 import traceback
+import types
 from pathlib import Path
 
 class InfiniteLoopTimeout(Exception):
-    pass
+    def __init__(self, message, loop_line=None):
+        super().__init__(message)
+        self.loop_line = loop_line
 
 def _timeout_handler(signum, frame):
     raise InfiniteLoopTimeout("Límite de tiempo de ejecución excedido (bucle infinito)")
 
-BASE_DIR = Path(__file__).resolve().parent
-CURRICULUM_PATH = BASE_DIR / "curriculum.js"
-OUTPUT_PATH = BASE_DIR / "baked_traces.js"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+CURRICULUM_PATH = PROJECT_ROOT / "curriculum.js"
+OUTPUT_PATH = PROJECT_ROOT / "baked_traces.js"
+
+def snapshot_variables(namespace):
+    """Serializa variables simples del estudiante para el panel de memoria."""
+    snapshot = {}
+    for name, value in namespace.items():
+        if name.startswith("__") or callable(value) or isinstance(value, types.ModuleType):
+            continue
+
+        try:
+            display = repr(value)
+        except Exception:
+            display = f"<{type(value).__name__}>"
+
+        if len(display) > 90:
+            display = display[:87] + "..."
+
+        snapshot[name] = {
+            "value": display,
+            "type": type(value).__name__
+        }
+    return snapshot
 
 def trace_python_code(code_str, slot_value=None, expected_output=""):
     if slot_value is not None:
@@ -45,20 +70,22 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
         line_trace = []
         for idx in range(len(lines)):
             if idx < err_line:
-                line_trace.append({"prints": None, "outputSoFar": []})
+                line_trace.append({"prints": None, "outputSoFar": [], "variables": {}})
             elif idx == err_line:
                 line_trace.append({
                     "prints": err_msg,
                     "outputSoFar": err_msg.split("\n"),
                     "hasError": True,
                     "errorType": type(e).__name__,
-                    "errorLine": err_line
+                    "errorLine": err_line,
+                    "variables": {}
                 })
             else:
                 line_trace.append({
                     "prints": None,
                     "outputSoFar": err_msg.split("\n"),
-                    "skipped": True
+                    "skipped": True,
+                    "variables": {}
                 })
         return {
             "lines": lines,
@@ -91,23 +118,43 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
     steps = []
     last_pos = 0
     MAX_STEPS = 60
+    MAX_STALLED_ITERATIONS = 8
+    while_lines = {node.lineno - 1 for node in ast.walk(tree) if isinstance(node, ast.While)}
+    while_states = {}
 
     def tracer(frame, event, arg):
         nonlocal last_pos
         if frame.f_code.co_filename == "main.py" and event == "line":
+            lineno = max(0, min(frame.f_lineno - 1, len(lines) - 1))
+            if lineno in while_lines:
+                state = tuple(sorted(
+                    (name, type(value).__name__, repr(value))
+                    for name, value in frame.f_locals.items()
+                    if not name.startswith("__") and not callable(value)
+                    and not isinstance(value, types.ModuleType)
+                ))
+                previous_state, repetitions = while_states.get(lineno, (None, 0))
+                repetitions = repetitions + 1 if state == previous_state else 1
+                if repetitions > MAX_STALLED_ITERATIONS:
+                    raise InfiniteLoopTimeout(
+                        f"El ciclo no avanza: se detuvo tras {MAX_STALLED_ITERATIONS} iteraciones con las mismas variables",
+                        lineno
+                    )
+                while_states[lineno] = (state, repetitions)
             if len(steps) >= MAX_STEPS:
                 raise InfiniteLoopTimeout("Límite de pasos de ejecución excedido (bucle infinito)")
             cur_val = buf.getvalue()
             if steps:
                 steps[-1]["outputSoFar"] = [l for l in cur_val.split("\n") if l]
                 steps[-1]["prints"] = cur_val[last_pos:].rstrip("\n") if cur_val[last_pos:] else None
+                steps[-1]["variables"] = snapshot_variables(frame.f_locals)
                 last_pos = len(cur_val)
-            lineno = max(0, min(frame.f_lineno - 1, len(lines) - 1))
             steps.append({
                 "line": lineno,
                 "outputSoFar": [l for l in cur_val.split("\n") if l],
                 "prints": None,
-                "hasError": False
+                "hasError": False,
+                "variables": snapshot_variables(frame.f_locals)
             })
         return tracer
 
@@ -127,6 +174,7 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
 
     sys.stdin = StdinWithEcho(echo_stdin, buf)
     stmt_error = None
+    timeout_loop_line = None
     has_timer = hasattr(signal, "SIGALRM")
     if has_timer:
         old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
@@ -138,6 +186,7 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
         exec(compiled, scope)
     except InfiniteLoopTimeout as te:
         stmt_error = TimeoutError(str(te))
+        timeout_loop_line = te.loop_line
     except Exception as e:
         stmt_error = e
     finally:
@@ -152,6 +201,7 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
         if steps:
             steps[-1]["outputSoFar"] = [l for l in cur_val.split("\n") if l]
             steps[-1]["prints"] = cur_val[last_pos:].rstrip("\n") if cur_val[last_pos:] else None
+            steps[-1]["variables"] = snapshot_variables(scope)
 
     has_runtime_error = False
     error_line = None
@@ -163,7 +213,9 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
         tb = stmt_error.__traceback__
         while tb and tb.tb_next:
             tb = tb.tb_next
-        if tb and tb.tb_frame.f_code.co_filename == "main.py":
+        if timeout_loop_line is not None:
+            error_line = timeout_loop_line
+        elif tb and tb.tb_frame.f_code.co_filename == "main.py":
             error_line = max(0, min(tb.tb_lineno - 1, len(lines) - 1))
         elif steps:
             error_line = steps[-1]["line"]
@@ -174,15 +226,25 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
         error_msg = f"Traceback (most recent call last):\n  File \"main.py\", line {error_line + 1}, in <module>\n    {code_line_str}\n{error_type}: {stmt_error}"
 
         buf_lines = [l for l in buf.getvalue().split("\n") if l]
-        if len(buf_lines) > 5:
-            buf_lines = buf_lines[:5] + [f"... ({len(buf_lines) - 5} salidas repetidas omitidas)"]
+        if len(buf_lines) > 8:
+            buf_lines = buf_lines[:8] + [f"... ({len(buf_lines) - 8} salidas repetidas omitidas)"]
         stdout_buffer = "\n".join(buf_lines)
         if stdout_buffer:
             stdout_buffer = stdout_buffer + "\n" + error_msg
         else:
             stdout_buffer = error_msg
 
-        if steps:
+        if timeout_loop_line is not None:
+            steps.append({
+                "line": error_line,
+                "prints": error_msg,
+                "outputSoFar": stdout_buffer.split("\n"),
+                "hasError": True,
+                "errorType": error_type,
+                "errorLine": error_line,
+                "variables": snapshot_variables(scope)
+            })
+        elif steps:
             steps[-1]["hasError"] = True
             steps[-1]["errorType"] = error_type
             steps[-1]["errorLine"] = error_line
@@ -195,7 +257,8 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
                 "outputSoFar": stdout_buffer.split("\n"),
                 "hasError": True,
                 "errorType": error_type,
-                "errorLine": error_line
+                "errorLine": error_line,
+                "variables": snapshot_variables(scope)
             })
     else:
         stdout_buffer = buf.getvalue()
@@ -206,7 +269,8 @@ def trace_python_code(code_str, slot_value=None, expected_output=""):
                 "line": idx,
                 "prints": None,
                 "outputSoFar": [],
-                "hasError": False
+                "hasError": False,
+                "variables": {}
             })
 
     return {
@@ -252,29 +316,47 @@ def main():
                             success_count += 1
                             print(f"    [PREDICT] {l.get('id')}: {len(trace['lineTrace'])} líneas")
 
-                    # 3. Código en pasos sandbox (hornear TODAS las opciones: correctas e incorrectas)
+                    # 3. Código en pasos sandbox: todas las combinaciones de ranuras.
                     if s.get("type") == "code_sandbox" and s.get("starterCode"):
                         starter = s["starterCode"].strip()
                         marker = s.get("slotMarker", "___")
-                        for opt in s.get("options", []):
-                            if opt.get("slots"):
-                                filled = starter
-                                for slot_val in opt["slots"]:
-                                    filled = filled.replace(marker, slot_val, 1)
-                                code_val = opt.get("code") or " / ".join(opt["slots"])
+                        slot_count = starter.count(marker)
+                        if slot_count > 1:
+                            if s.get("slots"):
+                                choices = [
+                                    list(dict.fromkeys(opt.get("code") for opt in slot.get("options", []) if opt.get("code") is not None))
+                                    for slot in s["slots"]
+                                ]
                             else:
-                                code_val = opt.get("code")
-                                if code_val is not None:
-                                    filled = starter.replace(marker, code_val)
-                                else:
-                                    continue
-                            exp_out = s.get("expectedOutput", "") if opt.get("isCorrect") else ""
+                                choices = [
+                                    list(dict.fromkeys(opt["slots"][idx] for opt in s.get("options", []) if len(opt.get("slots", [])) > idx))
+                                    for idx in range(slot_count)
+                                ]
+                            combinations = itertools.product(*choices) if len(choices) == slot_count and all(choices) else []
+                        else:
+                            combinations = [
+                                tuple(opt.get("slots") or [opt["code"]])
+                                for opt in s.get("options", [])
+                                if opt.get("slots") or opt.get("code") is not None
+                            ]
+
+                        correct = next((opt for opt in s.get("options", []) if opt.get("isCorrect")), None)
+                        solution = tuple(s["solution"]) if isinstance(s.get("solution"), list) else None
+                        if solution is None and correct:
+                            solution = tuple(correct.get("slots") or [correct.get("code", "")])
+
+                        for slot_values in combinations:
+                            filled = starter
+                            for slot_val in slot_values:
+                                filled = filled.replace(marker, slot_val, 1)
+                            code_val = " / ".join(slot_values)
+                            exp_out = s.get("expectedOutput", "") if tuple(slot_values) == solution else ""
                             trace = trace_python_code(filled, expected_output=exp_out)
                             if trace:
                                 baked[filled] = trace
                                 success_count += 1
                                 err_status = f" ({trace['errorType']})" if trace.get("hasError") else ""
-                                print(f"    [SANDBOX] {l.get('id', '')} opt '{code_val}'{err_status}: {len(trace['lineTrace'])} líneas")
+                                print(f"    [SANDBOX] {l.get('id', '')} fichas '{code_val}'{err_status}: {len(trace['lineTrace'])} líneas")
     except Exception as e:
         print(f"  [WARN] Curriculum baking: {e}")
 

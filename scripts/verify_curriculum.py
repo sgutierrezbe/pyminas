@@ -15,8 +15,8 @@ Valida el 100% de los ejercicios de curriculum.js ejecutando el código en CPyth
      - Opciones y retroalimentaciones completas.
   6. Sincronización con trazas pre-horneadas (baked_traces.js).
 
-Uso:
-  python3 verify_curriculum.py
+Uso (desde la raíz del proyecto):
+  python3 scripts/verify_curriculum.py
 """
 
 import ast
@@ -26,9 +26,9 @@ import re
 import sys
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent
-CURRICULUM_PATH = BASE_DIR / "curriculum.js"
-BAKED_TRACES_PATH = BASE_DIR / "baked_traces.js"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+CURRICULUM_PATH = PROJECT_ROOT / "curriculum.js"
+BAKED_TRACES_PATH = PROJECT_ROOT / "baked_traces.js"
 
 # Códigos de color ANSI para terminal
 GREEN = "\033[92m"
@@ -276,6 +276,20 @@ class CurriculumAuditor:
         print(f"  • Archivo curriculum.js cargado correctamente.")
         print(f"  • Archivo baked_traces.js contiene {len(baked_traces)} trazas pre-horneadas.\n")
 
+        baked_steps = [
+            trace_step
+            for trace in baked_traces.values()
+            for trace_step in trace.get("lineTrace", [])
+        ]
+        self.check(
+            bool(baked_steps) and all(isinstance(step.get("variables"), dict) for step in baked_steps),
+            "Todas las líneas horneadas deben incluir una instantánea de memoria en 'variables'."
+        )
+        self.check(
+            any(bool(step.get("variables")) for step in baked_steps),
+            "Las trazas horneadas no contienen valores de variables para el panel de memoria."
+        )
+
         weeks = curriculum.get("weeks", [])
         self.check(len(weeks) > 0, "El currículo debe contener al menos 1 semana activa.")
 
@@ -366,7 +380,7 @@ class CurriculumAuditor:
                     self.check(trace_out == real_clean,
                                f"{ex_ctx} 'baked_traces.js' desincronizado con salida real de CPython: {repr(trace_out)} vs {repr(real_clean)}")
                 else:
-                    self.check(False, f"{ex_ctx} Código no está horneado en 'baked_traces.js'. Ejecuta 'python3 bake_curriculum.py'.", is_warning=True)
+                    self.check(False, f"{ex_ctx} Código no está horneado en 'baked_traces.js'. Ejecuta 'python3 scripts/bake_curriculum.py'.", is_warning=True)
 
     def audit_predict_step(self, step, ctx):
         question = step.get("question", "")

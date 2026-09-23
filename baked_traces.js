@@ -16,7 +16,8 @@ window.BAKED_TRACES = {
           "¡Café listo para beber!"
         ],
         "prints": "¡Café listo para beber!",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "¡Café listo para beber!",
@@ -38,7 +39,8 @@ window.BAKED_TRACES = {
           "Línea 1: Verificando datos"
         ],
         "prints": "Línea 1: Verificando datos",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
@@ -47,7 +49,8 @@ window.BAKED_TRACES = {
           "Línea 2: Procesando cálculo"
         ],
         "prints": "Línea 2: Procesando cálculo",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 3,
@@ -57,7 +60,8 @@ window.BAKED_TRACES = {
           "Línea 3: Operación terminada"
         ],
         "prints": "Línea 3: Operación terminada",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "Línea 1: Verificando datos\nLínea 2: Procesando cálculo\nLínea 3: Operación terminada",
@@ -78,7 +82,8 @@ window.BAKED_TRACES = {
           "1. Encendiendo motor"
         ],
         "prints": "1. Encendiendo motor",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 1,
@@ -87,7 +92,8 @@ window.BAKED_TRACES = {
           "2. Calentando turbinas"
         ],
         "prints": "2. Calentando turbinas",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
@@ -97,7 +103,8 @@ window.BAKED_TRACES = {
           "3. ¡Despegue!"
         ],
         "prints": "3. ¡Despegue!",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "1. Encendiendo motor\n2. Calentando turbinas\n3. ¡Despegue!",
@@ -118,7 +125,8 @@ window.BAKED_TRACES = {
           "Modo normal activado"
         ],
         "prints": "Modo normal activado",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
@@ -127,7 +135,8 @@ window.BAKED_TRACES = {
           "Todo funcionando correctamente"
         ],
         "prints": "Todo funcionando correctamente",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "Modo normal activado\nTodo funcionando correctamente",
@@ -147,7 +156,8 @@ window.BAKED_TRACES = {
           "¡Bienvenido a la Facultad de Minas!"
         ],
         "prints": "¡Bienvenido a la Facultad de Minas!",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "¡Bienvenido a la Facultad de Minas!",
@@ -171,6 +181,7 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    mostrar(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'mostrar' is not defined",
         "hasError": true,
+        "variables": {},
         "errorType": "NameError",
         "errorLine": 1
       }
@@ -196,6 +207,7 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    escribir(\"¡Bienvenido a la Facultad de Minas!\")\nNameError: name 'escribir' is not defined",
         "hasError": true,
+        "variables": {},
         "errorType": "NameError",
         "errorLine": 1
       }
@@ -217,7 +229,13 @@ window.BAKED_TRACES = {
           "¿Cómo te llamas?: Sara"
         ],
         "prints": "¿Cómo te llamas?: Sara",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nombre": {
+            "value": "'Sara'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -226,7 +244,13 @@ window.BAKED_TRACES = {
           "¡Mucho gusto, Sara bienvenido a pyMinas!"
         ],
         "prints": "¡Mucho gusto, Sara bienvenido a pyMinas!",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nombre": {
+            "value": "'Sara'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "¿Cómo te llamas?: Sara\n¡Mucho gusto, Sara bienvenido a pyMinas!",
@@ -247,19 +271,49 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "'10'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "'10'",
+            "type": "str"
+          },
+          "b": {
+            "value": "'20'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "'10'",
+            "type": "str"
+          },
+          "b": {
+            "value": "'20'",
+            "type": "str"
+          },
+          "total": {
+            "value": "'1020'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
@@ -267,7 +321,21 @@ window.BAKED_TRACES = {
           "1020"
         ],
         "prints": "1020",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "'10'",
+            "type": "str"
+          },
+          "b": {
+            "value": "'20'",
+            "type": "str"
+          },
+          "total": {
+            "value": "'1020'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "1020",
@@ -290,7 +358,13 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": "Ingresa tu edad: 14",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
@@ -298,7 +372,17 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          },
+          "edad": {
+            "value": "14.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
@@ -307,7 +391,17 @@ window.BAKED_TRACES = {
           "El próximo año tendrás 15.0 años"
         ],
         "prints": "El próximo año tendrás 15.0 años",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          },
+          "edad": {
+            "value": "14.0",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Ingresa tu edad: 14\nEl próximo año tendrás 15.0 años",
@@ -330,7 +424,13 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": "Ingresa tu edad: 14",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
@@ -338,7 +438,17 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          },
+          "edad": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -347,7 +457,17 @@ window.BAKED_TRACES = {
           "El próximo año tendrás 15 años"
         ],
         "prints": "El próximo año tendrás 15 años",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          },
+          "edad": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Ingresa tu edad: 14\nEl próximo año tendrás 15 años",
@@ -370,7 +490,13 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": "Ingresa tu edad: 14",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
@@ -378,7 +504,17 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          },
+          "edad": {
+            "value": "'14'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
@@ -391,6 +527,16 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(f\"El próximo año tendrás {edad + 1} años\")\nTypeError: can only concatenate str (not \"int\") to str",
         "hasError": true,
+        "variables": {
+          "edad_str": {
+            "value": "'14'",
+            "type": "str"
+          },
+          "edad": {
+            "value": "'14'",
+            "type": "str"
+          }
+        },
         "errorType": "TypeError",
         "errorLine": 4
       }
@@ -411,13 +557,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nombre": {
+            "value": "'Carlos'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nombre": {
+            "value": "'Carlos'",
+            "type": "str"
+          },
+          "semestre": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -425,7 +587,17 @@ window.BAKED_TRACES = {
           "Estudiante: Carlos Semestre: 1"
         ],
         "prints": "Estudiante: Carlos Semestre: 1",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nombre": {
+            "value": "'Carlos'",
+            "type": "str"
+          },
+          "semestre": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Estudiante: Carlos Semestre: 1",
@@ -444,13 +616,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "curso": {
+            "value": "'pyMinas'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "curso": {
+            "value": "'pyMinas'",
+            "type": "str"
+          },
+          "edicion": {
+            "value": "2026",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -458,7 +646,17 @@ window.BAKED_TRACES = {
           "¡Bienvenido a pyMinas versión 2026!"
         ],
         "prints": "¡Bienvenido a pyMinas versión 2026!",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "curso": {
+            "value": "'pyMinas'",
+            "type": "str"
+          },
+          "edicion": {
+            "value": "2026",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "¡Bienvenido a pyMinas versión 2026!",
@@ -477,13 +675,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "base": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "base": {
+            "value": "10",
+            "type": "int"
+          },
+          "altura": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -491,7 +705,17 @@ window.BAKED_TRACES = {
           "Área del rectángulo: 50 m2"
         ],
         "prints": "Área del rectángulo: 50 m2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "base": {
+            "value": "10",
+            "type": "int"
+          },
+          "altura": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Área del rectángulo: 50 m2",
@@ -509,7 +733,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "usuario": {
+            "value": "'Santiago'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -517,7 +747,13 @@ window.BAKED_TRACES = {
           "Hola {usuario}, bienvenido al laboratorio"
         ],
         "prints": "Hola {usuario}, bienvenido al laboratorio",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "usuario": {
+            "value": "'Santiago'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Hola {usuario}, bienvenido al laboratorio",
@@ -536,15 +772,18 @@ window.BAKED_TRACES = {
     "lineTrace": [
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": "File \"main.py\", line 4\n    mensaje = str\"Facultad de {facultad} · Costo: ${costo}\"\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax",
@@ -556,7 +795,8 @@ window.BAKED_TRACES = {
         ],
         "hasError": true,
         "errorType": "SyntaxError",
-        "errorLine": 3
+        "errorLine": 3,
+        "variables": {}
       },
       {
         "prints": null,
@@ -566,7 +806,8 @@ window.BAKED_TRACES = {
           "                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       }
     ],
     "totalOutput": "File \"main.py\", line 4\n    mensaje = str\"Facultad de {facultad} · Costo: ${costo}\"\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax",
@@ -587,19 +828,49 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          },
+          "costo": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          },
+          "costo": {
+            "value": "0",
+            "type": "int"
+          },
+          "mensaje": {
+            "value": "'Facultad de Minas · Costo: $0'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
@@ -607,7 +878,21 @@ window.BAKED_TRACES = {
           "Facultad de Minas · Costo: $0"
         ],
         "prints": "Facultad de Minas · Costo: $0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          },
+          "costo": {
+            "value": "0",
+            "type": "int"
+          },
+          "mensaje": {
+            "value": "'Facultad de Minas · Costo: $0'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Facultad de Minas · Costo: $0",
@@ -628,19 +913,49 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          },
+          "costo": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          },
+          "costo": {
+            "value": "0",
+            "type": "int"
+          },
+          "mensaje": {
+            "value": "'Facultad de {facultad} · Costo: ${costo}'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
@@ -648,7 +963,21 @@ window.BAKED_TRACES = {
           "Facultad de {facultad} · Costo: ${costo}"
         ],
         "prints": "Facultad de {facultad} · Costo: ${costo}",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "facultad": {
+            "value": "'Minas'",
+            "type": "str"
+          },
+          "costo": {
+            "value": "0",
+            "type": "int"
+          },
+          "mensaje": {
+            "value": "'Facultad de {facultad} · Costo: ${costo}'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Facultad de {facultad} · Costo: ${costo}",
@@ -669,25 +998,73 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "21",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "21",
+            "type": "int"
+          },
+          "altura": {
+            "value": "1.78",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "21",
+            "type": "int"
+          },
+          "altura": {
+            "value": "1.78",
+            "type": "float"
+          },
+          "nombre": {
+            "value": "'Andrés'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "21",
+            "type": "int"
+          },
+          "altura": {
+            "value": "1.78",
+            "type": "float"
+          },
+          "nombre": {
+            "value": "'Andrés'",
+            "type": "str"
+          },
+          "matriculado": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 4,
@@ -695,7 +1072,25 @@ window.BAKED_TRACES = {
           "21 1.78 Andrés True"
         ],
         "prints": "21 1.78 Andrés True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "21",
+            "type": "int"
+          },
+          "altura": {
+            "value": "1.78",
+            "type": "float"
+          },
+          "nombre": {
+            "value": "'Andrés'",
+            "type": "str"
+          },
+          "matriculado": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "21 1.78 Andrés True",
@@ -712,7 +1107,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "valor": {
+            "value": "'3.1416'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "",
@@ -732,19 +1133,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "horas_str": {
+            "value": "'4.5'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "horas_str": {
+            "value": "'4.5'",
+            "type": "str"
+          },
+          "horas": {
+            "value": "4.5",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "horas_str": {
+            "value": "'4.5'",
+            "type": "str"
+          },
+          "horas": {
+            "value": "4.5",
+            "type": "float"
+          },
+          "total": {
+            "value": "9.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
@@ -752,7 +1183,21 @@ window.BAKED_TRACES = {
           "9.0"
         ],
         "prints": "9.0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "horas_str": {
+            "value": "'4.5'",
+            "type": "str"
+          },
+          "horas": {
+            "value": "4.5",
+            "type": "float"
+          },
+          "total": {
+            "value": "9.0",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "9.0",
@@ -773,7 +1218,13 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
@@ -785,6 +1236,12 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    peso_real = int(lectura_sensor)\nValueError: invalid literal for int() with base 10: '68.5'",
         "hasError": true,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          }
+        },
         "errorType": "ValueError",
         "errorLine": 3
       }
@@ -807,13 +1264,29 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          },
+          "peso_real": {
+            "value": "'68.5'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
@@ -825,6 +1298,16 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    print(peso_real + 1.5)\nTypeError: can only concatenate str (not \"float\") to str",
         "hasError": true,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          },
+          "peso_real": {
+            "value": "'68.5'",
+            "type": "str"
+          }
+        },
         "errorType": "TypeError",
         "errorLine": 4
       }
@@ -847,13 +1330,29 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          },
+          "peso_real": {
+            "value": "68.5",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
@@ -861,7 +1360,17 @@ window.BAKED_TRACES = {
           "70.0"
         ],
         "prints": "70.0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lectura_sensor": {
+            "value": "'68.5'",
+            "type": "str"
+          },
+          "peso_real": {
+            "value": "68.5",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "70.0",
@@ -885,7 +1394,8 @@ window.BAKED_TRACES = {
           "3.5"
         ],
         "prints": "3.5",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 3,
@@ -894,7 +1404,8 @@ window.BAKED_TRACES = {
           "3"
         ],
         "prints": "3",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 5,
@@ -904,7 +1415,8 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": "1",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "3.5\n3\n1",
@@ -924,19 +1436,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minutos_totales": {
+            "value": "125",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minutos_totales": {
+            "value": "125",
+            "type": "int"
+          },
+          "horas": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minutos_totales": {
+            "value": "125",
+            "type": "int"
+          },
+          "horas": {
+            "value": "2",
+            "type": "int"
+          },
+          "minutos_restantes": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -944,7 +1486,21 @@ window.BAKED_TRACES = {
           "2h 5m"
         ],
         "prints": "2h 5m",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minutos_totales": {
+            "value": "125",
+            "type": "int"
+          },
+          "horas": {
+            "value": "2",
+            "type": "int"
+          },
+          "minutos_restantes": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "2h 5m",
@@ -965,19 +1521,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota1": {
+            "value": "4.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "nota2": {
+            "value": "2.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "nota2": {
+            "value": "2.0",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "5.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
@@ -985,7 +1571,21 @@ window.BAKED_TRACES = {
           "5.0"
         ],
         "prints": "5.0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "nota2": {
+            "value": "2.0",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "5.0",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "5.0",
@@ -1007,19 +1607,49 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "5.5",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
@@ -1027,7 +1657,21 @@ window.BAKED_TRACES = {
           "5.5"
         ],
         "prints": "5.5",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "5.5",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "5.5",
@@ -1049,19 +1693,49 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "3.5",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
@@ -1069,7 +1743,21 @@ window.BAKED_TRACES = {
           "3.5"
         ],
         "prints": "3.5",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "3.5",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "3.5",
@@ -1091,13 +1779,29 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
@@ -1109,6 +1813,16 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 5, in <module>\n    promedio = [lab1 + lab2] / 2\nTypeError: unsupported operand type(s) for /: 'list' and 'int'",
         "hasError": true,
+        "variables": {
+          "lab1": {
+            "value": "4.0",
+            "type": "float"
+          },
+          "lab2": {
+            "value": "3.0",
+            "type": "float"
+          }
+        },
         "errorType": "TypeError",
         "errorLine": 4
       }
@@ -1132,19 +1846,36 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "radio": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "radio": {
+            "value": "3",
+            "type": "int"
+          },
+          "area": {
+            "value": "28.274333882308138",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
@@ -1152,7 +1883,17 @@ window.BAKED_TRACES = {
           "Área: 28.27"
         ],
         "prints": "Área: 28.27",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "radio": {
+            "value": "3",
+            "type": "int"
+          },
+          "area": {
+            "value": "28.274333882308138",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Área: 28.27",
@@ -1172,13 +1913,20 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "resultado": {
+            "value": "5.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
@@ -1186,7 +1934,13 @@ window.BAKED_TRACES = {
           "5.0"
         ],
         "prints": "5.0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "resultado": {
+            "value": "5.0",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "5.0",
@@ -1209,25 +1963,56 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estudiantes": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estudiantes": {
+            "value": "25",
+            "type": "int"
+          },
+          "capacidad_aula": {
+            "value": "6",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estudiantes": {
+            "value": "25",
+            "type": "int"
+          },
+          "capacidad_aula": {
+            "value": "6",
+            "type": "int"
+          },
+          "aulas": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -1235,7 +2020,21 @@ window.BAKED_TRACES = {
           "5"
         ],
         "prints": "5",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estudiantes": {
+            "value": "25",
+            "type": "int"
+          },
+          "capacidad_aula": {
+            "value": "6",
+            "type": "int"
+          },
+          "aulas": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "5",
@@ -1259,19 +2058,36 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -1283,6 +2099,16 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 7, in <module>\n    hipotenusa = sqrt(cateto_a**2 + cateto_b**2)\nNameError: name 'sqrt' is not defined",
         "hasError": true,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          }
+        },
         "errorType": "NameError",
         "errorLine": 6
       }
@@ -1308,25 +2134,56 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          },
+          "hipotenusa": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
@@ -1334,7 +2191,21 @@ window.BAKED_TRACES = {
           "Hipotenusa: 25"
         ],
         "prints": "Hipotenusa: 25",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          },
+          "hipotenusa": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Hipotenusa: 25",
@@ -1358,25 +2229,56 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          },
+          "hipotenusa": {
+            "value": "5.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 7,
@@ -1384,7 +2286,21 @@ window.BAKED_TRACES = {
           "Hipotenusa: 5.0"
         ],
         "prints": "Hipotenusa: 5.0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cateto_a": {
+            "value": "3",
+            "type": "int"
+          },
+          "cateto_b": {
+            "value": "4",
+            "type": "int"
+          },
+          "hipotenusa": {
+            "value": "5.0",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Hipotenusa: 5.0",
@@ -1407,7 +2323,13 @@ window.BAKED_TRACES = {
           "Ingresa el primer número (x): 10"
         ],
         "prints": "Ingresa el primer número (x): 10",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -1416,7 +2338,17 @@ window.BAKED_TRACES = {
           "Ingresa el segundo número (y): 20"
         ],
         "prints": "Ingresa el segundo número (y): 20",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "10",
+            "type": "int"
+          },
+          "y": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -1426,7 +2358,17 @@ window.BAKED_TRACES = {
           "¿x es menor que y?: True"
         ],
         "prints": "¿x es menor que y?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "10",
+            "type": "int"
+          },
+          "y": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -1437,7 +2379,17 @@ window.BAKED_TRACES = {
           "¿x es igual a y?: False"
         ],
         "prints": "¿x es igual a y?: False",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "10",
+            "type": "int"
+          },
+          "y": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -1449,7 +2401,17 @@ window.BAKED_TRACES = {
           "¿x es diferente de y?: True"
         ],
         "prints": "¿x es diferente de y?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "10",
+            "type": "int"
+          },
+          "y": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Ingresa el primer número (x): 10\nIngresa el segundo número (y): 20\n¿x es menor que y?: True\n¿x es igual a y?: False\n¿x es diferente de y?: True",
@@ -1470,19 +2432,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "15",
+            "type": "int"
+          },
+          "b": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "15",
+            "type": "int"
+          },
+          "b": {
+            "value": "15",
+            "type": "int"
+          },
+          "c": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -1490,7 +2482,21 @@ window.BAKED_TRACES = {
           "True"
         ],
         "prints": "True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "15",
+            "type": "int"
+          },
+          "b": {
+            "value": "15",
+            "type": "int"
+          },
+          "c": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -1499,7 +2505,21 @@ window.BAKED_TRACES = {
           "False"
         ],
         "prints": "False",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "15",
+            "type": "int"
+          },
+          "b": {
+            "value": "15",
+            "type": "int"
+          },
+          "c": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "True\nFalse",
@@ -1521,13 +2541,29 @@ window.BAKED_TRACES = {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "100",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "100",
+            "type": "int"
+          },
+          "es_cien": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 4,
@@ -1535,7 +2571,17 @@ window.BAKED_TRACES = {
           "Puntos guardados: 100"
         ],
         "prints": "Puntos guardados: 100",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "100",
+            "type": "int"
+          },
+          "es_cien": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 5,
@@ -1544,7 +2590,17 @@ window.BAKED_TRACES = {
           "¿Son exactamente 100?: True"
         ],
         "prints": "¿Son exactamente 100?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "100",
+            "type": "int"
+          },
+          "es_cien": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "Puntos guardados: 100\n¿Son exactamente 100?: True",
@@ -1564,19 +2620,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "False",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 3,
@@ -1584,7 +2670,21 @@ window.BAKED_TRACES = {
           "¿Cumple el orden?: False"
         ],
         "prints": "¿Cumple el orden?: False",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "False",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "¿Cumple el orden?: False",
@@ -1604,19 +2704,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "False",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 3,
@@ -1624,7 +2754,21 @@ window.BAKED_TRACES = {
           "¿Cumple el orden?: False"
         ],
         "prints": "¿Cumple el orden?: False",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "False",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "¿Cumple el orden?: False",
@@ -1644,19 +2788,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 3,
@@ -1664,7 +2838,21 @@ window.BAKED_TRACES = {
           "¿Cumple el orden?: True"
         ],
         "prints": "¿Cumple el orden?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "menor": {
+            "value": "25",
+            "type": "int"
+          },
+          "mayor": {
+            "value": "50",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "¿Cumple el orden?: True",
@@ -1684,19 +2872,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "20",
+            "type": "int"
+          },
+          "tiene_licencia": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "20",
+            "type": "int"
+          },
+          "tiene_licencia": {
+            "value": "True",
+            "type": "bool"
+          },
+          "puede_conducir": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 3,
@@ -1704,7 +2922,21 @@ window.BAKED_TRACES = {
           "¿Puede conducir el auto?: True"
         ],
         "prints": "¿Puede conducir el auto?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "20",
+            "type": "int"
+          },
+          "tiene_licencia": {
+            "value": "True",
+            "type": "bool"
+          },
+          "puede_conducir": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "¿Puede conducir el auto?: True",
@@ -1725,19 +2957,49 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "dia": {
+            "value": "'domingo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "dia": {
+            "value": "'domingo'",
+            "type": "str"
+          },
+          "es_feriado": {
+            "value": "False",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "dia": {
+            "value": "'domingo'",
+            "type": "str"
+          },
+          "es_feriado": {
+            "value": "False",
+            "type": "bool"
+          },
+          "descanso": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 3,
@@ -1745,7 +3007,21 @@ window.BAKED_TRACES = {
           "¿Es día de descanso?: True"
         ],
         "prints": "¿Es día de descanso?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "dia": {
+            "value": "'domingo'",
+            "type": "str"
+          },
+          "es_feriado": {
+            "value": "False",
+            "type": "bool"
+          },
+          "descanso": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 4,
@@ -1754,7 +3030,21 @@ window.BAKED_TRACES = {
           "Inversión con not: False"
         ],
         "prints": "Inversión con not: False",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "dia": {
+            "value": "'domingo'",
+            "type": "str"
+          },
+          "es_feriado": {
+            "value": "False",
+            "type": "bool"
+          },
+          "descanso": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "¿Es día de descanso?: True\nInversión con not: False",
@@ -1773,13 +3063,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "5",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 2,
@@ -1787,7 +3093,17 @@ window.BAKED_TRACES = {
           "Resultado lógico: True"
         ],
         "prints": "Resultado lógico: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "5",
+            "type": "int"
+          },
+          "resultado": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "Resultado lógico: True",
@@ -1806,13 +3122,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "presion": {
+            "value": "35",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "presion": {
+            "value": "35",
+            "type": "int"
+          },
+          "es_segura": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 2,
@@ -1820,7 +3152,17 @@ window.BAKED_TRACES = {
           "¿Presión en rango seguro?: True"
         ],
         "prints": "¿Presión en rango seguro?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "presion": {
+            "value": "35",
+            "type": "int"
+          },
+          "es_segura": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "¿Presión en rango seguro?: True",
@@ -1839,13 +3181,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "presion": {
+            "value": "35",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "presion": {
+            "value": "35",
+            "type": "int"
+          },
+          "es_segura": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       },
       {
         "line": 2,
@@ -1853,7 +3211,17 @@ window.BAKED_TRACES = {
           "¿Presión en rango seguro?: True"
         ],
         "prints": "¿Presión en rango seguro?: True",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "presion": {
+            "value": "35",
+            "type": "int"
+          },
+          "es_segura": {
+            "value": "True",
+            "type": "bool"
+          }
+        }
       }
     ],
     "totalOutput": "¿Presión en rango seguro?: True",
@@ -1870,7 +3238,8 @@ window.BAKED_TRACES = {
     "lineTrace": [
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": "File \"main.py\", line 2\n    es_segura = (presion >= 10) not (presion <= 50)\n                                    ^\nSyntaxError: invalid syntax",
@@ -1882,7 +3251,8 @@ window.BAKED_TRACES = {
         ],
         "hasError": true,
         "errorType": "SyntaxError",
-        "errorLine": 1
+        "errorLine": 1,
+        "variables": {}
       },
       {
         "prints": null,
@@ -1892,7 +3262,8 @@ window.BAKED_TRACES = {
           "                                    ^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       }
     ],
     "totalOutput": "File \"main.py\", line 2\n    es_segura = (presion >= 10) not (presion <= 50)\n                                    ^\nSyntaxError: invalid syntax",
@@ -1915,7 +3286,8 @@ window.BAKED_TRACES = {
           "1. Antes de la decisión"
         ],
         "prints": "1. Antes de la decisión",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 1,
@@ -1923,7 +3295,8 @@ window.BAKED_TRACES = {
           "1. Antes de la decisión"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
@@ -1932,7 +3305,8 @@ window.BAKED_TRACES = {
           "2. Dentro del bloque condicional (4 espacios)"
         ],
         "prints": "2. Dentro del bloque condicional (4 espacios)",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 3,
@@ -1942,7 +3316,8 @@ window.BAKED_TRACES = {
           "3. También dentro del bloque"
         ],
         "prints": "3. También dentro del bloque",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 4,
@@ -1953,7 +3328,8 @@ window.BAKED_TRACES = {
           "4. Fuera del bloque (sin sangría)"
         ],
         "prints": "4. Fuera del bloque (sin sangría)",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "1. Antes de la decisión\n2. Dentro del bloque condicional (4 espacios)\n3. También dentro del bloque\n4. Fuera del bloque (sin sangría)",
@@ -1974,13 +3350,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperatura": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperatura": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -1988,7 +3376,13 @@ window.BAKED_TRACES = {
           "Monitoreo climático finalizado"
         ],
         "prints": "Monitoreo climático finalizado",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperatura": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Monitoreo climático finalizado",
@@ -2006,7 +3400,8 @@ window.BAKED_TRACES = {
     "lineTrace": [
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": "File \"main.py\", line 2\n    if nivel_tanque > 80;\n                        ^\nSyntaxError: invalid syntax",
@@ -2018,7 +3413,8 @@ window.BAKED_TRACES = {
         ],
         "hasError": true,
         "errorType": "SyntaxError",
-        "errorLine": 1
+        "errorLine": 1,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2028,7 +3424,8 @@ window.BAKED_TRACES = {
           "                        ^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2038,7 +3435,8 @@ window.BAKED_TRACES = {
           "                        ^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       }
     ],
     "totalOutput": "File \"main.py\", line 2\n    if nivel_tanque > 80;\n                        ^\nSyntaxError: invalid syntax",
@@ -2056,7 +3454,8 @@ window.BAKED_TRACES = {
     "lineTrace": [
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": "File \"main.py\", line 2\n    if nivel_tanque > 80 then\n                         ^^^^\nSyntaxError: invalid syntax",
@@ -2068,7 +3467,8 @@ window.BAKED_TRACES = {
         ],
         "hasError": true,
         "errorType": "SyntaxError",
-        "errorLine": 1
+        "errorLine": 1,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2078,7 +3478,8 @@ window.BAKED_TRACES = {
           "                         ^^^^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2088,7 +3489,8 @@ window.BAKED_TRACES = {
           "                         ^^^^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       }
     ],
     "totalOutput": "File \"main.py\", line 2\n    if nivel_tanque > 80 then\n                         ^^^^\nSyntaxError: invalid syntax",
@@ -2108,13 +3510,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nivel_tanque": {
+            "value": "90",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nivel_tanque": {
+            "value": "90",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -2122,7 +3536,13 @@ window.BAKED_TRACES = {
           "¡Atención! Tanque casi lleno"
         ],
         "prints": "¡Atención! Tanque casi lleno",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nivel_tanque": {
+            "value": "90",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -2131,7 +3551,13 @@ window.BAKED_TRACES = {
           "Sensor en línea"
         ],
         "prints": "Sensor en línea",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nivel_tanque": {
+            "value": "90",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "¡Atención! Tanque casi lleno\nSensor en línea",
@@ -2155,7 +3581,13 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": "Ingresa tu edad: 14",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -2163,7 +3595,17 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "14",
+            "type": "int"
+          },
+          "precio": {
+            "value": "5000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -2171,7 +3613,17 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "14",
+            "type": "int"
+          },
+          "precio": {
+            "value": "5000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -2179,7 +3631,17 @@ window.BAKED_TRACES = {
           "Ingresa tu edad: 14"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "14",
+            "type": "int"
+          },
+          "precio": {
+            "value": "4750.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
@@ -2188,7 +3650,17 @@ window.BAKED_TRACES = {
           "Descuento del 5% aplicado por ser menor de edad"
         ],
         "prints": "Descuento del 5% aplicado por ser menor de edad",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "14",
+            "type": "int"
+          },
+          "precio": {
+            "value": "4750.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
@@ -2198,7 +3670,17 @@ window.BAKED_TRACES = {
           "Total a pagar: $ 4750.0"
         ],
         "prints": "Total a pagar: $ 4750.0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "14",
+            "type": "int"
+          },
+          "precio": {
+            "value": "4750.0",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Ingresa tu edad: 14\nDescuento del 5% aplicado por ser menor de edad\nTotal a pagar: $ 4750.0",
@@ -2218,13 +3700,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota": {
+            "value": "2.8",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota": {
+            "value": "2.8",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
@@ -2232,7 +3726,13 @@ window.BAKED_TRACES = {
           "Calificación registrada en el sistema"
         ],
         "prints": "Calificación registrada en el sistema",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota": {
+            "value": "2.8",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Calificación registrada en el sistema",
@@ -2253,19 +3753,45 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "SALARIO_MINIMO": {
+            "value": "1300000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "SALARIO_MINIMO": {
+            "value": "1300000",
+            "type": "int"
+          },
+          "salario": {
+            "value": "1500000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "SALARIO_MINIMO": {
+            "value": "1300000",
+            "type": "int"
+          },
+          "salario": {
+            "value": "1500000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -2273,7 +3799,17 @@ window.BAKED_TRACES = {
           "Salario final: 1500000"
         ],
         "prints": "Salario final: 1500000",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "SALARIO_MINIMO": {
+            "value": "1300000",
+            "type": "int"
+          },
+          "salario": {
+            "value": "1500000",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Salario final: 1500000",
@@ -2294,19 +3830,45 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -2314,7 +3876,17 @@ window.BAKED_TRACES = {
           "¡Alerta! Exceso de velocidad detectado"
         ],
         "prints": "¡Alerta! Exceso de velocidad detectado",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -2323,7 +3895,17 @@ window.BAKED_TRACES = {
           "Radar activo"
         ],
         "prints": "Radar activo",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "¡Alerta! Exceso de velocidad detectado\nRadar activo",
@@ -2344,19 +3926,45 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -2364,7 +3972,17 @@ window.BAKED_TRACES = {
           "Radar activo"
         ],
         "prints": "Radar activo",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Radar activo",
@@ -2385,19 +4003,45 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -2405,7 +4049,17 @@ window.BAKED_TRACES = {
           "Radar activo"
         ],
         "prints": "Radar activo",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "velocidad": {
+            "value": "92",
+            "type": "int"
+          },
+          "limite": {
+            "value": "80",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Radar activo",
@@ -2429,7 +4083,13 @@ window.BAKED_TRACES = {
           "Ingresa tu nota final (0.0 a 5.0): 4.2"
         ],
         "prints": "Ingresa tu nota final (0.0 a 5.0): 4.2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 1,
@@ -2437,7 +4097,13 @@ window.BAKED_TRACES = {
           "Ingresa tu nota final (0.0 a 5.0): 4.2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
@@ -2446,7 +4112,13 @@ window.BAKED_TRACES = {
           "¡Felicitaciones! Has aprobado"
         ],
         "prints": "¡Felicitaciones! Has aprobado",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
@@ -2456,7 +4128,13 @@ window.BAKED_TRACES = {
           "Cierre del periodo académico"
         ],
         "prints": "Cierre del periodo académico",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nota": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Ingresa tu nota final (0.0 a 5.0): 4.2\n¡Felicitaciones! Has aprobado\nCierre del periodo académico",
@@ -2477,13 +4155,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "7",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "7",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -2491,7 +4181,13 @@ window.BAKED_TRACES = {
           "El número es IMPAR"
         ],
         "prints": "El número es IMPAR",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "7",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "El número es IMPAR",
@@ -2514,25 +4210,61 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salario": {
+            "value": "2000000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salario": {
+            "value": "2000000",
+            "type": "int"
+          },
+          "minimo": {
+            "value": "1300000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salario": {
+            "value": "2000000",
+            "type": "int"
+          },
+          "minimo": {
+            "value": "1300000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salario": {
+            "value": "2100000.0",
+            "type": "float"
+          },
+          "minimo": {
+            "value": "1300000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -2540,7 +4272,17 @@ window.BAKED_TRACES = {
           "Salario ajustado: 2100000"
         ],
         "prints": "Salario ajustado: 2100000",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salario": {
+            "value": "2100000.0",
+            "type": "float"
+          },
+          "minimo": {
+            "value": "1300000",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Salario ajustado: 2100000",
@@ -2562,23 +4304,28 @@ window.BAKED_TRACES = {
     "lineTrace": [
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": "File \"main.py\", line 6\n    elif:\n        ^\nSyntaxError: invalid syntax",
@@ -2590,7 +4337,8 @@ window.BAKED_TRACES = {
         ],
         "hasError": true,
         "errorType": "SyntaxError",
-        "errorLine": 5
+        "errorLine": 5,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2600,7 +4348,8 @@ window.BAKED_TRACES = {
           "        ^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2610,7 +4359,8 @@ window.BAKED_TRACES = {
           "        ^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       }
     ],
     "totalOutput": "File \"main.py\", line 6\n    elif:\n        ^\nSyntaxError: invalid syntax",
@@ -2634,19 +4384,45 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "saldo": {
+            "value": "50000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "saldo": {
+            "value": "50000",
+            "type": "int"
+          },
+          "retiro": {
+            "value": "80000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "saldo": {
+            "value": "50000",
+            "type": "int"
+          },
+          "retiro": {
+            "value": "80000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -2654,7 +4430,17 @@ window.BAKED_TRACES = {
           "Fondos insuficientes"
         ],
         "prints": "Fondos insuficientes",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "saldo": {
+            "value": "50000",
+            "type": "int"
+          },
+          "retiro": {
+            "value": "80000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
@@ -2663,7 +4449,17 @@ window.BAKED_TRACES = {
           "Saldo disponible: $ 50000"
         ],
         "prints": "Saldo disponible: $ 50000",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "saldo": {
+            "value": "50000",
+            "type": "int"
+          },
+          "retiro": {
+            "value": "80000",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Fondos insuficientes\nSaldo disponible: $ 50000",
@@ -2685,23 +4481,28 @@ window.BAKED_TRACES = {
     "lineTrace": [
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": null,
-        "outputSoFar": []
+        "outputSoFar": [],
+        "variables": {}
       },
       {
         "prints": "File \"main.py\", line 6\n    otherwise:\n              ^\nSyntaxError: invalid syntax",
@@ -2713,7 +4514,8 @@ window.BAKED_TRACES = {
         ],
         "hasError": true,
         "errorType": "SyntaxError",
-        "errorLine": 5
+        "errorLine": 5,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2723,7 +4525,8 @@ window.BAKED_TRACES = {
           "              ^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       },
       {
         "prints": null,
@@ -2733,7 +4536,8 @@ window.BAKED_TRACES = {
           "              ^",
           "SyntaxError: invalid syntax"
         ],
-        "skipped": true
+        "skipped": true,
+        "variables": {}
       }
     ],
     "totalOutput": "File \"main.py\", line 6\n    otherwise:\n              ^\nSyntaxError: invalid syntax",
@@ -2759,7 +4563,13 @@ window.BAKED_TRACES = {
           "Ingresa un número entero para clasificar: -8"
         ],
         "prints": "Ingresa un número entero para clasificar: -8",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "-8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -2767,7 +4577,13 @@ window.BAKED_TRACES = {
           "Ingresa un número entero para clasificar: -8"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "-8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -2775,7 +4591,13 @@ window.BAKED_TRACES = {
           "Ingresa un número entero para clasificar: -8"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "-8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -2784,7 +4606,13 @@ window.BAKED_TRACES = {
           "El número es NEGATIVO"
         ],
         "prints": "El número es NEGATIVO",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "-8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
@@ -2794,7 +4622,13 @@ window.BAKED_TRACES = {
           "Clasificación terminada"
         ],
         "prints": "Clasificación terminada",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numero": {
+            "value": "-8",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Ingresa un número entero para clasificar: -8\nEl número es NEGATIVO\nClasificación terminada",
@@ -2820,25 +4654,53 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "85",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "85",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "85",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "85",
+            "type": "int"
+          },
+          "calificacion": {
+            "value": "'Sobresaliente'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 9,
@@ -2846,7 +4708,17 @@ window.BAKED_TRACES = {
           "Calificación final: Sobresaliente"
         ],
         "prints": "Calificación final: Sobresaliente",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "puntos": {
+            "value": "85",
+            "type": "int"
+          },
+          "calificacion": {
+            "value": "'Sobresaliente'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Calificación final: Sobresaliente",
@@ -2867,13 +4739,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "70",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "70",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -2881,7 +4765,13 @@ window.BAKED_TRACES = {
           "Adulto general"
         ],
         "prints": "Adulto general",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "edad": {
+            "value": "70",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Adulto general",
@@ -2905,25 +4795,53 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          },
+          "regimen": {
+            "value": "'Contribución solidaria'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 7,
@@ -2931,7 +4849,17 @@ window.BAKED_TRACES = {
           "Régimen aplicado: Contribución solidaria"
         ],
         "prints": "Régimen aplicado: Contribución solidaria",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          },
+          "regimen": {
+            "value": "'Contribución solidaria'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Régimen aplicado: Contribución solidaria",
@@ -2955,25 +4883,53 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          },
+          "regimen": {
+            "value": "'Tarifa plena sin recargo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 7,
@@ -2981,7 +4937,17 @@ window.BAKED_TRACES = {
           "Régimen aplicado: Tarifa plena sin recargo"
         ],
         "prints": "Régimen aplicado: Tarifa plena sin recargo",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          },
+          "regimen": {
+            "value": "'Tarifa plena sin recargo'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Régimen aplicado: Tarifa plena sin recargo",
@@ -3005,25 +4971,53 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          },
+          "regimen": {
+            "value": "'Contribución solidaria'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 7,
@@ -3031,7 +5025,17 @@ window.BAKED_TRACES = {
           "Régimen aplicado: Contribución solidaria"
         ],
         "prints": "Régimen aplicado: Contribución solidaria",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "estrato": {
+            "value": "3",
+            "type": "int"
+          },
+          "regimen": {
+            "value": "'Contribución solidaria'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Régimen aplicado: Contribución solidaria",
@@ -3050,13 +5054,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'oro'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -3064,7 +5084,17 @@ window.BAKED_TRACES = {
           "Muestra: oro"
         ],
         "prints": "Muestra: oro",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'oro'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -3072,7 +5102,17 @@ window.BAKED_TRACES = {
           "Muestra: oro"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'plata'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -3081,7 +5121,17 @@ window.BAKED_TRACES = {
           "Muestra: plata"
         ],
         "prints": "Muestra: plata",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'plata'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -3090,7 +5140,17 @@ window.BAKED_TRACES = {
           "Muestra: plata"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'cobre'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -3100,7 +5160,17 @@ window.BAKED_TRACES = {
           "Muestra: cobre"
         ],
         "prints": "Muestra: cobre",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'cobre'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -3110,7 +5180,17 @@ window.BAKED_TRACES = {
           "Muestra: cobre"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "minerales": {
+            "value": "['oro', 'plata', 'cobre']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'cobre'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Muestra: oro\nMuestra: plata\nMuestra: cobre",
@@ -3131,79 +5211,249 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "''",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "''",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'M'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'M'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'I'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'I'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'N'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-N-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'N'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-N-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'A'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-N-A-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'A'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-N-A-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-N-A-S-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-N-A-S-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
@@ -3211,7 +5461,21 @@ window.BAKED_TRACES = {
           "M-I-N-A-S-"
         ],
         "prints": "M-I-N-A-S-",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "palabra": {
+            "value": "'MINAS'",
+            "type": "str"
+          },
+          "salida": {
+            "value": "'M-I-N-A-S-'",
+            "type": "str"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "M-I-N-A-S-",
@@ -3230,7 +5494,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "alumnos": {
+            "value": "35",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -3242,6 +5512,12 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    for i in alumnos:\nTypeError: 'int' object is not iterable",
         "hasError": true,
+        "variables": {
+          "alumnos": {
+            "value": "35",
+            "type": "int"
+          }
+        },
         "errorType": "TypeError",
         "errorLine": 1
       }
@@ -3263,31 +5539,77 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "110",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "110",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "240",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "240",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -3295,7 +5617,17 @@ window.BAKED_TRACES = {
           "Alerta: 240V"
         ],
         "prints": "Alerta: 240V",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "240",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -3303,7 +5635,17 @@ window.BAKED_TRACES = {
           "Alerta: 240V"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "115",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -3311,7 +5653,17 @@ window.BAKED_TRACES = {
           "Alerta: 240V"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "115",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -3319,7 +5671,17 @@ window.BAKED_TRACES = {
           "Alerta: 240V"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "440",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -3327,7 +5689,17 @@ window.BAKED_TRACES = {
           "Alerta: 240V"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "440",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -3336,7 +5708,17 @@ window.BAKED_TRACES = {
           "Alerta: 440V"
         ],
         "prints": "Alerta: 440V",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "440",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -3345,7 +5727,17 @@ window.BAKED_TRACES = {
           "Alerta: 440V"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "voltajes": {
+            "value": "[110, 240, 115, 440]",
+            "type": "list"
+          },
+          "v": {
+            "value": "440",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Alerta: 240V\nAlerta: 440V",
@@ -3365,31 +5757,77 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -3397,7 +5835,17 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": "15",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -3405,7 +5853,17 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -3413,7 +5871,17 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -3421,7 +5889,17 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "23",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -3429,7 +5907,17 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "23",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -3438,7 +5926,17 @@ window.BAKED_TRACES = {
           "23"
         ],
         "prints": "23",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "23",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -3447,7 +5945,17 @@ window.BAKED_TRACES = {
           "23"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "numeros": {
+            "value": "[4, 15, 8, 23]",
+            "type": "list"
+          },
+          "n": {
+            "value": "23",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "15\n23",
@@ -3466,7 +5974,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
@@ -3478,6 +5992,12 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while mineral == muestras:\nNameError: name 'mineral' is not defined",
         "hasError": true,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        },
         "errorType": "NameError",
         "errorLine": 1
       }
@@ -3486,6 +6006,92 @@ window.BAKED_TRACES = {
     "hasError": true,
     "errorLine": 1,
     "errorType": "NameError"
+  },
+  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nwhile mineral in muestras:\n    print(\"Muestra:\", mineral)": {
+    "lines": [
+      "muestras = [\"hierro\", \"cuarzo\", \"oro\"]",
+      "while mineral in muestras:",
+      "    print(\"Muestra:\", mineral)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    while mineral in muestras:",
+          "NameError: name 'mineral' is not defined"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while mineral in muestras:\nNameError: name 'mineral' is not defined",
+        "hasError": true,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        },
+        "errorType": "NameError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while mineral in muestras:\nNameError: name 'mineral' is not defined",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "NameError"
+  },
+  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nfor mineral == muestras:\n    print(\"Muestra:\", mineral)": {
+    "lines": [
+      "muestras = [\"hierro\", \"cuarzo\", \"oro\"]",
+      "for mineral == muestras:",
+      "    print(\"Muestra:\", mineral)"
+    ],
+    "lineTrace": [
+      {
+        "prints": null,
+        "outputSoFar": [],
+        "variables": {}
+      },
+      {
+        "prints": "File \"main.py\", line 2\n    for mineral == muestras:\n                ^^\nSyntaxError: invalid syntax",
+        "outputSoFar": [
+          "File \"main.py\", line 2",
+          "    for mineral == muestras:",
+          "                ^^",
+          "SyntaxError: invalid syntax"
+        ],
+        "hasError": true,
+        "errorType": "SyntaxError",
+        "errorLine": 1,
+        "variables": {}
+      },
+      {
+        "prints": null,
+        "outputSoFar": [
+          "File \"main.py\", line 2",
+          "    for mineral == muestras:",
+          "                ^^",
+          "SyntaxError: invalid syntax"
+        ],
+        "skipped": true,
+        "variables": {}
+      }
+    ],
+    "totalOutput": "File \"main.py\", line 2\n    for mineral == muestras:\n                ^^\nSyntaxError: invalid syntax",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "SyntaxError"
   },
   "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nfor mineral in muestras:\n    print(\"Muestra:\", mineral)": {
     "lines": [
@@ -3498,13 +6104,29 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'hierro'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -3512,7 +6134,17 @@ window.BAKED_TRACES = {
           "Muestra: hierro"
         ],
         "prints": "Muestra: hierro",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'hierro'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -3520,7 +6152,17 @@ window.BAKED_TRACES = {
           "Muestra: hierro"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'cuarzo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -3529,7 +6171,17 @@ window.BAKED_TRACES = {
           "Muestra: cuarzo"
         ],
         "prints": "Muestra: cuarzo",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'cuarzo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -3538,7 +6190,17 @@ window.BAKED_TRACES = {
           "Muestra: cuarzo"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'oro'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -3548,7 +6210,17 @@ window.BAKED_TRACES = {
           "Muestra: oro"
         ],
         "prints": "Muestra: oro",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'oro'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -3558,7 +6230,17 @@ window.BAKED_TRACES = {
           "Muestra: oro"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          },
+          "mineral": {
+            "value": "'oro'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Muestra: hierro\nMuestra: cuarzo\nMuestra: oro",
@@ -3566,44 +6248,49 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nfor mineral == muestras:\n    print(\"Muestra:\", mineral)": {
+  "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nif mineral == muestras:\n    print(\"Muestra:\", mineral)": {
     "lines": [
       "muestras = [\"hierro\", \"cuarzo\", \"oro\"]",
-      "for mineral == muestras:",
+      "if mineral == muestras:",
       "    print(\"Muestra:\", mineral)"
     ],
     "lineTrace": [
       {
+        "line": 0,
+        "outputSoFar": [],
         "prints": null,
-        "outputSoFar": []
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        }
       },
       {
-        "prints": "File \"main.py\", line 2\n    for mineral == muestras:\n                ^^\nSyntaxError: invalid syntax",
+        "line": 1,
         "outputSoFar": [
-          "File \"main.py\", line 2",
-          "    for mineral == muestras:",
-          "                ^^",
-          "SyntaxError: invalid syntax"
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    if mineral == muestras:",
+          "NameError: name 'mineral' is not defined"
         ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    if mineral == muestras:\nNameError: name 'mineral' is not defined",
         "hasError": true,
-        "errorType": "SyntaxError",
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        },
+        "errorType": "NameError",
         "errorLine": 1
-      },
-      {
-        "prints": null,
-        "outputSoFar": [
-          "File \"main.py\", line 2",
-          "    for mineral == muestras:",
-          "                ^^",
-          "SyntaxError: invalid syntax"
-        ],
-        "skipped": true
       }
     ],
-    "totalOutput": "File \"main.py\", line 2\n    for mineral == muestras:\n                ^^\nSyntaxError: invalid syntax",
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    if mineral == muestras:\nNameError: name 'mineral' is not defined",
     "hasError": true,
     "errorLine": 1,
-    "errorType": "SyntaxError"
+    "errorType": "NameError"
   },
   "muestras = [\"hierro\", \"cuarzo\", \"oro\"]\nif mineral in muestras:\n    print(\"Muestra:\", mineral)": {
     "lines": [
@@ -3616,7 +6303,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
@@ -3628,6 +6321,12 @@ window.BAKED_TRACES = {
         ],
         "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    if mineral in muestras:\nNameError: name 'mineral' is not defined",
         "hasError": true,
+        "variables": {
+          "muestras": {
+            "value": "['hierro', 'cuarzo', 'oro']",
+            "type": "list"
+          }
+        },
         "errorType": "NameError",
         "errorLine": 1
       }
@@ -3648,43 +6347,85 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'arcilla'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'arcilla'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'grava'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'grava'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'cuarzo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'cuarzo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'cuarzo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -3692,7 +6433,13 @@ window.BAKED_TRACES = {
           "Último item: cuarzo"
         ],
         "prints": "Último item: cuarzo",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'cuarzo'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Último item: cuarzo",
@@ -3716,79 +6463,289 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "0",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "0",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "0",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "1",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "1",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "3200",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "1",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "3200",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "2",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "3200",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "2",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "6400",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "2",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "6400",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "3",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "6400",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "3",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "9600",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "3",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "9600",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -3796,7 +6753,25 @@ window.BAKED_TRACES = {
           "Total personas: 3"
         ],
         "prints": "Total personas: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "3",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "9600",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
@@ -3805,7 +6780,25 @@ window.BAKED_TRACES = {
           "Total dinero: $9600"
         ],
         "prints": "Total dinero: $9600",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "pasajeros": {
+            "value": "3",
+            "type": "int"
+          },
+          "recaudo": {
+            "value": "9600",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[3200, 3200, 3200]",
+            "type": "list"
+          },
+          "tarifa": {
+            "value": "3200",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Total personas: 3\nTotal dinero: $9600",
@@ -3826,55 +6819,169 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "0",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "0",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "1",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "1",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "2",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "2",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "4",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "4",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -3882,7 +6989,21 @@ window.BAKED_TRACES = {
           "4"
         ],
         "prints": "4",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "piezas": {
+            "value": "4",
+            "type": "int"
+          },
+          "lotes": {
+            "value": "[1, 1, 2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "4",
@@ -3903,67 +7024,173 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "15000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "15000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "15000",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "15000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "15000",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "22000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "22000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "22000",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "22000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "22000",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "8000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "8000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "8000",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "8000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "8000",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "8000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -3971,7 +7198,17 @@ window.BAKED_TRACES = {
           "Total: 8000"
         ],
         "prints": "Total: 8000",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "8000",
+            "type": "int"
+          },
+          "gasto": {
+            "value": "8000",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Total: 8000",
@@ -3995,85 +7232,317 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "0",
+            "type": "int"
+          },
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "0",
+            "type": "int"
+          },
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "0",
+            "type": "int"
+          },
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "4.2",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "4.2",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "1",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "4.2",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "1",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "3.8",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "8.0",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "1",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "3.8",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "8.0",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "3.8",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "8.0",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.6",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "12.6",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.6",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "12.6",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.6",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "12.6",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.6",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "12.6",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.6",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 7,
@@ -4081,7 +7550,29 @@ window.BAKED_TRACES = {
           "Promedio: 4.2"
         ],
         "prints": "Promedio: 4.2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma_notas": {
+            "value": "12.6",
+            "type": "float"
+          },
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "notas": {
+            "value": "[4.2, 3.8, 4.6]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.6",
+            "type": "float"
+          },
+          "promedio": {
+            "value": "4.2",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Promedio: 4.2",
@@ -4103,73 +7594,229 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "peso": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "1",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "peso": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "1",
+            "type": "int"
+          },
+          "suma": {
+            "value": "10",
+            "type": "int"
+          },
+          "peso": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "1",
+            "type": "int"
+          },
+          "suma": {
+            "value": "10",
+            "type": "int"
+          },
+          "peso": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "2",
+            "type": "int"
+          },
+          "suma": {
+            "value": "10",
+            "type": "int"
+          },
+          "peso": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "2",
+            "type": "int"
+          },
+          "suma": {
+            "value": "30",
+            "type": "int"
+          },
+          "peso": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "2",
+            "type": "int"
+          },
+          "suma": {
+            "value": "30",
+            "type": "int"
+          },
+          "peso": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "30",
+            "type": "int"
+          },
+          "peso": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "60",
+            "type": "int"
+          },
+          "peso": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "60",
+            "type": "int"
+          },
+          "peso": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
@@ -4177,7 +7824,21 @@ window.BAKED_TRACES = {
           "3 60"
         ],
         "prints": "3 60",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cant": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "60",
+            "type": "int"
+          },
+          "peso": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "3 60",
@@ -4200,79 +7861,289 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "18000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "18000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "18000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -4280,10 +8151,359 @@ window.BAKED_TRACES = {
           "1 12000"
         ],
         "prints": "1 12000",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "1 12000",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos = 1\n    total_plata += peaje\nprint(vehiculos, total_plata)": {
+    "lines": [
+      "vehiculos = 0",
+      "total_plata = 0",
+      "tarifas = [12000, 18000, 12000]",
+      "for peaje in tarifas:",
+      "    vehiculos = 1",
+      "    total_plata += peaje",
+      "print(vehiculos, total_plata)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "30000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "30000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "30000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "42000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "42000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 6,
+        "outputSoFar": [
+          "1 42000"
+        ],
+        "prints": "1 42000",
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "42000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "1 42000",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -4303,79 +8523,289 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "18000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "18000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "18000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -4383,7 +8813,25 @@ window.BAKED_TRACES = {
           "3 12000"
         ],
         "prints": "3 12000",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "3 12000",
@@ -4406,79 +8854,289 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "0",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "12000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "30000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "18000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "30000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "30000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "42000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "42000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -4486,113 +9144,28 @@ window.BAKED_TRACES = {
           "3 42000"
         ],
         "prints": "3 42000",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vehiculos": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_plata": {
+            "value": "42000",
+            "type": "int"
+          },
+          "tarifas": {
+            "value": "[12000, 18000, 12000]",
+            "type": "list"
+          },
+          "peaje": {
+            "value": "12000",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "3 42000",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "vehiculos = 0\ntotal_plata = 0\ntarifas = [12000, 18000, 12000]\nfor peaje in tarifas:\n    vehiculos = 1\n    total_plata += peaje\nprint(vehiculos, total_plata)": {
-    "lines": [
-      "vehiculos = 0",
-      "total_plata = 0",
-      "tarifas = [12000, 18000, 12000]",
-      "for peaje in tarifas:",
-      "    vehiculos = 1",
-      "    total_plata += peaje",
-      "print(vehiculos, total_plata)"
-    ],
-    "lineTrace": [
-      {
-        "line": 0,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 5,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 5,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 5,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 6,
-        "outputSoFar": [
-          "1 42000"
-        ],
-        "prints": "1 42000",
-        "hasError": false
-      }
-    ],
-    "totalOutput": "1 42000",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -4612,19 +9185,45 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "contador": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "acumulador": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "acumulador": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -4632,7 +9231,17 @@ window.BAKED_TRACES = {
           "Sin registros"
         ],
         "prints": "Sin registros",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "acumulador": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Sin registros",
@@ -4650,7 +9259,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -4658,7 +9273,13 @@ window.BAKED_TRACES = {
           "Piso 1"
         ],
         "prints": "Piso 1",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -4666,7 +9287,13 @@ window.BAKED_TRACES = {
           "Piso 1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -4675,7 +9302,13 @@ window.BAKED_TRACES = {
           "Piso 2"
         ],
         "prints": "Piso 2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -4684,7 +9317,13 @@ window.BAKED_TRACES = {
           "Piso 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -4694,7 +9333,13 @@ window.BAKED_TRACES = {
           "Piso 3"
         ],
         "prints": "Piso 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -4704,7 +9349,13 @@ window.BAKED_TRACES = {
           "Piso 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Piso 1\nPiso 2\nPiso 3",
@@ -4724,61 +9375,157 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "0",
+            "type": "int"
+          },
+          "k": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "0",
+            "type": "int"
+          },
+          "k": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "0",
+            "type": "int"
+          },
+          "k": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "k": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "k": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "3",
+            "type": "int"
+          },
+          "k": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "3",
+            "type": "int"
+          },
+          "k": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "6",
+            "type": "int"
+          },
+          "k": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "6",
+            "type": "int"
+          },
+          "k": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -4786,7 +9533,17 @@ window.BAKED_TRACES = {
           "6"
         ],
         "prints": "6",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "6",
+            "type": "int"
+          },
+          "k": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "6",
@@ -4805,7 +9562,8 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       },
       {
         "line": 2,
@@ -4813,7 +9571,8 @@ window.BAKED_TRACES = {
           "¡Despegue!"
         ],
         "prints": "¡Despegue!",
-        "hasError": false
+        "hasError": false,
+        "variables": {}
       }
     ],
     "totalOutput": "¡Despegue!",
@@ -4831,7 +9590,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -4839,7 +9604,13 @@ window.BAKED_TRACES = {
           "Par: 2"
         ],
         "prints": "Par: 2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -4847,7 +9618,13 @@ window.BAKED_TRACES = {
           "Par: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -4856,7 +9633,13 @@ window.BAKED_TRACES = {
           "Par: 4"
         ],
         "prints": "Par: 4",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -4865,7 +9648,13 @@ window.BAKED_TRACES = {
           "Par: 4"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "6",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -4875,7 +9664,13 @@ window.BAKED_TRACES = {
           "Par: 6"
         ],
         "prints": "Par: 6",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "6",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -4885,7 +9680,13 @@ window.BAKED_TRACES = {
           "Par: 6"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -4896,7 +9697,13 @@ window.BAKED_TRACES = {
           "Par: 8"
         ],
         "prints": "Par: 8",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -4907,7 +9714,13 @@ window.BAKED_TRACES = {
           "Par: 8"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "num": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Par: 2\nPar: 4\nPar: 6\nPar: 8",
@@ -4927,49 +9740,125 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "''",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "''",
+            "type": "str"
+          },
+          "x": {
+            "value": "6",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "'6 '",
+            "type": "str"
+          },
+          "x": {
+            "value": "6",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "'6 '",
+            "type": "str"
+          },
+          "x": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "'6 4 '",
+            "type": "str"
+          },
+          "x": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "'6 4 '",
+            "type": "str"
+          },
+          "x": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "'6 4 2 '",
+            "type": "str"
+          },
+          "x": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "'6 4 2 '",
+            "type": "str"
+          },
+          "x": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -4977,7 +9866,17 @@ window.BAKED_TRACES = {
           "6 4 2"
         ],
         "prints": "6 4 2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "salida": {
+            "value": "'6 4 2 '",
+            "type": "str"
+          },
+          "x": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "6 4 2",
@@ -4995,7 +9894,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5003,7 +9908,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": "10",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5011,7 +9922,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5020,7 +9937,13 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": "15",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5029,7 +9952,13 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5039,7 +9968,13 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": "20",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5049,7 +9984,13 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5060,7 +10001,13 @@ window.BAKED_TRACES = {
           "25"
         ],
         "prints": "25",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5071,7 +10018,13 @@ window.BAKED_TRACES = {
           "25"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "10\n15\n20\n25",
@@ -5089,7 +10042,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5097,7 +10056,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": "10",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5105,7 +10070,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "11",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5114,7 +10085,13 @@ window.BAKED_TRACES = {
           "11"
         ],
         "prints": "11",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "11",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5123,7 +10100,13 @@ window.BAKED_TRACES = {
           "11"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "12",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5133,7 +10116,13 @@ window.BAKED_TRACES = {
           "12"
         ],
         "prints": "12",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "12",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5143,7 +10132,13 @@ window.BAKED_TRACES = {
           "12"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "13",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5154,7 +10149,13 @@ window.BAKED_TRACES = {
           "13"
         ],
         "prints": "13",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "13",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5165,7 +10166,13 @@ window.BAKED_TRACES = {
           "13"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5177,7 +10184,13 @@ window.BAKED_TRACES = {
           "14"
         ],
         "prints": "14",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5189,7 +10202,13 @@ window.BAKED_TRACES = {
           "14"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5202,7 +10221,13 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": "15",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5215,7 +10240,13 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "16",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5229,7 +10260,13 @@ window.BAKED_TRACES = {
           "16"
         ],
         "prints": "16",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "16",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5243,7 +10280,13 @@ window.BAKED_TRACES = {
           "16"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "17",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5258,7 +10301,13 @@ window.BAKED_TRACES = {
           "17"
         ],
         "prints": "17",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "17",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5273,7 +10322,13 @@ window.BAKED_TRACES = {
           "17"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5289,7 +10344,13 @@ window.BAKED_TRACES = {
           "18"
         ],
         "prints": "18",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5305,7 +10366,13 @@ window.BAKED_TRACES = {
           "18"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "19",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5322,7 +10389,13 @@ window.BAKED_TRACES = {
           "19"
         ],
         "prints": "19",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "19",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5339,7 +10412,13 @@ window.BAKED_TRACES = {
           "19"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5357,7 +10436,13 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": "20",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5375,7 +10460,13 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "21",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5394,7 +10485,13 @@ window.BAKED_TRACES = {
           "21"
         ],
         "prints": "21",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "21",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5413,7 +10510,13 @@ window.BAKED_TRACES = {
           "21"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "22",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5433,7 +10536,13 @@ window.BAKED_TRACES = {
           "22"
         ],
         "prints": "22",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "22",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5453,7 +10562,13 @@ window.BAKED_TRACES = {
           "22"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "23",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5474,7 +10589,13 @@ window.BAKED_TRACES = {
           "23"
         ],
         "prints": "23",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "23",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5495,7 +10616,13 @@ window.BAKED_TRACES = {
           "23"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "24",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5517,7 +10644,13 @@ window.BAKED_TRACES = {
           "24"
         ],
         "prints": "24",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "24",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5539,7 +10672,13 @@ window.BAKED_TRACES = {
           "24"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5562,7 +10701,13 @@ window.BAKED_TRACES = {
           "25"
         ],
         "prints": "25",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5585,7 +10730,13 @@ window.BAKED_TRACES = {
           "25"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "26",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5609,7 +10760,13 @@ window.BAKED_TRACES = {
           "26"
         ],
         "prints": "26",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "26",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5633,7 +10790,13 @@ window.BAKED_TRACES = {
           "26"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "27",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5658,7 +10821,13 @@ window.BAKED_TRACES = {
           "27"
         ],
         "prints": "27",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "27",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5683,7 +10852,13 @@ window.BAKED_TRACES = {
           "27"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "28",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5709,7 +10884,13 @@ window.BAKED_TRACES = {
           "28"
         ],
         "prints": "28",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "28",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5735,7 +10916,13 @@ window.BAKED_TRACES = {
           "28"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "29",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5762,7 +10949,13 @@ window.BAKED_TRACES = {
           "29"
         ],
         "prints": "29",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "29",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5789,7 +10982,13 @@ window.BAKED_TRACES = {
           "29"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "29",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29",
@@ -5797,9 +10996,9 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "for m in range(10, 35, 10):\n    print(m)": {
+  "for m in range(10, 30, 10):\n    print(m)": {
     "lines": [
-      "for m in range(10, 35, 10):",
+      "for m in range(10, 30, 10):",
       "    print(m)"
     ],
     "lineTrace": [
@@ -5807,7 +11006,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5815,7 +11020,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": "10",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5823,7 +11034,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5832,7 +11049,13 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": "20",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5841,30 +11064,16 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "10",
-          "20",
-          "30"
-        ],
-        "prints": "30",
-        "hasError": false
-      },
-      {
-        "line": 0,
-        "outputSoFar": [
-          "10",
-          "20",
-          "30"
-        ],
-        "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       }
     ],
-    "totalOutput": "10\n20\n30",
+    "totalOutput": "10\n20",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -5879,7 +11088,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5887,7 +11102,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": "10",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5895,7 +11116,13 @@ window.BAKED_TRACES = {
           "10"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5904,7 +11131,13 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": "15",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5913,7 +11146,13 @@ window.BAKED_TRACES = {
           "15"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5923,7 +11162,13 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": "20",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5933,7 +11178,13 @@ window.BAKED_TRACES = {
           "20"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5944,7 +11195,13 @@ window.BAKED_TRACES = {
           "25"
         ],
         "prints": "25",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5955,7 +11212,13 @@ window.BAKED_TRACES = {
           "25"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -5967,7 +11230,13 @@ window.BAKED_TRACES = {
           "30"
         ],
         "prints": "30",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -5979,10 +11248,1454 @@ window.BAKED_TRACES = {
           "30"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "10\n15\n20\n25\n30",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "for m in range(10, 35, 1):\n    print(m)": {
+    "lines": [
+      "for m in range(10, 35, 1):",
+      "    print(m)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": "10",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "11",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11"
+        ],
+        "prints": "11",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "11",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "12",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "12",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "13",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "prints": "13",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "13",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "prints": "14",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15"
+        ],
+        "prints": "15",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "15",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "16",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "prints": "16",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "16",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "17",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ],
+        "prints": "17",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "17",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "18",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18"
+        ],
+        "prints": "18",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "18",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "19",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "19",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "prints": "20",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "21",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "21",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "22",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22"
+        ],
+        "prints": "22",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "22",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "23",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "prints": "23",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "23",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "24",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24"
+        ],
+        "prints": "24",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "24",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25"
+        ],
+        "prints": "25",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "26",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26"
+        ],
+        "prints": "26",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "26",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "27",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27"
+        ],
+        "prints": "27",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "27",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "28",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "prints": "28",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "28",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "29",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29"
+        ],
+        "prints": "29",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "29",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30"
+        ],
+        "prints": "30",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "31",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31"
+        ],
+        "prints": "31",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "31",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "32",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "prints": "32",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "32",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "33",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33"
+        ],
+        "prints": "33",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "33",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "34",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34"
+        ],
+        "prints": "34",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "34",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "34",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "for m in range(10, 35, 10):\n    print(m)": {
+    "lines": [
+      "for m in range(10, 35, 10):",
+      "    print(m)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": "10",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "20"
+        ],
+        "prints": "20",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "20",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "20"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "20",
+          "30"
+        ],
+        "prints": "30",
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 0,
+        "outputSoFar": [
+          "10",
+          "20",
+          "30"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "m": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "10\n20\n30",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -5999,13 +12712,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vueltas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vueltas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -6013,7 +12738,13 @@ window.BAKED_TRACES = {
           "Iteraciones: 0"
         ],
         "prints": "Iteraciones: 0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "vueltas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Iteraciones: 0",
@@ -6034,13 +12765,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6048,7 +12791,13 @@ window.BAKED_TRACES = {
           "Batería restante: 3"
         ],
         "prints": "Batería restante: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -6056,7 +12805,13 @@ window.BAKED_TRACES = {
           "Batería restante: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6064,7 +12819,13 @@ window.BAKED_TRACES = {
           "Batería restante: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6073,7 +12834,13 @@ window.BAKED_TRACES = {
           "Batería restante: 2"
         ],
         "prints": "Batería restante: 2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -6082,7 +12849,13 @@ window.BAKED_TRACES = {
           "Batería restante: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6091,7 +12864,13 @@ window.BAKED_TRACES = {
           "Batería restante: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6101,7 +12880,13 @@ window.BAKED_TRACES = {
           "Batería restante: 1"
         ],
         "prints": "Batería restante: 1",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -6111,7 +12896,13 @@ window.BAKED_TRACES = {
           "Batería restante: 1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6121,7 +12912,13 @@ window.BAKED_TRACES = {
           "Batería restante: 1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -6132,7 +12929,13 @@ window.BAKED_TRACES = {
           "Dispositivo apagado."
         ],
         "prints": "Dispositivo apagado.",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "bateria": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Batería restante: 3\nBatería restante: 2\nBatería restante: 1\nDispositivo apagado.",
@@ -6154,73 +12957,189 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "8",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "8",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "4",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "4",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "4",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "2",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "2",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "2",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "1",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "1",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "1",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
@@ -6228,7 +13147,17 @@ window.BAKED_TRACES = {
           "3 1"
         ],
         "prints": "3 1",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "1",
+            "type": "int"
+          },
+          "pasos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "3 1",
@@ -6248,13 +13177,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6262,7 +13203,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6270,7 +13217,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6279,7 +13232,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6288,7 +13247,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6298,7 +13263,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6308,7 +13279,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6319,7 +13296,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6330,7 +13313,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6342,7 +13331,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -6354,7 +13349,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6367,101 +13368,17 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
@@ -6470,7 +13387,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6481,20 +13404,20 @@ window.BAKED_TRACES = {
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
@@ -6504,7 +13427,13 @@ window.BAKED_TRACES = {
           "Contando: 3"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -6516,16 +13445,20 @@ window.BAKED_TRACES = {
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
           "Contando: 3"
         ],
         "prints": "Contando: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
         "outputSoFar": [
           "Contando: 3",
           "Contando: 3",
@@ -6535,988 +13468,23 @@ window.BAKED_TRACES = {
           "Contando: 3",
           "Contando: 3",
           "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3"
-        ],
-        "prints": "Contando: 3",
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "Contando: 3",
-          "... (24 salidas repetidas omitidas)",
           "Traceback (most recent call last):",
           "  File \"main.py\", line 2, in <module>",
           "    while segundos > 0:",
-          "TimeoutError: Límite de pasos de ejecución excedido (bucle infinito)"
+          "TimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables"
         ],
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
         "hasError": true,
         "errorType": "TimeoutError",
-        "errorLine": 1
+        "errorLine": 1,
+        "variables": {
+          "segundos": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       }
     ],
-    "totalOutput": "Contando: 3\nContando: 3\nContando: 3\nContando: 3\nContando: 3\n... (24 salidas repetidas omitidas)\nTraceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
+    "totalOutput": "Contando: 3\nContando: 3\nContando: 3\nContando: 3\nContando: 3\nContando: 3\nContando: 3\nContando: 3\nTraceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while segundos > 0:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
     "hasError": true,
     "errorLine": 1,
     "errorType": "TimeoutError"
@@ -7534,13 +13502,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nivel_alerta": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nivel_alerta": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -7548,7 +13528,13 @@ window.BAKED_TRACES = {
           "Sistema en reposo."
         ],
         "prints": "Sistema en reposo.",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "nivel_alerta": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Sistema en reposo.",
@@ -7568,49 +13554,97 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -7618,7 +13652,13 @@ window.BAKED_TRACES = {
           "Final: 8"
         ],
         "prints": "Final: 8",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "p": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Final: 8",
@@ -7638,61 +13678,121 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "50",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "50",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "75",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "75",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "100",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "100",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -7700,13 +13800,280 @@ window.BAKED_TRACES = {
           "Tolva llena: 100"
         ],
         "prints": "Tolva llena: 100",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "100",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Tolva llena: 100",
     "hasError": false,
     "errorLine": null,
     "errorType": null
+  },
+  "toneladas = 0\nwhile toneladas < 100:\n    toneladas = 25\nprint(\"Tolva llena:\", toneladas)": {
+    "lines": [
+      "toneladas = 0",
+      "while toneladas < 100:",
+      "    toneladas = 25",
+      "print(\"Tolva llena:\", toneladas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas < 100:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    while toneladas < 100:",
+          "TimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables"
+        ],
+        "hasError": true,
+        "errorType": "TimeoutError",
+        "errorLine": 1,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas < 100:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TimeoutError"
   },
   "toneladas = 0\nwhile toneladas > 100:\n    toneladas += 25\nprint(\"Tolva llena:\", toneladas)": {
     "lines": [
@@ -7720,13 +14087,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -7734,10 +14113,240 @@ window.BAKED_TRACES = {
           "Tolva llena: 0"
         ],
         "prints": "Tolva llena: 0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Tolva llena: 0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "toneladas = 0\nwhile toneladas > 100:\n    toneladas = 25\nprint(\"Tolva llena:\", toneladas)": {
+    "lines": [
+      "toneladas = 0",
+      "while toneladas > 100:",
+      "    toneladas = 25",
+      "print(\"Tolva llena:\", toneladas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "Tolva llena: 0"
+        ],
+        "prints": "Tolva llena: 0",
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Tolva llena: 0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "toneladas = 0\nwhile toneladas <= 100:\n    toneladas += 25\nprint(\"Tolva llena:\", toneladas)": {
+    "lines": [
+      "toneladas = 0",
+      "while toneladas <= 100:",
+      "    toneladas += 25",
+      "print(\"Tolva llena:\", toneladas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "50",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "50",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "75",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "75",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "100",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "100",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "125",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "125",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "Tolva llena: 125"
+        ],
+        "prints": "Tolva llena: 125",
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "125",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Tolva llena: 125",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -7754,371 +14363,251 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
         "outputSoFar": [
           "Traceback (most recent call last):",
           "  File \"main.py\", line 2, in <module>",
           "    while toneladas <= 100:",
-          "TimeoutError: Límite de pasos de ejecución excedido (bucle infinito)"
+          "TimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables"
         ],
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
         "hasError": true,
         "errorType": "TimeoutError",
-        "errorLine": 1
+        "errorLine": 1,
+        "variables": {
+          "toneladas": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       }
     ],
-    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while toneladas <= 100:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
     "hasError": true,
     "errorLine": 1,
     "errorType": "TimeoutError"
@@ -8135,13 +14624,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8149,7 +14650,65 @@ window.BAKED_TRACES = {
           "Tolva llena: 0"
         ],
         "prints": "Tolva llena: 0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Tolva llena: 0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "toneladas = 0\nwhile toneladas == 100:\n    toneladas = 25\nprint(\"Tolva llena:\", toneladas)": {
+    "lines": [
+      "toneladas = 0",
+      "while toneladas == 100:",
+      "    toneladas = 25",
+      "print(\"Tolva llena:\", toneladas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "Tolva llena: 0"
+        ],
+        "prints": "Tolva llena: 0",
+        "hasError": false,
+        "variables": {
+          "toneladas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Tolva llena: 0",
@@ -8169,61 +14728,121 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "8",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "6",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "6",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8231,7 +14850,13 @@ window.BAKED_TRACES = {
           "Salida: 2"
         ],
         "prints": "Salida: 2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "x": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Salida: 2",
@@ -8252,13 +14877,25 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'tornillo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'tornillo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
@@ -8266,7 +14903,13 @@ window.BAKED_TRACES = {
           "Procesando: tornillo"
         ],
         "prints": "Procesando: tornillo",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'tornillo'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 0,
@@ -8274,7 +14917,13 @@ window.BAKED_TRACES = {
           "Procesando: tornillo"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'piedra'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
@@ -8282,7 +14931,13 @@ window.BAKED_TRACES = {
           "Procesando: tornillo"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'piedra'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
@@ -8291,7 +14946,13 @@ window.BAKED_TRACES = {
           "¡Parada de emergencia!"
         ],
         "prints": "¡Parada de emergencia!",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'piedra'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
@@ -8300,7 +14961,13 @@ window.BAKED_TRACES = {
           "¡Parada de emergencia!"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "item": {
+            "value": "'piedra'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Procesando: tornillo\n¡Parada de emergencia!",
@@ -8322,61 +14989,157 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "n": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "n": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "5",
+            "type": "int"
+          },
+          "n": {
+            "value": "5",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "5",
+            "type": "int"
+          },
+          "n": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "5",
+            "type": "int"
+          },
+          "n": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "15",
+            "type": "int"
+          },
+          "n": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "15",
+            "type": "int"
+          },
+          "n": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "15",
+            "type": "int"
+          },
+          "n": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "15",
+            "type": "int"
+          },
+          "n": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
@@ -8384,7 +15147,17 @@ window.BAKED_TRACES = {
           "Total: 15"
         ],
         "prints": "Total: 15",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "suma": {
+            "value": "15",
+            "type": "int"
+          },
+          "n": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Total: 15",
@@ -8406,19 +15179,37 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -8426,7 +15217,13 @@ window.BAKED_TRACES = {
           "0"
         ],
         "prints": "0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
@@ -8434,7 +15231,13 @@ window.BAKED_TRACES = {
           "0"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8442,7 +15245,13 @@ window.BAKED_TRACES = {
           "0"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8450,7 +15259,13 @@ window.BAKED_TRACES = {
           "0"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -8459,7 +15274,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": "1",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
@@ -8468,7 +15289,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8477,7 +15304,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8486,7 +15319,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8495,7 +15334,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8504,7 +15349,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8513,7 +15364,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8522,7 +15379,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8531,7 +15394,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8540,7 +15409,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8549,7 +15424,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8558,7 +15439,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8567,7 +15454,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8576,7 +15469,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8585,7 +15484,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8594,7 +15499,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8603,7 +15514,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8612,7 +15529,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8621,7 +15544,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8630,7 +15559,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8639,7 +15574,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8648,7 +15589,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8657,7 +15604,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -8666,7 +15619,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -8675,7 +15634,13 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8684,261 +15649,39 @@ window.BAKED_TRACES = {
           "1"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [
-          "0",
-          "1"
-        ],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while i < 4:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
         "outputSoFar": [
           "0",
           "1",
           "Traceback (most recent call last):",
-          "  File \"main.py\", line 4, in <module>",
-          "    continue",
-          "TimeoutError: Límite de pasos de ejecución excedido (bucle infinito)"
+          "  File \"main.py\", line 2, in <module>",
+          "    while i < 4:",
+          "TimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables"
         ],
-        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    continue\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
         "hasError": true,
         "errorType": "TimeoutError",
-        "errorLine": 3
+        "errorLine": 1,
+        "variables": {
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       }
     ],
-    "totalOutput": "0\n1\nTraceback (most recent call last):\n  File \"main.py\", line 4, in <module>\n    continue\nTimeoutError: Límite de pasos de ejecución excedido (bucle infinito)",
+    "totalOutput": "0\n1\nTraceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    while i < 4:\nTimeoutError: El ciclo no avanza: se detuvo tras 8 iteraciones con las mismas variables",
     "hasError": true,
-    "errorLine": 3,
+    "errorLine": 1,
     "errorType": "TimeoutError"
   },
   "for n in [1, 2, 3, 4]:\n    if n % 2 != 0:\n        continue\n    print(f\"Par detectado: {n}\")": {
@@ -8953,31 +15696,61 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -8985,7 +15758,13 @@ window.BAKED_TRACES = {
           "Par detectado: 2"
         ],
         "prints": "Par detectado: 2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -8993,7 +15772,13 @@ window.BAKED_TRACES = {
           "Par detectado: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -9001,7 +15786,13 @@ window.BAKED_TRACES = {
           "Par detectado: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -9009,7 +15800,13 @@ window.BAKED_TRACES = {
           "Par detectado: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "3",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -9017,7 +15814,13 @@ window.BAKED_TRACES = {
           "Par detectado: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -9025,7 +15828,13 @@ window.BAKED_TRACES = {
           "Par detectado: 2"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
@@ -9034,7 +15843,13 @@ window.BAKED_TRACES = {
           "Par detectado: 4"
         ],
         "prints": "Par detectado: 4",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 0,
@@ -9043,7 +15858,13 @@ window.BAKED_TRACES = {
           "Par detectado: 4"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Par detectado: 2\nPar detectado: 4",
@@ -9065,103 +15886,269 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "0",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'M'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "0",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'M'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'M'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'I'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'I'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'I'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'N'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "1",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'N'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "2",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'N'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "2",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'A'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "2",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'A'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "2",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'A'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "2",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "2",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "3",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "3",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       },
       {
         "line": 5,
@@ -9169,7 +16156,17 @@ window.BAKED_TRACES = {
           "Consonantes: 3"
         ],
         "prints": "Consonantes: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "conteo": {
+            "value": "3",
+            "type": "int"
+          },
+          "letra": {
+            "value": "'S'",
+            "type": "str"
+          }
+        }
       }
     ],
     "totalOutput": "Consonantes: 3",
@@ -9194,55 +16191,169 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
@@ -9250,10 +16361,911 @@ window.BAKED_TRACES = {
           "Válidas: 1"
         ],
         "prints": "Válidas: 1",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Válidas: 1",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "sensores = [14, 0, 18, -99, 25]\nlecturas_validas = 0\nfor s in sensores:\n    if s == 0:\n        break\n    if s < 0:\n        pass\n    lecturas_validas += 1\nprint(\"Válidas:\", lecturas_validas)": {
+    "lines": [
+      "sensores = [14, 0, 18, -99, 25]",
+      "lecturas_validas = 0",
+      "for s in sensores:",
+      "    if s == 0:",
+      "        break",
+      "    if s < 0:",
+      "        pass",
+      "    lecturas_validas += 1",
+      "print(\"Válidas:\", lecturas_validas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 8,
+        "outputSoFar": [
+          "Válidas: 1"
+        ],
+        "prints": "Válidas: 1",
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Válidas: 1",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "sensores = [14, 0, 18, -99, 25]\nlecturas_validas = 0\nfor s in sensores:\n    if s == 0:\n        break\n    if s < 0:\n        break\n    lecturas_validas += 1\nprint(\"Válidas:\", lecturas_validas)": {
+    "lines": [
+      "sensores = [14, 0, 18, -99, 25]",
+      "lecturas_validas = 0",
+      "for s in sensores:",
+      "    if s == 0:",
+      "        break",
+      "    if s < 0:",
+      "        break",
+      "    lecturas_validas += 1",
+      "print(\"Válidas:\", lecturas_validas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 8,
+        "outputSoFar": [
+          "Válidas: 1"
+        ],
+        "prints": "Válidas: 1",
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Válidas: 1",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "sensores = [14, 0, 18, -99, 25]\nlecturas_validas = 0\nfor s in sensores:\n    if s == 0:\n        continue\n    if s < 0:\n        continue\n    lecturas_validas += 1\nprint(\"Válidas:\", lecturas_validas)": {
+    "lines": [
+      "sensores = [14, 0, 18, -99, 25]",
+      "lecturas_validas = 0",
+      "for s in sensores:",
+      "    if s == 0:",
+      "        continue",
+      "    if s < 0:",
+      "        continue",
+      "    lecturas_validas += 1",
+      "print(\"Válidas:\", lecturas_validas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "3",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "3",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 8,
+        "outputSoFar": [
+          "Válidas: 3"
+        ],
+        "prints": "Válidas: 3",
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "3",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Válidas: 3",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -9275,139 +17287,449 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "3",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "3",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "3",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "3",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "4",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "4",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
@@ -9415,7 +17737,21 @@ window.BAKED_TRACES = {
           "Válidas: 4"
         ],
         "prints": "Válidas: 4",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "4",
+            "type": "int"
+          },
+          "s": {
+            "value": "25",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Válidas: 4",
@@ -9440,103 +17776,329 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "0",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "14",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "1",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "18",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
@@ -9544,91 +18106,24 @@ window.BAKED_TRACES = {
           "Válidas: 2"
         ],
         "prints": "Válidas: 2",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "sensores": {
+            "value": "[14, 0, 18, -99, 25]",
+            "type": "list"
+          },
+          "lecturas_validas": {
+            "value": "2",
+            "type": "int"
+          },
+          "s": {
+            "value": "-99",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Válidas: 2",
-    "hasError": false,
-    "errorLine": null,
-    "errorType": null
-  },
-  "sensores = [14, 0, 18, -99, 25]\nlecturas_validas = 0\nfor s in sensores:\n    if s == 0:\n        break\n    if s < 0:\n        break\n    lecturas_validas += 1\nprint(\"Válidas:\", lecturas_validas)": {
-    "lines": [
-      "sensores = [14, 0, 18, -99, 25]",
-      "lecturas_validas = 0",
-      "for s in sensores:",
-      "    if s == 0:",
-      "        break",
-      "    if s < 0:",
-      "        break",
-      "    lecturas_validas += 1",
-      "print(\"Válidas:\", lecturas_validas)"
-    ],
-    "lineTrace": [
-      {
-        "line": 0,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 1,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 5,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 7,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 2,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 8,
-        "outputSoFar": [
-          "Válidas: 1"
-        ],
-        "prints": "Válidas: 1",
-        "hasError": false
-      }
-    ],
-    "totalOutput": "Válidas: 1",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -9646,7 +18141,13 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "k": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
@@ -9654,7 +18155,13 @@ window.BAKED_TRACES = {
           "A"
         ],
         "prints": "A",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "k": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
@@ -9662,7 +18169,13 @@ window.BAKED_TRACES = {
           "A"
         ],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "k": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
@@ -9671,7 +18184,13 @@ window.BAKED_TRACES = {
           "C"
         ],
         "prints": "C",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "k": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "A\nC",
@@ -9694,67 +18213,209 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "150",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "150",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "150",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "150",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "150",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "150",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "350",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "200",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "350",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "350",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "350",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
@@ -9762,7 +18423,21 @@ window.BAKED_TRACES = {
           "Carga total: 350"
         ],
         "prints": "Carga total: 350",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "350",
+            "type": "int"
+          },
+          "entradas": {
+            "value": "[150, 200, -1, 80]",
+            "type": "list"
+          },
+          "peso": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Carga total: 350",
@@ -9787,109 +18462,409 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "40",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "40",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "1",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "40",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "1",
+            "type": "int"
+          },
+          "suma": {
+            "value": "40",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "40",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "1",
+            "type": "int"
+          },
+          "suma": {
+            "value": "40",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "60",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "1",
+            "type": "int"
+          },
+          "suma": {
+            "value": "40",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "60",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          },
+          "suma": {
+            "value": "40",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "60",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          },
+          "suma": {
+            "value": "100",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "60",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          },
+          "suma": {
+            "value": "100",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          },
+          "suma": {
+            "value": "100",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "100",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "120",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "120",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "120",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "120",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
@@ -9897,7 +18872,25 @@ window.BAKED_TRACES = {
           "3 120"
         ],
         "prints": "3 120",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "cantidad": {
+            "value": "3",
+            "type": "int"
+          },
+          "suma": {
+            "value": "120",
+            "type": "int"
+          },
+          "datos": {
+            "value": "[40, 60, 20, 0, 99]",
+            "type": "list"
+          },
+          "x": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "3 120",
@@ -9919,67 +18912,173 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "v": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "10",
+            "type": "int"
+          },
+          "v": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "10",
+            "type": "int"
+          },
+          "v": {
+            "value": "10",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "10",
+            "type": "int"
+          },
+          "v": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "30",
+            "type": "int"
+          },
+          "v": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "30",
+            "type": "int"
+          },
+          "v": {
+            "value": "20",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "30",
+            "type": "int"
+          },
+          "v": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "29",
+            "type": "int"
+          },
+          "v": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "29",
+            "type": "int"
+          },
+          "v": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "29",
+            "type": "int"
+          },
+          "v": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
@@ -9987,7 +19086,17 @@ window.BAKED_TRACES = {
           "Total neto: 29"
         ],
         "prints": "Total neto: 29",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "total": {
+            "value": "29",
+            "type": "int"
+          },
+          "v": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Total neto: 29",
@@ -10009,91 +19118,289 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "24",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "24",
+            "type": "int"
+          },
+          "t": {
+            "value": "24",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "24",
+            "type": "int"
+          },
+          "t": {
+            "value": "24",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "24",
+            "type": "int"
+          },
+          "t": {
+            "value": "38",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "24",
+            "type": "int"
+          },
+          "t": {
+            "value": "38",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "38",
+            "type": "int"
+          },
+          "t": {
+            "value": "38",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "38",
+            "type": "int"
+          },
+          "t": {
+            "value": "19",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "38",
+            "type": "int"
+          },
+          "t": {
+            "value": "19",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "38",
+            "type": "int"
+          },
+          "t": {
+            "value": "41",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "38",
+            "type": "int"
+          },
+          "t": {
+            "value": "41",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "41",
+            "type": "int"
+          },
+          "t": {
+            "value": "41",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "41",
+            "type": "int"
+          },
+          "t": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "41",
+            "type": "int"
+          },
+          "t": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "41",
+            "type": "int"
+          },
+          "t": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
@@ -10101,7 +19408,21 @@ window.BAKED_TRACES = {
           "Temperatura máxima: 41°C"
         ],
         "prints": "Temperatura máxima: 41°C",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "temperaturas": {
+            "value": "[24, 38, 19, 41, 30]",
+            "type": "list"
+          },
+          "maxima": {
+            "value": "41",
+            "type": "int"
+          },
+          "t": {
+            "value": "30",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Temperatura máxima: 41°C",
@@ -10123,97 +19444,309 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "0",
+            "type": "int"
+          },
+          "n": {
+            "value": "4.5",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "0",
+            "type": "int"
+          },
+          "n": {
+            "value": "4.5",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "1",
+            "type": "int"
+          },
+          "n": {
+            "value": "4.5",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "1",
+            "type": "int"
+          },
+          "n": {
+            "value": "2.8",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "1",
+            "type": "int"
+          },
+          "n": {
+            "value": "2.8",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "1",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "1",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "2",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.2",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "2",
+            "type": "int"
+          },
+          "n": {
+            "value": "1.9",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "2",
+            "type": "int"
+          },
+          "n": {
+            "value": "1.9",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "2",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "2",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "3",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "3",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       },
       {
         "line": 5,
@@ -10221,7 +19754,21 @@ window.BAKED_TRACES = {
           "Aprobados: 3"
         ],
         "prints": "Aprobados: 3",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[4.5, 2.8, 3.2, 1.9, 3.0]",
+            "type": "list"
+          },
+          "ganaron": {
+            "value": "3",
+            "type": "int"
+          },
+          "n": {
+            "value": "3.0",
+            "type": "float"
+          }
+        }
       }
     ],
     "totalOutput": "Aprobados: 3",
@@ -10247,139 +19794,529 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 9,
@@ -10387,7 +20324,25 @@ window.BAKED_TRACES = {
           "Candidato 1: 0 de 1"
         ],
         "prints": "Candidato 1: 0 de 1",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Candidato 1: 0 de 1",
@@ -10395,13 +20350,13 @@ window.BAKED_TRACES = {
     "errorLine": null,
     "errorType": null
   },
-  "votos_c1 = 0\ntotal_votos = 0\nurnas = [1, 2, 1, 1, 0, 2]\nfor voto in urnas:\n    if voto == 0:\n        break\n    total_votos += 1\n    if voto == 1:\n        votos_c1 += 1\nprint(f\"Candidato 1: {votos_c1} de {total_votos}\")": {
+  "votos_c1 = 0\ntotal_votos = 0\nurnas = [1, 2, 1, 1, 0, 2]\nfor voto in urnas:\n    if voto != 0:\n        break\n    total_votos += 1\n    if voto == 1:\n        votos_c1 += 1\nprint(f\"Candidato 1: {votos_c1} de {total_votos}\")": {
     "lines": [
       "votos_c1 = 0",
       "total_votos = 0",
       "urnas = [1, 2, 1, 1, 0, 2]",
       "for voto in urnas:",
-      "    if voto == 0:",
+      "    if voto != 0:",
       "        break",
       "    total_votos += 1",
       "    if voto == 1:",
@@ -10413,162 +20368,150 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 6,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 7,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 8,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 6,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 7,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 6,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 7,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 8,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 6,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 7,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 8,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 3,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
-      },
-      {
-        "line": 4,
-        "outputSoFar": [],
-        "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 9,
         "outputSoFar": [
-          "Candidato 1: 3 de 4"
+          "Candidato 1: 0 de 0"
         ],
-        "prints": "Candidato 1: 3 de 4",
-        "hasError": false
+        "prints": "Candidato 1: 0 de 0",
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       }
     ],
-    "totalOutput": "Candidato 1: 3 de 4",
+    "totalOutput": "Candidato 1: 0 de 0",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -10591,181 +20534,697 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 6,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "5",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 7,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "5",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "5",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 9,
@@ -10773,10 +21232,1224 @@ window.BAKED_TRACES = {
           "Candidato 1: 3 de 5"
         ],
         "prints": "Candidato 1: 3 de 5",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "5",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Candidato 1: 3 de 5",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "votos_c1 = 0\ntotal_votos = 0\nurnas = [1, 2, 1, 1, 0, 2]\nfor voto in urnas:\n    if voto == 0:\n        break\n    total_votos += 1\n    if voto == 1:\n        votos_c1 += 1\nprint(f\"Candidato 1: {votos_c1} de {total_votos}\")": {
+    "lines": [
+      "votos_c1 = 0",
+      "total_votos = 0",
+      "urnas = [1, 2, 1, 1, 0, 2]",
+      "for voto in urnas:",
+      "    if voto == 0:",
+      "        break",
+      "    total_votos += 1",
+      "    if voto == 1:",
+      "        votos_c1 += 1",
+      "print(f\"Candidato 1: {votos_c1} de {total_votos}\")"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "2",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "1",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "3",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "2",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 8,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 9,
+        "outputSoFar": [
+          "Candidato 1: 3 de 4"
+        ],
+        "prints": "Candidato 1: 3 de 4",
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "3",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "4",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Candidato 1: 3 de 4",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "votos_c1 = 0\ntotal_votos = 0\nurnas = [1, 2, 1, 1, 0, 2]\nfor voto in urnas:\n    if voto > 0:\n        continue\n    total_votos += 1\n    if voto == 1:\n        votos_c1 += 1\nprint(f\"Candidato 1: {votos_c1} de {total_votos}\")": {
+    "lines": [
+      "votos_c1 = 0",
+      "total_votos = 0",
+      "urnas = [1, 2, 1, 1, 0, 2]",
+      "for voto in urnas:",
+      "    if voto > 0:",
+      "        continue",
+      "    total_votos += 1",
+      "    if voto == 1:",
+      "        votos_c1 += 1",
+      "print(f\"Candidato 1: {votos_c1} de {total_votos}\")"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 6,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 7,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 9,
+        "outputSoFar": [
+          "Candidato 1: 0 de 1"
+        ],
+        "prints": "Candidato 1: 0 de 1",
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "1",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "Candidato 1: 0 de 1",
     "hasError": false,
     "errorLine": null,
     "errorType": null
@@ -10799,37 +22472,121 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 9,
@@ -10837,7 +22594,25 @@ window.BAKED_TRACES = {
           "Candidato 1: 0 de 0"
         ],
         "prints": "Candidato 1: 0 de 0",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "votos_c1": {
+            "value": "0",
+            "type": "int"
+          },
+          "total_votos": {
+            "value": "0",
+            "type": "int"
+          },
+          "urnas": {
+            "value": "[1, 2, 1, 1, 0, 2]",
+            "type": "list"
+          },
+          "voto": {
+            "value": "1",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Candidato 1: 0 de 0",
@@ -10865,43 +22640,145 @@ window.BAKED_TRACES = {
         "line": 0,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          }
+        }
       },
       {
         "line": 1,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          },
+          "contador": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 2,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          },
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 3,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          },
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "val": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 4,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          },
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "val": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 5,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          },
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "val": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 8,
         "outputSoFar": [],
         "prints": null,
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          },
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "val": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       },
       {
         "line": 11,
@@ -10909,7 +22786,25 @@ window.BAKED_TRACES = {
           "Sin datos"
         ],
         "prints": "Sin datos",
-        "hasError": false
+        "hasError": false,
+        "variables": {
+          "entradas": {
+            "value": "[-1]",
+            "type": "list"
+          },
+          "contador": {
+            "value": "0",
+            "type": "int"
+          },
+          "suma": {
+            "value": "0",
+            "type": "int"
+          },
+          "val": {
+            "value": "-1",
+            "type": "int"
+          }
+        }
       }
     ],
     "totalOutput": "Sin datos",

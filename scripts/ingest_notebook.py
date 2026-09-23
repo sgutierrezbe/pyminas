@@ -13,8 +13,8 @@ y extrae de manera estructurada:
 4. Una propuesta de descomposición en Niveles Atómicos (1 concepto = 1 nivel)
    siguiendo la metodología de microaprendizaje estilo Brilliant.
 
-Uso:
-  python3 ingest_notebook.py ruta/al/archivo.ipynb
+Uso (desde la raíz del proyecto):
+  python3 scripts/ingest_notebook.py ruta/al/archivo.ipynb
 """
 
 import sys
@@ -134,12 +134,12 @@ def print_pedagogical_breakdown(sections):
 
     print("=" * 70)
     print("💡 Próximo paso: Confirma los nombres de los niveles con el usuario antes")
-    print("   de agregarlos a curriculum.js y ejecutar verify_curriculum.py.")
+    print("   de agregarlos a curriculum.js y ejecutar scripts/verify_curriculum.py.")
     print("=" * 70 + "\n")
 
 def main():
     if len(sys.argv) < 2:
-        print("Uso: python3 ingest_notebook.py <ruta_archivo.ipynb>")
+        print("Uso: python3 scripts/ingest_notebook.py <ruta_archivo.ipynb>")
         sys.exit(1)
 
     filepath = sys.argv[1]

@@ -149,7 +149,7 @@ CURRICULUM
 * **Etiquetas de Pasos (`partLabel`):** Formato `Paso {N} · {Nombre corto}` (ej. `Paso 1 · Variables y Tipos`).
 
 > **📖 Workflow de Ingesta desde Jupyter Notebooks (.ipynb):**  
-> Para consultar el flujo paso a paso de conversión de cuadernos universitarios del profesor a micro-retos estilo Brilliant, consulta la guía especializada: [`CREATING_EXERCISES.md`](file:///CREATING_EXERCISES.md).
+> Para consultar el flujo paso a paso de conversión de cuadernos universitarios del profesor a micro-retos estilo Brilliant, consulta la guía especializada: [`CREATING_EXERCISES.md`](CREATING_EXERCISES.md).
 
 ---
 
@@ -345,7 +345,7 @@ Para garantizar que ningún ejercicio presente discrepancias con el lenguaje rea
 ### Comando de Ejecución:
 Cada vez que se edite `curriculum.js`, se debe ejecutar:
 ```bash
-python3 /home/samu/python-brilliant-prototype/bake_curriculum.py
+python3 scripts/bake_curriculum.py
 ```
 
 ---
@@ -547,19 +547,19 @@ Antes de dar por completado un módulo o lección nueva, verifica cada uno de lo
 - [ ] **Salida limpia en terminal:** ¿La terminal muestra solo datos impresos, sin comentarios (`#`) ni comillas adicionales?
 - [ ] **Opciones con retroalimentación empática:** ¿Cada opción incorrecta en `predict` y `code_sandbox` tiene su explicación clara de por qué falla (`whyIncorrect` o `feedback`)?
 - [ ] **Slot interactivo:** ¿La práctica guiada incluye `slotMarker: "___"` y opciones múltiples claras?
-- [ ] **Horneado ejecutado:** ¿Se ejecutó `python3 bake_curriculum.py` y se verificó que la traza se generó con éxito (0 advertencias)?
+- [ ] **Horneado ejecutado:** ¿Se ejecutó `python3 scripts/bake_curriculum.py` y se verificó que la traza se generó con éxito (0 advertencias)?
 - [ ] **Atajos de teclado verificados:** ¿Funcionan las teclas `1`-`4`, `Enter`/`Space` y `ArrowLeft`/`ArrowRight` sin colisionar con áreas de texto?
 - [ ] **Navegación y persistencia:** ¿El botón `←` permite retroceder de paso y el progreso se conserva en `localStorage` al recargar?
 - [ ] **Terminal unificada:** ¿La terminal luce fondo `#000000`, borde `#10b981`, texto `#34d399` y punto palpitante en todos los tipos de paso?
-- [ ] **Test suite en verde:** ¿Se ejecutó y validó `http://localhost:8080/test_runner.html` con todos los tests en estado `[PASS]`?
+- [ ] **Test suite en verde:** ¿Se ejecutó y validó `http://localhost:8080/tests/test_runner.html` con todos los tests en estado `[PASS]`?
 
 ### Errores Frecuentes y Soluciones:
 | Síntoma | Causa Probable | Solución |
 | :--- | :--- | :--- |
-| En la terminal se imprimen comentarios `# ...`. | El ejemplo no pasó por `splitCodeAndComment` o no se horneó con `bake_curriculum.py`. | Asegúrate de correr `python3 bake_curriculum.py`. |
+| En la terminal se imprimen comentarios `# ...`. | El ejemplo no pasó por `splitCodeAndComment` o no se horneó con `scripts/bake_curriculum.py`. | Asegúrate de correr `python3 scripts/bake_curriculum.py`. |
 | La terminal queda vacía al dar a «Ejecutar». | El código asigna variables pero carece de `print()`. | Agrega `print()` al final del snippet en `curriculum.js`. |
-| `SyntaxWarning: 'NoneType' object is not callable` al hornear. | Un slot `___(argumento)` fue sustituido por `None` en lugar de una función válida. | Ya resuelto en `bake_curriculum.py` con detección automática de `slotText` de la opción correcta (`int()`). |
-| Aparece `Math.floor(...)` impreso en lugar de la división. | Un reemplazo de operador afectó el interior de un string. | Ya resuelto en `app.js` mediante `replaceSafePythonOperators`; correr `bake_curriculum.py` para asegurar traza horneada. |
+| `SyntaxWarning: 'NoneType' object is not callable` al hornear. | Un slot `___(argumento)` fue sustituido por `None` en lugar de una función válida. | Ya resuelto en `scripts/bake_curriculum.py` con detección automática de `slotText` de la opción correcta (`int()`). |
+| Aparece `Math.floor(...)` impreso en lugar de la división. | Un reemplazo de operador afectó el interior de un string. | Ya resuelto en `app.js` mediante `replaceSafePythonOperators`; correr `scripts/bake_curriculum.py` para asegurar traza horneada. |
 | El botón «Continuar» no se desbloquea. | El paso requiere interacción previa (ejecución o respuesta). | Normal: es la Regla 4 de UX para asegurar aprendizaje activo. |
 | El progreso del paso se reinicia al recargar. | `localStorage` deshabilitado o error al guardar. | El sistema utiliza `py101_lesson_steps` para reanudar el paso exacto. |
 

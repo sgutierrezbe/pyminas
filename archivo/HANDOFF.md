@@ -1,3 +1,7 @@
+# ⚠️ ARCHIVO HISTÓRICO — NO USAR COMO GUÍA VIGENTE
+
+Esta guía se conserva para trazabilidad y puede contradecir la arquitectura actual. Consulta `README.md` y `docs/` para las instrucciones vigentes.
+
 # 🤖 GUÍA DE HANDOFF Y DESPLIEGUE EN HOMESERVER — pyMinas v1.0
 
 > **⚠️ INSTRUCCIÓN DE CICLO DE VIDA PARA EL AGENTE DEL HOMESERVER:**

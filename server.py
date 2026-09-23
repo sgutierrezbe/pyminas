@@ -18,7 +18,10 @@ import re
 import mimetypes
 
 PORT = 8080
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pyminas.db")
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
+DB_PATH = os.path.join(DATA_DIR, "pyminas.db")
+PRIVATE_STATIC_PREFIXES = ('/.git', '/.agents', '/data', '/archivo')
 
 # ==================== BASE DE DATOS Y AUTENTICACIÓN ====================
 
@@ -28,6 +31,7 @@ def get_db():
     return conn
 
 def init_db():
+    os.makedirs(DATA_DIR, exist_ok=True)
     conn = get_db()
     with conn:
         conn.execute("PRAGMA journal_mode=WAL;")
@@ -140,6 +144,12 @@ class PyMinasHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed_path = self.path.split('?')[0]
+
+        if any(
+            parsed_path == prefix or parsed_path.startswith(prefix + '/')
+            for prefix in PRIVATE_STATIC_PREFIXES
+        ):
+            return self.send_error(404, "Recurso no disponible")
 
         # Endpoint: Comprobar sesión actual y cargar progreso
         if parsed_path == '/api/me':
@@ -311,7 +321,7 @@ class PyMinasHandler(http.server.SimpleHTTPRequestHandler):
             return self.send_json(404, {"error": "Endpoint no encontrado"})
 
 def run_server():
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    os.chdir(PROJECT_ROOT)
     init_db()
 
     port = PORT
@@ -339,4 +349,3 @@ def run_server():
 
 if __name__ == "__main__":
     run_server()
-

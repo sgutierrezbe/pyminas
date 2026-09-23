@@ -29,6 +29,7 @@ Inspirada en la pedagogía activa y táctil de **Brilliant.org**, con **nodos ci
 
 5. **Reproductor de Código Paso a Paso (Estilo Brilliant.org)**:
    - **Terminal con borde verde esmeralda**: Muestra la salida impresa en tiempo real conforme se ejecutan las líneas.
+   - **Panel de memoria**: Muestra las variables, sus tipos y sus valores actuales; resalta visualmente cada cambio durante ciclos, contadores y acumuladores.
    - **Flecha indicadora blanca (`▶`)**: Avanza línea por línea señalando la instrucción activa con iluminación de fondo (`bg-[#1e2d3d]`).
    - **Sintaxis estilizada**: Resaltado con colores idénticos a Brilliant (rosa para palabras clave, verde lima para strings, morado para números, cian para tipos).
    - **Barra de controles interactiva**: Botón `[ ▶ Ejecutar ]` (reproducción continua a 700ms/línea con pausa), `[ > ]` (paso siguiente manual), `[ < ]` (paso anterior) y `[ ↺ ]` (reiniciar).
@@ -38,7 +39,7 @@ Inspirada en la pedagogía activa y táctil de **Brilliant.org**, con **nodos ci
 ## 📚 Documentación de Arquitectura y Creación de Módulos
 
 Consulta la guía completa de desarrollo, diseño pedagógico y pipeline de horneado en:
-👉 **[`GUIDELINES.md`](GUIDELINES.md)**
+👉 **[`docs/desarrollo/GUIDELINES.md`](docs/desarrollo/GUIDELINES.md)**
 
 Contenido de la guía:
 - Reglas sagradas de UX (diseño single-screen, retroalimentación diferida, terminal limpia, etc.).
@@ -49,19 +50,58 @@ Contenido de la guía:
 
 ---
 
-## 🤖 Despliegue en Servidor / Homeserver
+La guía práctica para crear semanas nuevas está en
+[`docs/desarrollo/CREATING_EXERCISES.md`](docs/desarrollo/CREATING_EXERCISES.md),
+y las referencias docentes se encuentran en [`docs/referencias/`](docs/referencias/).
 
-Para el aprovisionamiento y despliegue automatizado en servidores locales o en la nube:
-👉 **[`HANDOFF.md`](HANDOFF.md)** (Guía completa para agentes con configuraciones de Docker Compose, Caddy, Nginx, Systemd y headers WASM).
+## 🗂️ Organización del repositorio
+
+```text
+Programacion/
+├── index.html, app.js, styles.css       # Aplicación web
+├── curriculum.js, baked_traces.js       # Contenido y trazas ejecutables
+├── server.py                            # Servidor local y API
+├── assets/                              # Imágenes e identidad visual
+├── data/                                # Base SQLite local (ignorada por Git)
+├── materiales/semana-XX/                # Notebooks y storyboards por semana
+├── scripts/                             # Ingesta, verificación y horneado
+├── tests/                               # Pruebas en navegador
+├── docs/                                # Guías y referencias vigentes
+└── archivo/                             # Material histórico; no usar en producción
+```
+
+## 🗄️ Despliegue histórico
+
+La antigua guía de homeserver se conserva en
+[`archivo/HANDOFF.md`](archivo/HANDOFF.md). Es una referencia histórica y puede no
+reflejar la arquitectura actual.
 
 ---
 
 ## 🚀 Cómo ejecutar localmente
 
+La raíz de pyMinas es esta carpeta del repositorio. Reúne el código de la plataforma para estudiantes y los materiales pedagógicos; el proyecto personal de Introducción a la IA permanece separado.
+
+Desde esta carpeta:
+
 ```bash
 python3 server.py
 ```
+
 Abre en tu navegador:
+
 ```
 http://localhost:8080
+```
+
+Verifica el currículo desde la raíz con:
+
+```bash
+python3 -B scripts/verify_curriculum.py
+```
+
+La suite web está disponible, con el servidor activo, en:
+
+```text
+http://localhost:8080/tests/test_runner.html
 ```
