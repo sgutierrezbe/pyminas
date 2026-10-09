@@ -22811,5 +22811,9464 @@ window.BAKED_TRACES = {
     "hasError": false,
     "errorLine": null,
     "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques)\nprint(bloques[0])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques)",
+      "print(bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[12, 19, 21]"
+        ],
+        "prints": "[12, 19, 21]",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[12, 19, 21]",
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[12, 19, 21]\n12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "notas = [3.0, 4.5, 2.0]\nnota = notas[1]\nprint(nota)": {
+    "lines": [
+      "notas = [3.0, 4.5, 2.0]",
+      "nota = notas[1]",
+      "print(nota)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3.0, 4.5, 2.0]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3.0, 4.5, 2.0]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.5",
+            "type": "float"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "4.5"
+        ],
+        "prints": "4.5",
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3.0, 4.5, 2.0]",
+            "type": "list"
+          },
+          "nota": {
+            "value": "4.5",
+            "type": "float"
+          }
+        }
+      }
+    ],
+    "totalOutput": "4.5",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "notas = [3, 4, 5]\nultimo = len(notas)\nprint(notas[ultimo])": {
+    "lines": [
+      "notas = [3, 4, 5]",
+      "ultimo = len(notas)",
+      "print(notas[ultimo])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3, 4, 5]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3, 4, 5]",
+            "type": "list"
+          },
+          "ultimo": {
+            "value": "3",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(notas[ultimo])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(notas[ultimo])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "notas": {
+            "value": "[3, 4, 5]",
+            "type": "list"
+          },
+          "ultimo": {
+            "value": "3",
+            "type": "int"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(notas[ultimo])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[-1])\nprint(bloques[-2])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[-1])",
+      "print(bloques[-2])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "21",
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "21\n19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\npenultima = cargas[-2]\nprint(penultima)": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "penultima = cargas[-2]",
+      "print(penultima)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          },
+          "penultima": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "30"
+        ],
+        "prints": "30",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          },
+          "penultima": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "30",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[1])\nprint(bloques[-2])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[1])",
+      "print(bloques[-2])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "19",
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "19\n19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[1])\nprint(bloques[0])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[1])",
+      "print(bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "19",
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "19\n12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[1])\nprint(bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[1])",
+      "print(bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "19",
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "19\n21",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[1])\nprint(bloques[3])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[1])",
+      "print(bloques[3])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "19",
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(bloques[3])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "19\nTraceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[2])\nprint(bloques[-2])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[2])",
+      "print(bloques[-2])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "21",
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "21\n19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[2])\nprint(bloques[0])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[2])",
+      "print(bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "21",
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "21\n12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[2])\nprint(bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[2])",
+      "print(bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "21",
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "21\n21",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[2])\nprint(bloques[3])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[2])",
+      "print(bloques[3])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "21",
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(bloques[3])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "21\nTraceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[3])\nprint(bloques[-2])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[3])",
+      "print(bloques[-2])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    print(bloques[3])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[3])\nprint(bloques[0])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[3])",
+      "print(bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    print(bloques[3])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[3])\nprint(bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[3])",
+      "print(bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    print(bloques[3])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[3])\nprint(bloques[3])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[3])",
+      "print(bloques[3])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    print(bloques[3])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[0])\nprint(bloques[-2])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[0])",
+      "print(bloques[-2])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "12",
+          "19"
+        ],
+        "prints": "19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "12\n19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[0])\nprint(bloques[0])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[0])",
+      "print(bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "12",
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "12\n12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[0])\nprint(bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[0])",
+      "print(bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "12",
+          "21"
+        ],
+        "prints": "21",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "12\n21",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nprint(bloques[0])\nprint(bloques[3])": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "print(bloques[0])",
+      "print(bloques[3])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "12"
+        ],
+        "prints": "12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "12",
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(bloques[3])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "12\nTraceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(bloques[3])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "cargas = []\nprint(len(cargas))\nprint(cargas[0])": {
+    "lines": [
+      "cargas = []",
+      "print(len(cargas))",
+      "print(cargas[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0"
+        ],
+        "prints": "0",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0",
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(cargas[0])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(cargas[0])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "0\nTraceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(cargas[0])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "notas = [2.0, 4.0, 3.0]\nnotas[0] = 3.5\nprint(notas)": {
+    "lines": [
+      "notas = [2.0, 4.0, 3.0]",
+      "notas[0] = 3.5",
+      "print(notas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[2.0, 4.0, 3.0]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3.5, 4.0, 3.0]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[3.5, 4.0, 3.0]"
+        ],
+        "prints": "[3.5, 4.0, 3.0]",
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3.5, 4.0, 3.0]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3.5, 4.0, 3.0]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 21]\nbloques[-1] = 24\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19, 21]",
+      "bloques[-1] = 24",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 24]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[12, 19, 24]"
+        ],
+        "prints": "[12, 19, 24]",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 24]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[12, 19, 24]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\ntramo = cargas[1:3]\nprint(tramo)": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "tramo = cargas[1:3]",
+      "print(tramo)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          },
+          "tramo": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[20, 30]"
+        ],
+        "prints": "[20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          },
+          "tramo": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[20, 30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 14, 19, 21]\ntramo = bloques[0:2]\nprint(tramo)": {
+    "lines": [
+      "bloques = [12, 14, 19, 21]",
+      "tramo = bloques[0:2]",
+      "print(tramo)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19, 21]",
+            "type": "list"
+          },
+          "tramo": {
+            "value": "[12, 14]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[12, 14]"
+        ],
+        "prints": "[12, 14]",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19, 21]",
+            "type": "list"
+          },
+          "tramo": {
+            "value": "[12, 14]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[12, 14]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\ntramo = cargas[1, 3]\nprint(tramo)": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "tramo = cargas[1, 3]",
+      "print(tramo)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    tramo = cargas[1, 3]",
+          "TypeError: list indices must be integers or slices, not tuple"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    tramo = cargas[1, 3]\nTypeError: list indices must be integers or slices, not tuple",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    tramo = cargas[1, 3]\nTypeError: list indices must be integers or slices, not tuple",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:2])\nprint(cargas[2:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:2])",
+      "print(cargas[2:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20]"
+        ],
+        "prints": "[10, 20]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20]",
+          "[30, 40]"
+        ],
+        "prints": "[30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20]\n[30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "notas = [2, 3, 4, 5]\nresto = notas[2:]\nprint(resto)": {
+    "lines": [
+      "notas = [2, 3, 4, 5]",
+      "resto = notas[2:]",
+      "print(resto)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[2, 3, 4, 5]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[2, 3, 4, 5]",
+            "type": "list"
+          },
+          "resto": {
+            "value": "[4, 5]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[4, 5]"
+        ],
+        "prints": "[4, 5]",
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[2, 3, 4, 5]",
+            "type": "list"
+          },
+          "resto": {
+            "value": "[4, 5]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[4, 5]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:2])\nprint(cargas[1:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:2])",
+      "print(cargas[1:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20]"
+        ],
+        "prints": "[10, 20]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20]",
+          "[20, 30, 40]"
+        ],
+        "prints": "[20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20]\n[20, 30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:2])\nprint(cargas[3:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:2])",
+      "print(cargas[3:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20]"
+        ],
+        "prints": "[10, 20]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20]",
+          "[40]"
+        ],
+        "prints": "[40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20]\n[40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:2])\nprint(cargas[4:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:2])",
+      "print(cargas[4:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20]"
+        ],
+        "prints": "[10, 20]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:1])\nprint(cargas[1:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:1])",
+      "print(cargas[1:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10]"
+        ],
+        "prints": "[10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10]",
+          "[20, 30, 40]"
+        ],
+        "prints": "[20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10]\n[20, 30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:1])\nprint(cargas[2:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:1])",
+      "print(cargas[2:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10]"
+        ],
+        "prints": "[10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10]",
+          "[30, 40]"
+        ],
+        "prints": "[30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10]\n[30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:1])\nprint(cargas[3:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:1])",
+      "print(cargas[3:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10]"
+        ],
+        "prints": "[10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10]",
+          "[40]"
+        ],
+        "prints": "[40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10]\n[40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:1])\nprint(cargas[4:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:1])",
+      "print(cargas[4:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10]"
+        ],
+        "prints": "[10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:3])\nprint(cargas[1:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:3])",
+      "print(cargas[1:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30]"
+        ],
+        "prints": "[10, 20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30]",
+          "[20, 30, 40]"
+        ],
+        "prints": "[20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30]\n[20, 30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:3])\nprint(cargas[2:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:3])",
+      "print(cargas[2:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30]"
+        ],
+        "prints": "[10, 20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30]",
+          "[30, 40]"
+        ],
+        "prints": "[30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30]\n[30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:3])\nprint(cargas[3:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:3])",
+      "print(cargas[3:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30]"
+        ],
+        "prints": "[10, 20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30]",
+          "[40]"
+        ],
+        "prints": "[40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30]\n[40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:3])\nprint(cargas[4:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:3])",
+      "print(cargas[4:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30]"
+        ],
+        "prints": "[10, 20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:4])\nprint(cargas[1:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:4])",
+      "print(cargas[1:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30, 40]"
+        ],
+        "prints": "[10, 20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30, 40]",
+          "[20, 30, 40]"
+        ],
+        "prints": "[20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30, 40]\n[20, 30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:4])\nprint(cargas[2:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:4])",
+      "print(cargas[2:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30, 40]"
+        ],
+        "prints": "[10, 20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30, 40]",
+          "[30, 40]"
+        ],
+        "prints": "[30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30, 40]\n[30, 40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:4])\nprint(cargas[3:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:4])",
+      "print(cargas[3:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30, 40]"
+        ],
+        "prints": "[10, 20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30, 40]",
+          "[40]"
+        ],
+        "prints": "[40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30, 40]\n[40]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30, 40]\nprint(cargas[:4])\nprint(cargas[4:])": {
+    "lines": [
+      "cargas = [10, 20, 30, 40]",
+      "print(cargas[:4])",
+      "print(cargas[4:])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "[10, 20, 30, 40]"
+        ],
+        "prints": "[10, 20, 30, 40]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30, 40]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30, 40]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30, 40]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\ntramo = cargas[1:99]\nprint(tramo)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "tramo = cargas[1:99]",
+      "print(tramo)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          },
+          "tramo": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[20, 30]"
+        ],
+        "prints": "[20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          },
+          "tramo": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[20, 30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "original = [12, 19]\nalias = original\ncopia = original.copy()\noriginal[0] = 14\nprint(alias)\nprint(copia)": {
+    "lines": [
+      "original = [12, 19]",
+      "alias = original",
+      "copia = original.copy()",
+      "original[0] = 14",
+      "print(alias)",
+      "print(copia)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "alias": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "alias": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "copia": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[14, 19]",
+            "type": "list"
+          },
+          "alias": {
+            "value": "[14, 19]",
+            "type": "list"
+          },
+          "copia": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[14, 19]"
+        ],
+        "prints": "[14, 19]",
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[14, 19]",
+            "type": "list"
+          },
+          "alias": {
+            "value": "[14, 19]",
+            "type": "list"
+          },
+          "copia": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [
+          "[14, 19]",
+          "[12, 19]"
+        ],
+        "prints": "[12, 19]",
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[14, 19]",
+            "type": "list"
+          },
+          "alias": {
+            "value": "[14, 19]",
+            "type": "list"
+          },
+          "copia": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[14, 19]\n[12, 19]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "original = [3, 4]\notra = original\notra[1] = 5\nprint(original)": {
+    "lines": [
+      "original = [3, 4]",
+      "otra = original",
+      "otra[1] = 5",
+      "print(original)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 4]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 4]",
+            "type": "list"
+          },
+          "otra": {
+            "value": "[3, 4]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 5]",
+            "type": "list"
+          },
+          "otra": {
+            "value": "[3, 5]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[3, 5]"
+        ],
+        "prints": "[3, 5]",
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 5]",
+            "type": "list"
+          },
+          "otra": {
+            "value": "[3, 5]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3, 5]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20]\nfor carga in cargas:\n    print(carga)": {
+    "lines": [
+      "cargas = [10, 20]",
+      "for carga in cargas:",
+      "    print(carga)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "carga": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": "10",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "carga": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "carga": {
+            "value": "20",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "10",
+          "20"
+        ],
+        "prints": "20",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "carga": {
+            "value": "20",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "10",
+          "20"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "carga": {
+            "value": "20",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "10\n20",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [2, 3, 2]\ntotal = 0\nfor carga in cargas:\n    total += carga\nprint(total)": {
+    "lines": [
+      "cargas = [2, 3, 2]",
+      "total = 0",
+      "for carga in cargas:",
+      "    total += carga",
+      "print(total)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "0",
+            "type": "int"
+          },
+          "carga": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "2",
+            "type": "int"
+          },
+          "carga": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "2",
+            "type": "int"
+          },
+          "carga": {
+            "value": "3",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "5",
+            "type": "int"
+          },
+          "carga": {
+            "value": "3",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "5",
+            "type": "int"
+          },
+          "carga": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "7",
+            "type": "int"
+          },
+          "carga": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "7",
+            "type": "int"
+          },
+          "carga": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "7"
+        ],
+        "prints": "7",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 3, 2]",
+            "type": "list"
+          },
+          "total": {
+            "value": "7",
+            "type": "int"
+          },
+          "carga": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "7",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20]\nfor i in cargas:\n    print(cargas[i])": {
+    "lines": [
+      "cargas = [10, 20]",
+      "for i in cargas:",
+      "    print(cargas[i])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "i": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(cargas[i])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(cargas[i])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "i": {
+            "value": "10",
+            "type": "int"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(cargas[i])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "cargas = [10, 20]\nfor i in range(len(cargas)):\n    print(i, cargas[i])": {
+    "lines": [
+      "cargas = [10, 20]",
+      "for i in range(len(cargas)):",
+      "    print(i, cargas[i])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 10"
+        ],
+        "prints": "0 10",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 10"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 10",
+          "1 20"
+        ],
+        "prints": "1 20",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 10",
+          "1 20"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 10\n1 20",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [8, 6, 4]\nfor i in range(len(cargas)):\n    ultimo = cargas[i]\nprint(i, ultimo)": {
+    "lines": [
+      "cargas = [8, 6, 4]",
+      "for i in range(len(cargas)):",
+      "    ultimo = cargas[i]",
+      "print(i, ultimo)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          },
+          "ultimo": {
+            "value": "8",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          },
+          "ultimo": {
+            "value": "8",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          },
+          "ultimo": {
+            "value": "6",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          },
+          "ultimo": {
+            "value": "6",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          },
+          "ultimo": {
+            "value": "4",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          },
+          "ultimo": {
+            "value": "4",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "2 4"
+        ],
+        "prints": "2 4",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[8, 6, 4]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          },
+          "ultimo": {
+            "value": "4",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "2 4",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques)):\n    print(i, bloques[0])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques)):",
+      "    print(i, bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": "0 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12",
+          "1 12"
+        ],
+        "prints": "1 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12",
+          "1 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 12\n1 12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques)):\n    print(i, bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques)):",
+      "    print(i, bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": "0 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19",
+          "1 19"
+        ],
+        "prints": "1 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19",
+          "1 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 19\n1 19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques)):\n    print(i, bloques[i + 1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques)):",
+      "    print(i, bloques[i + 1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": "0 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19",
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(i, bloques[i + 1])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(i, bloques[i + 1])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "0 19\nTraceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(i, bloques[i + 1])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques)):\n    print(i, bloques[i])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques)):",
+      "    print(i, bloques[i])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": "0 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12",
+          "1 19"
+        ],
+        "prints": "1 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12",
+          "1 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 12\n1 19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) - 1):\n    print(i, bloques[0])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) - 1):",
+      "    print(i, bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": "0 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) - 1):\n    print(i, bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) - 1):",
+      "    print(i, bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": "0 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) - 1):\n    print(i, bloques[i + 1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) - 1):",
+      "    print(i, bloques[i + 1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": "0 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) - 1):\n    print(i, bloques[i])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) - 1):",
+      "    print(i, bloques[i])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": "0 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) + 1):\n    print(i, bloques[0])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) + 1):",
+      "    print(i, bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": "0 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12",
+          "1 12"
+        ],
+        "prints": "1 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12",
+          "1 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12",
+          "1 12",
+          "2 12"
+        ],
+        "prints": "2 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12",
+          "1 12",
+          "2 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 12\n1 12\n2 12",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) + 1):\n    print(i, bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) + 1):",
+      "    print(i, bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": "0 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19",
+          "1 19"
+        ],
+        "prints": "1 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19",
+          "1 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19",
+          "1 19",
+          "2 19"
+        ],
+        "prints": "2 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19",
+          "1 19",
+          "2 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0 19\n1 19\n2 19",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) + 1):\n    print(i, bloques[i + 1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) + 1):",
+      "    print(i, bloques[i + 1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": "0 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 19",
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(i, bloques[i + 1])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(i, bloques[i + 1])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "0 19\nTraceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(i, bloques[i + 1])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19]\nfor i in range(len(bloques) + 1):\n    print(i, bloques[i])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(len(bloques) + 1):",
+      "    print(i, bloques[i])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": "0 12",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12",
+          "1 19"
+        ],
+        "prints": "1 19",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "1",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "0 12",
+          "1 19"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "0 12",
+          "1 19",
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    print(i, bloques[i])",
+          "IndexError: list index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(i, bloques[i])\nIndexError: list index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          },
+          "i": {
+            "value": "2",
+            "type": "int"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "0 12\n1 19\nTraceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    print(i, bloques[i])\nIndexError: list index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19]\nfor i in range(0):\n    print(i, bloques[0])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(0):",
+      "    print(i, bloques[0])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(0):\n    print(i, bloques[-1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(0):",
+      "    print(i, bloques[-1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(0):\n    print(i, bloques[i + 1])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(0):",
+      "    print(i, bloques[i + 1])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nfor i in range(0):\n    print(i, bloques[i])": {
+    "lines": [
+      "bloques = [12, 19]",
+      "for i in range(0):",
+      "    print(i, bloques[i])"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = []\ntotal = 0\nfor carga in cargas:\n    total += carga\nprint(total)": {
+    "lines": [
+      "cargas = []",
+      "total = 0",
+      "for carga in cargas:",
+      "    total += carga",
+      "print(total)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          },
+          "total": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          },
+          "total": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "0"
+        ],
+        "prints": "0",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          },
+          "total": {
+            "value": "0",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 12]\nprint(len(bloques))\nprint(bloques.count(12))\nprint(bloques.count(21))": {
+    "lines": [
+      "bloques = [12, 19, 12]",
+      "print(len(bloques))",
+      "print(bloques.count(12))",
+      "print(bloques.count(21))"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 12]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "3"
+        ],
+        "prints": "3",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 12]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "3",
+          "2"
+        ],
+        "prints": "2",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 12]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "3",
+          "2",
+          "0"
+        ],
+        "prints": "0",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 12]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "3\n2\n0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "notas = [3, 4, 3, 5]\ncantidad = notas.count(3)\nprint(cantidad, len(notas))": {
+    "lines": [
+      "notas = [3, 4, 3, 5]",
+      "cantidad = notas.count(3)",
+      "print(cantidad, len(notas))"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3, 4, 3, 5]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3, 4, 3, 5]",
+            "type": "list"
+          },
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "2 4"
+        ],
+        "prints": "2 4",
+        "hasError": false,
+        "variables": {
+          "notas": {
+            "value": "[3, 4, 3, 5]",
+            "type": "list"
+          },
+          "cantidad": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "2 4",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20]\ncargas.append(30)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20]",
+      "cargas.append(30)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30]"
+        ],
+        "prints": "[10, 20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "pares = []\nfor n in range(2, 7, 2):\n    pares.append(n)\nprint(pares)": {
+    "lines": [
+      "pares = []",
+      "for n in range(2, 7, 2):",
+      "    pares.append(n)",
+      "print(pares)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[]",
+            "type": "list"
+          },
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "2",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[2]",
+            "type": "list"
+          },
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[2, 4]",
+            "type": "list"
+          },
+          "n": {
+            "value": "4",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[2, 4]",
+            "type": "list"
+          },
+          "n": {
+            "value": "6",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[2, 4, 6]",
+            "type": "list"
+          },
+          "n": {
+            "value": "6",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[2, 4, 6]",
+            "type": "list"
+          },
+          "n": {
+            "value": "6",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[2, 4, 6]"
+        ],
+        "prints": "[2, 4, 6]",
+        "hasError": false,
+        "variables": {
+          "pares": {
+            "value": "[2, 4, 6]",
+            "type": "list"
+          },
+          "n": {
+            "value": "6",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[2, 4, 6]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10]\ncargas = cargas.append(20)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10]",
+      "cargas = cargas.append(20)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "None",
+            "type": "NoneType"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "None"
+        ],
+        "prints": "None",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "None",
+            "type": "NoneType"
+          }
+        }
+      }
+    ],
+    "totalOutput": "None",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nbloques.insert(1, 14)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.insert(1, 14)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[12, 14, 19]"
+        ],
+        "prints": "[12, 14, 19]",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[12, 14, 19]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 30]\ncargas.insert(1, 20)\nprint(cargas[2], len(cargas))": {
+    "lines": [
+      "cargas = [10, 30]",
+      "cargas.insert(1, 20)",
+      "print(cargas[2], len(cargas))"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "30 3"
+        ],
+        "prints": "30 3",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "30 3",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nbloques.append(1, 14)\nbloques.insert(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.append(1, 14)",
+      "bloques.insert(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.append(1, 14)",
+          "TypeError: list.append() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.append(1, 14)\nbloques.append(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.append(1, 14)",
+      "bloques.append(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.append(1, 14)",
+          "TypeError: list.append() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.append(1, 14)\nbloques.remove(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.append(1, 14)",
+      "bloques.remove(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.append(1, 14)",
+          "TypeError: list.append() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.append(1, 14)\nbloques.pop(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.append(1, 14)",
+      "bloques.pop(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.append(1, 14)",
+          "TypeError: list.append() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.append(1, 14)\nTypeError: list.append() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.remove(1, 14)\nbloques.insert(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.remove(1, 14)",
+      "bloques.insert(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.remove(1, 14)",
+          "TypeError: list.remove() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.remove(1, 14)\nbloques.append(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.remove(1, 14)",
+      "bloques.append(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.remove(1, 14)",
+          "TypeError: list.remove() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.remove(1, 14)\nbloques.remove(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.remove(1, 14)",
+      "bloques.remove(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.remove(1, 14)",
+          "TypeError: list.remove() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.remove(1, 14)\nbloques.pop(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.remove(1, 14)",
+      "bloques.pop(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.remove(1, 14)",
+          "TypeError: list.remove() takes exactly one argument (2 given)"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.remove(1, 14)\nTypeError: list.remove() takes exactly one argument (2 given)",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.insert(1, 14)\nbloques.insert(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.insert(1, 14)",
+      "bloques.insert(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    bloques.insert(21)",
+          "TypeError: insert expected 2 arguments, got 1"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    bloques.insert(21)\nTypeError: insert expected 2 arguments, got 1",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    bloques.insert(21)\nTypeError: insert expected 2 arguments, got 1",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.insert(1, 14)\nbloques.append(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.insert(1, 14)",
+      "bloques.append(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[12, 14, 19, 21]"
+        ],
+        "prints": "[12, 14, 19, 21]",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[12, 14, 19, 21]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19]\nbloques.insert(1, 14)\nbloques.remove(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.insert(1, 14)",
+      "bloques.remove(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    bloques.remove(21)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    bloques.remove(21)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    bloques.remove(21)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "bloques = [12, 19]\nbloques.insert(1, 14)\nbloques.pop(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.insert(1, 14)",
+      "bloques.pop(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    bloques.pop(21)",
+          "IndexError: pop index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    bloques.pop(21)\nIndexError: pop index out of range",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 14, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    bloques.pop(21)\nIndexError: pop index out of range",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "IndexError"
+  },
+  "bloques = [12, 19]\nbloques.pop(1, 14)\nbloques.insert(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.pop(1, 14)",
+      "bloques.insert(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.pop(1, 14)",
+          "TypeError: pop expected at most 1 argument, got 2"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.pop(1, 14)\nbloques.append(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.pop(1, 14)",
+      "bloques.append(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.pop(1, 14)",
+          "TypeError: pop expected at most 1 argument, got 2"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.pop(1, 14)\nbloques.remove(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.pop(1, 14)",
+      "bloques.remove(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.pop(1, 14)",
+          "TypeError: pop expected at most 1 argument, got 2"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "bloques = [12, 19]\nbloques.pop(1, 14)\nbloques.pop(21)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19]",
+      "bloques.pop(1, 14)",
+      "bloques.pop(21)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    bloques.pop(1, 14)",
+          "TypeError: pop expected at most 1 argument, got 2"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+        "hasError": true,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19]",
+            "type": "list"
+          }
+        },
+        "errorType": "TypeError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    bloques.pop(1, 14)\nTypeError: pop expected at most 1 argument, got 2",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "TypeError"
+  },
+  "cargas = [10, 20]\ncargas.append(10)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20]",
+      "cargas.append(10)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 10]"
+        ],
+        "prints": "[10, 20, 10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 10]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 10]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "a = [10]\nb = [10]\na.extend([20, 30])\nb.append([20, 30])\nprint(a)\nprint(b)": {
+    "lines": [
+      "a = [10]",
+      "b = [10]",
+      "a.extend([20, 30])",
+      "b.append([20, 30])",
+      "print(a)",
+      "print(b)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "[10]",
+            "type": "list"
+          },
+          "b": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          },
+          "b": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          },
+          "b": {
+            "value": "[10, [20, 30]]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[10, 20, 30]"
+        ],
+        "prints": "[10, 20, 30]",
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          },
+          "b": {
+            "value": "[10, [20, 30]]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 5,
+        "outputSoFar": [
+          "[10, 20, 30]",
+          "[10, [20, 30]]"
+        ],
+        "prints": "[10, [20, 30]]",
+        "hasError": false,
+        "variables": {
+          "a": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          },
+          "b": {
+            "value": "[10, [20, 30]]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30]\n[10, [20, 30]]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10]\ncargas.extend([20, 30])\nprint(cargas, len(cargas))": {
+    "lines": [
+      "cargas = [10]",
+      "cargas.extend([20, 30])",
+      "print(cargas, len(cargas))"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30] 3"
+        ],
+        "prints": "[10, 20, 30] 3",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30] 3",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\nretirada = cargas.pop()\nprint(retirada)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "retirada = cargas.pop()",
+      "print(retirada)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "retirada": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "30"
+        ],
+        "prints": "30",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "retirada": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "30",
+          "[10, 20]"
+        ],
+        "prints": "[10, 20]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          },
+          "retirada": {
+            "value": "30",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "30\n[10, 20]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\nretirada = cargas.pop(0)\nprint(retirada, cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "retirada = cargas.pop(0)",
+      "print(retirada, cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          },
+          "retirada": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "10 [20, 30]"
+        ],
+        "prints": "10 [20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          },
+          "retirada": {
+            "value": "10",
+            "type": "int"
+          }
+        }
+      }
+    ],
+    "totalOutput": "10 [20, 30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(20)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(20)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    cargas.pop(20)",
+          "IndexError: pop index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(20)\nIndexError: pop index out of range",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(20)\nIndexError: pop index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "cargas = [10, 20, 10]\ncargas.remove(10)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 10]",
+      "cargas.remove(10)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[20, 10]"
+        ],
+        "prints": "[20, 10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 10]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[20, 10]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "bloques = [12, 19, 12, 21]\nbloques.remove(12)\nprint(bloques)": {
+    "lines": [
+      "bloques = [12, 19, 12, 21]",
+      "bloques.remove(12)",
+      "print(bloques)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[12, 19, 12, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[19, 12, 21]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[19, 12, 21]"
+        ],
+        "prints": "[19, 12, 21]",
+        "hasError": false,
+        "variables": {
+          "bloques": {
+            "value": "[19, 12, 21]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[19, 12, 21]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(10)\ncargas.remove(1)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(10)",
+      "cargas.remove(1)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    cargas.pop(10)",
+          "IndexError: pop index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(10)\ncargas.remove(20)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(10)",
+      "cargas.remove(20)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    cargas.pop(10)",
+          "IndexError: pop index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(10)\ncargas.remove(2)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(10)",
+      "cargas.remove(2)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    cargas.pop(10)",
+          "IndexError: pop index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(10)\ncargas.remove(30)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(10)",
+      "cargas.remove(30)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    cargas.pop(10)",
+          "IndexError: pop index out of range"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "IndexError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.pop(10)\nIndexError: pop index out of range",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "IndexError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(1)\ncargas.remove(1)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(1)",
+      "cargas.remove(1)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(1)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(1)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(1)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(1)\ncargas.remove(20)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(1)",
+      "cargas.remove(20)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(20)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(20)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(20)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(1)\ncargas.remove(2)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(1)",
+      "cargas.remove(2)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(2)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(2)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(2)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(1)\ncargas.remove(30)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(1)",
+      "cargas.remove(30)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[10]"
+        ],
+        "prints": "[10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(0)\ncargas.remove(1)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(0)",
+      "cargas.remove(1)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(1)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(1)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(1)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(0)\ncargas.remove(20)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(0)",
+      "cargas.remove(20)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[30]"
+        ],
+        "prints": "[30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(0)\ncargas.remove(2)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(0)",
+      "cargas.remove(2)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(2)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(2)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(2)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(0)\ncargas.remove(30)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(0)",
+      "cargas.remove(30)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[20]"
+        ],
+        "prints": "[20]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[20]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(-1)\ncargas.remove(1)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(-1)",
+      "cargas.remove(1)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(1)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(1)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(1)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(-1)\ncargas.remove(20)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(-1)",
+      "cargas.remove(20)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[10]"
+        ],
+        "prints": "[10]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(-1)\ncargas.remove(2)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(-1)",
+      "cargas.remove(2)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(2)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(2)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(2)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20, 30]\ncargas.pop(-1)\ncargas.remove(30)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20, 30]",
+      "cargas.pop(-1)",
+      "cargas.remove(30)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 3, in <module>",
+          "    cargas.remove(30)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(30)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 2
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 3, in <module>\n    cargas.remove(30)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 2,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20]\ncargas.remove(30)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20]",
+      "cargas.remove(30)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [
+          "Traceback (most recent call last):",
+          "  File \"main.py\", line 2, in <module>",
+          "    cargas.remove(30)",
+          "ValueError: list.remove(x): x not in list"
+        ],
+        "prints": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.remove(30)\nValueError: list.remove(x): x not in list",
+        "hasError": true,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        },
+        "errorType": "ValueError",
+        "errorLine": 1
+      }
+    ],
+    "totalOutput": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    cargas.remove(30)\nValueError: list.remove(x): x not in list",
+    "hasError": true,
+    "errorLine": 1,
+    "errorType": "ValueError"
+  },
+  "cargas = [10, 20]\ncargas.clear()\nprint(cargas)\nprint(len(cargas))": {
+    "lines": [
+      "cargas = [10, 20]",
+      "cargas.clear()",
+      "print(cargas)",
+      "print(len(cargas))"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[]",
+          "0"
+        ],
+        "prints": "0",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[]\n0",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [10, 20]\ncargas.clear()\ncargas.append(30)\nprint(cargas)": {
+    "lines": [
+      "cargas = [10, 20]",
+      "cargas.clear()",
+      "cargas.append(30)",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[30]"
+        ],
+        "prints": "[30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [30, 10, 20]\ncargas.sort()\nprint(cargas)": {
+    "lines": [
+      "cargas = [30, 10, 20]",
+      "cargas.sort()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[30, 10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[10, 20, 30]"
+        ],
+        "prints": "[10, 20, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[10, 20, 30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[10, 20, 30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 3, 2]\ncargas.sort()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 3, 2]",
+      "cargas.sort()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 3, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[1, 2, 3, 3]"
+        ],
+        "prints": "[1, 2, 3, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3, 3]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[1, 2, 3, 3]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [30, 10, 20]\ncargas = cargas.sort()\nprint(cargas)": {
+    "lines": [
+      "cargas = [30, 10, 20]",
+      "cargas = cargas.sort()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[30, 10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "None",
+            "type": "NoneType"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "None"
+        ],
+        "prints": "None",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "None",
+            "type": "NoneType"
+          }
+        }
+      }
+    ],
+    "totalOutput": "None",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [30, 10, 20]\ncargas.reverse()\nprint(cargas)": {
+    "lines": [
+      "cargas = [30, 10, 20]",
+      "cargas.reverse()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[30, 10, 20]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 10, 30]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[20, 10, 30]"
+        ],
+        "prints": "[20, 10, 30]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[20, 10, 30]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[20, 10, 30]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [4, 1, 3]\ncargas.reverse()\nprint(cargas)": {
+    "lines": [
+      "cargas = [4, 1, 3]",
+      "cargas.reverse()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[4, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 4]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[3, 1, 4]"
+        ],
+        "prints": "[3, 1, 4]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 4]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3, 1, 4]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.reverse()\nprint(cargas)\ncargas.reverse()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.reverse()",
+      "print(cargas)",
+      "cargas.reverse()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": "[2, 1, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[2, 1, 3]",
+          "[3, 1, 2]"
+        ],
+        "prints": "[3, 1, 2]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[2, 1, 3]\n[3, 1, 2]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.reverse()\nprint(cargas)\ncargas.sort()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.reverse()",
+      "print(cargas)",
+      "cargas.sort()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": "[2, 1, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[2, 1, 3]",
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[2, 1, 3]\n[1, 2, 3]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.reverse()\nprint(cargas)\ncargas.clear()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.reverse()",
+      "print(cargas)",
+      "cargas.clear()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": "[2, 1, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[2, 1, 3]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[2, 1, 3]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.reverse()\nprint(cargas)\ncargas.copy()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.reverse()",
+      "print(cargas)",
+      "cargas.copy()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": "[2, 1, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[2, 1, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[2, 1, 3]",
+          "[2, 1, 3]"
+        ],
+        "prints": "[2, 1, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[2, 1, 3]\n[2, 1, 3]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.sort()\nprint(cargas)\ncargas.reverse()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.sort()",
+      "print(cargas)",
+      "cargas.reverse()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 2, 1]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[1, 2, 3]",
+          "[3, 2, 1]"
+        ],
+        "prints": "[3, 2, 1]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 2, 1]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[1, 2, 3]\n[3, 2, 1]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.sort()\nprint(cargas)\ncargas.sort()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.sort()",
+      "print(cargas)",
+      "cargas.sort()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[1, 2, 3]",
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[1, 2, 3]\n[1, 2, 3]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.sort()\nprint(cargas)\ncargas.clear()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.sort()",
+      "print(cargas)",
+      "cargas.clear()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[1, 2, 3]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[1, 2, 3]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.sort()\nprint(cargas)\ncargas.copy()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.sort()",
+      "print(cargas)",
+      "cargas.copy()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[1, 2, 3]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[1, 2, 3]",
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[1, 2, 3]\n[1, 2, 3]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.clear()\nprint(cargas)\ncargas.reverse()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.clear()",
+      "print(cargas)",
+      "cargas.reverse()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.clear()\nprint(cargas)\ncargas.sort()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.clear()",
+      "print(cargas)",
+      "cargas.sort()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.clear()\nprint(cargas)\ncargas.clear()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.clear()",
+      "print(cargas)",
+      "cargas.clear()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.clear()\nprint(cargas)\ncargas.copy()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.clear()",
+      "print(cargas)",
+      "cargas.copy()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.copy()\nprint(cargas)\ncargas.reverse()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.copy()",
+      "print(cargas)",
+      "cargas.reverse()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": "[3, 1, 2]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[3, 1, 2]",
+          "[2, 1, 3]"
+        ],
+        "prints": "[2, 1, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 1, 3]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3, 1, 2]\n[2, 1, 3]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.copy()\nprint(cargas)\ncargas.sort()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.copy()",
+      "print(cargas)",
+      "cargas.sort()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": "[3, 1, 2]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[3, 1, 2]",
+          "[1, 2, 3]"
+        ],
+        "prints": "[1, 2, 3]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[1, 2, 3]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3, 1, 2]\n[1, 2, 3]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.copy()\nprint(cargas)\ncargas.clear()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.copy()",
+      "print(cargas)",
+      "cargas.clear()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": "[3, 1, 2]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[3, 1, 2]",
+          "[]"
+        ],
+        "prints": "[]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3, 1, 2]\n[]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [3, 1, 2]\ncargas.copy()\nprint(cargas)\ncargas.copy()\nprint(cargas)": {
+    "lines": [
+      "cargas = [3, 1, 2]",
+      "cargas.copy()",
+      "print(cargas)",
+      "cargas.copy()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": "[3, 1, 2]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 4,
+        "outputSoFar": [
+          "[3, 1, 2]",
+          "[3, 1, 2]"
+        ],
+        "prints": "[3, 1, 2]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3, 1, 2]\n[3, 1, 2]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "cargas = [2, 2, 2]\ncargas.reverse()\nprint(cargas)": {
+    "lines": [
+      "cargas = [2, 2, 2]",
+      "cargas.reverse()",
+      "print(cargas)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 2, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 2, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[2, 2, 2]"
+        ],
+        "prints": "[2, 2, 2]",
+        "hasError": false,
+        "variables": {
+          "cargas": {
+            "value": "[2, 2, 2]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[2, 2, 2]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "original = [3, 1, 2]\nordenada = sorted(original, reverse=True)\nprint(original)\nprint(ordenada)": {
+    "lines": [
+      "original = [3, 1, 2]",
+      "ordenada = sorted(original, reverse=True)",
+      "print(original)",
+      "print(ordenada)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          },
+          "ordenada": {
+            "value": "[3, 2, 1]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[3, 1, 2]"
+        ],
+        "prints": "[3, 1, 2]",
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          },
+          "ordenada": {
+            "value": "[3, 2, 1]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[3, 1, 2]",
+          "[3, 2, 1]"
+        ],
+        "prints": "[3, 2, 1]",
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[3, 1, 2]",
+            "type": "list"
+          },
+          "ordenada": {
+            "value": "[3, 2, 1]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[3, 1, 2]\n[3, 2, 1]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
+  },
+  "original = [4, 1, 3]\nordenada = sorted(original)\nprint(original)\nprint(ordenada)": {
+    "lines": [
+      "original = [4, 1, 3]",
+      "ordenada = sorted(original)",
+      "print(original)",
+      "print(ordenada)"
+    ],
+    "lineTrace": [
+      {
+        "line": 0,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[4, 1, 3]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 1,
+        "outputSoFar": [],
+        "prints": null,
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[4, 1, 3]",
+            "type": "list"
+          },
+          "ordenada": {
+            "value": "[1, 3, 4]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 2,
+        "outputSoFar": [
+          "[4, 1, 3]"
+        ],
+        "prints": "[4, 1, 3]",
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[4, 1, 3]",
+            "type": "list"
+          },
+          "ordenada": {
+            "value": "[1, 3, 4]",
+            "type": "list"
+          }
+        }
+      },
+      {
+        "line": 3,
+        "outputSoFar": [
+          "[4, 1, 3]",
+          "[1, 3, 4]"
+        ],
+        "prints": "[1, 3, 4]",
+        "hasError": false,
+        "variables": {
+          "original": {
+            "value": "[4, 1, 3]",
+            "type": "list"
+          },
+          "ordenada": {
+            "value": "[1, 3, 4]",
+            "type": "list"
+          }
+        }
+      }
+    ],
+    "totalOutput": "[4, 1, 3]\n[1, 3, 4]",
+    "hasError": false,
+    "errorLine": null,
+    "errorType": null
   }
 };

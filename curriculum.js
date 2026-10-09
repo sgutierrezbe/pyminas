@@ -2905,6 +2905,1917 @@ const CURRICULUM = {
                     ]
                 }
             ]
+        },
+        {
+            "id": "semana-4",
+            "number": 4,
+            "title": "Semana 4: Listas",
+            "description": "Accede, recorre y transforma colecciones de datos con listas de Python.",
+            "status": "active",
+            "lessons": [
+                {
+                    "id": "w4-l1",
+                    "weekId": "semana-4",
+                    "number": 1,
+                    "tag": "Listas",
+                    "shortTitle": "Acceder y actualizar una posición",
+                    "title": "Acceder y actualizar una posición",
+                    "description": "Ubicar elementos con índices positivos o negativos y reemplazar una posición.",
+                    "duration": "3–5 min",
+                    "steps": [
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 1 · Una fila de casilleros",
+                            "title": "Una fila de casilleros",
+                            "intro": "Una lista es una fila de casilleros numerados desde cero; guarda varios valores en una variable. El orden es el de las posiciones, no un orden numérico automático.",
+                            "examples": [
+                                {
+                                    "label": "Una fila de casilleros",
+                                    "code": "bloques = [12, 19, 21]\nprint(bloques)\nprint(bloques[0])",
+                                    "output": "[12, 19, 21]\n12\n",
+                                    "explanation": "Los corchetes crean la lista; [0] accede al primer elemento."
+                                }
+                            ],
+                            "keyTakeaway": "Los corchetes crean la lista; [0] accede al primer elemento."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 2 · El segundo casillero",
+                            "title": "El segundo casillero",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "notas = [3.0, 4.5, 2.0]\nnota = notas[1]\nprint(nota)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "3.0",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El índice 1 señala el segundo elemento; el primero tiene índice 0."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "4.5",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "2.0",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El valor 2.0 está en el índice 2, no en el índice 1."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[4.5]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Indexar obtiene un elemento, no una lista de un solo elemento."
+                                }
+                            ],
+                            "fullAnswerExplanation": "4.5. El índice 1 selecciona el segundo elemento de la lista."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 3 · Un casillero que no existe",
+                            "title": "Un casillero que no existe",
+                            "question": "¿Cuál es el error al intentar imprimir la última nota?",
+                            "code": "notas = [3, 4, 5]\nultimo = len(notas)\nprint(notas[ultimo])",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "Se usa el índice 3, pero el último es 2.",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "len(notas) devuelve 2.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "len cuenta los tres elementos; no devuelve el último índice."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "La lista debe contener solo textos.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Las listas pueden contener números; el fallo está en el índice."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "print no acepta elementos de una lista.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "print acepta el número obtenido si su índice existe."
+                                }
+                            ],
+                            "fullAnswerExplanation": "Se usa el índice 3, pero el último es 2. El tipo de error es `IndexError`.",
+                            "expectError": "IndexError"
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 4 · Contar desde el final",
+                            "title": "Contar desde el final",
+                            "intro": "Como en una fila vista desde atrás, -1 señala el último casillero. Los índices negativos permiten acceder sin calcular la longitud.",
+                            "examples": [
+                                {
+                                    "label": "Contar desde el final",
+                                    "code": "bloques = [12, 19, 21]\nprint(bloques[-1])\nprint(bloques[-2])",
+                                    "output": "21\n19\n",
+                                    "explanation": "-1 es el último; -2 es el penúltimo."
+                                }
+                            ],
+                            "keyTakeaway": "-1 es el último; -2 es el penúltimo."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 5 · Desde atrás",
+                            "title": "Desde atrás",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [10, 20, 30, 40]\npenultima = cargas[-2]\nprint(penultima)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "20",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Contaste desde el inicio; -2 cuenta dos posiciones desde el final."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "40",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El último elemento usa -1; -2 señala el anterior."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "30",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "-2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El índice selecciona el valor almacenado, no se imprime a sí mismo."
+                                }
+                            ],
+                            "fullAnswerExplanation": "30. -1 es el último; -2 es el penúltimo."
+                        },
+                        {
+                            "type": "code_sandbox",
+                            "partLabel": "Paso 6 · Consultar dos extremos",
+                            "title": "Consultar dos extremos",
+                            "instruction": "Completa los índices para imprimir primero 12 y luego 21.",
+                            "starterCode": "bloques = [12, 19, 21]\nprint(bloques[___])\nprint(bloques[___])",
+                            "slotMarker": "___",
+                            "slots": [
+                                {
+                                    "id": "slot-0",
+                                    "label": "Casilla 1",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El índice 1 imprime 19; necesitamos el primer bloque, 12.",
+                                            "explanation": "El índice 1 imprime 19; necesitamos el primer bloque, 12."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "2",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El índice 2 imprime el último bloque, no el primero.",
+                                            "explanation": "El índice 2 imprime el último bloque, no el primero."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "3",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "No existe el índice 3 en una lista de tres elementos.",
+                                            "explanation": "No existe el índice 3 en una lista de tres elementos."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "0",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "slot-1",
+                                    "label": "Casilla 2",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "-2",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El índice -2 selecciona 19, no el último bloque.",
+                                            "explanation": "El índice -2 selecciona 19, no el último bloque."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "0",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El índice 0 vuelve a imprimir 12, no el último bloque.",
+                                            "explanation": "El índice 0 vuelve a imprimir 12, no el último bloque."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "-1",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "3",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "len es 3, pero el índice 3 está fuera de la lista.",
+                                            "explanation": "len es 3, pero el índice 3 está fuera de la lista."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "solution": [
+                                "0",
+                                "-1"
+                            ],
+                            "slotFeedbacks": [
+                                {
+                                    "1": "El índice 1 imprime 19; necesitamos el primer bloque, 12.",
+                                    "2": "El índice 2 imprime el último bloque, no el primero.",
+                                    "3": "No existe el índice 3 en una lista de tres elementos."
+                                },
+                                {
+                                    "-2": "El índice -2 selecciona 19, no el último bloque.",
+                                    "0": "El índice 0 vuelve a imprimir 12, no el último bloque.",
+                                    "3": "len es 3, pero el índice 3 está fuera de la lista."
+                                }
+                            ],
+                            "expectedOutput": "12\n21\n",
+                            "explanation": "Las dos piezas producen la salida solicitada. Ambas ranuras correctas producen la salida indicada; cada distractor explica qué operación o posición cambiaría."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 7 · La lista vacía",
+                            "title": "La lista vacía",
+                            "question": "¿Qué ocurre en la última línea?",
+                            "code": "cargas = []\nprint(len(cargas))\nprint(cargas[0])",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "Imprime 0 y luego 0.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Una lista vacía no contiene un cero; carece de elementos."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "Imprime 0 y luego None.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Un índice inexistente genera error; no devuelve None."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "Imprime 1 y luego [].",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Los corchetes vacíos representan cero elementos, no uno."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "Imprime 0 y luego ocurre IndexError.",
+                                    "isCorrect": true
+                                }
+                            ],
+                            "fullAnswerExplanation": "Imprime 0 y luego ocurre IndexError. El tipo de error es `IndexError`.",
+                            "expectError": "IndexError"
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 8 · Reemplazar un valor",
+                            "title": "Reemplazar un valor",
+                            "intro": "Cambiar lo que hay en un casillero conserva el número de casilleros. La asignación por índice modifica la lista existente.",
+                            "examples": [
+                                {
+                                    "label": "Reemplazar un valor",
+                                    "code": "notas = [2.0, 4.0, 3.0]\nnotas[0] = 3.5\nprint(notas)",
+                                    "output": "[3.5, 4.0, 3.0]\n",
+                                    "explanation": "lista[i] = valor reemplaza un elemento; no agrega otro."
+                                }
+                            ],
+                            "keyTakeaway": "lista[i] = valor reemplaza un elemento; no agrega otro."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 9 · Cambio puntual",
+                            "title": "Cambio puntual",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "bloques = [12, 19, 21]\nbloques[-1] = 24\nprint(bloques)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[12, 19, 21, 24]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Asignar por índice reemplaza; no añade un cuarto elemento."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[12, 19, 24]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[24, 19, 21]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El índice -1 señala el final, no la primera posición."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[12, 24, 21]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El bloque 19 está en -2; se modificó la posición -1."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[12, 19, 24]. lista[i] = valor reemplaza un elemento; no agrega otro."
+                        }
+                    ]
+                },
+                {
+                    "id": "w4-l2",
+                    "weekId": "semana-4",
+                    "number": 2,
+                    "tag": "Listas",
+                    "shortTitle": "Extraer una parte y copiar",
+                    "title": "Extraer una parte y copiar",
+                    "description": "Extraer un tramo con slicing y distinguir una copia de un segundo nombre para la misma lista.",
+                    "duration": "3–5 min",
+                    "steps": [
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 1 · Una ventana sobre la fila",
+                            "title": "Una ventana sobre la fila",
+                            "intro": "Un rebanado abre una ventana sobre varias posiciones. Incluye el inicio y se detiene antes del límite final.",
+                            "examples": [
+                                {
+                                    "label": "Una ventana sobre la fila",
+                                    "code": "cargas = [10, 20, 30, 40]\ntramo = cargas[1:3]\nprint(tramo)",
+                                    "output": "[20, 30]\n",
+                                    "explanation": "lista[inicio:fin] produce una nueva lista; fin queda excluido."
+                                }
+                            ],
+                            "keyTakeaway": "lista[inicio:fin] produce una nueva lista; fin queda excluido."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 2 · El límite excluido",
+                            "title": "El límite excluido",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "bloques = [12, 14, 19, 21]\ntramo = bloques[0:2]\nprint(tramo)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[12, 14]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[12, 14, 19]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Incluiste el índice 2; el límite final del rebanado se excluye."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[14, 19]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El inicio 0 incluye el primer elemento, no comienza en 1."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "12",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Un rebanado devuelve una lista, no un único elemento."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[12, 14]. lista[inicio:fin] produce una nueva lista; fin queda excluido."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 3 · Índice o rebanado",
+                            "title": "Índice o rebanado",
+                            "question": "Se quería obtener [20, 30]. ¿Cuál es la corrección?",
+                            "code": "cargas = [10, 20, 30, 40]\ntramo = cargas[1, 3]\nprint(tramo)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "Cambiar [1, 3] por [1:2].",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El fin 2 excluiría la posición del 30; solo obtendrías [20]."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "Cambiar [1, 3] por [1:4].",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El fin 4 también incluiría el 40, que no se pidió."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "Cambiar [1, 3] por [1:3].",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "Cambiar [1, 3] por [3:1].",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Con avance normal, el inicio 3 queda después del fin 1 y da []."
+                                }
+                            ],
+                            "fullAnswerExplanation": "Cambiar [1, 3] por [1:3]. El tipo de error es `TypeError`.",
+                            "expectError": "TypeError"
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 4 · Límites que se pueden omitir",
+                            "title": "Límites que se pueden omitir",
+                            "intro": "Una ventana puede comenzar en el primer elemento o llegar hasta el final. Si omites inicio o fin, Python usa ese extremo de la lista.",
+                            "examples": [
+                                {
+                                    "label": "Límites que se pueden omitir",
+                                    "code": "cargas = [10, 20, 30, 40]\nprint(cargas[:2])\nprint(cargas[2:])",
+                                    "output": "[10, 20]\n[30, 40]\n",
+                                    "explanation": "[:fin] toma el prefijo; [inicio:] toma el resto."
+                                }
+                            ],
+                            "keyTakeaway": "[:fin] toma el prefijo; [inicio:] toma el resto."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 5 · El resto de la fila",
+                            "title": "El resto de la fila",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "notas = [2, 3, 4, 5]\nresto = notas[2:]\nprint(resto)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[2, 3]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Ese sería el prefijo [:2]; [2:] empieza en el índice 2."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[4, 5]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[3, 4, 5]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El índice 2 es el tercer elemento, no el segundo."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "4",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El rebanado conserva la forma de lista, aunque acceda desde un índice."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[4, 5]. [:fin] toma el prefijo; [inicio:] toma el resto."
+                        },
+                        {
+                            "type": "code_sandbox",
+                            "partLabel": "Paso 6 · Separar dos tramos",
+                            "title": "Separar dos tramos",
+                            "instruction": "Completa los límites para imprimir [10, 20] y [30, 40], en ese orden.",
+                            "starterCode": "cargas = [10, 20, 30, 40]\nprint(cargas[:___])\nprint(cargas[___:])",
+                            "slotMarker": "___",
+                            "slots": [
+                                {
+                                    "id": "slot-0",
+                                    "label": "Casilla 1",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "2",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El fin 1 solo incluye el 10; faltaría el segundo elemento.",
+                                            "explanation": "El fin 1 solo incluye el 10; faltaría el segundo elemento."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "3",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El fin 3 también incluye el 30, fuera del primer tramo.",
+                                            "explanation": "El fin 3 también incluye el 30, fuera del primer tramo."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "4",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El fin 4 incluye toda la lista, no sus dos primeros elementos.",
+                                            "explanation": "El fin 4 incluye toda la lista, no sus dos primeros elementos."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "slot-1",
+                                    "label": "Casilla 2",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El inicio 1 incluye 20; el segundo tramo debe comenzar en 30.",
+                                            "explanation": "El inicio 1 incluye 20; el segundo tramo debe comenzar en 30."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "2",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "3",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El inicio 3 solo incluye 40; faltaría el 30.",
+                                            "explanation": "El inicio 3 solo incluye 40; faltaría el 30."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "4",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El inicio 4 coincide con el final y produce una lista vacía.",
+                                            "explanation": "El inicio 4 coincide con el final y produce una lista vacía."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "solution": [
+                                "2",
+                                "2"
+                            ],
+                            "slotFeedbacks": [
+                                {
+                                    "1": "El fin 1 solo incluye el 10; faltaría el segundo elemento.",
+                                    "3": "El fin 3 también incluye el 30, fuera del primer tramo.",
+                                    "4": "El fin 4 incluye toda la lista, no sus dos primeros elementos."
+                                },
+                                {
+                                    "1": "El inicio 1 incluye 20; el segundo tramo debe comenzar en 30.",
+                                    "3": "El inicio 3 solo incluye 40; faltaría el 30.",
+                                    "4": "El inicio 4 coincide con el final y produce una lista vacía."
+                                }
+                            ],
+                            "expectedOutput": "[10, 20]\n[30, 40]\n",
+                            "explanation": "Las dos piezas producen la salida solicitada. Ambas ranuras correctas producen la salida indicada; cada distractor explica qué operación o posición cambiaría."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 7 · Un límite muy lejano",
+                            "title": "Un límite muy lejano",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [10, 20, 30]\ntramo = cargas[1:99]\nprint(tramo)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[20, 30]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "Ocurre IndexError.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El rebanado recorta su límite al final disponible; no es un acceso [99]."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[20, 30, 99]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El límite 99 no se agrega como dato; solo marca dónde detenerse."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El inicio 1 sí existe; se toma desde allí hasta el final disponible."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[20, 30]. El rebanado se detiene al final disponible aunque el límite indicado sea 99."
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 8 · Dos etiquetas o una copia",
+                            "title": "Dos etiquetas o una copia",
+                            "intro": "Dos etiquetas sobre la misma caja ven los mismos cambios; una copia crea otra caja. Para estas listas de números, copy() permite modificar los elementos por separado.",
+                            "examples": [
+                                {
+                                    "label": "Dos etiquetas o una copia",
+                                    "code": "original = [12, 19]\nalias = original\ncopia = original.copy()\noriginal[0] = 14\nprint(alias)\nprint(copia)",
+                                    "output": "[14, 19]\n[12, 19]\n",
+                                    "explanation": "Asignar otro nombre no copia; copy() crea otra lista."
+                                }
+                            ],
+                            "keyTakeaway": "Asignar otro nombre no copia; copy() crea otra lista."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 9 · La caja compartida",
+                            "title": "La caja compartida",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "original = [3, 4]\notra = original\notra[1] = 5\nprint(original)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[3, 4]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "otra y original nombran la misma lista; no se hizo una copia."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[5, 4]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Se cambió el índice 1, que es la segunda posición."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[3, 4, 5]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Asignar otra[1] reemplaza un elemento; no añade una posición."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[3, 5]",
+                                    "isCorrect": true
+                                }
+                            ],
+                            "fullAnswerExplanation": "[3, 5]. Asignar otro nombre no copia; copy() crea otra lista."
+                        }
+                    ]
+                },
+                {
+                    "id": "w4-l3",
+                    "weekId": "semana-4",
+                    "number": 3,
+                    "tag": "Listas",
+                    "shortTitle": "Recorrer y contar",
+                    "title": "Recorrer y contar",
+                    "description": "Recorrer valores o posiciones y distinguir cantidad total de frecuencia de un valor.",
+                    "duration": "3–5 min",
+                    "steps": [
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 1 · Visitar cada casillero",
+                            "title": "Visitar cada casillero",
+                            "intro": "Como una inspección de cada muestra, for visita los elementos en su orden actual. La variable del ciclo recibe el valor, no su posición.",
+                            "examples": [
+                                {
+                                    "label": "Visitar cada casillero",
+                                    "code": "cargas = [10, 20]\nfor carga in cargas:\n    print(carga)",
+                                    "output": "10\n20\n",
+                                    "explanation": "for valor in lista entrega un elemento en cada iteración."
+                                }
+                            ],
+                            "keyTakeaway": "for valor in lista entrega un elemento en cada iteración."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 2 · Sumar mediciones",
+                            "title": "Sumar mediciones",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [2, 3, 2]\ntotal = 0\nfor carga in cargas:\n    total += carga\nprint(total)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "3",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Contaste elementos, pero el programa acumula sus valores."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "7",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Ese es el último valor visitado; total conserva toda la suma."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "5",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "La lista admite repetidos y el segundo 2 también se suma."
+                                }
+                            ],
+                            "fullAnswerExplanation": "7. for valor in lista entrega un elemento en cada iteración."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 3 · Confundir valor con índice",
+                            "title": "Confundir valor con índice",
+                            "question": "¿Por qué falla este recorrido?",
+                            "code": "cargas = [10, 20]\nfor i in cargas:\n    print(cargas[i])",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "for no puede recorrer listas.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "for sí recorre listas; entrega sus valores en cada vuelta."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "Los índices de esta lista empiezan en 10.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Los índices empiezan en 0, independientemente del valor almacenado."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "i recibe 10 y 20; no son índices válidos.",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "Hace falta convertir cargas a texto.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Cambiar el tipo no resuelve la confusión entre valor e índice."
+                                }
+                            ],
+                            "fullAnswerExplanation": "i recibe 10 y 20; no son índices válidos. El tipo de error es `IndexError`.",
+                            "expectError": "IndexError"
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 4 · Visitar por posición",
+                            "title": "Visitar por posición",
+                            "intro": "Cuando necesitas la posición, range(len(lista)) genera sus índices válidos. Así puedes consultar cada valor mediante su índice.",
+                            "examples": [
+                                {
+                                    "label": "Visitar por posición",
+                                    "code": "cargas = [10, 20]\nfor i in range(len(cargas)):\n    print(i, cargas[i])",
+                                    "output": "0 10\n1 20\n",
+                                    "explanation": "range(len(lista)) va desde 0 hasta len(lista) - 1."
+                                }
+                            ],
+                            "keyTakeaway": "range(len(lista)) va desde 0 hasta len(lista) - 1."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 5 · Última vuelta",
+                            "title": "Última vuelta",
+                            "question": "¿Qué imprime este programa al terminar?",
+                            "code": "cargas = [8, 6, 4]\nfor i in range(len(cargas)):\n    ultimo = cargas[i]\nprint(i, ultimo)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "3 4",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "range(3) excluye el 3; el último índice visitado es 2."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "4 2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "print recibe primero el índice y después el valor, no al revés."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "2 6",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "En la última vuelta el índice 2 selecciona el 4, no el 6."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "2 4",
+                                    "isCorrect": true
+                                }
+                            ],
+                            "fullAnswerExplanation": "2 4. range(len(lista)) va desde 0 hasta len(lista) - 1."
+                        },
+                        {
+                            "type": "code_sandbox",
+                            "partLabel": "Paso 6 · Recorrer todas las posiciones",
+                            "title": "Recorrer todas las posiciones",
+                            "instruction": "Completa el recorrido para imprimir 0 12 y luego 1 19.",
+                            "starterCode": "bloques = [12, 19]\nfor i in range(___):\n    print(i, bloques[___])",
+                            "slotMarker": "___",
+                            "slots": [
+                                {
+                                    "id": "slot-0",
+                                    "label": "Casilla 1",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "len(bloques)",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "len(bloques) - 1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "range(1) solo visita el índice 0; faltaría el segundo bloque.",
+                                            "explanation": "range(1) solo visita el índice 0; faltaría el segundo bloque."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "len(bloques) + 1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "range(3) incluye el índice 2, que está fuera de la lista.",
+                                            "explanation": "range(3) incluye el índice 2, que está fuera de la lista."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "0",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "range(0) no ejecuta ninguna vuelta; no imprimirías los bloques.",
+                                            "explanation": "range(0) no ejecuta ninguna vuelta; no imprimirías los bloques."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "slot-1",
+                                    "label": "Casilla 2",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "0",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Usar siempre 0 repite el primer bloque en todas las vueltas.",
+                                            "explanation": "Usar siempre 0 repite el primer bloque en todas las vueltas."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "-1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Usar siempre -1 repite el último bloque, sin seguir el índice.",
+                                            "explanation": "Usar siempre -1 repite el último bloque, sin seguir el índice."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "i + 1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Desplazas el acceso; omites el primero y sales de rango al final.",
+                                            "explanation": "Desplazas el acceso; omites el primero y sales de rango al final."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "i",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "solution": [
+                                "len(bloques)",
+                                "i"
+                            ],
+                            "slotFeedbacks": [
+                                {
+                                    "len(bloques) - 1": "range(1) solo visita el índice 0; faltaría el segundo bloque.",
+                                    "len(bloques) + 1": "range(3) incluye el índice 2, que está fuera de la lista.",
+                                    "0": "range(0) no ejecuta ninguna vuelta; no imprimirías los bloques."
+                                },
+                                {
+                                    "0": "Usar siempre 0 repite el primer bloque en todas las vueltas.",
+                                    "-1": "Usar siempre -1 repite el último bloque, sin seguir el índice.",
+                                    "i + 1": "Desplazas el acceso; omites el primero y sales de rango al final."
+                                }
+                            ],
+                            "expectedOutput": "0 12\n1 19\n",
+                            "explanation": "Las dos piezas producen la salida solicitada. Ambas ranuras correctas producen la salida indicada; cada distractor explica qué operación o posición cambiaría."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 7 · Recorrer una lista vacía",
+                            "title": "Recorrer una lista vacía",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = []\ntotal = 0\nfor carga in cargas:\n    total += carga\nprint(total)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "0",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "Ocurre IndexError.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "No hay accesos por índice y el ciclo no ejecuta ninguna vuelta."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "None",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "total conserva el número 0 de su inicialización."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "No imprime nada.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El print está fuera del ciclo y se ejecuta incluso sin elementos."
+                                }
+                            ],
+                            "fullAnswerExplanation": "0. La lista vacía no produce iteraciones; total conserva su valor inicial y el print exterior se ejecuta."
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 8 · Cantidad y frecuencia",
+                            "title": "Cantidad y frecuencia",
+                            "intro": "Contar todos los casilleros no es contar cuántos tienen la misma etiqueta. len mide la cantidad total y count(valor) cuenta sus apariciones.",
+                            "examples": [
+                                {
+                                    "label": "Cantidad y frecuencia",
+                                    "code": "bloques = [12, 19, 12]\nprint(len(bloques))\nprint(bloques.count(12))\nprint(bloques.count(21))",
+                                    "output": "3\n2\n0\n",
+                                    "explanation": "count no modifica la lista y devuelve 0 si el valor no aparece."
+                                }
+                            ],
+                            "keyTakeaway": "count no modifica la lista y devuelve 0 si el valor no aparece."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 9 · Repetidos permitidos",
+                            "title": "Repetidos permitidos",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "notas = [3, 4, 3, 5]\ncantidad = notas.count(3)\nprint(cantidad, len(notas))",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "3 4",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "count(3) cuenta apariciones del 3; no devuelve el valor buscado."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "2 2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "count no elimina elementos; la longitud sigue siendo 4."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "2 4",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "1 3",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Las listas conservan duplicados; los dos valores 3 cuentan."
+                                }
+                            ],
+                            "fullAnswerExplanation": "2 4. count no modifica la lista y devuelve 0 si el valor no aparece."
+                        }
+                    ]
+                },
+                {
+                    "id": "w4-l4",
+                    "weekId": "semana-4",
+                    "number": 4,
+                    "tag": "Listas",
+                    "shortTitle": "Agregar elementos",
+                    "title": "Agregar elementos",
+                    "description": "Ampliar una lista al final, en una posición o con los elementos de otra lista.",
+                    "duration": "3–5 min",
+                    "steps": [
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 1 · Una muestra nueva",
+                            "title": "Una muestra nueva",
+                            "intro": "Como añadir una muestra al final de una bandeja, append agrega un elemento. Los que ya estaban conservan su orden.",
+                            "examples": [
+                                {
+                                    "label": "Una muestra nueva",
+                                    "code": "cargas = [10, 20]\ncargas.append(30)\nprint(cargas)",
+                                    "output": "[10, 20, 30]\n",
+                                    "explanation": "append(valor) añade un elemento al final."
+                                }
+                            ],
+                            "keyTakeaway": "append(valor) añade un elemento al final."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 2 · Construir una lista",
+                            "title": "Construir una lista",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "pares = []\nfor n in range(2, 7, 2):\n    pares.append(n)\nprint(pares)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[2, 4, 6]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[2, 4]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El fin 7 se excluye, pero 6 sí está dentro del recorrido."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[0, 2, 4, 6]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "range comienza en 2; no genera el número 0."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[6]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "append conserva los anteriores; no reemplaza toda la lista."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[2, 4, 6]. append(valor) añade un elemento al final."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 3 · Agregar no es asignar el retorno",
+                            "title": "Agregar no es asignar el retorno",
+                            "question": "Se quería conservar [10, 20]. ¿Dónde está el error?",
+                            "code": "cargas = [10]\ncargas = cargas.append(20)\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "append reemplaza el primer elemento por 20.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "append agrega al final; no reemplaza el valor que ya estaba."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "append requiere también un índice.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "append solo recibe el valor; insert es el método que recibe una posición."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "No se puede agregar a una lista de un elemento.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Cualquier lista puede crecer; el fallo es asignar el retorno de append."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "append devuelve None; la asignación pierde la referencia a la lista.",
+                                    "isCorrect": true
+                                }
+                            ],
+                            "fullAnswerExplanation": "La lista se modifica, pero el método devuelve `None`; llama al método sin reasignar la variable."
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 4 · Abrir espacio en medio",
+                            "title": "Abrir espacio en medio",
+                            "intro": "insert abre un casillero en la posición indicada y desplaza los siguientes. A diferencia de asignar por índice, no reemplaza el elemento existente.",
+                            "examples": [
+                                {
+                                    "label": "Abrir espacio en medio",
+                                    "code": "bloques = [12, 19]\nbloques.insert(1, 14)\nprint(bloques)",
+                                    "output": "[12, 14, 19]\n",
+                                    "explanation": "insert(indice, valor) añade el valor antes del elemento de ese índice."
+                                }
+                            ],
+                            "keyTakeaway": "insert(indice, valor) añade el valor antes del elemento de ese índice."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 5 · Desplazar posiciones",
+                            "title": "Desplazar posiciones",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [10, 30]\ncargas.insert(1, 20)\nprint(cargas[2], len(cargas))",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "20 3",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El nuevo 20 ocupa el índice 1; el 30 se desplaza al índice 2."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "30 3",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "30 2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "insert agrega un elemento; la longitud aumenta de 2 a 3."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "20 2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "insert no reemplaza el 30; lo desplaza y aumenta la longitud."
+                                }
+                            ],
+                            "fullAnswerExplanation": "30 3. insert(indice, valor) añade el valor antes del elemento de ese índice."
+                        },
+                        {
+                            "type": "code_sandbox",
+                            "partLabel": "Paso 6 · Completar la ruta",
+                            "title": "Completar la ruta",
+                            "instruction": "Completa los métodos para obtener [12, 14, 19, 21].",
+                            "starterCode": "bloques = [12, 19]\nbloques.___(1, 14)\nbloques.___(21)\nprint(bloques)",
+                            "slotMarker": "___",
+                            "slots": [
+                                {
+                                    "id": "slot-0",
+                                    "label": "Casilla 1",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "append",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "append recibe un solo valor; aquí se pasan posición y valor.",
+                                            "explanation": "append recibe un solo valor; aquí se pasan posición y valor."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "remove",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "remove elimina un valor y no recibe dos argumentos.",
+                                            "explanation": "remove elimina un valor y no recibe dos argumentos."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "insert",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "pop",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "pop elimina por índice; no inserta un elemento nuevo.",
+                                            "explanation": "pop elimina por índice; no inserta un elemento nuevo."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "slot-1",
+                                    "label": "Casilla 2",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "insert",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "insert requiere posición y valor; aquí solo se proporciona 21.",
+                                            "explanation": "insert requiere posición y valor; aquí solo se proporciona 21."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "append",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "remove",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "remove intenta eliminar el 21; no lo agrega y aún no existe.",
+                                            "explanation": "remove intenta eliminar el 21; no lo agrega y aún no existe."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "pop",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "pop usaría 21 como índice para eliminar, fuera de esta lista.",
+                                            "explanation": "pop usaría 21 como índice para eliminar, fuera de esta lista."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "solution": [
+                                "insert",
+                                "append"
+                            ],
+                            "slotFeedbacks": [
+                                {
+                                    "append": "append recibe un solo valor; aquí se pasan posición y valor.",
+                                    "remove": "remove elimina un valor y no recibe dos argumentos.",
+                                    "pop": "pop elimina por índice; no inserta un elemento nuevo."
+                                },
+                                {
+                                    "insert": "insert requiere posición y valor; aquí solo se proporciona 21.",
+                                    "remove": "remove intenta eliminar el 21; no lo agrega y aún no existe.",
+                                    "pop": "pop usaría 21 como índice para eliminar, fuera de esta lista."
+                                }
+                            ],
+                            "expectedOutput": "[12, 14, 19, 21]\n",
+                            "explanation": "Las dos piezas producen la salida solicitada. Ambas ranuras correctas producen la salida indicada; cada distractor explica qué operación o posición cambiaría."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 7 · Agregar un repetido",
+                            "title": "Agregar un repetido",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [10, 20]\ncargas.append(10)\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[10, 20]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Las listas admiten valores repetidos; append sí añade otro 10."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[10, 10, 20]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "append añade al final, no junto al valor que coincide."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[20, 10]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "append no elimina el primer 10; conserva todos los anteriores."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[10, 20, 10]",
+                                    "isCorrect": true
+                                }
+                            ],
+                            "fullAnswerExplanation": "[10, 20, 10]. append agrega al final y conserva los valores repetidos."
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 8 · Un lote de muestras",
+                            "title": "Un lote de muestras",
+                            "intro": "extend añade por separado los elementos de otra lista. append añade su argumento como un solo elemento, incluso si ese argumento es una lista.",
+                            "examples": [
+                                {
+                                    "label": "Un lote de muestras",
+                                    "code": "a = [10]\nb = [10]\na.extend([20, 30])\nb.append([20, 30])\nprint(a)\nprint(b)",
+                                    "output": "[10, 20, 30]\n[10, [20, 30]]\n",
+                                    "explanation": "extend incorpora los elementos; append incorpora un solo objeto."
+                                }
+                            ],
+                            "keyTakeaway": "extend incorpora los elementos; append incorpora un solo objeto."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 9 · Incorporar un lote",
+                            "title": "Incorporar un lote",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [10]\ncargas.extend([20, 30])\nprint(cargas, len(cargas))",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[10, 20, 30] 3",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[10, [20, 30]] 2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Ese sería el resultado de append; extend agrega los dos elementos."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[20, 30] 2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "extend conserva la lista inicial y añade el lote al final."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[10, 20, 30] 2",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "La longitud cuenta los tres elementos, no el número de operaciones."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[10, 20, 30] 3. extend incorpora los elementos; append incorpora un solo objeto."
+                        }
+                    ]
+                },
+                {
+                    "id": "w4-l5",
+                    "weekId": "semana-4",
+                    "number": 5,
+                    "tag": "Listas",
+                    "shortTitle": "Eliminar elementos",
+                    "title": "Eliminar elementos",
+                    "description": "Elegir entre eliminar por posición o por valor y vaciar una lista.",
+                    "duration": "3–5 min",
+                    "steps": [
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 1 · Retirar por posición",
+                            "title": "Retirar por posición",
+                            "intro": "Como retirar la última muestra de una bandeja, pop elimina y entrega ese elemento. Sin argumento, usa la última posición.",
+                            "examples": [
+                                {
+                                    "label": "Retirar por posición",
+                                    "code": "cargas = [10, 20, 30]\nretirada = cargas.pop()\nprint(retirada)\nprint(cargas)",
+                                    "output": "30\n[10, 20]\n",
+                                    "explanation": "pop() retira el último; pop(i) retira el elemento del índice i."
+                                }
+                            ],
+                            "keyTakeaway": "pop() retira el último; pop(i) retira el elemento del índice i."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 2 · Retirar el primero",
+                            "title": "Retirar el primero",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [10, 20, 30]\nretirada = cargas.pop(0)\nprint(retirada, cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "0 [10, 20, 30]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "pop devuelve el valor retirado, no el índice, y sí modifica la lista."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "10 [20, 30]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "30 [10, 20]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Eso corresponde a pop() sin argumento; aquí se indicó el índice 0."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "10 [10, 20, 30]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El valor se retira de la lista; no basta con leerlo."
+                                }
+                            ],
+                            "fullAnswerExplanation": "10 [20, 30]. pop() retira el último; pop(i) retira el elemento del índice i."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 3 · Valor usado como posición",
+                            "title": "Valor usado como posición",
+                            "question": "Se quería retirar el valor 20. ¿Por qué falla?",
+                            "code": "cargas = [10, 20, 30]\ncargas.pop(20)\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "pop solo funciona sin argumentos.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "pop acepta un índice válido; el 20 está fuera de esta lista."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "20 no está en la lista.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "El valor 20 sí aparece; pop no busca valores, sino posiciones."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "pop interpreta 20 como índice, que no existe.",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "No se pueden eliminar números.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Los números se eliminan igual que otros elementos; el índice es el problema."
+                                }
+                            ],
+                            "fullAnswerExplanation": "pop interpreta 20 como índice, que no existe. El tipo de error es `IndexError`.",
+                            "expectError": "IndexError"
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 4 · Retirar por etiqueta",
+                            "title": "Retirar por etiqueta",
+                            "intro": "remove busca el valor indicado y elimina su primera aparición. Los elementos posteriores se desplazan para cerrar el espacio.",
+                            "examples": [
+                                {
+                                    "label": "Retirar por etiqueta",
+                                    "code": "cargas = [10, 20, 10]\ncargas.remove(10)\nprint(cargas)",
+                                    "output": "[20, 10]\n",
+                                    "explanation": "remove(valor) elimina una aparición; no interpreta el argumento como índice."
+                                }
+                            ],
+                            "keyTakeaway": "remove(valor) elimina una aparición; no interpreta el argumento como índice."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 5 · Solo la primera aparición",
+                            "title": "Solo la primera aparición",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "bloques = [12, 19, 12, 21]\nbloques.remove(12)\nprint(bloques)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[19, 21]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "remove elimina solo la primera aparición, no todas las coincidencias."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[12, 19, 21]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Se elimina el primer 12 encontrado desde el inicio, no el segundo."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "Ocurre IndexError.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "remove recibe un valor; no intenta acceder al índice 12."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[19, 12, 21]",
+                                    "isCorrect": true
+                                }
+                            ],
+                            "fullAnswerExplanation": "[19, 12, 21]. remove(valor) elimina una aparición; no interpreta el argumento como índice."
+                        },
+                        {
+                            "type": "code_sandbox",
+                            "partLabel": "Paso 6 · Retirar por dos criterios",
+                            "title": "Retirar por dos criterios",
+                            "instruction": "Completa los argumentos para retirar primero el índice 0 y luego el valor 30; debe quedar [20].",
+                            "starterCode": "cargas = [10, 20, 30]\ncargas.pop(___)\ncargas.remove(___)\nprint(cargas)",
+                            "slotMarker": "___",
+                            "slots": [
+                                {
+                                    "id": "slot-0",
+                                    "label": "Casilla 1",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "10",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "pop espera un índice; el valor 10 no es una posición válida.",
+                                            "explanation": "pop espera un índice; el valor 10 no es una posición válida."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El índice 1 retira 20, que es precisamente el valor que debemos conservar.",
+                                            "explanation": "El índice 1 retira 20, que es precisamente el valor que debemos conservar."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "0",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "-1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "El índice -1 retira 30 antes de la operación remove(30).",
+                                            "explanation": "El índice -1 retira 30 antes de la operación remove(30)."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "slot-1",
+                                    "label": "Casilla 2",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "1",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "remove busca el valor 1, que no aparece en la lista.",
+                                            "explanation": "remove busca el valor 1, que no aparece en la lista."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "20",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Eliminar el valor 20 deja [30], no el resultado pedido.",
+                                            "explanation": "Eliminar el valor 20 deja [30], no el resultado pedido."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "2",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "remove busca el valor 2; no usa el índice de la lista original.",
+                                            "explanation": "remove busca el valor 2; no usa el índice de la lista original."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "30",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "solution": [
+                                "0",
+                                "30"
+                            ],
+                            "slotFeedbacks": [
+                                {
+                                    "10": "pop espera un índice; el valor 10 no es una posición válida.",
+                                    "1": "El índice 1 retira 20, que es precisamente el valor que debemos conservar.",
+                                    "-1": "El índice -1 retira 30 antes de la operación remove(30)."
+                                },
+                                {
+                                    "1": "remove busca el valor 1, que no aparece en la lista.",
+                                    "20": "Eliminar el valor 20 deja [30], no el resultado pedido.",
+                                    "2": "remove busca el valor 2; no usa el índice de la lista original."
+                                }
+                            ],
+                            "expectedOutput": "[20]\n",
+                            "explanation": "Las dos piezas producen la salida solicitada. Ambas ranuras correctas producen la salida indicada; cada distractor explica qué operación o posición cambiaría."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 7 · Buscar un ausente",
+                            "title": "Buscar un ausente",
+                            "question": "¿Qué ocurre en la segunda línea?",
+                            "code": "cargas = [10, 20]\ncargas.remove(30)\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "La lista queda igual y se imprime.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "remove no ignora un valor ausente; genera ValueError antes del print."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "Elimina 20 por ser el último.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Solo pop() sin argumento retira el último; remove busca el valor exacto."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "Ocurre ValueError porque 30 no está.",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "Agrega 30 y luego lo elimina.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "remove no crea elementos cuando no encuentra el valor pedido."
+                                }
+                            ],
+                            "fullAnswerExplanation": "Ocurre ValueError porque 30 no está. El tipo de error es `ValueError`.",
+                            "expectError": "ValueError"
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 8 · Una bandeja vacía",
+                            "title": "Una bandeja vacía",
+                            "intro": "clear retira todos los elementos, pero la lista sigue existiendo. Después puedes volver a agregar elementos a ella.",
+                            "examples": [
+                                {
+                                    "label": "Una bandeja vacía",
+                                    "code": "cargas = [10, 20]\ncargas.clear()\nprint(cargas)\nprint(len(cargas))",
+                                    "output": "[]\n0\n",
+                                    "explanation": "clear() conserva la lista y deja su longitud en cero."
+                                }
+                            ],
+                            "keyTakeaway": "clear() conserva la lista y deja su longitud en cero."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 9 · Volver a usar la lista",
+                            "title": "Volver a usar la lista",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [10, 20]\ncargas.clear()\ncargas.append(30)\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "Ocurre NameError.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "clear no elimina la variable; la lista sigue disponible para append."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[30]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[10, 20, 30]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "clear eliminó 10 y 20 antes de agregar 30."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Después de clear se ejecuta append, que añade el nuevo elemento."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[30]. clear() conserva la lista y deja su longitud en cero."
+                        }
+                    ]
+                },
+                {
+                    "id": "w4-l6",
+                    "weekId": "semana-4",
+                    "number": 6,
+                    "tag": "Listas",
+                    "shortTitle": "Ordenar o invertir",
+                    "title": "Ordenar o invertir",
+                    "description": "Distinguir ordenamiento, inversión del orden actual y creación de una lista ordenada nueva.",
+                    "duration": "3–5 min",
+                    "steps": [
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 1 · Ordenar mediciones",
+                            "title": "Ordenar mediciones",
+                            "intro": "Como acomodar muestras de menor a mayor peso, sort reorganiza una lista de números. La operación modifica la lista existente.",
+                            "examples": [
+                                {
+                                    "label": "Ordenar mediciones",
+                                    "code": "cargas = [30, 10, 20]\ncargas.sort()\nprint(cargas)",
+                                    "output": "[10, 20, 30]\n",
+                                    "explanation": "sort() ordena de menor a mayor y devuelve None."
+                                }
+                            ],
+                            "keyTakeaway": "sort() ordena de menor a mayor y devuelve None."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 2 · Orden con repetidos",
+                            "title": "Orden con repetidos",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [3, 1, 3, 2]\ncargas.sort()\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[1, 2, 3, 3]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[1, 2, 3]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "sort conserva las repeticiones; ordenar no elimina duplicados."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[3, 3, 2, 1]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Ese es el orden descendente; sort() usa el ascendente por defecto."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[3, 1, 3, 2]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "sort modifica las posiciones de la lista original."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[1, 2, 3, 3]. sort() ordena de menor a mayor y devuelve None."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 3 · El retorno de sort",
+                            "title": "El retorno de sort",
+                            "question": "Se quería imprimir la lista ordenada. ¿Cuál es el fallo?",
+                            "code": "cargas = [30, 10, 20]\ncargas = cargas.sort()\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "sort no funciona con números.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Los números de esta lista sí se comparan y se ordenan correctamente."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "Se asignó None, el retorno de sort, a cargas.",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "sort devuelve el primer número ordenado.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "sort devuelve None; la lista se modifica durante la llamada."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "Los datos debían estar ordenados antes.",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "sort sirve para reorganizar datos desordenados; no exige orden previo."
+                                }
+                            ],
+                            "fullAnswerExplanation": "La lista se modifica, pero el método devuelve `None`; llama al método sin reasignar la variable."
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 4 · Dar vuelta a la bandeja",
+                            "title": "Dar vuelta a la bandeja",
+                            "intro": "reverse invierte las posiciones actuales sin comparar los valores. Cambiar de extremo no equivale a ordenar de mayor a menor.",
+                            "examples": [
+                                {
+                                    "label": "Dar vuelta a la bandeja",
+                                    "code": "cargas = [30, 10, 20]\ncargas.reverse()\nprint(cargas)",
+                                    "output": "[20, 10, 30]\n",
+                                    "explanation": "reverse() invierte el orden actual y también devuelve None."
+                                }
+                            ],
+                            "keyTakeaway": "reverse() invierte el orden actual y también devuelve None."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 5 · Invertir sin ordenar",
+                            "title": "Invertir sin ordenar",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [4, 1, 3]\ncargas.reverse()\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[3, 1, 4]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[4, 3, 1]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Ese sería un orden descendente; reverse solo invierte las posiciones."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[1, 3, 4]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Ese sería un orden ascendente; reverse no compara los valores."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[4, 1, 3]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "reverse sí cambia la lista; el primer y el último elemento intercambian lugar."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[3, 1, 4]. reverse() invierte el orden actual y también devuelve None."
+                        },
+                        {
+                            "type": "code_sandbox",
+                            "partLabel": "Paso 6 · Ordenar y después invertir",
+                            "title": "Ordenar y después invertir",
+                            "instruction": "Completa los métodos para imprimir primero [1, 2, 3] y luego [3, 2, 1].",
+                            "starterCode": "cargas = [3, 1, 2]\ncargas.___()\nprint(cargas)\ncargas.___()\nprint(cargas)",
+                            "slotMarker": "___",
+                            "slots": [
+                                {
+                                    "id": "slot-0",
+                                    "label": "Casilla 1",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "reverse",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Invertir [3, 1, 2] da [2, 1, 3], no el primer resultado pedido.",
+                                            "explanation": "Invertir [3, 1, 2] da [2, 1, 3], no el primer resultado pedido."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "sort",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "clear",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Vaciar la lista elimina los datos que se deben ordenar.",
+                                            "explanation": "Vaciar la lista elimina los datos que se deben ordenar."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "copy",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Una copia sin guardar su retorno no cambia el orden de cargas.",
+                                            "explanation": "Una copia sin guardar su retorno no cambia el orden de cargas."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "slot-1",
+                                    "label": "Casilla 2",
+                                    "options": [
+                                        {
+                                            "id": "A",
+                                            "code": "reverse",
+                                            "isCorrect": true,
+                                            "explanation": "Esta pieza completa la operación solicitada."
+                                        },
+                                        {
+                                            "id": "B",
+                                            "code": "sort",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "Volver a ordenar de menor a mayor conserva [1, 2, 3].",
+                                            "explanation": "Volver a ordenar de menor a mayor conserva [1, 2, 3]."
+                                        },
+                                        {
+                                            "id": "C",
+                                            "code": "clear",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "clear elimina todos los elementos; no produce un orden descendente.",
+                                            "explanation": "clear elimina todos los elementos; no produce un orden descendente."
+                                        },
+                                        {
+                                            "id": "D",
+                                            "code": "copy",
+                                            "isCorrect": false,
+                                            "whyIncorrect": "copy crea otra lista, pero no invierte la lista que se imprime.",
+                                            "explanation": "copy crea otra lista, pero no invierte la lista que se imprime."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "solution": [
+                                "sort",
+                                "reverse"
+                            ],
+                            "slotFeedbacks": [
+                                {
+                                    "reverse": "Invertir [3, 1, 2] da [2, 1, 3], no el primer resultado pedido.",
+                                    "clear": "Vaciar la lista elimina los datos que se deben ordenar.",
+                                    "copy": "Una copia sin guardar su retorno no cambia el orden de cargas."
+                                },
+                                {
+                                    "sort": "Volver a ordenar de menor a mayor conserva [1, 2, 3].",
+                                    "clear": "clear elimina todos los elementos; no produce un orden descendente.",
+                                    "copy": "copy crea otra lista, pero no invierte la lista que se imprime."
+                                }
+                            ],
+                            "expectedOutput": "[1, 2, 3]\n[3, 2, 1]\n",
+                            "explanation": "Las dos piezas producen la salida solicitada. Ambas ranuras correctas producen la salida indicada; cada distractor explica qué operación o posición cambiaría."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 7 · Todos iguales",
+                            "title": "Todos iguales",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "cargas = [2, 2, 2]\ncargas.reverse()\nprint(cargas)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "reverse reorganiza posiciones; no elimina valores repetidos."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[2]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "La inversión conserva los tres elementos, incluso cuando son iguales."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[2, 2, 2]",
+                                    "isCorrect": true
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "None",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "Se imprime la lista después de modificarla, no el retorno de reverse."
+                                }
+                            ],
+                            "fullAnswerExplanation": "[2, 2, 2]. reverse() invierte el orden actual y también devuelve None."
+                        },
+                        {
+                            "type": "explanation",
+                            "partLabel": "Paso 8 · Ordenar otra bandeja",
+                            "title": "Ordenar otra bandeja",
+                            "intro": "sorted crea una lista nueva y deja el orden original intacto. reverse=True pide el orden de mayor a menor; aquí no significa invertir sin ordenar.",
+                            "examples": [
+                                {
+                                    "label": "Ordenar otra bandeja",
+                                    "code": "original = [3, 1, 2]\nordenada = sorted(original, reverse=True)\nprint(original)\nprint(ordenada)",
+                                    "output": "[3, 1, 2]\n[3, 2, 1]\n",
+                                    "explanation": "sorted devuelve otra lista; sort modifica la existente."
+                                }
+                            ],
+                            "keyTakeaway": "sorted devuelve otra lista; sort modifica la existente."
+                        },
+                        {
+                            "type": "predict",
+                            "partLabel": "Paso 9 · Conservar el original",
+                            "title": "Conservar el original",
+                            "question": "¿Qué imprime este programa?",
+                            "code": "original = [4, 1, 3]\nordenada = sorted(original)\nprint(original)\nprint(ordenada)",
+                            "options": [
+                                {
+                                    "id": "A",
+                                    "text": "[1, 3, 4] ⏎ [1, 3, 4]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "sorted no modifica original; solo la nueva lista queda ordenada."
+                                },
+                                {
+                                    "id": "B",
+                                    "text": "[4, 1, 3] ⏎ None",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "sorted devuelve una lista nueva; quien devuelve None es el método sort."
+                                },
+                                {
+                                    "id": "C",
+                                    "text": "[4, 1, 3] ⏎ [3, 1, 4]",
+                                    "isCorrect": false,
+                                    "whyIncorrect": "sorted compara los valores; invertir las posiciones sería reverse."
+                                },
+                                {
+                                    "id": "D",
+                                    "text": "[4, 1, 3] ⏎ [1, 3, 4]",
+                                    "isCorrect": true
+                                }
+                            ],
+                            "fullAnswerExplanation": "[4, 1, 3] ⏎ [1, 3, 4]. sorted devuelve otra lista; sort modifica la existente."
+                        }
+                    ]
+                }
+            ]
         }
     ]
 };

@@ -461,6 +461,34 @@ class CurriculumAuditor:
         self.check(slot_marker in starter,
                    f"{ctx} starterCode no contiene el marcador de espacio '{slot_marker}' para que el estudiante interactúe.")
 
+        if step.get("slots"):
+            slots = step["slots"]
+            solution = step.get("solution", [])
+            self.check(len(slots) == starter.count(slot_marker),
+                       f"{ctx} El número de ranuras no coincide con los marcadores.")
+            self.check(isinstance(solution, list) and len(solution) == len(slots),
+                       f"{ctx} La solución debe incluir una pieza por ranura.")
+            solved_code = starter
+            for idx, slot in enumerate(slots):
+                choices = slot.get("options", [])
+                self.check(len(choices) >= 3, f"{ctx} Ranura {idx + 1} sin suficientes opciones.")
+                correct = [opt for opt in choices if opt.get("isCorrect") is True]
+                self.check(len(correct) == 1, f"{ctx} Ranura {idx + 1} debe tener un acierto.")
+                for opt in choices:
+                    if not opt.get("isCorrect"):
+                        self.check(len(opt.get("whyIncorrect", "").strip()) >= 20,
+                                   f"{ctx} Ranura {idx + 1} sin feedback diagnóstico suficiente.")
+                if len(correct) == 1 and isinstance(solution, list) and idx < len(solution):
+                    self.check(correct[0].get("code") == solution[idx],
+                               f"{ctx} Ranura {idx + 1}: solución y opción correcta difieren.")
+                    solved_code = solved_code.replace(slot_marker, solution[idx], 1)
+            if slot_marker not in solved_code:
+                real_out, err = execute_python_code(solved_code)
+                self.check(not err, f"{ctx} Solución de ranuras falla en CPython: {err}")
+                self.check(real_out == step.get("expectedOutput", ""),
+                           f"{ctx} La salida de las ranuras no coincide con expectedOutput.")
+            return
+
         options = step.get("options", [])
         self.check(len(options) >= 2, f"{ctx} Sandbox debe ofrecer al menos 2 opciones para rellenar.")
 

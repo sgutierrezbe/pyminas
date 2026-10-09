@@ -4,7 +4,7 @@
  */
 
 // ==================== VERSIÓN Y ESTADO GLOBAL ====================
-const APP_VERSION = "v1.52";
+const APP_VERSION = "v1.53";
 window.APP_VERSION = APP_VERSION;
 console.log(`%c🐍 pyMinas ${APP_VERSION} (Facultad de Minas · UNAL)`, "color: #059669; font-weight: bold; font-size: 12px;");
 
@@ -57,6 +57,24 @@ const WEEK_TROPHIES = {
     badgeTitle: 'Medalla de Oro: Maestro de la Lógica Booleana',
     badgeType: 'Insignia de Honor UNAL · Semana 2',
     subtitle: '¡Extraordinario trabajo! Has dominado comparadores, operadores lógicos, indentación y ramificaciones if-elif-else en Python.',
+    nextWeekId: 'semana-3',
+    nextWeekTitle: 'Semana 3: Ciclos'
+  },
+  'semana-3': {
+    weekNumber: 3,
+    title: 'Semana 3: Ciclos',
+    badgeTitle: 'Medalla de Oro: Ciclos y Repetición',
+    badgeType: 'Insignia de Honor UNAL · Semana 3',
+    subtitle: 'Has completado recorridos, contadores, acumuladores y condiciones de parada.',
+    nextWeekId: 'semana-4',
+    nextWeekTitle: 'Semana 4: Listas'
+  },
+  'semana-4': {
+    weekNumber: 4,
+    title: 'Semana 4: Listas',
+    badgeTitle: 'Medalla de Oro: Manejo de Listas',
+    badgeType: 'Insignia de Honor UNAL · Semana 4',
+    subtitle: 'Has aprendido a acceder, copiar, recorrer y transformar listas de Python.',
     nextWeekId: null,
     nextWeekTitle: null
   }
